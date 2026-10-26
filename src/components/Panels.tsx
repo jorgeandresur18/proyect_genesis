@@ -179,6 +179,17 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
+        Volumen de música: {Math.round(settings.musicVolume * 100)} %
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={settings.musicVolume}
+          onChange={(e) => setSettings({ musicVolume: Number(e.target.value) })}
+        />
+      </label>
+      <label className="option">
         Volumen de efectos: {Math.round(settings.sfxVolume * 100)} %
         <input
           type="range"

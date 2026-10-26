@@ -91,4 +91,6 @@ export interface EndingInfo {
 
 export interface GameConfig {
   inicio: string;
+  /** Tema de la pantalla de título. */
+  musica_titulo?: string;
 }

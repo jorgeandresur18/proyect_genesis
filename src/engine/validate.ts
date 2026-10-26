@@ -74,7 +74,7 @@ export function validateStory(
       }
     });
     for (const ref of [scene.background, scene.video_fondo, scene.audio, ...scene.characters.map((c) => c.sprite)]) {
-      if (ref && !isPlaceholder(ref) && !assetExists(ref)) errors.push(`${id}: recurso inexistente "${ref}"`);
+      if (ref && ref !== 'silencio' && !isPlaceholder(ref) && !assetExists(ref)) errors.push(`${id}: recurso inexistente "${ref}"`);
     }
     for (const fx of effectsOf(scene)) {
       if (!(UI_EFFECTS as readonly string[]).includes(fx)) errors.push(`${id}: ui_effect desconocido "${fx}"`);

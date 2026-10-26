@@ -52,6 +52,8 @@ function exportChapter(file, endings) {
       out.push('', `### ${placeholder(s.background)}`, '');
       lastBg = s.background;
     }
+    if (s.audio === 'silencio') out.push('> ♪ silencio');
+    else if (s.audio) out.push(`> ♪ música: ${basename(s.audio).replace(/\.[a-z0-9]+$/, '')}`);
     if (s.conditions.length) out.push(`> solo si ${s.conditions.map(cond).join(' y ')}`);
     const d = s.dialogue;
     // Línea en blanco después de cada diálogo para que la vista previa no los junte en un párrafo.

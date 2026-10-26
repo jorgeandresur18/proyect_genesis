@@ -3,7 +3,7 @@
 // la parte que suena de un archivo, aunque traiga silencio al principio o al final.
 import { useStore } from './store';
 
-const url = (file: string) => `${import.meta.env.BASE_URL}audio/sfx/${file}`;
+const url = (file: string) => (file.includes('/') ? `${import.meta.env.BASE_URL}${file}` : `${import.meta.env.BASE_URL}audio/sfx/${file}`);
 const SILENCE = 0.01; // Amplitud por debajo de la cual se considera silencio.
 const TYPING_LEVEL = 0.6; // El sonido del texto, más bajo que los demás: suena todo el tiempo.
 
@@ -11,13 +11,14 @@ let ctx: AudioContext | null = null;
 const buffers = new Map<string, Promise<AudioBuffer>>();
 const ranges = new WeakMap<AudioBuffer, { start: number; end: number }>();
 
-function context(): AudioContext {
+export function context(): AudioContext {
   ctx ??= new AudioContext();
   if (ctx.state === 'suspended') void ctx.resume();
   return ctx;
 }
 
-function load(file: string): Promise<AudioBuffer> {
+/** Carga y decodifica un archivo (una vez). Acepta un nombre de efecto o una ruta dentro de public/. */
+export function load(file: string): Promise<AudioBuffer> {
   if (!buffers.has(file)) {
     buffers.set(
       file,
@@ -30,7 +31,7 @@ function load(file: string): Promise<AudioBuffer> {
 }
 
 /** Parte del archivo que suena (sin el silencio del principio y del final), en segundos. */
-function audibleRange(buf: AudioBuffer): { start: number; end: number } {
+export function audibleRange(buf: AudioBuffer): { start: number; end: number } {
   let range = ranges.get(buf);
   if (!range) {
     const loud = (i: number) => {

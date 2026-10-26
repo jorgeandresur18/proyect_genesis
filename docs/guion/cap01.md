@@ -12,6 +12,7 @@
 
 ### oficina_dia
 
+> ♪ música: afterwork
 `001` — Capítulo 1 — Una vida en bucle.
 
 `002` — Viernes, cinco y media de la tarde. El calor de la oficina tiene la consistencia de una sopa.
@@ -109,6 +110,7 @@
 
 `020b2` **Nikki:** ...Ya. Otro día.
 
+> ♪ música: nightcity
 `020b3` — Lo dice con una de sus sonrisas de cartel, de las entrenadas. Termina de bajar la persiana y se va caminando hacia el otro lado, sola, con el delantal todavía puesto.
 
 `020b4` **Jair:** (Otro día. Siempre hay otro día. Es lo bueno de vivir en bucle.)
@@ -361,6 +363,7 @@
 
 `084` — Cuarta ronda. O quinta. Jair dejó de contar; el cantinero no.
 
+> ♪ música: sad_suspense
 `085` **Nikki:** Bryan ni siquiera me gustaba, ¿sabes? Era un imbécil. Un imbécil con abdominales prestados.
 
 `086` **Nikki:** Me gustaba que alguien me escribiera «buenos días». Así, sin nada más. Buenos días. Como si importara que yo me despertara.
@@ -459,6 +462,7 @@
 
 `103c3` — Lo suelta. Le pide la cuenta al cantinero con un dedo en el aire.
 
+> ♪ música: afterwork
 `104` **Cantinero:** Son ochenta y siete con cincuenta.
 
 `105` **Jair:** ¿Ochenta y siete? ¿Qué mierda tomamos?
@@ -483,6 +487,7 @@
 
 ### calle_noche
 
+> ♪ música: nightcity
 `108` — Afuera son casi las dos. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía.
 
 `109` **Nikki:** Pídeme un taxi. Pagas tú, que tienes dinero guardado. Yo sé.
@@ -539,6 +544,7 @@
 > solo si inicio_cap2 == "sobrio"
 `122s` — Debería cocinar algo. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
 
+> ♪ silencio
 `123` — Entre ofertas de tarjetas de crédito y un recordatorio del dentista hay un correo de un remitente que no conoce.
 
 `124` **Correo:** ASUNTO: Has sido seleccionado para el acceso anticipado a GRAVITY.
@@ -556,6 +562,7 @@
 
 ### gravity_ide
 
+> ♪ música: into_the_ciberse
 `128` **GRAVITY:** > Instalando GRAVITY... Framework: NEXUS. Front: Coffee. Back: Cobra.
 
 `129` **GRAVITY:** > Asistente integrado: GENESIS. Estado: en línea.
@@ -604,6 +611,7 @@
 > solo si inicio_cap2 == "sobrio"
 `149s` — Son las tres de la mañana. Lleva ocho horas frente a la pantalla. El cansancio hace el trabajo que esta noche no hizo el tequila. Los párpados de Jair pesan como la quincena atrasada.
 
+> ♪ silencio
 `150` — Su frente baja despacio hasta el teclado.
 
 `151` **GRAVITY:** > sssssssssssssssssssssssssssssssssssssss
@@ -650,6 +658,7 @@
 
 ### nebulosa_magenta
 
+> ♪ música: new_discover
 `g1_003` — Jair abre los ojos.
 
 `g1_004` — El cielo es magenta. No rosado, no morado: magenta, como ese color que nadie elige en la paleta porque se ve demasiado.
@@ -703,6 +712,7 @@
 
 `g1_027` **Jair:** (Gravedad baja. Claro. Le pedí ciencia ficción. Le encanta tomarme literal.)
 
+> ♪ silencio
 `g1_028` — A lo lejos, entre las columnas que flotan, algo se mueve.
 
 `g1_029` — Una luz azul. Un destello. Después, un ruido seco, como un trueno metido en una lata.
@@ -726,6 +736,7 @@
 
 > ⤷ continúa en `g1_036`
 
+> ♪ silencio
 `bad1_001` — Jair corre en dirección contraria. Salta de bloque en bloque, lejos de la voz, lejos de los destellos, hasta llegar a una plataforma pequeña en el borde de las ruinas.
 
 `bad1_002` **Jair:** (No es mi problema. Es un sueño. En los sueños uno no tiene responsabilidades.)
@@ -767,6 +778,7 @@
 
 `g1_036` — Salta de un bloque flotante a otro. Ninguno se cae. Todos se tambalean lo suficiente para que él piense que se van a caer.
 
+> ♪ música: adventure1
 `g1_037` — Detrás de una columna partida está la escena: tres figuras con armadura negra y máscaras sin rostro rodean un montón de escombros.
 
 `g1_038` — Y entre los escombros, atrapada hasta la rodilla bajo una viga de piedra, hay una mujer.
@@ -816,6 +828,7 @@
 
 `g1_049` — Los fragmentos flotan un segundo en el aire y después se apagan, uno por uno, como un monitor que se va a negro.
 
+> ♪ música: new_discover
 `g1_050` — Silencio.
 
 `g1_051` — La rubia gira la pistola hacia Jair.
@@ -950,6 +963,7 @@
 
 `g1_095` **Cami:** Todos los nombres tienen vocales, imbécil.
 
+> ♪ silencio
 `g3_001` — El piso tiembla.
 
 `g3_002` — No es un temblor de terremoto. Es el temblor de algo que respira. Algo grande, debajo de ellos, que acaba de despertar con hambre.
@@ -964,6 +978,7 @@
 
 `g3_007` — Las sombras entre los escombros empiezan a moverse. No se mueven como sombras: se mueven como líquido, como tinta derramada que decidió tener opiniones.
 
+> ♪ música: adventure1
 `g3_008` — La tinta se junta. Se levanta. Tiene la altura de dos personas y la forma de ninguna. Donde debería tener cara, tiene un hueco que gira.
 
 `g3_009` **Jair:** Eso no lo pedí.
@@ -1171,6 +1186,7 @@
 
 `g3_054` — Se queda ahí, ondulando, girando el hueco hacia ellos. Como un perro detrás de una reja.
 
+> ♪ silencio
 `g3_055` **Jair:** ¿Por qué no salta?
 
 `g3_056` **Cami:** No sé. Nunca saltan. Nunca cruzan los huecos.
@@ -1199,6 +1215,7 @@
 
 `g3_068` — El monstruo se disuelve en el piso y desaparece entre las grietas. No se fue: solo dejó de estar a la vista. Jair conoce bien la diferencia. Es la misma que hay entre pagar una deuda y no abrir el correo.
 
+> ♪ música: serene
 `g3_069` **Cami:** Ahí. Esa compuerta. Hay un refugio. Llévame.
 
 `g3_070` **Jair:** ¿Y el «por favor»?
@@ -1288,6 +1305,7 @@
 
 `g4_039` **Jair:** ¿Y tú? ¿Qué hacías aquí sola?
 
+> ♪ música: sad_suspense
 `g4_040` — Cami tarda en contestar. Mira por la ventanilla.
 
 `g4_041` **Cami:** No estaba sola. Éramos más. Una flota entera.
@@ -1358,6 +1376,7 @@
 
 `g4_053c6` **Cami:** Cállate. Me distraes.
 
+> ♪ música: serene
 `g4_054` **Cami:** Tu turno. ¿Qué eres? Y no me digas «soporte técnico».
 
 `g4_055` **Jair:** Soy ingeniero de software.
@@ -1475,6 +1494,7 @@
 
 `b31` **Jair:** Es la mejor división del trabajo que he tenido en mi vida.
 
+> ♪ silencio
 `g4_080` — La luz de emergencia deja de parpadear. Se queda fija. Roja.
 
 `g4_081` **Cami:** Mierda.
@@ -1570,6 +1590,7 @@
 
 ### hangar
 
+> ♪ música: new_discover
 `g5h_013` — En el nivel dos, el pasillo se abre a un hangar enorme.
 
 `g5h_014` — Hay naves. Decenas. Cazas pequeños con alas en forma de cuchilla, transportes redondos como escarabajos y, en el centro, una nave grande con el casco abierto como una lata de atún.
@@ -1661,6 +1682,7 @@
 
 `g5h_044` **Cami:** ¿«Motor no encontrado»? ¿Cómo que no encontrado? ¡Está ahí atrás! ¡Lo estoy viendo!
 
+> ♪ música: sad_suspense
 `g5h_045` — Jair mira atrás. Ahí hay algo con forma de motor. Tiene el tamaño de un motor y el color de un motor. Pero cuando lo toca, la mano le atraviesa la superficie como si fuera humo.
 
 `g5h_046` **Jair:** (Es decorado. Las naves son decorado. Nunca las hicieron para volar.)
@@ -1681,6 +1703,7 @@
 
 `g5h_054` **Cami:** Vamos.
 
+> ♪ silencio
 `g5m_001` — Al salir del hangar, algo vibra en el bolsillo de Jair.
 
 `g5m_002` — El celular.
@@ -1849,6 +1872,7 @@
 
 `g5_024b4` **Jair:** (Ahí está. El precio de no seguir el protocolo.)
 
+> ♪ música: adventure1
 `g5_024b5` **Soldado enmascarado:** ¡INTRUSO!
 
 `g5_024b6` **Cami:** ¡CORRE!
@@ -1874,6 +1898,7 @@
 
 ### calabozo
 
+> ♪ música: sad_suspense
 `g5_024b16` — La celda es blanca, pequeña y sin ventanas. Tiene un catre, una luz que no se apaga y, al otro lado de los barrotes, la celda de Cami, que no le habla.
 
 `g5_024b17` **Jair:** (Cuatro paredes. Una luz. Nadie que me llame.)
@@ -1916,6 +1941,7 @@
 
 ### nucleo_grieta
 
+> ♪ música: new_discover
 `g6_001` — El núcleo del Bastión es una sala circular del tamaño de un estadio, con el techo perdido en la oscuridad y el piso cubierto de cables gruesos como troncos.
 
 `g6_002` — En el centro, flotando a un metro del suelo, está la Grieta.
@@ -1954,6 +1980,7 @@
 
 `g6_019` — Jair da un paso hacia la Grieta.
 
+> ♪ silencio
 `g6_020` — Y entonces se encienden las luces.
 
 `g6_021` — Todas a la vez. Blancas, duras, de quirófano. Desde los balcones que rodean la sala aparecen soldados. Diez. Veinte. Treinta. Todos con la misma máscara sin rostro. Todos apuntando.
@@ -1996,6 +2023,7 @@
 
 `g6_040` **Jair:** (Susurrando) Igualmente. Digo... gracias. Digo...
 
+> ♪ música: adventure1
 `g6_041` **Cami:** ¡AHORA!
 
 `g6_042` — Cami levanta la pistola y dispara. No a los soldados: al techo. A un racimo de cables que cuelga sobre la pasarela.
@@ -2069,6 +2097,7 @@
 
 ### cg_caida_multiverso
 
+> ♪ música: into_the_ciberse
 `g6_061` — Y después la luz dorada se los traga.
 
 `g6c_001` — Caen.
@@ -2138,6 +2167,7 @@
 
 ### bosque_ancestral
 
+> ♪ música: serene
 `g7_001` — Aterrizan sobre pasto.
 
 `g7_002` — Pasto de verdad. Húmedo, frío, con olor a tierra después de la lluvia. Jair queda boca arriba, con Cami encima, mirando un cielo que no es magenta.
@@ -2346,6 +2376,7 @@
 
 `d39` **Jair:** (Soy cobarde, pero no soy idiota.)
 
+> ♪ silencio
 `g7b_001` — Un ruido.
 
 `g7b_002` — Detrás, en el claro donde aterrizaron, algo cae del cielo. No con un golpe: con un chapoteo. Como una gota de tinta muy grande cayendo en un vaso de agua.
@@ -2354,6 +2385,7 @@
 
 `g7b_004` **Jair:** No me digas.
 
+> ♪ música: adventure1
 `g7b_005` — La tinta se levanta del pasto. La altura de dos personas. La forma de ninguna. El hueco que gira.
 
 `g7b_006` **GRAVITY:** > Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
@@ -2435,6 +2467,7 @@
 
 `g7b_023b9` **Jair:** (Susurrando) En mi ciudad no nieva. Solo hace calor. Todo el año.
 
+> ♪ música: serene
 `g7b_024` — Se quedan mirando la estatua de hielo negro un rato largo. Adentro, el hueco que tiene por cara sigue girando, muy despacio, como un reloj que no sabe que se detuvo.
 
 `g7b_025` **Cami:** Gracias.

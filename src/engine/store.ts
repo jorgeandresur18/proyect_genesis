@@ -40,10 +40,12 @@ export interface Settings {
   sfxVolume: number;
   /** Sonido mientras el texto se escribe. */
   typingSound: boolean;
+  /** Volumen de la música, de 0 a 1. */
+  musicVolume: number;
 }
 
 export const TEXT_SPEED_INSTANT = 130;
-const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true };
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5 };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 
@@ -90,9 +92,11 @@ export const useStore = create<Store>()(
           return;
         }
         let nextVars = vars;
+        // La música vigente viaja en las variables, así suena bien al cargar o saltar desde el mapa.
+        if (scene.audio) nextVars = { ...nextVars, _musica: scene.audio };
         const patch: Partial<Store> = {};
         if (scene.ending) {
-          nextVars = { ...vars, final_alcanzado: scene.ending };
+          nextVars = { ...nextVars, final_alcanzado: scene.ending };
           if (!get().endingsSeen[scene.ending]) {
             patch.endingsSeen = { ...get().endingsSeen, [scene.ending]: new Date().toISOString() };
           }

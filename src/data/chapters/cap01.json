@@ -18,7 +18,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/afterwork.mp3",
       "ui_effect": null,
       "next": "cap01_002"
     },
@@ -1005,7 +1005,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/nightcity.mp3",
       "ui_effect": null,
       "next": "cap01_020b4"
     },
@@ -4207,7 +4207,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/sad_suspense.mp3",
       "ui_effect": null,
       "next": "cap01_086"
     },
@@ -5458,7 +5458,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/afterwork.mp3",
       "ui_effect": null,
       "next": "cap01_105"
     },
@@ -5663,7 +5663,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/nightcity.mp3",
       "ui_effect": null,
       "next": "cap01_109"
     },
@@ -6130,7 +6130,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_124"
     },
@@ -6250,7 +6250,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/into_the_ciberse.mp3",
       "ui_effect": null,
       "next": "cap01_129"
     },
@@ -6671,7 +6671,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_151"
     },
@@ -7018,7 +7018,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/new_discover.mp3",
       "ui_effect": null,
       "next": "cap01_g1_004"
     },
@@ -7581,7 +7581,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g1_029"
     },
@@ -7774,7 +7774,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_bad1_002"
     },
@@ -8161,7 +8161,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/adventure1.mp3",
       "ui_effect": null,
       "next": "cap01_g1_038"
     },
@@ -8843,7 +8843,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/new_discover.mp3",
       "ui_effect": null,
       "next": "cap01_g1_051"
     },
@@ -10598,7 +10598,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g3_002"
     },
@@ -10799,7 +10799,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/adventure1.mp3",
       "ui_effect": null,
       "next": "cap01_g3_009"
     },
@@ -13540,7 +13540,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g3_056"
     },
@@ -13992,7 +13992,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/serene.mp3",
       "ui_effect": null,
       "next": "cap01_g3_070"
     },
@@ -15196,7 +15196,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/sad_suspense.mp3",
       "ui_effect": null,
       "next": "cap01_g4_041"
     },
@@ -16052,7 +16052,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/serene.mp3",
       "ui_effect": null,
       "next": "cap01_g4_055"
     },
@@ -17666,7 +17666,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g4_081"
     },
@@ -18859,7 +18859,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/new_discover.mp3",
       "ui_effect": null,
       "next": "cap01_g5h_014"
     },
@@ -20047,7 +20047,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/sad_suspense.mp3",
       "ui_effect": null,
       "next": "cap01_g5h_046"
     },
@@ -20327,7 +20327,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g5m_002"
     },
@@ -22448,7 +22448,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/adventure1.mp3",
       "ui_effect": null,
       "next": "cap01_g5_024b6"
     },
@@ -22801,7 +22801,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/sad_suspense.mp3",
       "ui_effect": null,
       "next": "cap01_g5_024b17"
     },
@@ -23196,7 +23196,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/new_discover.mp3",
       "ui_effect": null,
       "next": "cap01_g6_002"
     },
@@ -23728,7 +23728,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g6_021"
     },
@@ -24421,7 +24421,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/adventure1.mp3",
       "ui_effect": null,
       "next": "cap01_g6_042"
     },
@@ -25412,7 +25412,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/into_the_ciberse.mp3",
       "ui_effect": null,
       "next": "cap01_g6c_001"
     },
@@ -26076,7 +26076,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/serene.mp3",
       "ui_effect": null,
       "next": "cap01_g7_002"
     },
@@ -28667,7 +28667,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "silencio",
       "ui_effect": null,
       "next": "cap01_g7b_002"
     },
@@ -28784,7 +28784,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/adventure1.mp3",
       "ui_effect": null,
       "next": "cap01_g7b_006"
     },
@@ -29953,7 +29953,7 @@
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/serene.mp3",
       "ui_effect": null,
       "next": "cap01_g7b_025"
     },

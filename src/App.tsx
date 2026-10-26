@@ -11,6 +11,8 @@ import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
 import { playSelect, unlockAudio } from './engine/sound';
+import { playMusic, SILENCE } from './engine/music';
+import { config } from './engine/story';
 
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
@@ -18,6 +20,13 @@ export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const hasGame = useStore((s) => !!s.game);
+  // Título: su tema. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
+  const music = useStore((s) =>
+    !s.game ? config.musica_titulo ?? SILENCE : s.game.finished ? SILENCE : ((s.game.vars._musica as string | null) ?? SILENCE),
+  );
+  useEffect(() => {
+    if (accepted) playMusic(music);
+  }, [accepted, music]);
 
   // Una partida guardada en el navegador puede apuntar a una escena que ya se borró del JSON.
   useEffect(() => {
