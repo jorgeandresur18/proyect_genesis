@@ -22,7 +22,7 @@
 
   <!-- Estaturas canon (docs/CANON.md): la parte de arriba de la cabeza de cada personaje va en su línea. -->
   <g font-family="sans-serif" font-size="26" font-weight="bold">
-    <text x="1188" y="56" text-anchor="end" fill="#ff2d6f">Jorge 1,65</text>
+    <text x="1188" y="56" text-anchor="end" fill="#ff2d6f">Jair 1,65</text>
     <line x1="0" y1="139" x2="1200" y2="139" stroke="#2dd3c8" stroke-width="3"/>
     <text x="1188" y="131" text-anchor="end" fill="#2dd3c8">Rikka 1,60 · y = 139</text>
     <line x1="0" y1="199" x2="1200" y2="199" stroke="#b05cff" stroke-width="3"/>

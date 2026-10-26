@@ -2,7 +2,7 @@
   "lienzo": { "ancho": 1200, "alto": 1600 },
   "nota": "cabeza = altura (px) de la parte de arriba de la cabeza en el lienzo. 15 px por cm; ver Estaturas en docs/CANON.md. alias = expresión que usa el juego -> expresión existente que la reemplaza mientras no exista.",
   "personajes": {
-    "jorge": { "cabeza": 64 },
+    "jair": { "cabeza": 64, "prefijos": ["jorge"] },
     "rikka": {
       "cabeza": 139,
       "alias": { "seria": "base", "celosa": "base", "orgullosa": "base", "preocupada": "base", "sorprendida": "base" }

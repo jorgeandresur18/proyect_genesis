@@ -26,7 +26,7 @@ Los nombres son propuestas por confirmar.
 
 ## Cortes tempranos del Capítulo 1 `[CANON]`
 
-Dos decisiones cortan el Capítulo 1 cuando Jorge se duerme (sin la parte del isekai) y hacen que el Capítulo 2 empiece distinto. Variable `inicio_cap2`: `normal`, `sobrio` o `rechazo`.
+Dos decisiones cortan el Capítulo 1 cuando Jair se duerme (sin la parte del isekai) y hacen que el Capítulo 2 empiece distinto. Variable `inicio_cap2`: `normal`, `sobrio` o `rechazo`.
 
 - `sobrio`: no va al bar con Nikki («Decir que estás cansado»; ella no insiste).
 - `rechazo`: aparta a Nikki cuando le pide el beso.
@@ -41,7 +41,7 @@ Mientras no exista `cap02.json`, terminan en finales ocultos de prototipo (`fin_
 
 ## `final_canon_1` — El Malo, "La Jaula Voluntaria"
 
-Cami se encuentra con Jorge. Se acerca de forma sumisa y tímida y dice que lo extrañaba; después de pasear lo besa, pide quedarse y promete no volver a irse. Jorge cuenta que ahora le va mejor y que arregló sus cosas con Nikki: son solo amigos. En realidad Nikki tiene 4 meses de embarazo y el bebé es de Jorge. Cami se va a vivir con él y tienen relaciones; no puede quedar embarazada porque no tiene órganos. Cami le pregunta si es la mejor creación de las dos y Jorge dice que sí, aunque siempre le gustó más la versión real de Rikka. Aquí acaba la historia.
+Cami se encuentra con Jair. Se acerca de forma sumisa y tímida y dice que lo extrañaba; después de pasear lo besa, pide quedarse y promete no volver a irse. Jair cuenta que ahora le va mejor y que arregló sus cosas con Nikki: son solo amigos. En realidad Nikki tiene 4 meses de embarazo y el bebé es de Jair. Cami se va a vivir con él y tienen relaciones; no puede quedar embarazada porque no tiene órganos. Cami le pregunta si es la mejor creación de las dos y Jair dice que sí, aunque siempre le gustó más la versión real de Rikka. Aquí acaba la historia.
 
 Escena final (borrador aprobado como "más simple"):
 
@@ -52,15 +52,15 @@ Escena final (borrador aprobado como "más simple"):
 
 ## `final_canon_2` — El Bueno, "The Anothergirl"
 
-Cami y Rikka se fusionan en The Anothergirl. Resumen de una versión anterior, **por confirmar**: la fusión permite separar la amalgama entre el juego y la realidad y comprimir GRAVITY en un archivo sellado que no debe volver a abrirse; Jorge y Nikki reconstruyen su vida y su relación. `TODO(canon)`: pedir al autor el texto original (qué lo dispara, cómo es la fusión, cómo termina Jorge con Nikki).
+Cami y Rikka se fusionan en The Anothergirl. Resumen de una versión anterior, **por confirmar**: la fusión permite separar la amalgama entre el juego y la realidad y comprimir GRAVITY en un archivo sellado que no debe volver a abrirse; Jair y Nikki reconstruyen su vida y su relación. `TODO(canon)`: pedir al autor el texto original (qué lo dispara, cómo es la fusión, cómo termina Jair con Nikki).
 
 ## Alternativos del juego base (candidatos, no canon)
 
 Variaciones temporales aisladas. Propuestas por confirmar:
 
-- `alt_1` Ocho años: Jorge y Nikki convierten la ambigüedad en relación; exige honestidad, límites y que Nikki afronte sus problemas sin delegarlos.
-- `alt_2` La fantasía: Jorge elige a Cami; ¿puede ella querer algo que él no previó?
-- `alt_3` La autonomía: Jorge elige a Rikka; su paciencia no debe ser obligación de soportar abusos.
+- `alt_1` Ocho años: Jair y Nikki convierten la ambigüedad en relación; exige honestidad, límites y que Nikki afronte sus problemas sin delegarlos.
+- `alt_2` La fantasía: Jair elige a Cami; ¿puede ella querer algo que él no previó?
+- `alt_3` La autonomía: Jair elige a Rikka; su paciencia no debe ser obligación de soportar abusos.
 - `alt_4` Ruptura: prioriza la verdad y la independencia de las heroínas.
 - `alt_5` Responsabilidad: no elige a nadie, arregla su vida y apaga GRAVITY.
 - `alt_6` Libre.

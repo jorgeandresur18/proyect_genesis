@@ -1,7 +1,7 @@
 {
   "nota": "Hacia dónde mira cada sprite en su imagen original, desde el punto de vista del jugador: izquierda, derecha o frente. El motor voltea el sprite en espejo cuando tiene que mirar hacia el otro lado. Se puede ajustar por expresión.",
   "personajes": {
-    "jorge": "frente",
+    "jair": "frente",
     "nikki": "derecha",
     "cami": "derecha",
     "rikka": "frente"

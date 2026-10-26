@@ -28,10 +28,10 @@
   "video_fondo": null,
   "loop_video": false,
   "characters": [
-    { "id": "jorge", "sprite": "PLACEHOLDER:jorge_cansado", "pos": "centro" }
+    { "id": "jair", "sprite": "PLACEHOLDER:jorge_cansado", "pos": "centro" }
   ],
   "dialogue": {
-    "speaker": "Jorge",
+    "speaker": "Jair",
     "text": "Gano poco, vivo en una caja de zapatos y mi mejor relación es con un ventilador."
   },
   "choices": [
@@ -67,7 +67,7 @@ Campos: `scene_id` único; `background` o `video_fondo` (Shining Days como refer
 - Una escena usa `choices` o `next`, nunca ambos.
 - Archivo por pieza o capítulo: `{ "ruta", "chapter", "title", "scenes": [...] }`.
 - `src/data/juego.json` define la escena de inicio; `src/data/variables.json` declara todas las variables con su valor inicial; `src/data/registro_finales.json` lista los finales (`estado: jugable | por_escribir`). Solo los `jugable` deben ser alcanzables.
-- **Recursos:** `PLACEHOLDER:nombre` se dibuja como caja gris; cualquier otro valor es una ruta dentro de `public/` (p. ej. `sprites/nikki/ebria1.png`). La prueba de rutas falla si el archivo no existe. Sprites de prueba de Jorge y Nikki autorizados por el autor antes de la fase de arte.
+- **Recursos:** `PLACEHOLDER:nombre` se dibuja como caja gris; cualquier otro valor es una ruta dentro de `public/` (p. ej. `sprites/nikki/ebria1.png`). La prueba de rutas falla si el archivo no existe. Sprites de prueba de Jair y Nikki autorizados por el autor antes de la fase de arte.
 - **Sprites:** `npm run sprites` genera `public/sprites/<personaje>/<expresion>.webp` (lienzo 1200×1600). Fuente preferida: un PSD en `docs/sprites/` con un grupo por personaje y una capa por expresión, acomodadas a mano sobre la plantilla; cada capa se exporta tal cual (el PSD no va a git). Si un personaje no está en el PSD, se usan sus PNG de `docs/sprites/<PERSONAJE>/` y se escalan solos a su línea de estatura. Las expresiones que el juego pide y aún no existen usan un sustituto temporal (`alias` en `tools/sprites.config.json`) hasta que se generen.
 - **Orientación de los sprites:** `src/data/orientacion.json` dice hacia dónde mira cada imagen (izquierda, derecha o frente; se puede ajustar por expresión). Los personajes de los costados miran al centro; el del centro mira a quien le habla (o a quien le habló antes si habla él). El motor voltea en espejo el sprite que mira al lado contrario. Un personaje puede forzar su dirección con `"mira"` en el JSON de la escena.
 - **Interacciones físicas** (cargar, abrazar, caer): no se hacen sprites combinados. En los momentos clave se usa una imagen de escena como fondo (`background: "PLACEHOLDER:cg_..."`, sin personajes); el resto del tiempo, cada personaje con su sprite separado.
@@ -88,7 +88,7 @@ Estado global con Zustand o Context, persistido en `localStorage`.
 
 - `ruta`: pieza activa (`base`, `genesis_pp`, `rikkaquest`, `genesis_sharp`).
 - `confianza_rikka`, `lucidez_cami`, `sospecha_nikki`.
-- Capítulo 1: `beso_nikki`, `insistio_relacion`, `confeso_creador` (Jorge le dijo a Cami que creó el mundo), `inicio_cap2` (`normal`, `sobrio` o `rechazo`: cómo empieza el Capítulo 2; ver docs/FINALES.md).
+- Capítulo 1: `beso_nikki`, `insistio_relacion`, `confeso_creador` (Jair le dijo a Cami que creó el mundo), `inicio_cap2` (`normal`, `sobrio` o `rechazo`: cómo empieza el Capítulo 2; ver docs/FINALES.md).
 - `descubrieron_el_edit` (booleano).
 - `sashi_murio` (solo Génesis++).
 - `final_alcanzado`: ID del final (ver `docs/FINALES.md`).
@@ -99,7 +99,7 @@ No hay registro global de finales entre piezas.
 
 Solo cuando tengan función narrativa; no saturar desde el comienzo. Cada efecto en un módulo CSS aislado y apagable con `reduceEffects`.
 
-- `os_menu`: menús de guardado y carga que simulan el sistema operativo de Jorge.
+- `os_menu`: menús de guardado y carga que simulan el sistema operativo de Jair.
 - `glitch`: fallos de interfaz cuando Cami o Rikka sufren disonancia.
 - `boringram_flash`: imágenes de Boringram que parpadean (con marcadores, no personas reales).
 - `ai_vowels`: resalta las letras A e I en los nombres de Rikka, Cami, Sashi y Aylin.
@@ -114,11 +114,11 @@ Estructura definida por el autor (2026-10-24). Los títulos que faltan están po
 | 1 | `cap01.json` | Una vida en bucle | Trabajo, bar con Nikki, GRAVITY y GENESIS, despertar en la dimensión espacial, rescate de Cami, huida a la dimensión ancestral, encuentro con Rikka. Borrador escrito. | 1 h 30 min |
 | 2 | `cap02.json` | `TODO(canon)` | El viaje del héroe. Empieza distinto según `inicio_cap2`. | 1 h 30 min |
 | 3 | `cap03.json` | `TODO(canon)` | La batalla final contra el Rey Malvado. | 2 h 30 min a 3 h |
-| 4 | `cap04.json` | `TODO(canon)` | La materialización de Cami y Rikka y la convivencia con Jorge. | 2 h |
+| 4 | `cap04.json` | `TODO(canon)` | La materialización de Cami y Rikka y la convivencia con Jair. | 2 h |
 | 5 | `cap05.json` | `TODO(canon)` | La rivalidad entre Cami y Nikki; termina con el descubrimiento de quiénes son realmente ellas. | 1 h 30 min |
 | 6 | `cap06.json` | `TODO(canon)` | Las consecuencias del descubrimiento. Lo que ocurra aquí decide qué versión del Capítulo 7 se juega. | 1 h 30 min |
 | 7A | `cap07a.json` | `TODO(canon)` | El colapso del mundo real con el de la IA y la fusión de Rikka con Cami en The Anothergirl (`final_canon_2`). | 1 h 30 min |
-| 7B | `cap07b.json` | `TODO(canon)` | Epílogo: Cami vuelve con Jorge después del salto temporal (`final_canon_1`). | `TODO(canon)` |
+| 7B | `cap07b.json` | `TODO(canon)` | Epílogo: Cami vuelve con Jair después del salto temporal (`final_canon_1`). | `TODO(canon)` |
 
 Una partida dura unas 12 horas; todo el contenido del juego base, unas 13 h 30 min más las ramas.
 

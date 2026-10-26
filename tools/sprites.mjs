@@ -33,6 +33,13 @@ function expressionName(name, character) {
   return m && (m[1].slice(0, 3) === character.slice(0, 3) || prefixes.includes(m[1])) ? m[2] : clean;
 }
 
+/** Nombre de grupo o carpeta -> personaje (acepta nombres anteriores, p. ej. «jorge» -> jair). */
+function resolveCharacter(name) {
+  const lower = name.trim().toLowerCase();
+  if (config.personajes[lower]) return lower;
+  return Object.keys(config.personajes).find((k) => config.personajes[k].prefijos?.includes(lower)) ?? lower;
+}
+
 /** Caja de lo visible en un búfer RGBA. */
 function visibleBox(data, width, height) {
   let top = height, bottom = -1, left = width, right = -1;
@@ -67,7 +74,7 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
   const scale = H / psd.height;
   if (Math.abs(psd.width * scale - W) > 2) console.log(`  ! el lienzo del PSD (${psd.width}x${psd.height}) no es 3:4; se ajusta a ${W}x${H}`);
   for (const group of (psd.children ?? []).filter((g) => g.children)) {
-    const character = group.name.trim().toLowerCase();
+    const character = resolveCharacter(group.name);
     mkdirSync(join(TARGET, character), { recursive: true });
     fromPsd.add(character);
     for (const layer of group.children) {
@@ -139,7 +146,7 @@ async function normalizePng(input, headY) {
 for (const folder of readdirSync(SOURCE)) {
   const dir = join(SOURCE, folder);
   if (!statSync(dir).isDirectory()) continue;
-  const character = folder.toLowerCase();
+  const character = resolveCharacter(folder);
   if (fromPsd.has(character)) continue; // El PSD manda.
   const settings = config.personajes[character];
   if (!settings) {
