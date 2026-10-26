@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useStore } from './engine/store';
+import { CHAPTER_END, useStore } from './engine/store';
 import { BAD_END, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
 import { TRANSITIONS, useSceneTransition } from './engine/useSceneTransition';
@@ -150,12 +150,20 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   if (!game || !scene || !shown) return null;
 
   if (game.finished) {
+    if (game.finished.startsWith(CHAPTER_END)) {
+      return (
+        <div className="screen ending-card" onClick={advance}>
+          <p className="muted">FIN DEL CAPÍTULO {game.finished.slice(CHAPTER_END.length)}</p>
+          <h1>Continuará…</h1>
+          <p className="muted">Haz clic para volver al título</p>
+        </div>
+      );
+    }
     const ending = getEnding(game.finished);
     const bad = ending?.tipo === BAD_END;
-    const header = bad ? 'BAD END' : ending?.pieza === 'prototipo' ? 'FIN DEL CAPÍTULO' : 'FIN';
     return (
       <div className={`screen ending-card ${bad ? 'ending-bad' : ''}`} onClick={advance}>
-        <p className={bad ? 'error' : 'muted'}>{header}</p>
+        <p className={bad ? 'error' : 'muted'}>{bad ? 'BAD END' : 'FIN'}</p>
         <h1>{ending?.nombre ?? game.finished}</h1>
         <p className="muted">Haz clic para volver al título</p>
       </div>

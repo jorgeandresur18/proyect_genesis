@@ -36,8 +36,10 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
         return !!snapshots[n.sceneId!];
       case 'option':
         return !!choicesTaken[n.id];
-      case 'ending':
-        return !!endingsSeen[scenes.get(n.sceneId!)!.ending!];
+      case 'ending': {
+        const s = scenes.get(n.sceneId!)!;
+        return s.ending ? !!endingsSeen[s.ending] : !!snapshots[s.scene_id];
+      }
     }
   };
   const byId = new Map(flow.nodes.map((n) => [n.id, n]));
@@ -52,7 +54,9 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   const label = (n: FlowNode): string => {
     if (n.kind === 'start') return 'Inicio';
     if (n.kind === 'ending') {
-      const id = scenes.get(n.sceneId!)!.ending!;
+      const s = scenes.get(n.sceneId!)!;
+      if (!s.ending) return reached(n) ? `FIN DEL CAPÍTULO ${s.fin_capitulo}` : '???';
+      const id = s.ending;
       const prefix = getEnding(id)?.tipo === BAD_END ? 'BAD END' : 'FIN';
       return reached(n) ? `${prefix}: ${getEnding(id)?.nombre ?? id}` : '???';
     }
@@ -95,7 +99,7 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
               `flow-${n.kind}`,
               ok ? 'flow-reached' : 'flow-unknown',
               n.locked ? 'flow-locked' : '',
-              n.kind === 'ending' && getEnding(scenes.get(n.sceneId!)!.ending!)?.tipo === BAD_END ? 'flow-bad' : '',
+              n.kind === 'ending' && getEnding(scenes.get(n.sceneId!)!.ending ?? '')?.tipo === BAD_END ? 'flow-bad' : '',
               n.sceneId === current && n.kind === 'decision' ? 'flow-current' : '',
             ].join(' ');
             return (

@@ -70,6 +70,7 @@ function exportChapter(file, endings) {
       });
       out.push('');
     }
+    if (s.fin_capitulo) out.push(`> **FIN DEL CAPÍTULO ${s.fin_capitulo}** (no es un final: sigue en el capítulo siguiente)`, '', '---');
     if (s.ending) {
       const e = endings.find((x) => x.id === s.ending);
       out.push(`> **${e?.tipo === 'Bad end' ? 'BAD END' : 'FIN'}: ${e?.nombre ?? s.ending}**`, '', '---');

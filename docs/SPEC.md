@@ -77,7 +77,7 @@ Campos: `scene_id` único; `background` o `video_fondo` (Shining Days como refer
 - **Interacciones físicas** (cargar, abrazar, caer): no se hacen sprites combinados. En los momentos clave se usa una imagen de escena como fondo (`background: "PLACEHOLDER:cg_..."`, sin personajes); el resto del tiempo, cada personaje con su sprite separado.
 - **Libreto editable:** `npm run guion:exportar` genera `docs/guion/capXX.md` desde el JSON; `npm run guion:importar` pasa al JSON los cambios de hablante y texto (diálogos y opciones). Solo cambia textos: agregar, quitar o reordenar escenas se hace en el JSON. La exportación no pisa un libreto con cambios sin importar.
 - Un archivo con `"estado": "borrador"` tiene diálogos no aprobados por el autor; no son canon.
-- Mientras un capítulo no tenga continuación, termina en un final oculto de prototipo (p. ej. `fin_prototipo_cap01`), que se reemplaza por el `next` al capítulo siguiente.
+- **Fin de capítulo** (`"fin_capitulo": N`): no es un final ni va a la galería. Mientras el capítulo siguiente no exista, muestra «Fin del capítulo N — Continuará…» y vuelve al título; cuando exista, esa escena lleva `next` hacia él. Solo los finales (`ending`) y los bad ends cuentan en la galería.
 
 ### 3.2 Funciones tomadas de Shiny Days (pedidas por el autor)
 

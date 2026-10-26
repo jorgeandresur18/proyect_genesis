@@ -49,6 +49,9 @@ const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, te
 
 export type Mode = 'normal' | 'auto' | 'skip';
 
+/** Prefijo de `game.finished` cuando la partida se detiene en un fin de capítulo (no es un final). */
+export const CHAPTER_END = 'capitulo:';
+
 interface Store {
   settings: Settings;
   game: GameState | null;
@@ -152,6 +155,10 @@ export const useStore = create<Store>()(
           markRead(scene.scene_id);
           if (scene.ending) {
             set({ game: { ...game, finished: scene.ending }, mode: 'normal' });
+            return;
+          }
+          if (scene.fin_capitulo && scene.next === null) {
+            set({ game: { ...game, finished: `${CHAPTER_END}${scene.fin_capitulo}` }, mode: 'normal' });
             return;
           }
           const next = resolveNext(scene.next, game.vars);

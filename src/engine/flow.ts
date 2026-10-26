@@ -32,7 +32,7 @@ function walk(start: string, vars: Vars, scenes: Map<string, Scene>): Scene | nu
   for (let guard = 0; guard < 10000 && id; guard++) {
     const { scene } = enterScene(id, vars, (s) => scenes.get(s));
     if (!scene) return null;
-    if (scene.ending || visibleChoices(scene, vars).length > 0) return scene;
+    if (scene.ending || (scene.fin_capitulo && scene.next === null) || visibleChoices(scene, vars).length > 0) return scene;
     id = resolveNext(scene.next, vars);
   }
   return null;
@@ -49,7 +49,7 @@ export function buildFlow(scenes: Map<string, Scene>, inicio: string, variables:
     if (nodes.has(s.scene_id)) return;
     nodes.set(s.scene_id, {
       id: s.scene_id,
-      kind: s.ending ? 'ending' : 'decision',
+      kind: s.ending || s.fin_capitulo ? 'ending' : 'decision',
       sceneId: s.scene_id,
       label: s.dialogue?.text ?? s.scene_id,
       col: 0,
@@ -73,7 +73,7 @@ export function buildFlow(scenes: Map<string, Scene>, inicio: string, variables:
   visit(START_ID, walk(inicio, variables, scenes), variables);
   while (queue.length > 0) {
     const { scene, vars } = queue.shift()!;
-    if (scene.ending) continue;
+    if (scene.ending || (scene.fin_capitulo && scene.next === null)) continue;
     for (const c of visibleChoices(scene, vars)) {
       const i = scene.choices.indexOf(c);
       const oid = `${scene.scene_id}#${i}`;

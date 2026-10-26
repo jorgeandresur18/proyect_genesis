@@ -62,8 +62,13 @@ export interface Scene {
   audio: string | null;
   ui_effect: UiEffect | UiEffect[] | null;
   next: Next;
-  /** ID de final (docs/FINALES.md). La escena cierra la partida. */
+  /** ID de final (docs/FINALES.md). La escena cierra la partida y se registra en la galería. */
   ending?: string;
+  /**
+   * Fin de capítulo: no es un final ni va a la galería. Muestra «Fin del capítulo N» y, mientras no exista
+   * el capítulo siguiente, vuelve al título. Cuando exista, esta escena pasa a tener `next` hacia él.
+   */
+  fin_capitulo?: number;
   /**
    * Transición al entrar a esta escena. Por defecto, fundido a negro solo si cambia el fondo.
    * «blanco»: fundido largo a blanco (cruce del mundo real al de la IA); se hace aunque no cambie el fondo.
@@ -90,7 +95,7 @@ export interface EndingInfo {
   tipo: string;
   /** Solo los finales `jugable` deben ser alcanzables en la prueba de rutas. */
   estado: 'jugable' | 'por_escribir';
-  /** Los finales de prueba o de prototipo no se muestran en la galería ni van en FINALES.md. */
+  /** Los finales de prueba no se muestran en la galería ni van en FINALES.md. */
   oculto?: boolean;
 }
 

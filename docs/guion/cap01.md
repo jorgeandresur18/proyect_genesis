@@ -2805,11 +2805,6 @@
 
 `g8_072` **GRAVITY:** > Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa.
 
-
-### negro
-
-`g8_073` — Fin del Capítulo 1.
-
-> **FIN: Fin del Capítulo 1**
+> **FIN DEL CAPÍTULO 1** (no es un final: sigue en el capítulo siguiente)
 
 ---

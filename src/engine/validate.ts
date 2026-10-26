@@ -10,6 +10,8 @@ export interface Report {
   errors: string[];
   warnings: string[];
   reachedEndings: Set<string>;
+  /** Capítulos cuyo fin (sin continuación todavía) se alcanza. */
+  reachedChapterEnds: Set<number>;
   visitedScenes: Set<string>;
   states: number;
 }
@@ -88,13 +90,17 @@ export function validateStory(
     if (scene.ending) {
       if (!endingIds.has(scene.ending)) errors.push(`${id}: final no registrado "${scene.ending}"`);
       if (scene.next !== null || scene.choices.length > 0) errors.push(`${id}: una escena de final no puede continuar`);
-    } else if (scene.choices.length === 0 && scene.next === null) {
+      if (scene.fin_capitulo) errors.push(`${id}: una escena no puede ser final y fin de capítulo a la vez`);
+    } else if (scene.fin_capitulo && scene.next === null && scene.choices.length > 0) {
+      errors.push(`${id}: un fin de capítulo sin continuación no puede tener decisiones`);
+    } else if (!scene.fin_capitulo && scene.choices.length === 0 && scene.next === null) {
       errors.push(`${id}: callejón sin salida (sin "next", decisiones ni final)`);
     }
   }
 
   // Recorrido de todas las rutas: cada estado es (escena, variables).
   const reachedEndings = new Set<string>();
+  const reachedChapterEnds = new Set<number>();
   const visitedScenes = new Set<string>();
   const seen = new Set<string>();
   const queue: { scene: Scene; vars: Vars }[] = [];
@@ -125,6 +131,10 @@ export function validateStory(
       reachedEndings.add(scene.ending);
       continue;
     }
+    if (scene.fin_capitulo && scene.next === null) {
+      reachedChapterEnds.add(scene.fin_capitulo);
+      continue;
+    }
     const visible = scene.choices.filter((c) => checkAll(c.conditions, vars));
     if (visible.length > 0) {
       const open = visible.filter((c) => !c.locked);
@@ -147,5 +157,5 @@ export function validateStory(
     if (!visitedScenes.has(id)) warnings.push(`Escena inalcanzable: ${id}`);
   }
 
-  return { errors: [...new Set(errors)], warnings, reachedEndings, visitedScenes, states: seen.size };
+  return { errors: [...new Set(errors)], warnings, reachedEndings, reachedChapterEnds, visitedScenes, states: seen.size };
 }

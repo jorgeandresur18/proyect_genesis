@@ -34167,25 +34167,8 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
-      "next": "cap01_g8_073"
-    },
-    {
-      "scene_id": "cap01_g8_073",
-      "chapter": 1,
-      "background": "PLACEHOLDER:negro",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
-        "text": "Fin del Capítulo 1."
-      },
-      "choices": [],
-      "conditions": [],
-      "audio": null,
-      "ui_effect": null,
       "next": null,
-      "ending": "fin_prototipo_cap01"
+      "fin_capitulo": 1
     }
   ]
 }
