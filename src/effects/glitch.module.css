@@ -1,0 +1,19 @@
+/* Efecto glitch: disonancia de Cami o Rikka. Solo se monta si reduceEffects está apagado. */
+.glitch {
+  animation: glitch-shake 0.35s steps(2) infinite;
+}
+
+.glitch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 0, 80, 0.08) 0 2px, transparent 2px 6px);
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-shake {
+  0% { transform: translate(0, 0); filter: none; }
+  50% { transform: translate(-2px, 1px); filter: hue-rotate(40deg); }
+  100% { transform: translate(2px, -1px); filter: none; }
+}

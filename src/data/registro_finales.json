@@ -1,0 +1,24 @@
+[
+  { "id": "fin_prototipo_cap01", "nombre": "Fin del Capítulo 1", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
+  { "id": "fin_cap01_sobrio", "nombre": "Fin del Capítulo 1 (no fue al bar)", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
+  { "id": "fin_cap01_rechazo", "nombre": "Fin del Capítulo 1 (rechazó a Nikki)", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
+
+  { "id": "bad_cap01_huida", "nombre": "Nadie más se encarga", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_escudo", "nombre": "Escudo humano", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_patrulla", "nombre": "Pendiente de revisión", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+
+  { "id": "final_canon_1", "nombre": "El Malo, \"La Jaula Voluntaria\"", "pieza": "Juego base", "tipo": "Canon", "estado": "por_escribir" },
+  { "id": "final_canon_2", "nombre": "El Bueno, \"The Anothergirl\"", "pieza": "Juego base", "tipo": "Canon", "estado": "por_escribir" },
+
+  { "id": "alt_1", "nombre": "Alternativo 1", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "alt_2", "nombre": "Alternativo 2", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "alt_3", "nombre": "Alternativo 3", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "alt_4", "nombre": "Alternativo 4", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "alt_5", "nombre": "Alternativo 5", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "alt_6", "nombre": "Alternativo 6", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },
+
+  { "id": "gpp_1", "nombre": "Génesis++ 1", "pieza": "Génesis++", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "gpp_2", "nombre": "Génesis++ 2", "pieza": "Génesis++", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "gpp_3", "nombre": "Génesis++ 3", "pieza": "Génesis++", "tipo": "No canon", "estado": "por_escribir" },
+  { "id": "gpp_4", "nombre": "Génesis++ 4", "pieza": "Génesis++", "tipo": "No canon", "estado": "por_escribir" }
+]

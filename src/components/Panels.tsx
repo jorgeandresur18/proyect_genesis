@@ -1,0 +1,147 @@
+import type { ReactNode } from 'react';
+import { SAVE_SLOTS, useStore } from '../engine/store';
+import { BAD_END, endings } from '../engine/story';
+
+export function Panel({
+  title,
+  onClose,
+  wide,
+  children,
+}: {
+  title: string;
+  onClose: () => void;
+  wide?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <div className="panel-backdrop" onClick={onClose}>
+      <div className={`panel ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div className="panel-head">
+          <h2>{title}</h2>
+          <button onClick={onClose}>Cerrar</button>
+        </div>
+        <div className="panel-body">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+export function HistoryPanel({ onClose }: { onClose: () => void }) {
+  const history = useStore((s) => s.game?.history ?? []);
+  return (
+    <Panel title="Historial" onClose={onClose}>
+      {history.length === 0 && <p className="muted">Vacío.</p>}
+      {history.map((h, i) => (
+        <p key={i} className={h.choice ? 'history-choice' : ''}>
+          {h.choice ? '› ' : h.speaker ? <strong>{h.speaker}: </strong> : null}
+          {h.text}
+        </p>
+      ))}
+    </Panel>
+  );
+}
+
+export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClose: () => void }) {
+  const saves = useStore((s) => s.saves);
+  const canSave = useStore((s) => !!s.game && !s.game.finished);
+  const { save, load, deleteSave } = useStore.getState();
+  return (
+    <Panel title={mode === 'save' ? 'Guardar' : 'Cargar'} onClose={onClose}>
+      {Array.from({ length: SAVE_SLOTS }, (_, i) => {
+        const slot = saves[i];
+        return (
+          <div key={i} className="slot">
+            <div className="slot-info">
+              <strong>Espacio {i + 1}</strong>
+              {slot ? (
+                <>
+                  <span className="muted">{new Date(slot.date).toLocaleString()}</span>
+                  <span>{slot.preview}</span>
+                </>
+              ) : (
+                <span className="muted">Vacío</span>
+              )}
+            </div>
+            <div className="slot-actions">
+              {mode === 'save' ? (
+                <button disabled={!canSave} onClick={() => save(i)}>
+                  Guardar
+                </button>
+              ) : (
+                <button
+                  disabled={!slot}
+                  onClick={() => {
+                    load(i);
+                    onClose();
+                  }}
+                >
+                  Cargar
+                </button>
+              )}
+              <button disabled={!slot} onClick={() => deleteSave(i)}>
+                Borrar
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </Panel>
+  );
+}
+
+export function EndingsGallery({ onClose }: { onClose: () => void }) {
+  const seen = useStore((s) => s.endingsSeen);
+  const visible = endings.filter((e) => !e.oculto || seen[e.id]);
+  const groups = [
+    { title: 'Finales', list: visible.filter((e) => e.tipo !== BAD_END) },
+    { title: 'Bad ends', list: visible.filter((e) => e.tipo === BAD_END) },
+  ];
+  return (
+    <Panel title="Finales" onClose={onClose}>
+      {groups.map((g) => (
+        <section key={g.title} className="ending-group">
+          <h3>
+            {g.title} ({g.list.filter((e) => seen[e.id]).length}/{g.list.length})
+          </h3>
+          {g.list.map((e) => (
+            <div key={e.id} className={`ending ${seen[e.id] ? '' : 'ending-locked'}`}>
+              <strong>{seen[e.id] ? e.nombre : '???'}</strong>
+              <span className="muted">
+                {e.pieza} · {e.tipo}
+                {seen[e.id] ? ` · ${new Date(seen[e.id]).toLocaleDateString()}` : ''}
+              </span>
+            </div>
+          ))}
+        </section>
+      ))}
+    </Panel>
+  );
+}
+
+export function OptionsPanel({ onClose }: { onClose: () => void }) {
+  const settings = useStore((s) => s.settings);
+  const setSettings = useStore((s) => s.setSettings);
+  return (
+    <Panel title="Opciones" onClose={onClose}>
+      <label className="option">
+        <input
+          type="checkbox"
+          checked={settings.reduceEffects}
+          onChange={(e) => setSettings({ reduceEffects: e.target.checked })}
+        />
+        Reducir efectos (desactiva glitches y efectos de interfaz)
+      </label>
+      <label className="option">
+        Velocidad de autoavance: {(settings.autoDelayMs / 1000).toFixed(1)} s
+        <input
+          type="range"
+          min={800}
+          max={6000}
+          step={100}
+          value={settings.autoDelayMs}
+          onChange={(e) => setSettings({ autoDelayMs: Number(e.target.value) })}
+        />
+      </label>
+    </Panel>
+  );
+}

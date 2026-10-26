@@ -1,0 +1,54 @@
+// Prueba automática de rutas: `npm run test:routes`. Ver docs/SPEC.md, sección 7.
+import { execSync } from 'node:child_process';
+import { existsSync, readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+import { config, endings, storyFiles, variables } from '../src/engine/story';
+import { validateStory } from '../src/engine/validate';
+
+const report = validateStory(storyFiles, variables, endings, config, (ref) => existsSync(`public/${ref}`));
+
+describe('rutas de la historia', () => {
+  it('no hay escenas rotas, variables sin declarar ni finales inalcanzables', () => {
+    for (const w of report.warnings) console.warn(`aviso: ${w}`);
+    console.info(`${report.states} estados recorridos, ${report.reachedEndings.size} finales alcanzados`);
+    expect(report.errors).toEqual([]);
+  });
+
+  it('cada final del registro (salvo los ocultos de prueba) está en docs/FINALES.md', () => {
+    const finales = readFileSync('docs/FINALES.md', 'utf8');
+    const missing = endings.filter((e) => !e.oculto && !finales.includes(e.id.replace(/_\d+$/, '_')));
+    expect(missing.map((e) => e.id)).toEqual([]);
+  });
+
+  it('el validador detecta una historia rota', () => {
+    const base = {
+      chapter: 0, background: null, video_fondo: null, loop_video: false, characters: [],
+      dialogue: null, choices: [], conditions: [], audio: null, ui_effect: null, next: null,
+    };
+    const broken = [{
+      ruta: 'demo', chapter: 0, title: 'rota',
+      scenes: [
+        { ...base, scene_id: 'a', choices: [{ text: 'x', next: 'no_existe', set: { inventada: 1 } }] },
+        { ...base, scene_id: 'b', ending: 'f' },
+      ],
+    }];
+    const r = validateStory(broken, {}, [{ id: 'f', nombre: 'f', pieza: 'demo', tipo: 'x', estado: 'jugable' }], { inicio: 'a' });
+    const all = r.errors.join('\n');
+    expect(all).toMatch(/escena inexistente "no_existe"/);
+    expect(all).toMatch(/variable sin declarar "inventada"/);
+    expect(all).toMatch(/Final inalcanzable: f/);
+  });
+
+  it('un final canon no cambia sin cambiar también docs/FINALES.md', () => {
+    let staged: string[];
+    try {
+      staged = execSync('git diff --cached --name-only', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
+        .split('\n')
+        .filter(Boolean);
+    } catch {
+      return; // Fuera de un repositorio git no hay nada que comparar.
+    }
+    const canonTouched = staged.some((f) => /^src\/data\/finales\/canon_/.test(f));
+    if (canonTouched) expect(staged).toContain('docs/FINALES.md');
+  });
+});

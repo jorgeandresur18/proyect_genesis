@@ -1,0 +1,20 @@
+{
+  "lienzo": { "ancho": 1200, "alto": 1600 },
+  "nota": "cabeza = altura (px) de la parte de arriba de la cabeza en el lienzo. 15 px por cm; ver Estaturas en docs/CANON.md. alias = expresión que usa el juego -> expresión existente que la reemplaza mientras no exista.",
+  "personajes": {
+    "jorge": { "cabeza": 64 },
+    "rikka": {
+      "cabeza": 139,
+      "alias": { "seria": "base", "celosa": "base", "orgullosa": "base", "preocupada": "base", "sorprendida": "base" }
+    },
+    "cami": {
+      "cabeza": 199,
+      "alias": {
+        "apuntando": "molesta1", "sospecha": "dudosa1", "burla": "base", "fria": "molesta1", "dolor": "cansada",
+        "enojada": "molesta1", "molesta": "molesta1", "seria": "base", "furia": "molesta1", "miedo": "dudosa1",
+        "sonrojada": "sonrojada1", "sorprendida": "dudosa1", "triste": "cansada", "wtf": "dudosa1", "asombro": "dudosa1"
+      }
+    },
+    "nikki": { "cabeza": 259, "prefijos": ["nicole"] }
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+
+# La Biblia en PDF y las imágenes de referencia contienen nombres o rostros de
+# personas reales. No deben subirse al repositorio (ver CLAUDE.md).
+docs/*.pdf
+docs/imagenes/
+
+# Archivos de trabajo de arte: demasiado pesados para GitHub (límite de 100 MB).
+docs/sprites/*.psd

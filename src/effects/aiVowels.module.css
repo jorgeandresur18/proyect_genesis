@@ -1,0 +1,5 @@
+/* Efecto ai_vowels: resalta A e I en los nombres creados por GENESIS. */
+.vowel {
+  color: #ff4f7b;
+  font-weight: 700;
+}

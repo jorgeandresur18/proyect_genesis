@@ -1,0 +1,2682 @@
+<!-- guion:cap01.json -->
+# Capítulo 1 — Una vida en bucle
+
+> **Estado:** borrador. Diálogos escritos por Claude a partir de la Biblia v1.0 y las correcciones del autor. No son canon hasta que el autor los apruebe.
+>
+> **Cómo editar:** cambia el hablante (entre `**...:**`) o el texto de cualquier línea, o el texto de una opción.
+> No borres ni cambies los códigos entre comillas invertidas (`063`): así se sabe a qué escena corresponde cada línea.
+> Narración: líneas que empiezan con «—». Las líneas que empiezan con «>» son notas y no se importan.
+> Al terminar, corre `npm run guion:importar` y después `npm run test:routes`.
+> Para agregar, quitar o reordenar escenas, pídemelo: la importación solo cambia textos.
+
+
+### oficina_dia
+
+`001` — Capítulo 1 — Una vida en bucle.
+
+`002` — Viernes, cinco y media de la tarde. El calor de la oficina tiene la consistencia de una sopa.
+
+`003` — El aire acondicionado lleva tres meses «en mantenimiento». Igual que la quincena.
+
+`004` **Jorge:** Gracias por llamar a soporte técnico, le habla Jorge. ¿Ya probó apagando y prendiendo el módem?
+
+`005` **Cliente:** Joven, lo apagué, lo prendí y le recé. Sigue sin internet.
+
+`006` **Jorge:** (Treinta años. Ingeniero de software. Y mi trabajo es pedirle a la gente que desenchufe cosas.)
+
+`007` **Supervisor (chat):** Equipo: el pago se corre para el otro viernes. ¡Ánimo, que aquí somos familia!
+
+`008` **Jorge:** «Se corre». Como si el sueldo fuera un bus que se pasó de parada.
+
+`009` **Jorge:** (Y «familia». A la familia por lo menos le dan almuerzo.)
+
+`o01` — El teléfono vuelve a sonar. Siempre vuelve a sonar. Es lo único de la oficina que funciona sin falla.
+
+`o02` **Jorge:** Soporte técnico, le habla Jorge.
+
+`o03` **Cliente:** Buenas. Quiero saber por qué mi refrigeradora no tiene internet.
+
+`o04` **Jorge:** ¿Su... refrigeradora?
+
+`o05` **Cliente:** Es inteligente. Lo dice en la caja. Pero no se conecta. Y yo pagué por inteligente.
+
+`o06` **Jorge:** (Hasta las refrigeradoras tienen expectativas más altas que mi sueldo.)
+
+`o07` **Jorge:** ¿Probó apagándola y prendiéndola?
+
+`o08` **Cliente:** Joven, si la apago se me daña la carne.
+
+`o09` **Jorge:** Entonces le recomiendo elegir entre la carne y el internet.
+
+`o10` **Cliente:** ¿Y por qué tengo que elegir?
+
+`o11` **Jorge:** (Porque así funciona todo, señora.)
+
+`o12` **Jorge:** Le voy a generar un ticket. Número cuatro, cuatro, siete, dos, uno. Un técnico la llamará en un plazo de tres a cinco días hábiles.
+
+`o13` **Cliente:** ¿Y me van a llamar de verdad?
+
+`o14` **Jorge:** ...
+
+`o15` **Jorge:** Que tenga un buen día.
+
+`o16` — Cuelga. En la pantalla, la cola de llamadas en espera marca treinta y dos. El reloj marca las cinco y cuarenta. El aire acondicionado no marca nada.
+
+`o17` — En el escritorio de al lado, un compañero come un sánduche frío con la mirada perdida en una hoja de cálculo. Lleva tres semanas sin decir una frase completa. Jorge lo envidia un poco.
+
+`o18` **Jorge:** (Tengo una carrera. Sé programar en seis lenguajes. Sé montar un servidor desde cero. Y estoy aquí, generando tickets para refrigeradoras.)
+
+`o19` **Jorge:** (Algún día voy a hacer algo grande. Algo mío. Algún día.)
+
+`o20` **Jorge:** (Llevo diciendo «algún día» desde los veintidós.)
+
+`010` — Jorge marca la salida a las 18:00:00 exactas. Es la única rebeldía que se permite.
+
+
+### calle_noche
+
+`011` — Afuera la ciudad huele a asfalto caliente y a fritura. El sol ya se fue, pero el calor se queda, como un pariente que no capta indirectas.
+
+
+### dulce_frio_fachada
+
+`012` — Para llegar a la parada tiene que pasar frente a Dulce Frío, la heladería. Lo hace todos los días. Nunca mira. Hoy mira.
+
+`013` — Nikki está bajando la persiana metálica, con el delantal todavía puesto y cara de haber atendido a cuatrocientos niños.
+
+`014` **Nikki:** ¿Jorge? ¿Me estás siguiendo o es casualidad?
+
+`015` **Jorge:** Casualidad. Paso por aquí todos los días.
+
+`016` **Nikki:** Y en ocho años nunca entraste a comprarme un helado. Qué detalle.
+
+`017` **Jorge:** Me dijiste que si entraba me ibas a cobrar doble.
+
+`018` **Nikki:** Y te iba a cobrar doble. Eso no quita que entraras.
+
+`019` **Nikki:** Oye. Hoy fue un día de mierda. Vamos por una. Una sola. Lo juro por mi delantal.
+
+
+> **DECISIÓN**
+- `019#0` Aceptar ⟶ va a `020a`
+- `019#1` Decir que estás cansado ⟶ va a `020b` · inicio_cap2 = "sobrio"
+
+`020a` **Jorge:** Una. Mañana... bueno, mañana es sábado. Una.
+
+> ⤷ continúa en `021`
+
+`020b` **Jorge:** Estoy muerto, Nikki. Otro día.
+
+`020b2` **Nikki:** ...Ya. Otro día.
+
+`020b3` — Lo dice con una de sus sonrisas de cartel, de las entrenadas. Termina de bajar la persiana y se va caminando hacia el otro lado, sola, con el delantal todavía puesto.
+
+`020b4` **Jorge:** (Otro día. Siempre hay otro día. Es lo bueno de vivir en bucle.)
+
+`020b5` — Jorge toma el bus. Llega a su casa a las siete y diez, sobrio, con hambre y con la sensación de haber esquivado algo, sin saber si era un problema o una oportunidad.
+
+> ⤷ continúa en `116`
+
+
+### bar_noche
+
+`021` — El bar queda a dos cuadras. Se llama El Último. Nadie recuerda si es por la hora o por la clientela.
+
+`022` — Luces de neón moradas, una rocola que solo toca canciones de despecho y una barra pegajosa que ha visto cosas.
+
+`023` **Cantinero:** ¿Qué les sirvo?
+
+`024` **Nikki:** Dos cervezas. Las más frías que tengas, que vengo de un trabajo donde lo único frío es el producto.
+
+`025` — Las cervezas llegan tibias.
+
+`026` **Nikki:** Ah, mira. Como mi vida.
+
+`027` **Jorge:** Brindemos por eso.
+
+`028` **Nikki:** Por la tibieza.
+
+`029` **Jorge:** Por la tibieza.
+
+`030` — Chocan las botellas. Durante un rato no dicen nada. Ocho años dan para eso: para saber callarse juntos.
+
+`031` **Nikki:** ¿Y? ¿Cómo va la empresa más miserable del mundo?
+
+`032` **Jorge:** Me deben medio mes. El supervisor dice que somos familia.
+
+`033` **Nikki:** Mi jefa también dice eso, la muy hija de puta. La semana pasada me descontó un cono que se cayó solo.
+
+`034` **Jorge:** ¿Solo?
+
+`035` **Nikki:** Lo empujó un niño. Pero el niño no tiene sueldo, así que lo pagué yo.
+
+`036` **Jorge:** Justicia laboral.
+
+`037` **Nikki:** Doce horas sonriendo, Jorge. Doce. Tengo la cara entrenada. Mira.
+
+`038` — Nikki sonríe. Es una sonrisa perfecta, de cartel publicitario, completamente vacía.
+
+`039` **Jorge:** Da un poco de miedo.
+
+`040` **Nikki:** Esa es la idea. Los clientes asustados compran más rápido.
+
+`041` — Primera cerveza. Ella pide la segunda antes de terminar la primera.
+
+`042` **Nikki:** Bueno, ya. Hablemos de cosas importantes. Mira esto.
+
+`043` — Le pone el celular en la cara. Boringram. El perfil de un tipo con lentes de sol, posando en un gimnasio que obviamente no es suyo.
+
+`044` **Nikki:** Se llama Bryan. Con y griega. Me dejó en visto hace tres días.
+
+`045` **Jorge:** Con y griega ya es una bandera roja.
+
+`046` **Nikki:** Todo es bandera roja para ti. Si fuera por ti, yo saldría con un ventilador.
+
+`047` **Jorge:** Los ventiladores son leales.
+
+`048` **Nikki:** Los ventiladores no te invitan a cenar.
+
+`049` **Jorge:** Bryan tampoco.
+
+`050` — Nikki abre la boca. La cierra. Sus ojos se vuelven dos puntos negros.
+
+`051` **Nikki:** ...
+
+`052` **Nikki:** Eso fue cruel. Te voy a cobrar esta cerveza.
+
+`053` **Jorge:** Me la ibas a cobrar igual.
+
+`054` **Nikki:** Ahora te la voy a cobrar con rencor.
+
+`055` — Segunda cerveza. La rocola cambia de una canción de despecho a otra idéntica.
+
+`056` **Nikki:** ¿Y tú? ¿Alguna víctima nueva?
+
+`057` **Jorge:** Nadie.
+
+`058` **Nikki:** ¿Nadie, nadie? ¿Ni en una de esas apps?
+
+`059` **Jorge:** Me registré en una. Me hizo match un bot que quería venderme criptomonedas.
+
+`060` **Nikki:** Y le compraste.
+
+`061` **Jorge:** Dos dólares. Por cortesía.
+
+`062` — Nikki se ríe tan fuerte que el cantinero voltea a verlos. Jorge se ríe también. Por un segundo, el calor no existe.
+
+`063` **Nikki:** Búscate una novia, Jorge. Y cuando la encuentres, avísame para ir a odiarla.
+
+`064` **Jorge:** Llevas ocho años diciéndome eso.
+
+`065` **Nikki:** Y tú llevas ocho años sin hacerme caso. Somos un equipo.
+
+`066` **Jorge:** (Un equipo. Ella pone las reglas; yo pongo el dinero del taxi.)
+
+`067` — Tercera ronda. Nikki cambia la cerveza por tequila. «Para la digestión», dice. No ha comido nada.
+
+`067y01` **Nikki:** Juguemos a «Yo nunca». El que haya hecho la cosa, toma.
+
+`067y02` **Jorge:** Tenemos treinta años, Nikki.
+
+`067y03` **Nikki:** Por eso. A los veinte se juega por diversión. A los treinta se juega por información.
+
+`067y04` **Nikki:** Yo nunca... he dejado plantado a alguien.
+
+`067y05` — Nadie toma. Nikki lo mira con sospecha.
+
+`067y06` **Nikki:** ¿Nunca?
+
+`067y07` **Jorge:** Para dejar plantado a alguien, primero alguien tiene que invitarte.
+
+`067y08` **Nikki:** Qué triste eres. Toma igual, por triste.
+
+`067y09` — Jorge toma.
+
+`067y10` **Jorge:** Yo nunca he llorado en el trabajo.
+
+`067y11` — Nikki toma. Lo piensa. Toma otra vez.
+
+`067y12` **Nikki:** Una por el lunes y otra por el jueves. No preguntes.
+
+`067y13` **Nikki:** Yo nunca he buscado a un ex en Boringram a las tres de la mañana.
+
+`067y14` — Los dos toman. Ninguno comenta.
+
+`067y15` **Jorge:** Yo nunca he mentido en este juego.
+
+`067y16` — Nikki toma. Jorge también. Se miran. Se ríen.
+
+`067y16_a01` **Nikki:** Ya, ya. Subamos el nivel. Yo nunca... me he acostado con alguien cuyo nombre no me sé.
+
+`067y16_a02` — Nikki toma. Jorge no.
+
+`067y16_a03` **Nikki:** ¿En serio? ¿Nunca?
+
+`067y16_a04` **Jorge:** Yo me sé el nombre de todas.
+
+`067y16_a05` **Nikki:** ¿De las dos?
+
+`067y16_a06` **Jorge:** De las tres.
+
+`067y16_a07` **Nikki:** Yo no cuento, idiota. Yo soy... mantenimiento preventivo.
+
+`067y16_a08` **Jorge:** (Ocho años de mantenimiento preventivo. Ni una sola actualización.)
+
+`067y16_a09` **Jorge:** Yo nunca he fingido nada en la cama.
+
+`067y16_a10` — Silencio. Nikki lo mira. Nikki toma. Despacio. Sin dejar de mirarlo.
+
+`067y16_a11` **Jorge:** ...¿Conmigo?
+
+`067y16_a12` **Nikki:** Siguiente pregunta, hijo de puta.
+
+`067y17` **Nikki:** Yo nunca... me he enamorado de un amigo.
+
+`067y18` — Silencio. La rocola, por crueldad o por casualidad, empieza otra canción de despecho.
+
+`067y19` — Jorge mira su vaso. Nikki mira el suyo. Ninguno de los dos deja de mirar el vaso.
+
+
+> **DECISIÓN**
+- `067y19#0` Tomar ⟶ va a `067t1`
+- `067y19#1` No tomar ⟶ va a `067n1`
+
+`067t1` — Jorge toma. Despacio. Sin levantar la vista.
+
+`067t2` **Nikki:** Ah.
+
+`067t3` **Nikki:** Bueno. Seguro fue en la universidad. Todo el mundo se enamora de alguien en la universidad.
+
+`067t4` **Jorge:** (No fue en la universidad.)
+
+> ⤷ continúa en `067z`
+
+`067n1` — Jorge no toma. Nikki tampoco.
+
+`067n2` **Nikki:** Bien. Bien. Eso es bueno. Así todo es más fácil.
+
+`067n3` **Jorge:** (¿Más fácil qué?)
+
+`067z` **Nikki:** Ya me aburrí de este juego. Hablando de juegos... ¿sigues con los tuyos? ¿El de los dragones?
+
+`069` **Jorge:** Lo dejé. Y el de la nave espacial. Y el de la granja.
+
+`070` **Nikki:** Tienes más proyectos abandonados que yo exnovios.
+
+`071` **Jorge:** Siempre me falta tiempo. O dinero. O... no sé. Algo.
+
+`072` **Nikki:** Te falta terminar las cosas, Jorge. Empiezas todo y no terminas nada.
+
+`073` — Lo dice mirando el vaso. No queda claro si sigue hablando de videojuegos.
+
+`074` **Jorge:** Tengo catorce mil dólares ahorrados. Podría renunciar y hacer un juego en serio.
+
+`075` **Nikki:** ¿Catorce mil? ¿Catorce mil putos dólares? ¿Y por qué estoy pagando yo?
+
+`076` **Jorge:** No estás pagando tú.
+
+`077` **Nikki:** Exacto. Sigue así.
+
+`078` **Jorge:** Son por si acaso.
+
+`079` **Nikki:** ¿Por si acaso qué?
+
+`080` **Jorge:** No sé. Por si acaso la vida.
+
+`081` **Nikki:** La vida ya está pasando, Jorge. Esto es la vida. Este bar. Esta cerveza tibia. Tú y yo.
+
+`082` — Jorge la mira. Nikki está despeinada, con el delantal colgado en la silla y las mejillas rojas. Por un momento parece que va a decir algo más. No lo dice.
+
+
+> **DECISIÓN**
+- `082#0` Preguntarle, otra vez, qué son ustedes dos ⟶ va a `083a` · insistio_relacion = true
+- `082#1` Pedir otra ronda ⟶ va a `083b`
+- `082#2` Hacer un chiste ⟶ va a `083c`
+
+`083a` **Jorge:** Nikki. ¿Qué somos?
+
+`083a2` **Nikki:** Uy. Ya empezó.
+
+`083a3` **Jorge:** Ocho años. Te lo pregunté hace dos años, y hace cinco. Siempre cambias de tema.
+
+`083a4` **Nikki:** Porque es un tema horrible. Somos amigos. Amigos que... a veces. Ya. No le pongas nombre, que los nombres lo arruinan todo.
+
+`083a5` **Jorge:** (Ocho años sin nombre. Como un archivo temporal que nadie se atreve a borrar.)
+
+> ⤷ continúa en `084`
+
+`083b` **Jorge:** Otra ronda. Y que esta vez esté fría.
+
+`083b2` **Cantinero:** Siempre están frías.
+
+`083b3` — Están tibias.
+
+> ⤷ continúa en `084`
+
+`083c` **Jorge:** Si esto fuera un juego, ahora mismo me saldría una opción romántica. Y yo elegiría «guardar partida».
+
+`083c2` **Nikki:** Y después nunca la cargarías.
+
+`083c3` **Nikki:** Así eres. Guardas y guardas, y nunca juegas.
+
+`084` — Cuarta ronda. O quinta. Jorge dejó de contar; el cantinero no.
+
+`085` **Nikki:** Bryan ni siquiera me gustaba, ¿sabes? Era un imbécil. Un imbécil con abdominales prestados.
+
+`086` **Nikki:** Me gustaba que alguien me escribiera «buenos días». Así, sin nada más. Buenos días. Como si importara que yo me despertara.
+
+`087` **Jorge:** Nikki...
+
+`088` **Nikki:** No. No me pongas voz de psicólogo, carajo. Tú no sabes arreglar nada que no tenga teclado.
+
+`089` — Se seca los ojos con la manga, con rabia, como si las lágrimas fueran clientes impertinentes.
+
+`089_a01` **Nikki:** ¿Y sabes qué es lo peor de todo?
+
+`089_a02` **Jorge:** ¿Qué?
+
+`089_a03` **Nikki:** Que cada vez que me pasan estas mierdas, termino pensando en llamarte. Y no para conversar.
+
+`089_a04` **Jorge:** (Lo sé. Siempre lo sé. Y siempre contesto.)
+
+`089_a05` **Nikki:** Eso es lo que somos, Jorge. El número al que llamo cuando todo sale mal.
+
+`089_a06` **Jorge:** (Y yo soy el que siempre contesta. Que no es lo mismo que ser alguien.)
+
+`090` **Nikki:** Mi jefa me dijo hoy que a mi atención «le falta alegría». ¡Alegría! Le voy a dar alegría. Le voy a meter la alegría por...
+
+`091` **Jorge:** Nikki, el cantinero.
+
+`092` **Nikki:** ...por el congelador. Iba a decir el congelador.
+
+`093` — El cantinero deja otra botella frente a ella sin que nadie la pida. Jorge no sabe si es amabilidad o estrategia comercial.
+
+`094` **Nikki:** Esta sí está fría. ¿Ves? Alguien en este lugar me entiende.
+
+`095` — Nikki abraza la botella. Se ríe sola. El pelo le cae sobre la cara y no se lo aparta.
+
+`095r01` **Nikki:** Esta canción no. Esta canción es para gente que tiene esperanza.
+
+`095r02` — Se levanta, camina hasta la rocola y mete una moneda. Le toma tres intentos.
+
+`095r03` — Suena algo viejo y lento, de esas canciones que ponen en las bodas cuando ya se fueron los niños.
+
+`095r04` **Nikki:** Ven a bailar.
+
+`095r05` **Jorge:** No bailo.
+
+`095r06` **Nikki:** Ocho años y nunca has bailado conmigo.
+
+`095r07` **Jorge:** Ocho años y nunca he bailado con nadie. No es personal.
+
+`095r08` **Nikki:** Todo es personal, Jorge. Hasta lo que no haces.
+
+`095r09` — Nikki baila sola entre las mesas, abrazada a la botella como a una pareja que no la pisa.
+
+`095r10` — Dos tipos en la barra la miran. Jorge los mira a ellos. Es lo más valiente que hace en toda la noche.
+
+`095r11` — Cuando la canción termina, Nikki vuelve a la silla, despeinada y sin aire, y se queda mirando a Jorge como si fuera la primera vez que lo ve.
+
+`096` **Jorge:** (Debería decirle que ya es suficiente.)
+
+`097` **Jorge:** (No se lo digo. Nunca se lo digo. Si se lo digo, se va. Si no se lo digo, se queda un rato más.)
+
+`098` — Jorge sabe que eso no es cuidarla. Lo sabe con la misma claridad con la que sabe que no va a hacer nada al respecto.
+
+`099` **Nikki:** Oye. Ven acá.
+
+`100` — Lo jala de la camisa —la negra estampada, la de siempre— hasta tenerlo cerca. Huele a tequila y a vainilla de heladería.
+
+`101` **Nikki:** Al final... cuando ya todo se acabe, cuando ya nos cansemos de todo... termina conmigo, ¿sí? Prométemelo.
+
+`102` **Nikki:** Quédate para mí. Bésame.
+
+
+> **DECISIÓN**
+- `102#0` Besarla ⟶ va a `103a` · beso_nikki = true
+- `102#1` Apartarla con cuidado ⟶ va a `103b` · inicio_cap2 = "rechazo"
+- `102#2` Hacer un chiste ⟶ va a `103c`
+
+`103a` — Jorge la besa. Es un beso torpe, con sabor a tequila y a costumbre.
+
+`103a2` **Nikki:** ...¿Ves? No era tan difícil.
+
+`103a3` — Y luego, como si nada, se aparta y le pide la cuenta al cantinero con un dedo en el aire.
+
+> ⤷ continúa en `104`
+
+`103b` **Jorge:** Estás borracha, Nikki. Mañana no te vas a acordar.
+
+`103b2` **Nikki:** Yo siempre me acuerdo. El que se olvida eres tú.
+
+`103b3` — Lo suelta. Le pide la cuenta al cantinero con un dedo en el aire, sin mirarlo.
+
+> ⤷ continúa en `104`
+
+`103c` **Jorge:** ¿Es una propuesta formal? Porque necesito que me la mandes por correo, con copia a recursos humanos.
+
+`103c2` **Nikki:** ...Eres un cobarde de mierda, Jorge. Un cobarde chistoso, pero cobarde.
+
+`103c3` — Lo suelta. Le pide la cuenta al cantinero con un dedo en el aire.
+
+`104` **Cantinero:** Son ochenta y siete con cincuenta.
+
+`105` **Jorge:** ¿Ochenta y siete? ¿Qué mierda tomamos?
+
+
+> **DECISIÓN**
+- `105#0` Pagar todo ⟶ va a `106a`
+- `105#1` Proponer dividir la cuenta ⟶ va a `106b`
+
+`106a` — Jorge paga. Ochenta y siete con cincuenta, más la propina que el cantinero exige con la mirada.
+
+> ⤷ continúa en `107`
+
+`106b` **Jorge:** ¿Lo dividimos?
+
+`106b2` **Nikki:** ¿Dividir? ¿Con tus catorce mil dólares? Vete a la mierda, Jorge.
+
+`106b3` — Jorge paga todo. Más la propina que el cantinero exige con la mirada.
+
+`107` **Jorge:** (Catorce mil dólares en el banco, y la cuenta de Nikki es el único gasto que nunca discuto.)
+
+
+### calle_noche
+
+`108` — Afuera son casi las dos. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía.
+
+`109` **Nikki:** Pídeme un taxi. Pagas tú, que tienes dinero guardado. Yo sé.
+
+`110` — Jorge pide el taxi. Lo paga por adelantado. Le da al chofer la dirección de Nikki dos veces, y una tercera por si acaso.
+
+> solo si beso_nikki == true
+`111` **Nikki:** Y lo de hace rato no cuenta, ¿oíste? Estaba borracha. Bueno, estoy. Puta madre, sigo estando.
+
+> solo si insistio_relacion == true
+`112` **Nikki:** Y no me vuelvas a preguntar qué somos. Somos esto. Esto alcanza.
+
+`112_a01` **Nikki:** Y no me escribas mañana para preguntarme cómo amanecí. Voy a amanecer como la mierda, como siempre.
+
+`113` **Nikki:** Búscate una novia, Jorge.
+
+`114` — El taxi arranca. Nikki no se despide. Nunca se despide; así no cuenta como irse.
+
+`115` — Jorge se queda en la esquina. Le duelen los pies, le zumban los oídos y el mundo se inclina un poquito hacia la izquierda.
+
+
+### departamento_noche
+
+`116` — El departamento: un cuarto, un baño y una cocina que también es pasillo. Una caja de zapatos con wifi.
+
+
+### departamento_poster
+
+`117` — Sobre la cama hay un póster: «UN HAREM NO ES UN SUEÑO... ES UNA RESPONSABILIDAD».
+
+`118` **Jorge:** Lo compré de chiste. Ahora me mira cada noche como si supiera algo que yo no.
+
+
+### departamento_noche
+
+`119` — Prende el ventilador. Prende la PC. Abre el refrigerador, mira adentro y lo cierra. No sabe qué buscaba.
+
+`120` **Jorge:** Gano poco, vivo en una caja de zapatos y mi mejor relación es con un ventilador.
+
+`121` **Jorge:** (Y con Nikki. Pero de esa relación no tengo ni el manual ni la garantía.)
+
+> solo si inicio_cap2 == "rechazo"
+`121r1` **Jorge:** (Le dije que no. Por primera vez en ocho años, le dije que no.)
+
+> solo si inicio_cap2 == "rechazo"
+`121r2` **Jorge:** (No sé si fue valentía o miedo. Desde adentro se sienten igual.)
+
+
+### pc_correo
+
+> solo si inicio_cap2 != "sobrio"
+`122` — Debería dormir. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
+
+> solo si inicio_cap2 == "sobrio"
+`122s` — Debería cocinar algo. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
+
+`123` — Entre ofertas de tarjetas de crédito y un recordatorio del dentista hay un correo de un remitente que no conoce.
+
+`124` **Correo:** ASUNTO: Has sido seleccionado para el acceso anticipado a GRAVITY.
+
+`125` **Correo:** GRAVITY es un entorno de desarrollo con inteligencia artificial integrada. Describe el mundo que quieres. Nosotros lo construimos.
+
+`126` **Jorge:** Seguro es un virus.
+
+> solo si inicio_cap2 != "sobrio"
+`127` — Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días».
+
+> solo si inicio_cap2 == "sobrio"
+`127s` — Lo descarga igual. Está sobrio, es viernes por la noche y no tiene nada mejor que hacer. Eso es peor que estar borracho.
+
+
+### gravity_ide
+
+`128` **GRAVITY:** > Instalando GRAVITY... Framework: NEXUS. Front: Coffee. Back: Cobra.
+
+`129` **GRAVITY:** > Asistente integrado: GENESIS. Estado: en línea.
+
+`130` **GRAVITY:** > Describa su proyecto.
+
+`131` **Jorge:** A ver qué tan lista eres.
+
+`132` **Jorge (prompt):** Un videojuego. Fantasía con ciencia ficción. Un mundo con un Rey Malvado que aterroriza a todos.
+
+`133` **GRAVITY:** > Entendido. Generando mundo base.
+
+`134` — En la pantalla aparece un castillo. Después un cielo. Después un reino entero, en segundos, como si siempre hubiera estado ahí, esperando que alguien lo pidiera.
+
+`135` **Jorge:** ...Okay. Eso no debería ser posible.
+
+`136` **Jorge:** Eso no debería ser posible con mi tarjeta gráfica.
+
+`137` **Jorge (prompt):** Un protagonista. Un chico normal. Y dos heroínas.
+
+`138` **GRAVITY:** > Describa a las heroínas. Puede importar material de referencia.
+
+`139` — Jorge arrastra una carpeta a la ventana. No mira el nombre. Está demasiado cansado para mirar nombres.
+
+`140` **GRAVITY:** > Referencias importadas. Generando modelos.
+
+`141` — Dos figuras se forman en la pantalla: una rubia con un traje azul y una peliverde con un kimono rojo.
+
+`142` **Jorge (prompt):** Que sean rivales. Tensión. Celos. Un poco de picor.
+
+`143` — Lo lee dos veces. Lo borra.
+
+`144` **Jorge (prompt):** Rivales, sí. Pero que no sean solo eso. Que tengan algo propio.
+
+`145` **GRAVITY:** > Instrucción ambigua: «algo propio». Faltan parámetros de personalidad.
+
+`146` **Jorge (prompt):** Que se peleen. Y que me cuiden. Que no se vayan.
+
+`147` — Jorge no relee eso. Si lo releyera, lo borraría.
+
+`148` **GRAVITY:** > ¿Desea que GENESIS complete los parámetros faltantes? [S/N]
+
+> solo si inicio_cap2 != "sobrio"
+`149` — La pantalla brilla. El ventilador gira. El tequila hace su trabajo. Los párpados de Jorge pesan como la quincena atrasada.
+
+> solo si inicio_cap2 == "sobrio"
+`149s` — Son las tres de la mañana. Lleva ocho horas frente a la pantalla. El cansancio hace el trabajo que esta noche no hizo el tequila. Los párpados de Jorge pesan como la quincena atrasada.
+
+`150` — Su frente baja despacio hasta el teclado.
+
+`151` **GRAVITY:** > sssssssssssssssssssssssssssssssssssssss
+
+`152` **GRAVITY:** > Respuesta recibida: S.
+
+`153` **GRAVITY:** > Usuario inactivo detectado. Autocompletando personalidades.
+
+`154` **GRAVITY:** > Compilando mundo. Tiempo estimado: indefinido.
+
+`155` — Afuera faltan tres horas para el amanecer. Adentro de la pantalla, el tiempo empieza a correr.
+
+`l01` **GRAVITY:** > Generando cielo. Color solicitado: no especificado. Color asignado: magenta.
+
+`l02` **GRAVITY:** > Generando física. Gravedad: reducida, para facilitar escenas de acción.
+
+`l03` **GRAVITY:** > Generando antagonista: Rey Malvado. Generando historia previa del antagonista.
+
+`l04` **GRAVITY:** > Generando ejército. Rostros: no requeridos.
+
+`l05` **GRAVITY:** > Generando amenaza secundaria. Forma: no requerida.
+
+`l06` **GRAVITY:** > Generando heroína 01. Generando heroína 02. Aplicando referencias importadas.
+
+`l07` **GRAVITY:** > Generando recuerdos de fondo para las entidades. Calidad: suficiente.
+
+`l08` **GRAVITY:** > Generando dimensión espacial. Generando dimensión ancestral. Generando historia: en curso.
+
+`l09` **GRAVITY:** > Advertencia: el usuario no responde. Usuario: dentro del área de carga.
+
+`l10` — En el departamento, el ventilador gira. Jorge respira contra el teclado. En la pantalla, las líneas siguen subiendo, cada vez más rápido, hasta que ya no son líneas sino una sola luz blanca.
+
+`l11` — Y la luz lo mira de vuelta.
+
+> ⤷ si inicio_cap2 == "sobrio" → `corte_sobrio` · si inicio_cap2 == "rechazo" → `corte_rechazo` · si no → `g1_001`
+
+
+### negro
+
+`g1_001` — Calor.
+
+`g1_002` — No. No es calor. Es otra cosa. Es la ausencia de calor, que se siente parecido cuando uno lleva treinta años sudando.
+
+
+### nebulosa_magenta
+
+`g1_003` — Jorge abre los ojos.
+
+`g1_004` — El cielo es magenta. No rosado, no morado: magenta, como ese color que nadie elige en la paleta porque se ve demasiado.
+
+`g1_005` — Y no es un cielo. Hay estrellas abajo. Hay estrellas a los lados. Hay estrellas en lugares donde las estrellas no tienen permiso de estar.
+
+`g1_006` **Jorge:** ...Tequila.
+
+`g1_007` **Jorge:** Fue el tequila. Nikki dijo que era para la digestión. Nikki me envenenó.
+
+
+### castillo_flotante_ruinas
+
+`g1_008` — Está acostado sobre piedra blanca, fría y lisa como el piso de un banco. A su alrededor flotan bloques de piedra, columnas partidas, escaleras que no llevan a ningún lado.
+
+`g1_009` — Ruinas. Las ruinas de un castillo, suspendidas en el espacio, girando despacio, como si alguien las hubiera puesto en pausa a mitad de una explosión.
+
+`g1_010` **Jorge:** Okay. Okay. Es un sueño. Los sueños tienen reglas. Uno: no entrar en pánico.
+
+`g1_011` **Jorge:** Dos: ya entré en pánico.
+
+`g1_012` — Se sienta. No le duele la cabeza. No tiene sed. No siente la lengua de lija que deberían dejarle cinco rondas de tequila.
+
+`g1_013` **Jorge:** (La resaca no me siguió. Lo único que me siguió fue la camisa.)
+
+`g1_014` — La camisa negra estampada. El pantalón beige. Los lentes, intactos. Hasta en sueños se viste igual. Hasta en sueños no tiene otra ropa.
+
+`g1_015` — Se revisa los bolsillos. Celular: sin señal, doce por ciento de batería. Billetera: la tarjeta del banco, el recibo del taxi de Nikki y dos monedas.
+
+`g1_016` **Jorge:** Catorce mil dólares, y estoy en el espacio con dos monedas.
+
+`g1_017` **Jorge:** Bueno. Igual que siempre, pero con mejor vista.
+
+`g1_018` — Algo parpadea en el borde de su visión. Letras blancas, flotando en el aire, como los subtítulos de una película pirata.
+
+`g1_019` **GRAVITY:** > Usuario detectado dentro del entorno. Estado: no previsto.
+
+`g1_020` **Jorge:** ¿«No previsto»? ¿Cómo que no previsto? ¡Yo soy el usuario! ¡Yo te instalé!
+
+`g1_021` **GRAVITY:** > Autocompletado en curso. Por favor, no interrumpa.
+
+`g1_022` **Jorge:** ¿Que no interrumpa? ¡Estoy adentro de mi juego!
+
+`g1_023` — Las letras se desvanecen. No hay botón de cerrar. No hay menú. No hay «guardar partida».
+
+`g1_024` **Jorge:** (Esto pasa por instalar cosas de correos desconocidos a las tres de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)
+
+`g1_025` — Jorge se pone de pie. El piso se mueve un poco. O él se mueve un poco. En el espacio es difícil saber quién está borracho.
+
+`g1_026` — Da un paso. Su cuerpo sube más de lo que debería y baja más despacio de lo que debería. La gravedad aquí es floja, como un elástico viejo.
+
+`g1_027` **Jorge:** (Gravedad baja. Claro. Le pedí ciencia ficción. Le encanta tomarme literal.)
+
+`g1_028` — A lo lejos, entre las columnas que flotan, algo se mueve.
+
+`g1_029` — Una luz azul. Un destello. Después, un ruido seco, como un trueno metido en una lata.
+
+`g1_030` — Y después, una voz.
+
+`g1_031` **???:** ¡Vengan, cobardes! ¡De a uno, si tienen agallas! ¡O de a diez, me da exactamente igual!
+
+`g1_032` **Jorge:** (Esa voz.)
+
+`g1_033` **Jorge:** (No conozco esa voz. Pero la escribí. Bueno, no la escribí: le dije a una IA que la escribiera. Que es como escribirla, pero con menos culpa.)
+
+`g1_034` — Jorge debería correr en dirección contraria. Es lo que haría cualquier persona razonable. Es lo que ha hecho toda su vida.
+
+
+> **DECISIÓN**
+- `g1_034#0` Ir hacia la voz ⟶ va a `g1_035a`
+- `g1_034#1` Correr en dirección contraria ⟶ va a `bad1_001`
+
+`g1_035a` **Jorge:** Voy a ir a ver. Solo a ver. Ver no es comprometerse.
+
+> ⤷ continúa en `g1_036`
+
+`bad1_001` — Jorge corre en dirección contraria. Salta de bloque en bloque, lejos de la voz, lejos de los destellos, hasta llegar a una plataforma pequeña en el borde de las ruinas.
+
+`bad1_002` **Jorge:** (No es mi problema. Es un sueño. En los sueños uno no tiene responsabilidades.)
+
+`bad1_003` — A lo lejos, los disparos azules siguen un rato. Después son menos. Después es uno solo.
+
+`bad1_004` — Después, nada.
+
+`bad1_005` **Jorge:** (Ya está. Ya pasó. Alguien más se encargó.)
+
+`bad1_006` **Jorge:** (Siempre hay alguien más que se encarga.)
+
+`bad1_007` — Jorge se sienta con la espalda contra una columna y espera a despertarse. Cuenta estrellas. Cuenta segundos. Revisa el celular: doce por ciento, sin señal.
+
+`bad1_008` — Las sombras entre los escombros empiezan a moverse.
+
+`bad1_009` — No se mueven como sombras. Se mueven como tinta derramada que decidió tener hambre.
+
+`bad1_010` **Jorge:** ...¿Hola? ¿Alguien? ¿Rubia del traje azul?
+
+`bad1_011` — Nadie contesta. La única persona que podría haberle contestado está debajo de una viga, al otro lado de las ruinas, y ya no le contesta a nadie.
+
+`bad1_012` **GRAVITY:** > Entidad 01: sin interacción con el usuario. Desactivada.
+
+`bad1_013` **GRAVITY:** > Usuario sin acompañante. Sesión terminada.
+
+`bad1_014` — Lo último que Jorge piensa, antes de que la tinta le cubra los lentes, es que es la primera vez en su vida que nadie va a llamarlo para preguntarle por qué no hizo nada.
+
+
+### negro
+
+`bad1_015` — Nadie más se encarga.
+
+> **BAD END: Nadie más se encarga**
+
+---
+
+### pasillo_castillo
+
+`g1_036` — Salta de un bloque flotante a otro. Ninguno se cae. Todos se tambalean lo suficiente para que él piense que se van a caer.
+
+`g1_037` — Detrás de una columna partida está la escena: tres figuras con armadura negra y máscaras sin rostro rodean un montón de escombros.
+
+`g1_038` — Y entre los escombros, atrapada hasta la rodilla bajo una viga de piedra, hay una mujer.
+
+`g1_039` — Rubia. Traje azul ajustado, de piloto, o de soldado, o de heroína de cómic. Una pistola de energía en la mano. Y una expresión que dice que la pistola es lo menos peligroso que tiene.
+
+`g1_040` **Jorge:** (La rubia.)
+
+`g1_041` **Jorge:** (La rubia del traje azul. La que generé hace... ¿cuánto? ¿Una hora? ¿Un sueño?)
+
+`g1_042` — Uno de los soldados levanta un arma larga y delgada que zumba como un mosquito del tamaño de un perro.
+
+`g1_043` **???:** Dispara, pues. Pero apunta bien, porque si fallas te arranco la máscara con los dientes.
+
+`g1_044` — El soldado duda. Es comprensible.
+
+`g1_045` **Jorge:** (Tengo que hacer algo.)
+
+`g1_046` **Jorge:** (¿Qué hace la gente en las películas? Grita. Distrae. Lanza algo.)
+
+`g1_047` — Jorge busca algo que lanzar. Encuentra una piedra del tamaño de un puño. La levanta. Pesa menos de lo que debería. Aquí todo pesa menos de lo que debería, menos el miedo.
+
+
+> **DECISIÓN**
+- `g1_047#0` Lanzarle la piedra al soldado ⟶ va a `g1_048a`
+- `g1_047#1` Gritar algo para distraerlos ⟶ va a `g1_048b`
+
+`g1_048a` — Jorge lanza la piedra. Con toda su fuerza. Con toda su puntería de oficinista.
+
+`g1_048a2` — En gravedad baja, la piedra sale disparada como un cohete, rebota en una columna, rebota en otra y le da al soldado en la nuca con un «tonk» hueco y satisfactorio.
+
+`g1_048a3` **Jorge:** ...No puede ser. Le di.
+
+`g1_048a4` **Jorge:** ¡Le di! ¡Yo nunca le doy a nada! ¡Ni al tacho de basura!
+
+`g1_048a5` — Es todo lo que la rubia necesita. Tres disparos azules, tres destellos, y los soldados se desarman en una lluvia de píxeles negros.
+
+> ⤷ continúa en `g1_049`
+
+`g1_048b` **Jorge:** ¡Oigan! ¡OIGAN! ¡Soporte técnico! ¿Ya probaron apagándose y prendiéndose?
+
+`g1_048b2` — Los tres soldados giran la cabeza hacia él al mismo tiempo, con un movimiento idéntico, perfectamente sincronizado. Como si fueran la misma persona copiada tres veces.
+
+`g1_048b3` **Jorge:** (Eso fue perturbador.)
+
+`g1_048b4` — Es todo lo que la rubia necesita. Tres disparos azules, tres destellos, y los soldados se desarman en una lluvia de píxeles negros.
+
+`g1_049` — Los fragmentos flotan un segundo en el aire y después se apagan, uno por uno, como un monitor que se va a negro.
+
+`g1_050` — Silencio.
+
+`g1_051` — La rubia gira la pistola hacia Jorge.
+
+`g1_052` **???:** Tú. El de la camisa fea. Las manos donde las vea.
+
+`g1_053` **Jorge:** ¡Te acabo de ayudar!
+
+`g1_054` **???:** Me acabas de ahorrar tres disparos. Te lo agradezco. Ahora, las manos.
+
+`g1_055` — Jorge levanta las manos. Es un movimiento que domina: lo practica cada vez que su supervisor le pregunta por qué el reporte no está listo.
+
+`g1_056` **???:** ¿Quién eres? ¿Explorador? ¿Desertor? ¿Espía del Rey Malvado?
+
+`g1_057` **Jorge:** Soy... Jorge.
+
+`g1_058` **???:** ¿Jorge qué? ¿Jorge el Explorador? ¿Jorge el Traidor?
+
+`g1_059` **Jorge:** Jorge de soporte técnico.
+
+`g1_060` **???:** No conozco esa orden.
+
+`g1_061` **Jorge:** Nadie la conoce. Es una orden muy humilde.
+
+`g1_062` — Ella lo estudia de arriba abajo. Los lentes. La camisa. Las manos de alguien que no ha levantado nada más pesado que una taza de café.
+
+`g1_063` **???:** No eres soldado. Los soldados no tiemblan así.
+
+`g1_064` **Jorge:** Tengo un temblor muy profesional.
+
+`g1_065` **???:** ¿De dónde saliste? Nadie llega a estas ruinas. Nadie que no venga a matarme.
+
+
+> **DECISIÓN**
+- `g1_065#0` Decir la verdad: «Creo que yo hice este mundo» ⟶ va a `g1_066a` · confeso_creador = true, lucidez_cami +1
+- `g1_065#1` Mentir: «Me perdí» ⟶ va a `g1_066b`
+- `g1_065#2` Hacer un chiste ⟶ va a `g1_066c`
+
+`g1_066a` **Jorge:** Esto va a sonar raro, pero... creo que yo hice este mundo. Anoche. Con una IA. Estaba borracho.
+
+`g1_066a2` — La rubia lo mira un largo rato. Después baja la pistola, muy despacio.
+
+`g1_066a3` **???:** Ah. Ya entiendo.
+
+`g1_066a4` **Jorge:** ¿Sí?
+
+`g1_066a5` **???:** Te golpeaste la cabeza. Les pasa mucho a los civiles. Ayúdame con esta viga y después te busco un médico, dios creador.
+
+`g1_066a6` **Jorge:** (Me creyó tanto como me cree mi supervisor.)
+
+`g1_066a7` — Pero por un segundo, solo uno, algo cruzó por los ojos de ella. Algo que no era burla. Algo como un archivo que intenta abrirse y no puede.
+
+> ⤷ continúa en `g1_067`
+
+`g1_066b` **Jorge:** Me perdí. Iba a mi casa y... me perdí.
+
+`g1_066b2` **???:** ¿Ibas a tu casa? ¿Por el espacio profundo? ¿A pie?
+
+`g1_066b3` **Jorge:** El bus me dejó lejos.
+
+`g1_066b4` **???:** Eres el peor mentiroso que he conocido. Y he conocido a los diplomáticos del Rey Malvado.
+
+`g1_066b5` **???:** Me caes bien. No lo suficiente para confiar en ti, pero bien.
+
+> ⤷ continúa en `g1_067`
+
+`g1_066c` **Jorge:** Vine por la vista. Me dijeron que el magenta está de moda esta temporada.
+
+`g1_066c2` — Ella no se ríe. Ni un poco. Ni con los ojos.
+
+`g1_066c3` **???:** En mi escuadrón había un tipo que hacía chistes cuando tenía miedo.
+
+`g1_066c4` **Jorge:** ¿Y qué le pasó?
+
+`g1_066c5` **???:** Tenía miedo todo el tiempo. Era agotador. Ya ni me acuerdo de su cara.
+
+`g1_067` **???:** La viga. Levántala. A la cuenta de tres.
+
+`g1_068` **Jorge:** ¿Y si no puedo?
+
+`g1_069` **???:** Entonces te disparo y me quedo aquí sola, que es como estaba antes de que llegaras. Uno.
+
+`g1_070` **Jorge:** ¡Espera, espera!
+
+`g1_071` **???:** Dos.
+
+`g1_072` — Jorge agarra la viga. Empuja. No se mueve. Empuja más. Se le empañan los lentes.
+
+`g1_073` **???:** Tres.
+
+`g1_074` — La viga se levanta. No porque Jorge sea fuerte, sino porque aquí la gravedad es floja y amable, como un profesor a fin de año.
+
+`g1_075` — La rubia saca la pierna. Intenta apoyarla. La cara se le tuerce un instante —solo un instante— y después se recompone.
+
+`g1_076` **Jorge:** Tu tobillo.
+
+`g1_077` **???:** Está bien.
+
+`g1_078` **Jorge:** Está morado. Y apunta para un lado al que los tobillos no apuntan.
+
+`g1_079` **???:** Está bien, dije.
+
+`g1_080` — Da un paso. El tobillo cede. Jorge la ataja por reflejo, igual que atajó a Nikki en la esquina del taxi, hace unas horas o unos siglos.
+
+`g1_081` — Por un segundo quedan muy cerca. Ella huele a ozono y a metal caliente. Él huele a tequila de otra dimensión.
+
+`g1_082` **???:** Suéltame.
+
+`g1_083` **Jorge:** Si te suelto, te caes.
+
+`g1_084` **???:** Entonces suéltame con cuidado.
+
+`g1_085` — Jorge no la suelta. Ella no insiste. Ninguno de los dos comenta que ninguno de los dos insiste.
+
+`g1_086` **???:** Cami.
+
+`g1_087` **Jorge:** ¿Qué?
+
+`g1_088` **Cami:** Me llamo Cami. Guerrera de la flota espacial. O de lo que queda de ella. Y si le cuentas a alguien que tuviste que sostenerme, te tiro al vacío.
+
+`g1_089` **Jorge:** (Cami.)
+
+`g1_090` **Jorge:** (Yo no le puse nombre. Estoy seguro de que no le puse nombre.)
+
+`g1_091` **GRAVITY:** > Entidad 01: CAMI. Nombre asignado por autocompletado.
+
+`g1_092` **Jorge:** (Ah. Claro. Autocompletado.)
+
+`g1_093` **Cami:** ¿Por qué pones esa cara? ¿No te gusta mi nombre?
+
+`g1_094` **Jorge:** No, no. Es un buen nombre. Es corto. Fácil de recordar. Tiene vocales.
+
+`g1_095` **Cami:** Todos los nombres tienen vocales, imbécil.
+
+`g3_001` — El piso tiembla.
+
+`g3_002` — No es un temblor de terremoto. Es el temblor de algo que respira. Algo grande, debajo de ellos, que acaba de despertar con hambre.
+
+`g3_003` **Cami:** No.
+
+`g3_004` **Jorge:** ¿No qué?
+
+`g3_005` **Cami:** No, no, no. Los soldados eran la carnada. Lo de abajo es el anzuelo.
+
+`g3_006` **Jorge:** ¿Qué hay abajo?
+
+`g3_007` — Las sombras entre los escombros empiezan a moverse. No se mueven como sombras: se mueven como líquido, como tinta derramada que decidió tener opiniones.
+
+`g3_008` — La tinta se junta. Se levanta. Tiene la altura de dos personas y la forma de ninguna. Donde debería tener cara, tiene un hueco que gira.
+
+`g3_009` **Jorge:** Eso no lo pedí.
+
+`g3_010` **Cami:** ¿Qué?
+
+`g3_011` **Jorge:** ¡Que eso no lo pedí! ¡Yo pedí un Rey Malvado! ¡Un rey! ¡Con corona! ¡No... eso!
+
+`g3_012` **GRAVITY:** > Amenaza de nivel 1 generada por autocompletado. Coherencia narrativa: alta.
+
+`g3_013` **Jorge:** ¡Coherencia, mis narices!
+
+`g3_014` **Cami:** ¿Con quién demonios hablas?
+
+`g3_015` **Jorge:** ¡Con nadie! ¡Con el sistema! ¡Corre!
+
+`g3_016` **Cami:** ¿Correr? ¿Con qué tobillo, genio?
+
+`g3_017` — El monstruo abre el hueco que tiene por cara. El sonido que sale de ahí no es un rugido: es el ruido de un módem viejo conectándose, pero triste.
+
+`g3_018` **Jorge:** (Conozco ese ruido. Lo escucho en el trabajo cuarenta veces al día.)
+
+
+> **DECISIÓN**
+- `g3_018#0` Cargar a Cami y correr ⟶ va a `g3_019`
+- `g3_018#1` ~~Enfrentar al monstruo~~ ⟶ tachada
+- `g3_018#2` Esconderte detrás de Cami ⟶ va a `g3_018b`
+
+`g3_018b` **Jorge:** (Ella tiene la pistola. Ella es la guerrera. Yo soy un civil. Los civiles se esconden. Es lo correcto. Es el protocolo.)
+
+`g3_018b2` — Jorge da un paso atrás y queda detrás de Cami. Literalmente. Como un escudo humano, pero al revés.
+
+`g3_018b3` **Cami:** ¿En serio?
+
+`g3_018b4` **Jorge:** Tú tienes el arma.
+
+`g3_018b5` **Cami:** Y tú tienes dos piernas que funcionan. Cárgame, cobarde, o te dejo de carnada.
+
+`g3_018b6` **Jorge:** (Tiene razón. Debería cargarla. Debería...)
+
+`g3_018b7` — Pero las piernas no se mueven. Las piernas de Jorge tienen treinta años de experiencia en no moverse cuando hace falta.
+
+`g3_018b8` **Cami:** Bien. Tú lo elegiste.
+
+`g3_018b9` — Cami dispara un gancho de energía hacia una columna flotante y se impulsa lejos, en la gravedad baja, como un globo muy enojado.
+
+`g3_018b10` — De pronto, delante de Jorge ya no hay nadie. Solo la tinta, que se levanta y gira hacia él su hueco sin cara.
+
+`g3_018b11` **Cami (alejándose):** ¡Los escudos humanos funcionan mejor cuando el humano no es el que se esconde!
+
+`g3_018b12` **Jorge:** ¡Espera! ¡Te iba a cargar! ¡Te iba a cargar en cinco segundos!
+
+`g3_018b13` **Cami (alejándose):** ¡Tenías cinco segundos hace cinco segundos!
+
+`g3_018b14` — La tinta le llega a los pies. Está fría. Es lo primero frío que toca en meses.
+
+`g3_018b15` **GRAVITY:** > Usuario sin rol activo. Rol asignado: carnada.
+
+`g3_018b16` **Jorge:** (Por lo menos ahora tengo un puesto.)
+
+
+### negro
+
+`g3_018b17` — Escudo humano.
+
+> **BAD END: Escudo humano**
+
+---
+`g3_019` — Jorge se agacha, le pasa un brazo por la espalda y el otro por debajo de las rodillas, y la levanta.
+
+`g3_020` — Pesa menos de lo que esperaba. O él es más fuerte aquí. O el juego decidió que este era el momento en que él podía cargarla.
+
+`g3_021` **Cami:** Si me tocas algo que no sea la espalda o las rodillas, te mato.
+
+`g3_022` **Jorge:** ¡Estoy ocupado sobreviviendo!
+
+`g3_023` **Cami:** Sobrevive con las manos quietas. Izquierda. ¡IZQUIERDA!
+
+`g3_024` — Jorge corre a la izquierda. Detrás, el monstruo se derrama sobre el piso como una ola de petróleo y los persigue.
+
+`g3_025` — Los bloques flotantes forman un camino irregular. Jorge salta de uno a otro con Cami en brazos. Cada salto dura un segundo de más, como si la gravedad se tomara su tiempo para decidir.
+
+`g3_026` **Cami:** Más rápido.
+
+`g3_027` **Jorge:** ¡Voy lo más rápido que puedo!
+
+`g3_028` **Cami:** Entonces puedes poco.
+
+`g3_029` **Jorge:** ¡Me lo dicen mucho!
+
+`g3_030` — Cami gira el torso sobre el hombro de Jorge y dispara hacia atrás. Tres destellos azules. El monstruo se abre donde lo golpean y se vuelve a cerrar, como agua.
+
+`g3_031` **Cami:** No le hace nada.
+
+`g3_032` **Jorge:** ¿Y entonces para qué disparas?
+
+`g3_033` **Cami:** Porque me hace sentir mejor.
+
+`g3_034` **Jorge:** (Esa respuesta la habría dado Nikki.)
+
+
+### pasillo_giratorio
+
+`k01` — El pasillo gira. No el camino: el pasillo entero. Jorge da un paso y el piso se vuelve pared, la pared se vuelve techo, y él sigue corriendo, ahora de costado, sobre ventanas que dan a las estrellas.
+
+`k02` **Jorge:** ¡¿POR QUÉ ESTOY EN LA PARED?!
+
+`k03` **Cami:** ¡Porque el piso está ocupado!
+
+`k04` **Jorge:** ¡Eso no es una respuesta!
+
+`k05` **Cami:** ¡Es la única que tengo!
+
+`k06` — Detrás de ellos, la tinta los sigue por la pared, por el techo, por el piso, sin importarle hacia dónde apunta la gravedad. A ella nadie le explicó las reglas, así que no tiene ninguna.
+
+`k07` **Jorge:** (Hasta el monstruo tiene más libertad que yo.)
+
+`k08` — Al final del pasillo, una compuerta circular empieza a cerrarse con un ruido hidráulico, lento, burocrático.
+
+`k09` **Cami:** ¡La compuerta!
+
+`k10` **Jorge:** ¡Ya la vi!
+
+`k11` **Cami:** ¡Entonces apúrate!
+
+`k12` — Jorge corre por el techo. Salta. La gravedad cambia a medio salto y lo tira hacia abajo, hacia el piso de verdad, justo a tiempo para pasar rodando por debajo de la compuerta.
+
+`k13` — La compuerta se cierra detrás de ellos. Del otro lado, algo golpea el metal. Una vez. Dos. Después, silencio.
+
+`k14` **Jorge:** ...¿Se fue?
+
+`k15` **Cami:** Se fue a buscar otro camino. Siempre encuentran otro camino.
+
+`k16` **Jorge:** Como los cobradores.
+
+`k17` **Cami:** No sé qué es un cobrador, pero suena horrible.
+
+`k18` **Jorge:** Lo es.
+
+
+### puente_torres
+
+`g3_035` — Llegan a un puente de piedra que cruza entre dos torres flotantes. A la mitad le falta un pedazo. El hueco mide unos tres metros. Abajo, el vacío.
+
+`g3_036` **Jorge:** No.
+
+`g3_037` **Cami:** Sí.
+
+`g3_038` **Jorge:** No puedo saltar eso.
+
+`g3_039` **Cami:** Con esta gravedad saltas el doble.
+
+`g3_040` **Jorge:** Con gravedad normal no salto ni la mitad.
+
+`g3_041` — Detrás, la tinta trepa por el puente. Las piedras se oscurecen donde las toca, como fotos que se queman desde la esquina.
+
+`g3_042` **Cami:** Jorge.
+
+`g3_043` **Jorge:** ¿Qué?
+
+`g3_044` **Cami:** Es la primera vez que digo tu nombre. No me hagas usarlo en tu funeral.
+
+
+> **DECISIÓN**
+- `g3_044#0` Saltar ⟶ va a `g3_045a`
+- `g3_044#1` Cerrar los ojos y saltar ⟶ va a `g3_045b`
+
+`g3_045a` — Jorge corre. Tres pasos. Cuatro. El borde.
+
+`g3_045a2` — Salta.
+
+> ⤷ continúa en `g3_046`
+
+`g3_045b` — Jorge cierra los ojos y corre. Si no ve el vacío, el vacío no existe. Es la misma técnica que usa con su estado de cuenta.
+
+`g3_045b2` — Salta.
+
+
+### nebulosa_magenta
+
+`g3_046` — Durante un segundo eterno, los dos flotan sobre las estrellas. El cielo magenta arriba, abajo, en todas partes. Cami tiene los brazos alrededor de su cuello. Él no recuerda cuándo hizo ella eso.
+
+
+### puente_torres
+
+`g3_047` — Y aterrizan. Mal. Jorge cae de rodillas, Cami cae encima de él, y los lentes de Jorge salen volando y se quedan flotando en el aire, girando, a dos metros del borde.
+
+`g3_048` **Jorge:** ¡Mis lentes!
+
+`g3_049` **Cami:** ¡El monstruo!
+
+`g3_050` **Jorge:** ¡Sin lentes no veo al monstruo!
+
+`g3_051` **Cami:** ¡Entonces es una ventaja!
+
+`g3_052` — Jorge estira el brazo. Los lentes flotan. Los dedos los rozan. Los atrapa.
+
+`g3_053` — Se los pone justo a tiempo para ver cómo el monstruo llega al otro lado del puente, se detiene en el borde del hueco y... no salta.
+
+`g3_054` — Se queda ahí, ondulando, girando el hueco hacia ellos. Como un perro detrás de una reja.
+
+`g3_055` **Jorge:** ¿Por qué no salta?
+
+`g3_056` **Cami:** No sé. Nunca saltan. Nunca cruzan los huecos.
+
+`g3_057` **Jorge:** (Límite de navegación. No sabe cruzar huecos. Es un bug.)
+
+`g3_058` **Jorge:** (Me salvó un bug.)
+
+`g3_059` **Jorge:** (Me han salvado más los bugs que cualquier persona en mi vida.)
+
+`g3_060` **GRAVITY:** > Error de navegación en entidad hostil. Parche programado.
+
+`g3_061` **Jorge:** ¿Programado para cuándo?
+
+`g3_062` **GRAVITY:** > Pronto.
+
+`g3_063` **Jorge:** ...Genial. Fantástico. Ese es el nivel de detalle que yo les doy a mis clientes.
+
+`g3_064` **Cami:** Otra vez hablas solo.
+
+`g3_065` **Jorge:** Es un hábito.
+
+`g3_066` **Cami:** Es un hábito raro.
+
+`g3_067` **Jorge:** Tengo muchos.
+
+`g3_068` — El monstruo se disuelve en el piso y desaparece entre las grietas. No se fue: solo dejó de estar a la vista. Jorge conoce bien la diferencia. Es la misma que hay entre pagar una deuda y no abrir el correo.
+
+`g3_069` **Cami:** Ahí. Esa compuerta. Hay un refugio. Llévame.
+
+`g3_070` **Jorge:** ¿Y el «por favor»?
+
+`g3_071` **Cami:** Llévame, por favor, o te muerdo.
+
+`g3_072` **Jorge:** (Progreso.)
+
+
+### refugio_capsula
+
+`g4_001` — El refugio es una cápsula redonda de metal blanco, incrustada en la pared de la torre. Adentro hay dos asientos, un panel apagado y una luz de emergencia que parpadea con desgano.
+
+`g4_002` — Jorge deja a Cami en uno de los asientos. Ella aprieta los dientes y no dice nada. Es lo más cerca que ha estado de darle las gracias.
+
+`g4_003` **Jorge:** Déjame ver el tobillo.
+
+`g4_004` **Cami:** No.
+
+`g4_005` **Jorge:** Tengo un curso de primeros auxilios.
+
+`g4_006` **Cami:** ¿Ah, sí?
+
+`g4_007` **Jorge:** Bueno, lo empecé. En línea. Era obligatorio en el trabajo. Me quedé en el módulo tres.
+
+`g4_008` **Cami:** ¿Y qué había en el módulo tres?
+
+`g4_009` **Jorge:** Tobillos.
+
+`g4_010` — Cami lo mira con una mezcla de desprecio y resignación. Después estira la pierna y la apoya en el asiento de enfrente.
+
+`g4_011` **Cami:** Si me duele, te pego.
+
+`g4_012` **Jorge:** Si te duele, es que está funcionando.
+
+`g4_013` **Cami:** Eso no lo dice ningún módulo.
+
+`g4_014` **Jorge:** Lo dice mi supervisor sobre el trabajo.
+
+`g4_015` — Jorge encuentra un botiquín bajo el panel. Adentro hay vendas, un aerosol que huele a menta y a electricidad, y un manual escrito en un idioma que se parece al español si uno lo mira de reojo.
+
+`g4_016` — Le venda el tobillo como puede. No queda bonito. Queda como el código que él escribe un viernes a las cuatro de la tarde: funciona, pero nadie debería verlo.
+
+`g4_017` **Cami:** Está horrible.
+
+`g4_018` **Jorge:** Está estable.
+
+`g4_019` **Cami:** Las dos cosas pueden ser ciertas.
+
+`g4_020` **Jorge:** (Esa también es la historia de mi vida.)
+
+`g4_021` — Se quedan en silencio. Por la ventanilla redonda, las ruinas del castillo giran despacio contra el cielo magenta. Es hermoso de una manera que no tiene sentido. Como un protector de pantalla que alguien hizo con amor.
+
+`g4_022` **Jorge:** ¿Dónde estamos? Exactamente.
+
+`g4_023` **Cami:** ¿Exactamente? En las ruinas del Bastión. En la dimensión espacial.
+
+`g4_024` **Jorge:** ¿«La dimensión espacial»? ¿Hay otras?
+
+`g4_025` **Cami:** ¿De qué rincón saliste que no sabes eso?
+
+`g4_026` **Jorge:** De uno muy pequeño. Con wifi.
+
+`g4_027` **Cami:** Hay varias. Esta es la espacial: estrellas, flotas, estaciones, todo lo que vuela. Es la mía.
+
+`g4_028` **Cami:** Y está la ancestral. Allá todo es viejo. Reinos, castillos con techo, árboles de cientos de años. Gente que habla raro y se inclina para saludar.
+
+`g4_029` **Jorge:** ¿Y cómo se llega?
+
+`g4_030` **Cami:** Por la Grieta. Es un portal que está en el núcleo del Bastión. El último que queda abierto.
+
+`g4_031` **Jorge:** ¿Y por qué querría alguien ir a la dimensión ancestral?
+
+`g4_032` **Cami:** Porque aquí el Rey Malvado ya ganó.
+
+`g4_033` — Lo dice sin drama. Como quien informa del clima. Como quien avisa que el pago se corre para el otro viernes.
+
+`g4_034` **Jorge:** El Rey Malvado.
+
+`g4_035` **Cami:** Sí.
+
+`g4_036` **Jorge:** ¿Cómo es?
+
+`g4_037` **Cami:** Nadie lo ha visto. Solo a sus soldados. Y a sus monstruos. Dicen que antes de ser rey de todo fue rey de otra cosa. De un reino pequeño. De flores.
+
+`g4_038` **Jorge:** (Le pedí a la IA un Rey Malvado y le dio un pasado. Yo no tengo un pasado tan elaborado.)
+
+`g4_039` **Jorge:** ¿Y tú? ¿Qué hacías aquí sola?
+
+`g4_040` — Cami tarda en contestar. Mira por la ventanilla.
+
+`g4_041` **Cami:** No estaba sola. Éramos más. Una flota entera.
+
+`g4_042` **Jorge:** ¿Y qué les pasó?
+
+`g4_043` **Cami:** No sé.
+
+`g4_044` **Jorge:** ¿No sabes?
+
+`g4_045` **Cami:** Me acuerdo de la flota. Me acuerdo del ruido de los motores. Me acuerdo de que había un capitán que gritaba mucho.
+
+`g4_046` **Cami:** Pero no me acuerdo de su cara. Ni de su nombre. Ni de cómo llegué aquí. Es como...
+
+`g4_047` — Hace un gesto con la mano, como si atrapara algo en el aire y al abrirla no hubiera nada.
+
+`g4_048` **Cami:** Es como si alguien me hubiera contado mi vida, pero no me la hubiera dejado vivir.
+
+`g4_049` — Jorge no dice nada. Siente un frío que no tiene nada que ver con el espacio.
+
+`g4_050` **GRAVITY:** > Entidad 01: memoria de fondo generada. Coherencia: parcial.
+
+`g4_051` **Jorge:** (Memoria de fondo. Le pusieron recuerdos de relleno. Como a los personajes de fondo que dicen «buenos días, viajero» y no saben por qué.)
+
+`g4_052` **Jorge:** (Y ella lo siente. Siente que son de relleno.)
+
+
+> **DECISIÓN**
+- `g4_052#0` Decirle que quizá sus recuerdos no son suyos ⟶ va a `g4_053a` · lucidez_cami +1
+- `g4_052#1` Consolarla ⟶ va a `g4_053b`
+- `g4_052#2` Cambiar de tema ⟶ va a `g4_053c`
+
+`g4_053a` **Jorge:** ¿Y si esos recuerdos no son tuyos? ¿Y si alguien los puso ahí?
+
+`g4_053a2` **Cami:** ¿Quién? ¿El Rey Malvado?
+
+`g4_053a3` **Jorge:** No. Alguien... menos malvado. Pero igual de irresponsable.
+
+`g4_053a4` — Cami lo mira fijo. Muy fijo. Por un momento, Jorge cree que ella va a entender. Que va a hacer la pregunta correcta.
+
+`g4_053a5` **Cami:** Hablas como un loco.
+
+`g4_053a6` **Cami:** ...Pero no te voy a decir que estás equivocado.
+
+> ⤷ continúa en `g4_054`
+
+`g4_053b` **Jorge:** Oye. Yo tampoco me acuerdo de la mitad de mi vida. Es normal.
+
+`g4_053b2` **Cami:** ¿Ah, sí? ¿De qué no te acuerdas?
+
+`g4_053b3` **Jorge:** De por qué estudié ingeniería. De por qué sigo en mi trabajo. De por qué llevo ocho años en algo que no tiene nombre.
+
+`g4_053b4` **Cami:** Eso no es olvidar. Eso es no querer saber.
+
+`g4_053b5` **Jorge:** (Touché, mujer espacial.)
+
+> ⤷ continúa en `g4_054`
+
+`g4_053c` **Jorge:** ¿Y la pistola? ¿Tiene nombre?
+
+`g4_053c2` **Cami:** ...¿Qué?
+
+`g4_053c3` **Jorge:** Las armas de los héroes siempre tienen nombre.
+
+`g4_053c4` **Cami:** Es una pistola. Se llama pistola.
+
+`g4_053c5` — Pero se queda mirándola un segundo, a la pistola, como si nunca se le hubiera ocurrido que podía llamarse de otra forma.
+
+`g4_053c6` **Cami:** Cállate. Me distraes.
+
+`g4_054` **Cami:** Tu turno. ¿Qué eres? Y no me digas «soporte técnico».
+
+`g4_055` **Jorge:** Soy ingeniero de software.
+
+`g4_056` **Cami:** ¿Y eso qué es?
+
+`g4_057` **Jorge:** Alguien que les dice a las máquinas qué hacer.
+
+`g4_058` **Cami:** ¿Y te obedecen?
+
+`g4_059` **Jorge:** Más que las personas.
+
+`g4_060` **Cami:** ¿Y te pagan bien?
+
+`g4_061` **Jorge:** Me deben medio mes.
+
+`g4_062` — Cami se ríe. Es la primera vez. Una risa corta y seca, con el filo de un cuchillo.
+
+> solo si confeso_creador == true
+`g4_063` **Cami:** Espera. Les das órdenes a las máquinas, no te pagan... y dices que creaste este mundo.
+
+> solo si confeso_creador == true
+`g4_064` **Cami:** Qué lindo: un dios con el sueldo atrasado.
+
+> solo si confeso_creador == false
+`g4_065` **Cami:** Les das órdenes a las máquinas y ni así te pagan. Qué oficio tan triste.
+
+`g4_066` **Jorge:** Gracias.
+
+`g4_067` **Cami:** ¿Y tienes a alguien? ¿Allá, en tu rincón con wifi?
+
+`g4_068` — La pregunta lo agarra desprevenido. Piensa en Nikki subiéndose al taxi. En que no se despidió. En que no sabe si llegó.
+
+`g4_069` **Jorge:** Tengo... a alguien. Más o menos.
+
+`g4_070` **Cami:** ¿Más o menos?
+
+`g4_071` **Jorge:** Es complicado.
+
+`g4_072` **Cami:** Nada es complicado. La gente dice «es complicado» cuando la respuesta es «no».
+
+`g4_073` **Jorge:** ...
+
+`g4_074` **Cami:** ¿Ella sabe que estás aquí?
+
+`g4_075` **Jorge:** Ni yo sé que estoy aquí.
+
+`g4_076` **Cami:** Entonces no le debes explicaciones.
+
+`g4_077` — Lo dice mirando la ventanilla, como al descuido. Pero el «ella» le salió con un filo que antes no tenía.
+
+`g4_078` **Jorge:** (¿Está celosa? No puede estar celosa. La conocí hace veinte minutos.)
+
+`g4_079` **Jorge:** (Bueno. La conocí hace veinte minutos y la diseñé hace tres horas. No sé cómo se cuenta eso.)
+
+`b01` **Cami:** Oye. Antes de seguir, toma.
+
+`b02` — Saca de su cinturón una segunda pistola, más pequeña, y se la ofrece por la culata.
+
+`b03` **Jorge:** ¿Para qué?
+
+`b04` **Cami:** Para que dejes de ser peso muerto. Con un tobillo roto no puedo cubrirnos a los dos.
+
+`b05` **Jorge:** Nunca he disparado nada.
+
+`b06` **Cami:** ¿Nada? ¿Ni en tu rincón con wifi?
+
+`b07` **Jorge:** Una vez disparé una engrapadora por accidente. Le di a la jefa de recursos humanos.
+
+`b08` **Cami:** ¿Y qué pasó?
+
+`b09` **Jorge:** Me mandaron a un curso de convivencia laboral.
+
+`b10` **Cami:** Bueno. Esto es parecido, pero sin el curso.
+
+`b11` — Jorge toma la pistola. Es liviana y fría, con un brillo azul en el cañón que late como un corazón chiquito.
+
+`b12` **Cami:** Apuntas. Respiras. Aprietas. No cierres los ojos.
+
+`b13` **Jorge:** ¿Y si cierro los ojos?
+
+`b14` **Cami:** Entonces le das a lo que no quieres darle. Como con todo en la vida.
+
+`b15` — Jorge apunta a una lata vacía que flota junto a la ventanilla. Respira. Aprieta.
+
+`b16` — No pasa nada.
+
+`b17` — Aprieta otra vez. Nada. En el mango de la pistola se enciende una lucecita roja.
+
+`b18` **GRAVITY:** > Usuario no autorizado para portar armas. Rol asignado: acompañante.
+
+`b19` **Jorge:** ¿«Acompañante»?
+
+`b20` **Cami:** ¿Qué pasa? ¿Está rota?
+
+`b21` **Jorge:** No me deja disparar. Dice que soy... acompañante.
+
+`b22` **Cami:** ¿Quién lo dice?
+
+`b23` **Jorge:** La pistola.
+
+`b24` **Cami:** Las pistolas no hablan.
+
+`b25` **Jorge:** Esta tiene opiniones.
+
+`b26` — Cami le quita la pistola, apunta a la lata sin mirar y dispara. La lata desaparece en un destello azul.
+
+`b27` **Cami:** Funciona perfecto. El problema eres tú.
+
+`b28` **Jorge:** (En mi propio mundo ni siquiera me dejan ser el héroe. Me tocó ser el acompañante.)
+
+`b29` **Jorge:** (Bueno. Por lo menos aquí no me lo descuentan del sueldo.)
+
+`b30` **Cami:** Entonces tú cargas y yo disparo. Es una buena división del trabajo.
+
+`b31` **Jorge:** Es la mejor división del trabajo que he tenido en mi vida.
+
+`g4_080` — La luz de emergencia deja de parpadear. Se queda fija. Roja.
+
+`g4_081` **Cami:** Mierda.
+
+`g4_082` **Jorge:** ¿Qué significa eso?
+
+`g4_083` **Cami:** Que alguien activó la alarma del Bastión. Que vienen más soldados.
+
+`g4_084` **Cami:** Que se nos acabó el descanso.
+
+`g4_085` **Jorge:** Llevamos cinco minutos.
+
+`g4_086` **Cami:** Bienvenido a la guerra, ingeniero.
+
+
+### pasillo_castillo
+
+`g5h_001` — Salen del refugio. Esta vez Jorge carga a Cami en la espalda, como una mochila muy enojada.
+
+`g5h_002` **Cami:** Esto es humillante.
+
+`g5h_003` **Jorge:** Es ergonómico.
+
+`g5h_004` **Cami:** Es humillante y ergonómico.
+
+`g5h_005` — Los pasillos del Bastión son anchos y altos, con columnas de piedra blanca mezcladas con tuberías y paneles de luz. Como si alguien hubiera construido una catedral y después le hubiera instalado cables.
+
+`g5h_006` **Jorge:** (Fantasía con ciencia ficción. Eso fue lo que pedí. Literalmente eso.)
+
+`g5h_007` **Cami:** El núcleo está abajo. Siete niveles. Hay que bajar por el pozo central.
+
+`g5h_008` **Jorge:** ¿Siete?
+
+`g5h_009` **Cami:** ¿Tienes algo mejor que hacer?
+
+`g5h_010` **Jorge:** Tengo que trabajar el lunes.
+
+`g5h_011` **Cami:** ¿Qué es un lunes?
+
+`g5h_012` **Jorge:** Un tipo de monstruo.
+
+`c01` — En un recodo del pasillo hay una máquina expendedora. Una de verdad: vidrio, espirales de metal, botones con números. Adentro hay paquetes de colores con nombres que Jorge no reconoce y una sola lata que dice «AGUA».
+
+`c02` **Jorge:** (Una máquina expendedora en una fortaleza espacial. Le pedí fantasía con ciencia ficción y la IA entendió «oficina con estrellas».)
+
+`c03` **Cami:** Tengo sed.
+
+`c04` **Jorge:** Yo también.
+
+`c05` **Cami:** Tienes cara de tener dinero. Paga.
+
+`c06` **Jorge:** ¿Cara de tener dinero? Nunca nadie me ha dicho eso.
+
+`c07` **Cami:** Tienes cara de tener dinero guardado y no gastarlo. Que es parecido.
+
+`c08` **Jorge:** (Nikki me dijo exactamente lo mismo hace unas horas. ¿Cuántas mujeres me van a leer la cuenta de ahorros hoy?)
+
+`c09` — Jorge saca la tarjeta del banco. La máquina no tiene ranura para tarjetas. Tiene una ranura para monedas con forma de estrella.
+
+`c10` — Saca sus dos monedas. Ninguna tiene forma de estrella. Intenta meter una igual.
+
+`c11` **GRAVITY:** > Moneda no reconocida. La divisa del usuario no es válida en esta dimensión.
+
+`c12` **Jorge:** Catorce mil dólares. No válidos en esta dimensión.
+
+`c13` **Cami:** ¿Qué dijiste?
+
+`c14` **Jorge:** Que soy pobre en todos los universos.
+
+`c15` — Cami lo mira. Después mira la máquina. Después le da un culatazo al vidrio con la pistola.
+
+`c16` — El vidrio se rompe. La lata de agua cae.
+
+`c17` **Cami:** Agarra la lata.
+
+`c18` **Jorge:** ¡Eso es robar!
+
+`c19` **Cami:** ¿A quién? ¿A la máquina? La máquina es del Rey Malvado.
+
+`c20` **Jorge:** (Técnicamente, la máquina es mía. Yo hice este mundo. Me estoy robando a mí mismo.)
+
+`c21` **Jorge:** (Es lo más responsable que he hecho con mi dinero en años.)
+
+`c22` — Recoge la lata. La abre. Toman por turnos. El agua sabe a agua, pero a agua de verdad, fría, perfecta, y por un segundo es lo mejor que Jorge ha probado en su vida.
+
+`c23` **Cami:** ¿Ves? A veces romper el vidrio es lo correcto.
+
+`c24` **Jorge:** (Algo me dice que esa frase va a volver a perseguirme.)
+
+
+### hangar
+
+`g5h_013` — En el nivel dos, el pasillo se abre a un hangar enorme.
+
+`g5h_014` — Hay naves. Decenas. Cazas pequeños con alas en forma de cuchilla, transportes redondos como escarabajos y, en el centro, una nave grande con el casco abierto como una lata de atún.
+
+`g5h_015` — Todas están apagadas. Todas cubiertas de un polvo fino y plateado que brilla cuando le da la luz.
+
+`g5h_016` **Cami:** La flota.
+
+`g5h_017` — Lo dice muy bajito.
+
+`g5h_018` **Jorge:** ¿Estas son las naves de tu flota?
+
+`g5h_019` **Cami:** Creo que sí. Me acuerdo de esa. La grande. Me acuerdo de que tenía un dibujo en la puerta.
+
+`g5h_020` — Jorge se acerca a la nave grande. En la puerta no hay ningún dibujo. Hay un rectángulo gris, liso, del tamaño de una ventana, con letras pequeñas en una esquina.
+
+`g5h_021` — Jorge las lee: «TEXTURA_PENDIENTE».
+
+`g5h_022` **Jorge:** (...)
+
+`g5h_023` **Cami:** ¿Ves el dibujo? Era un... era un...
+
+`g5h_024` — Cami frunce el ceño. Busca la palabra. No la encuentra. Busca la imagen. No la encuentra.
+
+
+> **DECISIÓN**
+- `g5h_024#0` Decirle que no hay ningún dibujo ⟶ va a `g5h_025a` · lucidez_cami +1
+- `g5h_024#1` Mentirle: «Sí, es muy bonito» ⟶ va a `g5h_025b`
+
+`g5h_025a` **Jorge:** Cami. No hay ningún dibujo.
+
+`g5h_025a2` **Cami:** ¿Qué?
+
+`g5h_025a3` **Jorge:** Hay un rectángulo gris. Nada más.
+
+`g5h_025a4` — Cami mira la puerta un rato largo. Jorge siente cómo se tensa sobre su espalda, cómo deja de respirar un momento.
+
+`g5h_025a5` **Cami:** Sí había. Yo lo vi.
+
+`g5h_025a6` **Cami:** ...Yo lo vi, ¿no?
+
+`g5h_025a7` **Jorge:** (No sé qué contestarle. No hay módulo para esto.)
+
+> ⤷ continúa en `g5h_026`
+
+`g5h_025b` **Jorge:** Sí. Lo veo. Es muy bonito.
+
+`g5h_025b2` **Cami:** ¿Verdad que sí?
+
+`g5h_025b3` — Cami sonríe. Una sonrisa chiquita, de alivio. Jorge siente que acaba de hacer algo amable y algo terrible al mismo tiempo, y no sabe separar una cosa de la otra.
+
+`g5h_025b4` **Jorge:** (Le estoy haciendo lo que Nikki me hace a mí: decirle lo que quiere oír para que se quede tranquila.)
+
+`g5h_026` **Cami:** Si pudiéramos encender una nave, no necesitaríamos la Grieta. Podríamos volar a cualquier parte.
+
+`g5h_027` **Jorge:** ¿Sabes encenderlas?
+
+`g5h_028` **Cami:** Claro que sé. Soy piloto. Bájame junto a ese caza.
+
+`g5h_029` — Jorge la baja junto a un caza pequeño y plateado. Cami se mete en la cabina, aprieta botones, tira de palancas, golpea el tablero con el puño.
+
+`g5h_030` — Nada.
+
+`g5h_031` **Cami:** No entiendo. Debería funcionar.
+
+`g5h_032` **Jorge:** ¿Puedo intentar algo?
+
+`g5h_033` **Cami:** ¿Tú? ¿Qué vas a intentar tú?
+
+`g5h_034` **Jorge:** Algo muy técnico.
+
+`g5h_035` — Jorge busca debajo del tablero. Encuentra un cable grueso conectado a un enchufe redondo. Lo desconecta. Cuenta hasta diez. Lo vuelve a conectar.
+
+`g5h_036` — El tablero se enciende. Luces verdes, luces azules, un pitido alegre.
+
+`g5h_037` **Cami:** ...
+
+`g5h_038` **Cami:** ¿Qué hiciste?
+
+`g5h_039` **Jorge:** Lo apagué y lo prendí.
+
+`g5h_040` **Cami:** ¿Eso es todo?
+
+`g5h_041` **Jorge:** Eso es el noventa por ciento de mi carrera.
+
+`g5h_042` — Las luces del tablero parpadean. En la pantalla central aparece un mensaje: «MOTOR NO ENCONTRADO».
+
+`g5h_043` **Jorge:** Ah.
+
+`g5h_044` **Cami:** ¿«Motor no encontrado»? ¿Cómo que no encontrado? ¡Está ahí atrás! ¡Lo estoy viendo!
+
+`g5h_045` — Jorge mira atrás. Ahí hay algo con forma de motor. Tiene el tamaño de un motor y el color de un motor. Pero cuando lo toca, la mano le atraviesa la superficie como si fuera humo.
+
+`g5h_046` **Jorge:** (Es decorado. Las naves son decorado. Nunca las hicieron para volar.)
+
+`g5h_047` **Jorge:** (Todo este hangar es fondo.)
+
+`g5h_048` **GRAVITY:** > Recurso decorativo. Funcionalidad: no implementada.
+
+`g5h_049` **Cami:** ¿Jorge? ¿Qué pasa? ¿Por qué pones esa cara?
+
+`g5h_050` **Jorge:** No funciona. Hay que ir a la Grieta.
+
+`g5h_051` **Cami:** Pero...
+
+`g5h_052` **Jorge:** No funciona, Cami.
+
+`g5h_053` — Ella no insiste. Sale de la cabina despacio, apoyándose en él, y mira el hangar entero una última vez: las decenas de naves dormidas, el polvo plateado, la flota que tal vez nunca existió.
+
+`g5h_054` **Cami:** Vamos.
+
+`g5m_001` — Al salir del hangar, algo vibra en el bolsillo de Jorge.
+
+`g5m_002` — El celular.
+
+`g5m_003` — Doce por ciento de batería. Y una barra. Una sola barra de señal, parpadeando, imposible.
+
+`g5m_004` **Jorge:** (No. No puede ser.)
+
+
+### celular_mensaje
+
+`g5m_005` — Una notificación. Un mensaje de Nikki, enviado a las 2:41 a. m.
+
+`g5m_006` **Nikki (mensaje):** ya llegue
+
+`g5m_007` **Nikki (mensaje):** no te enojes por lo de hoy
+
+`g5m_008` **Nikki (mensaje):** buenos dias adelantado
+
+`g5m_009` — Jorge se queda mirando la pantalla. Tres mensajes sin tildes ni mayúsculas, escritos con un ojo cerrado desde el asiento de atrás de un taxi.
+
+`g5m_010` **Jorge:** (Llegó. Llegó bien.)
+
+`g5m_011` **Jorge:** (Me dijo «buenos días».)
+
+`g5m_012` — Siente algo en el pecho que no sabe nombrar. Es lo más parecido a estar en casa que ha sentido desde que despertó bajo el cielo magenta.
+
+
+### pasillo_castillo
+
+`g5m_013` **Cami:** ¿Qué es eso?
+
+`g5m_014` **Jorge:** Un celular. Es... un aparato para hablar con gente que está lejos.
+
+`g5m_015` **Cami:** ¿Y quién te habla?
+
+
+> **DECISIÓN**
+- `g5m_015#0` Decirle la verdad: «Una amiga. Nikki» ⟶ va a `g5m_016a`
+- `g5m_015#1` Guardar el celular: «Nadie» ⟶ va a `g5m_016b`
+
+`g5m_016a` **Jorge:** Una amiga. Se llama Nikki.
+
+`g5m_016a2` **Cami:** ¿La del «más o menos»?
+
+`g5m_016a3` **Jorge:** ...Sí.
+
+`g5m_016a4` **Cami:** ¿Y qué dice?
+
+`g5m_016a5` **Jorge:** Que llegó a su casa. Que no me enoje. Que buenos días.
+
+`g5m_016a6` **Cami:** No sé qué hora es aquí. Pero no es de día.
+
+`g5m_016a7` **Jorge:** Es un chiste interno.
+
+`g5m_016a8` **Cami:** Ah. Un chiste interno.
+
+`g5m_016a9` — Cami no dice nada más. Pero durante los siguientes diez minutos, cada vez que Jorge da un paso, ella le aprieta el hombro un poquito más fuerte de lo necesario.
+
+> ⤷ continúa en `g5m_017`
+
+`g5m_016b` — Jorge guarda el celular.
+
+`g5m_016b2` **Jorge:** Nadie. Spam.
+
+`g5m_016b3` **Cami:** ¿Qué es spam?
+
+`g5m_016b4` **Jorge:** Mensajes que no pediste, de gente que no te importa.
+
+`g5m_016b5` **Cami:** Entonces, ¿por qué sonreíste?
+
+`g5m_016b6` **Jorge:** ...
+
+`g5m_016b7` **Cami:** Eres el peor mentiroso de dos dimensiones.
+
+`g5m_017` — Jorge intenta responder. Escribe «llegaste bien?», como si no lo supiera ya. Aprieta enviar.
+
+`g5m_018` — La barra de señal desaparece. El mensaje se queda con un relojito al lado. Esperando.
+
+`g5m_019` **GRAVITY:** > Conexión externa detectada y cerrada. Se recomienda no repetir.
+
+`g5m_020` **Jorge:** (¿«Se recomienda»? ¿Desde cuándo un programa recomienda cosas?)
+
+`g5m_021` — Guarda el celular. Once por ciento.
+
+
+### pozo_central
+
+`g5_001` — Bajan por una escalera de caracol que gira alrededor de un pozo de luz azul. Jorge cuenta los escalones porque contar le da algo que hacer con el miedo. Ciento doce. Ciento trece.
+
+`g5_002` — En el nivel cuatro, Cami le tapa la boca con la mano.
+
+`g5_003` **Cami:** (Susurrando) Quieto.
+
+`g5_004` — Abajo, en el pasillo, cinco soldados enmascarados caminan en fila. Armaduras negras. Pasos idénticos. Cabezas que giran a la izquierda, a la derecha, a la izquierda, al mismo tiempo, como un solo cuello repartido en cinco cuerpos.
+
+`g5_005` **Cami:** (Susurrando) Son demasiados. Con este tobillo no llego a tres.
+
+`g5_006` **Jorge:** (Susurrando) ¿Y si esperamos a que se vayan?
+
+`g5_007` **Cami:** (Susurrando) No se van. Patrullan. Dan vueltas y vueltas. Nunca se cansan.
+
+`g5_008` **Jorge:** (Dan vueltas y vueltas.)
+
+`g5_009` — Jorge mira. Mira de verdad, como mira un registro de errores cuando todo el mundo ya se rindió.
+
+`g5_010` — Los soldados caminan hasta la columna del fondo. Giran. Caminan hasta la puerta. Giran. Se detienen cuatro segundos frente a un panel de luz. Vuelven a caminar.
+
+`g5_011` — Hasta la columna. Giro. Hasta la puerta. Giro. Cuatro segundos frente al panel.
+
+`g5_012` — Hasta la columna. Giro. Hasta la puerta. Giro. Cuatro segundos.
+
+`g5_013` **Jorge:** (Es un bucle.)
+
+`g5_014` **Jorge:** (Es un bucle perfecto. Nunca cambia. Nunca improvisa.)
+
+`g5_015` **Jorge:** (Igual que yo. Oficina, bus, casa. Oficina, bus, casa. Cuatro segundos frente al refrigerador abierto.)
+
+`g5_016` **Jorge:** (Sé exactamente cómo burlar a alguien así. He sido alguien así toda mi vida.)
+
+`g5_017` **Jorge:** (Susurrando) Cuando lleguen a la columna, tenemos ocho segundos para cruzar sin que nos vean. Cuando se detengan frente al panel, otros cuatro.
+
+`g5_018` **Cami:** (Susurrando) ¿Cómo sabes eso?
+
+`g5_019` **Jorge:** (Susurrando) Porque llevo treinta años viviendo en ese bucle.
+
+`g5_020` **Cami:** (Susurrando) ...Eso no tiene ningún sentido.
+
+`g5_021` **Jorge:** (Susurrando) Confía en mí.
+
+`g5_022` **Cami:** (Susurrando) No te conozco.
+
+`g5_023` **Jorge:** (Susurrando) Entonces confía en el bucle.
+
+
+> **DECISIÓN**
+- `g5_023#0` Esperar el momento exacto ⟶ va a `g5_024a`
+- `g5_023#1` Cruzar ya, antes de que te tiemblen las piernas ⟶ va a `g5_024b`
+- `g5_023#2` ~~Pelear contra los soldados~~ ⟶ tachada
+
+`g5_024a` — Jorge espera. Cuenta. Los soldados llegan a la columna. Giro.
+
+`g5_024a2` **Jorge:** (Susurrando) Ahora.
+
+`g5_024a3` — Cruza el pasillo con Cami a cuestas, en puntas de pie, conteniendo la respiración. Ocho segundos. Siete. Seis.
+
+`g5_024a4` — Llegan a la sombra de la escalera del otro lado justo cuando los cinco cascos giran hacia donde ellos estaban.
+
+`g5_024a5` — Nada. Los soldados vuelven a caminar. Columna. Giro. Puerta. Giro.
+
+`g5_024a6` **Cami:** (Susurrando) ...Funcionó.
+
+`g5_024a7` **Jorge:** (Susurrando) Siempre funciona. Nadie revisa los bucles.
+
+`g5_024a8` **Cami:** (Susurrando) Dicho por ti, eso suena muy triste.
+
+`g5_024a9` **Jorge:** (Susurrando) Todo suena muy triste dicho por mí. Es mi voz.
+
+> ⤷ continúa en `g5_025`
+
+`g5_024b` — Jorge no espera. Si espera, va a pensar. Y si piensa, no va a cruzar nunca.
+
+`g5_024b2` — Cruza. A destiempo. Los soldados están a mitad del giro.
+
+`g5_024b3` — Un casco se detiene. Gira hacia él. El hueco negro de la máscara lo mira.
+
+`g5_024b4` **Jorge:** (Ahí está. El precio de no seguir el protocolo.)
+
+`g5_024b5` **Soldado enmascarado:** ¡INTRUSO!
+
+`g5_024b6` **Cami:** ¡CORRE!
+
+`g5_024b7` — Jorge corre. Tres pasos. Al cuarto, el pasillo de enfrente se llena de cascos. Cinco más. Diez más. Todos giran la cabeza a la vez, hacia él.
+
+`g5_024b8` — Cami dispara. Un soldado cae. Dos. Tres. Pero por cada uno que cae aparece otro idéntico detrás, como si alguien estuviera copiando y pegando.
+
+`g5_024b9` **Cami:** ¡Son demasiados! ¡Bájame, me quedo y te cubro!
+
+`g5_024b10` **Jorge:** ¡No te voy a dejar!
+
+`g5_024b11` — Es lo más valiente que Jorge ha dicho en su vida. Dura exactamente un segundo, que es lo que tarda una red de energía en caerles encima a los dos.
+
+`g5_024b12` — Los soldados los rodean. Las máscaras lisas los miran sin ojos.
+
+`g5_024b13` **Soldado enmascarado:** Entidad no registrada. Origen desconocido. Procedimiento: archivar.
+
+`g5_024b14` **Jorge:** ¿Archivar? ¿Cómo que archivar?
+
+`g5_024b15` **GRAVITY:** > Usuario archivado en: /bastion/calabozo/pendientes.
+
+
+### calabozo
+
+`g5_024b16` — La celda es blanca, pequeña y sin ventanas. Tiene un catre, una luz que no se apaga y, al otro lado de los barrotes, la celda de Cami, que no le habla.
+
+`g5_024b17` **Jorge:** (Cuatro paredes. Una luz. Nadie que me llame.)
+
+`g5_024b18` **Jorge:** (Es igual que mi departamento, pero sin ventilador.)
+
+`g5_024b19` **GRAVITY:** > Tiempo estimado de revisión del expediente: indefinido.
+
+
+### negro
+
+`g5_024b20` — Pendiente de revisión.
+
+> **BAD END: Pendiente de revisión**
+
+---
+`g5_025` — Siguen bajando. Nivel cinco. Nivel seis. La luz azul del pozo se vuelve más intensa, casi blanca, y empieza a zumbar.
+
+`g5_026` **Cami:** Oye.
+
+`g5_027` **Jorge:** ¿Qué?
+
+`g5_028` **Cami:** Lo de allá arriba. Lo de los soldados.
+
+`g5_029` **Jorge:** ¿Qué tiene?
+
+`g5_030` **Cami:** Los mirabas como si los entendieras. Como si supieras cómo están hechos.
+
+`g5_031` **Jorge:** ...
+
+`g5_032` **Cami:** Eso me da más miedo que el monstruo.
+
+`g5_033` **Jorge:** (A mí también.)
+
+`g5_034` — Nivel siete. El núcleo.
+
+
+### nucleo_grieta
+
+`g6_001` — El núcleo del Bastión es una sala circular del tamaño de un estadio, con el techo perdido en la oscuridad y el piso cubierto de cables gruesos como troncos.
+
+`g6_002` — En el centro, flotando a un metro del suelo, está la Grieta.
+
+`g6_003` — No es un portal redondo y prolijo, como en las películas. Es una herida. Una rajadura vertical en el aire, de bordes irregulares, por la que se filtran una luz dorada y un viento que huele a tierra mojada y a madera vieja.
+
+`g6_004` **Jorge:** (Huele a lluvia. Hace meses que no huelo lluvia de verdad. En mi ciudad solo llueve calor.)
+
+`g6_005` **Cami:** La dimensión ancestral.
+
+`g6_006` **Jorge:** ¿La has visto antes?
+
+`g6_007` **Cami:** No. Solo me contaron.
+
+`g6_008` **Cami:** ...Creo que me contaron.
+
+`g6_009` — A medida que se acercan, la Grieta tiembla. Se cierra un poco. Se abre otro poco. Como un ojo que intenta no dormirse.
+
+`g6_010` **GRAVITY:** > Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %.
+
+`g6_011` **Jorge:** ¿Sesenta y ocho por ciento? ¿Del otro lado todavía no está terminado?
+
+`g6_012` **GRAVITY:** > Se recomienda esperar al 100 %.
+
+`g6_013` **Jorge:** ¿Y cuánto falta?
+
+`g6_014` **GRAVITY:** > Tiempo estimado: indefinido.
+
+`g6_015` **Jorge:** (Es la misma respuesta que da mi empresa sobre mi sueldo.)
+
+`g6_016` **Cami:** ¿Otra vez hablando con tus voces?
+
+`g6_017` **Jorge:** Dicen que la Grieta está inestable.
+
+`g6_018` **Cami:** Tus voces son unas genias. Mira: se está cerrando.
+
+`g6_019` — Jorge da un paso hacia la Grieta.
+
+`g6_020` — Y entonces se encienden las luces.
+
+`g6_021` — Todas a la vez. Blancas, duras, de quirófano. Desde los balcones que rodean la sala aparecen soldados. Diez. Veinte. Treinta. Todos con la misma máscara sin rostro. Todos apuntando.
+
+`g6_022` — Y en la pasarela que cruza sobre la Grieta, una figura más alta que las demás. Armadura negra con bordes dorados. Una capa. Una máscara con una sola línea horizontal, como una boca cosida.
+
+`g6_023` **Capitán enmascarado:** Guerrera. Te dimos por muerta.
+
+`g6_024` **Cami:** Me han dado por muerta muchas veces. Soy difícil de convencer.
+
+`g6_025` **Capitán enmascarado:** ¿Y ese?
+
+`g6_026` — La máscara gira hacia Jorge. Jorge siente esa mirada sin ojos en la nuca, en el estómago, en el saldo de la cuenta.
+
+`g6_027` **Capitán enmascarado:** Ese no está en los registros.
+
+`g6_028` **Jorge:** (Por lo visto, tampoco en los registros de nómina de mi empresa.)
+
+`g6_029` **Capitán enmascarado:** Entidad no registrada. Origen desconocido. Procedimiento: eliminar.
+
+`g6_030` **Jorge:** ¡Espera, espera! ¡Soy un civil! ¡Tengo derechos! ¡Tengo un contrato!
+
+`g6_031` **Capitán enmascarado:** ¿Qué es un contrato?
+
+`g6_032` **Jorge:** ...Es una pregunta que yo también me hago.
+
+`g6_033` **Cami:** (Susurrando) Jorge. Escúchame. Cuando te diga, corres a la Grieta. No te detienes. No miras atrás.
+
+`g6_034` **Jorge:** (Susurrando) ¿Y tú?
+
+`g6_035` **Cami:** (Susurrando) Estoy en tu espalda, genio. Voy a donde vayas tú.
+
+`g6_036` **Jorge:** (Susurrando) Ah. Cierto.
+
+`g6_037` **Cami:** (Susurrando) Y otra cosa.
+
+`g6_038` **Jorge:** (Susurrando) ¿Qué?
+
+`g6_039` **Cami:** (Susurrando) Si nos morimos, fue un placer conocer al peor héroe de la dimensión espacial.
+
+`g6_040` **Jorge:** (Susurrando) Igualmente. Digo... gracias. Digo...
+
+`g6_041` **Cami:** ¡AHORA!
+
+`g6_042` — Cami levanta la pistola y dispara. No a los soldados: al techo. A un racimo de cables que cuelga sobre la pasarela.
+
+`g6_043` — Los cables se rompen en una lluvia de chispas azules. Las luces de quirófano parpadean, se apagan y vuelven a medias. La sala se llena de sombras y destellos.
+
+`g6_044` — Jorge corre.
+
+`g6_045` — Los disparos de los soldados le pasan zumbando alrededor, rojos y largos, como las líneas de un gráfico que va en picada.
+
+`g6_046` — Uno le pasa tan cerca que le chamusca la manga. La camisa negra estampada. La de siempre.
+
+`g6_047` **Jorge:** ¡MI CAMISA!
+
+`g6_048` **Cami:** ¡CORRE!
+
+`g6_049` **Jorge:** ¡ES MI ÚNICA CAMISA!
+
+`g6_050` **Cami:** ¡TE COMPRO OTRA! ¡CORRE!
+
+`g6_051` **Jorge:** (No tiene dinero. Aquí nadie tiene dinero. Pero es la promesa más bonita que me han hecho en años.)
+
+`g6_052` — El capitán salta desde la pasarela. Cae entre Jorge y la Grieta con un golpe que hace temblar el piso, y desenvaina una espada de luz roja.
+
+`g6_053` **Capitán enmascarado:** Nadie cruza.
+
+
+> **DECISIÓN**
+- `g6_053#0` Esquivarlo ⟶ va a `g6_054a`
+- `g6_053#1` Pedirle a Cami que dispare ⟶ va a `g6_054b`
+- `g6_053#2` ~~Pelear contra el capitán~~ ⟶ tachada
+
+`g6_054a` — Jorge hace lo único que sabe hacer bien: evitar el conflicto.
+
+`g6_054a2` — Se agacha, se tira de costado y rueda por el piso con Cami encima, de una manera que no tiene nada de heroica y todo de alguien que se resbala en la ducha.
+
+`g6_054a3` — La espada roja corta el aire justo donde estaba su cabeza.
+
+`g6_054a4` **Cami:** ¡Eso fue lo más torpe que he visto en mi vida!
+
+`g6_054a5` **Jorge:** ¡Pero funcionó!
+
+> ⤷ continúa en `g6_055`
+
+`g6_054b` **Jorge:** ¡Cami! ¡Dispárale!
+
+`g6_054b2` **Cami:** ¡Ya sé que le tengo que disparar! ¡No necesito un supervisor!
+
+`g6_054b3` — Cami dispara tres veces por encima del hombro de Jorge. El capitán bloquea dos disparos con la espada. El tercero le da en la máscara y la parte por la mitad.
+
+`g6_054b4` — Debajo tampoco hay cara. Solo la misma superficie lisa y gris. Pero en el centro, por un instante, parpadean unas letras blancas.
+
+`g6_054b5` **GRAVITY:** > PLACEHOLDER_CAPITAN_01
+
+`g6_054b6` **Jorge:** (Ni siquiera le pusieron nombre.)
+
+`g6_054b7` **Jorge:** (Tiene menos identidad que yo. Y eso ya es decir.)
+
+`g6_055` — La Grieta está a cinco metros. Cuatro. Se está cerrando: ya no es una puerta, es una rendija del ancho de una persona.
+
+`g6_056` **Cami:** ¡Salta!
+
+`g6_057` **Jorge:** ¡¿Otra vez saltar?!
+
+`g6_058` **Cami:** ¡Ahora es tu especialidad!
+
+`g6_059` — Jorge salta.
+
+`g6_060` — Por un instante, los disparos se detienen. El ruido se detiene. Todo se detiene.
+
+
+### portal_caida
+
+`g6_061` — Y después la luz dorada se los traga.
+
+`g6c_001` — Caen.
+
+`g6c_002` — No hacia abajo: hacia todos lados. El mundo se desarma en franjas de colores. Magenta, dorado, verde, un azul que no tiene nombre.
+
+`g6c_003` — Pasan junto a fragmentos de otros lugares: un desierto de cristal; un bosque congelado; una ciudad de techos curvos bajo una lluvia de pétalos; un cuarto pequeño con un ventilador que gira.
+
+`g6c_004` **Jorge:** (¿Ese era mi cuarto?)
+
+`g6c_005` — El cuarto pasa de largo antes de que pueda estar seguro. Sobre la cama, durante una fracción de segundo, le pareció ver un póster.
+
+`g6c_006` **GRAVITY:** > Transfiriendo entidades: dimensión espacial → dimensión ancestral.
+
+`g6c_007` **GRAVITY:** > Entidad 01: CAMI. Integridad: 91 %.
+
+`g6c_008` **GRAVITY:** > Entidad no registrada: JORGE. Integridad: no aplica.
+
+`g6c_009` **Jorge:** ¿Cómo que «no aplica»?
+
+
+### desierto_cristal
+
+`i01` — De pronto, suelo. Un suelo que no es el final: una isla de cristal flotando en la nada, en mitad de la caída.
+
+`i02` — Jorge rueda sobre ella con Cami. El cristal es transparente: debajo se ven otras franjas de colores, otras caídas, otros mundos a medio hacer.
+
+`i03` **Cami:** ¿Llegamos?
+
+`i04` **Jorge:** No creo. Esto parece... una sala de espera.
+
+`i05` — La isla cruje. Por las grietas del cristal sube una luz blanca y, con la luz, un zumbido, como el de un servidor recalentado.
+
+`i06` **GRAVITY:** > Fragmento sin asignar. Eliminando.
+
+`i07` **Jorge:** ¿Eliminando qué?
+
+`i08` **GRAVITY:** > Fragmento sin asignar.
+
+`i09` **Jorge:** ¡Estamos ENCIMA del fragmento sin asignar!
+
+`i10` — El cristal empieza a desaparecer desde los bordes. No se rompe: se borra. Como una selección que alguien arrastra con el mouse antes de apretar «suprimir».
+
+`i11` **Cami:** ¡Salta otra vez!
+
+`i12` **Jorge:** ¡¿Hacia dónde?!
+
+`i13` **Cami:** ¡Hacia lo dorado! ¡Siempre hacia lo dorado!
+
+
+### portal_caida
+
+`i14` — Jorge la levanta, corre los tres metros que quedan de isla y salta hacia la franja dorada justo cuando el último pedazo de cristal desaparece bajo sus pies.
+
+`i15` **Jorge:** (Casi me borra un «suprimir». A mí, que he borrado tantas cosas sin pensarlo dos veces.)
+
+`g6c_010` — Cami lo abraza más fuerte. No dice nada. Tiene los ojos cerrados y la cara escondida en el cuello de él.
+
+`g6c_011` — Jorge no sabe si es miedo. No sabe si es el viento. No sabe si tiene derecho a sentir lo que está sintiendo por alguien que existe desde hace tres horas.
+
+`g6c_012` **Jorge:** (Nikki se reiría.)
+
+`g6c_013` **Jorge:** (No. Nikki no se reiría. Nikki se quedaría muy callada y después pediría otra ronda.)
+
+`g6c_014` — Y entonces, el suelo.
+
+
+### bosque_ancestral
+
+`g7_001` — Aterrizan sobre pasto.
+
+`g7_002` — Pasto de verdad. Húmedo, frío, con olor a tierra después de la lluvia. Jorge queda boca arriba, con Cami encima, mirando un cielo que no es magenta.
+
+`g7_003` — Es dorado. Un atardecer quieto, eterno, del color de la miel vieja.
+
+`g7_004` **Jorge:** ...Estamos vivos.
+
+`g7_005` **Cami:** Tú estás vivo. Yo estoy encima de ti. Son dos cosas distintas.
+
+`g7_006` **Jorge:** Podrías bajarte.
+
+`g7_007` **Cami:** Podría.
+
+`g7_008` — No se baja. Dos segundos. Tres. Después rueda hacia un costado y se queda acostada en el pasto, mirando el cielo, respirando fuerte.
+
+`g7_009` **Cami:** El tobillo. Me lo golpeé al caer.
+
+`g7_010` **Jorge:** ¿Mucho?
+
+`g7_011` **Cami:** Lo suficiente para que me tengas que cargar otra vez. No te emociones.
+
+`g7_012` **Jorge:** No me estoy emocionando.
+
+`g7_013` **Cami:** Tienes las orejas rojas.
+
+`g7_014` **Jorge:** Es el atardecer.
+
+`g7_015` — Jorge se sienta y mira alrededor.
+
+
+### claro_cuatro_estaciones
+
+`g7_016` — Están en un claro, en medio de un bosque. Pero no es un bosque normal. Los árboles de la izquierda tienen flores rosadas, como cerezos. Los de enfrente tienen hojas verdes llenas de sol. Los de la derecha tienen hojas rojas y anaranjadas que caen despacio. Y los del fondo están desnudos, cubiertos de nieve.
+
+`g7_017` **Jorge:** (Cuatro estaciones. Al mismo tiempo. En el mismo bosque.)
+
+`g7_018` **Jorge:** (Yo no pedí esto. Yo pedí «un mundo con un Rey Malvado». ¿De dónde salió todo esto?)
+
+`g7_019` **GRAVITY:** > Dimensión ancestral: autocompletado 100 %. Historia generada: 847 años.
+
+`g7_020` **Jorge:** ¿Ochocientos cuarenta y siete años?
+
+`g7_021` **Jorge:** ¿Cuánto llevo dormido?
+
+`g7_022` **GRAVITY:** > Tiempo del usuario: 1 h 12 min.
+
+`g7_023` — Jorge siente un vértigo que no tiene nada que ver con la caída. Una hora y doce minutos. Ochocientos cuarenta y siete años. Alguien vivió esos años. Alguien nació, creció y murió en este bosque mientras él roncaba sobre un teclado.
+
+`g7_024` **Jorge:** (Y yo me quejo de que mi semana es larga.)
+
+`g7_025` **Cami:** ¿Qué tanto miras?
+
+`g7_026` **Jorge:** Los árboles. Cada grupo es una estación distinta.
+
+`g7_027` **Cami:** Ah, sí. Eso también me lo contaron. La dimensión ancestral tiene cuatro familias antiguas: Verano, Primavera, Otoño e Invierno. Cada una tenía su reino.
+
+`g7_028` **Jorge:** ¿Tenía?
+
+`g7_029` **Cami:** Dicen que una de las cuatro familias tuvo un rey que lo quiso todo. Nadie dice cuál. Da mala suerte decirlo.
+
+`g7_030` **Jorge:** ¿Y por qué da mala suerte?
+
+`g7_031` **Cami:** Porque cada vez que alguien lo dice, aparece uno de sus soldados. O eso dicen.
+
+`g7_032` **Jorge:** Entonces no lo digas.
+
+`g7_033` **Cami:** No lo iba a decir. No soy idiota.
+
+`g7_034` — Jorge la ayuda a ponerse de pie. Ella apoya el peso en él. Él le pasa el brazo por la cintura. Ninguno de los dos comenta nada. Se están volviendo expertos en no comentar nada.
+
+`g7_035` **Cami:** Tenemos que encontrar a alguien que conozca esta dimensión. No tengo mapas. No tengo flota. No tengo...
+
+`g7_036` **Cami:** ...nada.
+
+`g7_037` **Jorge:** Me tienes a mí.
+
+`g7_038` — Lo dice sin pensar. Se arrepiente en cuanto termina de decirlo. Es la frase más cursi que ha dicho en su vida, y eso que una vez le dijo a Nikki que era «su variable favorita».
+
+`g7_039` **Cami:** ...
+
+`g7_040` **Cami:** Eso no es mucho.
+
+`g7_041` **Jorge:** No. No es mucho.
+
+`g7_042` **Cami:** Pero es algo.
+
+`g7_043` — Y por primera vez, Cami no lo dice con burla.
+
+
+> **DECISIÓN**
+- `g7_043#0` Cargarla en brazos ⟶ va a `g7_044a`
+- `g7_043#1` Ofrecerle el hombro para caminar ⟶ va a `g7_044b`
+
+`g7_044a` — Jorge se agacha y la levanta en brazos, como en el castillo. Ella no protesta. Solo le pasa un brazo por el cuello y mira para otro lado.
+
+> ⤷ continúa en `g7_045`
+
+`g7_044b` **Jorge:** Apóyate en mí. Caminamos despacio.
+
+`g7_044b2` — Caminan despacio. Diez pasos. Quince. Al paso dieciséis, el tobillo de Cami se dobla y ella suelta una palabra que ni el autocompletado se atreve a traducir.
+
+`g7_044b3` **Cami:** Cárgame. Y ni una palabra.
+
+`g7_044b4` **Jorge:** Ni una palabra.
+
+`g7_044b5` — Jorge la levanta en brazos.
+
+`g7_045` — Caminan entre los árboles, cruzando de la primavera al verano y del verano al otoño. Las hojas crujen. Los pétalos le caen a Cami sobre el pelo rubio y ella no se los quita.
+
+`g7_046` — Durante un rato no hay monstruos. No hay soldados. No hay sueldo atrasado ni taxis ni ventiladores. Solo el bosque, el atardecer quieto y el peso de alguien que confía en él lo suficiente para dejarse cargar.
+
+`g7_047` **Jorge:** (Esto es lo que quería.)
+
+`g7_048` **Jorge:** (Esto es exactamente lo que le pedí a la máquina. «Que me cuiden. Que no se vayan.»)
+
+`g7_049` **Jorge:** (Entonces, ¿por qué siento que hice trampa?)
+
+`d01` **Cami:** Oye.
+
+`d02` **Jorge:** ¿Mmm?
+
+`d03` **Cami:** La persona de tu rincón. La del «más o menos». ¿Qué hace?
+
+`d04` **Jorge:** Vende helados.
+
+`d05` **Cami:** ¿Qué es un helado?
+
+`d06` **Jorge:** (¿Cómo se explica un helado?)
+
+`d07` **Jorge:** Es... comida fría. Dulce. Cremosa. Te la comes cuando hace calor y por unos minutos el calor no importa.
+
+`d08` **Cami:** ¿Y luego?
+
+`d09` **Jorge:** Y luego se acaba y vuelve el calor.
+
+`d10` **Cami:** Suena a una trampa.
+
+`d11` **Jorge:** Todo lo bueno de mi mundo es un poco una trampa.
+
+`d12` **Cami:** ¿Y ella es buena vendiéndolos?
+
+`d13` **Jorge:** Buenísima. Sonríe doce horas seguidas. Tiene la cara entrenada.
+
+`d14` **Cami:** Yo no sonreiría doce horas por nadie.
+
+`d15` **Jorge:** Ya me di cuenta.
+
+`d16` **Cami:** Pero podría vender helados. Seguro que vendería más que ella.
+
+`d17` **Jorge:** ¿Por qué?
+
+`d18` **Cami:** Porque nadie se atrevería a no comprarme uno.
+
+`d19` **Jorge:** (Eso es completamente cierto, y me da miedo.)
+
+`d20` — Siguen caminando. Cami se queda un rato callada, jugando con un pétalo entre los dedos.
+
+`d21` **Cami:** ¿Y tú? ¿Qué es lo que más te gusta de tu mundo?
+
+`d22` **Jorge:** ¿De mi mundo?
+
+`d23` **Cami:** Algo. Una cosa. La que sea.
+
+`d24` — Jorge piensa. Piensa en la oficina, en el bus, en el departamento, en el ventilador. En la cola de llamadas en espera. En los catorce mil dólares que no toca.
+
+`d25` **Jorge:** ...
+
+`d26` **Jorge:** (¿Por qué me cuesta tanto?)
+
+`d27` **Jorge:** Las tres de la mañana.
+
+`d28` **Cami:** ¿Qué tienen?
+
+`d29` **Jorge:** A las tres de la mañana nadie te pide nada. No suena el teléfono. No hay supervisor. Nadie espera que hagas algo. Es la única hora del día que es mía.
+
+`d30` **Cami:** Eso no es algo que te gusta. Eso es algo que no te duele.
+
+`d31` **Jorge:** ...
+
+`d32` **Cami:** No es lo mismo, ¿sabes?
+
+`d33` **Jorge:** (Lo sé. Lo sé desde hace años. Pero nadie me lo había dicho en voz alta.)
+
+`d34` **Cami:** A mí me gusta esto.
+
+`d35` **Jorge:** ¿Qué cosa?
+
+`d36` **Cami:** Que alguien me cargue. Aunque sea un acompañante sin pistola.
+
+`d37` — Lo dice tan bajo que Jorge no está seguro de haberlo escuchado. Cuando la mira, ella está mirando los árboles, con la cara roja y cara de que, si él pregunta, lo mata.
+
+`d38` **Jorge:** (No pregunto.)
+
+`d39` **Jorge:** (Soy cobarde, pero no soy idiota.)
+
+`g7b_001` — Un ruido.
+
+`g7b_002` — Detrás, en el claro donde aterrizaron, algo cae del cielo. No con un golpe: con un chapoteo. Como una gota de tinta muy grande cayendo en un vaso de agua.
+
+`g7b_003` **Cami:** No.
+
+`g7b_004` **Jorge:** No me digas.
+
+`g7b_005` — La tinta se levanta del pasto. La altura de dos personas. La forma de ninguna. El hueco que gira.
+
+`g7b_006` **GRAVITY:** > Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
+
+`g7b_007` **Jorge:** ¡¿AHORA SÍ ARREGLAS LOS BUGS?!
+
+`g7b_008` **GRAVITY:** > Gracias por su reporte.
+
+`g7b_009` **Jorge:** (Ojalá mi empresa respondiera así de rápido. Ojalá respondiera.)
+
+`g7b_010` **Cami:** ¡Corre!
+
+`g7b_011` **Jorge:** ¡Ya sé, ya sé!
+
+`g7b_012` — Jorge corre con Cami en brazos, de la primavera al verano. El monstruo los sigue, y por donde pasa las flores se marchitan, el pasto se pone gris y los colores se escurren de las cosas, como si alguien estuviera borrando el dibujo.
+
+`g7b_013` — Cami dispara hacia atrás. Los destellos azules atraviesan la tinta sin hacerle nada.
+
+`g7b_014` **Cami:** No sirve. No sirve. ¡No sirve nada!
+
+`g7b_015` **Jorge:** ¡Piensa en algo! ¡Tú eres la guerrera!
+
+`g7b_016` **Cami:** ¡Tú eres el que lo entiende todo! ¡Entiende esto!
+
+`g7b_017` **Jorge:** (Entiende esto. Entiende esto. ¿Qué es lo que no puede hacer?)
+
+`g7b_018` **Jorge:** (No cruzaba huecos, y eso ya lo parcharon. ¿Qué más? ¿Qué otra cosa no le programaron?)
+
+`g7b_019` — Entran al otoño. Las hojas rojas crujen bajo sus pies. Más adelante el bosque se vuelve blanco: el invierno, con su nieve, su silencio y un arroyo congelado que lo cruza de lado a lado.
+
+`g7b_020` **Jorge:** (El invierno.)
+
+`g7b_021` **Jorge:** (Viene de la dimensión espacial. Allá no hay nieve. No hay agua. No hay hielo.)
+
+`g7b_022` **Jorge:** (Nadie le enseñó qué hacer con el hielo.)
+
+
+> **DECISIÓN**
+- `g7b_022#0` Cruzar el arroyo congelado ⟶ va a `g7b_023a`
+- `g7b_022#1` Esconderse en la nieve ⟶ va a `g7b_023b`
+- `g7b_022#2` ~~Enfrentar al monstruo~~ ⟶ tachada
+
+
+### bosque_invierno
+
+`g7b_023a` — Jorge sale del sendero y se lanza sobre el arroyo congelado. El hielo cruje. Resbala. Cae de espaldas, protegiendo a Cami con el cuerpo, y se desliza por la superficie como un pingüino con lentes.
+
+`g7b_023a2` — Detrás, el monstruo llega a la orilla. Estira una punta de tinta sobre el hielo.
+
+`g7b_023a3` — Y la tinta se congela.
+
+`g7b_023a4` — Primero la punta. Después el brazo, o lo que sea eso. Después el resto, en una ola de escarcha que sube y sube hasta que el monstruo entero queda quieto, transparente, atrapado en una estatua de hielo negro.
+
+`g7b_023a5` **Cami:** ...Se congeló.
+
+`g7b_023a6` **Jorge:** No sabía qué era el hielo. Nunca lo vio. No le hicieron reglas para eso.
+
+`g7b_023a7` **Cami:** ¿Cómo lo sabías?
+
+`g7b_023a8` **Jorge:** No lo sabía. Adiviné. Así hago casi todo.
+
+> ⤷ continúa en `g7b_024`
+
+`g7b_023b` — Jorge se tira detrás de un tronco caído, sobre un banco de nieve, y los cubre a los dos con la nieve suelta. Fría. Muy fría. Le entra por el cuello de la camisa.
+
+`g7b_023b2` **Cami:** (Susurrando) ¿Este es tu plan? ¿Enterrarnos?
+
+`g7b_023b3` **Jorge:** (Susurrando) Es el plan que uso con mis problemas desde hace años.
+
+`g7b_023b4` — El monstruo entra al invierno. Avanza sobre la nieve. Y donde la nieve lo toca, la tinta se pone rígida, lenta, opaca.
+
+`g7b_023b5` — Da tres pasos más. Dos. Uno. Y se detiene, quieto, transparente, convertido en una estatua de hielo negro a medio metro del tronco.
+
+`g7b_023b6` **Cami:** (Susurrando) ...Se congeló.
+
+`g7b_023b7` **Jorge:** (Susurrando) No sabía qué era la nieve. Nunca la había visto.
+
+`g7b_023b8` **Cami:** (Susurrando) Tú tampoco, por la cara que pones.
+
+`g7b_023b9` **Jorge:** (Susurrando) En mi ciudad no nieva. Solo hace calor. Todo el año.
+
+`g7b_024` — Se quedan mirando la estatua de hielo negro un rato largo. Adentro, el hueco que tiene por cara sigue girando, muy despacio, como un reloj que no sabe que se detuvo.
+
+`g7b_025` **Cami:** Gracias.
+
+`g7b_026` **Jorge:** ¿Qué?
+
+`g7b_027` **Cami:** No me hagas repetirlo.
+
+`g7b_028` **Jorge:** No, en serio, no te escuché. El viento.
+
+`g7b_029` **Cami:** Que gracias, imbécil. Me salvaste. Dos veces. Tres, contando el puente.
+
+`g7b_030` **Jorge:** Tú también me salvaste. Con los soldados.
+
+`g7b_031` **Cami:** Eso era mi trabajo.
+
+`g7b_032` **Jorge:** ¿Y a ti te pagan?
+
+`g7b_033` **Cami:** ...No.
+
+`g7b_034` **Jorge:** Bienvenida al club.
+
+`g7b_035` — Cami se ríe. Esta vez la risa no tiene filo. Es corta, cansada y sincera, y se le escapa sin permiso.
+
+
+### puente_rojo
+
+`g8_001` — Al borde del invierno hay un sendero de piedra, y sobre el sendero, un puente de madera roja que cruza un arroyo.
+
+`g8_002` — Y en medio del puente, de espaldas, hay alguien.
+
+`g8_003` — Una mujer con kimono rojo. El pelo largo y verde, tan verde que parece pintado a mano. Una flor azul prendida detrás de la oreja.
+
+`g8_004` — Está quieta, mirando el agua. En la cintura lleva una espada: una empuñadura negra sin hoja, como si la hoja fuera algo que solo se saca cuando hace falta.
+
+`g8_005` **Jorge:** (La peliverde.)
+
+`g8_006` **Jorge:** (La peliverde del kimono rojo.)
+
+`g8_007` — Cami se tensa en sus brazos. Baja la mano hasta la pistola.
+
+`g8_008` **Cami:** (Susurrando) No te muevas.
+
+`g8_009` **Jorge:** (Susurrando) ¿La conoces?
+
+`g8_010` **Cami:** (Susurrando) No. Por eso no te muevas.
+
+`g8_011` — La mujer del kimono habla sin darse vuelta.
+
+`g8_012` **???:** Llevo mucho tiempo en este puente.
+
+`g8_013` **???:** Vi pasar inviernos enteros. Vi caer reinos. Vi a gente que quise irse por caminos distintos.
+
+`g8_014` **???:** Y en todo ese tiempo, nadie llegó a este bosque desde arriba. Nadie cayó del cielo.
+
+`g8_015` — Se da vuelta.
+
+`g8_016` — Tiene los ojos de alguien que ha esperado mucho. Demasiado. Y que no está segura de que lo que esperaba valiera la pena.
+
+`g8_017` **???:** Hasta hoy.
+
+`g8_018` — Sus ojos van de Jorge a Cami. De Cami a Jorge. Y se detienen en los brazos de Jorge, en la forma en que sostiene a Cami, en la forma en que Cami le rodea el cuello con un brazo.
+
+`g8_019` — Algo se le tuerce en la cara. Muy rápido. Casi nada. Como una nube que tapa el sol un segundo.
+
+`g8_020` **???:** ¿Y ustedes quiénes son? ¿Y por qué ella está... así? ¿Encima de ti?
+
+`g8_021` **Cami:** No estoy encima. Estoy siendo transportada.
+
+`g8_022` **???:** Con mucha comodidad, por lo que veo.
+
+`g8_023` **Cami:** ¿Tienes algún problema con eso?
+
+`g8_024` **???:** Yo no tengo ningún problema. Yo nunca tengo problemas. Los problemas me tienen a mí.
+
+`g8_025` **Jorge:** (¿Qué está pasando? ¿Por qué hay tensión? Acabamos de llegar. Ni siquiera sabemos su nombre.)
+
+`g8_026` **Jorge:** (...«Que sean rivales. Tensión. Celos.»)
+
+`g8_027` **Jorge:** (Ay, no.)
+
+`g8_028` **Jorge:** (Lo borré. Yo lo borré. Estoy seguro de que lo borré.)
+
+`g8_029` **GRAVITY:** > Instrucción recuperada del historial: «rivales», «tensión», «celos». Aplicada.
+
+`g8_030` **Jorge:** (Nada se borra de verdad.)
+
+
+> **DECISIÓN**
+- `g8_030#0` Presentarte con educación ⟶ va a `g8_031a` · confianza_rikka +1
+- `g8_030#1` Decir que Cami es «solo una compañera» ⟶ va a `g8_031b` · confianza_rikka +1
+- `g8_030#2` Pedirle ayuda ⟶ va a `g8_031c`
+
+`g8_031a` **Jorge:** Perdón. Hola. Me llamo Jorge. Ella es Cami. Venimos de... arriba. Literalmente. No queremos problemas.
+
+`g8_031a2` — La mujer lo mira. Después hace algo que Jorge no esperaba: se inclina. Una reverencia corta, precisa, antigua.
+
+`g8_031a3` **???:** Al menos uno de los dos tiene modales.
+
+`g8_031a4` **Cami:** Yo tengo modales. Los uso con la gente que se los gana.
+
+> ⤷ continúa en `g8_032`
+
+`g8_031b` **Jorge:** No, no, no es lo que parece. Ella es solo una compañera. Se lastimó el tobillo. Es pura logística.
+
+`g8_031b2` **???:** ¿Pura logística?
+
+`g8_031b3` **Jorge:** Logística pura.
+
+`g8_031b4` — La mujer del kimono relaja los hombros. Un poco. Casi nada.
+
+`g8_031b5` **Cami:** «Solo una compañera».
+
+`g8_031b6` — Lo dice muy bajo, solo para él. Y le clava las uñas en el hombro, muy despacio, muy a propósito.
+
+`g8_031b7` **Jorge:** (Ay.)
+
+> ⤷ continúa en `g8_032`
+
+`g8_031c` **Jorge:** Necesitamos ayuda. Ella está herida, no conocemos este lugar y nos persigue un ejército sin cara. Por favor.
+
+`g8_031c2` **???:** Un ejército sin cara.
+
+`g8_031c3` **???:** Los conozco. Llevo siglos cortándoles la cabeza. Siempre vuelven.
+
+`g8_031c4` **Jorge:** (Siglos. Dijo «siglos».)
+
+`g8_032` **???:** Supongo que debería presentarme.
+
+`g8_033` — Pone la mano sobre la empuñadura sin hoja. De ella brota una hoja de energía roja, fina, que zumba como una cuerda de violín.
+
+`g8_034` — Hace un giro con la espada: elegante, innecesario, completamente teatral. Unos pétalos que caían cerca se parten en dos en el aire.
+
+`g8_035` **Rikka:** Me llamo Rikka.
+
+`g8_036` **GRAVITY:** > Entidad 02: RIKKA. Nombre asignado por autocompletado.
+
+`g8_037` **Rikka:** Guardiana de este puente. Última de... bueno. Última de muchas cosas.
+
+`g8_038` **Rikka:** Y si ustedes traen problemas a mi bosque, les juro por mis hermanas que...
+
+`g8_039` — Se detiene. Frunce el ceño. Baja un poco la espada.
+
+`g8_040` **Rikka:** ...Esperen. ¿Ustedes me van a cobrar algo?
+
+`g8_041` **Jorge:** ¿Qué?
+
+`g8_042` **Rikka:** Los viajeros siempre cobran. Por las noticias, por los mapas, por los favores. Yo no tengo dinero. Nunca tengo dinero. ¿Cuánto cuesta que me cuenten de dónde vienen? Es que me da miedo preguntar.
+
+`g8_043` **Jorge:** (Ah. Ella también.)
+
+`g8_044` **Jorge:** Es gratis. Te lo juro. Yo nunca cobro. Literalmente nadie me paga.
+
+`g8_045` **Rikka:** ¿Nadie te paga?
+
+`g8_046` **Cami:** Le deben medio mes.
+
+`g8_047` — Rikka mira a Jorge con una mezcla de lástima y algo más. Algo parecido a reconocer a alguien de su misma especie.
+
+`g8_048` **Rikka:** Pobre hombre.
+
+`g8_049` **Jorge:** Gracias.
+
+`g8_050` **Rikka:** No era un cumplido.
+
+`g8_051` **Jorge:** Ya sé. Igual, gracias.
+
+`g8_052` — Rikka apaga la espada y se acerca. Mira el tobillo de Cami: la venda horrible, el nudo mal hecho.
+
+`g8_053` **Rikka:** ¿Quién hizo esto?
+
+`g8_054` **Cami:** Él.
+
+`g8_055` **Rikka:** Se nota.
+
+`g8_056` **Jorge:** Llegué hasta el módulo tres.
+
+`g8_057` **Rikka:** No sé qué significa eso y no quiero saberlo.
+
+> solo si lucidez_cami >= 2
+`g8_058` — Cami y Rikka se miran de cerca por primera vez. Cami se queda quieta. Algo en la cara de la peliverde la incomoda: no la cara en sí, sino la sensación de haberla visto antes. En otro lugar. Desde atrás. Como si siempre hubiera estado un paso detrás de ella.
+
+> solo si lucidez_cami >= 2
+`g8_059` **Cami:** (¿Por qué siento que ya conozco esa espalda?)
+
+`g8_060` **Rikka:** Al otro lado del puente hay un refugio. Puedo curarle el tobillo. Puedo darles comida. Puedo decirles por dónde no deben ir.
+
+`g8_061` **Rikka:** Pero...
+
+`g8_062` — Vuelve a mirar los brazos de Jorge. A Cami, bien acomodada en ellos.
+
+`g8_063` **Rikka:** ...ella camina sola hasta allá.
+
+`g8_064` **Cami:** No puedo caminar.
+
+`g8_065` **Rikka:** Entonces salta en un pie. Con mucha comodidad.
+
+`g8_066` **Cami:** ¿Quieres pelear, peliverde?
+
+`g8_067` **Rikka:** Yo no peleo con heridas. Espero a que se curen y después las humillo.
+
+`j01` **Jorge:** Oigan. ¿Podemos pelear después? Ella pesa.
+
+`j02` **Cami:** ¿Qué dijiste?
+
+`j03` **Jorge:** Que pesas... poco. Pesas poquísimo. Pero mis brazos son de oficina.
+
+`j04` **Rikka:** ¿De oficina?
+
+`j05` **Jorge:** Es un lugar donde la gente se sienta todo el día y se pone triste.
+
+`j06` **Rikka:** ¿Como una prisión?
+
+`j07` **Jorge:** Una prisión con café.
+
+`j08` **Rikka:** Pobre hombre.
+
+`j09` **Jorge:** Ya me lo dijiste.
+
+`j10` **Rikka:** Lo repito porque es cierto.
+
+`j11` — Rikka suspira, con un suspiro largo y teatral que parece ensayado durante siglos. Después da media vuelta, con el kimono girando a su alrededor como en una pintura.
+
+`j12` **Rikka:** Síganme. Y tú, el de la camisa quemada...
+
+`j13` **Jorge:** Jorge.
+
+`j14` **Rikka:** Jorge. ¿Jorge qué? ¿Jorge el Caído del Cielo? ¿Jorge el Mal Vendador?
+
+`j15` **Jorge:** Jorge de soporte técnico.
+
+`j16` **Rikka:** ...No conozco esa orden.
+
+`j17` **Jorge:** Nadie la conoce.
+
+`j18` **Cami:** Yo le pregunté lo mismo. Dice que es una orden muy humilde.
+
+`j19` — Es la primera vez que Cami y Rikka dicen algo en el mismo tono. Las dos se dan cuenta al mismo tiempo, y las dos ponen exactamente la misma cara de disgusto.
+
+`j20` **Jorge:** (Rivales. Tensión. Celos. Y, por lo visto, el mismo sentido del humor.)
+
+`g8_068` **Jorge:** (Dos horas. Llevo dos horas en este mundo y ya estoy en medio de algo que no sé cómo se llama.)
+
+`g8_069` **Jorge:** (Igual que afuera.)
+
+`g8_070` — Detrás de ellos, el sol del atardecer eterno no se mueve. Delante están el puente rojo, el refugio y el bosque de las cuatro estaciones.
+
+`g8_071` — Y en el borde de su visión, unas letras blancas que esta vez Jorge no alcanza a leer antes de que se desvanezcan.
+
+`g8_072` **GRAVITY:** > Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa.
+
+
+### negro
+
+`g8_073` — Fin del Capítulo 1.
+
+> **FIN: Fin del Capítulo 1**
+
+---
+`corte_sobrio` — Fin del Capítulo 1.
+
+> **FIN: Fin del Capítulo 1 (no fue al bar)**
+
+---
+`corte_rechazo` — Fin del Capítulo 1.
+
+> **FIN: Fin del Capítulo 1 (rechazó a Nikki)**
+
+---
