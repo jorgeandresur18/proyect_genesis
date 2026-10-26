@@ -10,7 +10,7 @@ import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
-import { playSelect } from './engine/sound';
+import { playSelect, unlockAudio } from './engine/sound';
 
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
@@ -29,6 +29,8 @@ export default function App() {
     return (
       <ContentWarning
         onAccept={() => {
+          // El toque en «Continuar» habilita el audio del navegador y precarga los efectos.
+          unlockAudio();
           // Si hay una partida en curso, se vuelve directo al juego: en celular, en pantalla completa.
           if (useStore.getState().game) void enterPlayMode();
           setAccepted(true);
