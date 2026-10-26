@@ -9,6 +9,7 @@
 ## 2. Funciones del motor
 
 - Avance manual del texto y autoavance opcional.
+- Texto con efecto máquina de escribir; velocidad en Opciones (letras por segundo o instantáneo). Clic o Espacio: primero completa la línea, después avanza. Las decisiones aparecen al terminar el texto. El modo auto avanza solo cuando la línea terminó, tras una pausa configurable.
 - Elecciones que modifican variables y desbloquean escenas.
 - Historial de diálogo.
 - Guardado y carga (`localStorage`); varios espacios de guardado.

@@ -1,0 +1,6 @@
+# Saltos de línea LF en todo el repo (evita cambios falsos entre Windows y otros sistemas).
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.psd binary
+*.pdf binary

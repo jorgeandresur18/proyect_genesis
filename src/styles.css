@@ -219,12 +219,12 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 .option { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
 .option:has(input[type='checkbox']) { flex-direction: row; align-items: center; }
 
-/* Pantalla de título: marca del juego. */
-.title-icon { width: min(14rem, 40vw); height: auto; filter: drop-shadow(0 0 1.5rem rgba(47, 196, 255, 0.35)); }
-.title-name {
-  margin: 0;
-  font-size: clamp(1.8rem, 5vw, 3.2rem);
-  letter-spacing: 0.25em;
-  color: #cfeeff;
-  text-shadow: 0 0 0.6rem rgba(47, 196, 255, 0.8), 0 0 1.8rem rgba(47, 196, 255, 0.45);
-}
+/* Pantalla de título: logo del juego. */
+.title-logo { margin: 0; line-height: 0; }
+.title-logo img { width: min(26rem, 70vw, 55vh); height: auto; }
+
+/* Máquina de escribir: el texto que falta ocupa su lugar sin verse; ▼ indica que la línea terminó. */
+.dialog-hidden { visibility: hidden; }
+.dialog-next { display: inline-block; margin-left: 0.4rem; font-size: 0.7em; color: var(--accent); animation: dialog-next-blink 1s steps(2) infinite; }
+@keyframes dialog-next-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .dialog-next { animation: none; } }

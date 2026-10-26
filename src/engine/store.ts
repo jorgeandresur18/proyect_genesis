@@ -32,8 +32,14 @@ export interface SaveSlot {
 
 export interface Settings {
   reduceEffects: boolean;
+  /** Pausa del modo auto después de que el texto terminó de escribirse. */
   autoDelayMs: number;
+  /** Caracteres por segundo; TEXT_SPEED_INSTANT o más = texto instantáneo. */
+  textSpeed: number;
 }
+
+export const TEXT_SPEED_INSTANT = 130;
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45 };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 
@@ -51,9 +57,14 @@ interface Store {
   choicesTaken: Record<string, true>;
   mode: Mode;
   error: string | null;
+  /** El texto de la línea actual ya terminó de escribirse (efecto máquina de escribir). */
+  textDone: boolean;
 
   newGame: () => void;
   advance: () => void;
+  /** Clic o Espacio: si el texto se está escribiendo, lo completa; si ya terminó, avanza. */
+  next: () => void;
+  setTextDone: (done: boolean) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -91,6 +102,7 @@ export const useStore = create<Store>()(
         set({
           ...patch,
           error: null,
+          textDone: !scene.dialogue,
           game: { sceneId: scene.scene_id, vars: nextVars, history: nextHistory, finished: null },
         });
       }
@@ -100,7 +112,7 @@ export const useStore = create<Store>()(
       }
 
       return {
-        settings: { reduceEffects: false, autoDelayMs: 2500 },
+        settings: DEFAULT_SETTINGS,
         game: null,
         saves: Array(SAVE_SLOTS).fill(null),
         readScenes: {},
@@ -109,8 +121,16 @@ export const useStore = create<Store>()(
         choicesTaken: {},
         mode: 'normal',
         error: null,
+        textDone: false,
 
         newGame: () => goTo(config.inicio, { ...variables }, []),
+
+        next: () => {
+          if (get().textDone) get().advance();
+          else set({ textDone: true });
+        },
+
+        setTextDone: (done) => set({ textDone: done }),
 
         advance: () => {
           const { game } = get();
@@ -183,6 +203,7 @@ export const useStore = create<Store>()(
           set({
             error: null,
             mode: 'normal',
+            textDone: false,
             game: { sceneId: data.sceneId, vars: { ...variables, ...data.vars }, history: data.history, finished: null },
           });
         },
@@ -200,6 +221,11 @@ export const useStore = create<Store>()(
     {
       name: 'genesis-vn',
       version: 1,
+      // Las opciones guardadas antes de agregar una opción nueva toman su valor por defecto.
+      merge: (persisted, current) => {
+        const p = persisted as Partial<Store>;
+        return { ...current, ...p, settings: { ...current.settings, ...p.settings } };
+      },
       partialize: (s) => ({
         settings: s.settings,
         game: s.game,

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { SAVE_SLOTS, useStore } from '../engine/store';
+import { SAVE_SLOTS, TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { BAD_END, endings } from '../engine/story';
 
 export function Panel({
@@ -132,11 +132,23 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         Reducir efectos (desactiva glitches y efectos de interfaz)
       </label>
       <label className="option">
-        Velocidad de autoavance: {(settings.autoDelayMs / 1000).toFixed(1)} s
+        Velocidad del texto:{' '}
+        {settings.textSpeed >= TEXT_SPEED_INSTANT ? 'instantáneo' : `${settings.textSpeed} letras por segundo`}
         <input
           type="range"
-          min={800}
-          max={6000}
+          min={10}
+          max={TEXT_SPEED_INSTANT}
+          step={5}
+          value={Math.min(settings.textSpeed, TEXT_SPEED_INSTANT)}
+          onChange={(e) => setSettings({ textSpeed: Number(e.target.value) })}
+        />
+      </label>
+      <label className="option">
+        Modo auto: pausa al terminar cada línea, {(settings.autoDelayMs / 1000).toFixed(1)} s
+        <input
+          type="range"
+          min={300}
+          max={5000}
           step={100}
           value={settings.autoDelayMs}
           onChange={(e) => setSettings({ autoDelayMs: Number(e.target.value) })}

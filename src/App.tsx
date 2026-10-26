@@ -53,8 +53,9 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
   const error = useStore((s) => s.error);
   return (
     <div className="screen title">
-      <img className="title-icon" src={`${import.meta.env.BASE_URL}marca/icono.webp`} alt="" draggable={false} />
-      <h1 className="title-name">PROYECT GENESIS</h1>
+      <h1 className="title-logo">
+        <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
+      </h1>
       <p className="muted">Prototipo</p>
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
@@ -69,8 +70,8 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
 }
 
 function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean }) {
-  const { game, scene, choices, waitingChoice, effects, mode } = useStoryEngine();
-  const { advance, choose, setMode, quitToTitle } = useStore.getState();
+  const { game, scene, choices, waitingChoice, effects, mode, textDone } = useStoryEngine();
+  const { advance, next, choose, setMode, quitToTitle } = useStore.getState();
   const error = useStore((s) => s.error);
 
   useEffect(() => {
@@ -78,12 +79,12 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
     const onKey = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
-        if (!waitingChoice) advance();
+        if (!(waitingChoice && textDone)) next();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [paused, waitingChoice, advance]);
+  }, [paused, waitingChoice, textDone, next]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
@@ -109,8 +110,13 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   return (
     <SceneStage scene={scene} effects={effects}>
       {error && <p className="error stage-error">{error}</p>}
-      {waitingChoice && <DecisionMenu choices={choices} onChoose={choose} />}
-      <DialogBox dialogue={scene.dialogue} aiVowels={effects.includes('ai_vowels')} onAdvance={advance} />
+      {waitingChoice && textDone && <DecisionMenu choices={choices} onChoose={choose} />}
+      <DialogBox
+        key={scene.scene_id}
+        dialogue={scene.dialogue}
+        aiVowels={effects.includes('ai_vowels')}
+        onAdvance={next}
+      />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
       <div className="toolbar" onMouseDown={(e) => e.preventDefault()}>
         <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>

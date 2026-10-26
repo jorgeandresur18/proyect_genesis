@@ -11,8 +11,10 @@ export function useStoryEngine() {
   const mode = useStore((s) => s.mode);
   const readScenes = useStore((s) => s.readScenes);
   const settings = useStore((s) => s.settings);
+  const textDone = useStore((s) => s.textDone);
   const advance = useStore((s) => s.advance);
   const setMode = useStore((s) => s.setMode);
+  const setTextDone = useStore((s) => s.setTextDone);
 
   const scene = game ? scenes.get(game.sceneId) ?? null : null;
   const choices = scene && game ? visibleChoices(scene, game.vars) : [];
@@ -20,16 +22,23 @@ export function useStoryEngine() {
   const effects = scene && !settings.reduceEffects ? effectsOf(scene) : [];
 
   useEffect(() => {
-    if (!scene || game?.finished || waitingChoice || mode === 'normal') return;
-    if (mode === 'skip' && !readScenes[scene.scene_id]) {
-      // El salto se detiene en el primer texto no leído.
-      setMode('normal');
-      return;
+    if (!scene || game?.finished || mode === 'normal') return;
+    if (mode === 'skip') {
+      // El salto se detiene en el primer texto no leído y en las decisiones.
+      if (!readScenes[scene.scene_id]) {
+        setMode('normal');
+        return;
+      }
+      if (!textDone) setTextDone(true);
+      if (waitingChoice) return;
+      const t = setTimeout(advance, SKIP_DELAY_MS);
+      return () => clearTimeout(t);
     }
-    const delay = mode === 'skip' ? SKIP_DELAY_MS : settings.autoDelayMs;
-    const t = setTimeout(advance, delay);
+    // Auto: espera a que el texto termine de escribirse y después hace una pausa.
+    if (!textDone || waitingChoice) return;
+    const t = setTimeout(advance, settings.autoDelayMs);
     return () => clearTimeout(t);
-  }, [scene, game?.finished, waitingChoice, mode, readScenes, settings.autoDelayMs, advance, setMode]);
+  }, [scene, game?.finished, waitingChoice, mode, readScenes, textDone, settings.autoDelayMs, advance, setMode, setTextDone]);
 
-  return { game, scene, choices, waitingChoice, effects, mode };
+  return { game, scene, choices, waitingChoice, effects, mode, textDone };
 }
