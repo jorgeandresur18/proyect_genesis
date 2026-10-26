@@ -94,7 +94,8 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
 
 export function EndingsGallery({ onClose }: { onClose: () => void }) {
   const seen = useStore((s) => s.endingsSeen);
-  const visible = endings.filter((e) => !e.oculto || seen[e.id]);
+  // Solo los finales que existen en esta versión: los del juego completo aparecen cuando estén escritos.
+  const visible = endings.filter((e) => e.estado === 'jugable' && (!e.oculto || seen[e.id]));
   const groups = [
     { title: 'Finales', list: visible.filter((e) => e.tipo !== BAD_END) },
     { title: 'Bad ends', list: visible.filter((e) => e.tipo === BAD_END) },
@@ -106,6 +107,9 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
           <h3>
             {g.title} ({g.list.filter((e) => seen[e.id]).length}/{g.list.length})
           </h3>
+          {g.list.length === 0 && (
+            <p className="muted">Los finales de la historia llegarán con los próximos capítulos.</p>
+          )}
           {g.list.map((e) => (
             <div key={e.id} className={`ending ${seen[e.id] ? '' : 'ending-locked'}`}>
               <strong>{seen[e.id] ? e.nombre : '???'}</strong>

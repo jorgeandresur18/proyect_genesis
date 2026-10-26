@@ -21,17 +21,17 @@ Muertes o fracasos tempranos, estilo Shiny Days. No cuentan entre los 12 finales
 | `bad_cap01_huida` | Nadie más se encarga | 1 | Al despertar, «Correr en dirección contraria» en vez de ir hacia la voz de Cami | Borrador |
 | `bad_cap01_escudo` | Escudo humano | 1 | Ante el monstruo, «Esconderte detrás de Cami» | Borrador |
 | `bad_cap01_patrulla` | Pendiente de revisión | 1 | En la patrulla, «Cruzar ya» a destiempo | Borrador |
+| `bad_cap01_sin_bar` | Una noche normal | 1 | «Decir que estás cansado» a Nikki: no hay bar; sobrio, borra el correo de GRAVITY | Borrador |
+| `bad_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso; en casa borra el correo de GRAVITY | Borrador |
+| `bad_cap01_correo` | Spam | 1 | Frente al correo de GRAVITY, «Eliminar el correo» | Borrador |
 
 Los nombres son propuestas por confirmar.
 
-## Cortes tempranos del Capítulo 1 `[CANON]`
+## La noche que crea el juego `[CANON]`
 
-Dos decisiones cortan el Capítulo 1 cuando Jair se duerme (sin la parte del isekai) y hacen que el Capítulo 2 empiece distinto. Variable `inicio_cap2`: `normal`, `sobrio` o `rechazo`.
+La noche del bar con Nikki es lo que lleva a Jair a instalar GRAVITY y crear el videojuego. Si esa noche no ocurre (no va al bar), si la rechaza, o si borra el correo de GRAVITY, el juego nunca se crea y la historia jamás ocurre: son bad ends (`bad_cap01_sin_bar`, `bad_cap01_rechazo`, `bad_cap01_correo`). Variable `noche`: `normal`, `sin_bar` o `rechazo`.
 
-- `sobrio`: no va al bar con Nikki («Decir que estás cansado»; ella no insiste).
-- `rechazo`: aparta a Nikki cuando le pide el beso.
-
-Mientras no exista `cap02.json`, terminan en finales ocultos de prototipo (`fin_cap01_sobrio`, `fin_cap01_rechazo`). `TODO(canon)`: cómo empieza el Capítulo 2 en cada caso.
+Los finales de la tabla principal (canon, alternativos, Génesis++ y Génesis#) son del juego completo. Mientras no estén escritos no se muestran en la galería; el Capítulo 1 solo tiene bad ends.
 
 ## Reglas
 

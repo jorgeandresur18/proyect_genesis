@@ -34,7 +34,20 @@ describe('los personajes se miran entre sí', () => {
 describe('hablantes sin nombre', () => {
   it('«???» es el personaje en escena que todavía no habló con su nombre', () => {
     // Rikka habla como «???» antes de presentarse: Cami (centro) la mira a ella, no a Jair.
-    const speakers = ['Jair', 'Cami', '???'];
+    const speakers = ['Jair', 'Cami', '???', '???'];
     expect(flippedCharacters([jair, camiCentro, rikkaDer], speakers).has('cami')).toBe(false);
+  });
+});
+
+describe('el del centro no gira en cada línea', () => {
+  it('en un ida y vuelta entre los costados mantiene su orientación', () => {
+    // Empieza mirando a Jair (izquierda): Cami (mira a la derecha en su imagen) queda volteada.
+    const ida = ['Jair', 'Rikka', 'Jair', 'Rikka', 'Cami', 'Jair', 'Rikka'];
+    for (let n = 1; n <= ida.length; n++) {
+      expect(flippedCharacters([jair, camiCentro, rikkaDer], ida.slice(0, n)).has('cami')).toBe(true);
+    }
+  });
+  it('gira cuando el otro lado habla dos veces seguidas', () => {
+    expect(flippedCharacters([jair, camiCentro, rikkaDer], ['Jair', 'Rikka', 'Rikka']).has('cami')).toBe(false);
   });
 });

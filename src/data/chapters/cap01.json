@@ -893,7 +893,7 @@
           "text": "Decir que estás cansado",
           "next": "cap01_020b",
           "set": {
-            "inicio_cap2": "sobrio"
+            "noche": "sin_bar"
           }
         }
       ],
@@ -5169,7 +5169,7 @@
           "text": "Apartarla con cuidado",
           "next": "cap01_103b",
           "set": {
-            "inicio_cap2": "rechazo"
+            "noche": "rechazo"
           }
         },
         {
@@ -6033,7 +6033,7 @@
       "choices": [],
       "conditions": [
         {
-          "var": "inicio_cap2",
+          "var": "noche",
           "op": "==",
           "value": "rechazo"
         }
@@ -6062,7 +6062,7 @@
       "choices": [],
       "conditions": [
         {
-          "var": "inicio_cap2",
+          "var": "noche",
           "op": "==",
           "value": "rechazo"
         }
@@ -6085,9 +6085,9 @@
       "choices": [],
       "conditions": [
         {
-          "var": "inicio_cap2",
+          "var": "noche",
           "op": "!=",
-          "value": "sobrio"
+          "value": "sin_bar"
         }
       ],
       "audio": null,
@@ -6108,9 +6108,9 @@
       "choices": [],
       "conditions": [
         {
-          "var": "inicio_cap2",
+          "var": "noche",
           "op": "==",
-          "value": "sobrio"
+          "value": "sin_bar"
         }
       ],
       "audio": null,
@@ -6189,7 +6189,473 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
-      "next": "cap01_127"
+      "next": [
+        {
+          "conditions": [
+            {
+              "var": "noche",
+              "op": "==",
+              "value": "sin_bar"
+            }
+          ],
+          "to": "cap01_bad_sinbar_001"
+        },
+        {
+          "conditions": [
+            {
+              "var": "noche",
+              "op": "==",
+              "value": "rechazo"
+            }
+          ],
+          "to": "cap01_bad_rechazo_001"
+        },
+        {
+          "to": "cap01_126c"
+        }
+      ]
+    },
+    {
+      "scene_id": "cap01_126c",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "El cursor flota entre dos botones: «Descargar» y «Eliminar»."
+      },
+      "choices": [
+        {
+          "text": "Descargarlo igual",
+          "next": "cap01_127"
+        },
+        {
+          "text": "Eliminar el correo",
+          "next": "cap01_bad_correo_001"
+        }
+      ],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null
+    },
+    {
+      "scene_id": "cap01_bad_correo_001",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair manda el correo a la papelera. Después vacía la papelera. Es lo más responsable que ha hecho en toda la noche."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_correo_002"
+    },
+    {
+      "scene_id": "cap01_bad_correo_002",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ni loco. Le he dicho a cuatrocientos clientes que no abran estas cosas.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_correo_003"
+    },
+    {
+      "scene_id": "cap01_bad_correo_003",
+      "chapter": 1,
+      "background": "PLACEHOLDER:departamento_noche",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Apaga la PC. El ventilador sigue girando, solo, en la oscuridad."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "silencio",
+      "ui_effect": null,
+      "next": "cap01_bad_correo_004"
+    },
+    {
+      "scene_id": "cap01_bad_correo_004",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Duerme once horas. Despierta con resaca, un mensaje de Nikki que dice «ya llegue» y la misma vida de siempre."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_correo_005"
+    },
+    {
+      "scene_id": "cap01_bad_correo_005",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Correo",
+        "text": "Tu invitación a GRAVITY ha expirado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_correo_006"
+    },
+    {
+      "scene_id": "cap01_bad_correo_006",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "En algún servidor, una inteligencia artificial espera a un usuario que nunca llega. Y la historia que estabas por jugar nunca ocurrió."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_correo_007"
+    },
+    {
+      "scene_id": "cap01_bad_correo_007",
+      "chapter": 1,
+      "background": "PLACEHOLDER:negro",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Spam."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "ending": "bad_cap01_correo"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_001",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair lee el correo dos veces. Sobrio, todo se ve más sospechoso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_002"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_002",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "«Nosotros lo construimos». Claro. Y después me vacían la cuenta."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_003"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_003",
+      "chapter": 1,
+      "background": "PLACEHOLDER:departamento_noche",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "silencio",
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_004"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_004",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El sábado no pasa nada. El domingo tampoco. El lunes, el supervisor avisa que el pago se corre para el otro viernes."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_005"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_005",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair nunca escribe un mundo. Nadie despierta en él. Nadie lo carga, nadie lo espera en un puente. La historia que estabas por jugar nunca ocurrió."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_006"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_006",
+      "chapter": 1,
+      "background": "PLACEHOLDER:negro",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Una noche normal."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "ending": "bad_cap01_sin_bar"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_001",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair mira el correo. Piensa en Nikki subiéndose al taxi. En que le dijo que no."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_002"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_002",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_003"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_003",
+      "chapter": 1,
+      "background": "PLACEHOLDER:departamento_noche",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "silencio",
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_004"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_004",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "No hay rubia, ni peliverde, ni Rey Malvado. Solo un hombre que, por una noche, eligió no huir."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_005"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_005",
+      "chapter": 1,
+      "background": "PLACEHOLDER:pc_correo",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Sin esa huida no hay juego. Y sin juego, la historia que estabas por jugar nunca ocurrió."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_006"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_006",
+      "chapter": 1,
+      "background": "PLACEHOLDER:negro",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "La única vez que dijo que no."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "ending": "bad_cap01_rechazo"
     },
     {
       "scene_id": "cap01_127",
@@ -6203,36 +6669,7 @@
         "text": "Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días»."
       },
       "choices": [],
-      "conditions": [
-        {
-          "var": "inicio_cap2",
-          "op": "!=",
-          "value": "sobrio"
-        }
-      ],
-      "audio": null,
-      "ui_effect": null,
-      "next": "cap01_127s"
-    },
-    {
-      "scene_id": "cap01_127s",
-      "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
-        "text": "Lo descarga igual. Está sobrio, es viernes por la noche y no tiene nada mejor que hacer. Eso es peor que estar borracho."
-      },
-      "choices": [],
-      "conditions": [
-        {
-          "var": "inicio_cap2",
-          "op": "==",
-          "value": "sobrio"
-        }
-      ],
+      "conditions": [],
       "audio": null,
       "ui_effect": null,
       "next": "cap01_128"
@@ -6624,36 +7061,7 @@
         "text": "La pantalla brilla. El ventilador gira. El tequila hace su trabajo. Los párpados de Jair pesan como la quincena atrasada."
       },
       "choices": [],
-      "conditions": [
-        {
-          "var": "inicio_cap2",
-          "op": "!=",
-          "value": "sobrio"
-        }
-      ],
-      "audio": null,
-      "ui_effect": null,
-      "next": "cap01_149s"
-    },
-    {
-      "scene_id": "cap01_149s",
-      "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
-        "text": "Son las tres de la mañana. Lleva ocho horas frente a la pantalla. El cansancio hace el trabajo que esta noche no hizo el tequila. Los párpados de Jair pesan como la quincena atrasada."
-      },
-      "choices": [],
-      "conditions": [
-        {
-          "var": "inicio_cap2",
-          "op": "==",
-          "value": "sobrio"
-        }
-      ],
+      "conditions": [],
       "audio": null,
       "ui_effect": null,
       "next": "cap01_150"
@@ -6945,31 +7353,7 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
-      "next": [
-        {
-          "conditions": [
-            {
-              "var": "inicio_cap2",
-              "op": "==",
-              "value": "sobrio"
-            }
-          ],
-          "to": "cap01_corte_sobrio"
-        },
-        {
-          "conditions": [
-            {
-              "var": "inicio_cap2",
-              "op": "==",
-              "value": "rechazo"
-            }
-          ],
-          "to": "cap01_corte_rechazo"
-        },
-        {
-          "to": "cap01_g1_001"
-        }
-      ]
+      "next": "cap01_g1_001"
     },
     {
       "scene_id": "cap01_g1_001",
@@ -33802,42 +34186,6 @@
       "ui_effect": null,
       "next": null,
       "ending": "fin_prototipo_cap01"
-    },
-    {
-      "scene_id": "cap01_corte_sobrio",
-      "chapter": 1,
-      "background": "PLACEHOLDER:negro",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
-        "text": "Fin del Capítulo 1."
-      },
-      "choices": [],
-      "conditions": [],
-      "audio": null,
-      "ui_effect": null,
-      "next": null,
-      "ending": "fin_cap01_sobrio"
-    },
-    {
-      "scene_id": "cap01_corte_rechazo",
-      "chapter": 1,
-      "background": "PLACEHOLDER:negro",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
-        "text": "Fin del Capítulo 1."
-      },
-      "choices": [],
-      "conditions": [],
-      "audio": null,
-      "ui_effect": null,
-      "next": null,
-      "ending": "fin_cap01_rechazo"
     }
   ]
 }

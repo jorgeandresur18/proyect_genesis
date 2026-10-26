@@ -100,7 +100,7 @@
 
 > **DECISIÓN**
 - `019#0` Aceptar ⟶ va a `020a`
-- `019#1` Decir que estás cansado ⟶ va a `020b` · inicio_cap2 = "sobrio"
+- `019#1` Decir que estás cansado ⟶ va a `020b` · noche = "sin_bar"
 
 `020a` **Jair:** Una. Mañana... bueno, mañana es sábado. Una.
 
@@ -437,7 +437,7 @@
 
 > **DECISIÓN**
 - `102#0` Besarla ⟶ va a `103a` · beso_nikki = true
-- `102#1` Apartarla con cuidado ⟶ va a `103b` · inicio_cap2 = "rechazo"
+- `102#1` Apartarla con cuidado ⟶ va a `103b` · noche = "rechazo"
 - `102#2` Hacer un chiste ⟶ va a `103c`
 
 `103a` — Jair la besa. Es un beso torpe, con sabor a tequila y a costumbre.
@@ -529,19 +529,19 @@
 
 `121` **Jair:** (Y con Nikki. Pero de esa relación no tengo ni el manual ni la garantía.)
 
-> solo si inicio_cap2 == "rechazo"
+> solo si noche == "rechazo"
 `121r1` **Jair:** (Le dije que no. Por primera vez en ocho años, le dije que no.)
 
-> solo si inicio_cap2 == "rechazo"
+> solo si noche == "rechazo"
 `121r2` **Jair:** (No sé si fue valentía o miedo. Desde adentro se sienten igual.)
 
 
 ### pc_correo
 
-> solo si inicio_cap2 != "sobrio"
+> solo si noche != "sin_bar"
 `122` — Debería dormir. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
 
-> solo si inicio_cap2 == "sobrio"
+> solo si noche == "sin_bar"
 `122s` — Debería cocinar algo. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
 
 > ♪ silencio
@@ -553,11 +553,102 @@
 
 `126` **Jair:** Seguro es un virus.
 
-> solo si inicio_cap2 != "sobrio"
-`127` — Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días».
+> ⤷ si noche == "sin_bar" → `bad_sinbar_001` · si noche == "rechazo" → `bad_rechazo_001` · si no → `126c`
 
-> solo si inicio_cap2 == "sobrio"
-`127s` — Lo descarga igual. Está sobrio, es viernes por la noche y no tiene nada mejor que hacer. Eso es peor que estar borracho.
+`126c` — El cursor flota entre dos botones: «Descargar» y «Eliminar».
+
+
+> **DECISIÓN**
+- `126c#0` Descargarlo igual ⟶ va a `127`
+- `126c#1` Eliminar el correo ⟶ va a `bad_correo_001`
+
+`bad_correo_001` — Jair manda el correo a la papelera. Después vacía la papelera. Es lo más responsable que ha hecho en toda la noche.
+
+`bad_correo_002` **Jair:** (Ni loco. Le he dicho a cuatrocientos clientes que no abran estas cosas.)
+
+
+### departamento_noche
+
+> ♪ silencio
+`bad_correo_003` — Apaga la PC. El ventilador sigue girando, solo, en la oscuridad.
+
+
+### pc_correo
+
+`bad_correo_004` — Duerme once horas. Despierta con resaca, un mensaje de Nikki que dice «ya llegue» y la misma vida de siempre.
+
+`bad_correo_005` **Correo:** Tu invitación a GRAVITY ha expirado.
+
+`bad_correo_006` — En algún servidor, una inteligencia artificial espera a un usuario que nunca llega. Y la historia que estabas por jugar nunca ocurrió.
+
+
+### negro
+
+`bad_correo_007` — Spam.
+
+> **BAD END: Spam**
+
+---
+
+### pc_correo
+
+`bad_sinbar_001` — Jair lee el correo dos veces. Sobrio, todo se ve más sospechoso.
+
+`bad_sinbar_002` **Jair:** «Nosotros lo construimos». Claro. Y después me vacían la cuenta.
+
+
+### departamento_noche
+
+> ♪ silencio
+`bad_sinbar_003` — Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once.
+
+
+### pc_correo
+
+`bad_sinbar_004` — El sábado no pasa nada. El domingo tampoco. El lunes, el supervisor avisa que el pago se corre para el otro viernes.
+
+`bad_sinbar_005` — Jair nunca escribe un mundo. Nadie despierta en él. Nadie lo carga, nadie lo espera en un puente. La historia que estabas por jugar nunca ocurrió.
+
+
+### negro
+
+`bad_sinbar_006` — Una noche normal.
+
+> **BAD END: Una noche normal**
+
+---
+
+### pc_correo
+
+`bad_rechazo_001` — Jair mira el correo. Piensa en Nikki subiéndose al taxi. En que le dijo que no.
+
+`bad_rechazo_002` **Jair:** (Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)
+
+
+### departamento_noche
+
+> ♪ silencio
+`bad_rechazo_003` — Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual.
+
+
+### pc_correo
+
+`bad_rechazo_004` — No hay rubia, ni peliverde, ni Rey Malvado. Solo un hombre que, por una noche, eligió no huir.
+
+`bad_rechazo_005` — Sin esa huida no hay juego. Y sin juego, la historia que estabas por jugar nunca ocurrió.
+
+
+### negro
+
+`bad_rechazo_006` — La única vez que dijo que no.
+
+> **BAD END: La única vez que dijo que no**
+
+---
+
+### pc_correo
+
+`127` — Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días».
 
 
 ### gravity_ide
@@ -605,11 +696,7 @@
 
 `148` **GRAVITY:** > ¿Desea que GENESIS complete los parámetros faltantes? [S/N]
 
-> solo si inicio_cap2 != "sobrio"
 `149` — La pantalla brilla. El ventilador gira. El tequila hace su trabajo. Los párpados de Jair pesan como la quincena atrasada.
-
-> solo si inicio_cap2 == "sobrio"
-`149s` — Son las tres de la mañana. Lleva ocho horas frente a la pantalla. El cansancio hace el trabajo que esta noche no hizo el tequila. Los párpados de Jair pesan como la quincena atrasada.
 
 > ♪ silencio
 `150` — Su frente baja despacio hasta el teclado.
@@ -645,8 +732,6 @@
 `l10` — En el departamento, el ventilador gira. Jair respira contra el teclado. En la pantalla, las líneas siguen subiendo, cada vez más rápido, hasta que ya no son líneas sino una sola luz blanca.
 
 `l11` — Y la luz lo mira de vuelta.
-
-> ⤷ si inicio_cap2 == "sobrio" → `corte_sobrio` · si inicio_cap2 == "rechazo" → `corte_rechazo` · si no → `g1_001`
 
 
 ### negro
@@ -2726,15 +2811,5 @@
 `g8_073` — Fin del Capítulo 1.
 
 > **FIN: Fin del Capítulo 1**
-
----
-`corte_sobrio` — Fin del Capítulo 1.
-
-> **FIN: Fin del Capítulo 1 (no fue al bar)**
-
----
-`corte_rechazo` — Fin del Capítulo 1.
-
-> **FIN: Fin del Capítulo 1 (rechazó a Nikki)**
 
 ---

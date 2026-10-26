@@ -1,8 +1,9 @@
 [
   { "id": "fin_prototipo_cap01", "nombre": "Fin del Capítulo 1", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
-  { "id": "fin_cap01_sobrio", "nombre": "Fin del Capítulo 1 (no fue al bar)", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
-  { "id": "fin_cap01_rechazo", "nombre": "Fin del Capítulo 1 (rechazó a Nikki)", "pieza": "prototipo", "tipo": "Prototipo", "estado": "jugable", "oculto": true },
 
+  { "id": "bad_cap01_sin_bar", "nombre": "Una noche normal", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_rechazo", "nombre": "La única vez que dijo que no", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_correo", "nombre": "Spam", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "bad_cap01_huida", "nombre": "Nadie más se encarga", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "bad_cap01_escudo", "nombre": "Escudo humano", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "bad_cap01_patrulla", "nombre": "Pendiente de revisión", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },

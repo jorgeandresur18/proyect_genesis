@@ -1,6 +1,6 @@
 // Orientación de los sprites: los personajes se miran entre sí.
 // - Los de los costados miran hacia el centro.
-// - El del centro mira a quien le habla; si habla él, a quien le habló antes.
+// - El del centro mira a quien le habla, con inercia (ver centerFacing).
 // Un sprite se voltea en espejo si su imagen mira hacia el lado contrario (src/data/orientacion.json).
 import type { Character } from './types';
 import orientacion from '../data/orientacion.json';
@@ -45,21 +45,34 @@ export function flippedCharacters(characters: Character[], speakers: (string | n
     const pos = characters.find((c) => c.id === id)?.pos;
     return pos === 'izquierda' || pos === 'derecha' ? pos : null;
   };
-  const current = speakerId(speakers[speakers.length - 1], characters, speakers);
+  /**
+   * El del centro mira hacia quien le habla, con inercia: solo cambia de lado cuando el otro lado habla
+   * dos veces seguidas. Sus propias líneas y la narración no cuentan. Así no gira en cada línea de un
+   * ida y vuelta entre los dos costados.
+   */
+  const centerFacing = (self: string): Side | null => {
+    let facing: Side | null = null;
+    let streak = 0;
+    for (const sp of speakers.slice(-60)) {
+      const id = speakerId(sp, characters, speakers);
+      const side = id && id !== self ? sideOf(id) : null;
+      if (!side) continue;
+      if (facing === null || side === facing) {
+        facing = side;
+        streak = 0;
+      } else if (++streak >= 2) {
+        facing = side;
+        streak = 0;
+      }
+    }
+    return facing ?? (characters.some((o) => o.pos === 'izquierda') ? 'izquierda' : null);
+  };
 
   for (const c of characters) {
     let want: Side | null = c.mira ?? null;
     if (!want && c.pos === 'izquierda') want = 'derecha';
     if (!want && c.pos === 'derecha') want = 'izquierda';
-    if (!want && c.pos === 'centro') {
-      // Mira a quien habla; si habla él (o es narración), a quien habló antes.
-      let target = current && current !== c.id ? current : null;
-      for (let i = speakers.length - 2; !target && i >= 0; i--) {
-        const id = speakerId(speakers[i], characters, speakers);
-        if (id && id !== c.id) target = id;
-      }
-      want = (target ? sideOf(target) : null) ?? (characters.some((o) => o.pos === 'izquierda') ? 'izquierda' : null);
-    }
+    if (!want && c.pos === 'centro') want = centerFacing(c.id);
     const natural = naturalFacing(c);
     if (want && natural && natural !== 'frente' && natural !== want) flipped.add(c.id);
   }

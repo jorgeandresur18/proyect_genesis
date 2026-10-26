@@ -92,7 +92,7 @@ Estado global con Zustand o Context, persistido en `localStorage`.
 
 - `ruta`: pieza activa (`base`, `genesis_pp`, `rikkaquest`, `genesis_sharp`).
 - `confianza_rikka`, `lucidez_cami`, `sospecha_nikki`.
-- Capítulo 1: `beso_nikki`, `insistio_relacion`, `confeso_creador` (Jair le dijo a Cami que creó el mundo), `inicio_cap2` (`normal`, `sobrio` o `rechazo`: cómo empieza el Capítulo 2; ver docs/FINALES.md).
+- Capítulo 1: `beso_nikki`, `insistio_relacion`, `confeso_creador` (Jair le dijo a Cami que creó el mundo), `noche` (`normal`, `sin_bar` o `rechazo`: si la noche que crea el juego ocurre; ver docs/FINALES.md).
 - `descubrieron_el_edit` (booleano).
 - `sashi_murio` (solo Génesis++).
 - `final_alcanzado`: ID del final (ver `docs/FINALES.md`).
@@ -116,7 +116,7 @@ Estructura definida por el autor (2026-10-24). Los títulos que faltan están po
 | Nº | Archivo | Capítulo | Contenido | Duración |
 | --- | --- | --- | --- | --- |
 | 1 | `cap01.json` | Una vida en bucle | Trabajo, bar con Nikki, GRAVITY y GENESIS, despertar en la dimensión espacial, rescate de Cami, huida a la dimensión ancestral, encuentro con Rikka. Borrador escrito. | 1 h 30 min |
-| 2 | `cap02.json` | `TODO(canon)` | El viaje del héroe. Empieza distinto según `inicio_cap2`. | 1 h 30 min |
+| 2 | `cap02.json` | `TODO(canon)` | El viaje del héroe. | 1 h 30 min |
 | 3 | `cap03.json` | `TODO(canon)` | La batalla final contra el Rey Malvado. | 2 h 30 min a 3 h |
 | 4 | `cap04.json` | `TODO(canon)` | La materialización de Cami y Rikka y la convivencia con Jair. | 2 h |
 | 5 | `cap05.json` | `TODO(canon)` | La rivalidad entre Cami y Nikki; termina con el descubrimiento de quiénes son realmente ellas. | 1 h 30 min |
