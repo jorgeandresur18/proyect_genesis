@@ -10,6 +10,8 @@ export const SILENCE = 'silencio';
 const CHANGE_FADE = 2; // s: transición entre temas
 const LOOP_FADE = 4; // s: superposición al volver a empezar
 const START_FADE = 1.5; // s: entrada del primer tema
+// La música es un fondo sutil: el volumen de Opciones se multiplica por este nivel (50 % en Opciones ≈ 15 % real).
+const MUSIC_LEVEL = 0.3;
 
 let master: GainNode | null = null;
 let current: string | null = null;
@@ -21,12 +23,12 @@ function out(): GainNode {
   const c = context();
   if (!master) {
     master = c.createGain();
-    master.gain.value = useStore.getState().settings.musicVolume;
+    master.gain.value = useStore.getState().settings.musicVolume * MUSIC_LEVEL;
     master.connect(c.destination);
     // El volumen de Opciones se aplica al momento.
     useStore.subscribe((s, prev) => {
       if (master && s.settings.musicVolume !== prev.settings.musicVolume) {
-        master.gain.setTargetAtTime(s.settings.musicVolume, context().currentTime, 0.05);
+        master.gain.setTargetAtTime(s.settings.musicVolume * MUSIC_LEVEL, context().currentTime, 0.05);
       }
     });
   }
