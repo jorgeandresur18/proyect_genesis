@@ -5,9 +5,13 @@ import { useStore } from './store';
 
 const url = (file: string) => (file.includes('/') ? `${import.meta.env.BASE_URL}${file}` : `${import.meta.env.BASE_URL}audio/sfx/${file}`);
 const SILENCE = 0.01; // Amplitud por debajo de la cual se considera silencio.
-const TYPING_LEVEL = 0.6; // El sonido del texto, más bajo que los demás: suena todo el tiempo.
+// Niveles de los efectos: tienen que notarse claramente sobre la música (que es un fondo sutil).
+// El limitador del bus de efectos evita que se distorsionen con el volumen al máximo.
+const TYPING_LEVEL = 1.6;
+const SELECT_LEVEL = 2.2;
 
 let ctx: AudioContext | null = null;
+let sfxBus: AudioNode | null = null;
 const buffers = new Map<string, Promise<AudioBuffer>>();
 const ranges = new WeakMap<AudioBuffer, { start: number; end: number }>();
 
@@ -15,6 +19,22 @@ export function context(): AudioContext {
   ctx ??= new AudioContext();
   if (ctx.state === 'suspended') void ctx.resume();
   return ctx;
+}
+
+/** Salida de los efectos, con un limitador para que los niveles altos no se distorsionen. */
+function sfxOut(): AudioNode {
+  const c = context();
+  if (!sfxBus) {
+    const limiter = c.createDynamicsCompressor();
+    limiter.threshold.value = -4;
+    limiter.knee.value = 4;
+    limiter.ratio.value = 20;
+    limiter.attack.value = 0.002;
+    limiter.release.value = 0.08;
+    limiter.connect(c.destination);
+    sfxBus = limiter;
+  }
+  return sfxBus;
 }
 
 /** Carga y decodifica un archivo (una vez). Acepta un nombre de efecto o una ruta dentro de public/. */
@@ -85,7 +105,7 @@ export function startTyping(): void {
       source.loopEnd = end;
       const gain = c.createGain();
       gain.gain.value = sfxVolume * TYPING_LEVEL;
-      source.connect(gain).connect(c.destination);
+      source.connect(gain).connect(sfxOut());
       source.start(0, start);
       typing = { source, gain };
     })
@@ -108,8 +128,8 @@ export function playSelect(): void {
       const source = c.createBufferSource();
       source.buffer = buf;
       const gain = c.createGain();
-      gain.gain.value = sfxVolume;
-      source.connect(gain).connect(c.destination);
+      gain.gain.value = sfxVolume * SELECT_LEVEL;
+      source.connect(gain).connect(sfxOut());
       source.start();
     })
     .catch(() => {});
