@@ -9,6 +9,7 @@
 ## 2. Funciones del motor
 
 - Avance manual del texto y autoavance opcional.
+- **Transiciones:** cuando cambia el fondo de una escena a la siguiente, la pantalla funde a negro (0,35 s) y vuelve a aparecer (0,45 s); la línea nueva empieza a escribirse al aparecer. Los personajes que entran en el mismo fondo aparecen con un desvanecido de 0,25 s. Con «Saltar leído» no hay transición. Código: `src/engine/useSceneTransition.ts`.
 - **Música** (`public/audio/musica/`, `src/engine/music.ts`): el campo `audio` de una escena cambia el tema (`"audio/musica/serene.mp3"`) o lo apaga (`"silencio"`); `null` deja sonar el que está. Transición suave entre temas, bucle con desvanecido (no hace falta que el archivo termine en fade) y volumen propio en Opciones. El tema vigente se guarda en la variable interna `_musica`, así suena bien al cargar o saltar desde el mapa. El tema del título está en `src/data/juego.json`. Los finales suenan en silencio.
 - Efectos de sonido de la interfaz (`public/audio/sfx/`, `src/engine/sound.ts`): `texto.mp3` en bucle mientras se escribe una línea y `seleccion.mp3` al elegir una opción. Opciones: volumen de efectos y apagar el sonido del texto.
 - Celular: el juego es horizontal. Al tocar «Nueva partida» o «Cargar» pide pantalla completa y fija la horizontal donde el navegador lo permite (Android). En vertical aparece «Gira tu celular» (iPhone no permite fijar la orientación). En pantallas bajas o angostas la interfaz se compacta: menú ☰, caja de diálogo y decisiones más chicas, paneles a pantalla completa.

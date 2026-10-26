@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useStore } from './engine/store';
 import { BAD_END, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
+import { useSceneTransition } from './engine/useSceneTransition';
+import { effectsOf } from './engine/logic';
 import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
 import { DecisionMenu } from './components/DecisionMenu';
@@ -116,29 +118,36 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
 }
 
 function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean }) {
-  const { game, scene, choices, waitingChoice, effects, mode, textDone } = useStoryEngine();
+  const { game, scene, choices, waitingChoice, mode, textDone } = useStoryEngine();
   const { advance, next, choose, setMode, quitToTitle } = useStore.getState();
   const error = useStore((s) => s.error);
   const [menuOpen, setMenuOpen] = useState(false);
+  const reduceEffects = useStore((s) => s.settings.reduceEffects);
+  // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
+  const { shown, phase } = useSceneTransition(scene, mode === 'skip');
+  const fading = phase === 'out';
+  const advanceIfReady = () => {
+    if (!fading) next();
+  };
 
   useEffect(() => {
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
-        if (!(waitingChoice && textDone)) next();
+        if (!fading && !(waitingChoice && textDone)) next();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [paused, waitingChoice, textDone, next]);
+  }, [paused, fading, waitingChoice, textDone, next]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
     if (paused) setMode('normal');
   }, [paused, setMode]);
 
-  if (!game || !scene) return null;
+  if (!game || !scene || !shown) return null;
 
   if (game.finished) {
     const ending = getEnding(game.finished);
@@ -172,9 +181,13 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
     </>
   );
   return (
-    <SceneStage scene={scene} effects={effects} speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}>
+    <SceneStage
+      scene={shown}
+      effects={reduceEffects ? [] : effectsOf(shown)}
+      speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}
+    >
       {error && <p className="error stage-error">{error}</p>}
-      {waitingChoice && textDone && (
+      {waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}
           onChoose={(i) => {
@@ -183,12 +196,16 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
           }}
         />
       )}
-      <DialogBox
-        key={scene.scene_id}
-        dialogue={scene.dialogue}
-        aiVowels={effects.includes('ai_vowels')}
-        onAdvance={next}
-      />
+      {/* La línea nueva empieza a escribirse cuando aparece su escena, no detrás del negro. */}
+      {!fading && (
+        <DialogBox
+          key={shown.scene_id}
+          dialogue={shown.dialogue}
+          aiVowels={!reduceEffects && effectsOf(shown).includes('ai_vowels')}
+          onAdvance={advanceIfReady}
+        />
+      )}
+      <div className={`scene-fade scene-fade-${phase}`} aria-hidden />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
       <div className="toolbar" onMouseDown={(e) => e.preventDefault()}>
         {buttons}

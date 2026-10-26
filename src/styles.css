@@ -352,3 +352,14 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   .title-menu button { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
   .warning p { font-size: 0.9rem; }
 }
+
+/* Transición entre lugares: fundido a negro (ver engine/useSceneTransition.ts). */
+.scene-fade { position: absolute; inset: 0; z-index: 8; background: #000; opacity: 0; pointer-events: none; }
+.scene-fade-out { animation: scene-fade-out 350ms ease-in forwards; }
+.scene-fade-in { animation: scene-fade-in 450ms ease-out forwards; }
+@keyframes scene-fade-out { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scene-fade-in { from { opacity: 1; } to { opacity: 0; } }
+
+/* Un personaje que entra a la escena aparece con un desvanecido corto. */
+img.sprite { animation: sprite-in 250ms ease-out; }
+@keyframes sprite-in { from { opacity: 0; } to { opacity: 1; } }
