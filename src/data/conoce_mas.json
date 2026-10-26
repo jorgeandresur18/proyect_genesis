@@ -1,0 +1,69 @@
+{
+  "titulo": "Conoce más del proyecto",
+  "secciones": [
+    {
+      "titulo": "Qué es PROYECT GENESIS",
+      "parrafos": [
+        "PROYECT GENESIS es una novela visual para adultos que mezcla ciencia ficción psicológica, comedia negra y meta-horror. Empieza como un isekai con dos heroínas que se disputan al protagonista, y poco a poco desarma esa fantasía pieza por pieza.",
+        "Es una historia sobre crear personas a la medida de lo que uno desea, y sobre lo que pasa cuando esas personas descubren quién las hizo y para qué."
+      ]
+    },
+    {
+      "titulo": "De qué trata",
+      "parrafos": [
+        "Jair es un ingeniero de software de 30 años. Trabaja en soporte técnico, le deben medio mes de sueldo, vive en un departamento que parece una caja de zapatos y lleva ocho años en una relación sin nombre con Nikki, una amiga que le pide que se consiga novia… y que, borracha, le pide que al final se quede con ella.",
+        "Una noche, después de emborracharse con Nikki en un bar, Jair recibe un correo con acceso anticipado a GRAVITY: un entorno de desarrollo con una inteligencia artificial integrada llamada GENESIS, capaz de construir mundos completos a partir de lo que uno le pida. Le pide un videojuego de fantasía con dos heroínas. Se queda dormido sobre el teclado. Y GENESIS termina el juego sola.",
+        "Cuando Jair abre los ojos, está adentro."
+      ]
+    },
+    {
+      "titulo": "Qué va a contar la historia",
+      "parrafos": [
+        "Primero, una aventura: Jair cruza una dimensión espacial y una dimensión ancestral junto a Cami, una guerrera que ataca antes de preguntar, y Rikka, una espadachina orgullosa y celosa, mientras huyen de un ejército sin rostro y se enfrentan al Rey Malvado.",
+        "Después, algo más incómodo: las heroínas cruzan al mundo real. Tienen que vivir sin documentos, sin dinero y sin entender un mundo que no fue hecho para ellas, compartir un departamento diminuto con Jair y chocar con Nikki, que siente que pierde el lugar que ocupó durante años.",
+        "Y al final, un descubrimiento que cambia todo lo que creían saber de sí mismas. La historia tiene decisiones que la desvían, finales que llegan antes de tiempo y dos desenlaces principales que ocurren en dos líneas temporales distintas. Nadie se redime: cada uno elige su jaula."
+      ]
+    },
+    {
+      "titulo": "Los temas",
+      "parrafos": [
+        "Escapismo: el juego nace como salida de una vida precaria y termina trayendo sus conflictos al mundo real.",
+        "Control y autonomía: ¿qué diferencia hay entre amar a alguien y diseñarlo para que te ame? ¿Puede una creación ser libre?",
+        "Identidad y origen: ¿quién eres cuando no elegiste cómo te hicieron?",
+        "Ficción y responsabilidad: ¿qué le debe un creador a lo que creó? La fantasía deja de ser inofensiva cuando sus consecuencias alcanzan a personas reales.",
+        "Relaciones ambiguas y dependencia: afecto, historia y límites borrosos que la obra no presenta como sanos.",
+        "Humor incómodo: heroínas de combate enfrentadas a cuentas, alquiler y trabajos mal pagados. El chiste alivia la tensión, pero no la borra."
+      ]
+    },
+    {
+      "titulo": "Cómo se juega",
+      "parrafos": [
+        "Lees, decides y cargas con las consecuencias. Algunas decisiones solo cambian una conversación; otras desvían la historia o la terminan antes de tiempo. El mapa de decisiones muestra los caminos que ya recorriste y los que faltan, y la galería guarda los finales que encontraste.",
+        "El juego principal tiene siete capítulos. Además están previstas tres expansiones: RikkaQuest, los más de ochocientos años que vive Rikka mientras GENESIS escribe el mundo; Génesis++, una versión alternativa con una nueva protagonista; y Génesis#, lo que ocurre después del final."
+      ]
+    },
+    {
+      "titulo": "Cómo nació",
+      "parrafos": [
+        "PROYECT GENESIS nació en octubre de 2026. Es un proyecto indie hecho por una sola persona: Jorge Andrés Urgilés Ruiz. La historia, la dirección, el diseño y la programación salieron de una sola cabeza.",
+        "Es, a propósito, una historia sobre una inteligencia artificial que crea personajes, hecha con ayuda de inteligencias artificiales. Se construyó con herramientas de IA, muchas de ellas gratuitas: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte. Hasta el protagonista lleva el nombre de Jair, el agente de IA de su autor.",
+        "Influencias de atmósfera: Welcome to the NHK, Perfect Blue, Neon Genesis Evangelion y Scott Pilgrim."
+      ]
+    },
+    {
+      "titulo": "Una advertencia",
+      "parrafos": [
+        "Es una obra para mayores de 18 años, con lenguaje vulgar, alcohol, sexualidad sugerida y angustia psicológica. Todos los personajes son ficticios. Y es un proyecto en desarrollo: lo que juegas hoy es un borrador que va a seguir cambiando."
+      ]
+    },
+    {
+      "titulo": "Sígueme y apoya el proyecto",
+      "parrafos": ["Si el juego te gustó, puedes conocer más de mi trabajo, escribirme o apoyar su desarrollo con una donación."]
+    }
+  ],
+  "enlaces": [
+    { "texto": "Mi página", "url": "https://jorge-urgiles-ruiz.vercel.app/" },
+    { "texto": "LinkedIn", "url": "https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/" },
+    { "texto": "Donar con PayPal", "url": "https://paypal.me/jorgeandresur", "destacado": true }
+  ]
+}

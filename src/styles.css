@@ -243,12 +243,14 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 }
 .title-menu button:hover:not(:disabled) { border-color: #22d3ee; box-shadow: 0 0 1rem rgba(34, 211, 238, 0.25); }
 
-/* Créditos. */
-.credits { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
-.credits p { max-width: 34rem; line-height: 1.55; margin: 0.4rem 0; }
-.credits-logo { width: min(12rem, 50vw); height: auto; margin-bottom: 0.5rem; }
-.credits-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 0.8rem; }
-.credits-link {
+/* Conoce más del proyecto. */
+.about { display: flex; flex-direction: column; align-items: center; }
+.about-logo { width: min(12rem, 50vw); height: auto; margin-bottom: 0.8rem; }
+.about-section { width: 100%; max-width: 38rem; margin-bottom: 1.1rem; }
+.about-section h3 { font-size: 1rem; color: #22d3ee; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.about-section p { line-height: 1.6; margin: 0.35rem 0; }
+.about-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 0.4rem 0 0.6rem; }
+.about-link {
   padding: 0.55rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -256,8 +258,8 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   text-decoration: none;
   background: var(--box-2);
 }
-.credits-link:hover { border-color: var(--text); }
-.credits-link-main { background: linear-gradient(90deg, #22d3ee, #8b5cf6); color: #05070d; border-color: transparent; font-weight: 700; }
+.about-link:hover { border-color: var(--text); }
+.about-link-main { background: linear-gradient(90deg, #22d3ee, #8b5cf6); color: #05070d; border-color: transparent; font-weight: 700; }
 
 /* Personajes que se miran: volteo en espejo. */
 .sprite { transition: transform 0.25s ease; }

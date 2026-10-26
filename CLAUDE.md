@@ -13,7 +13,7 @@ Novela visual indie en código (React + Vite). Género: ciencia ficción psicol�
 
 - **No contradigas el canon.** Si un dato está marcado `[PENDIENTE]`, no lo inventes: deja un comentario `TODO(canon): ...` y pregunta al autor.
 - **No toques los 2 finales canon ni el juego base** sin una orden explícita. El juego base sigue en desarrollo.
-- **Nada de nombres reales** en código, JSON, assets, commits ni interfaz. Usa los marcadores `CREADORA_A`, `CREADORA_B` e `INFLUENCER_C`. Única excepción: el nombre del autor en los créditos (`src/data/creditos.json`).
+- **Nada de nombres reales** en código, JSON, assets, commits ni interfaz. Usa los marcadores `CREADORA_A`, `CREADORA_B` e `INFLUENCER_C`. Única excepción: el nombre del autor en «Conoce más del proyecto» (`src/data/conoce_mas.json`).
 - **Sin contenido sexual explícito** y nunca con parecidos de personas reales. La sexualidad es sugerida.
 - **La historia vive en JSON**, nunca dentro de los componentes de React.
 - **Greyboxing:** sin sprites, imágenes ni audio finales hasta la fase de arte. Usa placeholders (`PLACEHOLDER:nombre`).

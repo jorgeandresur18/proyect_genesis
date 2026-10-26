@@ -5,12 +5,12 @@ import { useStoryEngine } from './engine/useStoryEngine';
 import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
 import { DecisionMenu } from './components/DecisionMenu';
-import { CreditsPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'credits' | null;
+type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
@@ -34,7 +34,7 @@ export default function App() {
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
-      {overlay === 'credits' && <CreditsPanel onClose={close} />}
+      {overlay === 'about' && <AboutPanel onClose={close} />}
     </div>
   );
 }
@@ -67,7 +67,7 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
         <button onClick={() => open('map')}>Mapa de escenas</button>
         <button onClick={() => open('endings')}>Finales</button>
         <button onClick={() => open('options')}>Opciones</button>
-        <button onClick={() => open('credits')}>Créditos</button>
+        <button onClick={() => open('about')}>Conoce más del proyecto</button>
       </nav>
     </div>
   );
