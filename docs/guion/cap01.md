@@ -651,6 +651,7 @@
 
 ### negro
 
+> ◐ transición: blanco
 `g1_001` — Calor.
 
 `g1_002` — No. No es calor. Es otra cosa. Es la ausencia de calor, que se siente parecido cuando uno lleva treinta años sudando.

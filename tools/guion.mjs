@@ -52,6 +52,7 @@ function exportChapter(file, endings) {
       out.push('', `### ${placeholder(s.background)}`, '');
       lastBg = s.background;
     }
+    if (s.transicion) out.push(`> ◐ transición: ${s.transicion}`);
     if (s.audio === 'silencio') out.push('> ♪ silencio');
     else if (s.audio) out.push(`> ♪ música: ${basename(s.audio).replace(/\.[a-z0-9]+$/, '')}`);
     if (s.conditions.length) out.push(`> solo si ${s.conditions.map(cond).join(' y ')}`);

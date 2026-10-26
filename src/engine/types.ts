@@ -64,6 +64,11 @@ export interface Scene {
   next: Next;
   /** ID de final (docs/FINALES.md). La escena cierra la partida. */
   ending?: string;
+  /**
+   * Transición al entrar a esta escena. Por defecto, fundido a negro solo si cambia el fondo.
+   * «blanco»: fundido largo a blanco (cruce del mundo real al de la IA); se hace aunque no cambie el fondo.
+   */
+  transicion?: 'negro' | 'blanco';
 }
 
 export interface StoryFile {

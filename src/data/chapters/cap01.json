@@ -6986,7 +6986,8 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
-      "next": "cap01_g1_002"
+      "next": "cap01_g1_002",
+      "transicion": "blanco"
     },
     {
       "scene_id": "cap01_g1_002",

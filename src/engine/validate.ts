@@ -79,6 +79,9 @@ export function validateStory(
     for (const fx of effectsOf(scene)) {
       if (!(UI_EFFECTS as readonly string[]).includes(fx)) errors.push(`${id}: ui_effect desconocido "${fx}"`);
     }
+    if (scene.transicion && !['negro', 'blanco'].includes(scene.transicion)) {
+      errors.push(`${id}: transición desconocida "${scene.transicion}"`);
+    }
     if (scene.choices.length > 0 && scene.next !== null) {
       errors.push(`${id}: tiene decisiones y "next" a la vez; usa solo uno`);
     }

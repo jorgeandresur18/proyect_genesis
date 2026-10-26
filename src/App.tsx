@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useStore } from './engine/store';
 import { BAD_END, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
-import { useSceneTransition } from './engine/useSceneTransition';
+import { TRANSITIONS, useSceneTransition } from './engine/useSceneTransition';
 import { effectsOf } from './engine/logic';
 import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
@@ -124,7 +124,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
-  const { shown, phase } = useSceneTransition(scene, mode === 'skip');
+  const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
   const fading = phase === 'out';
   const advanceIfReady = () => {
     if (!fading) next();
@@ -205,7 +205,11 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
           onAdvance={advanceIfReady}
         />
       )}
-      <div className={`scene-fade scene-fade-${phase}`} aria-hidden />
+      <div
+        className={`scene-fade scene-fade-${phase} scene-fade-${color}`}
+        style={{ animationDuration: `${phase === 'out' ? TRANSITIONS[color].out : TRANSITIONS[color].in}ms` }}
+        aria-hidden
+      />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
       <div className="toolbar" onMouseDown={(e) => e.preventDefault()}>
         {buttons}
