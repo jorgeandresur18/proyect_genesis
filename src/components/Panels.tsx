@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { SAVE_SLOTS, TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { BAD_END, endings } from '../engine/story';
 import conoceMas from '../data/conoce_mas.json';
+import { enterPlayMode } from '../engine/mobile';
 
 export function Panel({
   title,
@@ -72,6 +73,7 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
                 <button
                   disabled={!slot}
                   onClick={() => {
+                    void enterPlayMode();
                     load(i);
                     onClose();
                   }}

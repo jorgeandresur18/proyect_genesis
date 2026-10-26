@@ -9,6 +9,7 @@
 ## 2. Funciones del motor
 
 - Avance manual del texto y autoavance opcional.
+- Celular: el juego es horizontal. Al tocar «Nueva partida» o «Cargar» pide pantalla completa y fija la horizontal donde el navegador lo permite (Android). En vertical aparece «Gira tu celular» (iPhone no permite fijar la orientación). En pantallas bajas o angostas la interfaz se compacta: menú ☰, caja de diálogo y decisiones más chicas, paneles a pantalla completa.
 - Texto con efecto máquina de escribir; velocidad en Opciones (letras por segundo o instantáneo). Clic o Espacio: primero completa la línea, después avanza. Las decisiones aparecen al terminar el texto. El modo auto avanza solo cuando la línea terminó, tras una pausa configurable.
 - Elecciones que modifican variables y desbloquean escenas.
 - Historial de diálogo.

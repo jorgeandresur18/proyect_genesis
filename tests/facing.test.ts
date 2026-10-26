@@ -30,3 +30,11 @@ describe('los personajes se miran entre sí', () => {
     expect(flippedCharacters([jair, box], ['Jair']).size).toBe(0);
   });
 });
+
+describe('hablantes sin nombre', () => {
+  it('«???» es el personaje en escena que todavía no habló con su nombre', () => {
+    // Rikka habla como «???» antes de presentarse: Cami (centro) la mira a ella, no a Jair.
+    const speakers = ['Jair', 'Cami', '???'];
+    expect(flippedCharacters([jair, camiCentro, rikkaDer], speakers).has('cami')).toBe(false);
+  });
+});

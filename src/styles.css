@@ -266,3 +266,89 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 .sprite-flip { transform: scaleX(-1); }
 .sprite-centro.sprite-flip { transform: translateX(-50%) scaleX(-1); }
 @media (prefers-reduced-motion: reduce) { .sprite { transition: none; } }
+
+/* ---------- Celular ---------- */
+
+/* Menú compacto (☰): oculto en pantallas grandes. */
+.toolbar-compact { display: none; }
+.menu-toggle { font-size: 1.1rem; line-height: 1; padding: 0.45rem 0.7rem; background: rgba(20, 20, 22, 0.85); }
+.menu-popup {
+  position: absolute;
+  top: 2.6rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 11rem;
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  padding: 0.4rem;
+  background: rgba(20, 20, 22, 0.96);
+  border: 1px solid var(--line);
+}
+.menu-popup button { text-align: left; }
+
+/* Aviso «Gira tu celular»: solo en pantalla táctil vertical y con una partida abierta. */
+.rotate-hint { display: none; }
+@media (orientation: portrait) and (pointer: coarse) {
+  .rotate-hint {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #05070d;
+  }
+  .rotate-hint p { margin: 0; font-size: 1.1rem; }
+  .rotate-hint .muted { font-size: 0.9rem; }
+}
+.rotate-hint-phone {
+  width: 3.2rem;
+  height: 5.4rem;
+  margin-bottom: 0.8rem;
+  border: 3px solid #22d3ee;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 1rem rgba(34, 211, 238, 0.4);
+  animation: rotate-phone 2.4s ease-in-out infinite;
+}
+@keyframes rotate-phone { 0%, 25% { transform: rotate(0deg); } 55%, 85% { transform: rotate(-90deg); } 100% { transform: rotate(0deg); } }
+@media (prefers-reduced-motion: reduce) { .rotate-hint-phone { animation: none; transform: rotate(-90deg); } }
+
+/* Pantallas chicas: celular horizontal (poca altura) o ventanas angostas. */
+@media (max-height: 520px), (max-width: 760px) {
+  .toolbar { display: none; }
+  .toolbar-compact { display: block; position: absolute; top: 0.5rem; right: 0.5rem; z-index: 5; }
+
+  .dialog {
+    bottom: 0.5rem;
+    width: calc(100% - 1rem);
+    min-height: 0;
+    padding: 0.55rem 0.8rem;
+  }
+  .dialog-speaker { font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .dialog-text { font-size: 0.9rem; line-height: 1.4; }
+
+  .decisions { top: 3rem; gap: 0.35rem; width: min(30rem, calc(100% - 5rem)); max-height: calc(100% - 9rem); overflow-y: auto; }
+  .decision { padding: 0.5rem; font-size: 0.9rem; }
+
+  .placeholder-label, .placeholder-audio { font-size: 0.65rem; }
+  .stage-error { top: 3rem; }
+
+  /* Paneles a pantalla completa. */
+  .panel-backdrop { padding: 0; }
+  .panel, .panel-wide { width: 100%; height: 100%; max-height: 100%; border: none; }
+  .panel-head { padding: 0.5rem 0.8rem; }
+  .panel-body { padding: 0.7rem; }
+
+  /* Título en horizontal: logo más chico y menú en dos columnas. */
+  .screen { gap: 0.5rem; padding: 0.8rem; }
+  .title-logo img { width: min(26rem, 70vw, 38vh); }
+  .title-menu { display: grid; grid-template-columns: 1fr 1fr; min-width: 0; width: min(32rem, 100%); }
+  .title-menu button { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
+  .warning p { font-size: 0.9rem; }
+}

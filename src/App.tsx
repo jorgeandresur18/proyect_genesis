@@ -9,6 +9,7 @@ import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel }
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
+import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
 
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
@@ -23,7 +24,17 @@ export default function App() {
     if (game && !scenes.has(game.sceneId)) quitToTitle();
   }, []);
 
-  if (!accepted) return <ContentWarning onAccept={() => setAccepted(true)} />;
+  if (!accepted) {
+    return (
+      <ContentWarning
+        onAccept={() => {
+          // Si hay una partida en curso, se vuelve directo al juego: en celular, en pantalla completa.
+          if (useStore.getState().game) void enterPlayMode();
+          setAccepted(true);
+        }}
+      />
+    );
+  }
 
   const close = () => setOverlay(null);
   return (
@@ -35,6 +46,18 @@ export default function App() {
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
+      {hasGame && <RotateHint />}
+    </div>
+  );
+}
+
+/** Celular en vertical durante el juego: se pide girarlo (solo se ve con CSS en esa situación). */
+function RotateHint() {
+  return (
+    <div className="rotate-hint" role="alert">
+      <div className="rotate-hint-phone" aria-hidden />
+      <p>Gira tu celular para jugar</p>
+      <p className="muted">PROYECT GENESIS se juega en horizontal.</p>
     </div>
   );
 }
@@ -62,7 +85,14 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
       <p className="muted">Prototipo</p>
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
-        <button onClick={newGame}>Nueva partida</button>
+        <button
+          onClick={() => {
+            void enterPlayMode();
+            newGame();
+          }}
+        >
+          Nueva partida
+        </button>
         <button onClick={() => open('load')}>Cargar</button>
         <button onClick={() => open('map')}>Mapa de escenas</button>
         <button onClick={() => open('endings')}>Finales</button>
@@ -77,6 +107,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   const { game, scene, choices, waitingChoice, effects, mode, textDone } = useStoryEngine();
   const { advance, next, choose, setMode, quitToTitle } = useStore.getState();
   const error = useStore((s) => s.error);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (paused) return;
@@ -111,6 +142,23 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   }
 
   const toggle = (m: 'auto' | 'skip') => setMode(mode === m ? 'normal' : m);
+  const buttons = (
+    <>
+      <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
+        Auto
+      </button>
+      <button className={mode === 'skip' ? 'active' : ''} onClick={() => toggle('skip')}>
+        Saltar leído
+      </button>
+      <button onClick={() => open('history')}>Historial</button>
+      <button onClick={() => open('save')}>Guardar</button>
+      <button onClick={() => open('load')}>Cargar</button>
+      <button onClick={() => open('map')}>Mapa</button>
+      <button onClick={() => open('options')}>Opciones</button>
+      {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>Pantalla completa</button>}
+      <button onClick={quitToTitle}>Título</button>
+    </>
+  );
   return (
     <SceneStage scene={scene} effects={effects} speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}>
       {error && <p className="error stage-error">{error}</p>}
@@ -123,18 +171,18 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
       />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
       <div className="toolbar" onMouseDown={(e) => e.preventDefault()}>
-        <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
-          Auto
+        {buttons}
+      </div>
+      {/* Pantallas chicas: los mismos botones dentro de un menú ☰. */}
+      <div className="toolbar-compact" onMouseDown={(e) => e.preventDefault()}>
+        <button className={`menu-toggle ${mode !== 'normal' ? 'active' : ''}`} onClick={() => setMenuOpen((o) => !o)} aria-label="Menú">
+          ☰
         </button>
-        <button className={mode === 'skip' ? 'active' : ''} onClick={() => toggle('skip')}>
-          Saltar leído
-        </button>
-        <button onClick={() => open('history')}>Historial</button>
-        <button onClick={() => open('save')}>Guardar</button>
-        <button onClick={() => open('load')}>Cargar</button>
-        <button onClick={() => open('map')}>Mapa</button>
-        <button onClick={() => open('options')}>Opciones</button>
-        <button onClick={quitToTitle}>Título</button>
+        {menuOpen && (
+          <div className="menu-popup" onClick={() => setMenuOpen(false)}>
+            {buttons}
+          </div>
+        )}
       </div>
     </SceneStage>
   );
