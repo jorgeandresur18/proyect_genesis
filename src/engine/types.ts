@@ -23,6 +23,8 @@ export interface Character {
   id: string;
   sprite: string;
   pos: 'izquierda' | 'centro' | 'derecha';
+  /** Fuerza hacia dónde mira; si no está, el motor lo decide (ver engine/facing.ts). */
+  mira?: 'izquierda' | 'derecha';
 }
 
 export interface Dialogue {
