@@ -195,6 +195,11 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
       speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}
     >
       {error && <p className="error stage-error">{error}</p>}
+      {mode !== 'normal' && (
+        <div className="mode-badge" aria-live="polite">
+          {mode === 'auto' ? 'AUTO ▶' : 'SALTANDO ▶▶'}
+        </div>
+      )}
       {waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}

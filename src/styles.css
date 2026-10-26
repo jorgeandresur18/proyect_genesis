@@ -364,3 +364,24 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 img.sprite { animation: sprite-in 250ms ease-out; }
 @keyframes sprite-in { from { opacity: 0; } to { opacity: 1; } }
 .scene-fade-blanco { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f2fbff 45%, #d6f4ff 100%); }
+
+/* Indicador del modo auto o del salto. */
+.mode-badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid #22d3ee;
+  border-radius: 999px;
+  background: rgba(5, 7, 13, 0.75);
+  color: #22d3ee;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  animation: mode-badge-pulse 1.6s ease-in-out infinite;
+}
+@keyframes mode-badge-pulse { 50% { opacity: 0.55; } }
+@media (prefers-reduced-motion: reduce) { .mode-badge { animation: none; } }

@@ -182,7 +182,7 @@ export const useStore = create<Store>()(
             ...game.history,
             { speaker: null, text: choice.text, choice: true },
           ]);
-          set({ mode: 'normal' });
+          if (get().mode === 'skip') set({ mode: 'normal' });
         },
 
         jumpTo: (sceneId) => {
