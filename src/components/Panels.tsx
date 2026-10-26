@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { SAVE_SLOTS, TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { BAD_END, endings } from '../engine/story';
+import creditos from '../data/creditos.json';
 
 export function Panel({
   title,
@@ -114,6 +115,32 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
           ))}
         </section>
       ))}
+    </Panel>
+  );
+}
+
+export function CreditsPanel({ onClose }: { onClose: () => void }) {
+  return (
+    <Panel title={creditos.titulo} onClose={onClose}>
+      <div className="credits">
+        <img className="credits-logo" src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" />
+        {creditos.parrafos.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+        <div className="credits-links">
+          {creditos.enlaces.map((l) => (
+            <a
+              key={l.url}
+              className={`credits-link ${'destacado' in l && l.destacado ? 'credits-link-main' : ''}`}
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {l.texto}
+            </a>
+          ))}
+        </div>
+      </div>
     </Panel>
   );
 }

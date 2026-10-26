@@ -1,0 +1,14 @@
+{
+  "titulo": "Créditos",
+  "parrafos": [
+    "PROYECT GENESIS nació en octubre de 2026.",
+    "Es un proyecto indie hecho por una sola persona: Jorge Andrés Urgilés Ruiz. La historia, la dirección, el diseño y la programación salieron de una sola cabeza.",
+    "Se construyó con herramientas de inteligencia artificial, muchas de ellas gratuitas: Claude Code para programar el motor y redactar borradores, Gemini para generar el arte, y ChatGPT y Gemini para dar forma a la biblia de la historia.",
+    "Si el juego te gustó, puedes conocer más de mi trabajo, escribirme o apoyar su desarrollo."
+  ],
+  "enlaces": [
+    { "texto": "Mi página", "url": "https://jorge-urgiles-ruiz.vercel.app/" },
+    { "texto": "LinkedIn", "url": "https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/" },
+    { "texto": "Donar con PayPal", "url": "https://paypal.me/jorgeandresur", "destacado": true }
+  ]
+}

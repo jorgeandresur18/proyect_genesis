@@ -5,11 +5,12 @@ import { useStoryEngine } from './engine/useStoryEngine';
 import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
 import { DecisionMenu } from './components/DecisionMenu';
-import { EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { CreditsPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | null;
+type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'credits' | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
@@ -33,6 +34,7 @@ export default function App() {
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
+      {overlay === 'credits' && <CreditsPanel onClose={close} />}
     </div>
   );
 }
@@ -53,6 +55,7 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
   const error = useStore((s) => s.error);
   return (
     <div className="screen title">
+      <TitleBackground />
       <h1 className="title-logo">
         <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
       </h1>
@@ -64,6 +67,7 @@ function TitleScreen({ open }: { open: (o: Overlay) => void }) {
         <button onClick={() => open('map')}>Mapa de escenas</button>
         <button onClick={() => open('endings')}>Finales</button>
         <button onClick={() => open('options')}>Opciones</button>
+        <button onClick={() => open('credits')}>Créditos</button>
       </nav>
     </div>
   );
@@ -108,7 +112,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
 
   const toggle = (m: 'auto' | 'skip') => setMode(mode === m ? 'normal' : m);
   return (
-    <SceneStage scene={scene} effects={effects}>
+    <SceneStage scene={scene} effects={effects} speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}>
       {error && <p className="error stage-error">{error}</p>}
       {waitingChoice && textDone && <DecisionMenu choices={choices} onChoose={choose} />}
       <DialogBox

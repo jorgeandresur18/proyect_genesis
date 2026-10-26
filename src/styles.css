@@ -228,3 +228,39 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 .dialog-next { display: inline-block; margin-left: 0.4rem; font-size: 0.7em; color: var(--accent); animation: dialog-next-blink 1s steps(2) infinite; }
 @keyframes dialog-next-blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .dialog-next { animation: none; } }
+
+/* Título sobre el fondo espacial. */
+.title { position: relative; background: #05070d; }
+.title > :not(:first-child) { position: relative; z-index: 1; }
+.title-logo img { animation: title-float 6s ease-in-out infinite; filter: drop-shadow(0 0 2rem rgba(34, 211, 238, 0.25)); }
+@keyframes title-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@media (prefers-reduced-motion: reduce) { .title-logo img { animation: none; } }
+.title-menu button {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+.title-menu button:hover:not(:disabled) { border-color: #22d3ee; box-shadow: 0 0 1rem rgba(34, 211, 238, 0.25); }
+
+/* Créditos. */
+.credits { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
+.credits p { max-width: 34rem; line-height: 1.55; margin: 0.4rem 0; }
+.credits-logo { width: min(12rem, 50vw); height: auto; margin-bottom: 0.5rem; }
+.credits-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 0.8rem; }
+.credits-link {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--box-2);
+}
+.credits-link:hover { border-color: var(--text); }
+.credits-link-main { background: linear-gradient(90deg, #22d3ee, #8b5cf6); color: #05070d; border-color: transparent; font-weight: 700; }
+
+/* Personajes que se miran: volteo en espejo. */
+.sprite { transition: transform 0.25s ease; }
+.sprite-flip { transform: scaleX(-1); }
+.sprite-centro.sprite-flip { transform: translateX(-50%) scaleX(-1); }
+@media (prefers-reduced-motion: reduce) { .sprite { transition: none; } }

@@ -1,0 +1,77 @@
+/* Fondo espacial del título. Colores y movimientos inspirados en el hero de la landing del autor. */
+.bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, #0b1022 0%, #05070d 60%, #020308 100%);
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #ffffff0b 1px, transparent 1px), linear-gradient(#ffffff0b 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+}
+
+.nebula {
+  position: absolute;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: float 14s ease-in-out infinite;
+}
+.nebulaCyan { top: -8rem; left: 12%; background: rgba(34, 211, 238, 0.18); }
+.nebulaViolet { bottom: -10rem; right: 8%; background: rgba(139, 92, 246, 0.22); animation-delay: -7s; }
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #e8ebf5;
+  box-shadow: 0 0 4px 1px rgba(232, 235, 245, 0.5);
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+.hex {
+  position: absolute;
+  fill: none;
+  stroke: rgba(34, 211, 238, 0.35);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+  animation: drift 12s ease-in-out infinite;
+}
+.hexViolet { stroke: rgba(139, 92, 246, 0.4); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55)); }
+
+.comet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 8px 2px #22d3ee, 0 0 24px 4px rgba(34, 211, 238, 0.4);
+  opacity: 0;
+}
+.cometViolet { background: #8b5cf6; box-shadow: 0 0 8px 2px #8b5cf6, 0 0 24px 4px rgba(139, 92, 246, 0.4); }
+.cometX { left: -2%; animation: cross-x 9s linear infinite; }
+.cometY { top: -2%; animation: cross-y 11s linear infinite; }
+
+@keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.55; }
+  50% { transform: translate(10px, -22px) rotate(25deg); opacity: 1; }
+}
+@keyframes cross-x { 0% { left: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { left: 104%; opacity: 0; } }
+@keyframes cross-y { 0% { top: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { top: 104%; opacity: 0; } }
+
+/* Reducir efectos (Opciones) o el sistema pide menos movimiento: todo quieto. */
+.still *,
+.still { animation: none !important; }
+.still .comet { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .bg *, .bg { animation: none !important; }
+  .comet { display: none; }
+}
