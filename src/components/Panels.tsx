@@ -179,6 +179,25 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
+        Volumen de efectos: {Math.round(settings.sfxVolume * 100)} %
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={settings.sfxVolume}
+          onChange={(e) => setSettings({ sfxVolume: Number(e.target.value) })}
+        />
+      </label>
+      <label className="option">
+        <input
+          type="checkbox"
+          checked={settings.typingSound}
+          onChange={(e) => setSettings({ typingSound: e.target.checked })}
+        />
+        Sonido mientras se escribe el texto
+      </label>
+      <label className="option">
         Modo auto: pausa al terminar cada línea, {(settings.autoDelayMs / 1000).toFixed(1)} s
         <input
           type="range"

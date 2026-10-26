@@ -10,6 +10,7 @@ import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
+import { playSelect } from './engine/sound';
 
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
@@ -162,7 +163,15 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   return (
     <SceneStage scene={scene} effects={effects} speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}>
       {error && <p className="error stage-error">{error}</p>}
-      {waitingChoice && textDone && <DecisionMenu choices={choices} onChoose={choose} />}
+      {waitingChoice && textDone && (
+        <DecisionMenu
+          choices={choices}
+          onChoose={(i) => {
+            playSelect();
+            choose(i);
+          }}
+        />
+      )}
       <DialogBox
         key={scene.scene_id}
         dialogue={scene.dialogue}

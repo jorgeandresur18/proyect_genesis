@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { Dialogue } from '../engine/types';
 import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { highlightAiVowels } from '../effects/aiVowels';
+import { startTyping, stopTyping } from '../engine/sound';
 
 interface Props {
   dialogue: Dialogue | null;
@@ -28,9 +29,11 @@ export function DialogBox({ dialogue, aiVowels, onAdvance }: Props) {
     }
     const start = performance.now();
     let frame = 0;
+    startTyping();
     const tick = (now: number) => {
       const n = Math.floor(((now - start) / 1000) * speed);
       if (n >= text.length) {
+        stopTyping();
         setTextDone(true);
         return;
       }
@@ -38,7 +41,10 @@ export function DialogBox({ dialogue, aiVowels, onAdvance }: Props) {
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      stopTyping();
+    };
   }, [textDone, speed, text, setTextDone]);
 
   if (!dialogue) return null;

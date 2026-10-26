@@ -36,10 +36,14 @@ export interface Settings {
   autoDelayMs: number;
   /** Caracteres por segundo; TEXT_SPEED_INSTANT o más = texto instantáneo. */
   textSpeed: number;
+  /** Volumen de los efectos de sonido, de 0 a 1. */
+  sfxVolume: number;
+  /** Sonido mientras el texto se escribe. */
+  typingSound: boolean;
 }
 
 export const TEXT_SPEED_INSTANT = 130;
-const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45 };
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 
