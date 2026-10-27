@@ -100,16 +100,16 @@
         "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, morirás solo. (Tranquilo, ya vas en camino.)"
       },
       {
-        "de": "TerapiaYa",
-        "asunto": "Primera sesión gratis. Los traumas los pones tú."
+        "de": "LinkedFired",
+        "asunto": "100.000 personas vieron tu perfil esta semana para comprobar si eras más miserable que ellas."
+      },
+      {
+        "de": "Stack Underflow",
+        "asunto": "Vuelve, por favor. Desde que llegó la IA nadie nos usa… aunque la IA saca todas sus respuestas de nosotros."
       },
       {
         "de": "Geekdump",
         "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests. Es el único que todavía te escribe."
-      },
-      {
-        "de": "Tu horóscopo",
-        "asunto": "Hoy nada va a cambiar. Mañana tampoco. Número de la suerte: ninguno."
       }
     ],
     "remitente": "GRAVITY <acceso-anticipado@gravity>",
