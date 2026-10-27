@@ -21,12 +21,12 @@ const SHAPE_POINTS: Record<string, string> = {
   hexagono: '50,4 90,27 90,73 50,96 10,73 10,27',
 };
 const SHAPE_KINDS = [...Object.keys(SHAPE_POINTS), 'circulo'];
-// Partículas que cruzan la pantalla: desde la izquierda o desde arriba, como en la landing del autor.
+// Partículas que cruzan la pantalla: desde la izquierda o desde arriba.
 const COMETS = [
-  { axis: 'x', at: 18, color: 'cyan', delay: 0 },
-  { axis: 'x', at: 62, color: 'violet', delay: 4.5 },
-  { axis: 'y', at: 30, color: 'violet', delay: 2 },
-  { axis: 'y', at: 78, color: 'cyan', delay: 7 },
+  { axis: 'x', at: 18, color: 'plata', delay: 0 },
+  { axis: 'x', at: 62, color: 'acero', delay: 4.5 },
+  { axis: 'y', at: 30, color: 'acero', delay: 2 },
+  { axis: 'y', at: 78, color: 'plata', delay: 7 },
 ] as const;
 
 /**
@@ -52,7 +52,7 @@ export function TitleBackground({ negro = false }: { negro?: boolean }) {
         delay: rnd() * 6,
         duration: 9 + rnd() * 8,
         rotate: rnd() * 60,
-        violet: rnd() < 0.45,
+        acero: rnd() < 0.45,
       })),
       shapes: Array.from({ length: SHAPES }, (_, i) => {
         const angle = rnd() * Math.PI * 2;
@@ -66,7 +66,7 @@ export function TitleBackground({ negro = false }: { negro?: boolean }) {
           delay: rnd() * 10,
           duration: 7 + rnd() * 6,
           spin: `${(rnd() < 0.5 ? -1 : 1) * (90 + rnd() * 270)}deg`,
-          color: rnd() < 0.6 ? 'white' : rnd() < 0.5 ? 'cyan' : 'violet',
+          color: rnd() < 0.6 ? 'blanco' : rnd() < 0.5 ? 'plata' : 'acero',
         };
       }),
     };
@@ -75,8 +75,9 @@ export function TitleBackground({ negro = false }: { negro?: boolean }) {
   return (
     <div className={`${styles.bg} ${negro ? styles.negro : ''} ${still ? styles.still : ''}`} aria-hidden>
       <div className={styles.grid} />
-      {!negro && <div className={`${styles.nebula} ${styles.nebulaCyan}`} />}
-      {!negro && <div className={`${styles.nebula} ${styles.nebulaViolet}`} />}
+      {!negro && <div className={`${styles.nebula} ${styles.nebulaPlata}`} />}
+      {!negro && <div className={`${styles.nebula} ${styles.nebulaAcero}`} />}
+      <div className={styles.vignette} />
       {negro && <div className={styles.pulse} />}
       {negro &&
         shapes.map((f, i) => (
@@ -116,7 +117,7 @@ export function TitleBackground({ negro = false }: { negro?: boolean }) {
       {hexes.map((h, i) => (
         <svg
           key={i}
-          className={`${styles.hex} ${h.violet ? styles.hexViolet : ''}`}
+          className={`${styles.hex} ${h.acero ? styles.hexAcero : ''}`}
           viewBox="0 0 100 100"
           style={{
             left: `${h.left}%`,
@@ -134,7 +135,7 @@ export function TitleBackground({ negro = false }: { negro?: boolean }) {
       {COMETS.map((c, i) => (
         <span
           key={i}
-          className={`${styles.comet} ${c.axis === 'x' ? styles.cometX : styles.cometY} ${c.color === 'violet' ? styles.cometViolet : ''}`}
+          className={`${styles.comet} ${c.axis === 'x' ? styles.cometX : styles.cometY} ${c.color === 'acero' ? styles.cometAcero : ''}`}
           style={{ [c.axis === 'x' ? 'top' : 'left']: `${c.at}%`, animationDelay: `${c.delay}s` }}
         />
       ))}

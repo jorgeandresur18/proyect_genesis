@@ -1,10 +1,10 @@
-/* Fondo espacial del título. Colores y movimientos inspirados en el hero de la landing del autor. */
+/* Fondo espacial del título: negro y plateado. */
 .bg {
   position: absolute;
   inset: 0;
   overflow: hidden;
   z-index: 0;
-  background: radial-gradient(ellipse at 50% 40%, #0b1022 0%, #05070d 60%, #020308 100%);
+  background: radial-gradient(ellipse at 50% 40%, #16171a 0%, #08080a 55%, #020203 100%);
   pointer-events: none;
 }
 
@@ -24,8 +24,10 @@
   filter: blur(120px);
   animation: float 14s ease-in-out infinite;
 }
-.nebulaCyan { top: -8rem; left: 12%; background: rgba(34, 211, 238, 0.18); }
-.nebulaViolet { bottom: -10rem; right: 8%; background: rgba(139, 92, 246, 0.22); animation-delay: -7s; }
+.nebulaPlata { top: -8rem; left: 12%; background: rgba(220, 224, 232, 0.09); }
+.nebulaAcero { bottom: -10rem; right: 8%; background: rgba(140, 146, 158, 0.12); animation-delay: -7s; }
+/* Bordes más oscuros: encuadra el centro. */
+.vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.75) 100%); }
 
 .star {
   position: absolute;
@@ -38,23 +40,23 @@
 .hex {
   position: absolute;
   fill: none;
-  stroke: rgba(34, 211, 238, 0.35);
+  stroke: rgba(214, 218, 226, 0.3);
   stroke-width: 2;
-  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+  filter: drop-shadow(0 0 5px rgba(230, 233, 240, 0.35));
   animation: drift 12s ease-in-out infinite;
 }
-.hexViolet { stroke: rgba(139, 92, 246, 0.4); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55)); }
+.hexAcero { stroke: rgba(130, 136, 148, 0.4); filter: drop-shadow(0 0 4px rgba(160, 166, 178, 0.35)); }
 
 .comet {
   position: absolute;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #22d3ee;
-  box-shadow: 0 0 8px 2px #22d3ee, 0 0 24px 4px rgba(34, 211, 238, 0.4);
+  background: #f2f4f8;
+  box-shadow: 0 0 8px 2px rgba(242, 244, 248, 0.9), 0 0 24px 4px rgba(220, 224, 232, 0.35);
   opacity: 0;
 }
-.cometViolet { background: #8b5cf6; box-shadow: 0 0 8px 2px #8b5cf6, 0 0 24px 4px rgba(139, 92, 246, 0.4); }
+.cometAcero { background: #a9aeb8; box-shadow: 0 0 8px 2px #a9aeb8, 0 0 24px 4px rgba(169, 174, 184, 0.3); }
 .cometX { left: -2%; animation: cross-x 9s linear infinite; }
 .cometY { top: -2%; animation: cross-y 11s linear infinite; }
 
@@ -90,9 +92,9 @@
   opacity: 0;
   animation: emerge 9s cubic-bezier(0.2, 0.6, 0.3, 1) infinite backwards;
 }
-.white { stroke: rgba(255, 255, 255, 0.55); filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); }
-.cyan { stroke: rgba(34, 211, 238, 0.6); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.55)); }
-.violet { stroke: rgba(139, 92, 246, 0.65); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6)); }
+.blanco { stroke: rgba(255, 255, 255, 0.55); filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); }
+.plata { stroke: rgba(200, 205, 214, 0.5); filter: drop-shadow(0 0 4px rgba(220, 224, 232, 0.35)); }
+.acero { stroke: rgba(120, 126, 138, 0.6); }
 @keyframes emerge {
   0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
   15% { opacity: 0.9; }

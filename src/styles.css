@@ -231,9 +231,9 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 @media (prefers-reduced-motion: reduce) { .dialog-next { animation: none; } }
 
 /* Título sobre el fondo espacial. */
-.title { position: relative; background: #05070d; }
+.title { position: relative; background: #050506; }
 .title > :not(:first-child) { position: relative; z-index: 1; }
-.title-logo img { animation: title-float 6s ease-in-out infinite; filter: drop-shadow(0 0 2rem rgba(34, 211, 238, 0.25)); }
+.title-logo img { animation: title-float 6s ease-in-out infinite; filter: drop-shadow(0 0 1.6rem rgba(225, 229, 236, 0.18)); }
 @keyframes title-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 @media (prefers-reduced-motion: reduce) { .title-logo img { animation: none; } }
 .title-menu button {
@@ -242,7 +242,7 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   backdrop-filter: blur(6px);
   border-radius: 999px;
 }
-.title-menu button:hover:not(:disabled) { border-color: #22d3ee; box-shadow: 0 0 1rem rgba(34, 211, 238, 0.25); }
+.title-menu button:hover:not(:disabled) { border-color: #d9dde4; box-shadow: 0 0 1rem rgba(217, 221, 228, 0.18); }
 
 /* Conoce más del proyecto. */
 .about { display: flex; flex-direction: column; align-items: center; }
@@ -400,11 +400,15 @@ img.sprite { animation: sprite-in 250ms ease-out; }
   font-weight: 800;
   letter-spacing: 0.08em;
   line-height: 1.05;
-  color: #f4f6ff;
-  text-shadow: 0 0 1.2rem rgba(34, 211, 238, 0.45), 0 0 3rem rgba(139, 92, 246, 0.35);
+  /* Plateado metálico: degradado dentro de las letras y un brillo blanco suave. */
+  color: transparent;
+  background: linear-gradient(180deg, #ffffff 0%, #e4e7ec 42%, #8c929c 52%, #d5d9df 70%, #f4f6f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 1.4rem rgba(230, 233, 240, 0.22));
   animation: chapter-title-in 2.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-/* Dos copias desfasadas en cian y violeta: un parpadeo de glitch cada tanto. */
+/* Dos copias desfasadas en blanco y gris: un parpadeo de glitch cada tanto. */
 .chapter-end-title::before,
 .chapter-end-title::after {
   content: attr(data-text);
@@ -413,8 +417,8 @@ img.sprite { animation: sprite-in 250ms ease-out; }
   opacity: 0;
   pointer-events: none;
 }
-.chapter-end-title::before { color: #22d3ee; animation: chapter-glitch 5s steps(1) 2.4s infinite; }
-.chapter-end-title::after { color: #8b5cf6; animation: chapter-glitch 5s steps(1) 2.5s infinite reverse; }
+.chapter-end-title::before { color: #ffffff; animation: chapter-glitch 5s steps(1) 2.4s infinite; }
+.chapter-end-title::after { color: #6f7580; animation: chapter-glitch 5s steps(1) 2.5s infinite reverse; }
 .chapter-end-sub {
   margin: 0;
   color: var(--muted);
@@ -433,7 +437,7 @@ img.sprite { animation: sprite-in 250ms ease-out; }
   border-radius: 999px;
 }
 .chapter-end-menu button:hover:not(:disabled),
-.chapter-soon button:hover:not(:disabled) { border-color: #22d3ee; box-shadow: 0 0 1rem rgba(34, 211, 238, 0.25); }
+.chapter-soon button:hover:not(:disabled) { border-color: #d9dde4; box-shadow: 0 0 1rem rgba(217, 221, 228, 0.18); }
 .chapter-soon-backdrop {
   position: fixed;
   inset: 0;
@@ -454,12 +458,12 @@ img.sprite { animation: sprite-in 250ms ease-out; }
   padding: 2.2rem 1.6rem 1.6rem;
   text-align: center;
   background: rgba(8, 10, 18, 0.92);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  box-shadow: 0 0 2.5rem rgba(34, 211, 238, 0.15), inset 0 0 2rem rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(214, 218, 226, 0.3);
+  box-shadow: 0 0 2.5rem rgba(220, 224, 232, 0.08), inset 0 0 2rem rgba(255, 255, 255, 0.04);
   clip-path: polygon(1.2rem 0, 100% 0, 100% calc(100% - 1.2rem), calc(100% - 1.2rem) 100%, 0 100%, 0 1.2rem);
 }
-.chapter-soon h2 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: 0.08em; text-shadow: 0 0 1rem rgba(139, 92, 246, 0.5); }
-.chapter-soon-label { margin: 0; color: #22d3ee; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; }
+.chapter-soon h2 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: 0.08em; text-shadow: 0 0 1rem rgba(230, 233, 240, 0.3); }
+.chapter-soon-label { margin: 0; color: #c3c8d0; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; }
 .chapter-soon-text { margin: 0 0 1rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; animation: chapter-blink 2.4s ease-in-out infinite; }
 @keyframes chapter-title-in {
   0% { opacity: 0; transform: scale(1.25); filter: blur(14px); letter-spacing: 0.6em; }
