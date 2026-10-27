@@ -130,7 +130,7 @@
 .mailBody {
   flex: 1;
   display: grid;
-  grid-template-columns: 15% 35% 1fr;
+  grid-template-columns: 14% 42% 1fr;
   min-height: 0;
 }
 .folders, .inbox {
@@ -150,7 +150,8 @@
   font-size: 1.75cqh;
   border-bottom: 0.15cqh solid #eceef3;
 }
-.inbox span { color: #6a7080; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Dos líneas por asunto: los chistes tienen que leerse enteros. */
+.inbox span { color: #6a7080; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .folders .selected { color: #23262f; font-weight: 700; }
 .inbox .selected { background: #e6ecff; box-shadow: inset 0.4cqh 0 #4f6bff; }
 .inbox .selected span { color: #23262f; }

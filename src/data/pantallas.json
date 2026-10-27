@@ -43,7 +43,7 @@
   "pc_correo": {
     "titulo": "Correo",
     "carpetas": [
-      "Recibidos (11)",
+      "Recibidos (14)",
       "Destacados",
       "Enviados",
       "Spam (99+)",
@@ -51,12 +51,12 @@
     ],
     "bandeja": [
       {
-        "de": "Geekdump",
-        "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests mientras dormías"
+        "de": "Chistes Diarios",
+        "asunto": "¿Por qué los programadores confunden Halloween con Navidad? Porque OCT 31 = DEC 25. (Ya puedes darte de baja.)"
       },
       {
         "de": "Tu Banco",
-        "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada!"
+        "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada! Tu salud mental, no."
       },
       {
         "de": "GRAVITY",
@@ -65,39 +65,51 @@
       },
       {
         "de": "Clínica Dental Sonrisa",
-        "asunto": "Recordatorio: tu limpieza está pendiente desde marzo"
+        "asunto": "Tu limpieza está pendiente desde marzo. Tus muelas ya nos escribieron para despedirse."
       },
       {
-        "de": "Stack Underflow",
-        "asunto": "Tu pregunta fue cerrada: duplicada de una pregunta de 2009"
-      },
-      {
-        "de": "LinkedOut",
-        "asunto": "4 reclutadores vieron tu perfil. Ninguno te escribió."
-      },
-      {
-        "de": "Geekdump",
-        "asunto": "[nave-espacial-WIP] Este repositorio lleva 2 años sin actividad. ¿Lo archivamos?"
-      },
-      {
-        "de": "Vapor",
-        "asunto": "Un juego de tu lista de deseados está en oferta. Otra vez. No lo vas a comprar."
-      },
-      {
-        "de": "Boringram",
-        "asunto": "3 personas que no conoces vieron tu historia"
+        "de": "Funeraria La Última Morada",
+        "asunto": "Plan funerario para programadores: tu backup no te va a revivir."
       },
       {
         "de": "NubeServicios",
-        "asunto": "Tu factura está lista: el servidor que olvidaste apagar te extraña"
+        "asunto": "Tu servidor lleva 400 días encendido. Es la relación más estable que has tenido."
+      },
+      {
+        "de": "LinkedOut",
+        "asunto": "Felicita a tu excompañero: lo ascendieron al puesto que te prometieron a ti."
+      },
+      {
+        "de": "Stack Underflow",
+        "asunto": "Tu pregunta fue cerrada por duplicada. La original tampoco tiene respuesta."
+      },
+      {
+        "de": "Geekdump",
+        "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests. Es el único que todavía te escribe."
+      },
+      {
+        "de": "Gimnasio Músculo Feliz",
+        "asunto": "Te extrañamos. Bueno, extrañamos tu mensualidad."
+      },
+      {
+        "de": "Tía (reenviado)",
+        "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, tu código no va a compilar nunca más"
       },
       {
         "de": "Supervisor",
-        "asunto": "RE: RE: RE: pago de la quincena"
+        "asunto": "RE: RE: RE: pago de la quincena (recuerda que somos familia)"
       },
       {
-        "de": "Curso Reckt Pro",
-        "asunto": "Aprende Reckt en 24 horas (o tu frustración de vuelta)"
+        "de": "Vapor",
+        "asunto": "Tu juego favorito cumple 10 años. Tú sigues en el tutorial de tu vida."
+      },
+      {
+        "de": "Boringram",
+        "asunto": "3 personas vieron tu historia. Una era un bot. Las otras dos, también."
+      },
+      {
+        "de": "Horóscopo Geek",
+        "asunto": "Mercurio está retrógrado. Tus commits también."
       }
     ],
     "remitente": "GRAVITY <acceso-anticipado@gravity>",
