@@ -106,6 +106,14 @@
   100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
 }
 
+/* En la variante negra, plata y acero pasan a cian y violeta: colores de glitch. */
+.negro .hex { stroke: rgba(34, 211, 238, 0.35); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5)); }
+.negro .hexAcero { stroke: rgba(139, 92, 246, 0.4); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55)); }
+.negro .comet { background: #22d3ee; box-shadow: 0 0 8px 2px #22d3ee, 0 0 24px 4px rgba(34, 211, 238, 0.4); }
+.negro .cometAcero { background: #8b5cf6; box-shadow: 0 0 8px 2px #8b5cf6, 0 0 24px 4px rgba(139, 92, 246, 0.4); }
+.negro .plata { stroke: rgba(34, 211, 238, 0.6); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.55)); }
+.negro .acero { stroke: rgba(139, 92, 246, 0.65); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6)); }
+
 /* Reducir efectos (Opciones) o el sistema pide menos movimiento: todo quieto. */
 .still *,
 .still { animation: none !important; }
