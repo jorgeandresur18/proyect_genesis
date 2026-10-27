@@ -193,6 +193,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
       scene={shown}
       effects={reduceEffects ? [] : effectsOf(shown)}
       speakers={game.history.filter((h) => !h.choice).map((h) => h.speaker)}
+      lines={game.history.filter((h) => !h.choice)}
     >
       {error && <p className="error stage-error">{error}</p>}
       {mode !== 'normal' && (

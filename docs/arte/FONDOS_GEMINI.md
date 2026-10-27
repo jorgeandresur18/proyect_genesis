@@ -2,7 +2,9 @@
 
 Listos: `oficina_dia`, `bar_noche`, `departamento_noche`, `pasillo_castillo`, `refugio_capsula`, `puente_rojo`, `claro_cuatro_estaciones`, `nucleo_grieta`, `pozo_central`, `hangar`, `puente_torres`.
 
-En espera: `dulce_frio_fachada` (el letrero dice «SWEET CHILL», no «Dulce Frío») y `hangar_destruido` (ninguna escena del Capítulo 1 lo usa todavía).
+En espera:
+- `dulce_frio_fachada`: la imagen que hay dice «SWEET CHILL» y queda como la versión en inglés. Falta la versión en español: pídela igual, pero con el letrero «DULCE FRÍO» (o sin texto) y guárdala como `docs/fondos/dulcefrio.png`; la de inglés renómbrala `dulcefrio_en.png`.
+- `hangar_destruido`: se usará más adelante (ninguna escena del Capítulo 1 lo usa todavía).
 
 ## Cómo entregarlos
 
@@ -36,7 +38,6 @@ Consejos:
 | `dulce_frio_fachada` | 14 | Fachada de una heladería de barrio llamada «Dulce Frío», de noche, en una ciudad calurosa. Persiana metálica a medio bajar, un letrero con un cono de helado (sin texto legible o con el nombre simple), vereda, poste de luz amarilla. *Prueba pedirle el nombre; si sale mal escrito, pídela sin texto.* |
 | `desierto_cristal` | 13 | Isla de cristal transparente flotando en la nada, en medio de una caída entre dimensiones. Debajo del cristal se ven franjas de colores (magenta, dorado, verde, azul) y fragmentos de otros mundos a medio hacer. Grietas con luz blanca. |
 | `calle_noche` | 10 | Calle de una ciudad calurosa, de noche, con asfalto húmedo, puestos de comida cerrados, cables de luz cruzando, luces de neón moradas de un bar en la esquina y un taxi amarillo a lo lejos. Ambiente áspero y sofocante. |
-| `nebulosa_magenta` | 6 | Vista de un cielo espacial magenta intenso, con estrellas en todas direcciones, arriba, abajo y a los lados. Sin suelo. Sensación de flotar. |
 | `calabozo` | 4 | Celda futurista blanca, pequeña y sin ventanas, con un catre, una luz que nunca se apaga y barrotes de energía; al otro lado se ve otra celda igual. Frío, clínico, burocrático. |
 
 ## Imágenes con personajes (CG)
@@ -50,11 +51,12 @@ Adjunta los sprites base como referencia y pide «misma ropa, mismo estilo».
 | `cg_caida_multiverso` | 17 | Dos figuras pequeñas (un chico y una chica rubia abrazados) cayendo en un vacío hecho de franjas de colores: magenta, dorado, verde y azul. Alrededor flotan fragmentos de otros mundos: un desierto de cristal, un bosque congelado, una ciudad de techos curvos con lluvia de pétalos y un cuarto pequeño con un ventilador. |
 | `departamento_poster` | 2 | Primer plano de un póster de anime colgado sobre una cama desordenada: un chico de cara genérica, con el pelo tapándole los ojos, rodeado de varias chicas muy distintas entre sí que lo miran enamoradas. Diseño original, sin título ni texto. Luz nocturna del cuarto. |
 
-## Los que hago yo en código
+## Hechos en código (listos)
 
-Son pantallas con texto que tiene que leerse bien. No hace falta generarlas:
+No hace falta generarlos: se dibujan en `src/components/CodeScreen.tsx` y su texto vive en `src/data/pantallas.json`. En el guion se usan como `PANTALLA:<nombre>`.
 
-- `gravity_ide` (39 escenas): la pantalla del IDE GRAVITY con la consola de GENESIS.
+- `gravity_ide` (39 escenas): el IDE GRAVITY. La consola de GENESIS va mostrando las líneas de GRAVITY y los prompts de Jair a medida que aparecen.
 - `pc_correo` (21): la bandeja de entrada con el correo de GRAVITY y los botones «Descargar» y «Eliminar».
-- `celular_mensaje` (8): los mensajes de Nikki desde el taxi.
+- `celular_mensaje` (8): el chat con Nikki; los mensajes aparecen uno por uno.
 - `negro` (8): pantalla negra.
+- `nebulosa_magenta` (6): cielo magenta con estrellas en todas direcciones.

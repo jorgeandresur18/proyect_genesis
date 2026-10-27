@@ -22,7 +22,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - El mundo del juego tiene dimensiones: la **espacial** (de Cami) y la **ancestral** (el reino ancestral de RikkaQuest, de Rikka). `[CANON]` Cómo se cruza entre ellas: `[SUGERIDO]` un portal, la Grieta.
 - GRAVITY y GENESIS son nuevos para Jair: los descubre la misma noche del Capítulo 1 (acceso anticipado). `[CANON]` Cómo llega el acceso: `[PENDIENTE]`
 - GRAVITY es el IDE; GENESIS es la IA; Reckt el framework (antes se llamaba NEXUS; el autor lo cambió porque THE NEXUS es el metaverso); Coffee el front; Cobra el back. `[CANON]`
-- Boringram: parodia de Instagram. Dulce Frío: la heladería donde trabaja Nikki. `[CANON]`
+- Boringram: parodia de Instagram. Dulce Frío: la heladería donde trabaja Nikki; en la versión en inglés se llama Sweet Chill. `[CANON]`
 - Geekdump: parodia de GitHub, donde los programadores suben sus proyectos (repositorios, commits, estrellas, forks, issues, pull requests). Jair tiene ahí sus proyectos abandonados y «archivados», con el calendario de contribuciones en gris. `[CANON]`
 - Póster en el cuarto de Jair: un póster de anime de un chico rodeado de un harem. Es un guiño a Génesis++ que no se explica: queda como curiosidad. (Antes tenía el lema «UN HAREM NO ES UN SUEÑO... ES UNA RESPONSABILIDAD»; el autor lo quitó.) `[CANON]`
 - Regla de las vocales: los nombres Rikka, Cami, Sashi y Aylin contienen solo A e I ("IA"/"AI"). `[CANON]`

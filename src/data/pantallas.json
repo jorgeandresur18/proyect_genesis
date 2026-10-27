@@ -1,0 +1,69 @@
+{
+  "nota": "Pantallas dibujadas en código (fondo \"PANTALLA:<id>\" en el guion). Aquí vive su texto fijo; las líneas que cambian (la consola de GENESIS, los mensajes) salen del historial de diálogo.",
+  "gravity_ide": {
+    "titulo": "GRAVITY — mundo_sin_titulo",
+    "archivos": [
+      "mundo/",
+      "  cielo.cf",
+      "  fisica.cf",
+      "  castillo.cf",
+      "entidades/",
+      "  protagonista.cf",
+      "  heroina_01.cf",
+      "  heroina_02.cf",
+      "  rey_malvado.cf",
+      "  ejercito.cf",
+      "referencias/",
+      "  (sin nombre)/",
+      "genesis.config"
+    ],
+    "pestana": "mundo.cf",
+    "codigo": [
+      "import { Mundo } from 'reckt';",
+      "",
+      "const mundo = new Mundo({",
+      "  genero: ['fantasía', 'ciencia ficción'],",
+      "  antagonista: 'Rey Malvado',",
+      "  protagonista: 'chico normal',",
+      "  heroinas: 2,",
+      "  cielo: undefined,",
+      "  gravedad: undefined,",
+      "});",
+      "",
+      "// TODO: que no se vayan",
+      "mundo.compilar();"
+    ],
+    "consola": "CONSOLA — GENESIS",
+    "voces": { "GRAVITY": "genesis", "Jair (prompt)": "usuario" },
+    "prompt": "jair@depto:~$"
+  },
+  "pc_correo": {
+    "titulo": "Correo",
+    "carpetas": ["Recibidos (3)", "Destacados", "Enviados", "Spam", "Papelera"],
+    "bandeja": [
+      { "de": "Tu Banco", "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada!" },
+      { "de": "GRAVITY", "asunto": "Has sido seleccionado para el acceso anticipado a GRAVITY", "activo": true },
+      { "de": "Clínica Dental Sonrisa", "asunto": "Recordatorio: tu limpieza está pendiente desde marzo" },
+      { "de": "Tienda en línea", "asunto": "Últimas horas: 2x1 en audífonos" },
+      { "de": "Supervisor", "asunto": "RE: RE: RE: pago de la quincena" }
+    ],
+    "remitente": "GRAVITY <acceso-anticipado@gravity>",
+    "para": "Para: mí",
+    "asunto": "Has sido seleccionado para el acceso anticipado a GRAVITY.",
+    "cuerpo": [
+      "GRAVITY es un entorno de desarrollo con inteligencia artificial integrada.",
+      "Describe el mundo que quieres. Nosotros lo construimos."
+    ],
+    "botones": ["Descargar", "Eliminar"]
+  },
+  "celular_mensaje": {
+    "contacto": "Nikki",
+    "estado": "últ. vez hoy a las 2:41",
+    "voz": "Nikki (mensaje)",
+    "hora": "2:41",
+    "dia": "Hoy",
+    "escribir": "Mensaje"
+  },
+  "negro": {},
+  "nebulosa_magenta": {}
+}

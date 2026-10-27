@@ -604,7 +604,7 @@
 `121r2` **Jair:** (No sé si fue valentía o miedo. Desde adentro se sienten igual.)
 
 
-### pc_correo
+### PANTALLA:pc_correo
 
 > solo si noche != "sin_bar"
 `122` — Debería dormir. En vez de eso, revisa el correo. Es lo que hace la gente que no quiere quedarse a solas con sus pensamientos.
@@ -641,7 +641,7 @@
 `bad_correo_003` — Apaga la PC. El ventilador sigue girando, solo, en la oscuridad.
 
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `bad_correo_004` — Duerme once horas. Despierta con resaca, un mensaje de Nikki que dice «ya llegue» y la misma vida de siempre.
 
@@ -650,7 +650,7 @@
 `bad_correo_006` — En algún servidor, una inteligencia artificial espera a un usuario que nunca llega. Y la historia que estabas por jugar nunca ocurrió.
 
 
-### negro
+### PANTALLA:negro
 
 `bad_correo_007` — Spam.
 
@@ -658,7 +658,7 @@
 
 ---
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `bad_sinbar_001` — Jair lee el correo dos veces. Sobrio, todo se ve más sospechoso.
 
@@ -671,14 +671,14 @@
 `bad_sinbar_003` — Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once.
 
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `bad_sinbar_004` — El sábado no pasa nada. El domingo tampoco. El lunes, el supervisor avisa que el pago se corre para el otro viernes.
 
 `bad_sinbar_005` — Jair nunca escribe un mundo. Nadie despierta en él. Nadie lo carga, nadie lo espera en un puente. La historia que estabas por jugar nunca ocurrió.
 
 
-### negro
+### PANTALLA:negro
 
 `bad_sinbar_006` — Una noche normal.
 
@@ -686,7 +686,7 @@
 
 ---
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `bad_rechazo_001` — Jair mira el correo. Piensa en Nikki subiéndose al taxi. En que le dijo que no.
 
@@ -699,14 +699,14 @@
 `bad_rechazo_003` — Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual.
 
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `bad_rechazo_004` — No hay rubia, ni peliverde, ni Rey Malvado. Solo un hombre que, por una noche, eligió no huir.
 
 `bad_rechazo_005` — Sin esa huida no hay juego. Y sin juego, la historia que estabas por jugar nunca ocurrió.
 
 
-### negro
+### PANTALLA:negro
 
 `bad_rechazo_006` — La única vez que dijo que no.
 
@@ -714,12 +714,12 @@
 
 ---
 
-### pc_correo
+### PANTALLA:pc_correo
 
 `127` — Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días».
 
 
-### gravity_ide
+### PANTALLA:gravity_ide
 
 > ♪ música: into_the_ciberse
 `128` **GRAVITY:** > Instalando GRAVITY... Framework: Reckt. Front: Coffee. Back: Cobra.
@@ -802,7 +802,7 @@
 `l11` — Y la luz lo mira de vuelta.
 
 
-### negro
+### PANTALLA:negro
 
 > ◐ transición: blanco
 `g1_001` — Calor.
@@ -810,7 +810,7 @@
 `g1_002` — No. No es calor. Es otra cosa. Es la ausencia de calor, que se siente parecido cuando uno lleva treinta años sudando.
 
 
-### nebulosa_magenta
+### PANTALLA:nebulosa_magenta
 
 > ♪ música: new_discover
 `g1_003` — Jair abre los ojos.
@@ -920,7 +920,7 @@
 `bad1_014` — Lo último que Jair piensa, antes de que la tinta le cubra los lentes, es que es la primera vez en su vida que nadie va a llamarlo para preguntarle por qué no hizo nada.
 
 
-### negro
+### PANTALLA:negro
 
 `bad1_015` — Nadie más se encarga.
 
@@ -1194,7 +1194,7 @@
 `g3_018b16` **Jair:** (Por lo menos ahora tengo un puesto.)
 
 
-### negro
+### PANTALLA:negro
 
 `g3_018b17` — Escudo humano.
 
@@ -1317,7 +1317,7 @@
 `g3_045b2` — Salta.
 
 
-### nebulosa_magenta
+### PANTALLA:nebulosa_magenta
 
 `g3_046` — Durante un segundo eterno, los dos flotan sobre las estrellas. El cielo magenta arriba, abajo, en todas partes. Cami tiene los brazos alrededor de su cuello. Él no recuerda cuándo hizo ella eso.
 
@@ -1871,7 +1871,7 @@
 `g5m_004` **Jair:** (No. No puede ser.)
 
 
-### celular_mensaje
+### PANTALLA:celular_mensaje
 
 `g5m_005` — Una notificación. Un mensaje de Nikki, enviado a las 2:41 a. m.
 
@@ -2066,7 +2066,7 @@
 `g5_024b19` **Voz:** Tiempo estimado de revisión del expediente: indefinido.
 
 
-### negro
+### PANTALLA:negro
 
 `g5_024b20` — Pendiente de revisión.
 

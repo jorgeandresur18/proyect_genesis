@@ -2,7 +2,7 @@
 import type { Condition, EndingInfo, GameConfig, Scene, StoryFile, VarDecl, Vars } from './types';
 import { UI_EFFECTS } from './types';
 import { applyChoice, checkAll, effectsOf, enterScene, resolveNext } from './logic';
-import { isPlaceholder } from './assets';
+import { isKnownScreen, isPlaceholder, screenOf } from './assets';
 
 const MAX_STATES = 200_000;
 
@@ -76,7 +76,9 @@ export function validateStory(
       }
     });
     for (const ref of [scene.background, scene.video_fondo, scene.audio, ...scene.characters.map((c) => c.sprite)]) {
-      if (ref && ref !== 'silencio' && !isPlaceholder(ref) && !assetExists(ref)) errors.push(`${id}: recurso inexistente "${ref}"`);
+      if (!ref || ref === 'silencio' || isPlaceholder(ref)) continue;
+      const screen = screenOf(ref);
+      if (screen !== null ? !isKnownScreen(screen) : !assetExists(ref)) errors.push(`${id}: recurso inexistente "${ref}"`);
     }
     for (const fx of effectsOf(scene)) {
       if (!(UI_EFFECTS as readonly string[]).includes(fx)) errors.push(`${id}: ui_effect desconocido "${fx}"`);

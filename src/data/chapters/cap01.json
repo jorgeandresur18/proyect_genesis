@@ -7002,7 +7002,7 @@
     {
       "scene_id": "cap01_122",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7025,7 +7025,7 @@
     {
       "scene_id": "cap01_122s",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7048,7 +7048,7 @@
     {
       "scene_id": "cap01_123",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7065,7 +7065,7 @@
     {
       "scene_id": "cap01_124",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7082,7 +7082,7 @@
     {
       "scene_id": "cap01_125",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7099,7 +7099,7 @@
     {
       "scene_id": "cap01_126",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7146,7 +7146,7 @@
     {
       "scene_id": "cap01_126c",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7172,7 +7172,7 @@
     {
       "scene_id": "cap01_bad_correo_001",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7189,7 +7189,7 @@
     {
       "scene_id": "cap01_bad_correo_002",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7229,7 +7229,7 @@
     {
       "scene_id": "cap01_bad_correo_004",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7252,7 +7252,7 @@
     {
       "scene_id": "cap01_bad_correo_005",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7275,7 +7275,7 @@
     {
       "scene_id": "cap01_bad_correo_006",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7298,7 +7298,7 @@
     {
       "scene_id": "cap01_bad_correo_007",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7322,7 +7322,7 @@
     {
       "scene_id": "cap01_bad_sinbar_001",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7345,7 +7345,7 @@
     {
       "scene_id": "cap01_bad_sinbar_002",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7385,7 +7385,7 @@
     {
       "scene_id": "cap01_bad_sinbar_004",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7408,7 +7408,7 @@
     {
       "scene_id": "cap01_bad_sinbar_005",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7431,7 +7431,7 @@
     {
       "scene_id": "cap01_bad_sinbar_006",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7455,7 +7455,7 @@
     {
       "scene_id": "cap01_bad_rechazo_001",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7478,7 +7478,7 @@
     {
       "scene_id": "cap01_bad_rechazo_002",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7518,7 +7518,7 @@
     {
       "scene_id": "cap01_bad_rechazo_004",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7541,7 +7541,7 @@
     {
       "scene_id": "cap01_bad_rechazo_005",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7564,7 +7564,7 @@
     {
       "scene_id": "cap01_bad_rechazo_006",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7588,7 +7588,7 @@
     {
       "scene_id": "cap01_127",
       "chapter": 1,
-      "background": "PLACEHOLDER:pc_correo",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7605,7 +7605,7 @@
     {
       "scene_id": "cap01_128",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7622,7 +7622,7 @@
     {
       "scene_id": "cap01_129",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7639,7 +7639,7 @@
     {
       "scene_id": "cap01_130",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7656,7 +7656,7 @@
     {
       "scene_id": "cap01_131",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7679,7 +7679,7 @@
     {
       "scene_id": "cap01_132",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7696,7 +7696,7 @@
     {
       "scene_id": "cap01_133",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7713,7 +7713,7 @@
     {
       "scene_id": "cap01_134",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7730,7 +7730,7 @@
     {
       "scene_id": "cap01_135",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7753,7 +7753,7 @@
     {
       "scene_id": "cap01_136",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7776,7 +7776,7 @@
     {
       "scene_id": "cap01_137",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7793,7 +7793,7 @@
     {
       "scene_id": "cap01_138",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7810,7 +7810,7 @@
     {
       "scene_id": "cap01_139",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7827,7 +7827,7 @@
     {
       "scene_id": "cap01_140",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7844,7 +7844,7 @@
     {
       "scene_id": "cap01_141",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7861,7 +7861,7 @@
     {
       "scene_id": "cap01_142",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7878,7 +7878,7 @@
     {
       "scene_id": "cap01_143",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7895,7 +7895,7 @@
     {
       "scene_id": "cap01_144",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7912,7 +7912,7 @@
     {
       "scene_id": "cap01_145",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7929,7 +7929,7 @@
     {
       "scene_id": "cap01_146",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7946,7 +7946,7 @@
     {
       "scene_id": "cap01_147",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7963,7 +7963,7 @@
     {
       "scene_id": "cap01_148",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7980,7 +7980,7 @@
     {
       "scene_id": "cap01_149",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -7997,7 +7997,7 @@
     {
       "scene_id": "cap01_150",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8014,7 +8014,7 @@
     {
       "scene_id": "cap01_151",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8031,7 +8031,7 @@
     {
       "scene_id": "cap01_152",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8048,7 +8048,7 @@
     {
       "scene_id": "cap01_153",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8065,7 +8065,7 @@
     {
       "scene_id": "cap01_154",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8082,7 +8082,7 @@
     {
       "scene_id": "cap01_155",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8099,7 +8099,7 @@
     {
       "scene_id": "cap01_l01",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8116,7 +8116,7 @@
     {
       "scene_id": "cap01_l02",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8133,7 +8133,7 @@
     {
       "scene_id": "cap01_l03",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8150,7 +8150,7 @@
     {
       "scene_id": "cap01_l04",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8167,7 +8167,7 @@
     {
       "scene_id": "cap01_l05",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8184,7 +8184,7 @@
     {
       "scene_id": "cap01_l06",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8201,7 +8201,7 @@
     {
       "scene_id": "cap01_l07",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8218,7 +8218,7 @@
     {
       "scene_id": "cap01_l08",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8235,7 +8235,7 @@
     {
       "scene_id": "cap01_l09",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8252,7 +8252,7 @@
     {
       "scene_id": "cap01_l10",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8269,7 +8269,7 @@
     {
       "scene_id": "cap01_l11",
       "chapter": 1,
-      "background": "PLACEHOLDER:gravity_ide",
+      "background": "PANTALLA:gravity_ide",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8286,7 +8286,7 @@
     {
       "scene_id": "cap01_g1_001",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8304,7 +8304,7 @@
     {
       "scene_id": "cap01_g1_002",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8321,7 +8321,7 @@
     {
       "scene_id": "cap01_g1_003",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8338,7 +8338,7 @@
     {
       "scene_id": "cap01_g1_004",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8355,7 +8355,7 @@
     {
       "scene_id": "cap01_g1_005",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -8372,7 +8372,7 @@
     {
       "scene_id": "cap01_g1_006",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -8395,7 +8395,7 @@
     {
       "scene_id": "cap01_g1_007",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -9423,7 +9423,7 @@
     {
       "scene_id": "cap01_bad1_015",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -12951,7 +12951,7 @@
     {
       "scene_id": "cap01_g3_018b17",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -14530,7 +14530,7 @@
     {
       "scene_id": "cap01_g3_046",
       "chapter": 1,
-      "background": "PLACEHOLDER:nebulosa_magenta",
+      "background": "PANTALLA:nebulosa_magenta",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -21792,7 +21792,7 @@
     {
       "scene_id": "cap01_g5m_005",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21809,7 +21809,7 @@
     {
       "scene_id": "cap01_g5m_006",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21826,7 +21826,7 @@
     {
       "scene_id": "cap01_g5m_007",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21843,7 +21843,7 @@
     {
       "scene_id": "cap01_g5m_008",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21860,7 +21860,7 @@
     {
       "scene_id": "cap01_g5m_009",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21877,7 +21877,7 @@
     {
       "scene_id": "cap01_g5m_010",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21894,7 +21894,7 @@
     {
       "scene_id": "cap01_g5m_011",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -21911,7 +21911,7 @@
     {
       "scene_id": "cap01_g5m_012",
       "chapter": 1,
-      "background": "PLACEHOLDER:celular_mensaje",
+      "background": "PANTALLA:celular_mensaje",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -24251,7 +24251,7 @@
     {
       "scene_id": "cap01_g5_024b20",
       "chapter": 1,
-      "background": "PLACEHOLDER:negro",
+      "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
