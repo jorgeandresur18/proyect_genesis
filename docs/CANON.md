@@ -23,11 +23,22 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - GRAVITY y GENESIS son nuevos para Jair: los descubre la misma noche del Capítulo 1 (acceso anticipado). `[CANON]` Cómo llega el acceso: `[PENDIENTE]`
 - GRAVITY es el IDE; GENESIS es la IA; NEXUS el framework; Coffee el front; Cobra el back. `[CANON]`
 - Boringram: parodia de Instagram. Dulce Frío: la heladería donde trabaja Nikki. `[CANON]`
-- Póster en el cuarto de Jair: "UN HAREM NO ES UN SUEÑO... ES UNA RESPONSABILIDAD". `[CANON]`
+- Póster en el cuarto de Jair: un póster de anime de un chico rodeado de un harem. Es un guiño a Génesis++ que no se explica: queda como curiosidad. (Antes tenía el lema «UN HAREM NO ES UN SUEÑO... ES UNA RESPONSABILIDAD»; el autor lo quitó.) `[CANON]`
 - Regla de las vocales: los nombres Rikka, Cami, Sashi y Aylin contienen solo A e I ("IA"/"AI"). `[CANON]`
 - Dilatación temporal: una noche para Jair son cientos de años dentro del juego. `[CANON]`
 - Autocompletado: Jair se duerme enviando prompts y la IA completa sola el código. Él quiso "picor" entre las heroínas, pero sabía que no quería reducirlas a eso y la IA no se lo permitió. `[CANON]`
 - GENESIS no debe explicarse demasiado pronto; la incertidumbre es planificada. `[PENDIENTE: mecanismo exacto y límites de la materialización]`
+- **El metaverso del juego se llama THE NEXUS.** No se revela hasta casi el final del Capítulo 3. `[CANON]`
+- Dentro del juego, Jair no sabe dónde está: piensa que tal vez está soñando, aunque todo se siente demasiado real. Oye una voz, la de GENESIS, que le da información; solo él la oye y no sabe de dónde viene. `[CANON]`
+
+### Las dos dimensiones (lore: `docs/LORE_DIMENSIONES.md`) `[CANON]`
+
+- **Reino Ancestral:** lo gobiernan cuatro facciones estacionales. Primavera (inspirada en el Japón feudal; de ahí viene Rikka), Invierno (regiones de Rusia), Otoño (culturas celtas) y Verano (culturas polinesias). Son inspiraciones, no copias.
+- El Rey Malvado fue el rey de Primavera; después se proclamó Rey Malvado del metaverso. Por qué: `[PENDIENTE]`.
+- Verano ocupa el Valle de la Eterna Primavera bajo la influencia de la deidad Valkha; de ahí el conflicto entre Primavera y Verano (los de Verano, codiciosos).
+- **Dimensión espacial:** antes cada planeta era un imperio y había guerras. La Federación Galáctica los fue integrando, a veces con ventajas y a veces con presión; quien no entra es «planeta rebelde». La Resistencia sospecha que la paz esconde la concentración del poder. Los soldados de la Federación visten de negro.
+- **Cami:** su planeta entró a la Federación por una guerra civil en la que murieron sus padres. Quedó huérfana y vagó por el espacio con un grupo rebelde hasta encontrarse con Jair.
+- Pendientes del lore: qué llevó al rey de Primavera a volverse Rey Malvado; Valkha y Verano; cómo se formó el Reino Ancestral; cómo nació la Federación; qué quiere la Resistencia; si las dos dimensiones tienen relación cosmológica. `[PENDIENTE]`
 
 ## 3. Personajes
 
@@ -140,7 +151,7 @@ Sashi y Aylin **no existen** en la línea original.
 
 - Los NPCs de GRAVITY parten de una misma base (`CREADORA_A`), con nombres distintos y sin personalidad. Hay millones.
 - Ocurre durante el Capítulo 1, mientras GENESIS escribe el juego: más de 800 años de historia que para la IA son unos minutos. Dura unas 4 horas. Se juega como ruta aparte, desde el menú. `[CANON]`
-- Reino ancestral con 4 familias: Verano, Primavera, Otoño e Invierno. El Rey Malvado era el Rey Primavera. Rikka tiene dos "hermanas": Otoño e Invierno.
+- Reino ancestral con 4 familias: Verano, Primavera, Otoño e Invierno. El Rey Malvado era el Rey Primavera. Rikka tiene dos "hermanas": Otoño e Invierno. Rikka es de Primavera (ver «Las dos dimensiones»).
 - Trama: derrotar a Tzai, heralda del Rey Malvado. Rikka se une a un grupo de aventureras; al final cada una sigue su camino.
 - Cierre: Rikka se cruza con Jair cargando a Cami. Aylin existe pero no aparece ni se menciona.
 

@@ -560,9 +560,9 @@
 
 ### departamento_poster
 
-`117` — Sobre la cama hay un póster: «UN HAREM NO ES UN SUEÑO... ES UNA RESPONSABILIDAD».
+`117` — Sobre la cama hay un póster de un anime: un chico de cara genérica, con el pelo tapándole los ojos, rodeado de chicas que lo miran como si él fuera la respuesta a algo. Ninguna se parece a la otra. Todas parecen enamoradas por contrato.
 
-`118` **Jair:** Lo compré de chiste. Ahora me mira cada noche como si supiera algo que yo no.
+`118` **Jair:** Lo compré en oferta, de un anime que nunca terminé. Ni me acuerdo cómo se llamaba. Ahora me mira cada noche como si supiera algo que yo no.
 
 
 ### fondos/departamento_noche.webp
