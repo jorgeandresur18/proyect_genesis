@@ -58,7 +58,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - Lidia con el alcoholismo. `[CANON]` Mostrar consecuencias, no diagnosticarla con una escena ni reducirla a un chiste de alcohol.
 - La relación con Jair es codependiente y asfixiante; los dos obtienen algo de ella y por eso no la rompen. `[CANON]`
 - En el epílogo están separados y Nikki está embarazada de cuatro meses (el bebé es de Jair). No es un castigo moral: es una responsabilidad real que Jair no puede programar ni abandonar. `[CANON]`
-- Trabaja en la heladería Dulce Frío. Ojos de dos puntos negros en la escena cómica del bar.
+- Trabaja en la heladería Dulce Frío. Uniforme: gorra, camiseta y falda rosa con blanco, delantal blanco con un cono y gafete con su nombre. Antes de ir al bar se cambia (camiseta y pantalón negros) y lleva el uniforme en la mochila. Ojos de dos puntos negros en la escena cómica del bar.
 
 ### Cami
 - IA, rubia, traje azul de los 4 Fantásticos. Primera persona que Jair encuentra en el juego, herida del tobillo. Más cercana a Jair que Rikka. "La dura": agresiva, dominante. `[CANON]`

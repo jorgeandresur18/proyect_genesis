@@ -1072,6 +1072,113 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_020a1"
+    },
+    {
+      "scene_id": "cap01_020a1",
+      "chapter": 1,
+      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/trabajo_orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Dame dos minutos. No pienso entrar a un bar vestida de cono de fresa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_020a2"
+    },
+    {
+      "scene_id": "cap01_020a2",
+      "chapter": 1,
+      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Vuelve a subir la persiana hasta la mitad y se mete agachada. Jair se queda en la vereda, frente a un cartel donde un helado sonríe más de lo que debería sonreír un helado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_020a3"
+    },
+    {
+      "scene_id": "cap01_020a3",
+      "chapter": 1,
+      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Sale a los cinco minutos, no a los dos: camiseta negra, pantalón negro, el pelo suelto. La gorra va hecha un rollo dentro de la mochila y el delantal asoma por el cierre, como si no quisiera quedarse."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_020a4"
+    },
+    {
+      "scene_id": "cap01_020a4",
+      "chapter": 1,
+      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "¿Qué? Así sí me invitan una cerveza. Con uniforme lo único que me piden es el baño."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_021"
     },
     {

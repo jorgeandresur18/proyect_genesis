@@ -116,6 +116,14 @@
 
 `020a` **Jair:** Una. Mañana... bueno, mañana es sábado. Una.
 
+`020a1` **Nikki:** Dame dos minutos. No pienso entrar a un bar vestida de cono de fresa.
+
+`020a2` — Vuelve a subir la persiana hasta la mitad y se mete agachada. Jair se queda en la vereda, frente a un cartel donde un helado sonríe más de lo que debería sonreír un helado.
+
+`020a3` — Sale a los cinco minutos, no a los dos: camiseta negra, pantalón negro, el pelo suelto. La gorra va hecha un rollo dentro de la mochila y el delantal asoma por el cierre, como si no quisiera quedarse.
+
+`020a4` **Nikki:** ¿Qué? Así sí me invitan una cerveza. Con uniforme lo único que me piden es el baño.
+
 > ⤷ continúa en `021`
 
 `020b` **Jair:** Estoy muerto, Nikki. Otro día.
