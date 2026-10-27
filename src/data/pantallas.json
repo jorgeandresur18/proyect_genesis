@@ -34,18 +34,71 @@
       "mundo.compilar();"
     ],
     "consola": "CONSOLA — GENESIS",
-    "voces": { "GRAVITY": "genesis", "Jair (prompt)": "usuario" },
+    "voces": {
+      "GRAVITY": "genesis",
+      "Jair (prompt)": "usuario"
+    },
     "prompt": "jair@depto:~$"
   },
   "pc_correo": {
     "titulo": "Correo",
-    "carpetas": ["Recibidos (3)", "Destacados", "Enviados", "Spam", "Papelera"],
+    "carpetas": [
+      "Recibidos (11)",
+      "Destacados",
+      "Enviados",
+      "Spam (99+)",
+      "Papelera"
+    ],
     "bandeja": [
-      { "de": "Tu Banco", "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada!" },
-      { "de": "GRAVITY", "asunto": "Has sido seleccionado para el acceso anticipado a GRAVITY", "activo": true },
-      { "de": "Clínica Dental Sonrisa", "asunto": "Recordatorio: tu limpieza está pendiente desde marzo" },
-      { "de": "Tienda en línea", "asunto": "Últimas horas: 2x1 en audífonos" },
-      { "de": "Supervisor", "asunto": "RE: RE: RE: pago de la quincena" }
+      {
+        "de": "Geekdump",
+        "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests mientras dormías"
+      },
+      {
+        "de": "Tu Banco",
+        "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada!"
+      },
+      {
+        "de": "GRAVITY",
+        "asunto": "Has sido seleccionado para el acceso anticipado a GRAVITY",
+        "activo": true
+      },
+      {
+        "de": "Clínica Dental Sonrisa",
+        "asunto": "Recordatorio: tu limpieza está pendiente desde marzo"
+      },
+      {
+        "de": "Stack Underflow",
+        "asunto": "Tu pregunta fue cerrada: duplicada de una pregunta de 2009"
+      },
+      {
+        "de": "LinkedOut",
+        "asunto": "4 reclutadores vieron tu perfil. Ninguno te escribió."
+      },
+      {
+        "de": "Geekdump",
+        "asunto": "[nave-espacial-WIP] Este repositorio lleva 2 años sin actividad. ¿Lo archivamos?"
+      },
+      {
+        "de": "Vapor",
+        "asunto": "Un juego de tu lista de deseados está en oferta. Otra vez. No lo vas a comprar."
+      },
+      {
+        "de": "Boringram",
+        "asunto": "3 personas que no conoces vieron tu historia"
+      },
+      {
+        "de": "NubeServicios",
+        "asunto": "Tu factura está lista: el servidor que olvidaste apagar te extraña"
+      },
+      {
+        "de": "Supervisor",
+        "asunto": "RE: RE: RE: pago de la quincena"
+      },
+      {
+        "de": "Curso Reckt Pro",
+        "asunto": "Aprende Reckt en 24 horas (o tu frustración de vuelta)"
+      }
     ],
     "remitente": "GRAVITY <acceso-anticipado@gravity>",
     "para": "Para: mí",
@@ -54,7 +107,17 @@
       "GRAVITY es un entorno de desarrollo con inteligencia artificial integrada.",
       "Describe el mundo que quieres. Nosotros lo construimos."
     ],
-    "botones": ["Descargar", "Eliminar"]
+    "botones": [
+      "Descargar",
+      "Eliminar"
+    ],
+    "clics": {
+      "Descargarlo igual": 0,
+      "Eliminar el correo": 1
+    },
+    "descargando": "GRAVITY_instalador — descargando…",
+    "descargado": "GRAVITY_instalador — descarga completa",
+    "eliminado": "El correo se movió a la papelera."
   },
   "celular_mensaje": {
     "contacto": "Nikki",

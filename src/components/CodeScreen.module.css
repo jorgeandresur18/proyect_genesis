@@ -145,8 +145,9 @@
 .inbox li {
   display: flex;
   flex-direction: column;
-  gap: 0.3cqh;
-  padding: 1.2cqh 1.6cqh;
+  gap: 0.2cqh;
+  padding: 0.9cqh 1.6cqh;
+  font-size: 1.75cqh;
   border-bottom: 0.15cqh solid #eceef3;
 }
 .inbox span { color: #6a7080; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -157,7 +158,7 @@
 .reading h3 { margin: 0 0 1.4cqh; font-size: 2.8cqh; line-height: 1.25; }
 .from { color: #6a7080; font-size: 1.8cqh; }
 .reading p { margin: 2cqh 0 0; font-size: 2.2cqh; line-height: 1.5; }
-.buttons { display: flex; gap: 1.6cqh; margin-top: 4cqh; }
+.buttons { position: relative; display: flex; gap: 1.6cqh; margin-top: 4cqh; padding-bottom: 3cqh; }
 .buttons span {
   padding: 1.1cqh 2.6cqh;
   border: 0.15cqh solid #c9ccd6;
@@ -165,6 +166,35 @@
   font-size: 2cqh;
 }
 .buttons .primary { background: #4f6bff; border-color: #4f6bff; color: #fff; }
+.buttons span { transition: transform 0.12s, filter 0.12s; }
+.buttons .pressed { transform: scale(0.93); filter: brightness(0.85); }
+
+/* Puntero del mouse: espera entre los dos botones y viaja al elegido. */
+.pointer {
+  position: absolute;
+  width: 2.4cqh;
+  height: 3.6cqh;
+  fill: #fff;
+  stroke: #111;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0.3cqh 0.4cqh rgba(0, 0, 0, 0.35));
+  transition: left 0.7s cubic-bezier(0.45, 0.05, 0.25, 1), top 0.7s cubic-bezier(0.45, 0.05, 0.25, 1), transform 0.12s;
+  pointer-events: none;
+}
+.pointerPress { transform: scale(0.85); }
+
+/* Resultado del clic. */
+.download { margin-top: 1cqh; font-size: 1.8cqh; color: #444a57; }
+.bar { height: 0.9cqh; margin-top: 0.8cqh; border-radius: 1cqh; background: #e3e6ee; overflow: hidden; }
+.bar i { display: block; height: 100%; background: #4f6bff; }
+.barFill { animation: bar-fill 1.6s ease-in-out forwards; }
+.barFull { width: 100%; }
+@keyframes bar-fill { from { width: 0; } to { width: 100%; } }
+.gone { animation: mail-gone 0.4s ease-in forwards; }
+@keyframes mail-gone { to { opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; } }
+.empty { color: #8a909c; font-size: 2.2cqh; margin-top: 18cqh; text-align: center; animation: fade-in 0.4s ease-out; }
+@keyframes fade-in { from { opacity: 0; } }
 
 /* Celular */
 .night { background: radial-gradient(ellipse at 50% 35%, #2a1f2c 0%, #0b090d 75%); }
@@ -253,4 +283,5 @@
 @keyframes twinkle { 50% { opacity: 0.15; } }
 @media (prefers-reduced-motion: reduce) {
   .twinkle, .cursor, .bubble { animation: none; }
+  .pointer { transition: none; }
 }

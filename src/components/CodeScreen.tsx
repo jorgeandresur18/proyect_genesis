@@ -1,10 +1,12 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import pantallas from '../data/pantallas.json';
 import s from './CodeScreen.module.css';
 
 interface Line {
   speaker: string | null;
   text: string;
+  /** Decisión del jugador (el correo la usa para saber qué botón se apretó). */
+  choice?: boolean;
 }
 
 interface Props {
@@ -19,7 +21,7 @@ export function CodeScreen({ id, lines }: Props) {
     case 'gravity_ide':
       return <GravityIde lines={lines} />;
     case 'pc_correo':
-      return <Correo />;
+      return <Correo lines={lines} />;
     case 'celular_mensaje':
       return <Celular lines={lines} />;
     case 'nebulosa_magenta':
@@ -86,8 +88,62 @@ function GravityIde({ lines }: { lines: Line[] }) {
   );
 }
 
-function Correo() {
+type ClickPhase = 'idle' | 'move' | 'press' | 'done';
+
+/** Última decisión del jugador que corresponde a un botón del correo (índice en el historial y botón). */
+function lastClick(lines: Line[], clics: Record<string, number>): { at: number; button: number } | null {
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (lines[i].choice && lines[i].text in clics) return { at: i, button: clics[lines[i].text] };
+  }
+  return null;
+}
+
+function Correo({ lines }: { lines: Line[] }) {
   const c = pantallas.pc_correo;
+  const click = lastClick(lines, c.clics as Record<string, number>);
+  // La animación corre justo después de elegir (la decisión es lo anterior a la línea actual);
+  // si se vuelve a esta pantalla más tarde, ya se muestra el resultado.
+  const live = click !== null && click.at === lines.length - 2;
+  return <CorreoVentana key={click?.at ?? -1} button={click?.button ?? null} live={live} />;
+}
+
+function CorreoVentana({ button, live }: { button: number | null; live: boolean }) {
+  const c = pantallas.pc_correo;
+  const [phase, setPhase] = useState<ClickPhase>(button !== null && !live ? 'done' : 'idle');
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const first = useRef<HTMLSpanElement>(null);
+  const second = useRef<HTMLSpanElement>(null);
+  const [spots, setSpots] = useState<{ idle: [number, number]; targets: [number, number][] } | null>(null);
+
+  // Dónde está cada botón (relativo a su fila): el puntero va del medio de los dos al elegido.
+  useLayoutEffect(() => {
+    const row = buttonsRef.current;
+    if (!row || !first.current || !second.current) return;
+    const measure = () => {
+      const r = row.getBoundingClientRect();
+      const [a, b] = [first.current!.getBoundingClientRect(), second.current!.getBoundingClientRect()];
+      const target = (x: DOMRect): [number, number] => [x.left - r.left + x.width * 0.55, x.top - r.top + x.height * 0.6];
+      setSpots({ idle: [(a.right + b.left) / 2 - r.left, a.bottom - r.top + 4], targets: [target(a), target(b)] });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(row);
+    return () => ro.disconnect();
+  }, []);
+
+  // Secuencia del clic: el puntero viaja, aprieta y después se ve el resultado.
+  useEffect(() => {
+    if (button === null || !live) return;
+    const timers = [
+      setTimeout(() => setPhase('move'), 250),
+      setTimeout(() => setPhase('press'), 1000),
+      setTimeout(() => setPhase('done'), 1250),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [button, live]);
+
+  const deleted = button === 1 && phase === 'done';
+  const pos = spots && (phase === 'idle' || button === null ? spots.idle : spots.targets[button]);
   return (
     <div className={`${s.screen} ${s.desk}`}>
       <div className={`${s.window} ${s.light}`}>
@@ -108,23 +164,54 @@ function Correo() {
           </ul>
           <ul className={s.inbox}>
             {c.bandeja.map((m) => (
-              <li key={m.asunto} className={'activo' in m ? s.selected : ''}>
+              <li key={m.asunto} className={`${'activo' in m ? s.selected : ''} ${'activo' in m && deleted ? s.gone : ''}`}>
                 <b>{m.de}</b>
                 <span>{m.asunto}</span>
               </li>
             ))}
           </ul>
           <div className={s.reading}>
-            <h3>{c.asunto}</h3>
-            <div className={s.from}>{c.remitente}</div>
-            <div className={s.from}>{c.para}</div>
-            {c.cuerpo.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-            <div className={s.buttons}>
-              <span className={s.primary}>{c.botones[0]}</span>
-              <span>{c.botones[1]}</span>
-            </div>
+            {deleted ? (
+              <p className={s.empty}>{c.eliminado}</p>
+            ) : (
+              <>
+                <h3>{c.asunto}</h3>
+                <div className={s.from}>{c.remitente}</div>
+                <div className={s.from}>{c.para}</div>
+                {c.cuerpo.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+                <div className={s.buttons} ref={buttonsRef}>
+                  {c.botones.map((b, i) => (
+                    <span
+                      key={b}
+                      ref={i === 0 ? first : second}
+                      className={`${i === 0 ? s.primary : ''} ${button === i && phase === 'press' ? s.pressed : ''}`}
+                    >
+                      {b}
+                    </span>
+                  ))}
+                  {pos && (
+                    <svg
+                      className={`${s.pointer} ${phase === 'press' ? s.pointerPress : ''}`}
+                      style={{ left: pos[0], top: pos[1] }}
+                      viewBox="0 0 16 24"
+                      aria-hidden
+                    >
+                      <path d="M1 1v19l5-5 3.5 7.5 3-1.4L9 13.7h7z" />
+                    </svg>
+                  )}
+                </div>
+                {button === 0 && phase === 'done' && (
+                  <div className={s.download}>
+                    <span>{live ? c.descargando : c.descargado}</span>
+                    <div className={s.bar}>
+                      <i className={live ? s.barFill : s.barFull} />
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
