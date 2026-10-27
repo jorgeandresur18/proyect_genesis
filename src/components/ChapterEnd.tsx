@@ -10,14 +10,15 @@ interface Props {
   /** La última escena del capítulo: se ve mientras se funde a negro. */
   lastScene: ReactNode;
   onSave: () => void;
+  /** Vuelve al título con fundido a negro. */
+  onTitle: () => void;
 }
 
 const FADE_MS = 1800;
 const n = (text: string, chapter: number) => text.replace('{n}', String(chapter));
 
 /** Fin de capítulo: fundido a negro, «FIN DEL CAPÍTULO N» en grande y Continuar / Guardar / Volver al inicio. */
-export function ChapterEnd({ chapter, lastScene, onSave }: Props) {
-  const quitToTitle = useStore((s) => s.quitToTitle);
+export function ChapterEnd({ chapter, lastScene, onSave, onTitle }: Props) {
   const still = useStore((s) => s.settings.reduceEffects);
   const [faded, setFaded] = useState(false);
   const [soon, setSoon] = useState(false);
@@ -53,7 +54,7 @@ export function ChapterEnd({ chapter, lastScene, onSave }: Props) {
       <nav className="chapter-end-menu">
         <button onClick={click(() => setSoon(true))}>{textos.continuar}</button>
         <button onClick={click(onSave)}>{textos.guardar}</button>
-        <button onClick={click(quitToTitle)}>{textos.inicio}</button>
+        <button onClick={click(onTitle)}>{textos.inicio}</button>
       </nav>
       {soon && (
         <div className="chapter-soon-backdrop" onClick={() => setSoon(false)}>

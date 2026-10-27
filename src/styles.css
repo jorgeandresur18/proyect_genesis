@@ -637,3 +637,6 @@ img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; point
   .title-intro::after, .title-intro .title-logo, .title-intro .title-logo::after, .title-intro .title-logo + p, .title-intro .title-menu button { animation: none; }
   .title-intro::after, .title-intro .title-logo::after { display: none; }
 }
+
+/* Volver al título: todo se funde a negro (encima de paneles y menús) y después entra el título. */
+.to-title-fade { position: fixed; inset: 0; z-index: 100; background: #000; opacity: 0; animation: scene-fade-out ease-in forwards; }

@@ -17,6 +17,9 @@ import { playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
 
+// Fundido a negro al volver al título.
+const TITLE_FADE_MS = 800;
+
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
 export default function App() {
@@ -28,6 +31,23 @@ export default function App() {
   useEffect(() => {
     if (hasGame) setIntro(false);
   }, [hasGame]);
+  // Volver al título desde el juego: fundido a negro y otra vez la entrada del título.
+  const [toTitle, setToTitle] = useState(false);
+  const still = useStore((s) => s.settings.reduceEffects);
+  const goToTitle = () => {
+    if (toTitle) return;
+    setToTitle(true);
+    setOverlay(null);
+    useStore.getState().setMode('normal');
+    setTimeout(
+      () => {
+        useStore.getState().quitToTitle();
+        setIntro(true);
+        setToTitle(false);
+      },
+      still ? 150 : TITLE_FADE_MS,
+    );
+  };
   // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
   const music = useStore((s) =>
     !s.game || s.game.finished?.startsWith(CHAPTER_END)
@@ -58,7 +78,11 @@ export default function App() {
   const close = () => setOverlay(null);
   return (
     <div className="app">
-      {hasGame ? <Game open={setOverlay} paused={overlay !== null} /> : <TitleScreen open={setOverlay} intro={intro} />}
+      {hasGame ? (
+        <Game open={setOverlay} paused={overlay !== null} onTitle={goToTitle} />
+      ) : (
+        <TitleScreen open={setOverlay} intro={intro} />
+      )}
       {overlay === 'history' && <HistoryPanel onClose={close} />}
       {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
@@ -66,6 +90,7 @@ export default function App() {
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       {hasGame && <RotateHint />}
+      {toTitle && <div className="to-title-fade" style={{ animationDuration: `${still ? 150 : TITLE_FADE_MS}ms` }} aria-hidden />}
     </div>
   );
 }
@@ -155,9 +180,9 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: boole
   );
 }
 
-function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean }) {
+function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: boolean; onTitle: () => void }) {
   const { game, scene, choices, waitingChoice, mode, textDone } = useStoryEngine();
-  const { advance, next, choose, setMode, quitToTitle } = useStore.getState();
+  const { next, choose, setMode } = useStore.getState();
   const error = useStore((s) => s.error);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
@@ -195,6 +220,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
         <ChapterEnd
           chapter={Number(game.finished.slice(CHAPTER_END.length))}
           onSave={() => open('save')}
+          onTitle={onTitle}
           lastScene={
             <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history.filter((h) => !h.choice)}>
               {null}
@@ -206,7 +232,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
     const ending = getEnding(game.finished);
     const bad = ending?.tipo === BAD_END;
     return (
-      <div className={`screen ending-card ${bad ? 'ending-bad' : ''}`} onClick={advance}>
+      <div className={`screen ending-card ${bad ? 'ending-bad' : ''}`} onClick={onTitle}>
         <p className={bad ? 'error' : 'muted'}>{bad ? 'BAD END' : 'FIN'}</p>
         <h1>{ending?.nombre ?? game.finished}</h1>
         <p className="muted">Haz clic para volver al título</p>
@@ -229,7 +255,7 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
       <button onClick={() => open('map')}>Mapa</button>
       <button onClick={() => open('options')}>Opciones</button>
       {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>Pantalla completa</button>}
-      <button onClick={quitToTitle}>Título</button>
+      <button onClick={onTitle}>Título</button>
     </>
   );
   return (
