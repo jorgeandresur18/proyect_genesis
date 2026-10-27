@@ -1058,7 +1058,7 @@
     {
       "scene_id": "cap01_021",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -1075,7 +1075,7 @@
     {
       "scene_id": "cap01_022",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -1092,7 +1092,7 @@
     {
       "scene_id": "cap01_023",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -1109,7 +1109,7 @@
     {
       "scene_id": "cap01_024",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1137,7 +1137,7 @@
     {
       "scene_id": "cap01_025",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1165,7 +1165,7 @@
     {
       "scene_id": "cap01_026",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1193,7 +1193,7 @@
     {
       "scene_id": "cap01_027",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1221,7 +1221,7 @@
     {
       "scene_id": "cap01_028",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1249,7 +1249,7 @@
     {
       "scene_id": "cap01_029",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1277,7 +1277,7 @@
     {
       "scene_id": "cap01_030",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1305,7 +1305,7 @@
     {
       "scene_id": "cap01_031",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1333,7 +1333,7 @@
     {
       "scene_id": "cap01_032",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1361,7 +1361,7 @@
     {
       "scene_id": "cap01_033",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1389,7 +1389,7 @@
     {
       "scene_id": "cap01_034",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1417,7 +1417,7 @@
     {
       "scene_id": "cap01_035",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1445,7 +1445,7 @@
     {
       "scene_id": "cap01_036",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1473,7 +1473,7 @@
     {
       "scene_id": "cap01_037",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1501,7 +1501,7 @@
     {
       "scene_id": "cap01_038",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1529,7 +1529,7 @@
     {
       "scene_id": "cap01_039",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1557,7 +1557,7 @@
     {
       "scene_id": "cap01_040",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1585,7 +1585,7 @@
     {
       "scene_id": "cap01_041",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1613,7 +1613,7 @@
     {
       "scene_id": "cap01_042",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1641,7 +1641,7 @@
     {
       "scene_id": "cap01_043",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1669,7 +1669,7 @@
     {
       "scene_id": "cap01_044",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1697,7 +1697,7 @@
     {
       "scene_id": "cap01_045",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1725,7 +1725,7 @@
     {
       "scene_id": "cap01_046",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1753,7 +1753,7 @@
     {
       "scene_id": "cap01_047",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1781,7 +1781,7 @@
     {
       "scene_id": "cap01_048",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1809,7 +1809,7 @@
     {
       "scene_id": "cap01_049",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1837,7 +1837,7 @@
     {
       "scene_id": "cap01_050",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1865,7 +1865,7 @@
     {
       "scene_id": "cap01_051",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1893,7 +1893,7 @@
     {
       "scene_id": "cap01_052",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1921,7 +1921,7 @@
     {
       "scene_id": "cap01_053",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1949,7 +1949,7 @@
     {
       "scene_id": "cap01_054",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1977,7 +1977,7 @@
     {
       "scene_id": "cap01_055",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2005,7 +2005,7 @@
     {
       "scene_id": "cap01_056",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2033,7 +2033,7 @@
     {
       "scene_id": "cap01_057",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2061,7 +2061,7 @@
     {
       "scene_id": "cap01_058",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2089,7 +2089,7 @@
     {
       "scene_id": "cap01_059",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2117,7 +2117,7 @@
     {
       "scene_id": "cap01_060",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2145,7 +2145,7 @@
     {
       "scene_id": "cap01_061",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2173,7 +2173,7 @@
     {
       "scene_id": "cap01_062",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2201,7 +2201,7 @@
     {
       "scene_id": "cap01_063",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2229,7 +2229,7 @@
     {
       "scene_id": "cap01_064",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2257,7 +2257,7 @@
     {
       "scene_id": "cap01_065",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2285,7 +2285,7 @@
     {
       "scene_id": "cap01_066",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2313,7 +2313,7 @@
     {
       "scene_id": "cap01_067",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2341,7 +2341,7 @@
     {
       "scene_id": "cap01_067y01",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2369,7 +2369,7 @@
     {
       "scene_id": "cap01_067y02",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2397,7 +2397,7 @@
     {
       "scene_id": "cap01_067y03",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2425,7 +2425,7 @@
     {
       "scene_id": "cap01_067y04",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2453,7 +2453,7 @@
     {
       "scene_id": "cap01_067y05",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2481,7 +2481,7 @@
     {
       "scene_id": "cap01_067y06",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2509,7 +2509,7 @@
     {
       "scene_id": "cap01_067y07",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2537,7 +2537,7 @@
     {
       "scene_id": "cap01_067y08",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2565,7 +2565,7 @@
     {
       "scene_id": "cap01_067y09",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2593,7 +2593,7 @@
     {
       "scene_id": "cap01_067y10",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2621,7 +2621,7 @@
     {
       "scene_id": "cap01_067y11",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2649,7 +2649,7 @@
     {
       "scene_id": "cap01_067y12",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2677,7 +2677,7 @@
     {
       "scene_id": "cap01_067y13",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2705,7 +2705,7 @@
     {
       "scene_id": "cap01_067y14",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2733,7 +2733,7 @@
     {
       "scene_id": "cap01_067y15",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2761,7 +2761,7 @@
     {
       "scene_id": "cap01_067y16",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2789,7 +2789,7 @@
     {
       "scene_id": "cap01_067y16_a01",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2817,7 +2817,7 @@
     {
       "scene_id": "cap01_067y16_a02",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2845,7 +2845,7 @@
     {
       "scene_id": "cap01_067y16_a03",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2873,7 +2873,7 @@
     {
       "scene_id": "cap01_067y16_a04",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2901,7 +2901,7 @@
     {
       "scene_id": "cap01_067y16_a05",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2929,7 +2929,7 @@
     {
       "scene_id": "cap01_067y16_a06",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2957,7 +2957,7 @@
     {
       "scene_id": "cap01_067y16_a07",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -2985,7 +2985,7 @@
     {
       "scene_id": "cap01_067y16_a08",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3013,7 +3013,7 @@
     {
       "scene_id": "cap01_067y16_a09",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3041,7 +3041,7 @@
     {
       "scene_id": "cap01_067y16_a10",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3069,7 +3069,7 @@
     {
       "scene_id": "cap01_067y16_a11",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3097,7 +3097,7 @@
     {
       "scene_id": "cap01_067y16_a12",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3125,7 +3125,7 @@
     {
       "scene_id": "cap01_067y17",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3153,7 +3153,7 @@
     {
       "scene_id": "cap01_067y18",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3181,7 +3181,7 @@
     {
       "scene_id": "cap01_067y19",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3218,7 +3218,7 @@
     {
       "scene_id": "cap01_067t1",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3246,7 +3246,7 @@
     {
       "scene_id": "cap01_067t2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3274,7 +3274,7 @@
     {
       "scene_id": "cap01_067t3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3302,7 +3302,7 @@
     {
       "scene_id": "cap01_067t4",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3330,7 +3330,7 @@
     {
       "scene_id": "cap01_067n1",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3358,7 +3358,7 @@
     {
       "scene_id": "cap01_067n2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3386,7 +3386,7 @@
     {
       "scene_id": "cap01_067n3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3414,7 +3414,7 @@
     {
       "scene_id": "cap01_067z",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3442,7 +3442,7 @@
     {
       "scene_id": "cap01_069",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3470,7 +3470,7 @@
     {
       "scene_id": "cap01_070",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3498,7 +3498,7 @@
     {
       "scene_id": "cap01_071",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3526,7 +3526,7 @@
     {
       "scene_id": "cap01_072",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3554,7 +3554,7 @@
     {
       "scene_id": "cap01_073",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3582,7 +3582,7 @@
     {
       "scene_id": "cap01_074",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3610,7 +3610,7 @@
     {
       "scene_id": "cap01_075",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3638,7 +3638,7 @@
     {
       "scene_id": "cap01_076",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3666,7 +3666,7 @@
     {
       "scene_id": "cap01_077",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3694,7 +3694,7 @@
     {
       "scene_id": "cap01_078",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3722,7 +3722,7 @@
     {
       "scene_id": "cap01_079",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3750,7 +3750,7 @@
     {
       "scene_id": "cap01_080",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3778,7 +3778,7 @@
     {
       "scene_id": "cap01_081",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3806,7 +3806,7 @@
     {
       "scene_id": "cap01_082",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3850,7 +3850,7 @@
     {
       "scene_id": "cap01_083a",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3878,7 +3878,7 @@
     {
       "scene_id": "cap01_083a2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3906,7 +3906,7 @@
     {
       "scene_id": "cap01_083a3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3934,7 +3934,7 @@
     {
       "scene_id": "cap01_083a4",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3962,7 +3962,7 @@
     {
       "scene_id": "cap01_083a5",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -3990,7 +3990,7 @@
     {
       "scene_id": "cap01_083b",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4018,7 +4018,7 @@
     {
       "scene_id": "cap01_083b2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4046,7 +4046,7 @@
     {
       "scene_id": "cap01_083b3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4074,7 +4074,7 @@
     {
       "scene_id": "cap01_083c",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4102,7 +4102,7 @@
     {
       "scene_id": "cap01_083c2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4130,7 +4130,7 @@
     {
       "scene_id": "cap01_083c3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4158,7 +4158,7 @@
     {
       "scene_id": "cap01_084",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4186,7 +4186,7 @@
     {
       "scene_id": "cap01_085",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4214,7 +4214,7 @@
     {
       "scene_id": "cap01_086",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4242,7 +4242,7 @@
     {
       "scene_id": "cap01_087",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4270,7 +4270,7 @@
     {
       "scene_id": "cap01_088",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4298,7 +4298,7 @@
     {
       "scene_id": "cap01_089",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4326,7 +4326,7 @@
     {
       "scene_id": "cap01_089_a01",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4354,7 +4354,7 @@
     {
       "scene_id": "cap01_089_a02",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4382,7 +4382,7 @@
     {
       "scene_id": "cap01_089_a03",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4410,7 +4410,7 @@
     {
       "scene_id": "cap01_089_a04",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4438,7 +4438,7 @@
     {
       "scene_id": "cap01_089_a05",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4466,7 +4466,7 @@
     {
       "scene_id": "cap01_089_a06",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4494,7 +4494,7 @@
     {
       "scene_id": "cap01_090",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4522,7 +4522,7 @@
     {
       "scene_id": "cap01_091",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4550,7 +4550,7 @@
     {
       "scene_id": "cap01_092",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4578,7 +4578,7 @@
     {
       "scene_id": "cap01_093",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4606,7 +4606,7 @@
     {
       "scene_id": "cap01_094",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4634,7 +4634,7 @@
     {
       "scene_id": "cap01_095",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4662,7 +4662,7 @@
     {
       "scene_id": "cap01_095r01",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4690,7 +4690,7 @@
     {
       "scene_id": "cap01_095r02",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4718,7 +4718,7 @@
     {
       "scene_id": "cap01_095r03",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4746,7 +4746,7 @@
     {
       "scene_id": "cap01_095r04",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4774,7 +4774,7 @@
     {
       "scene_id": "cap01_095r05",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4802,7 +4802,7 @@
     {
       "scene_id": "cap01_095r06",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4830,7 +4830,7 @@
     {
       "scene_id": "cap01_095r07",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4858,7 +4858,7 @@
     {
       "scene_id": "cap01_095r08",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4886,7 +4886,7 @@
     {
       "scene_id": "cap01_095r09",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4914,7 +4914,7 @@
     {
       "scene_id": "cap01_095r10",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4942,7 +4942,7 @@
     {
       "scene_id": "cap01_095r11",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4970,7 +4970,7 @@
     {
       "scene_id": "cap01_096",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -4998,7 +4998,7 @@
     {
       "scene_id": "cap01_097",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5026,7 +5026,7 @@
     {
       "scene_id": "cap01_098",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5054,7 +5054,7 @@
     {
       "scene_id": "cap01_099",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5082,7 +5082,7 @@
     {
       "scene_id": "cap01_100",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5110,7 +5110,7 @@
     {
       "scene_id": "cap01_101",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5138,7 +5138,7 @@
     {
       "scene_id": "cap01_102",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5185,7 +5185,7 @@
     {
       "scene_id": "cap01_103a",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5213,7 +5213,7 @@
     {
       "scene_id": "cap01_103a2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5241,7 +5241,7 @@
     {
       "scene_id": "cap01_103a3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5269,7 +5269,7 @@
     {
       "scene_id": "cap01_103b",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5297,7 +5297,7 @@
     {
       "scene_id": "cap01_103b2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5325,7 +5325,7 @@
     {
       "scene_id": "cap01_103b3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5353,7 +5353,7 @@
     {
       "scene_id": "cap01_103c",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5381,7 +5381,7 @@
     {
       "scene_id": "cap01_103c2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5409,7 +5409,7 @@
     {
       "scene_id": "cap01_103c3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5437,7 +5437,7 @@
     {
       "scene_id": "cap01_104",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5465,7 +5465,7 @@
     {
       "scene_id": "cap01_105",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5502,7 +5502,7 @@
     {
       "scene_id": "cap01_106a",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5530,7 +5530,7 @@
     {
       "scene_id": "cap01_106b",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5558,7 +5558,7 @@
     {
       "scene_id": "cap01_106b2",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5586,7 +5586,7 @@
     {
       "scene_id": "cap01_106b3",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -5614,7 +5614,7 @@
     {
       "scene_id": "cap01_107",
       "chapter": 1,
-      "background": "PLACEHOLDER:bar_noche",
+      "background": "fondos/bar_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -24175,7 +24175,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Y en la pasarela que cruza sobre la Grieta, una figura más alta que las demás. Armadura negra con bordes dorados. Una capa. Una máscara con una sola línea horizontal, como una boca cosida."
+        "text": "Y en la pasarela que cruza sobre la Grieta, una figura más alta que las demás. Armadura gris oscuro, de placas gruesas y gastadas, con los bordes color cobre. Un casco cerrado con un visor rojo en forma de V que brilla como una brasa. Un rifle de asalto con mira, sostenido con la calma de alguien que nunca ha tenido que bajarlo."
       },
       "choices": [],
       "conditions": [],
@@ -24307,7 +24307,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "La máscara gira hacia Jair. Jair siente esa mirada sin ojos en la nuca, en el estómago, en el saldo de la cuenta."
+        "text": "El visor rojo gira hacia Jair. Jair siente esa mirada sin ojos en la nuca, en el estómago, en el saldo de la cuenta."
       },
       "choices": [],
       "conditions": [],
@@ -25165,7 +25165,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "El capitán salta desde la pasarela. Cae entre Jair y la Grieta con un golpe que hace temblar el piso, y desenvaina una espada de luz roja."
+        "text": "El capitán salta desde la pasarela. Cae entre Jair y la Grieta con un golpe que hace temblar el piso, y le apunta con el rifle directo a la cara."
       },
       "choices": [],
       "conditions": [],
@@ -25311,7 +25311,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "La espada roja corta el aire justo donde estaba su cabeza."
+        "text": "La ráfaga roja del rifle pasa justo donde estaba su cabeza y le chamusca un rulo."
       },
       "choices": [],
       "conditions": [],
@@ -25476,7 +25476,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Cami dispara tres veces por encima del hombro de Jair. El capitán bloquea dos disparos con la espada. El tercero le da en la máscara y la parte por la mitad."
+        "text": "Cami dispara tres veces por encima del hombro de Jair. El capitán se cubre con el antebrazo blindado y dos disparos rebotan en las placas. El tercero le da en el visor y lo parte por la mitad."
       },
       "choices": [],
       "conditions": [],
@@ -29159,13 +29159,13 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
       "dialogue": {
         "speaker": null,
-        "text": "La tinta se levanta del pasto. Casi un metro más alta que Jair. Sin forma. El hueco que gira."
+        "text": "La tinta se levanta del pasto, pero no sale sola: arrastra tierra, raíces y piedras del claro, que se le pegan al cuerpo como costras. Cuando termina de pararse es más grande que antes, casi un metro más alta que Jair, cubierta de placas de roca. Entre las grietas, el hueco que gira."
       },
       "choices": [],
       "conditions": [],
@@ -29192,7 +29192,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29225,7 +29225,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29258,7 +29258,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29291,7 +29291,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29324,7 +29324,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29357,7 +29357,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29390,7 +29390,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29423,13 +29423,13 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Cami dispara hacia atrás. Los destellos azules atraviesan la tinta sin hacerle nada."
+        "text": "Cami dispara hacia atrás. Los destellos azules rebotan en la roca y se pierden entre los árboles."
       },
       "choices": [],
       "conditions": [],
@@ -29456,7 +29456,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29489,7 +29489,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29522,7 +29522,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29555,7 +29555,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29588,7 +29588,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29621,7 +29621,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29654,7 +29654,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29687,7 +29687,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29720,7 +29720,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29767,7 +29767,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29800,7 +29800,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29833,7 +29833,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29866,13 +29866,13 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Primero la punta. Después el brazo, o lo que sea eso. Después el resto, en una ola de escarcha que sube y sube hasta que el monstruo entero queda quieto, transparente, atrapado en una estatua de hielo negro."
+        "text": "Primero la punta. Después el brazo, o lo que sea eso. Después el resto, en una ola de escarcha que sube y sube hasta que el monstruo entero queda quieto, transparente, atrapado en una estatua de hielo negro y piedra."
       },
       "choices": [],
       "conditions": [],
@@ -29899,7 +29899,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29932,7 +29932,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29965,7 +29965,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -29998,7 +29998,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30031,7 +30031,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30064,7 +30064,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30097,7 +30097,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30130,7 +30130,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30163,13 +30163,13 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Da tres pasos más. Dos. Uno. Y se detiene, quieto, transparente, convertido en una estatua de hielo negro a medio metro del tronco."
+        "text": "Da tres pasos más. Dos. Uno. Y se detiene, quieto, transparente, convertido en una estatua de hielo negro y piedra a medio metro del tronco."
       },
       "choices": [],
       "conditions": [],
@@ -30196,7 +30196,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30229,7 +30229,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30262,7 +30262,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30295,7 +30295,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],
@@ -30328,7 +30328,7 @@
         },
         {
           "id": "monstruo_sombras",
-          "sprite": "sprites/monstruo_sombras/base.webp",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
           "pos": "centro"
         }
       ],

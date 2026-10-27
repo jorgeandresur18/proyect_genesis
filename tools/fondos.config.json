@@ -5,7 +5,5 @@
     "bar": "bar_noche",
     "habitacion_jorge": "departamento_noche"
   },
-  "omitir": [
-    "bar"
-  ]
+  "omitir": []
 }
