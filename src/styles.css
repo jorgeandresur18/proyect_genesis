@@ -474,6 +474,9 @@ img.sprite.sprite-enter { animation: sprite-in 250ms ease-out; }
 /* Cambio de expresión: fundido cruzado corto (ver Sprite en SceneStage.tsx). */
 img.sprite.sprite-loading { opacity: 0; animation: none; }
 img.sprite.sprite-hold { animation: none; pointer-events: none; }
+/* Cuando la nueva ya está casi entera, lo que asoma de la anterior (otro gesto de brazos) se desvanece. */
+img.sprite.sprite-hold.sprite-leave { animation: sprite-leave 160ms ease-in 150ms forwards; }
+@keyframes sprite-leave { from { opacity: 1; } to { opacity: 0; } }
 img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 @keyframes sprite-swap-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {

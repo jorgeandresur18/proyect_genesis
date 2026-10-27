@@ -10,10 +10,12 @@
 //    exporta tal cual está, recortando el lienzo de su estatura desde el borde de abajo.
 // 2) PNG sueltos (docs/sprites/<PERSONAJE>/*.png) de personajes que no estén en un PSD: se recortan y se
 //    escalan automáticamente para que la cabeza quede en su línea de estatura y el cuerpo toque abajo.
-import { copyFileSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import agPsd from 'ag-psd';
+
+sharp.cache(false); // Windows: que no quede abierto un archivo que después se reemplaza.
 
 const SOURCE = 'docs/sprites';
 const TARGET = 'public/sprites';
@@ -91,7 +93,7 @@ function headWarning(headY, cm) {
   return `la cabeza quedó en y=${headY} y su línea es y=${want} (se ve ${diff > 0 ? `${diff} cm más alto` : `${-diff} cm más bajo`}); si es pelo o un adorno que sobresale, ignóralo`;
 }
 
-const results = { ok: 0, failed: 0, aliases: [] };
+const results = { ok: 0, failed: 0, aliases: [], aligned: [] };
 const fromPsd = new Set();
 const generated = new Set(); // Rutas escritas desde una imagen real en esta corrida.
 
@@ -225,6 +227,75 @@ for (const folder of readdirSync(SOURCE)) {
     results.ok++;
   }
 }
+
+// ---------- 2b) Alinear expresiones ----------
+// Si una expresión quedó corrida respecto de la base de su ropa, al cambiar de pose se ve un «fantasma»
+// (la anterior asoma detrás de la nueva). Se alinean por la cabeza: centro horizontal y tope de la franja
+// de la cabeza. Referencia: `<ropa>_volteada` para las volteadas, `<ropa>_base` para el resto de esa ropa
+// y `base` para lo demás. Se saltan las poses distintas (cabeza más ancha, p. ej. inclinada) y los
+// corrimientos grandes, que suelen ser a propósito. Solo se baja la imagen, nunca se sube: subirla dejaría
+// un hueco abajo, donde el cuerpo toca el borde.
+const ALIGN_MAX = 40; // px de corrimiento máximo que se corrige
+const ALIGN_SAME_POSE = 0.08; // diferencia máxima de ancho de cabeza para considerar la misma pose
+
+async function headOf(file) {
+  const { data, info } = await sharp(file).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = info;
+  const solid = (x, y) => data[(y * w + x) * 4 + 3] > 40;
+  let top = -1;
+  for (let y = 0; y < h && top < 0; y++) for (let x = 0; x < w; x++) if (solid(x, y)) { top = y; break; }
+  if (top < 0) return null;
+  let sum = 0, n = 0, minX = w, maxX = 0;
+  for (let y = top; y < Math.min(h, top + 220); y++) {
+    for (let x = 0; x < w; x++) {
+      if (!solid(x, y)) continue;
+      sum += x;
+      n++;
+      minX = Math.min(minX, x);
+      maxX = Math.max(maxX, x);
+    }
+  }
+  return { top, cx: sum / n, width: maxX - minX, w, h };
+}
+
+const byFolder = new Map();
+for (const dest of generated) {
+  const folder = dest.replace(/\\/g, '/').split('/').slice(-2, -1)[0];
+  byFolder.set(folder, [...(byFolder.get(folder) ?? []), dest]);
+}
+for (const [folder, files] of byFolder) {
+  const exprOf = (f) => f.replace(/\\/g, '/').split('/').pop().replace(/\.webp$/, '');
+  const names = new Set(files.map(exprOf));
+  const pathOf = (expr) => files.find((f) => exprOf(f) === expr);
+  const heads = new Map();
+  const head = async (expr) => {
+    if (!heads.has(expr)) heads.set(expr, await headOf(pathOf(expr)));
+    return heads.get(expr);
+  };
+  for (const file of files) {
+    const expr = exprOf(file);
+    const outfit = expr.includes('_') ? expr.split('_')[0] : '';
+    const ref = expr.endsWith('_volteada')
+      ? names.has(`${outfit}_volteada`) ? `${outfit}_volteada` : null
+      : outfit && names.has(`${outfit}_base`) ? `${outfit}_base` : names.has('base') ? 'base' : null;
+    if (!ref || ref === expr) continue;
+    const [a, r] = [await head(expr), await head(ref)];
+    if (!a || !r || Math.abs(a.width - r.width) / r.width > ALIGN_SAME_POSE) continue;
+    const dx = Math.round(r.cx - a.cx);
+    const dy = Math.max(0, r.top - a.top); // solo hacia abajo
+    if ((dx === 0 && dy === 0) || Math.abs(dx) > ALIGN_MAX || dy > ALIGN_MAX) continue;
+    const moved = await sharp(file)
+      .extend({ top: dy, left: Math.max(0, dx), right: Math.max(0, -dx), bottom: 0, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .toBuffer();
+    await sharp(moved)
+      .extract({ left: Math.max(0, -dx), top: 0, width: a.w, height: a.h })
+      .webp({ quality: 90, alphaQuality: 100 })
+      .toFile(file + '.tmp');
+    renameSync(file + '.tmp', file);
+    results.aligned.push(`${folder}/${expr} (${dx > 0 ? '+' : ''}${dx}, +${dy})`);
+  }
+}
+if (results.aligned.length) console.log(`Alineadas con su base: ${results.aligned.join(', ')}`);
 
 // ---------- 3) Sustitutos temporales ----------
 // Si el juego pide una expresión que todavía no existe, se copia la más parecida (ver "alias" en la config).

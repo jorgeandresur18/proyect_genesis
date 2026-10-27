@@ -82,8 +82,8 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
   );
 }
 
-// Duración del fundido entre expresiones (igual que en styles.css).
-const SWAP_MS = 180;
+// Duración del cambio de expresión: 180 ms de la nueva + la anterior que se va desde los 150 ms (ver styles.css).
+const SWAP_MS = 320;
 
 interface Shown {
   src: string;
@@ -121,7 +121,7 @@ function Sprite({ src, className, style }: { src: string; className: string; sty
     <>
       {previous && (
         <img
-          className={`${previous.className} sprite-hold`}
+          className={`${previous.className} sprite-hold ${loaded ? 'sprite-leave' : ''}`}
           style={style}
           src={previous.src}
           alt=""
