@@ -43,7 +43,7 @@
   "pc_correo": {
     "titulo": "Correo",
     "carpetas": [
-      "Recibidos (12)",
+      "Recibidos (10)",
       "Destacados",
       "Enviados",
       "Spam (99+)",
@@ -68,6 +68,10 @@
         "asunto": "Tu limpieza está pendiente desde marzo. Tus muelas ya escribieron su testamento."
       },
       {
+        "de": "Geekdump",
+        "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests. Es el único que todavía te escribe."
+      },
+      {
         "de": "Smart Flab",
         "asunto": "¡Novedades en Smart Flab! Ahora con 40 % menos de acoso sexual de los entrenadores."
       },
@@ -80,24 +84,12 @@
         "asunto": "Vuelve, por favor. Desde que llegó la IA nadie nos usa… aunque la IA saca todas sus respuestas de nosotros."
       },
       {
-        "de": "Funeraria La Última Morada",
-        "asunto": "Muere ahora, paga después: planes funerarios en 36 cuotas sin intereses."
-      },
-      {
         "de": "Recursos Humanos",
         "asunto": "Recordatorio: la actividad de integración del viernes es obligatoria y no remunerada. ¡Diviértete!"
       },
       {
         "de": "Supervisor",
         "asunto": "RE: RE: RE: pago de la quincena (somos familia, y en las familias nadie cobra)"
-      },
-      {
-        "de": "Tía (reenviado)",
-        "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, morirás solo. (Tranquilo, ya vas en camino.)"
-      },
-      {
-        "de": "Geekdump",
-        "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests. Es el único que todavía te escribe."
       }
     ],
     "remitente": "GRAVITY <acceso-anticipado@gravity>",
