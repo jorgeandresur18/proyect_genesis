@@ -43,7 +43,7 @@
   "pc_correo": {
     "titulo": "Correo",
     "carpetas": [
-      "Recibidos (14)",
+      "Recibidos (15)",
       "Destacados",
       "Enviados",
       "Spam (99+)",
@@ -51,12 +51,12 @@
     ],
     "bandeja": [
       {
-        "de": "Chistes Diarios",
-        "asunto": "¿Por qué los programadores confunden Halloween con Navidad? Porque OCT 31 = DEC 25. (Ya puedes darte de baja.)"
+        "de": "Foro Soporte Técnico",
+        "asunto": "Nuevo tema: «¿Por qué el usuario siempre es un idiota?» (2.341 respuestas, todas de acuerdo)"
       },
       {
         "de": "Tu Banco",
-        "asunto": "¡Tu nueva tarjeta de crédito ya está preaprobada! Tu salud mental, no."
+        "asunto": "¡Tarjeta de crédito preaprobada! Porque tus problemas también merecen intereses."
       },
       {
         "de": "GRAVITY",
@@ -65,51 +65,51 @@
       },
       {
         "de": "Clínica Dental Sonrisa",
-        "asunto": "Tu limpieza está pendiente desde marzo. Tus muelas ya nos escribieron para despedirse."
+        "asunto": "Tu limpieza está pendiente desde marzo. Tus muelas ya escribieron su testamento."
+      },
+      {
+        "de": "Smart Flab",
+        "asunto": "¡Novedades en Smart Flab! Ahora con 40 % menos de acoso sexual de los entrenadores."
       },
       {
         "de": "Funeraria La Última Morada",
-        "asunto": "Plan funerario para programadores: tu backup no te va a revivir."
+        "asunto": "Muere ahora, paga después: planes funerarios en 36 cuotas sin intereses."
       },
       {
-        "de": "NubeServicios",
-        "asunto": "Tu servidor lleva 400 días encendido. Es la relación más estable que has tenido."
+        "de": "Recursos Humanos",
+        "asunto": "Recordatorio: la actividad de integración del viernes es obligatoria y no remunerada. ¡Diviértete!"
       },
       {
-        "de": "LinkedOut",
-        "asunto": "Felicita a tu excompañero: lo ascendieron al puesto que te prometieron a ti."
+        "de": "Fosforito",
+        "asunto": "Esta semana 0 personas te dieron like. ¡Nuevo récord personal!"
       },
       {
-        "de": "Stack Underflow",
-        "asunto": "Tu pregunta fue cerrada por duplicada. La original tampoco tiene respuesta."
+        "de": "ComeYa",
+        "asunto": "¿Otra vez cenando solo? Te regalamos el envío. La compañía no la vendemos."
+      },
+      {
+        "de": "Cementerio Jardín del Reposo",
+        "asunto": "Lotes familiares disponibles. Por si algún día tienes familia."
+      },
+      {
+        "de": "Supervisor",
+        "asunto": "RE: RE: RE: pago de la quincena (somos familia, y en las familias nadie cobra)"
+      },
+      {
+        "de": "Tía (reenviado)",
+        "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, morirás solo. (Tranquilo, ya vas en camino.)"
+      },
+      {
+        "de": "TerapiaYa",
+        "asunto": "Primera sesión gratis. Los traumas los pones tú."
       },
       {
         "de": "Geekdump",
         "asunto": "[granja-final-final-v2] depenbot abrió 47 pull requests. Es el único que todavía te escribe."
       },
       {
-        "de": "Gimnasio Músculo Feliz",
-        "asunto": "Te extrañamos. Bueno, extrañamos tu mensualidad."
-      },
-      {
-        "de": "Tía (reenviado)",
-        "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, tu código no va a compilar nunca más"
-      },
-      {
-        "de": "Supervisor",
-        "asunto": "RE: RE: RE: pago de la quincena (recuerda que somos familia)"
-      },
-      {
-        "de": "Vapor",
-        "asunto": "Tu juego favorito cumple 10 años. Tú sigues en el tutorial de tu vida."
-      },
-      {
-        "de": "Boringram",
-        "asunto": "3 personas vieron tu historia. Una era un bot. Las otras dos, también."
-      },
-      {
-        "de": "Horóscopo Geek",
-        "asunto": "Mercurio está retrógrado. Tus commits también."
+        "de": "Tu horóscopo",
+        "asunto": "Hoy nada va a cambiar. Mañana tampoco. Número de la suerte: ninguno."
       }
     ],
     "remitente": "GRAVITY <acceso-anticipado@gravity>",
