@@ -1134,7 +1134,7 @@
 
 ---
 
-### cg_jorge_carga_cami
+### cg_jair_carga_cami
 
 `g3_019` — Jair se agacha, le pasa un brazo por la espalda y el otro por debajo de las rodillas, y la levanta.
 
@@ -1596,7 +1596,7 @@
 `g4_086` **Cami:** Bienvenido a la guerra, ingeniero.
 
 
-### cg_jorge_carga_cami_espalda
+### cg_jair_carga_cami_espalda
 
 `g5h_001` — Salen del refugio. Esta vez Jair carga a Cami en la espalda, como una mochila muy enojada.
 
@@ -2349,7 +2349,7 @@
 - `g7_043#1` Ofrecerle el hombro para caminar ⟶ va a `g7_044b`
 
 
-### cg_jorge_carga_cami
+### cg_jair_carga_cami
 
 `g7_044a` — Jair se agacha y la levanta en brazos, como en el castillo. Ella no protesta. Solo le pasa un brazo por el cuello y mira para otro lado.
 
@@ -2367,7 +2367,7 @@
 `g7_044b4` **Jair:** Ni una palabra.
 
 
-### cg_jorge_carga_cami
+### cg_jair_carga_cami
 
 `g7_044b5` — Jair la levanta en brazos.
 

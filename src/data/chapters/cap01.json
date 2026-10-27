@@ -12041,7 +12041,7 @@
     {
       "scene_id": "cap01_g3_019",
       "chapter": 1,
-      "background": "PLACEHOLDER:cg_jorge_carga_cami",
+      "background": "PLACEHOLDER:cg_jair_carga_cami",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -12058,7 +12058,7 @@
     {
       "scene_id": "cap01_g3_020",
       "chapter": 1,
-      "background": "PLACEHOLDER:cg_jorge_carga_cami",
+      "background": "PLACEHOLDER:cg_jair_carga_cami",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -18226,7 +18226,7 @@
     {
       "scene_id": "cap01_g5h_001",
       "chapter": 1,
-      "background": "PLACEHOLDER:cg_jorge_carga_cami_espalda",
+      "background": "PLACEHOLDER:cg_jair_carga_cami_espalda",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -27653,7 +27653,7 @@
     {
       "scene_id": "cap01_g7_044a",
       "chapter": 1,
-      "background": "PLACEHOLDER:cg_jorge_carga_cami",
+      "background": "PLACEHOLDER:cg_jair_carga_cami",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -27782,7 +27782,7 @@
     {
       "scene_id": "cap01_g7_044b5",
       "chapter": 1,
-      "background": "PLACEHOLDER:cg_jorge_carga_cami",
+      "background": "PLACEHOLDER:cg_jair_carga_cami",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
