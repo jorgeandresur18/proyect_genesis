@@ -3,7 +3,15 @@
   "fondos": {
     "oficina": "oficina_dia",
     "bar": "bar_noche",
-    "habitacion_jorge": "departamento_noche"
+    "habitacion_jorge": "departamento_noche",
+    "ruinas": "pasillo_castillo",
+    "capsula": "refugio_capsula",
+    "claro": "claro_cuatro_estaciones",
+    "dulcefrio": "dulce_frio_fachada",
+    "escalera_caracol": "pozo_central",
+    "grieta": "nucleo_grieta",
+    "puente": "puente_rojo",
+    "puente_espacial": "puente_torres"
   },
-  "omitir": []
+  "omitir": ["dulcefrio", "hangar_destruido"]
 }

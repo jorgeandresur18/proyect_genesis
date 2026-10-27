@@ -928,7 +928,7 @@
 
 ---
 
-### pasillo_castillo
+### fondos/pasillo_castillo.webp
 
 `g1_036` — Salta de un bloque flotante a otro. Ninguno se cae. Todos se tambalean lo suficiente para que él piense que se van a caer.
 
@@ -1209,7 +1209,7 @@
 `g3_020` — Pesa menos de lo que esperaba. O él es más fuerte aquí. O el sueño decidió que este era el momento en que él podía cargarla.
 
 
-### pasillo_castillo
+### fondos/pasillo_castillo.webp
 
 `g3_021` **Cami:** Si me tocas algo que no sea la espalda o las rodillas, te mato.
 
@@ -1279,7 +1279,7 @@
 `k18` **Jair:** Lo es.
 
 
-### puente_torres
+### fondos/puente_torres.webp
 
 `g3_035` — Llegan a un puente de piedra que cruza entre dos torres flotantes. A la mitad le falta un pedazo. El hueco mide unos tres metros. Abajo, el vacío.
 
@@ -1322,7 +1322,7 @@
 `g3_046` — Durante un segundo eterno, los dos flotan sobre las estrellas. El cielo magenta arriba, abajo, en todas partes. Cami tiene los brazos alrededor de su cuello. Él no recuerda cuándo hizo ella eso.
 
 
-### puente_torres
+### fondos/puente_torres.webp
 
 `g3_047` — Y aterrizan. Mal. Jair cae de rodillas, Cami cae encima de él, y los lentes de Jair salen volando y se quedan flotando en el aire, girando, a dos metros del borde.
 
@@ -1381,7 +1381,7 @@
 `g3_072` **Jair:** (Progreso.)
 
 
-### refugio_capsula
+### fondos/refugio_capsula.webp
 
 `g4_001` — El refugio es una cápsula redonda de metal blanco, incrustada en la pared de la torre. Adentro hay dos asientos, un panel apagado y una luz de emergencia que parpadea con desgano.
 
@@ -1673,7 +1673,7 @@
 `g5h_001` — Salen del refugio. Esta vez Jair carga a Cami en la espalda, como una mochila muy enojada.
 
 
-### pasillo_castillo
+### fondos/pasillo_castillo.webp
 
 `g5h_002` **Cami:** Esto es humillante.
 
@@ -1746,7 +1746,7 @@
 `c24` **Jair:** (Algo me dice que esa frase va a volver a perseguirme.)
 
 
-### hangar
+### fondos/hangar.webp
 
 > ♪ música: new_discover
 `g5h_013` — En el nivel dos, el pasillo se abre a un hangar enorme.
@@ -1890,7 +1890,7 @@
 `g5m_012` — Siente algo en el pecho que no sabe nombrar. Es lo más parecido a estar en casa que ha sentido desde que despertó bajo el cielo magenta.
 
 
-### pasillo_castillo
+### fondos/pasillo_castillo.webp
 
 `g5m_013` **Cami:** ¿Qué es eso?
 
@@ -1948,7 +1948,7 @@
 `g5m_021` — Guarda el celular. Once por ciento.
 
 
-### pozo_central
+### fondos/pozo_central.webp
 
 `g5_001` — Bajan por una escalera de caracol que gira alrededor de un pozo de luz azul. Jair cuenta los escalones porque contar le da algo que hacer con el miedo. Ciento doce. Ciento trece.
 
@@ -2074,7 +2074,7 @@
 
 ---
 
-### pozo_central
+### fondos/pozo_central.webp
 
 `g5_025` — Siguen bajando. Nivel cinco. Nivel seis. La luz azul del pozo se vuelve más intensa, casi blanca, y empieza a zumbar.
 
@@ -2097,7 +2097,7 @@
 `g5_034` — Nivel siete. El núcleo.
 
 
-### nucleo_grieta
+### fondos/nucleo_grieta.webp
 
 > ♪ música: new_discover
 `g6_001` — El núcleo del Bastión es una sala circular del tamaño de un estadio, con el techo perdido en la oscuridad y el piso cubierto de cables gruesos como troncos.
@@ -2357,7 +2357,7 @@
 `g7_015` — Jair se sienta y mira alrededor.
 
 
-### claro_cuatro_estaciones
+### fondos/claro_cuatro_estaciones.webp
 
 `g7_016` — Están en un claro, en medio de un bosque. Pero no es un bosque normal. Los árboles de la izquierda tienen flores rosadas, como cerezos. Los de enfrente tienen hojas verdes llenas de sol. Los de la derecha tienen hojas rojas y anaranjadas que caen despacio. Y los del fondo están desnudos, cubiertos de nieve.
 
@@ -2428,7 +2428,7 @@
 > ⤷ continúa en `g7_045`
 
 
-### claro_cuatro_estaciones
+### fondos/claro_cuatro_estaciones.webp
 
 `g7_044b` **Jair:** Apóyate en mí. Caminamos despacio.
 
@@ -2444,7 +2444,7 @@
 `g7_044b5` — Jair la levanta en brazos.
 
 
-### claro_cuatro_estaciones
+### fondos/claro_cuatro_estaciones.webp
 
 `g7_045` — Caminan entre los árboles, cruzando de la primavera al verano y del verano al otoño. Las hojas crujen. Los pétalos le caen a Cami sobre el pelo rubio y ella no se los quita.
 
@@ -2651,7 +2651,7 @@
 `g7b_035` — Cami se ríe. Esta vez la risa no tiene filo. Es corta, cansada y sincera, y se le escapa sin permiso.
 
 
-### puente_rojo
+### fondos/puente_rojo.webp
 
 `g8_001` — Al borde del invierno hay un sendero de piedra, y sobre el sendero, un puente de madera roja que cruza un arroyo.
 

@@ -1,6 +1,8 @@
 # Fondos e imágenes que faltan (Capítulo 1) y cómo pedírselos a Gemini
 
-Listos: `oficina_dia`, `bar_noche`, `departamento_noche`.
+Listos: `oficina_dia`, `bar_noche`, `departamento_noche`, `pasillo_castillo`, `refugio_capsula`, `puente_rojo`, `claro_cuatro_estaciones`, `nucleo_grieta`, `pozo_central`, `hangar`, `puente_torres`.
+
+En espera: `dulce_frio_fachada` (el letrero dice «SWEET CHILL», no «Dulce Frío») y `hangar_destruido` (ninguna escena del Capítulo 1 lo usa todavía).
 
 ## Cómo entregarlos
 
@@ -22,15 +24,7 @@ Consejos:
 
 | Archivo | Escenas | Prompt (más el bloque de estilo) |
 | --- | --- | --- |
-| `pasillo_castillo` | 191 | Interior de un castillo de piedra blanca en ruinas que flota en el espacio. Pasillo ancho con columnas partidas, bloques de piedra suspendidos en el aire y escaleras rotas que no llevan a ningún lado. Por los huecos de las paredes se ve un cielo magenta lleno de estrellas. Luz fría y rosada, polvo flotando. |
-| `refugio_capsula` | 133 | Interior de una cápsula de emergencia redonda, de metal blanco, incrustada en la pared de una torre espacial. Dos asientos acolchados frente a frente, un panel de control apagado y una luz de emergencia roja parpadeando. Una ventanilla redonda que da al espacio magenta. Espacio estrecho y claustrofóbico. |
-| `puente_rojo` | 106 | Puente de madera roja de estilo japonés feudal sobre un arroyo, al borde de un bosque nevado. Sendero de piedra que llega al puente, faroles de piedra, agua oscura y quieta. De un lado, árboles con nieve; del otro, cerezos en flor. Atardecer dorado, ambiente sereno y solemne. |
-| `claro_cuatro_estaciones` | 98 | Claro en medio de un bosque mágico dividido en cuatro estaciones: a la izquierda cerezos en flor rosados (primavera, aire japonés); al frente árboles verdes llenos de sol con flores tropicales (verano, aire polinesio); a la derecha robles rojos y naranjas con piedras con espirales talladas (otoño, aire celta); al fondo abedules cubiertos de nieve (invierno, aire ruso). Pasto en el centro. Cielo dorado de atardecer eterno. |
-| `nucleo_grieta` | 71 | Sala circular enorme, del tamaño de un estadio, dentro de una fortaleza militar futurista. Techo perdido en la oscuridad, piso cubierto de cables gruesos como troncos, balcones de metal alrededor y una pasarela que cruza la sala. En el centro, flotando a un metro del suelo, una rajadura vertical irregular en el aire, como una herida, de la que sale luz dorada. Luces blancas y frías de quirófano. |
-| `pozo_central` | 57 | Escalera de caracol de metal que baja alrededor de un pozo de luz azul dentro de una fortaleza futurista. Barandas de metal, niveles numerados, pasillos que salen a cada piso. Oscuro, frío, ambiente de infiltración. |
-| `hangar` | 56 | Hangar espacial gigante y abandonado. Decenas de naves apagadas: cazas pequeños con alas en forma de cuchilla, transportes redondos como escarabajos y, en el centro, una nave grande con el casco abierto. Todo cubierto de un polvo fino plateado que brilla con la luz. Silencioso, melancólico. |
 | `castillo_flotante_ruinas` | 42 | Ruinas de un castillo de piedra blanca suspendidas en el espacio, girando despacio, como una explosión en pausa. Plataforma de piedra blanca lisa en primer plano, bloques, columnas partidas y escaleras flotando alrededor. Cielo magenta con estrellas arriba, abajo y a los lados. |
-| `puente_torres` | 40 | Puente de piedra entre dos torres flotantes en el espacio. A la mitad del puente falta un pedazo de unos tres metros; abajo, el vacío lleno de estrellas. Cielo magenta. Sensación de altura y peligro. |
 
 ## Prioridad 2
 
