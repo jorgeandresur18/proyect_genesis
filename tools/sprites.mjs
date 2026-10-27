@@ -10,7 +10,7 @@
 //    exporta tal cual está, recortando el lienzo de su estatura desde el borde de abajo.
 // 2) PNG sueltos (docs/sprites/<PERSONAJE>/*.png) de personajes que no estén en un PSD: se recortan y se
 //    escalan automáticamente para que la cabeza quede en su línea de estatura y el cuerpo toque abajo.
-import { copyFileSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import agPsd from 'ag-psd';
@@ -242,6 +242,17 @@ for (const [character, settings] of Object.entries(config.personajes)) {
     results.aliases.push(`${character}/${expr}→${stand}`);
   }
 }
+// ---------- 4) Versiones volteadas a mano ----------
+// Una capa `<expresión>_volteada` es el sprite ya dibujado en espejo (p. ej. para que el texto del gafete se lea bien).
+// El motor la usa en vez de voltear la imagen original.
+const volteadas = {};
+for (const dest of [...generated].sort()) {
+  const m = dest.replace(/\\/g, '/').match(/sprites\/([^/]+)\/(.+)_volteada\.webp$/);
+  if (m) volteadas[`${m[1]}/${m[2]}`] = `${m[1]}/${m[2]}_volteada`;
+}
+writeFileSync('src/data/volteadas.json', JSON.stringify(volteadas, null, 2) + '\n');
+if (Object.keys(volteadas).length) console.log(`Volteadas a mano: ${Object.keys(volteadas).join(', ')}`);
+
 if (results.aliases.length) console.log(`Sustitutos temporales (${results.aliases.length}): ${results.aliases.join(', ')}`);
 
 console.log(`${results.ok} sprites listos${results.failed ? `, ${results.failed} con problemas` : ''}.`);

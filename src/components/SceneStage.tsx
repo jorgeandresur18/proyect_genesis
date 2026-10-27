@@ -3,6 +3,7 @@ import type { Scene } from '../engine/types';
 import glitch from '../effects/glitch.module.css';
 import { assetUrl, isPlaceholder, screenOf } from '../engine/assets';
 import { CodeScreen } from './CodeScreen';
+import volteadas from '../data/volteadas.json';
 import { flippedCharacters } from '../engine/facing';
 import { BASE_CANVAS, canvasHeight, statureOf } from '../engine/stature';
 
@@ -19,6 +20,14 @@ interface Props {
 // Tamaño en pantalla de un sprite de 1,65 m sin enemigos en escena (porcentaje del alto y del ancho del escenario).
 const SPRITE_HEIGHT = 92;
 const SPRITE_MAX_WIDTH = 45;
+
+/** Si un sprite que hay que voltear tiene su versión dibujada en espejo (`<expresión>_volteada`), se usa esa. */
+const MIRRORED = volteadas as Record<string, string>;
+function mirroredSprite(sprite: string): string | null {
+  const m = sprite.match(/^sprites\/([^/]+\/[^/.]+)\.webp$/);
+  const v = m && MIRRORED[m[1]];
+  return v ? `sprites/${v}.webp` : null;
+}
 
 /** Fondo, video y personajes. En greyboxing todo se dibuja como cajas grises con su marcador. */
 export function SceneStage({ scene, effects, speakers, lines, children }: Props) {
@@ -47,8 +56,9 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
         {scene.audio && <span className="placeholder-audio">♪ {scene.audio}</span>}
       </div>
       <div className="stage-characters">
-        {scene.characters.map((c) =>
-          isPlaceholder(c.sprite) ? (
+        {scene.characters.map((c) => {
+          const mirrored = flipped.has(c.id) ? mirroredSprite(c.sprite) : null;
+          return isPlaceholder(c.sprite) ? (
             <div
               key={c.id}
               className={`sprite sprite-placeholder sprite-${c.pos}`}
@@ -60,14 +70,14 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
           ) : (
             <img
               key={c.id}
-              className={`sprite sprite-${c.pos} ${flipped.has(c.id) ? 'sprite-flip' : ''}`}
+              className={`sprite sprite-${c.pos} ${flipped.has(c.id) && !mirrored ? 'sprite-flip' : ''}`}
               style={{ height: `${SPRITE_HEIGHT * size(c.id)}%`, maxWidth: `${SPRITE_MAX_WIDTH * size(c.id)}%` }}
-              src={assetUrl(c.sprite)}
+              src={assetUrl(mirrored ?? c.sprite)}
               alt=""
               draggable={false}
             />
-          ),
-        )}
+          );
+        })}
       </div>
       {children}
     </div>
