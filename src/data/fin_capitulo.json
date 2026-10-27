@@ -1,0 +1,13 @@
+{
+  "nota": "Textos de la pantalla de fin de capítulo. {n} es el número del capítulo.",
+  "fin": "FIN DEL CAPÍTULO {n}",
+  "continuar": "Continuar",
+  "guardar": "Guardar",
+  "inicio": "Volver al inicio",
+  "proximo": {
+    "titulo": "CAPÍTULO {n}",
+    "estado": "En desarrollo",
+    "texto": "Próximamente",
+    "cerrar": "Cerrar"
+  }
+}

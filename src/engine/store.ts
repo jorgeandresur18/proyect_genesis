@@ -28,6 +28,8 @@ export interface SaveSlot {
   history: HistoryEntry[];
   date: string;
   preview: string;
+  /** Guardado en la pantalla de fin de capítulo: al cargar se vuelve a ella. */
+  finished?: string | null;
 }
 
 export interface Settings {
@@ -51,6 +53,11 @@ export type Mode = 'normal' | 'auto' | 'skip';
 
 /** Prefijo de `game.finished` cuando la partida se detiene en un fin de capítulo (no es un final). */
 export const CHAPTER_END = 'capitulo:';
+
+/** Se puede guardar en medio de la partida y en el fin de capítulo, no en la pantalla de un final. */
+export function canSaveGame(game: GameState): boolean {
+  return !game.finished || game.finished.startsWith(CHAPTER_END);
+}
 
 interface Store {
   settings: Settings;
@@ -194,8 +201,10 @@ export const useStore = create<Store>()(
 
         save: (slot) => {
           const { game, saves } = get();
-          if (!game || game.finished) return;
-          const text = scenes.get(game.sceneId)?.dialogue?.text ?? game.sceneId;
+          if (!game || !canSaveGame(game)) return;
+          const text = game.finished
+            ? `Fin del capítulo ${game.finished.slice(CHAPTER_END.length)}`
+            : scenes.get(game.sceneId)?.dialogue?.text ?? game.sceneId;
           const next = [...saves];
           next[slot] = {
             sceneId: game.sceneId,
@@ -203,6 +212,7 @@ export const useStore = create<Store>()(
             history: game.history,
             date: new Date().toISOString(),
             preview: text.slice(0, 80),
+            finished: game.finished,
           };
           set({ saves: next });
         },
@@ -219,7 +229,7 @@ export const useStore = create<Store>()(
             error: null,
             mode: 'normal',
             textDone: false,
-            game: { sceneId: data.sceneId, vars: { ...variables, ...data.vars }, history: data.history, finished: null },
+            game: { sceneId: data.sceneId, vars: { ...variables, ...data.vars }, history: data.history, finished: data.finished ?? null },
           });
         },
 

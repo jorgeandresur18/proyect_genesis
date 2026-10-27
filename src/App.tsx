@@ -10,6 +10,7 @@ import { DecisionMenu } from './components/DecisionMenu';
 import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
+import { ChapterEnd } from './components/ChapterEnd';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
 import { playSelect, unlockAudio } from './engine/sound';
@@ -22,9 +23,13 @@ export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const hasGame = useStore((s) => !!s.game);
-  // Título: su tema. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
+  // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
   const music = useStore((s) =>
-    !s.game ? config.musica_titulo ?? SILENCE : s.game.finished ? SILENCE : ((s.game.vars._musica as string | null) ?? SILENCE),
+    !s.game || s.game.finished?.startsWith(CHAPTER_END)
+      ? config.musica_titulo ?? SILENCE
+      : s.game.finished
+        ? SILENCE
+        : ((s.game.vars._musica as string | null) ?? SILENCE),
   );
   useEffect(() => {
     if (accepted) playMusic(music);
@@ -134,6 +139,8 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'Enter') {
+        // En el fin de capítulo se elige con los botones.
+        if (useStore.getState().game?.finished?.startsWith(CHAPTER_END)) return;
         e.preventDefault();
         if (!fading && !(waitingChoice && textDone)) next();
       }
@@ -152,11 +159,15 @@ function Game({ open, paused }: { open: (o: Overlay) => void; paused: boolean })
   if (game.finished) {
     if (game.finished.startsWith(CHAPTER_END)) {
       return (
-        <div className="screen ending-card" onClick={advance}>
-          <p className="muted">FIN DEL CAPÍTULO {game.finished.slice(CHAPTER_END.length)}</p>
-          <h1>Continuará…</h1>
-          <p className="muted">Haz clic para volver al título</p>
-        </div>
+        <ChapterEnd
+          chapter={Number(game.finished.slice(CHAPTER_END.length))}
+          onSave={() => open('save')}
+          lastScene={
+            <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history.filter((h) => !h.choice)}>
+              {null}
+            </SceneStage>
+          }
+        />
       );
     }
     const ending = getEnding(game.finished);

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { SAVE_SLOTS, TEXT_SPEED_INSTANT, useStore } from '../engine/store';
+import { SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
 import { BAD_END, endings } from '../engine/story';
 import conoceMas from '../data/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
@@ -45,7 +45,7 @@ export function HistoryPanel({ onClose }: { onClose: () => void }) {
 
 export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClose: () => void }) {
   const saves = useStore((s) => s.saves);
-  const canSave = useStore((s) => !!s.game && !s.game.finished);
+  const canSave = useStore((s) => !!s.game && canSaveGame(s.game));
   const { save, load, deleteSave } = useStore.getState();
   return (
     <Panel title={mode === 'save' ? 'Guardar' : 'Cargar'} onClose={onClose}>
