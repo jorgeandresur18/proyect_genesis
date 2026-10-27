@@ -57,6 +57,8 @@ Contradicción central: Jair sabe construir sistemas, pero intenta aplicar a las
 
 - Jair: 1,65 m. Rikka: 1,60 m. Cami (con su traje): 1,56 m. Nikki: 1,52 m.
 - Enemigos: soldado enmascarado 1,85 m; capitán enmascarado 2,00 m; monstruo de sombras 2,40 m; su versión acorazada (armored) 2,55 m. `[CANON]`
+- Capitán enmascarado: armadura gris oscuro de placas gruesas con bordes color cobre, casco cerrado con visor rojo en forma de V y rifle de asalto con mira (sin capa ni espada). `[CANON]`
+- Monstruo acorazado: es el mismo monstruo de sombras. Al cruzar a la dimensión ancestral (cap. 1) arrastra tierra, raíces y piedras del claro y queda cubierto de placas de roca; los disparos de Cami rebotan. El hielo lo congela igual. `[CANON]`
 - Datos para el juego y los sprites: `src/data/estaturas.json`. Escala 15 px por cm. Personajes: lienzo 1200×1600, cabeza en y = 64 (Jair), 139 (Rikka), 199 (Cami) y 259 (Nikki); plantilla `docs/sprites/plantilla_sprite_1200x1600.svg`. Enemigos: lienzo más alto según su estatura; plantilla `docs/sprites/plantilla_enemigos_2213x2950.svg`.
 - `[PENDIENTE]`: estatura de Cami sin el traje (si cambia por las botas).
 

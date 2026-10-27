@@ -120,7 +120,7 @@
 > ⤷ continúa en `116`
 
 
-### bar_noche
+### fondos/bar_noche.webp
 
 `021` — El bar queda a dos cuadras. Se llama El Último. Nadie recuerda si es por la hora o por la clientela.
 
@@ -2071,7 +2071,7 @@
 
 `g6_021` — Todas a la vez. Blancas, duras, de quirófano. Desde los balcones que rodean la sala aparecen soldados. Diez. Veinte. Treinta. Todos con la misma máscara sin rostro. Todos apuntando.
 
-`g6_022` — Y en la pasarela que cruza sobre la Grieta, una figura más alta que las demás. Armadura negra con bordes dorados. Una capa. Una máscara con una sola línea horizontal, como una boca cosida.
+`g6_022` — Y en la pasarela que cruza sobre la Grieta, una figura más alta que las demás. Armadura gris oscuro, de placas gruesas y gastadas, con los bordes color cobre. Un casco cerrado con un visor rojo en forma de V que brilla como una brasa. Un rifle de asalto con mira, sostenido con la calma de alguien que nunca ha tenido que bajarlo.
 
 `g6_023` **Capitán enmascarado:** Guerrera. Te dimos por muerta.
 
@@ -2079,7 +2079,7 @@
 
 `g6_025` **Capitán enmascarado:** ¿Y ese?
 
-`g6_026` — La máscara gira hacia Jair. Jair siente esa mirada sin ojos en la nuca, en el estómago, en el saldo de la cuenta.
+`g6_026` — El visor rojo gira hacia Jair. Jair siente esa mirada sin ojos en la nuca, en el estómago, en el saldo de la cuenta.
 
 `g6_027` **Capitán enmascarado:** Ese no está en los registros.
 
@@ -2132,7 +2132,7 @@
 
 `g6_051` **Jair:** (No tiene dinero. Aquí nadie tiene dinero. Pero es la promesa más bonita que me han hecho en años.)
 
-`g6_052` — El capitán salta desde la pasarela. Cae entre Jair y la Grieta con un golpe que hace temblar el piso, y desenvaina una espada de luz roja.
+`g6_052` — El capitán salta desde la pasarela. Cae entre Jair y la Grieta con un golpe que hace temblar el piso, y le apunta con el rifle directo a la cara.
 
 `g6_053` **Capitán enmascarado:** Nadie cruza.
 
@@ -2146,7 +2146,7 @@
 
 `g6_054a2` — Se agacha, se tira de costado y rueda por el piso con Cami encima, de una manera que no tiene nada de heroica y todo de alguien que se resbala en la ducha.
 
-`g6_054a3` — La espada roja corta el aire justo donde estaba su cabeza.
+`g6_054a3` — La ráfaga roja del rifle pasa justo donde estaba su cabeza y le chamusca un rulo.
 
 `g6_054a4` **Cami:** ¡Eso fue lo más torpe que he visto en mi vida!
 
@@ -2158,7 +2158,7 @@
 
 `g6_054b2` **Cami:** ¡Ya sé que le tengo que disparar! ¡No necesito un supervisor!
 
-`g6_054b3` — Cami dispara tres veces por encima del hombro de Jair. El capitán bloquea dos disparos con la espada. El tercero le da en la máscara y la parte por la mitad.
+`g6_054b3` — Cami dispara tres veces por encima del hombro de Jair. El capitán se cubre con el antebrazo blindado y dos disparos rebotan en las placas. El tercero le da en el visor y lo parte por la mitad.
 
 `g6_054b4` — Debajo tampoco hay cara. Solo la misma superficie lisa y gris. Pero en el centro, por un instante, parpadean unas letras blancas.
 
@@ -2472,7 +2472,7 @@
 `g7b_004` **Jair:** No me digas.
 
 > ♪ música: adventure1
-`g7b_005` — La tinta se levanta del pasto. Casi un metro más alta que Jair. Sin forma. El hueco que gira.
+`g7b_005` — La tinta se levanta del pasto, pero no sale sola: arrastra tierra, raíces y piedras del claro, que se le pegan al cuerpo como costras. Cuando termina de pararse es más grande que antes, casi un metro más alta que Jair, cubierta de placas de roca. Entre las grietas, el hueco que gira.
 
 `g7b_006` **GRAVITY:** > Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
 
@@ -2488,7 +2488,7 @@
 
 `g7b_012` — Jair corre con Cami en brazos, de la primavera al verano. El monstruo los sigue, y por donde pasa las flores se marchitan, el pasto se pone gris y los colores se escurren de las cosas, como si alguien estuviera borrando el dibujo.
 
-`g7b_013` — Cami dispara hacia atrás. Los destellos azules atraviesan la tinta sin hacerle nada.
+`g7b_013` — Cami dispara hacia atrás. Los destellos azules rebotan en la roca y se pierden entre los árboles.
 
 `g7b_014` **Cami:** No sirve. No sirve. ¡No sirve nada!
 
@@ -2523,7 +2523,7 @@
 
 `g7b_023a3` — Y la tinta se congela.
 
-`g7b_023a4` — Primero la punta. Después el brazo, o lo que sea eso. Después el resto, en una ola de escarcha que sube y sube hasta que el monstruo entero queda quieto, transparente, atrapado en una estatua de hielo negro.
+`g7b_023a4` — Primero la punta. Después el brazo, o lo que sea eso. Después el resto, en una ola de escarcha que sube y sube hasta que el monstruo entero queda quieto, transparente, atrapado en una estatua de hielo negro y piedra.
 
 `g7b_023a5` **Cami:** ...Se congeló.
 
@@ -2543,7 +2543,7 @@
 
 `g7b_023b4` — El monstruo entra al invierno. Avanza sobre la nieve. Y donde la nieve lo toca, la tinta se pone rígida, lenta, opaca.
 
-`g7b_023b5` — Da tres pasos más. Dos. Uno. Y se detiene, quieto, transparente, convertido en una estatua de hielo negro a medio metro del tronco.
+`g7b_023b5` — Da tres pasos más. Dos. Uno. Y se detiene, quieto, transparente, convertido en una estatua de hielo negro y piedra a medio metro del tronco.
 
 `g7b_023b6` **Cami:** (Susurrando) ...Se congeló.
 
