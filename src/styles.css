@@ -596,7 +596,7 @@ img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; point
 
 /* Entrada del título al venir de la advertencia: sale del negro, el logo se enfoca con un destello plateado
    y después aparecen el subtítulo y el menú, uno por uno. */
-.title-intro::after {
+.title-intro-velo::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -634,9 +634,11 @@ img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; point
 @keyframes title-sheen { from { background-position: 120% 0; opacity: 1; } to { background-position: -20% 0; opacity: 1; } }
 @keyframes title-item-in { from { opacity: 0; transform: translateY(10px); } }
 @media (prefers-reduced-motion: reduce) {
-  .title-intro::after, .title-intro .title-logo, .title-intro .title-logo::after, .title-intro .title-logo + p, .title-intro .title-menu button { animation: none; }
-  .title-intro::after, .title-intro .title-logo::after { display: none; }
+  .title-intro-velo::after, .title-intro .title-logo, .title-intro .title-logo::after, .title-intro .title-logo + p, .title-intro .title-menu button { animation: none; }
+  .title-intro-velo::after, .title-intro .title-logo::after { display: none; }
 }
 
 /* Volver al título: todo se funde a negro (encima de paneles y menús) y después entra el título. */
-.to-title-fade { position: fixed; inset: 0; z-index: 100; background: #000; opacity: 0; animation: scene-fade-out ease-in forwards; }
+.to-title-fade { position: fixed; inset: 0; z-index: 100; background: #000; pointer-events: none; }
+.to-title-out { opacity: 0; animation: scene-fade-out ease-in forwards; }
+.to-title-in { animation: scene-fade-in ease-out forwards; }

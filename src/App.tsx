@@ -19,6 +19,11 @@ import { config } from './engine/story';
 
 // Fundido a negro al volver al título.
 const TITLE_FADE_MS = 800;
+// Después, el mismo negro se disuelve encima del título.
+const TITLE_REVEAL_MS = 1200;
+
+/** De dónde se llega al título: cambia cómo sale del negro. */
+type Intro = 'advertencia' | 'juego' | null;
 
 type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
 
@@ -26,24 +31,26 @@ export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const hasGame = useStore((s) => !!s.game);
-  // La entrada elegante del título solo se ve al llegar desde la advertencia, no al volver de una partida.
-  const [intro, setIntro] = useState(true);
+  // Entrada elegante del título: al llegar desde la advertencia y al volver de una partida.
+  const [intro, setIntro] = useState<Intro>('advertencia');
   useEffect(() => {
-    if (hasGame) setIntro(false);
+    if (hasGame) setIntro(null);
   }, [hasGame]);
-  // Volver al título desde el juego: fundido a negro y otra vez la entrada del título.
-  const [toTitle, setToTitle] = useState(false);
+  // Volver al título desde el juego: una sola capa negra que primero tapa el juego y después se
+  // disuelve encima del título (sin soltar el negro en el medio, que se veía como un parpadeo doble).
+  const [toTitle, setToTitle] = useState<'out' | 'in' | null>(null);
   const still = useStore((s) => s.settings.reduceEffects);
   const goToTitle = () => {
     if (toTitle) return;
-    setToTitle(true);
+    setToTitle('out');
     setOverlay(null);
     useStore.getState().setMode('normal');
     setTimeout(
       () => {
+        setIntro('juego');
         useStore.getState().quitToTitle();
-        setIntro(true);
-        setToTitle(false);
+        setToTitle('in');
+        setTimeout(() => setToTitle(null), still ? 150 : TITLE_REVEAL_MS);
       },
       still ? 150 : TITLE_FADE_MS,
     );
@@ -90,7 +97,13 @@ export default function App() {
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       {hasGame && <RotateHint />}
-      {toTitle && <div className="to-title-fade" style={{ animationDuration: `${still ? 150 : TITLE_FADE_MS}ms` }} aria-hidden />}
+      {toTitle && (
+        <div
+          className={`to-title-fade to-title-${toTitle}`}
+          style={{ animationDuration: `${still ? 150 : toTitle === 'out' ? TITLE_FADE_MS : TITLE_REVEAL_MS}ms` }}
+          aria-hidden
+        />
+      )}
     </div>
   );
 }
@@ -149,12 +162,12 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
   );
 }
 
-function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: boolean }) {
+function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro }) {
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
   const still = useStore((s) => s.settings.reduceEffects);
   return (
-    <div className={`screen title ${intro && !still ? 'title-intro' : ''}`}>
+    <div className={`screen title ${intro && !still ? 'title-intro' : ''} ${intro === 'advertencia' ? 'title-intro-velo' : ''}`}>
       <TitleBackground />
       <h1 className="title-logo">
         <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
