@@ -99,11 +99,14 @@ function Sprite({ src, className, style }: { src: string; className: string; sty
   const [current, setCurrent] = useState<Shown>({ src, className });
   const [previous, setPrevious] = useState<Shown | null>(null);
   const [loaded, setLoaded] = useState(false);
+  // Hasta el primer cambio de expresión, el sprite tiene la animación de entrada a escena.
+  const [entered, setEntered] = useState(false);
   if (src !== current.src) {
     // Cambio de expresión: la que estaba pasa abajo y la nueva espera a cargar.
     setPrevious(current);
     setCurrent({ src, className });
     setLoaded(false);
+    setEntered(true);
   } else if (className !== current.className) {
     setCurrent({ src, className });
   }
@@ -128,7 +131,7 @@ function Sprite({ src, className, style }: { src: string; className: string; sty
       )}
       <img
         key={current.src}
-        className={`${current.className} ${swapping ? (loaded ? 'sprite-swap' : 'sprite-loading') : ''}`}
+        className={`${current.className} ${swapping ? (loaded ? 'sprite-swap' : 'sprite-loading') : entered ? '' : 'sprite-enter'}`}
         style={style}
         src={current.src}
         alt=""

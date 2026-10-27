@@ -467,7 +467,9 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 @keyframes scene-fade-in { from { opacity: 1; } to { opacity: 0; } }
 
 /* Un personaje que entra a la escena aparece con un desvanecido corto. */
-img.sprite { animation: sprite-in 250ms ease-out; }
+/* Solo al entrar a escena. Va en su propia clase: si estuviera en img.sprite, al terminar un cambio de
+   expresión el navegador la volvería a empezar y el personaje aparecería dos veces. */
+img.sprite.sprite-enter { animation: sprite-in 250ms ease-out; }
 @keyframes sprite-in { from { opacity: 0; } to { opacity: 1; } }
 /* Cambio de expresión: fundido cruzado corto (ver Sprite en SceneStage.tsx). */
 img.sprite.sprite-loading { opacity: 0; animation: none; }
