@@ -11,6 +11,7 @@ import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel }
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
+import { BadEnd } from './components/BadEnd';
 import { AudioToggle } from './components/AudioToggle';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
@@ -212,8 +213,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'Enter') {
-        // En el fin de capítulo se elige con los botones.
-        if (useStore.getState().game?.finished?.startsWith(CHAPTER_END)) return;
+        // En el fin de capítulo y en los finales se elige con los botones o con un clic.
+        if (useStore.getState().game?.finished) return;
         e.preventDefault();
         if (!fading && !(waitingChoice && textDone)) next();
       }
@@ -245,10 +246,22 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       );
     }
     const ending = getEnding(game.finished);
-    const bad = ending?.tipo === BAD_END;
+    if (ending?.tipo === BAD_END) {
+      return (
+        <BadEnd
+          name={ending.nombre}
+          onTitle={onTitle}
+          lastScene={
+            <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history}>
+              {null}
+            </SceneStage>
+          }
+        />
+      );
+    }
     return (
-      <div className={`screen ending-card ${bad ? 'ending-bad' : ''}`} onClick={onTitle}>
-        <p className={bad ? 'error' : 'muted'}>{bad ? 'BAD END' : 'FIN'}</p>
+      <div className="screen ending-card" onClick={onTitle}>
+        <p className="muted">FIN</p>
         <h1>{ending?.nombre ?? game.finished}</h1>
         <p className="muted">Haz clic para volver al título</p>
       </div>
