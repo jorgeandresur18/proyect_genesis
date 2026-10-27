@@ -131,6 +131,9 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 }
 .warning-accept:hover:not(:disabled) { border-color: #e9ecf1; background: rgba(255, 255, 255, 0.09); box-shadow: 0 0 1.2rem rgba(230, 233, 240, 0.2); }
 @keyframes warning-in { from { opacity: 0; transform: translateY(14px); } }
+/* Al aceptar: todo se funde a negro antes de mostrar el título. */
+.warning-leaving .warning-card { animation: warning-out 0.9s ease-in forwards; pointer-events: none; }
+@keyframes warning-out { to { opacity: 0; transform: scale(0.98); filter: blur(4px); } }
 @media (prefers-reduced-motion: reduce) { .warning-card { animation: none; } }
 
 /* El texto del juego no se puede seleccionar ni copiar (los campos de Opciones sí). */
@@ -578,4 +581,48 @@ img.sprite { animation: sprite-in 250ms ease-out; }
 .chapter-end-still *, .chapter-end-still { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
 @media (prefers-reduced-motion: reduce) {
   .chapter-end *, .chapter-end { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
+}
+
+/* Entrada del título al venir de la advertencia: sale del negro, el logo se enfoca con un destello plateado
+   y después aparecen el subtítulo y el menú, uno por uno. */
+.title-intro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #000;
+  pointer-events: none;
+  animation: title-veil 1.8s ease-out forwards;
+}
+.title-intro .title-logo { animation: title-logo-in 2.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s both; }
+.title-intro .title-logo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%) no-repeat;
+  background-size: 250% 100%;
+  -webkit-mask: url('/marca/logo.webp') center / contain no-repeat;
+  mask: url('/marca/logo.webp') center / contain no-repeat;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: title-sheen 1.6s ease-in-out 2s both;
+}
+.title-intro .title-logo + p { animation: title-item-in 1s ease-out 2.2s both; }
+.title-intro .title-menu button { animation: title-item-in 0.8s ease-out both; }
+.title-intro .title-menu button:nth-child(1) { animation-delay: 2.5s; }
+.title-intro .title-menu button:nth-child(2) { animation-delay: 2.6s; }
+.title-intro .title-menu button:nth-child(3) { animation-delay: 2.7s; }
+.title-intro .title-menu button:nth-child(4) { animation-delay: 2.8s; }
+.title-intro .title-menu button:nth-child(5) { animation-delay: 2.9s; }
+.title-intro .title-menu button:nth-child(6) { animation-delay: 3s; }
+@keyframes title-veil { to { opacity: 0; } }
+@keyframes title-logo-in {
+  from { opacity: 0; transform: scale(0.92); filter: blur(14px); }
+  to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+@keyframes title-sheen { from { background-position: 120% 0; opacity: 1; } to { background-position: -20% 0; opacity: 1; } }
+@keyframes title-item-in { from { opacity: 0; transform: translateY(10px); } }
+@media (prefers-reduced-motion: reduce) {
+  .title-intro::after, .title-intro .title-logo, .title-intro .title-logo::after, .title-intro .title-logo + p, .title-intro .title-menu button { animation: none; }
+  .title-intro::after, .title-intro .title-logo::after { display: none; }
 }

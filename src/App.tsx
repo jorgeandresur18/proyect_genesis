@@ -23,6 +23,11 @@ export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const hasGame = useStore((s) => !!s.game);
+  // La entrada elegante del título solo se ve al llegar desde la advertencia, no al volver de una partida.
+  const [intro, setIntro] = useState(true);
+  useEffect(() => {
+    if (hasGame) setIntro(false);
+  }, [hasGame]);
   // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
   const music = useStore((s) =>
     !s.game || s.game.finished?.startsWith(CHAPTER_END)
@@ -44,13 +49,8 @@ export default function App() {
   if (!accepted) {
     return (
       <ContentWarning
-        onAccept={() => {
-          // El toque en «Continuar» habilita el audio del navegador y precarga los efectos.
-          unlockAudio();
-          // Si hay una partida en curso, se vuelve directo al juego: en celular, en pantalla completa.
-          if (useStore.getState().game) void enterPlayMode();
-          setAccepted(true);
-        }}
+        // El clic en «Continuar» habilita el audio y, si hay una partida en curso, la pantalla completa (ver ContentWarning).
+        onAccept={() => setAccepted(true)}
       />
     );
   }
@@ -58,7 +58,7 @@ export default function App() {
   const close = () => setOverlay(null);
   return (
     <div className="app">
-      {hasGame ? <Game open={setOverlay} paused={overlay !== null} /> : <TitleScreen open={setOverlay} />}
+      {hasGame ? <Game open={setOverlay} paused={overlay !== null} /> : <TitleScreen open={setOverlay} intro={intro} />}
       {overlay === 'history' && <HistoryPanel onClose={close} />}
       {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
@@ -81,9 +81,22 @@ function RotateHint() {
   );
 }
 
+// Duración del fundido a negro al aceptar la advertencia.
+const WARNING_FADE_MS = 900;
+
 function ContentWarning({ onAccept }: { onAccept: () => void }) {
+  const [leaving, setLeaving] = useState(false);
+  const still = useStore((s) => s.settings.reduceEffects);
+  const accept = () => {
+    if (leaving) return;
+    // El audio y la pantalla completa solo se habilitan dentro del clic: se piden ya, antes del fundido.
+    unlockAudio();
+    if (useStore.getState().game) void enterPlayMode();
+    setLeaving(true);
+    setTimeout(onAccept, still ? 150 : WARNING_FADE_MS);
+  };
   return (
-    <div className="screen warning">
+    <div className={`screen warning ${leaving ? 'warning-leaving' : ''}`}>
       <div className="warning-card">
         <header className="warning-head">
           <span className="warning-badge">{advertencia.etiqueta}</span>
@@ -103,7 +116,7 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
         </ul>
         <p className="warning-note">{advertencia.nota_efectos}</p>
         <p className="warning-note">{advertencia.ficcion}</p>
-        <button className="warning-accept" onClick={onAccept}>
+        <button className="warning-accept" onClick={accept}>
           {advertencia.aceptar}
         </button>
       </div>
@@ -111,11 +124,12 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
   );
 }
 
-function TitleScreen({ open }: { open: (o: Overlay) => void }) {
+function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: boolean }) {
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
+  const still = useStore((s) => s.settings.reduceEffects);
   return (
-    <div className="screen title">
+    <div className={`screen title ${intro && !still ? 'title-intro' : ''}`}>
       <TitleBackground />
       <h1 className="title-logo">
         <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
