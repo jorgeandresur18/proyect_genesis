@@ -29,11 +29,15 @@ export function SceneStage({ scene, effects, speakers, children }: Props) {
   return (
     <div className={`stage ${glitching ? glitch.glitch : ''}`}>
       <div className="stage-bg">
-        <span className="placeholder-label">
-          {scene.video_fondo
-            ? `${scene.video_fondo}${scene.loop_video ? ' (loop)' : ''}`
-            : scene.background ?? 'sin fondo'}
-        </span>
+        {scene.background && !isPlaceholder(scene.background) && !scene.video_fondo ? (
+          <img className="stage-bg-img" src={assetUrl(scene.background)} alt="" draggable={false} />
+        ) : (
+          <span className="placeholder-label">
+            {scene.video_fondo
+              ? `${scene.video_fondo}${scene.loop_video ? ' (loop)' : ''}`
+              : scene.background ?? 'sin fondo'}
+          </span>
+        )}
         {scene.audio && <span className="placeholder-audio">♪ {scene.audio}</span>}
       </div>
       <div className="stage-characters">

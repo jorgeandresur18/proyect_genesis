@@ -11,7 +11,8 @@
     "test:routes": "vitest run tests/routes.test.ts",
     "guion:exportar": "node tools/guion.mjs exportar",
     "guion:importar": "node tools/guion.mjs importar",
-    "sprites": "node --max-old-space-size=12000 tools/sprites.mjs"
+    "sprites": "node --max-old-space-size=12000 tools/sprites.mjs",
+    "fondos": "node tools/fondos.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

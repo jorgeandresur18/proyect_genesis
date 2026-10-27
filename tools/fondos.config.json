@@ -1,0 +1,11 @@
+{
+  "nota": "Nombre del archivo en docs/fondos (sin extensión) -> nombre del fondo en el guion (PLACEHOLDER:<nombre>). Si el archivo ya se llama como el fondo, no hace falta ponerlo aquí. omitir = archivos que todavía no se publican (p. ej. por tener la firma de otro artista).",
+  "fondos": {
+    "oficina": "oficina_dia",
+    "bar": "bar_noche",
+    "habitacion_jorge": "departamento_noche"
+  },
+  "omitir": [
+    "bar"
+  ]
+}

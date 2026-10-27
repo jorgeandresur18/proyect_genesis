@@ -10,7 +10,7 @@
 > Para agregar, quitar o reordenar escenas, pídemelo: la importación solo cambia textos.
 
 
-### oficina_dia
+### fondos/oficina_dia.webp
 
 > ♪ música: afterwork
 `001` — Capítulo 1 — Una vida en bucle.
@@ -509,7 +509,7 @@
 `115` — Jair se queda en la esquina. Le duelen los pies, le zumban los oídos y el mundo se inclina un poquito hacia la izquierda.
 
 
-### departamento_noche
+### fondos/departamento_noche.webp
 
 `116` — El departamento: un cuarto, un baño y una cocina que también es pasillo. Una caja de zapatos con wifi.
 
@@ -521,7 +521,7 @@
 `118` **Jair:** Lo compré de chiste. Ahora me mira cada noche como si supiera algo que yo no.
 
 
-### departamento_noche
+### fondos/departamento_noche.webp
 
 `119` — Prende el ventilador. Prende la PC. Abre el refrigerador, mira adentro y lo cierra. No sabe qué buscaba.
 
@@ -567,7 +567,7 @@
 `bad_correo_002` **Jair:** (Ni loco. Le he dicho a cuatrocientos clientes que no abran estas cosas.)
 
 
-### departamento_noche
+### fondos/departamento_noche.webp
 
 > ♪ silencio
 `bad_correo_003` — Apaga la PC. El ventilador sigue girando, solo, en la oscuridad.
@@ -597,7 +597,7 @@
 `bad_sinbar_002` **Jair:** «Nosotros lo construimos». Claro. Y después me vacían la cuenta.
 
 
-### departamento_noche
+### fondos/departamento_noche.webp
 
 > ♪ silencio
 `bad_sinbar_003` — Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once.
@@ -625,7 +625,7 @@
 `bad_rechazo_002` **Jair:** (Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)
 
 
-### departamento_noche
+### fondos/departamento_noche.webp
 
 > ♪ silencio
 `bad_rechazo_003` — Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual.
