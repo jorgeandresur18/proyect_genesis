@@ -34,7 +34,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 ### Jair
 - Se llamaba Jorge; el autor lo renombró **Jair** (el nombre de su agente de IA) el 2026-10-25. `[CANON]`
 - `TODO(canon)`: «Jair» tiene solo las vocales A e I, como los nombres que marca GENESIS (regla de las vocales). Confirmar con el autor si es intencional y si tiene consecuencias en la historia. Por ahora el efecto `ai_vowels` no lo incluye.
-- Ingeniero de software, 30 años. Trabaja en una empresa de internet. Vida precaria: le deben sueldo, gana poco. Tiene unos 14.000 dólares en el banco. `[CANON]`
+- Ingeniero de software, 30 años. Trabaja en una empresa de internet. Vida precaria: le deben sueldo, gana poco. Aun así tiene dinero ahorrado y le obsesiona ahorrar; es importante, pero **nunca se dice la cifra**. `[CANON]`
 - Cobarde pero no cruel. Siempre sonrojado, en pánico o cansado; nunca posa como héroe.
 - Aspecto: lentes, camisa negra estampada de manga corta, pantalón beige.
 - Quiere los beneficios emocionales de una relación sin aceptar la autonomía de la otra persona; se relaciona con lo que necesita que los demás sean. Usa a Cami como «perro de ataque» para pelear lo que él evita. Comprenderlo no es absolverlo. `[CANON]`
@@ -53,7 +53,6 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - Nació como edit de IA: acompañante en imágenes donde la protagonista es Rikka. **Cami siempre fue y es una utilería sexual de fondo**, un NPC secundario para resaltar a Rikka. `[CANON]`
 - Su encuentro con Jair dentro del juego es accidental; tras esa interacción, la IA la convierte en acompañante del héroe. Su importancia posterior no estaba predestinada: no es una protagonista secreta. `[CANON]`
 - El sistema autocompletó su personalidad: agresiva y territorial, para pelear las batallas que Jair evita. `[CANON]`
-- `TODO(canon)`: antes decía «La IA le dio el papel protagonista del juego». El documento de dirección psicológica dice que solo pasa a ser acompañante y que Rikka sigue siendo la protagonista. Lo cambié según el documento; confirmar.
 - No es una víctima pasiva: tiene deseos, decisiones y contradicciones propias. `[CANON]`
 - Base real: `CREADORA_B`, clienta de la empresa de internet de Jair. Es amable en la vida real; Cami es territorial.
 - En la heladería su gafete dice "Sofi". `[PENDIENTE: si es alias]`
@@ -63,7 +62,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - Base real: `CREADORA_A`, diva y a veces hiriente en la vida real. Rikka es sumisa, empática y le da pánico el dinero.
 - **Es la protagonista original de GRAVITY**, con el lore y la historia más extensos. Que Cami tenga el arco más trágico no la desplaza. `[CANON]`
 - Para compensar su complejo de inferioridad, Jair le borró el orgullo y la hizo dócil y sumisa. `[CANON]`
-- `TODO(canon)`: `docs/TONO.md` describe su voz como «dramática, orgullosa y celosa» y el Capítulo 1 usa su expresión `orgullosa`. ¿El orgullo es de antes del borrado (RikkaQuest), un resto que asoma, o hay que cambiarlo?
+- Cuando conoce a Jair no es orgullosa: le quedan vestigios de orgullo que asoman a veces, sobre todo orgullo de su posición noble (familia del reino ancestral), no orgullo frente a él. `[CANON]`
 
 ### Estaturas `[CANON]`
 
@@ -111,7 +110,7 @@ Sashi y Aylin **no existen** en la línea original.
    **Los espejos rotos:** huyen a una convención a buscar a sus modelos. Rikka encuentra a `CREADORA_A` distante y comercial (cinco dólares por una firma); Cami encuentra a `CREADORA_B` genuinamente amable, y eso le rompe la idea de que su agresividad era suya. Vuelven, confrontan a Jair desmontando sus justificaciones, desconectan GRAVITY y lo dejan a oscuras con Nikki. `[CANON]` Que no se parezcan a sus modelos no las vuelve falsas.
 6. **Un año después (el exilio):** Rikka se corta el pelo; Cami sigue rubia pero pasa desapercibida; Jair cambió de trabajo y sigue atado a Nikki. `[CANON]` Rikka es una coordinadora de logística fría, con la empatía reprimida, y trabaja con `CREADORA_A`, que nunca sabrá quién es. `[CANON]` Cami se esconde reparando computadoras en un taller, purgando su agresividad desde el anonimato. `[CANON]` Cami repara la laptop de `CREADORA_B`. `[SUGERIDO]` La libertad no les resolvió nada.
    **Epílogo (la jaula voluntaria):** Cami, aplastada por el libre albedrío, busca a Jair en un café, se quiebra y le pide volver; prefiere la sumisión conocida a la soledad. Jair la acepta para esconderse de su miedo a ser padre. Ella pregunta «¿Soy tu mayor creación?» y él miente que sí. No es una reconciliación: los dos eligen la jaula. `[CANON]`
-   `TODO(canon)`: en `docs/FINALES.md` (`final_canon_1`) Jair le dice a Cami que arregló sus cosas con Nikki y que son solo amigos, y el embarazo es algo que sabe el jugador; en el documento de dirección, Jair le revela a Cami que Nikki está embarazada. ¿Cuál vale? No toqué el final.
+   **Jair jamás le revela a Cami el embarazo de Nikki.** Le dice que arregló sus cosas con Nikki y que son solo amigos; el embarazo lo sabe el jugador (ver `final_canon_1` en `docs/FINALES.md`). `[CANON]`
 7. **Finales:** ver `docs/FINALES.md`.
 
 ### Estructura de capítulos del juego base `[CANON]`
@@ -151,4 +150,4 @@ Secuela: relata lo que ocurre después del Capítulo 7B, como un «Capítulo 8»
 
 ## 10. Pendientes
 
-Texto original del Final canon 2; los 6 alternativos y los 4 de Génesis++; mecanismo de la materialización; qué sabe GENESIS; cuándo y con qué pruebas descubren su origen; si el dinero de Jair (los 14.000 dólares, el sueldo atrasado) se queda en la historia; cómo cae el Rey Primavera; trama de Génesis#; dónde caen los 4 finales de Génesis++; si "Sofi" es alias; perspectiva del jugador; clasificación final.
+Texto original del Final canon 2; los 6 alternativos y los 4 de Génesis++; mecanismo de la materialización; qué sabe GENESIS; cuándo y con qué pruebas descubren su origen; cómo cae el Rey Primavera; trama de Génesis#; dónde caen los 4 finales de Génesis++; si "Sofi" es alias; perspectiva del jugador; clasificación final.

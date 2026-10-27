@@ -165,7 +165,7 @@ CAMI debe tener deseos, decisiones y contradicciones que no se reduzcan a su suf
 - Inteligencia artificial con apariencia basada en `CREADORA_A`.
 - Es la protagonista original del videojuego dentro de GRAVITY.
 - Tiene el lore, la historia y el desarrollo más extensos del juego original.
-- Para compensar el complejo de inferioridad de Jair, él le borró el orgullo y la hizo dócil y sumisa.
+- Para compensar el complejo de inferioridad de Jair, él le borró el orgullo y la hizo dócil y sumisa. Cuando conoce a Jair solo le quedan vestigios de orgullo, sobre todo por su posición noble. (Corrección del autor.)
 - Su condición de protagonista original no cambia por la relevancia posterior que adquiere CAMI.
 
 ### Conflicto psicológico
@@ -246,7 +246,7 @@ Ambas han sobrevivido fuera de Jair, pero no necesariamente han alcanzado una vi
 
 CAMI, aplastada por el peso del libre albedrío y la dificultad de construir una vida fuera de su relación anterior, busca a Jair en un café. Se quiebra y le suplica volver a su lado, prefiriendo la sumisión conocida a la soledad y la incertidumbre.
 
-Jair revela que él y Nikki están separados, pero que Nikki tiene cuatro meses de embarazo. Aterrorizado por la inminente paternidad, acepta a CAMI.
+Jair le dice que él y Nikki están separados y que solo son amigos. **Nunca le revela a CAMI que Nikki tiene cuatro meses de embarazo**: eso lo sabe el jugador. Aterrorizado por la inminente paternidad, acepta a CAMI. (Corrección del autor.)
 
 Ambos vuelven a encerrarse en el departamento. Jair utiliza a CAMI —una entidad artificial sin órganos reproductivos— como muro para evadir su miedo a convertirse en padre.
 

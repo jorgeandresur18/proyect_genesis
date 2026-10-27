@@ -23,7 +23,7 @@ La voz es provocativa: humor negro, sarcasmo y crudeza cotidiana. Provoca, pero 
 | Jair | Autodepreciativo, evasivo, a medio justificarse | "Gano poco, vivo en una caja de zapatos y mi mejor relación es con un ventilador." |
 | Nikki | Impulsiva, sarcástica, cariñosa y hiriente a la vez | "Búscate una novia, Jair. Y cuando la encuentres, avísame para ir a odiarla." |
 | Cami | Ironía fría, segura, ataca primero | "Qué lindo: un dios con el sueldo atrasado." |
-| Rikka | Dramática, orgullosa y celosa; pánico por el dinero | "¿Cuánto cuesta respirar aquí? Es que me da miedo preguntar." |
+| Rikka | Dramática y celosa, dócil con Jair; asoman vestigios de orgullo noble (de su posición, no frente a él); pánico por el dinero | "¿Cuánto cuesta respirar aquí? Es que me da miedo preguntar." |
 | Log del sistema | Técnico, frío, sin emoción | "> Usuario inactivo detectado. Autocompletando personalidades." |
 
 ## Notas por escena

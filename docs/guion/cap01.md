@@ -321,9 +321,9 @@
 
 `073` — Lo dice mirando el vaso. No queda claro si sigue hablando de videojuegos.
 
-`074` **Jair:** Tengo catorce mil dólares ahorrados. Podría renunciar y hacer un juego en serio.
+`074` **Jair:** Tengo unos ahorros. Bastantes, en realidad. Podría renunciar y hacer un juego en serio.
 
-`075` **Nikki:** ¿Catorce mil? ¿Catorce mil putos dólares? ¿Y por qué estoy pagando yo?
+`075` **Nikki:** ¿Bastantes? ¿Tienes putos ahorros y me dejas pedir lo más barato? ¿Y por qué estoy pagando yo?
 
 `076` **Jair:** No estás pagando tú.
 
@@ -522,11 +522,11 @@
 
 `106b` **Jair:** ¿Lo dividimos?
 
-`106b2` **Nikki:** ¿Dividir? ¿Con tus catorce mil dólares? Vete a la mierda, Jair.
+`106b2` **Nikki:** ¿Dividir? ¿Con todo lo que tienes guardado debajo del colchón? Vete a la mierda, Jair.
 
 `106b3` — Jair paga todo. Más la propina que el cantinero exige con la mirada.
 
-`107` **Jair:** (Catorce mil dólares en el banco, y la cuenta de Nikki es el único gasto que nunca discuto.)
+`107` **Jair:** (Ahorro hasta en el café de la oficina, y la cuenta de Nikki es el único gasto que nunca discuto.)
 
 
 ### calle_noche
@@ -818,7 +818,7 @@
 
 `g1_015` — Se revisa los bolsillos. Celular: sin señal, doce por ciento de batería. Billetera: la tarjeta del banco, el recibo del taxi de Nikki y dos monedas.
 
-`g1_016` **Jair:** Catorce mil dólares, y estoy en el espacio con dos monedas.
+`g1_016` **Jair:** Años ahorrando hasta el último centavo, y estoy en el espacio con dos monedas.
 
 `g1_017` **Jair:** Bueno. Igual que siempre, pero con mejor vista.
 
@@ -1691,7 +1691,7 @@
 
 `c11` **GRAVITY:** > Moneda no reconocida. La divisa del usuario no es válida en esta dimensión.
 
-`c12` **Jair:** Catorce mil dólares. No válidos en esta dimensión.
+`c12` **Jair:** Años de ahorro. No válidos en esta dimensión.
 
 `c13` **Cami:** ¿Qué dijiste?
 
@@ -2474,7 +2474,7 @@
 
 `d23` **Cami:** Algo. Una cosa. La que sea.
 
-`d24` — Jair piensa. Piensa en la oficina, en el bus, en el departamento, en el ventilador. En la cola de llamadas en espera. En los catorce mil dólares que no toca.
+`d24` — Jair piensa. Piensa en la oficina, en el bus, en el departamento, en el ventilador. En la cola de llamadas en espera. En los ahorros que no toca.
 
 `d25` **Jair:** ...
 

@@ -3739,7 +3739,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "Tengo catorce mil dólares ahorrados. Podría renunciar y hacer un juego en serio."
+        "text": "Tengo unos ahorros. Bastantes, en realidad. Podría renunciar y hacer un juego en serio."
       },
       "choices": [],
       "conditions": [],
@@ -3767,7 +3767,7 @@
       ],
       "dialogue": {
         "speaker": "Nikki",
-        "text": "¿Catorce mil? ¿Catorce mil putos dólares? ¿Y por qué estoy pagando yo?"
+        "text": "¿Bastantes? ¿Tienes putos ahorros y me dejas pedir lo más barato? ¿Y por qué estoy pagando yo?"
       },
       "choices": [],
       "conditions": [],
@@ -6191,7 +6191,7 @@
       ],
       "dialogue": {
         "speaker": "Nikki",
-        "text": "¿Dividir? ¿Con tus catorce mil dólares? Vete a la mierda, Jair."
+        "text": "¿Dividir? ¿Con todo lo que tienes guardado debajo del colchón? Vete a la mierda, Jair."
       },
       "choices": [],
       "conditions": [],
@@ -6247,7 +6247,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Catorce mil dólares en el banco, y la cuenta de Nikki es el único gasto que nunca discuto.)"
+        "text": "(Ahorro hasta en el café de la oficina, y la cuenta de Nikki es el único gasto que nunca discuto.)"
       },
       "choices": [],
       "conditions": [],
@@ -8302,7 +8302,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "Catorce mil dólares, y estoy en el espacio con dos monedas."
+        "text": "Años ahorrando hasta el último centavo, y estoy en el espacio con dos monedas."
       },
       "choices": [],
       "conditions": [],
@@ -19492,7 +19492,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "Catorce mil dólares. No válidos en esta dimensión."
+        "text": "Años de ahorro. No válidos en esta dimensión."
       },
       "choices": [],
       "conditions": [],
@@ -29216,7 +29216,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Jair piensa. Piensa en la oficina, en el bus, en el departamento, en el ventilador. En la cola de llamadas en espera. En los catorce mil dólares que no toca."
+        "text": "Jair piensa. Piensa en la oficina, en el bus, en el departamento, en el ventilador. En la cola de llamadas en espera. En los ahorros que no toca."
       },
       "choices": [],
       "conditions": [],
