@@ -7299,7 +7299,7 @@
       "characters": [],
       "dialogue": {
         "speaker": "GRAVITY",
-        "text": "> Instalando GRAVITY... Framework: NEXUS. Front: Coffee. Back: Cobra."
+        "text": "> Instalando GRAVITY... Framework: Reckt. Front: Coffee. Back: Cobra."
       },
       "choices": [],
       "conditions": [],
@@ -8348,7 +8348,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Algo parpadea en el borde de su visión. Letras blancas, flotando en el aire, como los subtítulos de una película pirata."
+        "text": "Entonces alguien habla. No desde afuera: desde adentro de su cabeza. Una voz plana, sin acento, como la de un contestador automático."
       },
       "choices": [],
       "conditions": [],
@@ -8370,8 +8370,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Usuario detectado dentro del entorno. Estado: no previsto."
+        "speaker": "Voz",
+        "text": "Usuario detectado dentro del entorno. Estado: no previsto."
       },
       "choices": [],
       "conditions": [],
@@ -8394,7 +8394,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "¿«No previsto»? ¿Cómo que no previsto? ¡Yo soy el usuario! ¡Yo te instalé!"
+        "text": "¿«No previsto»? ¿Quién dijo eso? ¿Hola?"
       },
       "choices": [],
       "conditions": [],
@@ -8416,8 +8416,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Autocompletado en curso. Por favor, no interrumpa."
+        "speaker": "Voz",
+        "text": "Autocompletado en curso. Por favor, no interrumpa."
       },
       "choices": [],
       "conditions": [],
@@ -8440,7 +8440,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "¿Que no interrumpa? ¡Estoy adentro de mi juego!"
+        "text": "¿Que no interrumpa qué? ¿Dónde estás?"
       },
       "choices": [],
       "conditions": [],
@@ -8463,7 +8463,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Las letras se desvanecen. No hay botón de cerrar. No hay menú. No hay «guardar partida»."
+        "text": "Nadie contesta. Mira alrededor: ruinas, estrellas, nadie. La voz no venía de ningún lado. Y para ser un sueño, el frío de la piedra bajo las manos se siente demasiado real."
       },
       "choices": [],
       "conditions": [],
@@ -8555,7 +8555,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Gravedad baja. Claro. Le pedí ciencia ficción. Le encanta tomarme literal.)"
+        "text": "(Gravedad baja. Claro. Me dormí pidiéndole ciencia ficción a una IA y ahora la estoy soñando. Mi cerebro siempre fue literal.)"
       },
       "choices": [],
       "conditions": [],
@@ -8693,7 +8693,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(No conozco esa voz. Pero la escribí. Bueno, no la escribí: le dije a una IA que la escribiera. Que es como escribirla, pero con menos culpa.)"
+        "text": "(No conozco esa voz. Pero este sueño está armado con lo que escribí antes de dormirme. Mi cabeza recicla todo; hasta las pesadillas las hace con material de la oficina.)"
       },
       "choices": [],
       "conditions": [],
@@ -9043,8 +9043,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad 01: sin interacción con el usuario. Desactivada."
+        "speaker": "Voz",
+        "text": "Entidad 01: sin interacción con el usuario. Desactivada."
       },
       "choices": [],
       "conditions": [],
@@ -9071,8 +9071,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Usuario sin acompañante. Sesión terminada."
+        "speaker": "Voz",
+        "text": "Usuario sin acompañante. Sesión terminada."
       },
       "choices": [],
       "conditions": [],
@@ -9280,7 +9280,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(La rubia del traje azul. La que generé hace... ¿cuánto? ¿Una hora? ¿Un sueño?)"
+        "text": "(La rubia del traje azul. La de la pantalla. La que vi aparecer hace... ¿cuánto? ¿Una hora? Claro que sueño con ella: fue lo último que vi antes de dormirme.)"
       },
       "choices": [],
       "conditions": [],
@@ -10264,7 +10264,7 @@
       },
       "choices": [
         {
-          "text": "Decir la verdad: «Creo que yo hice este mundo»",
+          "text": "Decir la verdad: «Creo que estoy soñando»",
           "next": "cap01_g1_066a",
           "add": {
             "lucidez_cami": 1
@@ -10307,7 +10307,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "Esto va a sonar raro, pero... creo que yo hice este mundo. Anoche. Con una IA. Estaba borracho."
+        "text": "Esto va a sonar raro, pero... creo que estoy soñando. Me dormí frente a la computadora pidiéndole a una IA un mundo como este. Y tú te pareces a algo que vi en la pantalla."
       },
       "choices": [],
       "conditions": [],
@@ -10419,7 +10419,7 @@
       ],
       "dialogue": {
         "speaker": "???",
-        "text": "Te golpeaste la cabeza. Les pasa mucho a los civiles. Ayúdame con esta viga y después te busco un médico, dios creador."
+        "text": "Te golpeaste la cabeza. Les pasa mucho a los civiles. Ayúdame con esta viga y después te busco un médico, bello durmiente."
       },
       "choices": [],
       "conditions": [],
@@ -11371,7 +11371,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "Me llamo Cami. Guerrera de la flota espacial. O de lo que queda de ella. Y si le cuentas a alguien que tuviste que sostenerme, te tiro al vacío."
+        "text": "Me llamo Cami. Guerrera de la Resistencia. O de lo que queda de ella. Y si le cuentas a alguien que tuviste que sostenerme, te tiro al vacío."
       },
       "choices": [],
       "conditions": [],
@@ -11427,7 +11427,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Yo no le puse nombre. Estoy seguro de que no le puse nombre.)"
+        "text": "(Yo no le puse nombre a la rubia de la pantalla. Estoy seguro de que no le puse nombre.)"
       },
       "choices": [],
       "conditions": [],
@@ -11454,8 +11454,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad 01: CAMI. Nombre asignado por autocompletado."
+        "speaker": "Voz",
+        "text": "Entidad 01: CAMI. Nombre asignado por autocompletado."
       },
       "choices": [],
       "conditions": [],
@@ -11483,7 +11483,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Ah. Claro. Autocompletado.)"
+        "text": "(¿«Autocompletado»? Hasta mis sueños hablan como la oficina.)"
       },
       "choices": [],
       "conditions": [],
@@ -11927,8 +11927,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Amenaza de nivel 1 generada por autocompletado. Coherencia narrativa: alta."
+        "speaker": "Voz",
+        "text": "Amenaza de nivel 1 generada por autocompletado. Coherencia narrativa: alta."
       },
       "choices": [],
       "conditions": [],
@@ -12599,8 +12599,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Usuario sin rol activo. Rol asignado: carnada."
+        "speaker": "Voz",
+        "text": "Usuario sin rol activo. Rol asignado: carnada."
       },
       "choices": [],
       "conditions": [],
@@ -12680,7 +12680,7 @@
       "characters": [],
       "dialogue": {
         "speaker": null,
-        "text": "Pesa menos de lo que esperaba. O él es más fuerte aquí. O el juego decidió que este era el momento en que él podía cargarla."
+        "text": "Pesa menos de lo que esperaba. O él es más fuerte aquí. O el sueño decidió que este era el momento en que él podía cargarla."
       },
       "choices": [],
       "conditions": [],
@@ -14701,8 +14701,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Error de navegación en entidad hostil. Parche programado."
+        "speaker": "Voz",
+        "text": "Error de navegación en entidad hostil. Parche programado."
       },
       "choices": [],
       "conditions": [],
@@ -14767,8 +14767,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Pronto."
+        "speaker": "Voz",
+        "text": "Pronto."
       },
       "choices": [],
       "conditions": [],
@@ -16109,7 +16109,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "Nadie lo ha visto. Solo a sus soldados. Y a sus monstruos. Dicen que antes de ser rey de todo fue rey de otra cosa. De un reino pequeño. De flores."
+        "text": "Nadie lo ha visto. Solo a la Federación, que ahora trabaja para él: sus soldados de negro, sus monstruos. Dicen que antes de ser rey de todo fue rey de otra cosa. De un reino pequeño. De flores."
       },
       "choices": [],
       "conditions": [],
@@ -16221,7 +16221,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "No estaba sola. Éramos más. Una flota entera."
+        "text": "No estaba sola. Éramos más. Una flota entera de la Resistencia."
       },
       "choices": [],
       "conditions": [],
@@ -16339,6 +16339,34 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_g4_045b"
+    },
+    {
+      "scene_id": "cap01_g4_045b",
+      "chapter": 1,
+      "background": "PLACEHOLDER:refugio_capsula",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/triste.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Me acuerdo de que mi planeta entró a la Federación con una guerra. De que mis padres no salieron de esa guerra. Eso sí lo sé. Lo sé como se sabe una fecha."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_g4_046"
     },
     {
@@ -16361,7 +16389,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "Pero no me acuerdo de su cara. Ni de su nombre. Ni de cómo llegué aquí. Es como..."
+        "text": "Pero no me acuerdo de sus caras. Ni de sus nombres. Ni de cómo llegué aquí. Es como..."
       },
       "choices": [],
       "conditions": [],
@@ -16472,8 +16500,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad 01: memoria de fondo generada. Coherencia: parcial."
+        "speaker": "Voz",
+        "text": "Entidad 01: memoria de fondo generada. Coherencia: parcial."
       },
       "choices": [],
       "conditions": [],
@@ -17301,7 +17329,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "Espera. Les das órdenes a las máquinas, no te pagan... y dices que creaste este mundo."
+        "text": "Espera. Les das órdenes a las máquinas, no te pagan... y dices que todo esto es un sueño tuyo."
       },
       "choices": [],
       "conditions": [
@@ -17335,7 +17363,7 @@
       ],
       "dialogue": {
         "speaker": "Cami",
-        "text": "Qué lindo: un dios con el sueldo atrasado."
+        "text": "Qué lindo: un dios que sueña con el sueldo atrasado."
       },
       "choices": [],
       "conditions": [
@@ -18270,8 +18298,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Usuario no autorizado para portar armas. Rol asignado: acompañante."
+        "speaker": "Voz",
+        "text": "Usuario no autorizado para portar armas. Rol asignado: acompañante."
       },
       "choices": [],
       "conditions": [],
@@ -19463,8 +19491,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Moneda no reconocida. La divisa del usuario no es válida en esta dimensión."
+        "speaker": "Voz",
+        "text": "Moneda no reconocida. La divisa del usuario no es válida en esta dimensión."
       },
       "choices": [],
       "conditions": [],
@@ -19716,7 +19744,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Técnicamente, la máquina es mía. Yo hice este mundo. Me estoy robando a mí mismo.)"
+        "text": "(Técnicamente, si esto es mi sueño, la máquina es mía. Me estoy robando a mí mismo.)"
       },
       "choices": [],
       "conditions": [],
@@ -21127,8 +21155,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Recurso decorativo. Funcionalidad: no implementada."
+        "speaker": "Voz",
+        "text": "Recurso decorativo. Funcionalidad: no implementada."
       },
       "choices": [],
       "conditions": [],
@@ -22168,8 +22196,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Conexión externa detectada y cerrada. Se recomienda no repetir."
+        "speaker": "Voz",
+        "text": "Conexión externa detectada y cerrada. Se recomienda no repetir."
       },
       "choices": [],
       "conditions": [],
@@ -23774,8 +23802,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Usuario archivado en: /bastion/calabozo/pendientes."
+        "speaker": "Voz",
+        "text": "Usuario archivado en: /bastion/calabozo/pendientes."
       },
       "choices": [],
       "conditions": [],
@@ -23866,8 +23894,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Tiempo estimado de revisión del expediente: indefinido."
+        "speaker": "Voz",
+        "text": "Tiempo estimado de revisión del expediente: indefinido."
       },
       "choices": [],
       "conditions": [],
@@ -24444,8 +24472,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %."
+        "speaker": "Voz",
+        "text": "Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %."
       },
       "choices": [],
       "conditions": [],
@@ -24500,8 +24528,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Se recomienda esperar al 100 %."
+        "speaker": "Voz",
+        "text": "Se recomienda esperar al 100 %."
       },
       "choices": [],
       "conditions": [],
@@ -24556,8 +24584,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Tiempo estimado: indefinido."
+        "speaker": "Voz",
+        "text": "Tiempo estimado: indefinido."
       },
       "choices": [],
       "conditions": [],
@@ -26157,8 +26185,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> PLACEHOLDER_CAPITAN_01"
+        "speaker": null,
+        "text": "PLACEHOLDER_CAPITAN_01"
       },
       "choices": [],
       "conditions": [],
@@ -26510,8 +26538,8 @@
       "loop_video": false,
       "characters": [],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Transfiriendo entidades: dimensión espacial → dimensión ancestral."
+        "speaker": "Voz",
+        "text": "Transfiriendo entidades: dimensión espacial → dimensión ancestral."
       },
       "choices": [],
       "conditions": [],
@@ -26527,8 +26555,8 @@
       "loop_video": false,
       "characters": [],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad 01: CAMI. Integridad: 91 %."
+        "speaker": "Voz",
+        "text": "Entidad 01: CAMI. Integridad: 91 %."
       },
       "choices": [],
       "conditions": [],
@@ -26544,8 +26572,8 @@
       "loop_video": false,
       "characters": [],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad no registrada: JAIR. Integridad: no aplica."
+        "speaker": "Voz",
+        "text": "Entidad no registrada: JAIR. Integridad: no aplica."
       },
       "choices": [],
       "conditions": [],
@@ -26729,8 +26757,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Fragmento sin asignar. Eliminando."
+        "speaker": "Voz",
+        "text": "Fragmento sin asignar. Eliminando."
       },
       "choices": [],
       "conditions": [],
@@ -26785,8 +26813,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Fragmento sin asignar."
+        "speaker": "Voz",
+        "text": "Fragmento sin asignar."
       },
       "choices": [],
       "conditions": [],
@@ -27576,8 +27604,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Dimensión ancestral: autocompletado 100 %. Historia generada: 847 años."
+        "speaker": "Voz",
+        "text": "Dimensión ancestral: autocompletado 100 %. Historia generada: 847 años."
       },
       "choices": [],
       "conditions": [],
@@ -27660,8 +27688,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Tiempo del usuario: 1 h 12 min."
+        "speaker": "Voz",
+        "text": "Tiempo del usuario: 1 h 12 min."
       },
       "choices": [],
       "conditions": [],
@@ -29813,8 +29841,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles."
+        "speaker": "Voz",
+        "text": "Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles."
       },
       "choices": [],
       "conditions": [],
@@ -29879,8 +29907,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Gracias por su reporte."
+        "speaker": "Voz",
+        "text": "Gracias por su reporte."
       },
       "choices": [],
       "conditions": [],
@@ -32204,8 +32232,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Instrucción recuperada del historial: «rivales», «tensión», «celos». Aplicada."
+        "speaker": "Voz",
+        "text": "Instrucción recuperada del historial: «rivales», «tensión», «celos». Aplicada."
       },
       "choices": [],
       "conditions": [],
@@ -32916,8 +32944,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidad 02: RIKKA. Nombre asignado por autocompletado."
+        "speaker": "Voz",
+        "text": "Entidad 02: RIKKA. Nombre asignado por autocompletado."
       },
       "choices": [],
       "conditions": [],
@@ -34744,7 +34772,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Y en el borde de su visión, unas letras blancas que esta vez Jair no alcanza a leer antes de que se desvanezcan."
+        "text": "Y en el fondo de su cabeza, la voz otra vez, tan bajito que esta vez Jair no alcanza a entenderla antes de que se apague."
       },
       "choices": [],
       "conditions": [],
@@ -34776,8 +34804,8 @@
         }
       ],
       "dialogue": {
-        "speaker": "GRAVITY",
-        "text": "> Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa."
+        "speaker": "Voz",
+        "text": "Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa."
       },
       "choices": [],
       "conditions": [],

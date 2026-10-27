@@ -698,7 +698,7 @@
 ### gravity_ide
 
 > ♪ música: into_the_ciberse
-`128` **GRAVITY:** > Instalando GRAVITY... Framework: NEXUS. Front: Coffee. Back: Cobra.
+`128` **GRAVITY:** > Instalando GRAVITY... Framework: Reckt. Front: Coffee. Back: Cobra.
 
 `129` **GRAVITY:** > Asistente integrado: GENESIS. Estado: en línea.
 
@@ -822,17 +822,17 @@
 
 `g1_017` **Jair:** Bueno. Igual que siempre, pero con mejor vista.
 
-`g1_018` — Algo parpadea en el borde de su visión. Letras blancas, flotando en el aire, como los subtítulos de una película pirata.
+`g1_018` — Entonces alguien habla. No desde afuera: desde adentro de su cabeza. Una voz plana, sin acento, como la de un contestador automático.
 
-`g1_019` **GRAVITY:** > Usuario detectado dentro del entorno. Estado: no previsto.
+`g1_019` **Voz:** Usuario detectado dentro del entorno. Estado: no previsto.
 
-`g1_020` **Jair:** ¿«No previsto»? ¿Cómo que no previsto? ¡Yo soy el usuario! ¡Yo te instalé!
+`g1_020` **Jair:** ¿«No previsto»? ¿Quién dijo eso? ¿Hola?
 
-`g1_021` **GRAVITY:** > Autocompletado en curso. Por favor, no interrumpa.
+`g1_021` **Voz:** Autocompletado en curso. Por favor, no interrumpa.
 
-`g1_022` **Jair:** ¿Que no interrumpa? ¡Estoy adentro de mi juego!
+`g1_022` **Jair:** ¿Que no interrumpa qué? ¿Dónde estás?
 
-`g1_023` — Las letras se desvanecen. No hay botón de cerrar. No hay menú. No hay «guardar partida».
+`g1_023` — Nadie contesta. Mira alrededor: ruinas, estrellas, nadie. La voz no venía de ningún lado. Y para ser un sueño, el frío de la piedra bajo las manos se siente demasiado real.
 
 `g1_024` **Jair:** (Esto pasa por instalar cosas de correos desconocidos a las tres de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)
 
@@ -840,7 +840,7 @@
 
 `g1_026` — Da un paso. Su cuerpo sube más de lo que debería y baja más despacio de lo que debería. La gravedad aquí es floja, como un elástico viejo.
 
-`g1_027` **Jair:** (Gravedad baja. Claro. Le pedí ciencia ficción. Le encanta tomarme literal.)
+`g1_027` **Jair:** (Gravedad baja. Claro. Me dormí pidiéndole ciencia ficción a una IA y ahora la estoy soñando. Mi cerebro siempre fue literal.)
 
 > ♪ silencio
 `g1_028` — A lo lejos, entre las columnas que flotan, algo se mueve.
@@ -853,7 +853,7 @@
 
 `g1_032` **Jair:** (Esa voz.)
 
-`g1_033` **Jair:** (No conozco esa voz. Pero la escribí. Bueno, no la escribí: le dije a una IA que la escribiera. Que es como escribirla, pero con menos culpa.)
+`g1_033` **Jair:** (No conozco esa voz. Pero este sueño está armado con lo que escribí antes de dormirme. Mi cabeza recicla todo; hasta las pesadillas las hace con material de la oficina.)
 
 `g1_034` — Jair debería correr en dirección contraria. Es lo que haría cualquier persona razonable. Es lo que ha hecho toda su vida.
 
@@ -889,9 +889,9 @@
 
 `bad1_011` — Nadie contesta. La única persona que podría haberle contestado está debajo de una viga, al otro lado de las ruinas, y ya no le contesta a nadie.
 
-`bad1_012` **GRAVITY:** > Entidad 01: sin interacción con el usuario. Desactivada.
+`bad1_012` **Voz:** Entidad 01: sin interacción con el usuario. Desactivada.
 
-`bad1_013` **GRAVITY:** > Usuario sin acompañante. Sesión terminada.
+`bad1_013` **Voz:** Usuario sin acompañante. Sesión terminada.
 
 `bad1_014` — Lo último que Jair piensa, antes de que la tinta le cubra los lentes, es que es la primera vez en su vida que nadie va a llamarlo para preguntarle por qué no hizo nada.
 
@@ -917,7 +917,7 @@
 
 `g1_040` **Jair:** (La rubia.)
 
-`g1_041` **Jair:** (La rubia del traje azul. La que generé hace... ¿cuánto? ¿Una hora? ¿Un sueño?)
+`g1_041` **Jair:** (La rubia del traje azul. La de la pantalla. La que vi aparecer hace... ¿cuánto? ¿Una hora? Claro que sueño con ella: fue lo último que vi antes de dormirme.)
 
 `g1_042` — Uno de los soldados levanta un arma larga y delgada que zumba como un mosquito del tamaño de un perro.
 
@@ -993,11 +993,11 @@
 
 
 > **DECISIÓN**
-- `g1_065#0` Decir la verdad: «Creo que yo hice este mundo» ⟶ va a `g1_066a` · confeso_creador = true, lucidez_cami +1
+- `g1_065#0` Decir la verdad: «Creo que estoy soñando» ⟶ va a `g1_066a` · confeso_creador = true, lucidez_cami +1
 - `g1_065#1` Mentir: «Me perdí» ⟶ va a `g1_066b`
 - `g1_065#2` Hacer un chiste ⟶ va a `g1_066c`
 
-`g1_066a` **Jair:** Esto va a sonar raro, pero... creo que yo hice este mundo. Anoche. Con una IA. Estaba borracho.
+`g1_066a` **Jair:** Esto va a sonar raro, pero... creo que estoy soñando. Me dormí frente a la computadora pidiéndole a una IA un mundo como este. Y tú te pareces a algo que vi en la pantalla.
 
 `g1_066a2` — La rubia lo mira un largo rato. Después baja la pistola, muy despacio.
 
@@ -1005,7 +1005,7 @@
 
 `g1_066a4` **Jair:** ¿Sí?
 
-`g1_066a5` **???:** Te golpeaste la cabeza. Les pasa mucho a los civiles. Ayúdame con esta viga y después te busco un médico, dios creador.
+`g1_066a5` **???:** Te golpeaste la cabeza. Les pasa mucho a los civiles. Ayúdame con esta viga y después te busco un médico, bello durmiente.
 
 `g1_066a6` **Jair:** (Me creyó tanto como me cree mi supervisor.)
 
@@ -1077,15 +1077,15 @@
 
 `g1_087` **Jair:** ¿Qué?
 
-`g1_088` **Cami:** Me llamo Cami. Guerrera de la flota espacial. O de lo que queda de ella. Y si le cuentas a alguien que tuviste que sostenerme, te tiro al vacío.
+`g1_088` **Cami:** Me llamo Cami. Guerrera de la Resistencia. O de lo que queda de ella. Y si le cuentas a alguien que tuviste que sostenerme, te tiro al vacío.
 
 `g1_089` **Jair:** (Cami.)
 
-`g1_090` **Jair:** (Yo no le puse nombre. Estoy seguro de que no le puse nombre.)
+`g1_090` **Jair:** (Yo no le puse nombre a la rubia de la pantalla. Estoy seguro de que no le puse nombre.)
 
-`g1_091` **GRAVITY:** > Entidad 01: CAMI. Nombre asignado por autocompletado.
+`g1_091` **Voz:** Entidad 01: CAMI. Nombre asignado por autocompletado.
 
-`g1_092` **Jair:** (Ah. Claro. Autocompletado.)
+`g1_092` **Jair:** (¿«Autocompletado»? Hasta mis sueños hablan como la oficina.)
 
 `g1_093` **Cami:** ¿Por qué pones esa cara? ¿No te gusta mi nombre?
 
@@ -1117,7 +1117,7 @@
 
 `g3_011` **Jair:** ¡Que eso no lo pedí! ¡Yo pedí un Rey Malvado! ¡Un rey! ¡Con corona! ¡No... eso!
 
-`g3_012` **GRAVITY:** > Amenaza de nivel 1 generada por autocompletado. Coherencia narrativa: alta.
+`g3_012` **Voz:** Amenaza de nivel 1 generada por autocompletado. Coherencia narrativa: alta.
 
 `g3_013` **Jair:** ¡Coherencia, mis narices!
 
@@ -1165,7 +1165,7 @@
 
 `g3_018b14` — La tinta le llega a los pies. Está fría. Es lo primero frío que toca en meses.
 
-`g3_018b15` **GRAVITY:** > Usuario sin rol activo. Rol asignado: carnada.
+`g3_018b15` **Voz:** Usuario sin rol activo. Rol asignado: carnada.
 
 `g3_018b16` **Jair:** (Por lo menos ahora tengo un puesto.)
 
@@ -1182,7 +1182,7 @@
 
 `g3_019` — Jair se agacha, le pasa un brazo por la espalda y el otro por debajo de las rodillas, y la levanta.
 
-`g3_020` — Pesa menos de lo que esperaba. O él es más fuerte aquí. O el juego decidió que este era el momento en que él podía cargarla.
+`g3_020` — Pesa menos de lo que esperaba. O él es más fuerte aquí. O el sueño decidió que este era el momento en que él podía cargarla.
 
 
 ### pasillo_castillo
@@ -1327,11 +1327,11 @@
 
 `g3_059` **Jair:** (Me han salvado más los bugs que cualquier persona en mi vida.)
 
-`g3_060` **GRAVITY:** > Error de navegación en entidad hostil. Parche programado.
+`g3_060` **Voz:** Error de navegación en entidad hostil. Parche programado.
 
 `g3_061` **Jair:** ¿Programado para cuándo?
 
-`g3_062` **GRAVITY:** > Pronto.
+`g3_062` **Voz:** Pronto.
 
 `g3_063` **Jair:** ...Genial. Fantástico. Ese es el nivel de detalle que yo les doy a mis clientes.
 
@@ -1429,7 +1429,7 @@
 
 `g4_036` **Jair:** ¿Cómo es?
 
-`g4_037` **Cami:** Nadie lo ha visto. Solo a sus soldados. Y a sus monstruos. Dicen que antes de ser rey de todo fue rey de otra cosa. De un reino pequeño. De flores.
+`g4_037` **Cami:** Nadie lo ha visto. Solo a la Federación, que ahora trabaja para él: sus soldados de negro, sus monstruos. Dicen que antes de ser rey de todo fue rey de otra cosa. De un reino pequeño. De flores.
 
 `g4_038` **Jair:** (Le pedí a la IA un Rey Malvado y le dio un pasado. Yo no tengo un pasado tan elaborado.)
 
@@ -1438,7 +1438,7 @@
 > ♪ música: sad_suspense
 `g4_040` — Cami tarda en contestar. Mira por la ventanilla.
 
-`g4_041` **Cami:** No estaba sola. Éramos más. Una flota entera.
+`g4_041` **Cami:** No estaba sola. Éramos más. Una flota entera de la Resistencia.
 
 `g4_042` **Jair:** ¿Y qué les pasó?
 
@@ -1448,7 +1448,9 @@
 
 `g4_045` **Cami:** Me acuerdo de la flota. Me acuerdo del ruido de los motores. Me acuerdo de que había un capitán que gritaba mucho.
 
-`g4_046` **Cami:** Pero no me acuerdo de su cara. Ni de su nombre. Ni de cómo llegué aquí. Es como...
+`g4_045b` **Cami:** Me acuerdo de que mi planeta entró a la Federación con una guerra. De que mis padres no salieron de esa guerra. Eso sí lo sé. Lo sé como se sabe una fecha.
+
+`g4_046` **Cami:** Pero no me acuerdo de sus caras. Ni de sus nombres. Ni de cómo llegué aquí. Es como...
 
 `g4_047` — Hace un gesto con la mano, como si atrapara algo en el aire y al abrirla no hubiera nada.
 
@@ -1456,7 +1458,7 @@
 
 `g4_049` — Jair no dice nada. Siente un frío que no tiene nada que ver con el espacio.
 
-`g4_050` **GRAVITY:** > Entidad 01: memoria de fondo generada. Coherencia: parcial.
+`g4_050` **Voz:** Entidad 01: memoria de fondo generada. Coherencia: parcial.
 
 `g4_051` **Jair:** (Memoria de fondo. Le pusieron recuerdos de relleno. Como a los personajes de fondo que dicen «buenos días, viajero» y no saben por qué.)
 
@@ -1526,10 +1528,10 @@
 `g4_062` — Cami se ríe. Es la primera vez. Una risa corta y seca, con el filo de un cuchillo.
 
 > solo si confeso_creador == true
-`g4_063` **Cami:** Espera. Les das órdenes a las máquinas, no te pagan... y dices que creaste este mundo.
+`g4_063` **Cami:** Espera. Les das órdenes a las máquinas, no te pagan... y dices que todo esto es un sueño tuyo.
 
 > solo si confeso_creador == true
-`g4_064` **Cami:** Qué lindo: un dios con el sueldo atrasado.
+`g4_064` **Cami:** Qué lindo: un dios que sueña con el sueldo atrasado.
 
 > solo si confeso_creador == false
 `g4_065` **Cami:** Les das órdenes a las máquinas y ni así te pagan. Qué oficio tan triste.
@@ -1596,7 +1598,7 @@
 
 `b17` — Aprieta otra vez. Nada. En el mango de la pistola se enciende una lucecita roja.
 
-`b18` **GRAVITY:** > Usuario no autorizado para portar armas. Rol asignado: acompañante.
+`b18` **Voz:** Usuario no autorizado para portar armas. Rol asignado: acompañante.
 
 `b19` **Jair:** ¿«Acompañante»?
 
@@ -1689,7 +1691,7 @@
 
 `c10` — Saca sus dos monedas. Ninguna tiene forma de estrella. Intenta meter una igual.
 
-`c11` **GRAVITY:** > Moneda no reconocida. La divisa del usuario no es válida en esta dimensión.
+`c11` **Voz:** Moneda no reconocida. La divisa del usuario no es válida en esta dimensión.
 
 `c12` **Jair:** Años de ahorro. No válidos en esta dimensión.
 
@@ -1707,7 +1709,7 @@
 
 `c19` **Cami:** ¿A quién? ¿A la máquina? La máquina es del Rey Malvado.
 
-`c20` **Jair:** (Técnicamente, la máquina es mía. Yo hice este mundo. Me estoy robando a mí mismo.)
+`c20` **Jair:** (Técnicamente, si esto es mi sueño, la máquina es mía. Me estoy robando a mí mismo.)
 
 `c21` **Jair:** (Es lo más responsable que he hecho con mi dinero en años.)
 
@@ -1819,7 +1821,7 @@
 
 `g5h_047` **Jair:** (Todo este hangar es fondo.)
 
-`g5h_048` **GRAVITY:** > Recurso decorativo. Funcionalidad: no implementada.
+`g5h_048` **Voz:** Recurso decorativo. Funcionalidad: no implementada.
 
 `g5h_049` **Cami:** ¿Jair? ¿Qué pasa? ¿Por qué pones esa cara?
 
@@ -1913,7 +1915,7 @@
 
 `g5m_018` — La barra de señal desaparece. El mensaje se queda con un relojito al lado. Esperando.
 
-`g5m_019` **GRAVITY:** > Conexión externa detectada y cerrada. Se recomienda no repetir.
+`g5m_019` **Voz:** Conexión externa detectada y cerrada. Se recomienda no repetir.
 
 `g5m_020` **Jair:** (¿«Se recomienda»? ¿Desde cuándo un programa recomienda cosas?)
 
@@ -2023,7 +2025,7 @@
 
 `g5_024b14` **Jair:** ¿Archivar? ¿Cómo que archivar?
 
-`g5_024b15` **GRAVITY:** > Usuario archivado en: /bastion/calabozo/pendientes.
+`g5_024b15` **Voz:** Usuario archivado en: /bastion/calabozo/pendientes.
 
 
 ### calabozo
@@ -2035,7 +2037,7 @@
 
 `g5_024b18` **Jair:** (Es igual que mi departamento, pero sin ventilador.)
 
-`g5_024b19` **GRAVITY:** > Tiempo estimado de revisión del expediente: indefinido.
+`g5_024b19` **Voz:** Tiempo estimado de revisión del expediente: indefinido.
 
 
 ### negro
@@ -2090,15 +2092,15 @@
 
 `g6_009` — A medida que se acercan, la Grieta tiembla. Se cierra un poco. Se abre otro poco. Como un ojo que intenta no dormirse.
 
-`g6_010` **GRAVITY:** > Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %.
+`g6_010` **Voz:** Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %.
 
 `g6_011` **Jair:** ¿Sesenta y ocho por ciento? ¿Del otro lado todavía no está terminado?
 
-`g6_012` **GRAVITY:** > Se recomienda esperar al 100 %.
+`g6_012` **Voz:** Se recomienda esperar al 100 %.
 
 `g6_013` **Jair:** ¿Y cuánto falta?
 
-`g6_014` **GRAVITY:** > Tiempo estimado: indefinido.
+`g6_014` **Voz:** Tiempo estimado: indefinido.
 
 `g6_015` **Jair:** (Es la misma respuesta que da mi empresa sobre mi sueldo.)
 
@@ -2206,7 +2208,7 @@
 
 `g6_054b4` — Debajo tampoco hay cara. Solo la misma superficie lisa y gris. Pero en el centro, por un instante, parpadean unas letras blancas.
 
-`g6_054b5` **GRAVITY:** > PLACEHOLDER_CAPITAN_01
+`g6_054b5` — PLACEHOLDER_CAPITAN_01
 
 `g6_054b6` **Jair:** (Ni siquiera le pusieron nombre.)
 
@@ -2240,11 +2242,11 @@
 
 `g6c_005` — El cuarto pasa de largo antes de que pueda estar seguro. Sobre la cama, durante una fracción de segundo, le pareció ver un póster.
 
-`g6c_006` **GRAVITY:** > Transfiriendo entidades: dimensión espacial → dimensión ancestral.
+`g6c_006` **Voz:** Transfiriendo entidades: dimensión espacial → dimensión ancestral.
 
-`g6c_007` **GRAVITY:** > Entidad 01: CAMI. Integridad: 91 %.
+`g6c_007` **Voz:** Entidad 01: CAMI. Integridad: 91 %.
 
-`g6c_008` **GRAVITY:** > Entidad no registrada: JAIR. Integridad: no aplica.
+`g6c_008` **Voz:** Entidad no registrada: JAIR. Integridad: no aplica.
 
 `g6c_009` **Jair:** ¿Cómo que «no aplica»?
 
@@ -2261,11 +2263,11 @@
 
 `i05` — La isla cruje. Por las grietas del cristal sube una luz blanca y, con la luz, un zumbido, como el de un servidor recalentado.
 
-`i06` **GRAVITY:** > Fragmento sin asignar. Eliminando.
+`i06` **Voz:** Fragmento sin asignar. Eliminando.
 
 `i07` **Jair:** ¿Eliminando qué?
 
-`i08` **GRAVITY:** > Fragmento sin asignar.
+`i08` **Voz:** Fragmento sin asignar.
 
 `i09` **Jair:** ¡Estamos ENCIMA del fragmento sin asignar!
 
@@ -2337,13 +2339,13 @@
 
 `g7_018` **Jair:** (Yo no pedí esto. Yo pedí «un mundo con un Rey Malvado». ¿De dónde salió todo esto?)
 
-`g7_019` **GRAVITY:** > Dimensión ancestral: autocompletado 100 %. Historia generada: 847 años.
+`g7_019` **Voz:** Dimensión ancestral: autocompletado 100 %. Historia generada: 847 años.
 
 `g7_020` **Jair:** ¿Ochocientos cuarenta y siete años?
 
 `g7_021` **Jair:** ¿Cuánto llevo dormido?
 
-`g7_022` **GRAVITY:** > Tiempo del usuario: 1 h 12 min.
+`g7_022` **Voz:** Tiempo del usuario: 1 h 12 min.
 
 `g7_023` — Jair siente un vértigo que no tiene nada que ver con la caída. Una hora y doce minutos. Ochocientos cuarenta y siete años. Alguien vivió esos años. Alguien nació, creció y murió en este bosque mientras él roncaba sobre un teclado.
 
@@ -2518,11 +2520,11 @@
 > ♪ música: adventure1
 `g7b_005` — La tinta se levanta del pasto, pero no sale sola: arrastra tierra, raíces y piedras del claro, que se le pegan al cuerpo como costras. Cuando termina de pararse es más grande que antes, casi un metro más alta que Jair, cubierta de placas de roca. Entre las grietas, el hueco que gira.
 
-`g7b_006` **GRAVITY:** > Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
+`g7b_006` **Voz:** Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
 
 `g7b_007` **Jair:** ¡¿AHORA SÍ ARREGLAS LOS BUGS?!
 
-`g7b_008` **GRAVITY:** > Gracias por su reporte.
+`g7b_008` **Voz:** Gracias por su reporte.
 
 `g7b_009` **Jair:** (Ojalá mi empresa respondiera así de rápido. Ojalá respondiera.)
 
@@ -2681,7 +2683,7 @@
 
 `g8_028` **Jair:** (Lo borré. Yo lo borré. Estoy seguro de que lo borré.)
 
-`g8_029` **GRAVITY:** > Instrucción recuperada del historial: «rivales», «tensión», «celos». Aplicada.
+`g8_029` **Voz:** Instrucción recuperada del historial: «rivales», «tensión», «celos». Aplicada.
 
 `g8_030` **Jair:** (Nada se borra de verdad.)
 
@@ -2733,7 +2735,7 @@
 
 `g8_035` **Rikka:** Me llamo Rikka.
 
-`g8_036` **GRAVITY:** > Entidad 02: RIKKA. Nombre asignado por autocompletado.
+`g8_036` **Voz:** Entidad 02: RIKKA. Nombre asignado por autocompletado.
 
 `g8_037` **Rikka:** Guardiana de este puente. Última de... bueno. Última de muchas cosas.
 
@@ -2845,9 +2847,9 @@
 
 `g8_070` — Detrás de ellos, el sol del atardecer eterno no se mueve. Delante están el puente rojo, el refugio y el bosque de las cuatro estaciones.
 
-`g8_071` — Y en el borde de su visión, unas letras blancas que esta vez Jair no alcanza a leer antes de que se desvanezcan.
+`g8_071` — Y en el fondo de su cabeza, la voz otra vez, tan bajito que esta vez Jair no alcanza a entenderla antes de que se apague.
 
-`g8_072` **GRAVITY:** > Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa.
+`g8_072` **Voz:** Entidades 01 y 02: en contacto. Rivalidad: activa. Autocompletado: continúa.
 
 > **FIN DEL CAPÍTULO 1** (no es un final: sigue en el capítulo siguiente)
 
