@@ -41,7 +41,103 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   padding: 1.5rem;
   text-align: center;
 }
-.warning p { max-width: 38rem; line-height: 1.5; }
+/* Advertencia de contenido: tarjeta de clasificación, negro y plata, sobre el fondo del título. */
+.warning { position: fixed; inset: 0; height: auto; background: #050506; overflow-y: auto; justify-content: safe center; }
+/* El fondo queda quieto mientras la tarjeta se desplaza. */
+.warning > :first-child { position: fixed; }
+.warning-card {
+  position: relative;
+  z-index: 1;
+  width: min(52rem, 100%);
+  padding: 2.4rem 2.6rem 2.2rem;
+  text-align: left;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(180deg, rgba(22, 23, 27, 0.88), rgba(8, 8, 10, 0.92));
+  border: 1px solid rgba(214, 218, 226, 0.18);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  animation: warning-in 0.9s ease-out both;
+}
+/* Filo plateado arriba de la tarjeta. */
+.warning-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e9ecf1, transparent);
+}
+.warning-head { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 1.4rem; }
+.warning-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 4.6rem;
+  height: 4.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #0a0a0c;
+  background: linear-gradient(160deg, #ffffff 0%, #c9cdd4 50%, #8e949d 100%);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1.4rem rgba(230, 233, 240, 0.18);
+}
+.warning h1 {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.4rem, 3.4vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f2f4f7;
+}
+.warning-rating {
+  margin: 0.35rem 0 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #a9aeb8;
+}
+.warning-intro { margin: 0 0 1.4rem; font-size: 1.1rem; line-height: 1.6; color: #e3e6eb; }
+.warning-themes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem 1.6rem;
+  margin: 0 0 1.5rem;
+  padding: 1.3rem 0;
+  list-style: none;
+  border-top: 1px solid rgba(214, 218, 226, 0.12);
+  border-bottom: 1px solid rgba(214, 218, 226, 0.12);
+}
+.warning-themes li { display: flex; flex-direction: column; gap: 0.2rem; padding-left: 0.9rem; border-left: 2px solid rgba(214, 218, 226, 0.45); }
+.warning-themes strong { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.06em; color: #f2f4f7; }
+.warning-themes span { font-size: 0.92rem; line-height: 1.45; color: #9da3ad; }
+.warning-note { margin: 0 0 0.5rem; font-size: 0.88rem; line-height: 1.5; color: #8a909a; }
+.warning-accept {
+  display: block;
+  margin: 1.6rem auto 0;
+  padding: 0.8rem 2.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #f2f4f7;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(214, 218, 226, 0.35);
+  border-radius: 999px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.warning-accept:hover:not(:disabled) { border-color: #e9ecf1; background: rgba(255, 255, 255, 0.09); box-shadow: 0 0 1.2rem rgba(230, 233, 240, 0.2); }
+@keyframes warning-in { from { opacity: 0; transform: translateY(14px); } }
+@media (prefers-reduced-motion: reduce) { .warning-card { animation: none; } }
+
+/* El texto del juego no se puede seleccionar ni copiar (los campos de Opciones sí). */
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea { -webkit-user-select: text; user-select: text; }
 .title-menu { display: flex; flex-direction: column; gap: 0.5rem; min-width: 16rem; }
 .ending-card { cursor: pointer; }
 
@@ -351,7 +447,15 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   .title-logo img { width: min(26rem, 70vw, 38vh); }
   .title-menu { display: grid; grid-template-columns: 1fr 1fr; min-width: 0; width: min(32rem, 100%); }
   .title-menu button { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
-  .warning p { font-size: 0.9rem; }
+  .warning-card { padding: 1.2rem 1.3rem; }
+  .warning-head { margin-bottom: 0.8rem; gap: 0.9rem; }
+  .warning-badge { width: 3.2rem; height: 3.2rem; font-size: 1.2rem; }
+  .warning-intro { font-size: 0.92rem; margin-bottom: 0.8rem; }
+  .warning-themes { grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr)); gap: 0.6rem 1rem; padding: 0.8rem 0; margin-bottom: 0.8rem; }
+  .warning-themes strong { font-size: 0.8rem; }
+  .warning-themes span { font-size: 0.75rem; }
+  .warning-note { font-size: 0.75rem; margin-bottom: 0.2rem; }
+  .warning-accept { margin-top: 0.8rem; padding: 0.6rem 1.6rem; }
 }
 
 /* Transición entre lugares: fundido a negro (ver engine/useSceneTransition.ts). */

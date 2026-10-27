@@ -84,10 +84,30 @@ function RotateHint() {
 function ContentWarning({ onAccept }: { onAccept: () => void }) {
   return (
     <div className="screen warning">
-      <h1>{advertencia.titulo}</h1>
-      <p>{advertencia.texto}</p>
-      <p className="muted">{advertencia.nota_efectos}</p>
-      <button onClick={onAccept}>{advertencia.aceptar}</button>
+      <TitleBackground />
+      <div className="warning-card">
+        <header className="warning-head">
+          <span className="warning-badge">{advertencia.etiqueta}</span>
+          <div>
+            <h1>{advertencia.titulo}</h1>
+            <p className="warning-rating">{advertencia.clasificacion}</p>
+          </div>
+        </header>
+        <p className="warning-intro">{advertencia.texto}</p>
+        <ul className="warning-themes">
+          {advertencia.temas.map((t) => (
+            <li key={t.titulo}>
+              <strong>{t.titulo}</strong>
+              <span>{t.detalle}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="warning-note">{advertencia.nota_efectos}</p>
+        <p className="warning-note">{advertencia.ficcion}</p>
+        <button className="warning-accept" onClick={onAccept}>
+          {advertencia.aceptar}
+        </button>
+      </div>
     </div>
   );
 }
