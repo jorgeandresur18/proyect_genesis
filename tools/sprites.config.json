@@ -8,35 +8,43 @@
     },
     "rikka": {
       "alias": {
-        "seria": "base",
-        "celosa": "base",
-        "orgullosa": "base",
-        "preocupada": "base",
-        "sorprendida": "base"
+        "seria": "base"
       }
     },
     "cami": {
       "alias": {
-        "apuntando": "molesta1",
         "sospecha": "dudosa1",
-        "burla": "base",
-        "fria": "molesta1",
+        "burla": "burlona",
         "dolor": "cansada",
-        "enojada": "molesta1",
+        "enojada": "molesta2",
         "molesta": "molesta1",
         "seria": "base",
-        "furia": "molesta1",
-        "miedo": "dudosa1",
+        "furia": "molesta3",
+        "miedo": "impactada",
         "sonrojada": "sonrojada1",
-        "sorprendida": "dudosa1",
-        "triste": "cansada",
-        "wtf": "dudosa1",
-        "asombro": "dudosa1"
+        "asombro": "impactada"
       }
     },
     "nikki": {
       "prefijos": [
         "nicole"
+      ]
+    },
+    "soldado_enmascarado": {
+      "prefijos": [
+        "soldado"
+      ]
+    },
+    "capitan_enmascarado": {
+      "prefijos": [
+        "general",
+        "capitan"
+      ]
+    },
+    "monstruo_sombras": {
+      "prefijos": [
+        "sombra",
+        "monstruo"
       ]
     }
   }

@@ -42,7 +42,7 @@ agPsd.initializeCanvas(
 
 /** "nikki_ebria1", "niki_celosa1", "nicole_x", "nikki-base" -> "ebria1", "celosa1", "x", "base". */
 function expressionName(name, character) {
-  const clean = name.replace(/\.png$/i, '').trim().toLowerCase();
+  const clean = name.replace(/\.png$/i, '').replace(/\s+copia(\s+\d+)?$/i, '').trim().toLowerCase();
   const m = clean.match(/^([a-z]+)[_-](.+)$/);
   const prefixes = config.personajes[character]?.prefijos ?? [];
   return m && (m[1].slice(0, 3) === character.slice(0, 3) || prefixes.includes(m[1])) ? m[2] : clean;
@@ -54,6 +54,19 @@ function resolveCharacter(name) {
   if (config.personajes[lower] || estaturas.personajes[lower]) return lower;
   return Object.keys(config.personajes).find((k) => config.personajes[k].prefijos?.includes(lower)) ?? lower;
 }
+
+/** Capa suelta (sin grupo) -> personaje y expresión: «soldado» -> soldado_enmascarado/base, «sombra_armored» -> monstruo_sombras/armored. */
+function looseLayer(name) {
+  const clean = name.replace(/\s+copia(\s+\d+)?$/i, '').trim().toLowerCase();
+  const whole = resolveCharacter(clean);
+  if (estaturas.personajes[whole]) return { character: whole, expr: 'base' };
+  const m = clean.match(/^([a-z]+)[_-](.+)$/);
+  const character = m && resolveCharacter(m[1]);
+  return character && estaturas.personajes[character] ? { character, expr: m[2] } : null;
+}
+
+/** Capas sin nombre propio («Capa 2 copia 12», «Rectángulo 1»): guías o restos, no son sprites. */
+const isGenericLayer = (name) => /^(capa|layer|rect[aá]ngulo|fondo|background)\b/i.test(name.trim());
 
 /** Caja de lo visible en un búfer RGBA. */
 function visibleBox(data, width, height) {
@@ -89,13 +102,28 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
   const template = /enemigo/i.test(file) ? TEMPLATE_ENEMIGOS : TEMPLATE_PERSONAJES;
   const k = psd.height / template; // px del PSD por px del sprite
   if (Math.abs(psd.width / psd.height - 0.75) > 0.01) console.log(`  ! el lienzo del PSD (${psd.width}x${psd.height}) no es 3:4`);
-  for (const group of (psd.children ?? []).filter((g) => g.children)) {
-    const character = resolveCharacter(group.name);
+  // Un grupo por personaje con una capa por expresión, o capas sueltas con el nombre del personaje (p. ej. los enemigos).
+  const entries = [];
+  for (const node of psd.children ?? []) {
+    if (node.children) {
+      const character = resolveCharacter(node.name);
+      for (const layer of node.children) {
+        if (layer.children) continue;
+        if (isGenericLayer(layer.name)) console.log(`  · ${node.name}/${layer.name}: capa sin nombre de expresión, se omite`);
+        else entries.push({ character, label: `${node.name}/${layer.name}`, layer, expr: expressionName(layer.name, character) });
+      }
+    } else if (!isGenericLayer(node.name)) {
+      const loose = looseLayer(node.name);
+      if (loose) entries.push({ ...loose, label: node.name, layer: node });
+      else console.log(`  · ${node.name}: no corresponde a ningún personaje de src/data/estaturas.json, se omite`);
+    }
+  }
+  for (const { character, label, layer, expr } of entries) {
     mkdirSync(join(TARGET, character), { recursive: true });
     fromPsd.add(character);
-    for (const layer of group.children) {
+    {
       const img = layer.imageData;
-      if (!img || layer.children) continue;
+      if (!img) continue;
       // Copia la capa a un lienzo del tamaño del PSD, recortando lo que se sale.
       const canvas = new Uint8ClampedArray(psd.width * psd.height * 4);
       for (let y = 0; y < img.height; y++) {
@@ -108,9 +136,8 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
       }
       layer.imageData = null;
       const box = visibleBox(canvas, psd.width, psd.height);
-      const expr = expressionName(layer.name, character);
       if (!box) {
-        console.log(`✗ ${group.name}/${layer.name}: la capa está vacía`);
+        console.log(`✗ ${label}: la capa está vacía`);
         results.failed++;
         continue;
       }
@@ -129,7 +156,7 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
         .webp({ quality: 90, alphaQuality: 100 })
         .toFile(dest);
       generated.add(dest);
-      console.log(`✓ ${group.name}/${layer.name} → ${dest} (${W}x${H}, ${Math.round(info.size / 1024)} KB)`);
+      console.log(`✓ ${label} → ${dest} (${W}x${H}, ${Math.round(info.size / 1024)} KB)`);
       if (box.left < region.left || box.right >= region.left + region.width) console.log('    ! se sale por los costados de su lienzo; se recortó');
       const warn = headWarning(Math.round((box.top - region.top) / k), cm);
       if (warn) console.log(`    ! ${warn}`);
