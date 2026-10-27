@@ -3120,6 +3120,146 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_067y16_a13"
+    },
+    {
+      "scene_id": "cap01_067y16_a13",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosaebria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Yo nunca... lo he hecho en un lugar público."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_067y16_a14"
+    },
+    {
+      "scene_id": "cap01_067y16_a14",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Los dos toman. Al mismo tiempo. Se miran por encima del vaso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_067y16_a15"
+    },
+    {
+      "scene_id": "cap01_067y16_a15",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "El cine. La película de los robots."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_067y16_a16"
+    },
+    {
+      "scene_id": "cap01_067y16_a16",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Nunca supe cómo terminaba."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_067y16_a17"
+    },
+    {
+      "scene_id": "cap01_067y16_a17",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Nadie vio la película, Jair. Nos echaron antes de los créditos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_067y17"
     },
     {
@@ -4960,6 +5100,482 @@
       "dialogue": {
         "speaker": null,
         "text": "Cuando la canción termina, Nikki vuelve a la silla, despeinada y sin aire, y se queda mirando a Jair como si fuera la primera vez que lo ve."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s01"
+    },
+    {
+      "scene_id": "cap01_095s01",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "¿Sabes qué me gusta de ti cuando estoy borracha?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s02"
+    },
+    {
+      "scene_id": "cap01_095s02",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿Que estoy cerca?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s03"
+    },
+    {
+      "scene_id": "cap01_095s03",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Que te pones rojo. Mira, ya estás rojo. Treinta años y te pones rojo como si nunca te hubiera visto sin camisa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s04"
+    },
+    {
+      "scene_id": "cap01_095s04",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Me ha visto sin camisa. Me ha visto sin bastante más. Igual me pongo rojo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s05"
+    },
+    {
+      "scene_id": "cap01_095s05",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosaebria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Los de la barra me estaban mirando el culo. ¿Viste?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s06"
+    },
+    {
+      "scene_id": "cap01_095s06",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosaebria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Lo vi."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s07"
+    },
+    {
+      "scene_id": "cap01_095s07",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosaebria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "¿Y? ¿No te dio celos?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s08"
+    },
+    {
+      "scene_id": "cap01_095s08",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosaebria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Me dio... preocupación logística."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s09"
+    },
+    {
+      "scene_id": "cap01_095s09",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "«Preocupación logística». Dios mío. Así hablas en la cama también, ¿no? «Iniciando proceso. No apague el equipo.»"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s10"
+    },
+    {
+      "scene_id": "cap01_095s10",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Nunca te has quejado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s11"
+    },
+    {
+      "scene_id": "cap01_095s11",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Porque soy educada. Y porque no lo haces tan mal. Para ser ingeniero."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s12"
+    },
+    {
+      "scene_id": "cap01_095s12",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Por debajo de la mesa, le pasa el pie por la pantorrilla. Sin mirarlo. Como quien revisa que algo siga en su lugar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s13"
+    },
+    {
+      "scene_id": "cap01_095s13",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ocho años y todavía no sé si eso es cariño o inventario.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s14"
+    },
+    {
+      "scene_id": "cap01_095s14",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "No te ilusiones. Es el tequila. El tequila me pone buena persona."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s15"
+    },
+    {
+      "scene_id": "cap01_095s15",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "El tequila te pone otra cosa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s16"
+    },
+    {
+      "scene_id": "cap01_095s16",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "¡Mira quién aprendió a contestar! Un tequila más y hasta me invitas a tu caja de zapatos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_095s17"
+    },
+    {
+      "scene_id": "cap01_095s17",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Siempre es ella la que se invita. Yo solo dejo la puerta abierta.)"
       },
       "choices": [],
       "conditions": [],

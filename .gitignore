@@ -13,3 +13,7 @@ docs/sprites/*.psd
 
 # Fondos originales (pesados; se publican convertidos en public/fondos)
 docs/fondos/
+
+# Documentos narrativos originales del autor: nombran a personas reales.
+# La versión con marcadores es docs/DIRECCION_PSICOLOGICA.md.
+docs/*Proyecto_Genesis_Documento_Narrativo*.md

@@ -2,6 +2,11 @@
 
 La voz es provocativa: humor negro, sarcasmo y crudeza cotidiana. Provoca, pero no glorifica. Obra 18+.
 
+## Por etapas
+
+- **Capítulo 1 (isekai adulto):** humor negro, groserías y, con Nikki cuando beben, comentarios subidos de tono. Insinuación, nunca escena explícita.
+- **Cuando se cuentan los orígenes (del descubrimiento en adelante):** crudo y directo. Menos chistes, sin suavizar lo que Jair hizo ni lo que ellas descubren. El humor negro sigue, pero no tapa el golpe. Ver `docs/DIRECCION_PSICOLOGICA.md`.
+
 ## Reglas
 
 - **Registro:** ironía y humor negro. Incomoda al jugador en vez de premiarlo. Cada chiste debe apuntar a un tema: control, escapismo, dinero o dependencia.

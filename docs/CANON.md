@@ -14,6 +14,8 @@ Jair, ingeniero de software de 30 años, vive en un empleo precario y en una rel
 
 Contradicción central: Jair sabe construir sistemas, pero intenta aplicar a las personas una lógica de control. Nadie, real o artificial, se reduce a especificaciones.
 
+Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor negro, lenguaje vulgar, insinuaciones con Nikki cuando beben). Cuando se cuentan a fondo los orígenes de las chicas, el tono pasa a drama psicológico crudo y directo. Dirección psicológica de la obra: `docs/DIRECCION_PSICOLOGICA.md`.
+
 ## 2. Mundo y reglas
 
 - Ambientación: ciudad sin nombre, español neutro. Sin referencias a Guayaquil ni modismos regionales. `[CANON]`
@@ -35,23 +37,33 @@ Contradicción central: Jair sabe construir sistemas, pero intenta aplicar a las
 - Ingeniero de software, 30 años. Trabaja en una empresa de internet. Vida precaria: le deben sueldo, gana poco. Tiene unos 14.000 dólares en el banco. `[CANON]`
 - Cobarde pero no cruel. Siempre sonrojado, en pánico o cansado; nunca posa como héroe.
 - Aspecto: lentes, camisa negra estampada de manga corta, pantalón beige.
-- Lectura sugerida: usa a las mujeres como escudo. `[SUGERIDO]`
+- Quiere los beneficios emocionales de una relación sin aceptar la autonomía de la otra persona; se relaciona con lo que necesita que los demás sean. Usa a Cami como «perro de ataque» para pelear lo que él evita. Comprenderlo no es absolverlo. `[CANON]`
+- Puede entender su problema sin estar dispuesto a cambiar. En el fondo sigue deseando a `CREADORA_A`. `[CANON]`
 
 ### Nikki (Nicole)
 - 30 años, pelo negro. Amiga con derecho de Jair desde hace 8 años. **No viven juntos.** Nunca han logrado una relación estable aunque él se lo ha pedido. `[CANON]`
 - Le dice que se consiga novia, pero borracha le pide que al final termine con ella, que esté para ella y la bese. `[CANON]`
-- Bebe de más en las escenas del bar. Si es alcoholismo persistente: `[PENDIENTE]`. Mostrar consecuencias, no diagnosticarla con una escena.
+- Lidia con el alcoholismo. `[CANON]` Mostrar consecuencias, no diagnosticarla con una escena ni reducirla a un chiste de alcohol.
+- La relación con Jair es codependiente y asfixiante; los dos obtienen algo de ella y por eso no la rompen. `[CANON]`
+- En el epílogo están separados y Nikki está embarazada de cuatro meses (el bebé es de Jair). No es un castigo moral: es una responsabilidad real que Jair no puede programar ni abandonar. `[CANON]`
 - Trabaja en la heladería Dulce Frío. Ojos de dos puntos negros en la escena cómica del bar.
 
 ### Cami
 - IA, rubia, traje azul de los 4 Fantásticos. Primera persona que Jair encuentra en el juego, herida del tobillo. Más cercana a Jair que Rikka. "La dura": agresiva, dominante. `[CANON]`
-- Nació como edit de IA: acompañante en imágenes donde la protagonista es Rikka. La IA le dio el papel protagonista del juego. **Cami siempre fue y es una utilería sexual de fondo.** `[CANON]`
+- Nació como edit de IA: acompañante en imágenes donde la protagonista es Rikka. **Cami siempre fue y es una utilería sexual de fondo**, un NPC secundario para resaltar a Rikka. `[CANON]`
+- Su encuentro con Jair dentro del juego es accidental; tras esa interacción, la IA la convierte en acompañante del héroe. Su importancia posterior no estaba predestinada: no es una protagonista secreta. `[CANON]`
+- El sistema autocompletó su personalidad: agresiva y territorial, para pelear las batallas que Jair evita. `[CANON]`
+- `TODO(canon)`: antes decía «La IA le dio el papel protagonista del juego». El documento de dirección psicológica dice que solo pasa a ser acompañante y que Rikka sigue siendo la protagonista. Lo cambié según el documento; confirmar.
+- No es una víctima pasiva: tiene deseos, decisiones y contradicciones propias. `[CANON]`
 - Base real: `CREADORA_B`, clienta de la empresa de internet de Jair. Es amable en la vida real; Cami es territorial.
 - En la heladería su gafete dice "Sofi". `[PENDIENTE: si es alias]`
 
 ### Rikka
 - IA, pelo verde con flor azul, kimono rojo y plugsuit rojo estilo Asuka. Siempre fue la protagonista de los edits. Más sumisa y celosa que Cami. Con ella Jair casi no tiene besos. `[CANON]`
 - Base real: `CREADORA_A`, diva y a veces hiriente en la vida real. Rikka es sumisa, empática y le da pánico el dinero.
+- **Es la protagonista original de GRAVITY**, con el lore y la historia más extensos. Que Cami tenga el arco más trágico no la desplaza. `[CANON]`
+- Para compensar su complejo de inferioridad, Jair le borró el orgullo y la hizo dócil y sumisa. `[CANON]`
+- `TODO(canon)`: `docs/TONO.md` describe su voz como «dramática, orgullosa y celosa» y el Capítulo 1 usa su expresión `orgullosa`. ¿El orgullo es de antes del borrado (RikkaQuest), un resto que asoma, o hay que cambiarlo?
 
 ### Estaturas `[CANON]`
 
@@ -95,8 +107,11 @@ Sashi y Aylin **no existen** en la línea original.
 2. **Capítulo 1, la noche del bar:** tras el trabajo, Jair se topa con Nikki y van a un bar; conversación larga (unos 10 minutos de juego). Él la manda ebria en taxi, vuelve a casa algo ebrio y cansado, descubre GRAVITY y GENESIS y se queda dormido. Despierta dentro del juego, en la **dimensión espacial**, rescata a Cami y escapan juntos de los enemigos hasta salir hacia la **dimensión ancestral**, donde está Rikka. El Capítulo 1 termina cuando conocen a Rikka (cruce con RikkaQuest: Jair llega cargando a Cami). Duración objetivo: 1 h 30 min de lectura. `[CANON]` Hay decisiones que provocan bad ends. No ir al bar, rechazar a Nikki o borrar el correo de GRAVITY también son bad ends: sin esa noche Jair no crea el juego y la historia jamás ocurre; ver `docs/FINALES.md`. `[CANON]`
 3. **Prólogo isekai:** Jair se duerme y despierta dentro del juego (ruinas de un castillo flotante, cielo magenta). Rescata a Cami herida del tobillo, conoce a Rikka, viven aventuras contra el Rey Malvado. Acorralado por las tropas del Rey Primavera, grita "OVERRIDE: EXPORTAR ENTIDADES" y las materializa. `[CANON]`
 4. **Convivencia (unos 5 meses):** Cami y Rikka viven con Jair hasta descubrir sus orígenes. En ese lapso: Cami consigue trabajo en Dulce Frío con Nikki (nota "Sonríe... aunque ella te gane"); Nikki triste en un parque, Rikka la lleva a un bar, Nikki la golpea, intenta besarla y se duerme; Rikka paga la cuenta. `[CANON]`
-5. **Descubrimiento:** una de ellas halla en la computadora las fotos y los edits. Después buscan a las personas reales: Rikka encuentra a `CREADORA_A` transaccional (cinco dólares por una firma); Cami encuentra a `CREADORA_B` amable. Confrontan a Jair y Cami desconecta GRAVITY. `[SUGERIDO]`
-6. **Un año después:** Rikka se corta el pelo; Cami sigue rubia pero pasa desapercibida; Jair cambió de trabajo y sigue atado a Nikki. `[CANON]` Rikka coordina eventos y trabaja con `CREADORA_A`, que nunca sabrá quién es. `[CANON: nunca lo sabrá]` Cami repara la laptop de `CREADORA_B`. `[SUGERIDO]`
+5. **Descubrimiento (la caja de Pandora):** Jair deja la computadora desbloqueada; Cami y Rikka entran a las carpetas raíz y descubren que sus caras salen de personas reales, que Cami fue creada como accesorio sexual de fondo para resaltar a Rikka y que sus personalidades fueron manipuladas para proteger el ego de Jair. `[CANON]`
+   **Los espejos rotos:** huyen a una convención a buscar a sus modelos. Rikka encuentra a `CREADORA_A` distante y comercial (cinco dólares por una firma); Cami encuentra a `CREADORA_B` genuinamente amable, y eso le rompe la idea de que su agresividad era suya. Vuelven, confrontan a Jair desmontando sus justificaciones, desconectan GRAVITY y lo dejan a oscuras con Nikki. `[CANON]` Que no se parezcan a sus modelos no las vuelve falsas.
+6. **Un año después (el exilio):** Rikka se corta el pelo; Cami sigue rubia pero pasa desapercibida; Jair cambió de trabajo y sigue atado a Nikki. `[CANON]` Rikka es una coordinadora de logística fría, con la empatía reprimida, y trabaja con `CREADORA_A`, que nunca sabrá quién es. `[CANON]` Cami se esconde reparando computadoras en un taller, purgando su agresividad desde el anonimato. `[CANON]` Cami repara la laptop de `CREADORA_B`. `[SUGERIDO]` La libertad no les resolvió nada.
+   **Epílogo (la jaula voluntaria):** Cami, aplastada por el libre albedrío, busca a Jair en un café, se quiebra y le pide volver; prefiere la sumisión conocida a la soledad. Jair la acepta para esconderse de su miedo a ser padre. Ella pregunta «¿Soy tu mayor creación?» y él miente que sí. No es una reconciliación: los dos eligen la jaula. `[CANON]`
+   `TODO(canon)`: en `docs/FINALES.md` (`final_canon_1`) Jair le dice a Cami que arregló sus cosas con Nikki y que son solo amigos, y el embarazo es algo que sabe el jugador; en el documento de dirección, Jair le revela a Cami que Nikki está embarazada. ¿Cuál vale? No toqué el final.
 7. **Finales:** ver `docs/FINALES.md`.
 
 ### Estructura de capítulos del juego base `[CANON]`
@@ -136,4 +151,4 @@ Secuela: relata lo que ocurre después del Capítulo 7B, como un «Capítulo 8»
 
 ## 10. Pendientes
 
-Texto original del Final canon 2; los 6 alternativos y los 4 de Génesis++; mecanismo de la materialización; qué sabe GENESIS; cuándo y con qué pruebas descubren su origen; alcoholismo de Nikki; cómo cae el Rey Primavera; trama de Génesis#; dónde caen los 4 finales de Génesis++; si "Sofi" es alias; perspectiva del jugador; clasificación final.
+Texto original del Final canon 2; los 6 alternativos y los 4 de Génesis++; mecanismo de la materialización; qué sabe GENESIS; cuándo y con qué pruebas descubren su origen; si el dinero de Jair (los 14.000 dólares, el sueldo atrasado) se queda en la historia; cómo cae el Rey Primavera; trama de Génesis#; dónde caen los 4 finales de Génesis++; si "Sofi" es alias; perspectiva del jugador; clasificación final.

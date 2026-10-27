@@ -272,6 +272,16 @@
 
 `067y16_a12` **Nikki:** Siguiente pregunta, hijo de puta.
 
+`067y16_a13` **Nikki:** Yo nunca... lo he hecho en un lugar público.
+
+`067y16_a14` — Los dos toman. Al mismo tiempo. Se miran por encima del vaso.
+
+`067y16_a15` **Nikki:** El cine. La película de los robots.
+
+`067y16_a16` **Jair:** Nunca supe cómo terminaba.
+
+`067y16_a17` **Nikki:** Nadie vio la película, Jair. Nos echaron antes de los créditos.
+
 `067y17` **Nikki:** Yo nunca... me he enamorado de un amigo.
 
 `067y18` — Silencio. La rocola, por crueldad o por casualidad, empieza otra canción de despecho.
@@ -419,6 +429,40 @@
 `095r10` — Dos tipos en la barra la miran. Jair los mira a ellos. Es lo más valiente que hace en toda la noche.
 
 `095r11` — Cuando la canción termina, Nikki vuelve a la silla, despeinada y sin aire, y se queda mirando a Jair como si fuera la primera vez que lo ve.
+
+`095s01` **Nikki:** ¿Sabes qué me gusta de ti cuando estoy borracha?
+
+`095s02` **Jair:** ¿Que estoy cerca?
+
+`095s03` **Nikki:** Que te pones rojo. Mira, ya estás rojo. Treinta años y te pones rojo como si nunca te hubiera visto sin camisa.
+
+`095s04` **Jair:** (Me ha visto sin camisa. Me ha visto sin bastante más. Igual me pongo rojo.)
+
+`095s05` **Nikki:** Los de la barra me estaban mirando el culo. ¿Viste?
+
+`095s06` **Jair:** Lo vi.
+
+`095s07` **Nikki:** ¿Y? ¿No te dio celos?
+
+`095s08` **Jair:** Me dio... preocupación logística.
+
+`095s09` **Nikki:** «Preocupación logística». Dios mío. Así hablas en la cama también, ¿no? «Iniciando proceso. No apague el equipo.»
+
+`095s10` **Jair:** Nunca te has quejado.
+
+`095s11` **Nikki:** Porque soy educada. Y porque no lo haces tan mal. Para ser ingeniero.
+
+`095s12` — Por debajo de la mesa, le pasa el pie por la pantorrilla. Sin mirarlo. Como quien revisa que algo siga en su lugar.
+
+`095s13` **Jair:** (Ocho años y todavía no sé si eso es cariño o inventario.)
+
+`095s14` **Nikki:** No te ilusiones. Es el tequila. El tequila me pone buena persona.
+
+`095s15` **Jair:** El tequila te pone otra cosa.
+
+`095s16` **Nikki:** ¡Mira quién aprendió a contestar! Un tequila más y hasta me invitas a tu caja de zapatos.
+
+`095s17` **Jair:** (Siempre es ella la que se invita. Yo solo dejo la puerta abierta.)
 
 `096` **Jair:** (Debería decirle que ya es suficiente.)
 

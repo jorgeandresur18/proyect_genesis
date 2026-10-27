@@ -8,6 +8,7 @@ Novela visual indie en código (React + Vite). Género: ciencia ficción psicol�
 2. Al escribir diálogos o textos, lee `docs/TONO.md`.
 3. Al tocar finales o rutas, lee `docs/FINALES.md`.
 4. Al programar, lee `docs/SPEC.md`.
+5. Al escribir los orígenes de las chicas, la relación con Nikki o los capítulos 4 en adelante, lee `docs/DIRECCION_PSICOLOGICA.md` (si contradice el canon, pregunta).
 
 ## Reglas duras
 
