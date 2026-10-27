@@ -41,6 +41,11 @@
   background: #3b4154;
 }
 .online { color: #7ee2b8; }
+/* Botones de ventana como en Mac: cerrar, minimizar y agrandar. */
+.dots { display: inline-flex; gap: 0.8cqh; }
+.window .dots i:nth-child(1) { background: #ff5f57; }
+.window .dots i:nth-child(2) { background: #febc2e; }
+.window .dots i:nth-child(3) { background: #28c840; }
 
 /* GRAVITY */
 .ideBody {

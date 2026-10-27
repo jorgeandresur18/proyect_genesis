@@ -43,7 +43,7 @@
   "pc_correo": {
     "titulo": "Correo",
     "carpetas": [
-      "Recibidos (15)",
+      "Recibidos (12)",
       "Destacados",
       "Enviados",
       "Spam (99+)",
@@ -72,6 +72,14 @@
         "asunto": "¡Novedades en Smart Flab! Ahora con 40 % menos de acoso sexual de los entrenadores."
       },
       {
+        "de": "LinkedFired",
+        "asunto": "100.000 personas vieron tu perfil esta semana para comprobar si eras más miserable que ellas."
+      },
+      {
+        "de": "Stack Underflow",
+        "asunto": "Vuelve, por favor. Desde que llegó la IA nadie nos usa… aunque la IA saca todas sus respuestas de nosotros."
+      },
+      {
         "de": "Funeraria La Última Morada",
         "asunto": "Muere ahora, paga después: planes funerarios en 36 cuotas sin intereses."
       },
@@ -80,32 +88,12 @@
         "asunto": "Recordatorio: la actividad de integración del viernes es obligatoria y no remunerada. ¡Diviértete!"
       },
       {
-        "de": "Fosforito",
-        "asunto": "Esta semana 0 personas te dieron like. ¡Nuevo récord personal!"
-      },
-      {
-        "de": "ComeYa",
-        "asunto": "¿Otra vez cenando solo? Te regalamos el envío. La compañía no la vendemos."
-      },
-      {
-        "de": "Cementerio Jardín del Reposo",
-        "asunto": "Lotes familiares disponibles. Por si algún día tienes familia."
-      },
-      {
         "de": "Supervisor",
         "asunto": "RE: RE: RE: pago de la quincena (somos familia, y en las familias nadie cobra)"
       },
       {
         "de": "Tía (reenviado)",
         "asunto": "RV: RV: RV: Si no reenvías esto a 10 personas, morirás solo. (Tranquilo, ya vas en camino.)"
-      },
-      {
-        "de": "LinkedFired",
-        "asunto": "100.000 personas vieron tu perfil esta semana para comprobar si eras más miserable que ellas."
-      },
-      {
-        "de": "Stack Underflow",
-        "asunto": "Vuelve, por favor. Desde que llegó la IA nadie nos usa… aunque la IA saca todas sus respuestas de nosotros."
       },
       {
         "de": "Geekdump",
