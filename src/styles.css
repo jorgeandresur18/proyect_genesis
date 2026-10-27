@@ -469,6 +469,17 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 /* Un personaje que entra a la escena aparece con un desvanecido corto. */
 img.sprite { animation: sprite-in 250ms ease-out; }
 @keyframes sprite-in { from { opacity: 0; } to { opacity: 1; } }
+/* Cambio de expresión: fundido cruzado corto (ver Sprite en SceneStage.tsx). */
+img.sprite.sprite-loading { opacity: 0; animation: none; }
+img.sprite.sprite-hold { animation: none; }
+img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
+img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; pointer-events: none; }
+@keyframes sprite-swap-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sprite-swap-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  img.sprite.sprite-swap { animation: none; }
+  img.sprite.sprite-out { display: none; }
+}
 .scene-fade-blanco { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f2fbff 45%, #d6f4ff 100%); }
 
 /* Indicador del modo auto o del salto. */

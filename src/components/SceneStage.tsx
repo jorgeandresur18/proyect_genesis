@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import type { Scene } from '../engine/types';
 import glitch from '../effects/glitch.module.css';
 import { assetUrl, isPlaceholder, screenOf } from '../engine/assets';
@@ -68,18 +68,72 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
               <span className="placeholder-label">{c.sprite}</span>
             </div>
           ) : (
-            <img
+            <Sprite
               key={c.id}
               className={`sprite sprite-${c.pos} ${flipped.has(c.id) && !mirrored ? 'sprite-flip' : ''}`}
               style={{ height: `${SPRITE_HEIGHT * size(c.id)}%`, maxWidth: `${SPRITE_MAX_WIDTH * size(c.id)}%` }}
               src={assetUrl(mirrored ?? c.sprite)}
-              alt=""
-              draggable={false}
             />
           );
         })}
       </div>
       {children}
     </div>
+  );
+}
+
+// Duración del fundido entre expresiones (igual que en styles.css).
+const SWAP_MS = 180;
+
+interface Shown {
+  src: string;
+  className: string;
+}
+
+/**
+ * Sprite de un personaje. Cuando cambia de expresión, la nueva aparece sobre la anterior con un fundido corto;
+ * la anterior se queda debajo hasta que la nueva termina de cargar, así nunca queda un hueco.
+ */
+function Sprite({ src, className, style }: { src: string; className: string; style: CSSProperties }) {
+  const [current, setCurrent] = useState<Shown>({ src, className });
+  const [previous, setPrevious] = useState<Shown | null>(null);
+  const [loaded, setLoaded] = useState(false);
+  if (src !== current.src) {
+    // Cambio de expresión: la que estaba pasa abajo y la nueva espera a cargar.
+    setPrevious(current);
+    setCurrent({ src, className });
+    setLoaded(false);
+  } else if (className !== current.className) {
+    setCurrent({ src, className });
+  }
+  const swapping = previous !== null;
+  // Cuando la nueva ya cargó y terminó su fundido, la anterior se quita.
+  useEffect(() => {
+    if (!loaded || !previous) return;
+    const t = setTimeout(() => setPrevious(null), SWAP_MS);
+    return () => clearTimeout(t);
+  }, [loaded, previous]);
+  return (
+    <>
+      {previous && (
+        <img
+          className={`${previous.className} ${loaded ? 'sprite-out' : 'sprite-hold'}`}
+          style={style}
+          src={previous.src}
+          alt=""
+          draggable={false}
+          aria-hidden
+        />
+      )}
+      <img
+        key={current.src}
+        className={`${current.className} ${swapping ? (loaded ? 'sprite-swap' : 'sprite-loading') : ''}`}
+        style={style}
+        src={current.src}
+        alt=""
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
   );
 }
