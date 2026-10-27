@@ -248,7 +248,12 @@ for (const [character, settings] of Object.entries(config.personajes)) {
 const volteadas = {};
 for (const dest of [...generated].sort()) {
   const m = dest.replace(/\\/g, '/').match(/sprites\/([^/]+)\/(.+)_volteada\.webp$/);
-  if (m) volteadas[`${m[1]}/${m[2]}`] = `${m[1]}/${m[2]}_volteada`;
+  if (!m) continue;
+  // `nikki_trabajo_volteada` vale como la volteada de `trabajo_base` si no existe una expresión `trabajo`.
+  const own = join(TARGET, m[1], `${m[2]}.webp`);
+  const base = join(TARGET, m[1], `${m[2]}_base.webp`);
+  const expr = !generated.has(own) && generated.has(base) ? `${m[2]}_base` : m[2];
+  volteadas[`${m[1]}/${expr}`] = `${m[1]}/${m[2]}_volteada`;
 }
 writeFileSync('src/data/volteadas.json', JSON.stringify(volteadas, null, 2) + '\n');
 if (Object.keys(volteadas).length) console.log(`Volteadas a mano: ${Object.keys(volteadas).join(', ')}`);
