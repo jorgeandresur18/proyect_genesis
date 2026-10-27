@@ -19,16 +19,20 @@ let token = 0; // Invalida los bucles programados de un tema que ya se cambió.
 let voices: { source: AudioBufferSourceNode; gain: GainNode }[] = [];
 let timer: ReturnType<typeof setTimeout> | null = null;
 
+function level(settings: { musicVolume: number; muted: boolean }): number {
+  return settings.muted ? 0 : settings.musicVolume * MUSIC_LEVEL;
+}
+
 function out(): GainNode {
   const c = context();
   if (!master) {
     master = c.createGain();
-    master.gain.value = useStore.getState().settings.musicVolume * MUSIC_LEVEL;
+    master.gain.value = level(useStore.getState().settings);
     master.connect(c.destination);
-    // El volumen de Opciones se aplica al momento.
+    // El volumen de Opciones y el botón de silencio se aplican al momento.
     useStore.subscribe((s, prev) => {
-      if (master && s.settings.musicVolume !== prev.settings.musicVolume) {
-        master.gain.setTargetAtTime(s.settings.musicVolume * MUSIC_LEVEL, context().currentTime, 0.05);
+      if (master && level(s.settings) !== level(prev.settings)) {
+        master.gain.setTargetAtTime(level(s.settings), context().currentTime, 0.05);
       }
     });
   }

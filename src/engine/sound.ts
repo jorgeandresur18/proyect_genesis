@@ -89,8 +89,8 @@ function stopSource(): void {
 
 /** Empieza el sonido de escritura: repite en bucle la parte que suena hasta que se llame a stopTyping. */
 export function startTyping(): void {
-  const { sfxVolume, typingSound } = useStore.getState().settings;
-  if (!typingSound || sfxVolume <= 0) return;
+  const { sfxVolume, typingSound, muted } = useStore.getState().settings;
+  if (muted || !typingSound || sfxVolume <= 0) return;
   const request = ++typingRequest;
   load('texto.mp3')
     .then((buf) => {
@@ -120,8 +120,8 @@ export function stopTyping(): void {
 
 /** Sonido al elegir una opción. */
 export function playSelect(): void {
-  const { sfxVolume } = useStore.getState().settings;
-  if (sfxVolume <= 0) return;
+  const { sfxVolume, muted } = useStore.getState().settings;
+  if (muted || sfxVolume <= 0) return;
   load('seleccion.mp3')
     .then((buf) => {
       const c = context();

@@ -11,6 +11,7 @@ import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel }
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
+import { AudioToggle } from './components/AudioToggle';
 import advertencia from './data/advertencia.json';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
 import { playSelect, unlockAudio } from './engine/sound';
@@ -96,6 +97,7 @@ export default function App() {
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
+      <AudioToggle />
       {hasGame && <RotateHint />}
       {toTitle && (
         <div

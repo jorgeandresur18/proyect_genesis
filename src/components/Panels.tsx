@@ -183,6 +183,10 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
+        <input type="checkbox" checked={settings.muted} onChange={(e) => setSettings({ muted: e.target.checked })} />
+        Silenciar todo el audio (tecla M)
+      </label>
+      <label className="option">
         Volumen de música: {Math.round(settings.musicVolume * 100)} %
         <input
           type="range"

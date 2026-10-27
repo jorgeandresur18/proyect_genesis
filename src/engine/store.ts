@@ -44,10 +44,12 @@ export interface Settings {
   typingSound: boolean;
   /** Volumen de la música, de 0 a 1. */
   musicVolume: number;
+  /** Silencia música y efectos sin tocar los volúmenes. */
+  muted: boolean;
 }
 
 export const TEXT_SPEED_INSTANT = 130;
-const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5 };
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 

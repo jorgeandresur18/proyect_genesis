@@ -471,14 +471,11 @@ img.sprite { animation: sprite-in 250ms ease-out; }
 @keyframes sprite-in { from { opacity: 0; } to { opacity: 1; } }
 /* Cambio de expresión: fundido cruzado corto (ver Sprite en SceneStage.tsx). */
 img.sprite.sprite-loading { opacity: 0; animation: none; }
-img.sprite.sprite-hold { animation: none; }
+img.sprite.sprite-hold { animation: none; pointer-events: none; }
 img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
-img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; pointer-events: none; }
 @keyframes sprite-swap-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes sprite-swap-out { from { opacity: 1; } to { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
   img.sprite.sprite-swap { animation: none; }
-  img.sprite.sprite-out { display: none; }
 }
 .scene-fade-blanco { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f2fbff 45%, #d6f4ff 100%); }
 
@@ -642,3 +639,32 @@ img.sprite.sprite-out { animation: sprite-swap-out 180ms ease-in forwards; point
 .to-title-fade { position: fixed; inset: 0; z-index: 100; background: #000; pointer-events: none; }
 .to-title-out { opacity: 0; animation: scene-fade-out ease-in forwards; }
 .to-title-in { animation: scene-fade-in ease-out forwards; }
+
+/* Botón de audio: arriba a la izquierda en todas las pantallas después de la advertencia. */
+.audio-toggle {
+  position: fixed;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(10, 10, 12, 0.6);
+  border: 1px solid rgba(214, 218, 226, 0.25);
+  backdrop-filter: blur(6px);
+  opacity: 0.75;
+  transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.audio-toggle:hover:not(:disabled) { opacity: 1; border-color: #e9ecf1; box-shadow: 0 0 0.8rem rgba(230, 233, 240, 0.2); }
+.audio-toggle svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: #e9ecf1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.audio-toggle svg path:first-child { fill: #e9ecf1; }
+.audio-toggle-off svg { stroke: #9aa0aa; }
+.audio-toggle-off svg path:first-child { fill: #9aa0aa; }
+@media (max-height: 520px), (max-width: 760px) {
+  .audio-toggle { top: 0.5rem; left: 0.5rem; width: 2.2rem; height: 2.2rem; }
+}
+/* El nombre del fondo provisional se corre para no quedar debajo del botón de audio. */
+.stage-bg > .placeholder-label { left: 3.6rem; }

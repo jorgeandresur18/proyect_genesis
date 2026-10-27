@@ -91,8 +91,9 @@ interface Shown {
 }
 
 /**
- * Sprite de un personaje. Cuando cambia de expresión, la nueva aparece sobre la anterior con un fundido corto;
- * la anterior se queda debajo hasta que la nueva termina de cargar, así nunca queda un hueco.
+ * Sprite de un personaje. Cuando cambia de expresión, la nueva se funde encima de la anterior, que se queda
+ * opaca debajo hasta que la nueva termina de aparecer: así no se transparenta el fondo (no hay parpadeo).
+ * La anterior también espera a que la nueva cargue, así nunca queda un hueco.
  */
 function Sprite({ src, className, style }: { src: string; className: string; style: CSSProperties }) {
   const [current, setCurrent] = useState<Shown>({ src, className });
@@ -117,7 +118,7 @@ function Sprite({ src, className, style }: { src: string; className: string; sty
     <>
       {previous && (
         <img
-          className={`${previous.className} ${loaded ? 'sprite-out' : 'sprite-hold'}`}
+          className={`${previous.className} sprite-hold`}
           style={style}
           src={previous.src}
           alt=""
