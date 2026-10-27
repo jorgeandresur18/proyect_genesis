@@ -1,0 +1,15 @@
+{
+  "nota": "Estaturas en cm (ver docs/CANON.md). Escala de los sprites: 15 px por cm. El lienzo mide 1600 px de alto para quien mide 1,65 m o menos y crece 15 px por cada cm de más (los enemigos). La parte de arriba de la cabeza va 64 px bajo el borde en quien mide 1,65 m o más, y más abajo en los más bajos. Se puede ajustar por expresión (personaje/expresión).",
+  "personajes": {
+    "jair": 165,
+    "rikka": 160,
+    "cami": 156,
+    "nikki": 152,
+    "soldado_enmascarado": 185,
+    "capitan_enmascarado": 200,
+    "monstruo_sombras": 240
+  },
+  "expresiones": {
+    "monstruo_sombras/armored": 255
+  }
+}

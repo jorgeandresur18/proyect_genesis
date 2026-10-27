@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2213" height="2950" viewBox="0 0 2213 2950">
+  <!-- Plantilla de ENEMIGOS de PROYECT GENESIS. Misma escala que la de personajes (15 px = 1 cm) y el mismo
+       corte inferior (medio muslo de Jair). Usar como capa guía y ocultarla al exportar.
+       En el PSD: lienzo 3:4 con «enemigo» en el nombre del archivo (p. ej. plantilla_enemigos.psd),
+       un grupo por enemigo (soldado_enmascarado, capitan_enmascarado, monstruo_sombras) y una capa por versión
+       (monstruo_sombras_base, monstruo_sombras_armored). Estaturas en src/data/estaturas.json. -->
+  <rect x="0.5" y="0.5" width="2212" height="2949" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Centro: todos se centran aquí. -->
+  <line x1="1106.5" y1="0" x2="1106.5" y2="2950" stroke="#00b4ff" stroke-width="3" stroke-dasharray="18 12"/>
+
+  <!-- Ancho del lienzo de cada enemigo (se recorta centrado): que nada se salga de su recuadro. -->
+  <g fill="none" stroke-width="2" stroke-dasharray="10 14">
+    <rect x="394" y="1050" width="1425" height="1900" stroke="#ff9a2d"/>
+    <rect x="309.5" y="825" width="1594" height="2125" stroke="#b05cff"/>
+    <rect x="84.5" y="225" width="2044" height="2725" stroke="#2dd3c8"/>
+  </g>
+
+  <!-- Líneas de estatura: la parte de arriba de la cabeza va en su línea. -->
+  <g font-family="sans-serif" font-size="40" font-weight="bold">
+    <line x1="0" y1="64" x2="2213" y2="64" stroke="#ff2d6f" stroke-width="5"/>
+    <text x="2190" y="50" text-anchor="end" fill="#ff2d6f">Monstruo acorazado (armored) 2,55 m · y = 64</text>
+    <line x1="0" y1="289" x2="2213" y2="289" stroke="#2dd3c8" stroke-width="5"/>
+    <text x="2190" y="275" text-anchor="end" fill="#2dd3c8">Monstruo de sombras 2,40 m · y = 289</text>
+    <line x1="0" y1="889" x2="2213" y2="889" stroke="#b05cff" stroke-width="5"/>
+    <text x="2190" y="875" text-anchor="end" fill="#b05cff">Capitán enmascarado 2,00 m · y = 889</text>
+    <line x1="0" y1="1114" x2="2213" y2="1114" stroke="#ff9a2d" stroke-width="5"/>
+    <text x="2190" y="1100" text-anchor="end" fill="#ff9a2d">Soldado enmascarado 1,85 m · y = 1114</text>
+  </g>
+
+  <!-- Referencia: Jair (1,65 m), para comparar tamaños. -->
+  <line x1="0" y1="1414" x2="2213" y2="1414" stroke="#ffffff" stroke-width="3" stroke-dasharray="6 10" opacity="0.6"/>
+  <text x="2190" y="1400" text-anchor="end" font-family="sans-serif" font-size="34" fill="#ffffff" opacity="0.7">referencia: Jair 1,65 m · y = 1414</text>
+
+  <!-- Corte inferior común: el cuerpo toca este borde. -->
+  <line x1="0" y1="2946" x2="2213" y2="2946" stroke="#2dd36f" stroke-width="8"/>
+  <text x="20" y="2925" font-family="sans-serif" font-size="40" fill="#2dd36f">corte inferior: el cuerpo toca este borde (mismo que en la plantilla de personajes)</text>
+</svg>

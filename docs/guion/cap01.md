@@ -1065,7 +1065,7 @@
 `g3_007` — Las sombras entre los escombros empiezan a moverse. No se mueven como sombras: se mueven como líquido, como tinta derramada que decidió tener opiniones.
 
 > ♪ música: adventure1
-`g3_008` — La tinta se junta. Se levanta. Tiene la altura de dos personas y la forma de ninguna. Donde debería tener cara, tiene un hueco que gira.
+`g3_008` — La tinta se junta. Se levanta. Le saca casi un metro a Jair y no tiene forma de nada. Donde debería tener cara, tiene un hueco que gira.
 
 `g3_009` **Jair:** Eso no lo pedí.
 
@@ -2472,7 +2472,7 @@
 `g7b_004` **Jair:** No me digas.
 
 > ♪ música: adventure1
-`g7b_005` — La tinta se levanta del pasto. La altura de dos personas. La forma de ninguna. El hueco que gira.
+`g7b_005` — La tinta se levanta del pasto. Casi un metro más alta que Jair. Sin forma. El hueco que gira.
 
 `g7b_006` **GRAVITY:** > Parche aplicado: navegación entre dimensiones habilitada para entidades hostiles.
 

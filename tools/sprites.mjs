@@ -1,9 +1,13 @@
-// Prepara los sprites del juego: public/sprites/<personaje>/<expresion>.webp en un lienzo de 1200x1600.
+// Prepara los sprites del juego: public/sprites/<personaje>/<expresion>.webp.
 //   npm run sprites
 //
+// Escala común: 15 px por cm y el mismo corte inferior para todos. Cada personaje sale en su propio lienzo
+// según su estatura (src/data/estaturas.json): 1200x1600 hasta 1,65 m; los más altos (enemigos), más alto.
+//
 // Dos fuentes, en este orden:
-// 1) PSD (docs/sprites/*.psd): un grupo por personaje con una capa por expresión, acomodadas a mano
-//    sobre la plantilla. Cada capa se exporta tal cual está en el lienzo, solo reducida a 1200x1600.
+// 1) PSD (docs/sprites/*.psd): un grupo por personaje con una capa por expresión, acomodadas a mano sobre
+//    la plantilla. Un PSD con «enemigo» en el nombre usa la plantilla alta de los enemigos. Cada capa se
+//    exporta tal cual está, recortando el lienzo de su estatura desde el borde de abajo.
 // 2) PNG sueltos (docs/sprites/<PERSONAJE>/*.png) de personajes que no estén en un PSD: se recortan y se
 //    escalan automáticamente para que la cabeza quede en su línea de estatura y el cuerpo toque abajo.
 import { copyFileSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -14,7 +18,18 @@ import agPsd from 'ag-psd';
 const SOURCE = 'docs/sprites';
 const TARGET = 'public/sprites';
 const config = JSON.parse(readFileSync('tools/sprites.config.json', 'utf8'));
-const { ancho: W, alto: H } = config.lienzo;
+const estaturas = JSON.parse(readFileSync('src/data/estaturas.json', 'utf8'));
+const BASE_CM = 165;
+const PX_PER_CM = 15;
+const HEAD_MARGIN = 64;
+const canvasH = (cm) => 1600 + Math.max(0, cm - BASE_CM) * PX_PER_CM;
+const canvasW = (cm) => Math.round(canvasH(cm) * 0.75);
+const headLine = (cm) => HEAD_MARGIN + Math.max(0, BASE_CM - cm) * PX_PER_CM;
+const statureOf = (character, expr) =>
+  estaturas.expresiones[`${character}/${expr}`] ?? estaturas.personajes[character] ?? BASE_CM;
+// Alto lógico de cada plantilla: la de personajes y la de enemigos (lienzo del más alto).
+const TEMPLATE_PERSONAJES = 1600;
+const TEMPLATE_ENEMIGOS = canvasH(Math.max(...Object.values(estaturas.personajes), ...Object.values(estaturas.expresiones)));
 const ALPHA = 24; // Píxeles con menos opacidad que esto cuentan como fondo.
 const TOLERANCE = 15; // 1 cm: más que esto respecto a la línea de estatura se avisa.
 
@@ -36,7 +51,7 @@ function expressionName(name, character) {
 /** Nombre de grupo o carpeta -> personaje (acepta nombres anteriores, p. ej. «jorge» -> jair). */
 function resolveCharacter(name) {
   const lower = name.trim().toLowerCase();
-  if (config.personajes[lower]) return lower;
+  if (config.personajes[lower] || estaturas.personajes[lower]) return lower;
   return Object.keys(config.personajes).find((k) => config.personajes[k].prefijos?.includes(lower)) ?? lower;
 }
 
@@ -56,11 +71,11 @@ function visibleBox(data, width, height) {
   return bottom < 0 ? null : { top, bottom, left, right };
 }
 
-function headWarning(headY, character) {
-  const want = config.personajes[character]?.cabeza;
-  if (want === undefined || Math.abs(headY - want) <= TOLERANCE) return null;
-  const cm = ((want - headY) / 15).toFixed(1);
-  return `la cabeza quedó en y=${headY} y su línea es y=${want} (se ve ${cm > 0 ? `${cm} cm más alto` : `${-cm} cm más bajo`}); si es pelo o un adorno que sobresale, ignóralo`;
+function headWarning(headY, cm) {
+  const want = headLine(cm);
+  if (Math.abs(headY - want) <= TOLERANCE) return null;
+  const diff = ((want - headY) / PX_PER_CM).toFixed(1);
+  return `la cabeza quedó en y=${headY} y su línea es y=${want} (se ve ${diff > 0 ? `${diff} cm más alto` : `${-diff} cm más bajo`}); si es pelo o un adorno que sobresale, ignóralo`;
 }
 
 const results = { ok: 0, failed: 0, aliases: [] };
@@ -71,8 +86,9 @@ const generated = new Set(); // Rutas escritas desde una imagen real en esta cor
 for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
   console.log(`Leyendo ${file}...`);
   const psd = agPsd.readPsd(readFileSync(join(SOURCE, file)), { useImageData: true, skipCompositeImageData: true, skipThumbnail: true });
-  const scale = H / psd.height;
-  if (Math.abs(psd.width * scale - W) > 2) console.log(`  ! el lienzo del PSD (${psd.width}x${psd.height}) no es 3:4; se ajusta a ${W}x${H}`);
+  const template = /enemigo/i.test(file) ? TEMPLATE_ENEMIGOS : TEMPLATE_PERSONAJES;
+  const k = psd.height / template; // px del PSD por px del sprite
+  if (Math.abs(psd.width / psd.height - 0.75) > 0.01) console.log(`  ! el lienzo del PSD (${psd.width}x${psd.height}) no es 3:4`);
   for (const group of (psd.children ?? []).filter((g) => g.children)) {
     const character = resolveCharacter(group.name);
     mkdirSync(join(TARGET, character), { recursive: true });
@@ -98,14 +114,24 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
         results.failed++;
         continue;
       }
+      // Lienzo de su estatura, recortado desde el borde de abajo y centrado.
+      const cm = statureOf(character, expr);
+      const W = canvasW(cm);
+      const H = canvasH(cm);
+      if (H > template) console.log(`    ! mide ${cm} cm y no entra en esta plantilla: va en el PSD de enemigos`);
+      const regionH = Math.min(psd.height, Math.round(H * k));
+      const regionW = Math.min(psd.width, Math.round(W * k));
+      const region = { left: Math.round((psd.width - regionW) / 2), top: psd.height - regionH, width: regionW, height: regionH };
       const dest = join(TARGET, character, `${expr}.webp`);
       const info = await sharp(Buffer.from(canvas.buffer), { raw: { width: psd.width, height: psd.height, channels: 4 } })
+        .extract(region)
         .resize(W, H)
         .webp({ quality: 90, alphaQuality: 100 })
         .toFile(dest);
       generated.add(dest);
-      console.log(`✓ ${group.name}/${layer.name} → ${dest} (${Math.round(info.size / 1024)} KB)`);
-      const warn = headWarning(Math.round(box.top * scale), character);
+      console.log(`✓ ${group.name}/${layer.name} → ${dest} (${W}x${H}, ${Math.round(info.size / 1024)} KB)`);
+      if (box.left < region.left || box.right >= region.left + region.width) console.log('    ! se sale por los costados de su lienzo; se recortó');
+      const warn = headWarning(Math.round((box.top - region.top) / k), cm);
       if (warn) console.log(`    ! ${warn}`);
       if (box.bottom < psd.height - 3) console.log('    ! el cuerpo no llega al borde de abajo');
       results.ok++;
@@ -114,7 +140,10 @@ for (const file of readdirSync(SOURCE).filter((f) => /\.psd$/i.test(f))) {
 }
 
 // ---------- 2) PNG sueltos ----------
-async function normalizePng(input, headY) {
+async function normalizePng(input, cm) {
+  const W = canvasW(cm);
+  const H = canvasH(cm);
+  const headY = headLine(cm);
   const { data, info } = await sharp(input).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width, height } = info;
   const a = (x, y) => data[(y * width + x) * 4 + 3];
@@ -148,15 +177,15 @@ for (const folder of readdirSync(SOURCE)) {
   if (!statSync(dir).isDirectory()) continue;
   const character = resolveCharacter(folder);
   if (fromPsd.has(character)) continue; // El PSD manda.
-  const settings = config.personajes[character];
-  if (!settings) {
-    console.log(`! ${folder}: personaje sin estatura en tools/sprites.config.json; se omite`);
+  if (!estaturas.personajes[character]) {
+    console.log(`! ${folder}: personaje sin estatura en src/data/estaturas.json; se omite`);
     continue;
   }
   mkdirSync(join(TARGET, character), { recursive: true });
   for (const file of readdirSync(dir).filter((f) => /\.png$/i.test(f)).sort()) {
-    const dest = join(TARGET, character, `${expressionName(file, character)}.webp`);
-    const r = await normalizePng(join(dir, file), settings.cabeza);
+    const expr = expressionName(file, character);
+    const dest = join(TARGET, character, `${expr}.webp`);
+    const r = await normalizePng(join(dir, file), statureOf(character, expr));
     if (r.error) {
       console.log(`✗ ${folder}/${file}: ${r.error}`);
       results.failed++;

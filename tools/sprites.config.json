@@ -1,20 +1,43 @@
 {
-  "lienzo": { "ancho": 1200, "alto": 1600 },
-  "nota": "cabeza = altura (px) de la parte de arriba de la cabeza en el lienzo. 15 px por cm; ver Estaturas en docs/CANON.md. alias = expresión que usa el juego -> expresión existente que la reemplaza mientras no exista.",
+  "nota": "Estaturas: src/data/estaturas.json. alias = expresión que usa el juego -> expresión existente que la reemplaza mientras no exista. prefijos = nombres anteriores del personaje en el PSD o en las carpetas.",
   "personajes": {
-    "jair": { "cabeza": 64, "prefijos": ["jorge"] },
-    "rikka": {
-      "cabeza": 139,
-      "alias": { "seria": "base", "celosa": "base", "orgullosa": "base", "preocupada": "base", "sorprendida": "base" }
+    "jair": {
+      "prefijos": [
+        "jorge"
+      ]
     },
-    "cami": {
-      "cabeza": 199,
+    "rikka": {
       "alias": {
-        "apuntando": "molesta1", "sospecha": "dudosa1", "burla": "base", "fria": "molesta1", "dolor": "cansada",
-        "enojada": "molesta1", "molesta": "molesta1", "seria": "base", "furia": "molesta1", "miedo": "dudosa1",
-        "sonrojada": "sonrojada1", "sorprendida": "dudosa1", "triste": "cansada", "wtf": "dudosa1", "asombro": "dudosa1"
+        "seria": "base",
+        "celosa": "base",
+        "orgullosa": "base",
+        "preocupada": "base",
+        "sorprendida": "base"
       }
     },
-    "nikki": { "cabeza": 259, "prefijos": ["nicole"] }
+    "cami": {
+      "alias": {
+        "apuntando": "molesta1",
+        "sospecha": "dudosa1",
+        "burla": "base",
+        "fria": "molesta1",
+        "dolor": "cansada",
+        "enojada": "molesta1",
+        "molesta": "molesta1",
+        "seria": "base",
+        "furia": "molesta1",
+        "miedo": "dudosa1",
+        "sonrojada": "sonrojada1",
+        "sorprendida": "dudosa1",
+        "triste": "cansada",
+        "wtf": "dudosa1",
+        "asombro": "dudosa1"
+      }
+    },
+    "nikki": {
+      "prefijos": [
+        "nicole"
+      ]
+    }
   }
 }

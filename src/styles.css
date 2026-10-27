@@ -262,7 +262,7 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
 .about-link-main { background: linear-gradient(90deg, #22d3ee, #8b5cf6); color: #05070d; border-color: transparent; font-weight: 700; }
 
 /* Personajes que se miran: volteo en espejo. */
-.sprite { transition: transform 0.25s ease; }
+.sprite { transition: transform 0.25s ease, height 0.45s ease, width 0.45s ease, max-width 0.45s ease; }
 .sprite-flip { transform: scaleX(-1); }
 .sprite-centro.sprite-flip { transform: translateX(-50%) scaleX(-1); }
 @media (prefers-reduced-motion: reduce) { .sprite { transition: none; } }

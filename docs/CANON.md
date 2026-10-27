@@ -56,7 +56,8 @@ Contradicción central: Jair sabe construir sistemas, pero intenta aplicar a las
 ### Estaturas `[CANON]`
 
 - Jair: 1,65 m. Rikka: 1,60 m. Cami (con su traje): 1,56 m. Nikki: 1,52 m.
-- En los sprites (lienzo 1200×1600, 15 px por cm), la cabeza va en y = 64 (Jair), 139 (Rikka), 199 (Cami) y 259 (Nikki). Plantilla: `docs/sprites/plantilla_sprite_1200x1600.svg`.
+- Enemigos: soldado enmascarado 1,85 m; capitán enmascarado 2,00 m; monstruo de sombras 2,40 m; su versión acorazada (armored) 2,55 m. `[CANON]`
+- Datos para el juego y los sprites: `src/data/estaturas.json`. Escala 15 px por cm. Personajes: lienzo 1200×1600, cabeza en y = 64 (Jair), 139 (Rikka), 199 (Cami) y 259 (Nikki); plantilla `docs/sprites/plantilla_sprite_1200x1600.svg`. Enemigos: lienzo más alto según su estatura; plantilla `docs/sprites/plantilla_enemigos_2213x2950.svg`.
 - `[PENDIENTE]`: estatura de Cami sin el traje (si cambia por las botas).
 
 ### Reparto de Génesis++ (no canon)
