@@ -91,7 +91,7 @@
 `011` — Afuera la ciudad huele a asfalto caliente y a fritura. El sol ya se fue, pero el calor se queda, como un pariente que no capta indirectas.
 
 
-### dulce_frio_fachada
+### fondos/dulce_frio_fachada.webp
 
 `012` — Para llegar a la parada tiene que pasar frente a Dulce Frío, la heladería. Lo hace todos los días. Nunca mira. Hoy mira.
 

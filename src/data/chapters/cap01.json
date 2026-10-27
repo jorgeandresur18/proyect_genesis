@@ -829,7 +829,7 @@
     {
       "scene_id": "cap01_012",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -846,7 +846,7 @@
     {
       "scene_id": "cap01_013",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -869,7 +869,7 @@
     {
       "scene_id": "cap01_014",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -897,7 +897,7 @@
     {
       "scene_id": "cap01_015",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -925,7 +925,7 @@
     {
       "scene_id": "cap01_016",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -953,7 +953,7 @@
     {
       "scene_id": "cap01_017",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -981,7 +981,7 @@
     {
       "scene_id": "cap01_018",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1009,7 +1009,7 @@
     {
       "scene_id": "cap01_019",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1049,7 +1049,7 @@
     {
       "scene_id": "cap01_020a",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1077,7 +1077,7 @@
     {
       "scene_id": "cap01_020a1",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1105,7 +1105,7 @@
     {
       "scene_id": "cap01_020a2",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1128,7 +1128,7 @@
     {
       "scene_id": "cap01_020a3",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1156,7 +1156,7 @@
     {
       "scene_id": "cap01_020a4",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1184,7 +1184,7 @@
     {
       "scene_id": "cap01_020b",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1212,7 +1212,7 @@
     {
       "scene_id": "cap01_020b2",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1240,7 +1240,7 @@
     {
       "scene_id": "cap01_020b3",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1263,7 +1263,7 @@
     {
       "scene_id": "cap01_020b4",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -1286,7 +1286,7 @@
     {
       "scene_id": "cap01_020b5",
       "chapter": 1,
-      "background": "PLACEHOLDER:dulce_frio_fachada",
+      "background": "fondos/dulce_frio_fachada.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [

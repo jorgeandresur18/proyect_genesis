@@ -13,5 +13,5 @@
     "puente": "puente_rojo",
     "puente_espacial": "puente_torres"
   },
-  "omitir": ["dulcefrio", "hangar_destruido"]
+  "omitir": ["hangar_destruido"]
 }

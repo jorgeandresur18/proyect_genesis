@@ -3,7 +3,7 @@
 Listos: `oficina_dia`, `bar_noche`, `departamento_noche`, `pasillo_castillo`, `refugio_capsula`, `puente_rojo`, `claro_cuatro_estaciones`, `nucleo_grieta`, `pozo_central`, `hangar`, `puente_torres`.
 
 En espera:
-- `dulce_frio_fachada`: la imagen que hay dice «SWEET CHILL» y queda como la versión en inglés. Falta la versión en español: pídela igual, pero con el letrero «DULCE FRÍO» (o sin texto) y guárdala como `docs/fondos/dulcefrio.png`; la de inglés renómbrala `dulcefrio_en.png`.
+- `dulce_frio_fachada`: por ahora se usa la imagen con el letrero «SWEET CHILL» (la versión en inglés). Falta la versión en español: pídela igual, pero con el letrero «DULCE FRÍO» (o sin texto); renombra la actual `dulcefrio_en.png`, guarda la nueva como `docs/fondos/dulcefrio.png` y corre `npm run fondos`.
 - `hangar_destruido`: se usará más adelante (ninguna escena del Capítulo 1 lo usa todavía).
 
 ## Cómo entregarlos
