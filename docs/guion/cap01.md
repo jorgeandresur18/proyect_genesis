@@ -71,6 +71,18 @@
 
 `o20` **Jair:** (Llevo diciendo «algún día» desde los veintidós.)
 
+`o21` — Saca el celular y, por costumbre, abre Geekdump: la página donde los programadores del mundo suben sus proyectos para que otros programadores los ignoren.
+
+`o22` — Su perfil. Un calendario de cuadritos que deberían ser verdes. Todos grises. El último commit es de hace dos años y dice «fix: ahora sí».
+
+`o23` **Jair:** (Tres repositorios. «dragones-rpg»: archivado. «nave-espacial-WIP»: archivado. «granja-final-final-v2»: tan abandonado que el README tiene telarañas.)
+
+`o24` — Cuatro estrellas en total. Una se la dio él mismo, desde una cuenta falsa. Las otras tres son bots.
+
+`o25` **Jair:** (Hay un issue abierto desde hace tres años. Solo dice «¿esto sigue vivo?». Nadie le contestó. Ni yo.)
+
+`o26` **Jair:** (En Geekdump todos tienen un proyecto que va a cambiar el mundo. Yo tengo cuadritos grises y un «funciona en mi máquina».)
+
 `010` — Jair marca la salida a las 18:00:00 exactas. Es la única rebeldía que se permite.
 
 
@@ -314,6 +326,18 @@
 `069` **Jair:** Lo dejé. Y el de la nave espacial. Y el de la granja.
 
 `070` **Nikki:** Tienes más proyectos abandonados que yo exnovios.
+
+`070g1` **Jair:** Técnicamente no están abandonados. Están en Geekdump. Archivados.
+
+`070g2` **Nikki:** ¿En Geek qué?
+
+`070g3` **Jair:** Geekdump. Donde los programadores suben sus proyectos. Les das estrellas, les haces fork, les mandas pull requests...
+
+`070g4` **Nikki:** No entendí ni mierda, pero suena a algo que hacen los que no salen de su casa.
+
+`070g5` **Jair:** Es exactamente eso.
+
+`070g6` **Nikki:** «Archivados». Qué palabra tan elegante para decir que te rendiste. Yo también archivé a Bryan.
 
 `071` **Jair:** Siempre me falta tiempo. O dinero. O... no sé. Algo.
 
@@ -1326,6 +1350,8 @@
 `g3_058` **Jair:** (Me salvó un bug.)
 
 `g3_059` **Jair:** (Me han salvado más los bugs que cualquier persona en mi vida.)
+
+`g3_059g` **Jair:** (Si esto estuviera en Geekdump, alguien ya habría abierto un issue: «el monstruo no cruza huecos». Con tres pulgares arriba. Y nadie lo arreglaría en años.)
 
 `g3_060` **Voz:** Error de navegación en entidad hostil. Parche programado.
 

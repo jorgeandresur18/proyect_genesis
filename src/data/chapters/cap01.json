@@ -652,6 +652,144 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_o21"
+    },
+    {
+      "scene_id": "cap01_o21",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Saca el celular y, por costumbre, abre Geekdump: la página donde los programadores del mundo suben sus proyectos para que otros programadores los ignoren."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_o22"
+    },
+    {
+      "scene_id": "cap01_o22",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Su perfil. Un calendario de cuadritos que deberían ser verdes. Todos grises. El último commit es de hace dos años y dice «fix: ahora sí»."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_o23"
+    },
+    {
+      "scene_id": "cap01_o23",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Tres repositorios. «dragones-rpg»: archivado. «nave-espacial-WIP»: archivado. «granja-final-final-v2»: tan abandonado que el README tiene telarañas.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_o24"
+    },
+    {
+      "scene_id": "cap01_o24",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Cuatro estrellas en total. Una se la dio él mismo, desde una cuenta falsa. Las otras tres son bots."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_o25"
+    },
+    {
+      "scene_id": "cap01_o25",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Hay un issue abierto desde hace tres años. Solo dice «¿esto sigue vivo?». Nadie le contestó. Ni yo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_o26"
+    },
+    {
+      "scene_id": "cap01_o26",
+      "chapter": 1,
+      "background": "fondos/oficina_dia.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(En Geekdump todos tienen un proyecto que va a cambiar el mundo. Yo tengo cuadritos grises y un «funciona en mi máquina».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_010"
     },
     {
@@ -3628,6 +3766,174 @@
       "dialogue": {
         "speaker": "Nikki",
         "text": "Tienes más proyectos abandonados que yo exnovios."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g1"
+    },
+    {
+      "scene_id": "cap01_070g1",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Técnicamente no están abandonados. Están en Geekdump. Archivados."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g2"
+    },
+    {
+      "scene_id": "cap01_070g2",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "¿En Geek qué?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g3"
+    },
+    {
+      "scene_id": "cap01_070g3",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Geekdump. Donde los programadores suben sus proyectos. Les das estrellas, les haces fork, les mandas pull requests..."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g4"
+    },
+    {
+      "scene_id": "cap01_070g4",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "No entendí ni mierda, pero suena a algo que hacen los que no salen de su casa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g5"
+    },
+    {
+      "scene_id": "cap01_070g5",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Es exactamente eso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_070g6"
+    },
+    {
+      "scene_id": "cap01_070g6",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "«Archivados». Qué palabra tan elegante para decir que te rendiste. Yo también archivé a Bryan."
       },
       "choices": [],
       "conditions": [],
@@ -14670,6 +14976,39 @@
       "dialogue": {
         "speaker": "Jair",
         "text": "(Me han salvado más los bugs que cualquier persona en mi vida.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_059g"
+    },
+    {
+      "scene_id": "cap01_g3_059g",
+      "chapter": 1,
+      "background": "PLACEHOLDER:puente_torres",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "derecha"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Si esto estuviera en Geekdump, alguien ya habría abierto un issue: «el monstruo no cruza huecos». Con tres pulgares arriba. Y nadie lo arreglaría en años.)"
       },
       "choices": [],
       "conditions": [],
