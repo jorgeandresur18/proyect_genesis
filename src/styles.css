@@ -41,10 +41,8 @@ h1, h2, h3 { margin: 0 0 0.6rem; }
   padding: 1.5rem;
   text-align: center;
 }
-/* Advertencia de contenido: tarjeta de clasificación, negro y plata, sobre el fondo del título. */
-.warning { position: fixed; inset: 0; height: auto; background: #050506; overflow-y: auto; justify-content: safe center; }
-/* El fondo queda quieto mientras la tarjeta se desplaza. */
-.warning > :first-child { position: fixed; }
+/* Advertencia de contenido: tarjeta de clasificación, negro y plata, sobre fondo negro liso. */
+.warning { position: fixed; inset: 0; height: auto; background: #000; overflow-y: auto; justify-content: safe center; }
 .warning-card {
   position: relative;
   z-index: 1;

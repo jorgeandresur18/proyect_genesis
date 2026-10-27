@@ -84,7 +84,6 @@ function RotateHint() {
 function ContentWarning({ onAccept }: { onAccept: () => void }) {
   return (
     <div className="screen warning">
-      <TitleBackground />
       <div className="warning-card">
         <header className="warning-head">
           <span className="warning-badge">{advertencia.etiqueta}</span>
