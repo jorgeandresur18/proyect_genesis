@@ -38,14 +38,9 @@ type Overlay = 'history' | 'save' | 'load' | 'map' | 'extras' | 'endings' | 'gal
 export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
-  // Easter egg del título: dura hasta recargar la página; si se elige una opción del menú y se vuelve, Nikki se va.
+  // Easter egg del título: Nikki bloquea el menú hasta que el jugador le responda.
   const [egg, setEgg] = useState<EggPhase>('off');
-  const [eggLeaving, setEggLeaving] = useState(false);
   const hasGame = useStore((s) => !!s.game);
-  const onTitleScreen = !hasGame && overlay === null;
-  useEffect(() => {
-    if (onTitleScreen && egg === 'on' && eggLeaving) setEgg('bye');
-  }, [onTitleScreen, egg, eggLeaving]);
   // Entrada elegante del título: al llegar desde la advertencia y al volver de una partida.
   const [intro, setIntro] = useState<Intro>('advertencia');
   useEffect(() => {
@@ -118,14 +113,8 @@ export default function App() {
         <TitleScreen
           open={setOverlay}
           intro={intro}
-          onPick={() => {
-            if (egg === 'on') setEggLeaving(true);
-          }}
           onEgg={() => {
-            if (egg === 'off' || egg === 'gone') {
-              setEggLeaving(false);
-              setEgg('on');
-            }
+            if (egg === 'off' || egg === 'gone') setEgg('on');
           }}
         />
       )}
@@ -242,13 +231,11 @@ const MENU_ICONS: Record<string, ReactNode> = {
 interface TitleProps {
   open: (o: Overlay) => void;
   intro: Intro;
-  /** Se eligió una opción del menú (el easter egg se despide al volver). */
-  onPick: () => void;
   /** Se llegó a los clics del easter egg en el logo. */
   onEgg: () => void;
 }
 
-function TitleScreen({ open, intro, onPick, onEgg }: TitleProps) {
+function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const clicks = useRef(0);
   // Cada clic en el logo reinicia un glitch de colores (la key fuerza a repetir la animación).
   const [hit, setHit] = useState(0);
@@ -257,10 +244,7 @@ function TitleScreen({ open, intro, onPick, onEgg }: TitleProps) {
   const still = useStore((s) => s.settings.reduceEffects);
   const t = useT();
   const storyNotice = t('idioma.historia_es');
-  const pick = () => {
-    playSelect();
-    onPick();
-  };
+  const pick = () => playSelect();
   const tiles: [Overlay, string, string][] = [
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],

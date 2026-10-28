@@ -1169,32 +1169,36 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 .extras-run { margin-left: auto; font-family: ui-monospace, Consolas, monospace; font-size: 0.8rem; color: rgba(142, 240, 189, 0.6); }
 .extras-entry:hover:not(:disabled) { transform: translateX(4px); border-color: rgba(142, 240, 189, 0.5); background: rgba(142, 240, 189, 0.05); }
 
-/* Easter egg: Nikki con un globo de texto encima que la apunta, abajo a la izquierda del título. */
-.egg { position: fixed; left: 1.5rem; bottom: 0; z-index: 9; display: flex; flex-direction: column; align-items: flex-start; pointer-events: none; animation: egg-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.egg-nikki { height: min(50vh, 23rem); width: auto; margin-top: -0.4rem; filter: drop-shadow(0 0 1.2rem rgba(255, 111, 165, 0.35)); }
+/* Easter egg: la pantalla se oscurece y Nikki (con su globo, que la apunta) no deja usar el menú hasta responder. */
+.egg-backdrop { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; background: rgba(0, 0, 0, 0.62); backdrop-filter: blur(2px); animation: decisions-fade 0.35s ease-out both; }
+.egg-backdrop-out { animation: egg-backdrop-out 0.7s ease-in forwards; }
+@keyframes egg-backdrop-out { to { opacity: 0; } }
+.egg { display: flex; align-items: flex-start; gap: 0.6rem; animation: egg-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.egg-nikki { height: min(78vh, 36rem); width: auto; filter: drop-shadow(0 0 1.4rem rgba(255, 111, 165, 0.35)); }
 .egg-bubble {
   position: relative;
-  max-width: 20rem;
-  margin-left: 0.5rem;
-  padding: 1.15rem 1.1rem 0.8rem;
-  font-size: 0.86rem;
-  line-height: 1.45;
+  max-width: 24rem;
+  margin-top: min(14vh, 6.5rem);
+  padding: 1.25rem 1.2rem 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: #f2f2f6;
-  background: rgba(14, 14, 18, 0.95);
+  background: rgba(14, 14, 18, 0.96);
   border: 1px solid rgba(255, 111, 165, 0.7);
   border-radius: 1rem;
-  box-shadow: 0 0 1.4rem rgba(255, 111, 165, 0.25);
-  pointer-events: auto;
+  box-shadow: 0 0 1.6rem rgba(255, 111, 165, 0.25);
 }
-/* Cola del globo: apunta hacia abajo, a la cabeza de Nikki. */
+/* Cola del globo: apunta a la izquierda, a la cabeza de Nikki. */
 .egg-bubble::before,
-.egg-bubble::after { content: ''; position: absolute; left: 4.6rem; border: 0.75rem solid transparent; border-bottom: 0; }
-.egg-bubble::before { bottom: -0.78rem; border-top-color: rgba(255, 111, 165, 0.7); }
-.egg-bubble::after { bottom: -0.7rem; border-top-color: #0e0e12; }
-.egg-name { position: absolute; top: 0; left: 0.9rem; transform: translateY(-55%); padding: 0.15rem 0.75rem; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: #0b0b0d; background: #ff6fa5; border-radius: 0.35rem; }
-.egg-bubble p { margin: 0 0 0.45rem; }
-.egg-donate { display: inline-block; margin-top: 0.2rem; padding: 0.45rem 1.1rem; border-radius: 999px; color: #fff; font-weight: 700; text-decoration: none; background: linear-gradient(90deg, #ff4f7b, #ff7a59); animation: egg-in 0.3s ease-out both; }
+.egg-bubble::after { content: ''; position: absolute; top: 2.2rem; border: 0.8rem solid transparent; border-left: 0; }
+.egg-bubble::before { left: -0.82rem; border-right-color: rgba(255, 111, 165, 0.7); }
+.egg-bubble::after { left: -0.74rem; border-right-color: #0e0e12; }
+.egg-name { position: absolute; top: 0; left: 0.9rem; transform: translateY(-55%); padding: 0.15rem 0.75rem; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 600; color: #0b0b0d; background: #ff6fa5; border-radius: 0.35rem; }
+.egg-bubble p { margin: 0 0 0.5rem; }
+.egg-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; animation: egg-in 0.3s ease-out both; }
+.egg-donate { padding: 0.5rem 1.2rem; border-radius: 999px; color: #fff; font-weight: 700; text-decoration: none; background: linear-gradient(90deg, #ff4f7b, #ff7a59); }
 .egg-donate:hover { filter: brightness(1.1); }
+.egg-later { padding: 0.5rem 1.2rem; border-radius: 999px; background: rgba(255, 255, 255, 0.06); border-color: rgba(214, 218, 226, 0.3); }
 .egg-bye { animation: egg-glitch-out 0.7s steps(1) both; }
 @keyframes egg-in { from { opacity: 0; transform: translateY(20px); } }
 @keyframes egg-glitch-out {
@@ -1206,15 +1210,17 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
   80% { opacity: 0.3; clip-path: inset(48% 0 48% 0); }
   100% { opacity: 0; clip-path: inset(50% 0 50% 0); }
 }
-@media (max-height: 520px), (max-width: 760px) { .egg { left: 0.5rem; } .egg-nikki { height: 40vh; } .egg-bubble { max-width: 14.5rem; font-size: 0.66rem; padding: 0.8rem 0.75rem 0.5rem; } .egg-bubble p { margin-bottom: 0.25rem; } .egg-bubble::before, .egg-bubble::after { left: 2.6rem; } }
+@media (max-height: 520px), (max-width: 760px) { .egg-nikki { height: 82vh; } .egg-bubble { max-width: 17rem; margin-top: 8vh; font-size: 0.72rem; padding: 0.85rem 0.8rem 0.55rem; } .egg-bubble p { margin-bottom: 0.3rem; } .egg-donate, .egg-later { padding: 0.35rem 0.9rem; font-size: 0.72rem; } }
 
-/* Clic en el logo: glitch de colores corto. */
-.logo-float[data-hit] > img:first-child { animation: logo-hit 0.32s steps(1) 1; }
+/* Clic en el logo: glitch de colores corto y sutil. */
+.logo-float[data-hit] > img:first-child { animation: logo-hit 0.22s steps(1) 1; }
 @keyframes logo-hit {
-  0% { transform: translate(-5px, 0) skewX(-6deg); filter: drop-shadow(4px 0 0 #ff3c5a) drop-shadow(-4px 0 0 #50dcff) hue-rotate(40deg) saturate(3); clip-path: inset(0 0 45% 0); }
-  25% { transform: translate(6px, 2px); filter: drop-shadow(-5px 0 0 #ff3cf0) drop-shadow(5px 0 0 #3cff9a) saturate(4); clip-path: inset(30% 0 10% 0); }
-  50% { transform: translate(-3px, -1px) skewX(5deg); filter: drop-shadow(3px 0 0 #ffe03c) drop-shadow(-3px 0 0 #3c7bff) hue-rotate(-60deg); clip-path: inset(60% 0 0 0); }
-  75% { transform: translate(2px, 0); filter: drop-shadow(-2px 0 0 #ff3c5a) drop-shadow(2px 0 0 #50dcff); clip-path: none; }
+  0% { transform: translate(-2px, 0); filter: drop-shadow(2px 0 0 rgba(255, 60, 90, 0.55)) drop-shadow(-2px 0 0 rgba(80, 220, 255, 0.55)); clip-path: inset(0 0 55% 0); }
+  35% { transform: translate(2px, 0); filter: drop-shadow(-2px 0 0 rgba(255, 60, 240, 0.5)) drop-shadow(2px 0 0 rgba(60, 255, 154, 0.5)); clip-path: inset(40% 0 10% 0); }
+  70% { transform: translate(-1px, 0); filter: drop-shadow(1px 0 0 rgba(255, 60, 90, 0.4)) drop-shadow(-1px 0 0 rgba(80, 220, 255, 0.4)); clip-path: none; }
   100% { transform: none; filter: drop-shadow(0 0 1.6rem rgba(225, 229, 236, 0.18)); clip-path: none; }
 }
 @media (prefers-reduced-motion: reduce) { .logo-float[data-hit] > img:first-child { animation: none; } }
+/* Los clics cuentan en todo el logo, aunque el glitch esté recortando la imagen en ese momento. */
+.logo-float { cursor: default; }
+.logo-float img { pointer-events: none; }

@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { assetUrl } from '../engine/assets';
 import { localized, useLang } from '../engine/i18n';
-import { playSelect, startTyping, stopTyping } from '../engine/sound';
+import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
 import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import eggEs from '../data/easter_egg.json';
 import eggEn from '../data/en/easter_egg.json';
 import conoceMas from '../data/conoce_mas.json';
 
-export type EggPhase = 'off' | 'on' | 'bye' | 'gone';
+export type EggPhase = 'off' | 'on' | 'gone';
+type Reply = 'ask' | 'later' | 'thanks';
 
-// Después de terminar de decir «será para otra ocasión», cuánto espera Nikki y cuánto dura el glitch.
+// Después de la última frase, cuánto espera Nikki y cuánto dura el glitch con el que se va.
 const BYE_WAIT_MS = 1200;
 const GLITCH_MS = 700;
 
@@ -60,50 +61,80 @@ function useTypewriter(lines: string[]): { shown: string[]; done: boolean } {
 }
 
 /**
- * Easter egg del título (69 clics en el logo): Nikki con un globo de texto que pide una donación.
- * Se queda hasta que se recargue la página; si el jugador elige una opción del menú y vuelve, se despide y
- * desaparece con un glitch.
+ * Easter egg del título (69 clics en el logo): Nikki aparece sobre la pantalla oscurecida y no deja usar el
+ * menú hasta que le respondas. «En otro momento»: se pone celosa y se va con un glitch. «Donar»: abre PayPal,
+ * agradece y se va.
  */
 export function EasterEgg({ phase, onGone }: { phase: EggPhase; onGone: () => void }) {
-  if (phase === 'off' || phase === 'gone') return null;
-  return <Nikki key={phase} bye={phase === 'bye'} onGone={onGone} />;
+  if (phase !== 'on') return null;
+  return <Nikki onGone={onGone} />;
 }
 
-function Nikki({ bye, onGone }: { bye: boolean; onGone: () => void }) {
+function Nikki({ onGone }: { onGone: () => void }) {
   const egg = localized(eggEs, eggEn, useLang());
-  const lines = bye ? [egg.adios] : egg.hola;
+  const [reply, setReply] = useState<Reply>('ask');
+  const lines = reply === 'ask' ? egg.hola : [reply === 'later' ? egg.adios : egg.gracias];
   const { shown, done } = useTypewriter(lines);
   const [leaving, setLeaving] = useState(false);
 
-  // Al despedirse: termina de hablar, espera un momento y se va con un glitch.
+  // Después de responder: termina su frase, espera un momento y se va con un glitch.
   useEffect(() => {
-    if (!bye || !done) return;
+    if (reply === 'ask' || !done) return;
     const a = setTimeout(() => setLeaving(true), BYE_WAIT_MS);
     const b = setTimeout(onGone, BYE_WAIT_MS + GLITCH_MS);
     return () => {
       clearTimeout(a);
       clearTimeout(b);
     };
-  }, [bye, done, onGone]);
+  }, [reply, done, onGone]);
 
   return (
-    <div className={`egg ${leaving ? 'egg-bye' : ''}`}>
-      <div className="egg-bubble">
-        <span className="egg-name">Nikki</span>
-        {/* Lo que falta escribir ocupa su lugar sin verse: el globo no cambia de tamaño mientras habla. */}
-        {lines.map((line, i) => (
-          <p key={i}>
-            {shown[i]}
-            <span className="dialog-hidden">{line.slice(shown[i].length)}</span>
-          </p>
-        ))}
-        {!bye && done && paypal && (
-          <a className="egg-donate" href={paypal} target="_blank" rel="noopener noreferrer" onClick={() => playSelect()}>
-            {egg.donar}
-          </a>
-        )}
+    <div className={`egg-backdrop ${leaving ? 'egg-backdrop-out' : ''}`} role="dialog" aria-modal>
+      <div className={`egg ${leaving ? 'egg-bye' : ''}`}>
+        <img
+          className="egg-nikki"
+          src={assetUrl(`sprites/nikki/${reply === 'later' ? 'celosa1' : 'tierna1'}.webp`)}
+          alt=""
+          draggable={false}
+        />
+        <div className="egg-bubble">
+          <span className="egg-name">Nikki</span>
+          {/* Lo que falta escribir ocupa su lugar sin verse: el globo no cambia de tamaño mientras habla. */}
+          {lines.map((line, i) => (
+            <p key={`${reply}${i}`}>
+              {shown[i]}
+              <span className="dialog-hidden">{line.slice(shown[i].length)}</span>
+            </p>
+          ))}
+          {reply === 'ask' && done && (
+            <div className="egg-actions">
+              {paypal && (
+                <a
+                  className="egg-donate"
+                  href={paypal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    playSelect();
+                    setReply('thanks');
+                  }}
+                >
+                  {egg.donar}
+                </a>
+              )}
+              <button
+                className="egg-later"
+                onClick={() => {
+                  playCancel();
+                  setReply('later');
+                }}
+              >
+                {egg.despues}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-      <img className="egg-nikki" src={assetUrl(`sprites/nikki/${bye ? 'celosa1' : 'tierna1'}.webp`)} alt="" draggable={false} />
     </div>
   );
 }

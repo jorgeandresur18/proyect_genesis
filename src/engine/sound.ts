@@ -10,7 +10,7 @@ const SILENCE = 0.01; // Amplitud por debajo de la cual se considera silencio.
 const TYPING_LEVEL = 1.6;
 const SELECT_LEVEL = 2.2;
 const CANCEL_LEVEL = 2.2;
-const GLITCH_LEVEL = 1.6;
+const GLITCH_LEVEL = 0.55;
 
 let ctx: AudioContext | null = null;
 let sfxBus: AudioNode | null = null;
