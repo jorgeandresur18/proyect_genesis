@@ -1744,7 +1744,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -3328,7 +3328,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/orgulloso.webp",
           "pos": "izquierda"
         },
         {
@@ -3361,7 +3361,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/orgulloso.webp",
           "pos": "izquierda"
         },
         {

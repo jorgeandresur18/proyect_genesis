@@ -434,7 +434,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado1.webp",
+          "sprite": "sprites/jair/molesto.webp",
           "pos": "centro"
         }
       ],
@@ -1624,7 +1624,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -1652,7 +1652,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -1680,7 +1680,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -1708,7 +1708,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -3131,7 +3131,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -3896,7 +3896,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -3924,7 +3924,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -3952,7 +3952,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -3980,7 +3980,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -4008,7 +4008,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -4036,7 +4036,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/base.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -5620,7 +5620,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -6319,7 +6319,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/triste1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6347,7 +6347,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6375,7 +6375,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6443,7 +6443,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6527,7 +6527,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/llorando1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6555,7 +6555,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6583,7 +6583,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6611,7 +6611,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6639,7 +6639,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6667,7 +6667,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6695,7 +6695,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6774,7 +6774,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -6802,7 +6802,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado2.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -6830,7 +6830,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado2.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -6858,7 +6858,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado2.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "izquierda"
         },
         {
@@ -6998,7 +6998,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/molesto.webp",
           "pos": "izquierda"
         },
         {
@@ -7096,7 +7096,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/wtf.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -7124,7 +7124,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/wtf.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -7298,7 +7298,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/triste1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -7332,7 +7332,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/ebria1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -7360,7 +7360,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/ebria2.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -7400,7 +7400,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado2.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "centro"
         }
       ],
@@ -7423,7 +7423,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/cansado2.webp",
+          "sprite": "sprites/jair/atontado_cansado.webp",
           "pos": "centro"
         }
       ],
@@ -12985,7 +12985,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/molesto.webp",
           "pos": "izquierda"
         },
         {
@@ -13051,7 +13051,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/molesto.webp",
           "pos": "izquierda"
         },
         {
@@ -20898,7 +20898,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/molesto.webp",
           "pos": "izquierda"
         },
         {
@@ -24386,7 +24386,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24419,7 +24419,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24452,7 +24452,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24485,7 +24485,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24518,7 +24518,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24551,7 +24551,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -24584,7 +24584,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -25125,7 +25125,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/orgulloso.webp",
           "pos": "izquierda"
         },
         {
@@ -28218,7 +28218,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/asustado1.webp",
+          "sprite": "sprites/jair/orgulloso.webp",
           "pos": "izquierda"
         },
         {
@@ -33093,7 +33093,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/sabelotodo.webp",
           "pos": "izquierda"
         },
         {
@@ -36116,7 +36116,7 @@
       "characters": [
         {
           "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
+          "sprite": "sprites/jair/orgulloso.webp",
           "pos": "izquierda"
         },
         {
