@@ -1,0 +1,106 @@
+<p align="center">
+  <img src="public/og-image.png" alt="PROYECT GENESIS" width="720" />
+</p>
+
+<h1 align="center">PROYECT GENESIS</h1>
+
+<p align="center">
+  Novela visual para adultos · ciencia ficción psicológica · comedia negra · meta-horror<br />
+  <strong>Demo del Capítulo 1</strong> · <a href="https://proyect-genesis.vercel.app/">Jugar en el navegador</a>
+</p>
+
+---
+
+## De qué trata
+
+Jair es un ingeniero de software de 30 años. Trabaja en soporte técnico, le deben medio mes de sueldo, vive en un departamento que parece una caja de zapatos y lleva ocho años en una relación sin nombre con Nikki, una amiga que le pide que se consiga novia… y que, borracha, le pide que al final se quede con ella.
+
+Una noche, después de emborracharse con Nikki en un bar, Jair recibe un correo con acceso anticipado a **GRAVITY**: un entorno de desarrollo con una inteligencia artificial integrada, **GENESIS**, capaz de construir mundos completos a partir de lo que uno le pida. Le pide un videojuego de fantasía con dos heroínas. Se queda dormido sobre el teclado. Y GENESIS termina el juego sola.
+
+Cuando Jair abre los ojos, está adentro.
+
+PROYECT GENESIS empieza como un isekai con dos heroínas que se disputan al protagonista, y poco a poco desarma esa fantasía pieza por pieza. Es una historia sobre crear personas a la medida de lo que uno desea, y sobre lo que pasa cuando esas personas descubren quién las hizo y para qué.
+
+> **18+.** Contiene manipulación emocional, alcoholismo, sexualidad sugerida (nunca explícita), angustia psicológica, violencia fantástica y lenguaje vulgar. Todos los personajes son ficticios.
+
+## Estado actual
+
+**Demo del Capítulo 1, «Una vida en bucle»: jugable de principio a fin.**
+
+| | |
+| --- | --- |
+| Capítulo 1 | ✅ Completo, con arte: unas 1.300 escenas, 19 decisiones y 8 bad ends |
+| Capítulo 2 | 🚧 En escritura (borrador; todavía no se puede jugar desde el Capítulo 1) |
+| Capítulos 3 a 7 | 📝 Planificados |
+| Expansiones | 📝 Planificadas: RikkaQuest, Génesis++ y Génesis# |
+| Idiomas | Interfaz en español e inglés; la historia, por ahora, solo en español |
+
+La historia completa tendrá siete capítulos, dos finales principales que ocurren en dos líneas temporales distintas, seis finales alternativos y tres expansiones.
+
+## Qué tiene la demo
+
+- **La noche del bar y el isekai:** el mundo real (la oficina, la heladería, el bar, el departamento) y la dimensión espacial del juego, hasta conocer a Rikka en el puente.
+- **Decisiones que importan:** algunas solo cambian una conversación; otras terminan la partida antes de tiempo. Ocho bad ends, cada uno con su pantalla.
+- **Mapa de decisiones** interactivo (se arrastra y se hace zoom) para ver los caminos recorridos y volver a cualquier decisión.
+- **Galería** de imágenes y de finales, que se desbloquean al jugar.
+- **Pantallas hechas en código:** el IDE GRAVITY, el correo con su bandeja de spam, el celular con Boringram (la parodia de Instagram), los mensajes y las historias de Nikki.
+- **Efectos de meta-horror:** glitches, opciones que el sistema intenta imponer y una voz que solo Jair oye.
+- **Opciones de lectura:** velocidad y tamaño del texto, opacidad de la caja, modo automático, saltar lo leído, ocultar la interfaz, volumen y silencio, y reducir efectos.
+- **Guardado** en el navegador, con miniatura de cada partida.
+- **Celular:** se juega en horizontal y a pantalla completa.
+- Y un easter egg en la pantalla de título.
+
+## Cómo jugar
+
+En el navegador, sin instalar nada: **https://proyect-genesis.vercel.app/**
+
+Avanza con el botón «Siguiente», Espacio o Enter. Las decisiones también se eligen con las teclas 1, 2, 3… La tecla H oculta la caja de texto y la M silencia el audio.
+
+## Para desarrolladores
+
+Hecho con **React + Vite + TypeScript**, con estado en **Zustand** y guardado en `localStorage`.
+
+```bash
+npm install
+npm run dev            # servidor de desarrollo
+npm run build          # comprobación de tipos y build de producción
+npm run test:routes    # recorre todas las rutas de la historia y comprueba que no haya escenas rotas
+```
+
+Herramientas del proyecto:
+
+| Comando | Qué hace |
+| --- | --- |
+| `npm run guion:exportar` / `guion:importar` | Sincroniza el guion en JSON con un libreto legible en `docs/guion/` |
+| `npm run sprites` | Exporta los sprites desde los PSD, con la estatura de cada personaje y alineados entre expresiones |
+| `npm run fondos` | Convierte los fondos a WebP y los coloca en las escenas que los usan |
+| `npm run og` | Genera la imagen que se ve al compartir el enlace |
+
+La historia vive en JSON, nunca dentro de los componentes:
+
+```
+src/
+  components/   escenario, caja de diálogo, decisiones, mapa, menús, pantallas en código
+  engine/       motor de la historia, estado, guardado, sonido, idiomas, transiciones
+  data/
+    chapters/   cap01.json, cap02.json…
+    i18n/       textos de la interfaz en español e inglés
+    en/         versiones en inglés de pantallas y menús
+docs/           canon, tono, finales, especificación técnica y libretos
+tools/          scripts de sprites, fondos, guion e imagen para compartir
+tests/          prueba automática de rutas
+```
+
+La documentación de la obra está en `docs/`: `CANON.md` (la fuente de verdad de la historia), `TONO.md`, `FINALES.md` y `SPEC.md` (el motor).
+
+## Cómo se hizo
+
+PROYECT GENESIS nació en octubre de 2026. Es un proyecto indie hecho por una sola persona: historia, dirección, diseño y programación.
+
+Es, a propósito, una historia sobre una inteligencia artificial que crea personajes, hecha con ayuda de inteligencias artificiales: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte.
+
+Influencias de atmósfera: *Welcome to the NHK*, *Perfect Blue*, *Neon Genesis Evangelion* y *Scott Pilgrim*.
+
+## Apoya el proyecto
+
+Si el juego te gustó, en la pantalla de título, en **«Conoce más del proyecto»**, están los enlaces del autor y la opción de donar.

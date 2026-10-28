@@ -12,7 +12,8 @@
     "guion:exportar": "node tools/guion.mjs exportar",
     "guion:importar": "node tools/guion.mjs importar",
     "sprites": "node --max-old-space-size=12000 tools/sprites.mjs",
-    "fondos": "node tools/fondos.mjs"
+    "fondos": "node tools/fondos.mjs",
+    "og": "node tools/og.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
