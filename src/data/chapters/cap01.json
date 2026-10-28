@@ -7480,7 +7480,7 @@
     {
       "scene_id": "cap01_bad_correo_004",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7503,7 +7503,7 @@
     {
       "scene_id": "cap01_bad_correo_005",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7526,7 +7526,7 @@
     {
       "scene_id": "cap01_bad_correo_006",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7552,13 +7552,7 @@
       "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
-      "characters": [
-        {
-          "id": "jair",
-          "sprite": "sprites/jair/base.webp",
-          "pos": "centro"
-        }
-      ],
+      "characters": [],
       "dialogue": {
         "speaker": null,
         "text": "Spam."
@@ -7568,7 +7562,7 @@
       "audio": null,
       "ui_effect": null,
       "next": null,
-      "ending": "bad_cap01_correo"
+      "ending": "final_cap01_correo"
     },
     {
       "scene_id": "cap01_bad_sinbar_001",
@@ -7619,24 +7613,48 @@
     {
       "scene_id": "cap01_bad_sinbar_003",
       "chapter": 1,
-      "background": "fondos/departamento_noche.webp",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
       "dialogue": {
         "speaker": null,
-        "text": "Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once."
+        "text": "Lo elimina."
       },
       "choices": [],
       "conditions": [],
       "audio": "silencio",
+      "ui_effect": null,
+      "next": "cap01_bad_sinbar_003b",
+      "accion_pantalla": "eliminar"
+    },
+    {
+      "scene_id": "cap01_bad_sinbar_003b",
+      "chapter": 1,
+      "background": "fondos/departamento_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
       "ui_effect": null,
       "next": "cap01_bad_sinbar_004"
     },
     {
       "scene_id": "cap01_bad_sinbar_004",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7659,7 +7677,7 @@
     {
       "scene_id": "cap01_bad_sinbar_005",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7685,13 +7703,7 @@
       "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
-      "characters": [
-        {
-          "id": "jair",
-          "sprite": "sprites/jair/base.webp",
-          "pos": "centro"
-        }
-      ],
+      "characters": [],
       "dialogue": {
         "speaker": null,
         "text": "Una noche normal."
@@ -7701,7 +7713,7 @@
       "audio": null,
       "ui_effect": null,
       "next": null,
-      "ending": "bad_cap01_sin_bar"
+      "ending": "final_cap01_sin_bar"
     },
     {
       "scene_id": "cap01_bad_rechazo_001",
@@ -7752,24 +7764,48 @@
     {
       "scene_id": "cap01_bad_rechazo_003",
       "chapter": 1,
-      "background": "fondos/departamento_noche.webp",
+      "background": "PANTALLA:pc_correo",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
       "dialogue": {
         "speaker": null,
-        "text": "Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual."
+        "text": "Elimina el correo."
       },
       "choices": [],
       "conditions": [],
       "audio": "silencio",
+      "ui_effect": null,
+      "next": "cap01_bad_rechazo_003b",
+      "accion_pantalla": "eliminar"
+    },
+    {
+      "scene_id": "cap01_bad_rechazo_003b",
+      "chapter": 1,
+      "background": "fondos/departamento_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
       "ui_effect": null,
       "next": "cap01_bad_rechazo_004"
     },
     {
       "scene_id": "cap01_bad_rechazo_004",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7792,7 +7828,7 @@
     {
       "scene_id": "cap01_bad_rechazo_005",
       "chapter": 1,
-      "background": "PANTALLA:pc_correo",
+      "background": "fondos/departamento_noche.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [
@@ -7818,13 +7854,7 @@
       "background": "PANTALLA:negro",
       "video_fondo": null,
       "loop_video": false,
-      "characters": [
-        {
-          "id": "jair",
-          "sprite": "sprites/jair/base.webp",
-          "pos": "centro"
-        }
-      ],
+      "characters": [],
       "dialogue": {
         "speaker": null,
         "text": "La única vez que dijo que no."

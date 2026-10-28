@@ -1290,3 +1290,11 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 .slot:nth-child(3n) .save-thumb-empty::before { animation-delay: -1.1s; animation-duration: 1.9s; }
 .slot:nth-child(2n) .save-thumb-nodata { animation-delay: -0.4s; }
 .slot:nth-child(3n) .save-thumb-nodata { animation-delay: -0.7s; animation-duration: 1.2s; }
+
+/* Final temprano: la misma pantalla, pero sobria. Negro, blanco y plata, sin glitch ni parpadeos. */
+.end-calm { background: radial-gradient(ellipse at 50% 50%, #17181c 0%, #070708 60%, #000 100%); animation: none; }
+.end-calm .bad-end-label { color: #a9aeb8; text-shadow: none; letter-spacing: 0.7em; }
+.end-calm .bad-end-title { color: #f2f4f7; text-shadow: 0 0 1.4rem rgba(230, 233, 240, 0.18); animation: bad-end-title-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both; }
+.end-calm .bad-end-title::before, .end-calm .bad-end-title::after { display: none; }
+.end-calm .bad-end-button { color: #e9ecf1; background: rgba(255, 255, 255, 0.05); border-color: rgba(214, 218, 226, 0.35); }
+.end-calm .bad-end-button:hover:not(:disabled) { border-color: #e9ecf1; background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 1.2rem rgba(230, 233, 240, 0.2); }

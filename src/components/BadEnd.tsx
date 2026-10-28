@@ -12,12 +12,17 @@ interface Props {
   lastScene: ReactNode;
   /** Vuelve al título con fundido a negro. */
   onTitle: () => void;
+  /** Final que no es un bad end: misma secuencia, pero sobria (blanco y plata, sin glitch). */
+  calm?: boolean;
 }
 
 const FADE_MS = 1800;
 
-/** Bad end: fundido a negro, «BAD END» y el nombre del final en rojo con glitch, y el botón para volver al menú. */
-export function BadEnd({ name, lastScene, onTitle }: Props) {
+/**
+ * Pantalla de final: fundido a negro, la etiqueta y el nombre del final, y el botón para volver al menú.
+ * Bad end: en rojo con glitch. Final temprano (`calm`): en blanco y plata, quieto.
+ */
+export function BadEnd({ name, lastScene, onTitle, calm }: Props) {
   const still = useStore((s) => s.settings.reduceEffects);
   const textos = localized(textosEs, textosEn, useLang());
   const [faded, setFaded] = useState(false);
@@ -37,9 +42,9 @@ export function BadEnd({ name, lastScene, onTitle }: Props) {
   }
 
   return (
-    <div className={`screen bad-end ${still ? 'bad-end-still' : ''}`}>
-      <div className="bad-end-scan" aria-hidden />
-      <p className="bad-end-label">{textos.etiqueta}</p>
+    <div className={`screen bad-end ${calm ? 'end-calm' : ''} ${still ? 'bad-end-still' : ''}`}>
+      {!calm && <div className="bad-end-scan" aria-hidden />}
+      <p className="bad-end-label">{calm ? textos.etiqueta_final : textos.etiqueta}</p>
       <h1 className="bad-end-title" data-text={name}>
         {name}
       </h1>

@@ -403,9 +403,10 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       );
     }
     const ending = getEnding(game.finished);
-    if (ending?.tipo === BAD_END) {
+    if (ending) {
       return (
         <BadEnd
+          calm={ending.tipo !== BAD_END}
           name={endingName(ending, lang)}
           onTitle={onTitle}
           lastScene={

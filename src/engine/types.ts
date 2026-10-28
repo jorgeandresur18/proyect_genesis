@@ -61,6 +61,8 @@ export interface Scene {
   conditions: Condition[];
   audio: string | null;
   ui_effect: UiEffect | UiEffect[] | null;
+  /** Acción que ocurre sola en una pantalla en código al entrar a la escena (p. ej. borrar el correo). */
+  accion_pantalla?: 'eliminar' | 'descargar';
   next: Next;
   /** ID de final (docs/FINALES.md). La escena cierra la partida y se registra en la galería. */
   ending?: string;

@@ -1,5 +1,6 @@
 {
   "nota": "Textos de la pantalla de un bad end.",
   "etiqueta": "BAD END",
-  "volver": "Volver al menú principal"
+  "volver": "Volver al menú principal",
+  "etiqueta_final": "FIN"
 }

@@ -687,9 +687,6 @@
 > ♪ silencio
 `bad_correo_003` — Apaga la PC. El ventilador sigue girando, solo, en la oscuridad.
 
-
-### PANTALLA:pc_correo
-
 `bad_correo_004` — Duerme once horas. Despierta con resaca, un mensaje de Nikki que dice «ya llegue» y la misma vida de siempre.
 
 `bad_correo_005` **Correo:** Tu invitación a GRAVITY ha expirado.
@@ -701,7 +698,7 @@
 
 `bad_correo_007` — Spam.
 
-> **BAD END: Spam**
+> **FIN: Spam**
 
 ---
 
@@ -711,14 +708,13 @@
 
 `bad_sinbar_002` **Jair:** «Nosotros lo construimos». Claro. Y después me vacían la cuenta.
 
+> ♪ silencio
+`bad_sinbar_003` — Lo elimina.
+
 
 ### fondos/departamento_noche.webp
 
-> ♪ silencio
-`bad_sinbar_003` — Lo elimina. Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once.
-
-
-### PANTALLA:pc_correo
+`bad_sinbar_003b` — Cena pan con queso. Ve medio capítulo de una serie y se duerme antes de las once.
 
 `bad_sinbar_004` — El sábado no pasa nada. El domingo tampoco. El lunes, el supervisor avisa que el pago se corre para el otro viernes.
 
@@ -729,7 +725,7 @@
 
 `bad_sinbar_006` — Una noche normal.
 
-> **BAD END: Una noche normal**
+> **FIN: Una noche normal**
 
 ---
 
@@ -739,14 +735,13 @@
 
 `bad_rechazo_002` **Jair:** (Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)
 
+> ♪ silencio
+`bad_rechazo_003` — Elimina el correo.
+
 
 ### fondos/departamento_noche.webp
 
-> ♪ silencio
-`bad_rechazo_003` — Elimina el correo. Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual.
-
-
-### PANTALLA:pc_correo
+`bad_rechazo_003b` — Le escribe a Nikki: «llegaste bien?». Ella no contesta. Él se duerme igual.
 
 `bad_rechazo_004` — No hay rubia, ni peliverde, ni Rey Malvado. Solo un hombre que, por una noche, eligió no huir.
 

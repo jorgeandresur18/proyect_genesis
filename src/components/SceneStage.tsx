@@ -43,7 +43,7 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
     <div className={`stage ${glitching ? glitch.glitch : ''}`}>
       <div className="stage-bg">
         {screen !== null ? (
-          <CodeScreen id={screen} lines={lines} />
+          <CodeScreen id={screen} lines={lines} accion={scene.accion_pantalla} />
         ) : scene.background && !isPlaceholder(scene.background) && !scene.video_fondo ? (
           <Backdrop src={assetUrl(scene.background)} />
         ) : (
@@ -53,7 +53,8 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
               : scene.background ?? 'sin fondo'}
           </span>
         )}
-        {scene.audio && <span className="placeholder-audio">♪ {scene.audio}</span>}
+        {/* Solo los audios provisionales muestran su nombre (los reales ya suenan). */}
+        {scene.audio && isPlaceholder(scene.audio) && <span className="placeholder-audio">♪ {scene.audio}</span>}
       </div>
       <div className="stage-characters">
         {scene.characters.map((c) => {

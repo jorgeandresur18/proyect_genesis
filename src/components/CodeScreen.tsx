@@ -19,17 +19,19 @@ interface Line {
 
 interface Props {
   id: string;
+  /** Acción automática de la escena (el correo se borra o se descarga solo, con el puntero). */
+  accion?: 'eliminar' | 'descargar';
   /** Historial de diálogo hasta la línea actual: de ahí salen la consola de GENESIS y los mensajes. */
   lines: Line[];
 }
 
 /** Fondos que no son imágenes: pantallas con texto que tiene que leerse bien (ver src/data/pantallas.json). */
-export function CodeScreen({ id, lines }: Props) {
+export function CodeScreen({ id, lines, accion }: Props) {
   switch (id) {
     case 'gravity_ide':
       return <GravityIde lines={lines} />;
     case 'pc_correo':
-      return <Correo lines={lines} />;
+      return <Correo lines={lines} accion={accion} />;
     case 'celular_mensaje':
       return <Celular lines={lines} />;
     case 'celular_favorito':
@@ -113,9 +115,10 @@ function lastClick(lines: Line[], clics: Record<string, number>): { at: number; 
   return null;
 }
 
-function Correo({ lines }: { lines: Line[] }) {
+function Correo({ lines, accion }: { lines: Line[]; accion?: 'eliminar' | 'descargar' }) {
   const pantallas = usePantallas();
   const c = pantallas.pc_correo;
+  if (accion) return <CorreoVentana key={`accion-${accion}`} button={accion === 'eliminar' ? 1 : 0} live />;
   const click = lastClick(lines, c.clics as Record<string, number>);
   // La animación corre justo después de elegir (la decisión es lo anterior a la línea actual);
   // si se vuelve a esta pantalla más tarde, ya se muestra el resultado.
@@ -137,8 +140,10 @@ function CorreoVentana({ button, live }: { button: number | null; live: boolean 
     const row = buttonsRef.current;
     if (!row || !first.current || !second.current) return;
     const measure = () => {
+      // Al borrar el correo, los botones desaparecen: ya no hay nada que medir.
+      if (!first.current || !second.current) return;
       const r = row.getBoundingClientRect();
-      const [a, b] = [first.current!.getBoundingClientRect(), second.current!.getBoundingClientRect()];
+      const [a, b] = [first.current.getBoundingClientRect(), second.current.getBoundingClientRect()];
       const target = (x: DOMRect): [number, number] => [x.left - r.left + x.width * 0.55, x.top - r.top + x.height * 0.6];
       setSpots({ idle: [(a.right + b.left) / 2 - r.left, a.bottom - r.top + 4], targets: [target(a), target(b)] });
     };
