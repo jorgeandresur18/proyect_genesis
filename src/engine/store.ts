@@ -155,10 +155,9 @@ export const useStore = create<Store>()(
         advance: () => {
           const { game } = get();
           if (!game) return;
-          if (game.finished) {
-            set({ game: null, mode: 'normal' });
-            return;
-          }
+          // En una pantalla de final o de fin de capítulo se sale con sus botones, no avanzando
+          // (un doble clic en la última línea se saltaba la pantalla del final).
+          if (game.finished) return;
           const scene = scenes.get(game.sceneId);
           if (!scene || visibleChoices(scene, game.vars).length > 0) return;
           markRead(scene.scene_id);
