@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
 import { BAD_END, endings } from '../engine/story';
 import conoceMas from '../data/conoce_mas.json';
@@ -157,18 +157,51 @@ export function AboutPanel({ onClose }: { onClose: () => void }) {
   );
 }
 
+// Tamaños de texto de la caja de diálogo.
+const TEXT_SIZES = [
+  { label: 'Pequeña', value: 0.9 },
+  { label: 'Normal', value: 1 },
+  { label: 'Grande', value: 1.15 },
+  { label: 'Muy grande', value: 1.3 },
+];
+
 export function OptionsPanel({ onClose }: { onClose: () => void }) {
   const settings = useStore((s) => s.settings);
   const setSettings = useStore((s) => s.setSettings);
   return (
     <Panel title="Opciones" onClose={onClose}>
+      <h3 className="options-section">Lectura</h3>
+      {/* Vista previa: muestra al momento el tamaño del texto y la opacidad de la caja. */}
+      <div className="reading-preview" aria-hidden>
+        <div className="dialog dialog-has-speaker" style={{ '--speaker': '#ff6fa5' } as CSSProperties}>
+          <div className="dialog-speaker">Nikki</div>
+          <div className="dialog-text">Así se va a ver el texto. Una sola. Lo juro por mi delantal.</div>
+        </div>
+      </div>
+      <div className="option">
+        Tamaño del texto
+        <div className="segmented">
+          {TEXT_SIZES.map((t) => (
+            <button
+              key={t.value}
+              className={settings.textScale === t.value ? 'active' : ''}
+              onClick={() => setSettings({ textScale: t.value })}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
       <label className="option">
+        Opacidad de la caja de texto: {Math.round(settings.boxOpacity * 100)} %
         <input
-          type="checkbox"
-          checked={settings.reduceEffects}
-          onChange={(e) => setSettings({ reduceEffects: e.target.checked })}
+          type="range"
+          min={0.4}
+          max={1}
+          step={0.04}
+          value={settings.boxOpacity}
+          onChange={(e) => setSettings({ boxOpacity: Number(e.target.value) })}
         />
-        Reducir efectos (desactiva glitches y efectos de interfaz)
       </label>
       <label className="option">
         Velocidad del texto:{' '}
@@ -182,6 +215,22 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
           onChange={(e) => setSettings({ textSpeed: Number(e.target.value) })}
         />
       </label>
+      <label className="option">
+        Modo auto: pausa al terminar cada línea, {(settings.autoDelayMs / 1000).toFixed(1)} s
+        <input
+          type="range"
+          min={300}
+          max={5000}
+          step={100}
+          value={settings.autoDelayMs}
+          onChange={(e) => setSettings({ autoDelayMs: Number(e.target.value) })}
+        />
+      </label>
+      <p className="muted options-tip">
+        Para ver la imagen sin la caja de texto: botón «Ocultar» o tecla H. Cualquier clic la vuelve a mostrar.
+      </p>
+
+      <h3 className="options-section">Sonido</h3>
       <label className="option">
         <input type="checkbox" checked={settings.muted} onChange={(e) => setSettings({ muted: e.target.checked })} />
         Silenciar todo el audio (tecla M)
@@ -216,16 +265,15 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
         Sonido mientras se escribe el texto
       </label>
+
+      <h3 className="options-section">Pantalla</h3>
       <label className="option">
-        Modo auto: pausa al terminar cada línea, {(settings.autoDelayMs / 1000).toFixed(1)} s
         <input
-          type="range"
-          min={300}
-          max={5000}
-          step={100}
-          value={settings.autoDelayMs}
-          onChange={(e) => setSettings({ autoDelayMs: Number(e.target.value) })}
+          type="checkbox"
+          checked={settings.reduceEffects}
+          onChange={(e) => setSettings({ reduceEffects: e.target.checked })}
         />
+        Reducir efectos (desactiva glitches y efectos de interfaz)
       </label>
     </Panel>
   );

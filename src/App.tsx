@@ -9,6 +9,7 @@ import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
 import { DecisionMenu } from './components/DecisionMenu';
 import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { CgGallery } from './components/CgGallery';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -28,7 +29,7 @@ const TITLE_REVEAL_MS = 1200;
 /** De dónde se llega al título: cambia cómo sale del negro. */
 type Intro = 'advertencia' | 'juego' | null;
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'options' | 'about' | null;
+type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'gallery' | 'options' | 'about' | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
@@ -58,6 +59,13 @@ export default function App() {
       still ? 150 : TITLE_FADE_MS,
     );
   };
+  // Opciones de lectura: tamaño del texto y opacidad de la caja (las usa styles.css).
+  const textScale = useStore((s) => s.settings.textScale);
+  const boxOpacity = useStore((s) => s.settings.boxOpacity);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--text-scale', String(textScale));
+    document.documentElement.style.setProperty('--box-alpha', String(boxOpacity));
+  }, [textScale, boxOpacity]);
   // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
   const music = useStore((s) =>
     !s.game || s.game.finished?.startsWith(CHAPTER_END)
@@ -97,6 +105,7 @@ export default function App() {
       {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
+      {overlay === 'gallery' && <CgGallery onClose={close} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       <AudioToggle />
@@ -189,6 +198,7 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
         </button>
         <button onClick={() => open('load')}>Cargar</button>
         <button onClick={() => open('map')}>Mapa de escenas</button>
+        <button onClick={() => open('gallery')}>Galería</button>
         <button onClick={() => open('endings')}>Finales</button>
         <button onClick={() => open('options')}>Opciones</button>
         <button onClick={() => open('about')}>Conoce más del proyecto</button>
@@ -202,6 +212,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const { next, choose, setMode } = useStore.getState();
   const error = useStore((s) => s.error);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Ocultar la caja y los botones para mirar la imagen (tecla H o botón «Ocultar»; cualquier clic la devuelve).
+  const [uiHidden, setUiHidden] = useState(false);
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
   const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
@@ -211,6 +223,12 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (sceneId) preloadFrom(sceneId);
   }, [sceneId]);
   const fading = phase === 'out';
+  // Las imágenes de la galería (fondos cg_*) se desbloquean al verlas.
+  const shownBackground = shown?.background;
+  useEffect(() => {
+    const cg = shownBackground?.match(/^fondos\/(cg_[a-z0-9_]+)\.webp$/);
+    if (cg) useStore.getState().markCg(cg[1]);
+  }, [shownBackground]);
   const advanceIfReady = () => {
     if (!fading) next();
   };
@@ -218,16 +236,23 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   useEffect(() => {
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
+      if (useStore.getState().game?.finished) return; // En los finales se elige con los botones.
+      if (e.key.toLowerCase() === 'h' && !e.ctrlKey && !e.metaKey) {
+        setUiHidden((h) => !h);
+        return;
+      }
       if (e.key === ' ' || e.key === 'Enter') {
-        // En el fin de capítulo y en los finales se elige con los botones o con un clic.
-        if (useStore.getState().game?.finished) return;
         e.preventDefault();
+        if (uiHidden) {
+          setUiHidden(false);
+          return;
+        }
         if (!fading && !(waitingChoice && textDone)) next();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [paused, fading, waitingChoice, textDone, next]);
+  }, [paused, fading, waitingChoice, textDone, next, uiHidden]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
@@ -288,6 +313,9 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       <button onClick={() => open('load')}>Cargar</button>
       <button onClick={() => open('map')}>Mapa</button>
       <button onClick={() => open('options')}>Opciones</button>
+      <button onClick={() => setUiHidden(true)} title="Ocultar la caja para ver la imagen (tecla H)">
+        Ocultar
+      </button>
       {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>Pantalla completa</button>}
       <button onClick={onTitle}>Título</button>
     </>
@@ -305,9 +333,10 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
           {mode === 'auto' ? 'AUTO ▶' : 'SALTANDO ▶▶'}
         </div>
       )}
+      {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
       {/* Un clic en cualquier parte de la escena también avanza (no cuando hay que elegir). */}
-      {!(waitingChoice && textDone) && <div className="stage-click" onClick={advanceIfReady} aria-hidden />}
-      {waitingChoice && textDone && !fading && (
+      {!uiHidden && !(waitingChoice && textDone) && <div className="stage-click" onClick={advanceIfReady} aria-hidden />}
+      {!uiHidden && waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}
           onChoose={(i) => {
@@ -317,7 +346,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         />
       )}
       {/* La línea nueva empieza a escribirse cuando aparece su escena, no detrás del negro. */}
-      {!fading && (
+      {!fading && !uiHidden && (
         <DialogBox
           key={shown.scene_id}
           dialogue={shown.dialogue}
@@ -332,11 +361,11 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         aria-hidden
       />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
-      <div className="toolbar" onMouseDown={(e) => e.preventDefault()}>
+      <div className={`toolbar ${uiHidden ? 'ui-hidden' : ''}`} onMouseDown={(e) => e.preventDefault()}>
         {buttons}
       </div>
       {/* Pantallas chicas: los mismos botones dentro de un menú ☰. */}
-      <div className="toolbar-compact" onMouseDown={(e) => e.preventDefault()}>
+      <div className={`toolbar-compact ${uiHidden ? 'ui-hidden' : ''}`} onMouseDown={(e) => e.preventDefault()}>
         <button className={`menu-toggle ${mode !== 'normal' ? 'active' : ''}`} onClick={() => setMenuOpen((o) => !o)} aria-label="Menú">
           ☰
         </button>

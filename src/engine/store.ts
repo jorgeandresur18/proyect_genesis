@@ -46,10 +46,14 @@ export interface Settings {
   musicVolume: number;
   /** Silencia música y efectos sin tocar los volúmenes. */
   muted: boolean;
+  /** Tamaño del texto de la caja de diálogo (1 = normal). */
+  textScale: number;
+  /** Opacidad del fondo de la caja de diálogo, de 0,4 a 1. */
+  boxOpacity: number;
 }
 
 export const TEXT_SPEED_INSTANT = 130;
-const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false };
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false, textScale: 1, boxOpacity: 0.88 };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 
@@ -71,6 +75,8 @@ interface Store {
   snapshots: Record<string, Vars>;
   /** Finales alcanzados, con fecha. */
   endingsSeen: Record<string, string>;
+  /** Imágenes de la galería ya vistas (id del fondo, p. ej. `cg_beso_nikki`). */
+  cgSeen: Record<string, true>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -83,6 +89,8 @@ interface Store {
   /** Clic o Espacio: si el texto se está escribiendo, lo completa; si ya terminó, avanza. */
   next: () => void;
   setTextDone: (done: boolean) => void;
+  /** Marca una imagen de la galería como vista. */
+  markCg: (id: string) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -138,6 +146,7 @@ export const useStore = create<Store>()(
         readScenes: {},
         snapshots: {},
         endingsSeen: {},
+        cgSeen: {},
         choicesTaken: {},
         mode: 'normal',
         error: null,
@@ -151,6 +160,10 @@ export const useStore = create<Store>()(
         },
 
         setTextDone: (done) => set({ textDone: done }),
+
+        markCg: (id) => {
+          if (!get().cgSeen[id]) set({ cgSeen: { ...get().cgSeen, [id]: true } });
+        },
 
         advance: () => {
           const { game } = get();
@@ -259,6 +272,7 @@ export const useStore = create<Store>()(
         readScenes: s.readScenes,
         snapshots: s.snapshots,
         endingsSeen: s.endingsSeen,
+        cgSeen: s.cgSeen,
         choicesTaken: s.choicesTaken,
       }),
     },

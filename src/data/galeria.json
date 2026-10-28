@@ -1,0 +1,11 @@
+{
+  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego.",
+  "titulos": {
+    "cg_jair_carga_cami": "En brazos",
+    "cg_jair_carga_cami_espalda": "Una mochila muy enojada",
+    "cg_caida_multiverso": "La caída",
+    "cg_jair_carga_cami_bosque": "Otra vez en brazos",
+    "cg_beso_nikki_cerca": "Sabor a tequila",
+    "cg_beso_nikki": "¿Ves? No era tan difícil"
+  }
+}

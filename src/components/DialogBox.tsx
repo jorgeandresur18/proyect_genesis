@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import type { Dialogue } from '../engine/types';
 import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { highlightAiVowels } from '../effects/aiVowels';
 import { startTyping, stopTyping } from '../engine/sound';
+import personajes from '../data/personajes_ui.json';
+
+/** Color (y si es una voz de máquina) del nombre de un hablante: «Nikki (mensaje)» usa el de Nikki. */
+function speakerStyle(speaker: string): { color: string; mono: boolean } {
+  const s = speaker.toLowerCase();
+  const found = personajes.colores.find((c) => s.startsWith(c.prefijo));
+  return { color: found?.color ?? personajes.por_defecto, mono: !!(found && 'mono' in found && found.mono) };
+}
 
 interface Props {
   dialogue: Dialogue | null;
@@ -52,10 +60,19 @@ export function DialogBox({ dialogue, aiVowels, hasChoices, onAdvance }: Props) 
   if (!dialogue) return null;
   const visible = textDone ? text : text.slice(0, count);
   const render = (t: string) => (aiVowels ? highlightAiVowels(t) : t);
+  const who = dialogue.speaker ? speakerStyle(dialogue.speaker) : null;
+  // Los pensamientos van entre paréntesis: en cursiva, para distinguirlos de lo que se dice en voz alta.
+  const thought = /^\(.*\)$/s.test(text.trim());
   return (
-    <div className="dialog" onClick={onAdvance} role="button" tabIndex={-1}>
-      {dialogue.speaker && <div className="dialog-speaker">{render(dialogue.speaker)}</div>}
-      <div className="dialog-text">
+    <div
+      className={`dialog ${who ? 'dialog-has-speaker' : 'dialog-narration'}`}
+      style={who ? ({ '--speaker': who.color } as CSSProperties) : undefined}
+      onClick={onAdvance}
+      role="button"
+      tabIndex={-1}
+    >
+      {dialogue.speaker && <div className={`dialog-speaker ${who?.mono ? 'dialog-speaker-mono' : ''}`}>{render(dialogue.speaker)}</div>}
+      <div className={`dialog-text ${thought ? 'dialog-thought' : ''} ${who?.mono ? 'dialog-mono' : ''}`}>
         {render(visible)}
         {/* El resto del texto ocupa su lugar sin verse, para que la caja no cambie de tamaño al escribir. */}
         {!textDone && <span className="dialog-hidden">{text.slice(count)}</span>}

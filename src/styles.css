@@ -191,22 +191,58 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 .sprite-centro { left: 50%; transform: translateX(-50%); }
 .sprite-derecha { right: 4%; }
 
+/* Caja de diálogo: vidrio oscuro con filo plateado. El nombre va en una pestaña sobre el borde, en el color
+   de quien habla (src/data/personajes_ui.json). Tamaño y opacidad: Opciones (--text-scale, --box-alpha). */
 .dialog {
   position: absolute;
   left: 50%;
   bottom: 3.6rem;
   transform: translateX(-50%);
-  width: min(56rem, calc(100% - 2rem));
-  min-height: 8rem;
-  padding: 1rem 1.2rem;
-  background: rgba(20, 20, 22, 0.92);
-  border: 1px solid var(--line);
+  width: min(58rem, calc(100% - 2rem));
+  min-height: 8.5rem;
+  padding: 1.35rem 1.5rem 2.6rem;
+  background: linear-gradient(180deg, rgba(18, 18, 22, var(--box-alpha, 0.88)), rgba(8, 8, 10, var(--box-alpha, 0.88)));
+  border: 1px solid rgba(214, 218, 226, 0.22);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(calc((1 - var(--box-alpha, 0.88)) * 14px));
   cursor: pointer;
   /* Por encima del oscurecido de las decisiones: la pregunta suele estar aquí. */
   z-index: 3;
 }
-.dialog-speaker { font-weight: 700; margin-bottom: 0.4rem; }
-.dialog-text { line-height: 1.55; font-size: 1.05rem; }
+/* Filo de color arriba: el del personaje que habla; plateado en la narración. */
+.dialog::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 1.2rem;
+  right: 1.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--speaker, #d9dde4), transparent 70%);
+  opacity: 0.9;
+}
+.dialog-narration::before { background: linear-gradient(90deg, transparent, rgba(217, 221, 228, 0.6), transparent); }
+.dialog-speaker {
+  position: absolute;
+  top: 0;
+  left: 1.3rem;
+  transform: translateY(-55%);
+  padding: 0.35rem 1.15rem 0.38rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(1.12rem * var(--text-scale, 1));
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #0b0b0d;
+  background: var(--speaker, #c9ced6);
+  border-radius: 0.4rem;
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--speaker, #c9ced6) 45%, transparent), 0 0.3rem 0.8rem rgba(0, 0, 0, 0.4);
+}
+.dialog-speaker-mono { font-family: ui-monospace, Consolas, monospace; letter-spacing: 0.12em; }
+.dialog-text { line-height: 1.6; font-size: calc(1.08rem * var(--text-scale, 1)); color: #eef0f4; }
+.dialog-narration .dialog-text { color: #dfe2e8; }
+.dialog-thought { font-style: italic; color: #b9bfca; }
+.dialog-mono { font-family: ui-monospace, Consolas, monospace; color: color-mix(in srgb, var(--speaker) 70%, #fff); }
 
 /* Decisiones: la escena se oscurece y las opciones quedan al centro, grandes y numeradas. */
 .decisions-dim {
@@ -300,7 +336,17 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   gap: 0.3rem;
   width: calc(100% - 1rem);
 }
-.toolbar button { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+.toolbar button {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  color: #d9dde4;
+  background: rgba(10, 10, 12, 0.6);
+  border: 1px solid rgba(214, 218, 226, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.toolbar button:hover:not(:disabled) { border-color: #e9ecf1; color: #fff; }
+.toolbar button.active { border-color: var(--accent); color: var(--accent); }
 .stage-error { position: absolute; top: 2.5rem; left: 0.6rem; }
 
 /* Paneles */
@@ -392,12 +438,11 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 
 /* Pantalla de título: logo del juego. */
 .title-logo { margin: 0; line-height: 0; }
-.title-logo img { width: min(26rem, 70vw, 55vh); height: auto; }
+.title-logo img { width: min(22rem, 60vw, 40vh); height: auto; }
 
 /* Máquina de escribir: el texto que falta ocupa su lugar sin verse; ▼ indica que la línea terminó. */
 .dialog-hidden { visibility: hidden; }
 .stage-click { position: absolute; inset: 0; cursor: pointer; }
-.dialog { padding-bottom: 2.6rem; }
 .dialog-advance {
   position: absolute;
   right: 0.7rem;
@@ -518,11 +563,11 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     bottom: 0.5rem;
     width: calc(100% - 1rem);
     min-height: 0;
-    padding: 0.55rem 0.8rem 2.1rem;
+    padding: 0.95rem 0.9rem 2.1rem;
   }
   .dialog-advance { right: 0.5rem; bottom: 0.4rem; padding: 0.2rem 0.7rem; font-size: 0.72rem; }
-  .dialog-speaker { font-size: 0.85rem; margin-bottom: 0.2rem; }
-  .dialog-text { font-size: 0.9rem; line-height: 1.4; }
+  .dialog-speaker { font-size: calc(0.82rem * var(--text-scale, 1)); left: 0.8rem; padding: 0.18rem 0.75rem; }
+  .dialog-text { font-size: calc(0.9rem * var(--text-scale, 1)); line-height: 1.45; }
 
   .decisions { top: 42%; gap: 0.45rem; width: min(34rem, calc(100% - 5rem)); max-height: calc(100% - 7rem); overflow-y: auto; }
   .decisions-label { font-size: 0.7rem; margin: 0.2rem 0 0.45rem; line-height: 1; }
@@ -540,7 +585,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 
   /* Título en horizontal: logo más chico y menú en dos columnas. */
   .screen { gap: 0.5rem; padding: 0.8rem; }
-  .title-logo img { width: min(26rem, 70vw, 38vh); }
+  .title-logo img { width: min(22rem, 60vw, 34vh); }
   .title-menu { display: grid; grid-template-columns: 1fr 1fr; min-width: 0; width: min(32rem, 100%); }
   .title-menu button { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
   .warning-card { padding: 1.2rem 1.3rem; }
@@ -884,3 +929,70 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .bad-end *, .bad-end { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
 }
+
+/* Interfaz oculta (tecla H): solo la imagen; cualquier clic la devuelve. */
+.ui-hidden { display: none !important; }
+.stage-unhide { z-index: 4; }
+
+/* Galería de imágenes. */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0.9rem; }
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0;
+  text-align: left;
+  background: none;
+  border: none;
+}
+.gallery-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(214, 218, 226, 0.2);
+  border-radius: 0.5rem;
+  background: #0b0b0d;
+}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s; }
+.gallery-item:hover:not(:disabled) .gallery-thumb { border-color: #e9ecf1; box-shadow: 0 0 1rem rgba(230, 233, 240, 0.18); }
+.gallery-item:hover:not(:disabled) .gallery-thumb img { transform: scale(1.04); }
+.gallery-locked .gallery-thumb { display: grid; place-items: center; color: #5d626c; font-size: 1.6rem; background: repeating-linear-gradient(45deg, #121215 0 12px, #16161a 12px 24px); }
+.gallery-locked { opacity: 1 !important; }
+.gallery-title { font-size: 0.9rem; color: #d9dde4; }
+.gallery-locked .gallery-title { color: var(--muted); }
+.gallery-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.94);
+  animation: decisions-fade 0.25s ease-out both;
+}
+.gallery-viewer img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.gallery-viewer-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.4rem 0.6rem;
+  background: rgba(10, 10, 12, 0.75);
+  border: 1px solid rgba(214, 218, 226, 0.2);
+  border-radius: 999px;
+}
+.gallery-viewer-bar span { padding: 0 0.4rem; font-size: 0.9rem; color: #d9dde4; }
+.gallery-viewer-bar button { border-radius: 999px; }
+
+/* Vista previa de las opciones de lectura. */
+.reading-preview { position: relative; height: 9.5rem; margin: 0.4rem 0 1.2rem; overflow: hidden; border-radius: 0.6rem; background: url('/fondos/bar_noche.webp') center / cover; }
+.reading-preview .dialog { position: absolute; left: 0.8rem; right: 0.8rem; bottom: 0.8rem; width: auto; min-height: 0; transform: none; padding-bottom: 1.3rem; cursor: default; }
+
+/* Opciones: secciones y botones segmentados. */
+.options-section { margin: 0.6rem 0 0.7rem; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #c3c8d0; }
+.options-section:not(:first-child) { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.options-tip { font-size: 0.85rem; margin: 0 0 0.5rem; }
+.segmented { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.segmented button { flex: 1; min-width: 6rem; }
