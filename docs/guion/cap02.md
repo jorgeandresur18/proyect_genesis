@@ -104,7 +104,7 @@
 
 `029c2` **Mike:** Eso dicen los grandes cuando no saben.
 
-`029c3` **Jair:** (Tiene seis años y ya entendió cómo funciona la ingeniería de software.)
+`029c3` **Jair:** (Es un niño y ya entendió cómo funciona la ingeniería de software.)
 
 `030` — Rikka los lleva por la calle principal. Los niños se les pegan a los talones como dos perros que acaban de adoptar a un forastero.
 
