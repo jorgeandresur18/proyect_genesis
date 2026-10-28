@@ -1831,6 +1831,105 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap02_044b"
+    },
+    {
+      "scene_id": "cap02_044b",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Y debajo de la Voz, más bajito, algo más. Jair no lo alcanza a oír: Rikka ya está hablando."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_044c"
+    },
+    {
+      "scene_id": "cap02_044c",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Acceso del usuario. Entidad 01: llave activada. Paso abierto."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_044d"
+    },
+    {
+      "scene_id": "cap02_044d",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Cami se lleva una mano al pecho, como si algo le hubiera dado un tirón por dentro. Frunce el ceño. No dice nada."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap02_045"
     },
     {
@@ -4429,6 +4528,57 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap02_127b"
+    },
+    {
+      "scene_id": "cap02_127b",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Una llave entre universos. Y hoy alguien la giró."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_127c"
+    },
+    {
+      "scene_id": "cap02_127c",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "No fue ella. Ella es la llave. La llave no decide cuándo abre."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_127d"
+    },
+    {
+      "scene_id": "cap02_127d",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Fue él. Sin saberlo. Les abrió la puerta a mis soldados mientras hablaba de la edad de una guardiana."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap02_128"
     },
     {
@@ -4457,7 +4607,7 @@
       "characters": [],
       "dialogue": {
         "speaker": "???",
-        "text": "Pero un puente no se cruza solo. Alguien tiene que dar la orden."
+        "text": "Hoy la giró sin querer. Lo que necesito es que la gire queriendo. Que él dé la orden."
       },
       "choices": [],
       "conditions": [],

@@ -596,6 +596,33 @@
 
 `115` — Jair se queda en la esquina. Le duelen los pies, le zumban los oídos y el mundo se inclina un poquito hacia la izquierda.
 
+`115n1` — Antes de caminar saca el celular. Lo hace sin pensar, como quien se toca el bolsillo para ver si la llave sigue ahí.
+
+
+### PANTALLA:celular_favorito
+
+`115n2` — El chat con Nikki. Arriba, en «Mensajes destacados», hay uno solo. El único mensaje que Jair marcó con una estrella en toda su vida.
+
+`115n3` **Nikki (hace un año y medio):** nunca te vayas de mi vida
+
+`115n4` — Sin mayúsculas ni punto final, como escribe todo. Jair lo lee como otros leen el horóscopo: casi todas las noches, por si esta vez dice otra cosa.
+
+`115n5` **Jair:** («Nunca te vayas de mi vida».)
+
+`115n6` **Jair:** (Y hace diez minutos: «Búscate una novia, Jair».)
+
+
+### PANTALLA:celular_foto_nikki
+
+`115n7` — Toca la foto de perfil. Nikki en una fiesta, con un vaso en la mano y una sonrisa que no es la de cartel. La foto la sacó de su Boringram.
+
+`115n8` **Jair:** (Ocho años.)
+
+
+### fondos/calle_noche.webp
+
+`115n9` — Bloquea el celular. La pantalla negra le devuelve su propia cara. Esa no la mira tanto.
+
 
 ### fondos/departamento_noche.webp
 

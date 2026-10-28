@@ -6898,6 +6898,171 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_115n1"
+    },
+    {
+      "scene_id": "cap01_115n1",
+      "chapter": 1,
+      "background": "fondos/calle_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Antes de caminar saca el celular. Lo hace sin pensar, como quien se toca el bolsillo para ver si la llave sigue ahí."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n2"
+    },
+    {
+      "scene_id": "cap01_115n2",
+      "chapter": 1,
+      "background": "PANTALLA:celular_favorito",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "El chat con Nikki. Arriba, en «Mensajes destacados», hay uno solo. El único mensaje que Jair marcó con una estrella en toda su vida."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n3"
+    },
+    {
+      "scene_id": "cap01_115n3",
+      "chapter": 1,
+      "background": "PANTALLA:celular_favorito",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Nikki (hace un año y medio)",
+        "text": "nunca te vayas de mi vida"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n4"
+    },
+    {
+      "scene_id": "cap01_115n4",
+      "chapter": 1,
+      "background": "PANTALLA:celular_favorito",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Sin mayúsculas ni punto final, como escribe todo. Jair lo lee como otros leen el horóscopo: casi todas las noches, por si esta vez dice otra cosa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n5"
+    },
+    {
+      "scene_id": "cap01_115n5",
+      "chapter": 1,
+      "background": "PANTALLA:celular_favorito",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(«Nunca te vayas de mi vida».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n6"
+    },
+    {
+      "scene_id": "cap01_115n6",
+      "chapter": 1,
+      "background": "PANTALLA:celular_favorito",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Y hace diez minutos: «Búscate una novia, Jair».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n7"
+    },
+    {
+      "scene_id": "cap01_115n7",
+      "chapter": 1,
+      "background": "PANTALLA:celular_foto_nikki",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Toca la foto de perfil. Nikki en una fiesta, con un vaso en la mano y una sonrisa que no es la de cartel. La foto la sacó de su Boringram."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n8"
+    },
+    {
+      "scene_id": "cap01_115n8",
+      "chapter": 1,
+      "background": "PANTALLA:celular_foto_nikki",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ocho años.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_115n9"
+    },
+    {
+      "scene_id": "cap01_115n9",
+      "chapter": 1,
+      "background": "fondos/calle_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "centro"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Bloquea el celular. La pantalla negra le devuelve su propia cara. Esa no la mira tanto."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_116"
     },
     {

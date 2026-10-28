@@ -136,6 +136,12 @@
 
 `044` **Voz:** Dato recuperado: «guardiana, más de quinientos años». Origen: un archivo del usuario. Sin terminar.
 
+`044b` — Y debajo de la Voz, más bajito, algo más. Jair no lo alcanza a oír: Rikka ya está hablando.
+
+`044c` **Voz:** Acceso del usuario. Entidad 01: llave activada. Paso abierto.
+
+`044d` — Cami se lleva una mano al pecho, como si algo le hubiera dado un tirón por dentro. Frunce el ceño. No dice nada.
+
 `045` **Rikka:** ...Más o menos. Se podría decir que sí. Creo que sí.
 
 `046` **Rikka:** ¿Cómo sabes eso?
@@ -327,9 +333,15 @@
 
 `127` **???:** La buscan porque ella es un puente. Un puente entre esta realidad y otra.
 
+`127b` **???:** Una llave entre universos. Y hoy alguien la giró.
+
+`127c` **???:** No fue ella. Ella es la llave. La llave no decide cuándo abre.
+
+`127d` **???:** Fue él. Sin saberlo. Les abrió la puerta a mis soldados mientras hablaba de la edad de una guardiana.
+
 `128` **???:** Con lo que lleva dentro, este mundo podría tocar el otro. Lo que existe aquí podría existir allá.
 
-`129` **???:** Pero un puente no se cruza solo. Alguien tiene que dar la orden.
+`129` **???:** Hoy la giró sin querer. Lo que necesito es que la gire queriendo. Que él dé la orden.
 
 `130` — La imagen del estanque se acerca al chico. A sus ojeras. A sus manos vacías.
 

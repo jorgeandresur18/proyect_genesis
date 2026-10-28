@@ -231,6 +231,8 @@
 }
 .phoneHead small { display: block; color: #9a9aa2; font-size: 1.5cqh; }
 .avatar {
+  object-fit: cover;
+  object-position: 50% 12%;
   display: grid;
   place-items: center;
   width: 4.6cqh;
@@ -291,3 +293,11 @@
   .twinkle, .cursor, .bubble { animation: none; }
   .pointer { transition: none; }
 }
+
+/* Mensaje destacado: solo, en el medio del chat, con su estrella. */
+.chatCenter { justify-content: center; align-items: center; }
+.starred { max-width: 88%; padding: 1.4cqh 1.8cqh; font-size: 2.6cqh; background: #33303a; border: 0.15cqh solid rgba(255, 200, 80, 0.45); box-shadow: 0 0 3cqh rgba(255, 200, 80, 0.12); }
+.star { display: block; margin-bottom: 0.6cqh; font-size: 1.5cqh; color: #ffc850; letter-spacing: 0.05em; }
+/* Foto de perfil abierta: ocupa el ancho del celular, en 4:5. */
+.photoView { flex: 1; display: grid; place-items: center; background: #000; }
+.photoView img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }

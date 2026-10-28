@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import pantallas from '../data/pantallas.json';
+import { assetUrl } from '../engine/assets';
 import s from './CodeScreen.module.css';
 
 interface Line {
@@ -24,6 +25,10 @@ export function CodeScreen({ id, lines }: Props) {
       return <Correo lines={lines} />;
     case 'celular_mensaje':
       return <Celular lines={lines} />;
+    case 'celular_favorito':
+      return <CelularFavorito />;
+    case 'celular_foto_nikki':
+      return <CelularFoto />;
     case 'nebulosa_magenta':
       return <Nebulosa />;
     default:
@@ -225,13 +230,7 @@ function Celular({ lines }: { lines: Line[] }) {
   return (
     <div className={`${s.screen} ${s.night}`}>
       <div className={s.phone}>
-        <div className={s.phoneHead}>
-          <span className={s.avatar}>{c.contacto[0]}</span>
-          <div>
-            <b>{c.contacto}</b>
-            <small>{c.estado}</small>
-          </div>
-        </div>
+        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
         <div className={s.chat}>
           <span className={s.day}>{c.dia}</span>
           {mensajes.map((m, i) => (
@@ -242,6 +241,57 @@ function Celular({ lines }: { lines: Line[] }) {
           ))}
         </div>
         <div className={s.compose}>{c.escribir}</div>
+      </div>
+    </div>
+  );
+}
+
+/** Cabecera del chat: foto de perfil (o la inicial), nombre y estado. */
+function PhoneHead({ contacto, estado, foto }: { contacto: string; estado: string; foto?: string }) {
+  return (
+    <div className={s.phoneHead}>
+      {foto ? (
+        <img className={s.avatar} src={assetUrl(foto)} alt="" draggable={false} />
+      ) : (
+        <span className={s.avatar}>{contacto[0]}</span>
+      )}
+      <div>
+        <b>{contacto}</b>
+        <small>{estado}</small>
+      </div>
+    </div>
+  );
+}
+
+/** Los mensajes destacados del chat con Nikki: hay uno solo. */
+function CelularFavorito() {
+  const c = pantallas.celular_favorito;
+  return (
+    <div className={`${s.screen} ${s.night}`}>
+      <div className={s.phone}>
+        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
+        <div className={`${s.chat} ${s.chatCenter}`}>
+          <div className={`${s.bubble} ${s.starred}`}>
+            <span className={s.star}>{c.marca}</span>
+            {c.texto}
+            <small>{c.fecha}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** La foto de perfil de Nikki, abierta en grande. */
+function CelularFoto() {
+  const c = pantallas.celular_foto_nikki;
+  return (
+    <div className={`${s.screen} ${s.night}`}>
+      <div className={s.phone}>
+        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
+        <div className={s.photoView}>
+          <img src={assetUrl(c.foto)} alt="" draggable={false} />
+        </div>
       </div>
     </div>
   );

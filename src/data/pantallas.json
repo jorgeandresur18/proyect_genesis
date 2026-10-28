@@ -117,8 +117,22 @@
     "voz": "Nikki (mensaje)",
     "hora": "2:41",
     "dia": "Hoy",
-    "escribir": "Mensaje"
+    "escribir": "Mensaje",
+    "foto": "fotos/nikki_boringram.webp"
   },
   "negro": {},
-  "nebulosa_magenta": {}
+  "nebulosa_magenta": {},
+  "celular_favorito": {
+    "contacto": "Nikki",
+    "estado": "Mensajes destacados",
+    "foto": "fotos/nikki_boringram.webp",
+    "texto": "nunca te vayas de mi vida",
+    "fecha": "hace 1 año y medio",
+    "marca": "★ Destacado"
+  },
+  "celular_foto_nikki": {
+    "contacto": "Nikki",
+    "estado": "Foto de perfil",
+    "foto": "fotos/nikki_boringram.webp"
+  }
 }
