@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import pantallas from '../data/pantallas.json';
 import { assetUrl } from '../engine/assets';
 import s from './CodeScreen.module.css';
@@ -29,6 +29,8 @@ export function CodeScreen({ id, lines }: Props) {
       return <CelularFavorito />;
     case 'celular_foto_nikki':
       return <CelularFoto />;
+    case 'boringram_historia':
+      return <Historia />;
     case 'nebulosa_magenta':
       return <Nebulosa />;
     default:
@@ -224,37 +226,56 @@ function CorreoVentana({ button, live }: { button: number | null; live: boolean 
   );
 }
 
-function Celular({ lines }: { lines: Line[] }) {
-  const c = pantallas.celular_mensaje;
-  const mensajes = lines.filter((l) => l.speaker === c.voz).slice(-6);
+interface PhoneProps {
+  reloj: string;
+  bateria: number;
+  children: ReactNode;
+  /** Pantalla completa (historias): sin la barra de la app. */
+  full?: boolean;
+}
+
+/** Celular con Boringram abierto: barra de estado (hora, señal, batería) y la barra de la app con el logo. */
+function Phone({ reloj, bateria, children, full }: PhoneProps) {
   return (
     <div className={`${s.screen} ${s.night}`}>
       <div className={s.phone}>
-        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
-        <div className={s.chat}>
-          <span className={s.day}>{c.dia}</span>
-          {mensajes.map((m, i) => (
-            <div key={i} className={s.bubble}>
-              {m.text}
-              <small>{c.hora}</small>
-            </div>
-          ))}
+        <div className={`${s.statusBar} ${full ? s.statusOver : ''}`}>
+          <span>{reloj}</span>
+          <span className={s.notch} />
+          <span className={s.statusIcons}>
+            <i className={s.signal} />
+            <span className={`${s.battery} ${bateria <= 15 ? s.batteryLow : ''}`}>
+              <i style={{ width: `${bateria}%` }} />
+            </span>
+            {bateria}%
+          </span>
         </div>
-        <div className={s.compose}>{c.escribir}</div>
+        {!full && (
+          <div className={s.appBar}>
+            <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
+            <span className={s.appIcons} aria-hidden>
+              <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /></svg>
+              <svg viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 2.5 2.5 7z" /></svg>
+            </span>
+          </div>
+        )}
+        {children}
       </div>
     </div>
   );
 }
 
-/** Cabecera del chat: foto de perfil (o la inicial), nombre y estado. */
-function PhoneHead({ contacto, estado, foto }: { contacto: string; estado: string; foto?: string }) {
+/** Cabecera del chat: foto de perfil (con el anillo de colores si hay historia nueva), nombre y estado. */
+function PhoneHead({ contacto, estado, foto, historia }: { contacto: string; estado: string; foto?: string; historia?: boolean }) {
   return (
     <div className={s.phoneHead}>
-      {foto ? (
-        <img className={s.avatar} src={assetUrl(foto)} alt="" draggable={false} />
-      ) : (
-        <span className={s.avatar}>{contacto[0]}</span>
-      )}
+      <span className={`${s.avatarRing} ${historia ? s.avatarStory : ''}`}>
+        {foto ? (
+          <img className={s.avatar} src={assetUrl(foto)} alt="" draggable={false} />
+        ) : (
+          <span className={s.avatar}>{contacto[0]}</span>
+        )}
+      </span>
       <div>
         <b>{contacto}</b>
         <small>{estado}</small>
@@ -263,22 +284,40 @@ function PhoneHead({ contacto, estado, foto }: { contacto: string; estado: strin
   );
 }
 
+function Celular({ lines }: { lines: Line[] }) {
+  const c = pantallas.celular_mensaje;
+  const mensajes = lines.filter((l) => l.speaker === c.voz).slice(-6);
+  return (
+    <Phone reloj={c.reloj} bateria={c.bateria}>
+      <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} historia={c.historia} />
+      <div className={s.chat}>
+        <span className={s.day}>{c.dia}</span>
+        {mensajes.map((m, i) => (
+          <div key={i} className={s.bubble}>
+            {m.text}
+            <small>{c.hora}</small>
+          </div>
+        ))}
+      </div>
+      <div className={s.compose}>{c.escribir}</div>
+    </Phone>
+  );
+}
+
 /** Los mensajes destacados del chat con Nikki: hay uno solo. */
 function CelularFavorito() {
   const c = pantallas.celular_favorito;
   return (
-    <div className={`${s.screen} ${s.night}`}>
-      <div className={s.phone}>
-        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
-        <div className={`${s.chat} ${s.chatCenter}`}>
-          <div className={`${s.bubble} ${s.starred}`}>
-            <span className={s.star}>{c.marca}</span>
-            {c.texto}
-            <small>{c.fecha}</small>
-          </div>
+    <Phone reloj={c.reloj} bateria={c.bateria}>
+      <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
+      <div className={`${s.chat} ${s.chatCenter}`}>
+        <div className={`${s.bubble} ${s.starred}`}>
+          <span className={s.star}>{c.marca}</span>
+          {c.texto}
+          <small>{c.fecha}</small>
         </div>
       </div>
-    </div>
+    </Phone>
   );
 }
 
@@ -286,14 +325,41 @@ function CelularFavorito() {
 function CelularFoto() {
   const c = pantallas.celular_foto_nikki;
   return (
-    <div className={`${s.screen} ${s.night}`}>
-      <div className={s.phone}>
-        <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
-        <div className={s.photoView}>
-          <img src={assetUrl(c.foto)} alt="" draggable={false} />
+    <Phone reloj={c.reloj} bateria={c.bateria}>
+      <PhoneHead contacto={c.contacto} estado={c.estado} foto={c.foto} />
+      <div className={s.photoView}>
+        <img src={assetUrl(c.foto)} alt="" draggable={false} />
+      </div>
+    </Phone>
+  );
+}
+
+/** Una historia de Boringram: imagen a pantalla completa, barra de avance, quién la subió y el texto. */
+function Historia() {
+  const c = pantallas.boringram_historia;
+  return (
+    <Phone reloj={c.reloj} bateria={c.bateria} full>
+      <div className={s.story}>
+        {/* La imagen de fondo, desenfocada, rellena lo que la foto no cubre (como en las historias de verdad). */}
+        <img className={s.storyBlur} src={assetUrl(c.imagen)} alt="" draggable={false} aria-hidden />
+        <img className={s.storyImg} src={assetUrl(c.imagen)} alt="" draggable={false} />
+        <div className={s.storyTop}>
+          <div className={s.storyProgress}>
+            <i />
+          </div>
+          <div className={s.storyWho}>
+            <img src={assetUrl(c.foto)} alt="" draggable={false} />
+            <b>{c.contacto}</b>
+            <small>{c.hace}</small>
+          </div>
+        </div>
+        <span className={s.storyCaption}>{c.texto}</span>
+        <div className={s.storyReply}>
+          <span>{c.responder}</span>
+          <svg viewBox="0 0 24 24" aria-hidden><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /></svg>
         </div>
       </div>
-    </div>
+    </Phone>
   );
 }
 

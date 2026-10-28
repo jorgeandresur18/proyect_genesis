@@ -22156,6 +22156,108 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_g5m_011h1"
+    },
+    {
+      "scene_id": "cap01_g5m_011h1",
+      "chapter": 1,
+      "background": "PANTALLA:celular_mensaje",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Arriba, la foto de Nikki tiene un anillo de colores. Subió una historia."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5m_011h2"
+    },
+    {
+      "scene_id": "cap01_g5m_011h2",
+      "chapter": 1,
+      "background": "PANTALLA:boringram_historia",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair la abre. Nikki en El Último, con una cerveza en la mano y las mejillas rojas, sonriéndole al celular. Encima, en letras blancas: «una sola»."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5m_011h3"
+    },
+    {
+      "scene_id": "cap01_g5m_011h3",
+      "chapter": 1,
+      "background": "PANTALLA:boringram_historia",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(«Una sola».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5m_011h4"
+    },
+    {
+      "scene_id": "cap01_g5m_011h4",
+      "chapter": 1,
+      "background": "PANTALLA:boringram_historia",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(No fue una sola.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5m_011h5"
+    },
+    {
+      "scene_id": "cap01_g5m_011h5",
+      "chapter": 1,
+      "background": "PANTALLA:boringram_historia",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "La historia dura cinco segundos. Jair la mira tres veces."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5m_011h6"
+    },
+    {
+      "scene_id": "cap01_g5m_011h6",
+      "chapter": 1,
+      "background": "PANTALLA:celular_mensaje",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Después vuelve al chat."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_g5m_012"
     },
     {

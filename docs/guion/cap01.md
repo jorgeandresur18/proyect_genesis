@@ -1934,6 +1934,24 @@
 
 `g5m_011` **Jair:** (Me dijo «buenos días».)
 
+`g5m_011h1` — Arriba, la foto de Nikki tiene un anillo de colores. Subió una historia.
+
+
+### PANTALLA:boringram_historia
+
+`g5m_011h2` — Jair la abre. Nikki en El Último, con una cerveza en la mano y las mejillas rojas, sonriéndole al celular. Encima, en letras blancas: «una sola».
+
+`g5m_011h3` **Jair:** («Una sola».)
+
+`g5m_011h4` **Jair:** (No fue una sola.)
+
+`g5m_011h5` — La historia dura cinco segundos. Jair la mira tres veces.
+
+
+### PANTALLA:celular_mensaje
+
+`g5m_011h6` — Después vuelve al chat.
+
 `g5m_012` — Siente algo en el pecho que no sabe nombrar. Es lo más parecido a estar en casa que ha sentido desde que despertó bajo el cielo magenta.
 
 

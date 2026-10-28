@@ -113,12 +113,15 @@
   },
   "celular_mensaje": {
     "contacto": "Nikki",
-    "estado": "últ. vez hoy a las 2:41",
+    "estado": "Activa hace 2 min",
     "voz": "Nikki (mensaje)",
     "hora": "2:41",
     "dia": "Hoy",
     "escribir": "Mensaje",
-    "foto": "fotos/nikki_boringram.webp"
+    "foto": "fotos/nikki_boringram.webp",
+    "reloj": "2:47",
+    "bateria": 12,
+    "historia": true
   },
   "negro": {},
   "nebulosa_magenta": {},
@@ -128,11 +131,29 @@
     "foto": "fotos/nikki_boringram.webp",
     "texto": "nunca te vayas de mi vida",
     "fecha": "hace 1 año y medio",
-    "marca": "★ Destacado"
+    "marca": "★ Destacado",
+    "reloj": "1:58",
+    "bateria": 41
   },
   "celular_foto_nikki": {
     "contacto": "Nikki",
     "estado": "Foto de perfil",
-    "foto": "fotos/nikki_boringram.webp"
+    "foto": "fotos/nikki_boringram.webp",
+    "reloj": "1:58",
+    "bateria": 41
+  },
+  "boringram": {
+    "nota": "Marco común del celular: Boringram es la app con la que Jair habla con Nikki y ve sus historias.",
+    "logo": "marca/boringram.webp"
+  },
+  "boringram_historia": {
+    "contacto": "nikki",
+    "hace": "hace 3 h",
+    "foto": "fotos/nikki_boringram.webp",
+    "imagen": "fotos/historia_nikki_boringram.webp",
+    "texto": "una sola",
+    "responder": "Responder a nikki…",
+    "reloj": "2:48",
+    "bateria": 12
   }
 }

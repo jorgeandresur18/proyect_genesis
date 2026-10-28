@@ -202,43 +202,71 @@
 .empty { color: #8a909c; font-size: 2.2cqh; margin-top: 18cqh; text-align: center; animation: fade-in 0.4s ease-out; }
 @keyframes fade-in { from { opacity: 0; } }
 
-/* Celular */
-.night { background: radial-gradient(ellipse at 50% 35%, #2a1f2c 0%, #0b090d 75%); }
+/* Celular: Boringram en modo oscuro. Degradado de la marca: naranja, rosa y violeta. */
+.night { background: radial-gradient(ellipse at 50% 35%, #2a1724 0%, #0b080d 75%); }
 .phone {
+  --brand: linear-gradient(45deg, #ff8a3d, #ff3d7f 55%, #a64dff);
   position: absolute;
-  top: 3cqh;
+  top: 2.5cqh;
   left: 50%;
   transform: translateX(-50%);
-  width: 38cqh;
-  height: 68cqh;
+  width: 39cqh;
+  height: 70cqh;
   display: flex;
   flex-direction: column;
-  background: #121216;
-  border: 1cqh solid #2a2a30;
-  border-radius: 4cqh;
-  box-shadow: 0 0 8cqh rgba(255, 79, 123, 0.18);
+  background: #0d0d10;
+  border: 0.7cqh solid #1d1d22;
+  border-radius: 4.5cqh;
+  box-shadow: 0 0 0 0.2cqh #3a3a42, 0 0 9cqh rgba(255, 61, 127, 0.28), 0 0 3cqh rgba(166, 77, 255, 0.2);
   overflow: hidden;
   font-family: system-ui, 'Segoe UI', sans-serif;
   font-size: 2.2cqh;
-  color: #e8e8ea;
+  color: #f1f1f4;
 }
+.statusBar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2cqh 2.4cqh 0.6cqh;
+  font-size: 1.45cqh;
+  font-weight: 600;
+}
+.statusOver { position: absolute; top: 0; left: 0; right: 0; }
+.notch { position: absolute; left: 50%; top: 0.9cqh; width: 9cqh; height: 2.2cqh; transform: translateX(-50%); border-radius: 2cqh; background: #000; }
+.statusIcons { display: flex; align-items: center; gap: 0.6cqh; }
+.signal { width: 1.6cqh; height: 1.1cqh; background: linear-gradient(90deg, #fff 25%, transparent 25% 37%, #555 37% 62%, transparent 62% 74%, #555 74%); clip-path: polygon(0 100%, 100% 0, 100% 100%); }
+.battery { position: relative; width: 2.6cqh; height: 1.2cqh; padding: 0.15cqh; border: 0.15cqh solid #cfcfd6; border-radius: 0.35cqh; }
+.battery i { display: block; height: 100%; border-radius: 0.15cqh; background: #f1f1f4; }
+.batteryLow i { background: #ff4a4a; }
+.appBar { display: flex; align-items: center; justify-content: space-between; padding: 0.9cqh 1.8cqh 0.8cqh; border-bottom: 0.15cqh solid #1f1f25; }
+.appBar img { height: 2.5cqh; width: auto; }
+.appIcons { display: flex; gap: 1.4cqh; }
+.appIcons svg { width: 2.4cqh; height: 2.4cqh; fill: none; stroke: #f1f1f4; stroke-width: 1.8; stroke-linejoin: round; }
 .phoneHead {
   display: flex;
   align-items: center;
-  gap: 1.4cqh;
-  padding: 2.4cqh 1.8cqh 1.4cqh;
-  background: #1c1c22;
+  gap: 1.3cqh;
+  padding: 1.2cqh 1.8cqh;
+  background: #121216;
+  border-bottom: 0.15cqh solid #1f1f25;
 }
-.phoneHead small { display: block; color: #9a9aa2; font-size: 1.5cqh; }
+.phoneHead b { font-size: 2.1cqh; }
+.phoneHead small { display: block; color: #9a9aa6; font-size: 1.45cqh; }
+/* Anillo de la foto de perfil: degradado cuando hay una historia nueva. */
+.avatarRing { display: grid; place-items: center; padding: 0.3cqh; border-radius: 50%; background: #2a2a31; }
+.avatarStory { background: var(--brand); padding: 0.4cqh; }
 .avatar {
   object-fit: cover;
   object-position: 50% 12%;
   display: grid;
   place-items: center;
-  width: 4.6cqh;
-  height: 4.6cqh;
+  width: 4.8cqh;
+  height: 4.8cqh;
+  border: 0.35cqh solid #0d0d10;
   border-radius: 50%;
-  background: #ff4f7b;
+  background: #ff3d7f;
   color: #fff;
   font-weight: 700;
 }
@@ -248,34 +276,65 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  gap: 1cqh;
+  gap: 0.9cqh;
   padding: 1.6cqh;
+  background: radial-gradient(ellipse at 50% 120%, rgba(166, 77, 255, 0.12), transparent 60%);
 }
 .day {
   align-self: center;
   margin-bottom: auto;
   padding: 0.4cqh 1.4cqh;
   border-radius: 1cqh;
-  background: #26262c;
-  color: #9a9aa2;
-  font-size: 1.5cqh;
+  background: #1d1d23;
+  color: #9a9aa6;
+  font-size: 1.45cqh;
 }
 .bubble {
   max-width: 80%;
-  padding: 1cqh 1.4cqh;
-  border-radius: 0.4cqh 1.6cqh 1.6cqh 1.6cqh;
-  background: #2b2b33;
+  padding: 1.1cqh 1.5cqh;
+  border-radius: 0.5cqh 2cqh 2cqh 2cqh;
+  background: #26262e;
+  border: 0.15cqh solid #32323b;
   animation: pop 0.25s ease-out;
 }
-.bubble small { margin-left: 1cqh; color: #8a8a94; font-size: 1.3cqh; }
+.bubble small { margin-left: 1cqh; color: #8d8d99; font-size: 1.3cqh; }
 @keyframes pop { from { transform: scale(0.85); opacity: 0; } }
 .compose {
   margin: 1.2cqh;
-  padding: 1cqh 1.6cqh;
+  padding: 1.1cqh 1.8cqh;
   border-radius: 3cqh;
-  background: #1f1f25;
-  color: #6a6a74;
+  background: #17171c;
+  border: 0.15cqh solid #2a2a31;
+  color: #6e6e7a;
 }
+
+/* Historia de Boringram. */
+.story { position: absolute; inset: 0; overflow: hidden; background: #000; }
+.storyBlur { position: absolute; inset: -5%; width: 110%; height: 110%; object-fit: cover; filter: blur(3cqh) brightness(0.55); }
+.storyImg { position: absolute; left: 0; right: 0; top: 50%; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transform: translateY(-50%); }
+.storyTop { position: absolute; top: 3.6cqh; left: 1.4cqh; right: 1.4cqh; display: flex; flex-direction: column; gap: 1cqh; }
+.storyProgress { height: 0.35cqh; border-radius: 1cqh; background: rgba(255, 255, 255, 0.35); overflow: hidden; }
+.storyProgress i { display: block; height: 100%; background: #fff; animation: story-progress 5s linear forwards; }
+@keyframes story-progress { from { width: 0; } to { width: 100%; } }
+.storyWho { display: flex; align-items: center; gap: 1cqh; font-size: 1.8cqh; text-shadow: 0 0.2cqh 0.6cqh rgba(0, 0, 0, 0.6); }
+.storyWho img { width: 3.6cqh; height: 3.6cqh; border-radius: 50%; object-fit: cover; object-position: 50% 12%; border: 0.25cqh solid #fff; }
+.storyWho small { color: rgba(255, 255, 255, 0.75); font-size: 1.5cqh; }
+.storyCaption {
+  position: absolute;
+  left: 50%;
+  bottom: 14cqh;
+  transform: translateX(-50%) rotate(-4deg);
+  padding: 0.6cqh 1.6cqh;
+  font-size: 2.8cqh;
+  font-weight: 800;
+  color: #fff;
+  background: var(--brand);
+  border-radius: 1cqh;
+  box-shadow: 0 0.6cqh 1.6cqh rgba(0, 0, 0, 0.4);
+}
+.storyReply { position: absolute; left: 1.4cqh; right: 1.4cqh; bottom: 1.8cqh; display: flex; align-items: center; gap: 1.2cqh; }
+.storyReply span { flex: 1; padding: 1cqh 1.6cqh; border: 0.15cqh solid rgba(255, 255, 255, 0.6); border-radius: 3cqh; color: rgba(255, 255, 255, 0.85); font-size: 1.7cqh; }
+.storyReply svg { width: 3cqh; height: 3cqh; fill: none; stroke: #fff; stroke-width: 1.8; }
 
 /* Nebulosa: cielo magenta con estrellas en todas direcciones. */
 .nebula {
@@ -290,7 +349,7 @@
 .twinkle { animation: twinkle 3.5s ease-in-out infinite; }
 @keyframes twinkle { 50% { opacity: 0.15; } }
 @media (prefers-reduced-motion: reduce) {
-  .twinkle, .cursor, .bubble { animation: none; }
+  .twinkle, .cursor, .bubble, .storyProgress i { animation: none; }
   .pointer { transition: none; }
 }
 
