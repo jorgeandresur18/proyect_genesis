@@ -7,11 +7,17 @@
     "ruinas": "pasillo_castillo",
     "capsula": "refugio_capsula",
     "claro": "claro_cuatro_estaciones",
-    "dulcefrio": "dulce_frio_fachada",
     "escalera_caracol": "pozo_central",
     "grieta": "nucleo_grieta",
     "puente": "puente_rojo",
-    "puente_espacial": "puente_torres"
+    "puente_espacial": "puente_torres",
+    "dulcefrio_fachada": "dulce_frio_fachada",
+    "poster": "departamento_poster",
+    "nebulosa": "nebulosa_magenta"
   },
-  "omitir": ["hangar_destruido"]
+  "omitir": [
+    "hangar_destruido",
+    "caída amorosa entre mundos flotantes",
+    "abrazo en la grieta cósmica"
+  ]
 }

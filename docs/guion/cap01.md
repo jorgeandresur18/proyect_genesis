@@ -86,7 +86,7 @@
 `010` — Jair marca la salida a las 18:00:00 exactas. Es la única rebeldía que se permite.
 
 
-### calle_noche
+### fondos/calle_noche.webp
 
 `011` — Afuera la ciudad huele a asfalto caliente y a fritura. El sol ya se fue, pero el calor se queda, como un pariente que no capta indirectas.
 
@@ -561,7 +561,7 @@
 `107` **Jair:** (Ahorro hasta en el café de la oficina, y la cuenta de Nikki es el único gasto que nunca discuto.)
 
 
-### calle_noche
+### fondos/calle_noche_taxi.webp
 
 > ♪ música: nightcity
 `108` — Afuera son casi las dos. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía.
@@ -582,6 +582,9 @@
 
 `114` — El taxi arranca. Nikki no se despide. Nunca se despide; así no cuenta como irse.
 
+
+### fondos/calle_noche.webp
+
 `115` — Jair se queda en la esquina. Le duelen los pies, le zumban los oídos y el mundo se inclina un poquito hacia la izquierda.
 
 
@@ -590,7 +593,7 @@
 `116` — El departamento: un cuarto, un baño y una cocina que también es pasillo. Una caja de zapatos con wifi.
 
 
-### departamento_poster
+### fondos/departamento_poster.webp
 
 `117` — Sobre la cama hay un póster de un anime: un chico de cara genérica, con el pelo tapándole los ojos, rodeado de chicas que lo miran como si él fuera la respuesta a algo. Ninguna se parece a la otra. Todas parecen enamoradas por contrato.
 
@@ -818,7 +821,7 @@
 `g1_002` — No. No es calor. Es otra cosa. Es la ausencia de calor, que se siente parecido cuando uno lleva treinta años sudando.
 
 
-### PANTALLA:nebulosa_magenta
+### fondos/nebulosa_magenta.webp
 
 > ♪ música: new_discover
 `g1_003` — Jair abre los ojos.
@@ -832,7 +835,7 @@
 `g1_007` **Jair:** Fue el tequila. Nikki dijo que era para la digestión. Nikki me envenenó.
 
 
-### castillo_flotante_ruinas
+### fondos/castillo_flotante_ruinas.webp
 
 `g1_008` — Está acostado sobre piedra blanca, fría y lisa como el piso de un banco. A su alrededor flotan bloques de piedra, columnas partidas, escaleras que no llevan a ningún lado.
 
@@ -1210,7 +1213,7 @@
 
 ---
 
-### cg_jair_carga_cami
+### fondos/cg_jair_carga_cami.webp
 
 `g3_019` — Jair se agacha, le pasa un brazo por la espalda y el otro por debajo de las rodillas, y la levanta.
 
@@ -1248,7 +1251,7 @@
 `g3_034` **Jair:** (Esa respuesta la habría dado Nikki.)
 
 
-### pasillo_giratorio
+### fondos/pasillo_giratorio.webp
 
 `k01` — El pasillo gira. No el camino: el pasillo entero. Jair da un paso y el piso se vuelve pared, la pared se vuelve techo, y él sigue corriendo, ahora de costado, sobre ventanas que dan a las estrellas.
 
@@ -1325,7 +1328,7 @@
 `g3_045b2` — Salta.
 
 
-### PANTALLA:nebulosa_magenta
+### fondos/nebulosa_magenta.webp
 
 `g3_046` — Durante un segundo eterno, los dos flotan sobre las estrellas. El cielo magenta arriba, abajo, en todas partes. Cami tiene los brazos alrededor de su cuello. Él no recuerda cuándo hizo ella eso.
 
@@ -1676,7 +1679,7 @@
 `g4_086` **Cami:** Bienvenido a la guerra, ingeniero.
 
 
-### cg_jair_carga_cami_espalda
+### fondos/cg_jair_carga_cami_espalda.webp
 
 `g5h_001` — Salen del refugio. Esta vez Jair carga a Cami en la espalda, como una mochila muy enojada.
 
@@ -2062,7 +2065,7 @@
 `g5_024b15` **Voz:** Usuario archivado en: /bastion/calabozo/pendientes.
 
 
-### calabozo
+### fondos/calabozo.webp
 
 > ♪ música: sad_suspense
 `g5_024b16` — La celda es blanca, pequeña y sin ventanas. Tiene un catre, una luz que no se apaga y, al otro lado de los barrotes, la celda de Cami, que no le habla.
@@ -2261,7 +2264,7 @@
 `g6_060` — Por un instante, los disparos se detienen. El ruido se detiene. Todo se detiene.
 
 
-### cg_caida_multiverso
+### fondos/cg_caida_multiverso.webp
 
 > ♪ música: into_the_ciberse
 `g6_061` — Y después la luz dorada se los traga.
@@ -2285,7 +2288,7 @@
 `g6c_009` **Jair:** ¿Cómo que «no aplica»?
 
 
-### desierto_cristal
+### fondos/desierto_cristal.webp
 
 `i01` — De pronto, suelo. Un suelo que no es el final: una isla de cristal flotando en la nada, en mitad de la caída.
 
@@ -2314,7 +2317,7 @@
 `i13` **Cami:** ¡Hacia lo dorado! ¡Siempre hacia lo dorado!
 
 
-### cg_caida_multiverso
+### fondos/cg_caida_multiverso.webp
 
 `i14` — Jair la levanta, corre los tres metros que quedan de isla y salta hacia la franja dorada justo cuando el último pedazo de cristal desaparece bajo sus pies.
 
@@ -2331,7 +2334,7 @@
 `g6c_014` — Y entonces, el suelo.
 
 
-### bosque_ancestral
+### fondos/bosque_ancestral.webp
 
 > ♪ música: serene
 `g7_001` — Aterrizan sobre pasto.
@@ -2429,7 +2432,7 @@
 - `g7_043#1` Ofrecerle el hombro para caminar ⟶ va a `g7_044b`
 
 
-### cg_jair_carga_cami
+### fondos/cg_jair_carga_cami.webp
 
 `g7_044a` — Jair se agacha y la levanta en brazos, como en el castillo. Ella no protesta. Solo le pasa un brazo por el cuello y mira para otro lado.
 
@@ -2447,7 +2450,7 @@
 `g7_044b4` **Jair:** Ni una palabra.
 
 
-### cg_jair_carga_cami
+### fondos/cg_jair_carga_cami.webp
 
 `g7_044b5` — Jair la levanta en brazos.
 
@@ -2595,7 +2598,7 @@
 - `g7b_022#2` ~~Enfrentar al monstruo~~ ⟶ tachada
 
 
-### bosque_invierno
+### fondos/bosque_invierno.webp
 
 `g7b_023a` — Jair sale del sendero y se lanza sobre el arroyo congelado. El hielo cruje. Resbala. Cae de espaldas, protegiendo a Cami con el cuerpo, y se desliza por la superficie como un pingüino con lentes.
 
