@@ -1,25 +1,36 @@
-import { useEffect, useState } from 'react';
-import { CHAPTER_END, useStore } from './engine/store';
-import { BAD_END, getEnding, scenes } from './engine/story';
-import { useStoryEngine } from './engine/useStoryEngine';
-import { preloadFrom } from './engine/preload';
-import { TRANSITIONS, useSceneTransition } from './engine/useSceneTransition';
-import { effectsOf } from './engine/logic';
-import { SceneStage } from './components/SceneStage';
-import { DialogBox } from './components/DialogBox';
-import { DecisionMenu } from './components/DecisionMenu';
-import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
-import { CgGallery } from './components/CgGallery';
-import { TitleBackground } from './components/TitleBackground';
-import { SceneMap } from './components/SceneMap';
-import { ChapterEnd } from './components/ChapterEnd';
-import { BadEnd } from './components/BadEnd';
-import { AudioToggle } from './components/AudioToggle';
-import advertencia from './data/advertencia.json';
-import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
-import { playSelect, unlockAudio } from './engine/sound';
-import { playMusic, SILENCE } from './engine/music';
-import { config } from './engine/story';
+import { useEffect, useState } from "react";
+import { CHAPTER_END, useStore } from "./engine/store";
+import { BAD_END, getEnding, scenes } from "./engine/story";
+import { useStoryEngine } from "./engine/useStoryEngine";
+import { preloadFrom } from "./engine/preload";
+import { TRANSITIONS, useSceneTransition } from "./engine/useSceneTransition";
+import { effectsOf } from "./engine/logic";
+import { SceneStage } from "./components/SceneStage";
+import { DialogBox } from "./components/DialogBox";
+import { DecisionMenu } from "./components/DecisionMenu";
+import {
+  AboutPanel,
+  EndingsGallery,
+  HistoryPanel,
+  OptionsPanel,
+  SaveLoadPanel,
+} from "./components/Panels";
+import { CgGallery } from "./components/CgGallery";
+import { TitleBackground } from "./components/TitleBackground";
+import { SceneMap } from "./components/SceneMap";
+import { ChapterEnd } from "./components/ChapterEnd";
+import { BadEnd } from "./components/BadEnd";
+import { AudioToggle } from "./components/AudioToggle";
+import advertencia from "./data/advertencia.json";
+import {
+  canFullscreen,
+  enterPlayMode,
+  isTouch,
+  toggleFullscreen,
+} from "./engine/mobile";
+import { playSelect, unlockAudio } from "./engine/sound";
+import { playMusic, SILENCE } from "./engine/music";
+import { config } from "./engine/story";
 
 // Fundido a negro al volver al título.
 const TITLE_FADE_MS = 800;
@@ -27,33 +38,42 @@ const TITLE_FADE_MS = 800;
 const TITLE_REVEAL_MS = 1200;
 
 /** De dónde se llega al título: cambia cómo sale del negro. */
-type Intro = 'advertencia' | 'juego' | null;
+type Intro = "advertencia" | "juego" | null;
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'gallery' | 'options' | 'about' | null;
+type Overlay =
+  | "history"
+  | "save"
+  | "load"
+  | "map"
+  | "endings"
+  | "gallery"
+  | "options"
+  | "about"
+  | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const hasGame = useStore((s) => !!s.game);
   // Entrada elegante del título: al llegar desde la advertencia y al volver de una partida.
-  const [intro, setIntro] = useState<Intro>('advertencia');
+  const [intro, setIntro] = useState<Intro>("advertencia");
   useEffect(() => {
     if (hasGame) setIntro(null);
   }, [hasGame]);
   // Volver al título desde el juego: una sola capa negra que primero tapa el juego y después se
   // disuelve encima del título (sin soltar el negro en el medio, que se veía como un parpadeo doble).
-  const [toTitle, setToTitle] = useState<'out' | 'in' | null>(null);
+  const [toTitle, setToTitle] = useState<"out" | "in" | null>(null);
   const still = useStore((s) => s.settings.reduceEffects);
   const goToTitle = () => {
     if (toTitle) return;
-    setToTitle('out');
+    setToTitle("out");
     setOverlay(null);
-    useStore.getState().setMode('normal');
+    useStore.getState().setMode("normal");
     setTimeout(
       () => {
-        setIntro('juego');
+        setIntro("juego");
         useStore.getState().quitToTitle();
-        setToTitle('in');
+        setToTitle("in");
         setTimeout(() => setToTitle(null), still ? 150 : TITLE_REVEAL_MS);
       },
       still ? 150 : TITLE_FADE_MS,
@@ -63,13 +83,19 @@ export default function App() {
   const textScale = useStore((s) => s.settings.textScale);
   const boxOpacity = useStore((s) => s.settings.boxOpacity);
   useEffect(() => {
-    document.documentElement.style.setProperty('--text-scale', String(textScale));
-    document.documentElement.style.setProperty('--box-alpha', String(boxOpacity));
+    document.documentElement.style.setProperty(
+      "--text-scale",
+      String(textScale),
+    );
+    document.documentElement.style.setProperty(
+      "--box-alpha",
+      String(boxOpacity),
+    );
   }, [textScale, boxOpacity]);
   // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
   const music = useStore((s) =>
     !s.game || s.game.finished?.startsWith(CHAPTER_END)
-      ? config.musica_titulo ?? SILENCE
+      ? (config.musica_titulo ?? SILENCE)
       : s.game.finished
         ? SILENCE
         : ((s.game.vars._musica as string | null) ?? SILENCE),
@@ -101,19 +127,23 @@ export default function App() {
       ) : (
         <TitleScreen open={setOverlay} intro={intro} />
       )}
-      {overlay === 'history' && <HistoryPanel onClose={close} />}
-      {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
-      {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
-      {overlay === 'endings' && <EndingsGallery onClose={close} />}
-      {overlay === 'gallery' && <CgGallery onClose={close} />}
-      {overlay === 'options' && <OptionsPanel onClose={close} />}
-      {overlay === 'about' && <AboutPanel onClose={close} />}
+      {overlay === "history" && <HistoryPanel onClose={close} />}
+      {(overlay === "save" || overlay === "load") && (
+        <SaveLoadPanel mode={overlay} onClose={close} />
+      )}
+      {overlay === "map" && <SceneMap onClose={close} onJump={close} />}
+      {overlay === "endings" && <EndingsGallery onClose={close} />}
+      {overlay === "gallery" && <CgGallery onClose={close} />}
+      {overlay === "options" && <OptionsPanel onClose={close} />}
+      {overlay === "about" && <AboutPanel onClose={close} />}
       <AudioToggle />
       {hasGame && <RotateHint />}
       {toTitle && (
         <div
           className={`to-title-fade to-title-${toTitle}`}
-          style={{ animationDuration: `${still ? 150 : toTitle === 'out' ? TITLE_FADE_MS : TITLE_REVEAL_MS}ms` }}
+          style={{
+            animationDuration: `${still ? 150 : toTitle === "out" ? TITLE_FADE_MS : TITLE_REVEAL_MS}ms`,
+          }}
           aria-hidden
         />
       )}
@@ -147,7 +177,7 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
     setTimeout(onAccept, still ? 150 : WARNING_FADE_MS);
   };
   return (
-    <div className={`screen warning ${leaving ? 'warning-leaving' : ''}`}>
+    <div className={`screen warning ${leaving ? "warning-leaving" : ""}`}>
       <div className="warning-card">
         <header className="warning-head">
           <span className="warning-badge">{advertencia.etiqueta}</span>
@@ -175,15 +205,47 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
   );
 }
 
-function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro }) {
+function TitleScreen({
+  open,
+  intro,
+}: {
+  open: (o: Overlay) => void;
+  intro: Intro;
+}) {
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
   const still = useStore((s) => s.settings.reduceEffects);
   return (
-    <div className={`screen title ${intro && !still ? 'title-intro' : ''} ${intro === 'advertencia' ? 'title-intro-velo' : ''}`}>
+    <div
+      className={`screen title ${intro && !still ? "title-intro" : ""} ${intro === "advertencia" ? "title-intro-velo" : ""}`}
+    >
       <TitleBackground />
-      <h1 className="title-logo">
-        <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
+      <h1 className={`title-logo ${still ? "" : "title-logo-glitch"}`}>
+        <span className="logo-float">
+          <img
+            src={`${import.meta.env.BASE_URL}marca/logo.webp`}
+            alt="PROYECT GENESIS"
+            draggable={false}
+          />
+          {!still && (
+            <>
+              <img
+                className="logo-slice logo-slice-a"
+                src={`${import.meta.env.BASE_URL}marca/logo.webp`}
+                alt=""
+                aria-hidden
+                draggable={false}
+              />
+              <img
+                className="logo-slice logo-slice-b"
+                src={`${import.meta.env.BASE_URL}marca/logo.webp`}
+                alt=""
+                aria-hidden
+                draggable={false}
+              />
+            </>
+          )}
+        </span>
       </h1>
       <p className="muted">Prototipo</p>
       {error && <p className="error">{error}</p>}
@@ -192,24 +254,36 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
           onClick={() => {
             void enterPlayMode();
             // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
-            newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
+            newGame(
+              new URLSearchParams(window.location.search).get("escena") ??
+                undefined,
+            );
           }}
         >
           Nueva partida
         </button>
-        <button onClick={() => open('load')}>Cargar</button>
-        <button onClick={() => open('map')}>Mapa de escenas</button>
-        <button onClick={() => open('gallery')}>Galería</button>
-        <button onClick={() => open('endings')}>Finales</button>
-        <button onClick={() => open('options')}>Opciones</button>
-        <button onClick={() => open('about')}>Conoce más del proyecto</button>
+        <button onClick={() => open("load")}>Cargar</button>
+        <button onClick={() => open("map")}>Mapa de escenas</button>
+        <button onClick={() => open("gallery")}>Galería</button>
+        <button onClick={() => open("endings")}>Finales</button>
+        <button onClick={() => open("options")}>Opciones</button>
+        <button onClick={() => open("about")}>Conoce más del proyecto</button>
       </nav>
     </div>
   );
 }
 
-function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: boolean; onTitle: () => void }) {
-  const { game, scene, choices, waitingChoice, mode, textDone } = useStoryEngine();
+function Game({
+  open,
+  paused,
+  onTitle,
+}: {
+  open: (o: Overlay) => void;
+  paused: boolean;
+  onTitle: () => void;
+}) {
+  const { game, scene, choices, waitingChoice, mode, textDone } =
+    useStoryEngine();
   const { next, choose, setMode } = useStore.getState();
   const error = useStore((s) => s.error);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -217,13 +291,13 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const [uiHidden, setUiHidden] = useState(false);
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
-  const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
+  const { shown, phase, color } = useSceneTransition(scene, mode === "skip");
   // Fondos y sprites de lo que viene, descargados de antemano.
   const sceneId = scene?.scene_id;
   useEffect(() => {
     if (sceneId) preloadFrom(sceneId);
   }, [sceneId]);
-  const fading = phase === 'out';
+  const fading = phase === "out";
   // Las imágenes de la galería (fondos cg_*) se desbloquean al verlas.
   const shownBackground = shown?.background;
   useEffect(() => {
@@ -238,11 +312,11 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
       if (useStore.getState().game?.finished) return; // En los finales se elige con los botones.
-      if (e.key.toLowerCase() === 'h' && !e.ctrlKey && !e.metaKey) {
+      if (e.key.toLowerCase() === "h" && !e.ctrlKey && !e.metaKey) {
         setUiHidden((h) => !h);
         return;
       }
-      if (e.key === ' ' || e.key === 'Enter') {
+      if (e.key === " " || e.key === "Enter") {
         e.preventDefault();
         if (uiHidden) {
           setUiHidden(false);
@@ -251,13 +325,13 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         if (!fading && !(waitingChoice && textDone)) next();
       }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [paused, fading, waitingChoice, textDone, next, uiHidden]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
-    if (paused) setMode('normal');
+    if (paused) setMode("normal");
   }, [paused, setMode]);
 
   if (!game || !scene || !shown) return null;
@@ -267,10 +341,15 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       return (
         <ChapterEnd
           chapter={Number(game.finished.slice(CHAPTER_END.length))}
-          onSave={() => open('save')}
+          onSave={() => open("save")}
           onTitle={onTitle}
           lastScene={
-            <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history.filter((h) => !h.choice)}>
+            <SceneStage
+              scene={shown}
+              effects={[]}
+              speakers={[]}
+              lines={game.history.filter((h) => !h.choice)}
+            >
               {null}
             </SceneStage>
           }
@@ -284,7 +363,12 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
           name={ending.nombre}
           onTitle={onTitle}
           lastScene={
-            <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history}>
+            <SceneStage
+              scene={shown}
+              effects={[]}
+              speakers={[]}
+              lines={game.history}
+            >
               {null}
             </SceneStage>
           }
@@ -300,24 +384,37 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     );
   }
 
-  const toggle = (m: 'auto' | 'skip') => setMode(mode === m ? 'normal' : m);
+  const toggle = (m: "auto" | "skip") => setMode(mode === m ? "normal" : m);
   const buttons = (
     <>
-      <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
+      <button
+        className={mode === "auto" ? "active" : ""}
+        onClick={() => toggle("auto")}
+      >
         Auto
       </button>
-      <button className={mode === 'skip' ? 'active' : ''} onClick={() => toggle('skip')}>
+      <button
+        className={mode === "skip" ? "active" : ""}
+        onClick={() => toggle("skip")}
+      >
         Saltar leído
       </button>
-      <button onClick={() => open('history')}>Historial</button>
-      <button onClick={() => open('save')}>Guardar</button>
-      <button onClick={() => open('load')}>Cargar</button>
-      <button onClick={() => open('map')}>Mapa</button>
-      <button onClick={() => open('options')}>Opciones</button>
-      <button onClick={() => setUiHidden(true)} title="Ocultar la caja para ver la imagen (tecla H)">
+      <button onClick={() => open("history")}>Historial</button>
+      <button onClick={() => open("save")}>Guardar</button>
+      <button onClick={() => open("load")}>Cargar</button>
+      <button onClick={() => open("map")}>Mapa</button>
+      <button onClick={() => open("options")}>Opciones</button>
+      <button
+        onClick={() => setUiHidden(true)}
+        title="Ocultar la caja para ver la imagen (tecla H)"
+      >
         Ocultar
       </button>
-      {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>Pantalla completa</button>}
+      {isTouch() && canFullscreen() && (
+        <button onClick={() => void toggleFullscreen()}>
+          Pantalla completa
+        </button>
+      )}
       <button onClick={onTitle}>Título</button>
     </>
   );
@@ -329,12 +426,18 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       lines={game.history}
     >
       {error && <p className="error stage-error">{error}</p>}
-      {mode !== 'normal' && (
+      {mode !== "normal" && (
         <div className="mode-badge" aria-live="polite">
-          {mode === 'auto' ? 'AUTO ▶' : 'SALTANDO ▶▶'}
+          {mode === "auto" ? "AUTO ▶" : "SALTANDO ▶▶"}
         </div>
       )}
-      {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
+      {uiHidden && (
+        <div
+          className="stage-click stage-unhide"
+          onClick={() => setUiHidden(false)}
+          aria-hidden
+        />
+      )}
       {!uiHidden && waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}
@@ -349,23 +452,35 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         <DialogBox
           key={shown.scene_id}
           dialogue={shown.dialogue}
-          aiVowels={!reduceEffects && effectsOf(shown).includes('ai_vowels')}
+          aiVowels={!reduceEffects && effectsOf(shown).includes("ai_vowels")}
           hasChoices={waitingChoice}
           onAdvance={advanceIfReady}
         />
       )}
       <div
         className={`scene-fade scene-fade-${phase} scene-fade-${color}`}
-        style={{ animationDuration: `${phase === 'out' ? TRANSITIONS[color].out : TRANSITIONS[color].in}ms` }}
+        style={{
+          animationDuration: `${phase === "out" ? TRANSITIONS[color].out : TRANSITIONS[color].in}ms`,
+        }}
         aria-hidden
       />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
-      <div className={`toolbar ${uiHidden ? 'ui-hidden' : ''}`} onMouseDown={(e) => e.preventDefault()}>
+      <div
+        className={`toolbar ${uiHidden ? "ui-hidden" : ""}`}
+        onMouseDown={(e) => e.preventDefault()}
+      >
         {buttons}
       </div>
       {/* Pantallas chicas: los mismos botones dentro de un menú ☰. */}
-      <div className={`toolbar-compact ${uiHidden ? 'ui-hidden' : ''}`} onMouseDown={(e) => e.preventDefault()}>
-        <button className={`menu-toggle ${mode !== 'normal' ? 'active' : ''}`} onClick={() => setMenuOpen((o) => !o)} aria-label="Menú">
+      <div
+        className={`toolbar-compact ${uiHidden ? "ui-hidden" : ""}`}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        <button
+          className={`menu-toggle ${mode !== "normal" ? "active" : ""}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Menú"
+        >
           ☰
         </button>
         {menuOpen && (

@@ -1,0 +1,15 @@
+{
+  "nota": "Fragmentos de Coffee (la parodia de JavaScript del juego) que flotan en el fondo del título. brew = const, sip = function, pour = return, refill = new, decaf = null, espresso = async, latte.log = console.log.",
+  "fragmentos": [
+    ["brew mundo = refill Mundo({", "  cielo: decaf,", "  gravedad: decaf,", "});"],
+    ["sip autocompletar(usuario) {", "  if (usuario.inactivo)", "    pour personalidades.generar();", "}"],
+    ["brew heroinas = [entidad01, entidad02];", "heroinas.forEach(h => h.rivalidad = true);"],
+    ["// TODO: que no se vayan"],
+    ["espresso sip compilar() {", "  await cafeina(Infinity);", "  pour mundo.export();", "}"],
+    ["latte.log('usuario dentro del área de carga');"],
+    ["brew sueldo = decaf; // ver con RR. HH."],
+    ["grind(recuerdos).filter(r => r.duele);"],
+    ["if (!usuario.despierto) {", "  mundo.continuar();", "}"],
+    ["brew rey = refill Antagonista('malvado');", "rey.historiaPrevia = autocompletar();"]
+  ]
+}

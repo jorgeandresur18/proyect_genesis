@@ -69,11 +69,48 @@
 @keyframes cross-x { 0% { left: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { left: 104%; opacity: 0; } }
 @keyframes cross-y { 0% { top: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { top: 104%; opacity: 0; } }
 
+/* Código Coffee: sube despacio, apenas visible. */
+.code {
+  position: absolute;
+  bottom: -20%;
+  margin: 0;
+  font-family: ui-monospace, Consolas, monospace;
+  line-height: 1.5;
+  color: rgba(200, 206, 216, 0.16);
+  white-space: pre;
+  text-align: left;
+  animation: code-rise linear infinite;
+}
+@keyframes code-rise {
+  0% { transform: translateY(0); opacity: 0; }
+  12% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+/* Franja de glitch: casi siempre invisible; cada tanto cruza y desplaza un poco lo que hay detrás. */
+.glitchBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), rgba(120, 220, 255, 0.25), transparent);
+  box-shadow: 0 0 12px rgba(200, 230, 255, 0.35);
+  animation: glitch-bar 7s steps(1) infinite;
+}
+@keyframes glitch-bar {
+  0%, 90%, 100% { opacity: 0; top: 20%; }
+  91% { opacity: 1; top: 34%; height: 2px; }
+  92% { opacity: 0.7; top: 61%; height: 6px; }
+  93% { opacity: 1; top: 47%; height: 1px; }
+  94% { opacity: 0; }
+}
+
 /* Reducir efectos (Opciones) o el sistema pide menos movimiento: todo quieto. */
 .still *,
 .still { animation: none !important; }
-.still .comet { display: none; }
+.still .comet, .still .code, .still .glitchBar { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .bg *, .bg { animation: none !important; }
-  .comet { display: none; }
+  .comet, .code, .glitchBar { display: none; }
 }

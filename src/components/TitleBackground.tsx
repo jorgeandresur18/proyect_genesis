@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useStore } from '../engine/store';
 import styles from './TitleBackground.module.css';
+import coffee from '../data/codigo_coffee.json';
 
 // Generador pseudoaleatorio con semilla fija: las estrellas quedan siempre en el mismo lugar.
 function seeded(seed: number) {
@@ -11,6 +12,7 @@ function seeded(seed: number) {
 }
 
 const STARS = 140;
+const SNIPPETS = 9;
 const HEXES = 7;
 // Partículas que cruzan la pantalla: desde la izquierda o desde arriba.
 const COMETS = [
@@ -23,7 +25,7 @@ const COMETS = [
 /** Fondo del título: espacio negro con estrellas, nebulosas, cuadrícula y elementos flotando. */
 export function TitleBackground() {
   const still = useStore((s) => s.settings.reduceEffects);
-  const { stars, hexes } = useMemo(() => {
+  const { stars, hexes, code } = useMemo(() => {
     const rnd = seeded(20261024);
     return {
       stars: Array.from({ length: STARS }, () => ({
@@ -42,6 +44,14 @@ export function TitleBackground() {
         rotate: rnd() * 60,
         acero: rnd() < 0.45,
       })),
+      // Fragmentos de código Coffee que suben despacio y se desvanecen.
+      code: Array.from({ length: SNIPPETS }, (_, i) => ({
+        lines: coffee.fragmentos[i % coffee.fragmentos.length],
+        left: 3 + ((i * 37 + rnd() * 20) % 80),
+        delay: -rnd() * 26,
+        duration: 22 + rnd() * 12,
+        size: 0.68 + rnd() * 0.22,
+      })),
     };
   }, []);
 
@@ -51,6 +61,17 @@ export function TitleBackground() {
       <div className={`${styles.nebula} ${styles.nebulaPlata}`} />
       <div className={`${styles.nebula} ${styles.nebulaAcero}`} />
       <div className={styles.vignette} />
+      {code.map((c, i) => (
+        <pre
+          key={`c${i}`}
+          className={styles.code}
+          style={{ left: `${c.left}%`, animationDelay: `${c.delay}s`, animationDuration: `${c.duration}s`, fontSize: `${c.size}rem` }}
+        >
+          {c.lines.join('\n')}
+        </pre>
+      ))}
+      {/* Glitch del fondo: una franja que cruza la pantalla de vez en cuando. */}
+      <div className={styles.glitchBar} />
       {stars.map((s, i) => (
         <span
           key={i}
