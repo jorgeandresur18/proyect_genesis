@@ -1,14 +1,25 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { useStore } from '../engine/store';
 import { BAD_END, config, getEnding, scenes, variables } from '../engine/story';
 import { buildFlow, type FlowNode } from '../engine/flow';
 import { Panel } from './Panels';
 
-const NODE_W = 180;
-const NODE_H = 52;
+const NODE_W = 190;
+const NODE_H = 56;
 const COL_GAP = 56;
 const ROW_GAP = 66;
-const PAD = 24;
+const PAD = 40;
+const MIN_ZOOM = 0.1;
+const MAX_ZOOM = 2.2;
+// Movimiento mínimo (px) para que un arrastre no cuente como clic en un nodo.
+const DRAG_THRESHOLD = 6;
+
+interface View {
+  x: number;
+  y: number;
+  k: number;
+}
+const clamp = (k: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, k));
 
 // La historia es estática: el diagrama se calcula una sola vez.
 const flow = buildFlow(scenes, config.inicio, variables, ROW_GAP);
@@ -19,6 +30,7 @@ const pos = (n: FlowNode) => ({ x: PAD + n.col * (NODE_W + COL_GAP), y: PAD + n.
 /**
  * Mapa de decisiones estilo Shiny Days: árbol horizontal con las decisiones, sus opciones y a dónde llevan.
  * Las decisiones vistas se pueden revisitar con las variables de su primera visita.
+ * Se arrastra para moverse y se acerca o aleja con la rueda, pellizcando o con los botones.
  */
 export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () => void }) {
   const snapshots = useStore((s) => s.snapshots);
@@ -26,7 +38,8 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   const endingsSeen = useStore((s) => s.endingsSeen);
   const current = useStore((s) => s.game?.sceneId);
   const jumpTo = useStore((s) => s.jumpTo);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [view, setView] = useState<View>({ x: 0, y: 0, k: 1 });
 
   const reached = (n: FlowNode): boolean => {
     switch (n.kind) {
@@ -44,12 +57,92 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   };
   const byId = new Map(flow.nodes.map((n) => [n.id, n]));
 
-  // Al abrir, desplaza el mapa hasta la última decisión alcanzada.
-  useEffect(() => {
-    const last = flow.nodes.filter((n) => n.kind === 'decision' && reached(n)).sort((a, b) => b.col - a.col)[0];
-    if (last && scrollRef.current) scrollRef.current.scrollLeft = pos(last).x - 120;
-    // Solo al abrir el mapa.
+  // Centra la vista en un nodo (la decisión actual o la última alcanzada).
+  const focusNode = useCallback((n: FlowNode | undefined, k = 1) => {
+    const vp = viewportRef.current;
+    if (!vp || !n) return;
+    const p = pos(n);
+    setView({ k, x: vp.clientWidth / 2 - (p.x + NODE_W / 2) * k, y: vp.clientHeight / 2 - (p.y + NODE_H / 2) * k });
   }, []);
+  const focusTarget = () =>
+    flow.nodes.find((n) => n.kind === 'decision' && n.sceneId === current) ??
+    flow.nodes.filter((n) => n.kind === 'decision' && reached(n)).sort((a, b) => b.col - a.col)[0] ??
+    flow.nodes[0];
+  const fitAll = () => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const k = clamp(Math.min(vp.clientWidth / width, vp.clientHeight / height));
+    setView({ k, x: (vp.clientWidth - width * k) / 2, y: (vp.clientHeight - height * k) / 2 });
+  };
+  // Al abrir: centrado en la decisión actual o en la última alcanzada.
+  useEffect(() => {
+    focusNode(focusTarget());
+    // Solo al abrir el mapa.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Zoom con centro en un punto de la pantalla (el cursor o el medio del pellizco).
+  const zoomAt = (factor: number, cx: number, cy: number) =>
+    setView((v) => {
+      const k = clamp(v.k * factor);
+      return { k, x: cx - ((cx - v.x) * k) / v.k, y: cy - ((cy - v.y) * k) / v.k };
+    });
+  const zoomCenter = (factor: number) => {
+    const vp = viewportRef.current;
+    if (vp) zoomAt(factor, vp.clientWidth / 2, vp.clientHeight / 2);
+  };
+
+  // Rueda del mouse (no pasiva, para que la página no se desplace).
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const r = vp.getBoundingClientRect();
+      zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top);
+    };
+    vp.addEventListener('wheel', onWheel, { passive: false });
+    return () => vp.removeEventListener('wheel', onWheel);
+  }, []);
+
+  // Arrastrar con un dedo o el mouse; pellizcar con dos dedos.
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const gesture = useRef({ moved: 0, pinch: 0 });
+  const onPointerDown = (e: ReactPointerEvent) => {
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    gesture.current.moved = 0;
+    if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      gesture.current.pinch = Math.hypot(a.x - b.x, a.y - b.y);
+    }
+  };
+  const onPointerMove = (e: ReactPointerEvent) => {
+    const prev = pointers.current.get(e.pointerId);
+    if (!prev) return;
+    const next = { x: e.clientX, y: e.clientY };
+    pointers.current.set(e.pointerId, next);
+    if (pointers.current.size === 1) {
+      const dx = next.x - prev.x;
+      const dy = next.y - prev.y;
+      gesture.current.moved += Math.abs(dx) + Math.abs(dy);
+      // Recién al pasar el umbral se toma el puntero: así un toque corto sigue siendo un clic en el nodo.
+      if (gesture.current.moved > DRAG_THRESHOLD) {
+        (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+        setView((v) => ({ ...v, x: v.x + dx, y: v.y + dy }));
+      }
+    } else if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      const r = viewportRef.current!.getBoundingClientRect();
+      if (gesture.current.pinch) zoomAt(dist / gesture.current.pinch, (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+      gesture.current.pinch = dist;
+      gesture.current.moved = DRAG_THRESHOLD + 1;
+    }
+  };
+  const onPointerUp = (e: ReactPointerEvent) => {
+    pointers.current.delete(e.pointerId);
+    if (pointers.current.size < 2) gesture.current.pinch = 0;
+  };
 
   const label = (n: FlowNode): string => {
     if (n.kind === 'start') return 'Inicio';
@@ -68,9 +161,22 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
 
   return (
     <Panel title="Mapa de decisiones" onClose={onClose} wide>
-      <div className="flow-scroll" ref={scrollRef}>
-        <div className="flow" style={{ width, height }}>
+      <div
+        className={`flow-viewport ${gesture.current.moved > DRAG_THRESHOLD ? 'flow-dragging' : ''}`}
+        ref={viewportRef}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      >
+        <div className="flow" style={{ width, height, transform: `translate(${view.x}px, ${view.y}px) scale(${view.k})` }}>
           <svg className="flow-edges" width={width} height={height}>
+            <defs>
+              <linearGradient id="flow-taken" x1="0" x2="1">
+                <stop offset="0" stopColor="#ff4f7b" />
+                <stop offset="1" stopColor="#ff9a6a" />
+              </linearGradient>
+            </defs>
             {flow.edges.map((e, i) => {
               const a = byId.get(e.from)!;
               const b = byId.get(e.to)!;
@@ -110,6 +216,8 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
                 disabled={!canJump}
                 title={canJump ? 'Volver a esta decisión' : undefined}
                 onClick={() => {
+                  // Si fue un arrastre, no es un clic.
+                  if (gesture.current.moved > DRAG_THRESHOLD) return;
                   jumpTo(n.sceneId!);
                   onJump();
                 }}
@@ -119,10 +227,26 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
             );
           })}
         </div>
+        <div className="flow-controls" onPointerDown={(e) => e.stopPropagation()}>
+          <button onClick={() => zoomCenter(1.25)} aria-label="Acercar">
+            +
+          </button>
+          <span>{Math.round(view.k * 100)} %</span>
+          <button onClick={() => zoomCenter(0.8)} aria-label="Alejar">
+            −
+          </button>
+          <button onClick={fitAll}>Ver todo</button>
+          <button onClick={() => focusNode(focusTarget())}>Ir a la actual</button>
+        </div>
       </div>
-      <p className="muted flow-legend">
-        ◆ decisión (clic para volver) · ○ opción · ■ final · ✕ bad end · ??? sin descubrir · <s>tachada</s> opción que el juego no permite
-      </p>
+      <div className="flow-legend">
+        <span className="flow-chip flow-chip-decision">◆ decisión · clic para volver</span>
+        <span className="flow-chip">● opción elegida</span>
+        <span className="flow-chip flow-chip-bad">✕ bad end</span>
+        <span className="flow-chip">■ fin de capítulo</span>
+        <span className="flow-chip flow-chip-unknown">??? sin descubrir</span>
+        <span className="muted flow-hint">Arrastra para moverte · rueda o pellizco para acercar</span>
+      </div>
     </Panel>
   );
 }

@@ -395,42 +395,87 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 /* Mapa de decisiones: árbol horizontal */
 .panel-wide { width: min(96vw, 110rem); height: min(88vh, 46rem); }
 .panel-wide .panel-body { display: flex; flex-direction: column; flex: 1; min-height: 0; }
-.flow-scroll { flex: 1; overflow: auto; background: var(--bg); border: 1px solid var(--box-2); }
-.flow { position: relative; }
-.flow-edges { position: absolute; inset: 0; pointer-events: none; }
-.flow-edge { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 4; }
-.flow-edge-taken { stroke: var(--accent); stroke-dasharray: none; stroke-width: 2; }
+/* Lienzo del mapa: se arrastra y se hace zoom (ver SceneMap.tsx). */
+.flow-viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  border: 1px solid rgba(214, 218, 226, 0.14);
+  border-radius: 0.6rem;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    radial-gradient(ellipse at 30% 20%, rgba(255, 79, 123, 0.08), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(140, 120, 255, 0.08), transparent 60%),
+    #0b0b0e;
+  user-select: none;
+}
+.flow-dragging { cursor: grabbing; }
+.flow { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.flow-edges { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.flow-edge { fill: none; stroke: rgba(214, 218, 226, 0.22); stroke-width: 1.5; stroke-dasharray: 5 6; }
+.flow-edge-taken { stroke: url(#flow-taken); stroke-dasharray: 10 8; stroke-width: 2.6; filter: drop-shadow(0 0 4px rgba(255, 79, 123, 0.6)); animation: flow-dash 1.2s linear infinite; }
+@keyframes flow-dash { to { stroke-dashoffset: -18; } }
 .flow-node {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.75rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
   line-height: 1.25;
   text-align: left;
-  background: var(--box);
+  color: #e6e8ee;
+  background: linear-gradient(180deg, #1c1c22, #141418);
+  border: 1px solid rgba(214, 218, 226, 0.22);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
-.flow-node span {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.flow-node:disabled { opacity: 1; cursor: default; }
-.flow-decision::before { content: '◆'; color: var(--accent); flex-shrink: 0; }
+.flow-node span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.flow-node:disabled { opacity: 1; cursor: inherit; }
+.flow-decision::before { content: '◆'; color: var(--accent); flex-shrink: 0; font-size: 0.9rem; }
+.flow-decision.flow-reached { border-color: rgba(255, 79, 123, 0.55); box-shadow: 0 0 1rem rgba(255, 79, 123, 0.18), 0 0.4rem 1rem rgba(0, 0, 0, 0.4); cursor: pointer; }
+.flow-decision.flow-reached:hover { transform: translateY(-2px); border-color: #ff7a9a; box-shadow: 0 0 1.4rem rgba(255, 79, 123, 0.4); }
+.flow-option { border-radius: 999px; background: #18181d; }
 .flow-option::before { content: '○'; color: var(--muted); flex-shrink: 0; }
-.flow-ending::before { content: '■'; color: var(--accent); flex-shrink: 0; }
-.flow-start { justify-content: center; font-weight: 700; }
-.flow-option { border-radius: 999px; background: var(--box-2); }
-.flow-option.flow-reached::before { content: '●'; color: var(--accent); }
-.flow-unknown { color: var(--muted); border-style: dashed; }
+.flow-option.flow-reached { border-color: rgba(255, 154, 106, 0.5); }
+.flow-option.flow-reached::before { content: '●'; color: #ff9a6a; }
+.flow-ending::before { content: '■'; color: #c9ced6; flex-shrink: 0; }
+.flow-ending.flow-reached { border-color: rgba(201, 206, 214, 0.6); }
+.flow-bad::before { content: '✕'; color: #ff3b4a; }
+.flow-bad.flow-reached { border-color: rgba(255, 40, 55, 0.6); background: linear-gradient(180deg, #2a0f13, #170a0c); box-shadow: 0 0 1rem rgba(255, 30, 45, 0.25); }
+.flow-start { justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; border-color: rgba(214, 218, 226, 0.5); }
+.flow-unknown { color: #6c7079; border-style: dashed; background: rgba(20, 20, 24, 0.7); box-shadow: none; }
 .flow-locked span { text-decoration: line-through; color: var(--muted); }
-.flow-current { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
-.flow-decision.flow-reached:hover { border-color: var(--text); }
-.flow-legend { margin: 0.6rem 0 0; font-size: 0.8rem; }
-.flow-bad::before { content: '✕'; }
+.flow-current { border-color: #fff !important; animation: flow-pulse 1.8s ease-in-out infinite; }
+@keyframes flow-pulse { 50% { box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 0 1.6rem rgba(255, 79, 123, 0.5); } }
+.flow-controls {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem;
+  background: rgba(10, 10, 12, 0.8);
+  border: 1px solid rgba(214, 218, 226, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  cursor: default;
+}
+.flow-controls button { min-width: 2.1rem; padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.85rem; }
+.flow-controls span { min-width: 3.2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+.flow-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.7rem 0 0; font-size: 0.78rem; }
+.flow-chip { padding: 0.2rem 0.65rem; border: 1px solid rgba(214, 218, 226, 0.2); border-radius: 999px; color: #d9dde4; }
+.flow-chip-decision { border-color: rgba(255, 79, 123, 0.5); }
+.flow-chip-bad { border-color: rgba(255, 40, 55, 0.6); color: #ff8a92; }
+.flow-chip-unknown { border-style: dashed; color: var(--muted); }
+.flow-hint { margin-left: auto; }
+@media (prefers-reduced-motion: reduce) { .flow-edge-taken, .flow-current { animation: none; } }
 .ending-group { margin-bottom: 1.2rem; }
 .ending-group h3 { font-size: 0.95rem; }
 
