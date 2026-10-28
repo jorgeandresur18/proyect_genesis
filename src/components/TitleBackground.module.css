@@ -69,57 +69,11 @@
 @keyframes cross-x { 0% { left: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { left: 104%; opacity: 0; } }
 @keyframes cross-y { 0% { top: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { top: 104%; opacity: 0; } }
 
-/* Variante negra (fin de capítulo): fondo negro puro, figuras que nacen en el centro y se alejan girando. */
-.negro { background: #000; }
-.negro .grid { background-image: linear-gradient(90deg, #ffffff08 1px, transparent 1px), linear-gradient(#ffffff08 1px, transparent 1px); }
-.pulse {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 60vmin;
-  height: 60vmin;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  animation: pulse 5s ease-out infinite;
-}
-.shape {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  fill: none;
-  stroke-width: 2.5;
-  opacity: 0;
-  animation: emerge 9s cubic-bezier(0.2, 0.6, 0.3, 1) infinite backwards;
-}
-.blanco { stroke: rgba(255, 255, 255, 0.55); filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); }
-.plata { stroke: rgba(200, 205, 214, 0.5); filter: drop-shadow(0 0 4px rgba(220, 224, 232, 0.35)); }
-.acero { stroke: rgba(120, 126, 138, 0.6); }
-@keyframes emerge {
-  0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
-  15% { opacity: 0.9; }
-  75% { opacity: 0.5; }
-  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.3) rotate(var(--spin)); opacity: 0; }
-}
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
-  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
-}
-
-/* En la variante negra, plata y acero pasan a cian y violeta: colores de glitch. */
-.negro .hex { stroke: rgba(34, 211, 238, 0.35); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5)); }
-.negro .hexAcero { stroke: rgba(139, 92, 246, 0.4); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55)); }
-.negro .comet { background: #22d3ee; box-shadow: 0 0 8px 2px #22d3ee, 0 0 24px 4px rgba(34, 211, 238, 0.4); }
-.negro .cometAcero { background: #8b5cf6; box-shadow: 0 0 8px 2px #8b5cf6, 0 0 24px 4px rgba(139, 92, 246, 0.4); }
-.negro .plata { stroke: rgba(34, 211, 238, 0.6); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.55)); }
-.negro .acero { stroke: rgba(139, 92, 246, 0.65); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6)); }
-
 /* Reducir efectos (Opciones) o el sistema pide menos movimiento: todo quieto. */
 .still *,
 .still { animation: none !important; }
 .still .comet { display: none; }
-.still .shape, .still .pulse { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .bg *, .bg { animation: none !important; }
-  .comet, .shape, .pulse { display: none; }
+  .comet { display: none; }
 }

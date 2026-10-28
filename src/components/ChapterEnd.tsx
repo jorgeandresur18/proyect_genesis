@@ -3,7 +3,7 @@ import { useStore } from '../engine/store';
 import { storyFiles } from '../engine/story';
 import { playSelect } from '../engine/sound';
 import textos from '../data/fin_capitulo.json';
-import { TitleBackground } from './TitleBackground';
+import { assetUrl } from '../engine/assets';
 
 interface Props {
   chapter: number;
@@ -23,6 +23,7 @@ export function ChapterEnd({ chapter, lastScene, onSave, onTitle }: Props) {
   const [faded, setFaded] = useState(false);
   const [soon, setSoon] = useState(false);
   const title = storyFiles.find((f) => f.ruta === 'base' && f.chapter === chapter)?.title;
+  const background = (textos.fondos as Record<string, string>)[String(chapter)];
 
   useEffect(() => {
     const t = setTimeout(() => setFaded(true), still ? 400 : FADE_MS);
@@ -44,7 +45,11 @@ export function ChapterEnd({ chapter, lastScene, onSave, onTitle }: Props) {
   };
   return (
     <div className={`screen chapter-end ${still ? 'chapter-end-still' : ''}`}>
-      <TitleBackground negro />
+      {/* Fondo: un lugar del capítulo, oscurecido, con la cuadrícula del título encima. */}
+      <div className="chapter-end-bg" aria-hidden>
+        {background && <img src={assetUrl(background)} alt="" draggable={false} />}
+        <div className="chapter-end-grid" />
+      </div>
       <div className="chapter-end-text">
         <h1 className="chapter-end-title" data-text={n(textos.fin, chapter)}>
           {n(textos.fin, chapter)}

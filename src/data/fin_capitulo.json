@@ -1,5 +1,5 @@
 {
-  "nota": "Textos de la pantalla de fin de capítulo. {n} es el número del capítulo.",
+  "nota": "Textos de la pantalla de fin de capítulo. {n} es el número del capítulo. «fondos»: imagen de fondo (oscurecida) de cada capítulo; si no hay, fondo negro.",
   "fin": "FIN DEL CAPÍTULO {n}",
   "continuar": "Continuar",
   "guardar": "Guardar",
@@ -9,5 +9,8 @@
     "estado": "En desarrollo",
     "texto": "Próximamente",
     "cerrar": "Cerrar"
+  },
+  "fondos": {
+    "1": "fondos/departamento_noche.webp"
   }
 }
