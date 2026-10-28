@@ -6,6 +6,7 @@ import conoceMasEs from '../data/conoce_mas.json';
 import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
 import { playCancel, playSelect } from '../engine/sound';
+import { SaveThumb } from './SaveThumb';
 
 export function Panel({
   title,
@@ -78,6 +79,7 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
         const slot = saves[i];
         return (
           <div key={i} className="slot">
+            {slot ? <SaveThumb sceneId={slot.sceneId} finished={slot.finished} /> : <div className="save-thumb save-thumb-empty" />}
             <div className="slot-info">
               <strong>{t('guardar.espacio', { n: i + 1 })}</strong>
               {slot ? (

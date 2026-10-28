@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { assetUrl } from '../engine/assets';
-import { localized, useLang } from '../engine/i18n';
+import { localized, useLang, useT } from '../engine/i18n';
 import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
 import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import eggEs from '../data/easter_egg.json';
@@ -16,16 +16,14 @@ const GLITCH_MS = 700;
 
 const paypal = conoceMas.enlaces.find((l) => 'destacado' in l && l.destacado)?.url;
 
-/** Escribe las líneas letra por letra, como en los diálogos del juego, con su sonido. */
-function useTypewriter(lines: string[]): { shown: string[]; done: boolean } {
+/** Escribe una línea letra por letra, como en los diálogos del juego, con su sonido. */
+function useTypewriter(line: string): { shown: string; done: boolean; skip: () => void } {
   const speed = useStore((s) => s.settings.textSpeed);
-  const total = lines.reduce((n, l) => n + l.length, 0);
-  const [count, setCount] = useState(speed >= TEXT_SPEED_INSTANT ? total : 0);
-  const key = lines.join('\n');
+  const [count, setCount] = useState(speed >= TEXT_SPEED_INSTANT ? line.length : 0);
 
   useEffect(() => {
     if (speed >= TEXT_SPEED_INSTANT) {
-      setCount(total);
+      setCount(line.length);
       return;
     }
     setCount(0);
@@ -34,8 +32,8 @@ function useTypewriter(lines: string[]): { shown: string[]; done: boolean } {
     startTyping();
     const tick = (now: number) => {
       const n = Math.floor(((now - start) / 1000) * speed);
-      if (n >= total) {
-        setCount(total);
+      if (n >= line.length) {
+        setCount(line.length);
         stopTyping();
         return;
       }
@@ -47,23 +45,22 @@ function useTypewriter(lines: string[]): { shown: string[]; done: boolean } {
       cancelAnimationFrame(frame);
       stopTyping();
     };
-    // Se reinicia solo si cambian las líneas.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, speed]);
+  }, [line, speed]);
 
-  let left = count;
-  const shown = lines.map((l) => {
-    const part = l.slice(0, Math.max(0, left));
-    left -= l.length;
-    return part;
-  });
-  return { shown, done: count >= total };
+  return {
+    shown: line.slice(0, count),
+    done: count >= line.length,
+    skip: () => {
+      stopTyping();
+      setCount(line.length);
+    },
+  };
 }
 
 /**
  * Easter egg del título (69 clics en el logo): Nikki aparece sobre la pantalla oscurecida y no deja usar el
- * menú hasta que le respondas. «En otro momento»: se pone celosa y se va con un glitch. «Donar»: abre PayPal,
- * agradece y se va.
+ * menú hasta que le respondas. Habla línea por línea con «Siguiente». «En otro momento»: se pone celosa y se
+ * va con un glitch. «Donar»: abre PayPal, agradece y se va.
  */
 export function EasterEgg({ phase, onGone }: { phase: EggPhase; onGone: () => void }) {
   if (phase !== 'on') return null;
@@ -72,9 +69,13 @@ export function EasterEgg({ phase, onGone }: { phase: EggPhase; onGone: () => vo
 
 function Nikki({ onGone }: { onGone: () => void }) {
   const egg = localized(eggEs, eggEn, useLang());
+  const t = useT();
   const [reply, setReply] = useState<Reply>('ask');
+  const [index, setIndex] = useState(0);
   const lines = reply === 'ask' ? egg.hola : [reply === 'later' ? egg.adios : egg.gracias];
-  const { shown, done } = useTypewriter(lines);
+  const line = lines[Math.min(index, lines.length - 1)];
+  const { shown, done, skip } = useTypewriter(line);
+  const last = index >= lines.length - 1;
   const [leaving, setLeaving] = useState(false);
 
   // Después de responder: termina su frase, espera un momento y se va con un glitch.
@@ -88,6 +89,11 @@ function Nikki({ onGone }: { onGone: () => void }) {
     };
   }, [reply, done, onGone]);
 
+  const answer = (r: Reply) => {
+    setIndex(0);
+    setReply(r);
+  };
+
   return (
     <div className={`egg-backdrop ${leaving ? 'egg-backdrop-out' : ''}`} role="dialog" aria-modal>
       <div className={`egg ${leaving ? 'egg-bye' : ''}`}>
@@ -100,37 +106,46 @@ function Nikki({ onGone }: { onGone: () => void }) {
         <div className="egg-bubble">
           <span className="egg-name">Nikki</span>
           {/* Lo que falta escribir ocupa su lugar sin verse: el globo no cambia de tamaño mientras habla. */}
-          {lines.map((line, i) => (
-            <p key={`${reply}${i}`}>
-              {shown[i]}
-              <span className="dialog-hidden">{line.slice(shown[i].length)}</span>
-            </p>
-          ))}
-          {reply === 'ask' && done && (
+          <p>
+            {shown}
+            <span className="dialog-hidden">{line.slice(shown.length)}</span>
+          </p>
+          {reply === 'ask' && (
             <div className="egg-actions">
-              {paypal && (
-                <a
-                  className="egg-donate"
-                  href={paypal}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    playSelect();
-                    setReply('thanks');
-                  }}
+              {!last || !done ? (
+                <button
+                  className={`dialog-advance egg-next ${done ? 'dialog-advance-ready' : ''}`}
+                  onClick={() => (done ? setIndex((i) => i + 1) : skip())}
                 >
-                  {egg.donar}
-                </a>
+                  {done ? t('dialogo.siguiente') : t('dialogo.mostrar_todo')}
+                </button>
+              ) : (
+                <>
+                  {paypal && (
+                    <a
+                      className="egg-donate"
+                      href={paypal}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        playSelect();
+                        answer('thanks');
+                      }}
+                    >
+                      {egg.donar}
+                    </a>
+                  )}
+                  <button
+                    className="egg-later"
+                    onClick={() => {
+                      playCancel();
+                      answer('later');
+                    }}
+                  >
+                    {egg.despues}
+                  </button>
+                </>
               )}
-              <button
-                className="egg-later"
-                onClick={() => {
-                  playCancel();
-                  setReply('later');
-                }}
-              >
-                {egg.despues}
-              </button>
             </div>
           )}
         </div>
