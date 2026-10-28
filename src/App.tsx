@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CHAPTER_END, useStore } from './engine/store';
 import { BAD_END, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
+import { preloadFrom } from './engine/preload';
 import { TRANSITIONS, useSceneTransition } from './engine/useSceneTransition';
 import { effectsOf } from './engine/logic';
 import { SceneStage } from './components/SceneStage';
@@ -204,6 +205,11 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
   const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
+  // Fondos y sprites de lo que viene, descargados de antemano.
+  const sceneId = scene?.scene_id;
+  useEffect(() => {
+    if (sceneId) preloadFrom(sceneId);
+  }, [sceneId]);
   const fading = phase === 'out';
   const advanceIfReady = () => {
     if (!fading) next();

@@ -45,7 +45,7 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
         {screen !== null ? (
           <CodeScreen id={screen} lines={lines} />
         ) : scene.background && !isPlaceholder(scene.background) && !scene.video_fondo ? (
-          <img className="stage-bg-img" src={assetUrl(scene.background)} alt="" draggable={false} />
+          <Backdrop src={assetUrl(scene.background)} />
         ) : (
           <span className="placeholder-label">
             {scene.video_fondo
@@ -134,6 +134,42 @@ function Sprite({ src, className, style }: { src: string; className: string; sty
         className={`${current.className} ${swapping ? (loaded ? 'sprite-swap' : 'sprite-loading') : entered ? '' : 'sprite-enter'}`}
         style={style}
         src={current.src}
+        alt=""
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  );
+}
+
+// Duración del fundido entre fondos (igual que en styles.css).
+const BG_SWAP_MS = 700;
+
+/**
+ * Fondo de imagen. Al cambiar de lugar, el nuevo se funde encima del anterior, y solo cuando terminó de
+ * cargar: así nunca se ve el fondo viejo con los personajes de la escena nueva por una descarga lenta.
+ */
+function Backdrop({ src }: { src: string }) {
+  const [current, setCurrent] = useState(src);
+  const [previous, setPrevious] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
+  if (src !== current) {
+    setPrevious(current);
+    setCurrent(src);
+    setLoaded(false);
+  }
+  useEffect(() => {
+    if (!loaded || !previous) return;
+    const t = setTimeout(() => setPrevious(null), BG_SWAP_MS);
+    return () => clearTimeout(t);
+  }, [loaded, previous]);
+  return (
+    <>
+      {previous && <img className="stage-bg-img" src={previous} alt="" draggable={false} aria-hidden />}
+      <img
+        key={current}
+        className={`stage-bg-img ${previous ? (loaded ? 'stage-bg-in' : 'stage-bg-loading') : ''}`}
+        src={current}
         alt=""
         draggable={false}
         onLoad={() => setLoaded(true)}
