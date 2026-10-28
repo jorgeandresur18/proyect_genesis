@@ -21,7 +21,6 @@ Muertes o fracasos tempranos, estilo Shiny Days. No cuentan entre los 12 finales
 | `bad_cap01_huida` | Nadie más se encarga | 1 | Al despertar, «Correr en dirección contraria» en vez de ir hacia la voz de Cami | Borrador |
 | `bad_cap01_escudo` | Escudo humano | 1 | Ante el monstruo, «Esconderte detrás de Cami» | Borrador |
 | `bad_cap01_patrulla` | Pendiente de revisión | 1 | En la patrulla, «Cruzar ya» a destiempo | Borrador |
-| `bad_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso; en casa borra el correo de GRAVITY | Borrador |
 | `bad_cap01_capitan` | Un solo turno | 1 | Frente al capitán en el núcleo de la Grieta, «Pelear contra el capitán» | Borrador |
 | `bad_cap01_acorazado` | Valiente, por una vez | 1 | En el invierno, frente al monstruo acorazado, «Enfrentar al monstruo» | Borrador |
 
@@ -36,11 +35,12 @@ No son bad ends: no le pasa nada malo a Jair. Simplemente la historia no empieza
 | ID | Nombre | Capítulo | Decisión que lo dispara | Estado |
 | --- | --- | --- | --- | --- |
 | `final_cap01_sin_bar` | Una noche normal | 1 | «Decir que estás cansado» a Nikki: no hay bar; sobrio, borra el correo de GRAVITY | Borrador |
+| `final_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso; en casa borra el correo de GRAVITY | Borrador |
 | `final_cap01_correo` | Spam | 1 | Frente al correo de GRAVITY, «Eliminar el correo» | Borrador |
 
 ## La noche que crea el juego `[CANON]`
 
-La noche del bar con Nikki es lo que lleva a Jair a instalar GRAVITY y crear el videojuego. Si esa noche no ocurre (no va al bar), si la rechaza, o si borra el correo de GRAVITY, el juego nunca se crea y la historia jamás ocurre. No ir al bar y borrar el correo son finales tempranos (`final_cap01_sin_bar`, `final_cap01_correo`); rechazarla sigue siendo un bad end (`bad_cap01_rechazo`). Variable `noche`: `normal`, `sin_bar` o `rechazo`.
+La noche del bar con Nikki es lo que lleva a Jair a instalar GRAVITY y crear el videojuego. Si esa noche no ocurre (no va al bar), si la rechaza, o si borra el correo de GRAVITY, el juego nunca se crea y la historia jamás ocurre. Los tres son finales tempranos (`final_cap01_sin_bar`, `final_cap01_rechazo`, `final_cap01_correo`). Variable `noche`: `normal`, `sin_bar` o `rechazo`.
 
 Los finales de la tabla principal (canon, alternativos, Génesis++ y Génesis#) son del juego completo. Mientras no estén escritos no se muestran en la galería; el Capítulo 1 solo tiene bad ends y finales tempranos.
 

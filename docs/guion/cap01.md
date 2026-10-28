@@ -752,7 +752,7 @@
 
 `bad_rechazo_006` — La única vez que dijo que no.
 
-> **BAD END: La única vez que dijo que no**
+> **FIN: La única vez que dijo que no**
 
 ---
 

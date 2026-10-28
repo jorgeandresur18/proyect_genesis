@@ -1,6 +1,6 @@
 [
   { "id": "final_cap01_sin_bar", "nombre": "Una noche normal", "pieza": "Juego base", "tipo": "Final temprano", "estado": "jugable", "nombre_en": "Just a normal night" },
-  { "id": "bad_cap01_rechazo", "nombre": "La única vez que dijo que no", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable", "nombre_en": "The only time he said no" },
+  { "id": "final_cap01_rechazo", "nombre": "La única vez que dijo que no", "pieza": "Juego base", "tipo": "Final temprano", "estado": "jugable", "nombre_en": "The only time he said no" },
   { "id": "final_cap01_correo", "nombre": "Spam", "pieza": "Juego base", "tipo": "Final temprano", "estado": "jugable", "nombre_en": "Spam" },
   { "id": "bad_cap01_huida", "nombre": "Nadie más se encarga", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable", "nombre_en": "Someone else will handle it" },
   { "id": "bad_cap01_escudo", "nombre": "Escudo humano", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable", "nombre_en": "Human shield" },
