@@ -191,7 +191,8 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
         <button
           onClick={() => {
             void enterPlayMode();
-            newGame();
+            // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
+            newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
           }}
         >
           Nueva partida

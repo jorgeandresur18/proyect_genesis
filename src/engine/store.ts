@@ -84,7 +84,8 @@ interface Store {
   /** El texto de la línea actual ya terminó de escribirse (efecto máquina de escribir). */
   textDone: boolean;
 
-  newGame: () => void;
+  /** Partida nueva desde el inicio (o desde `start`, para probar un capítulo en borrador). */
+  newGame: (start?: string) => void;
   advance: () => void;
   /** Clic o Espacio: si el texto se está escribiendo, lo completa; si ya terminó, avanza. */
   next: () => void;
@@ -152,7 +153,7 @@ export const useStore = create<Store>()(
         error: null,
         textDone: false,
 
-        newGame: () => goTo(config.inicio, { ...variables }, []),
+        newGame: (start) => goTo(start && scenes.has(start) ? start : config.inicio, { ...variables }, []),
 
         next: () => {
           if (get().textDone) get().advance();

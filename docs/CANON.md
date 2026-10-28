@@ -37,6 +37,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 
 - **Reino Ancestral:** lo gobiernan cuatro facciones estacionales. Primavera (inspirada en el Japón feudal; de ahí viene Rikka), Invierno (regiones de Rusia), Otoño (culturas celtas) y Verano (culturas polinesias). Son inspiraciones, no copias.
 - El Rey Malvado fue el rey de Primavera; después se proclamó Rey Malvado del metaverso. Por qué: `[PENDIENTE]`.
+- Hoy reina un **nuevo Rey Primavera**. Él y los otros tres reyes estacionales están a merced del Rey Malvado sin que su pueblo lo sepa; por eso, más adelante, las tropas del Rey Primavera acorralan a Jair. Rikka lo admira y le atribuye la paz de los cuatro reinos. `[CANON]`
 - Verano ocupa el Valle de la Eterna Primavera bajo la influencia de la deidad Valkha; de ahí el conflicto entre Primavera y Verano (los de Verano, codiciosos).
 - **Dimensión espacial:** antes cada planeta era un imperio y había guerras. La Federación Galáctica los fue integrando, a veces con ventajas y a veces con presión; quien no entra es «planeta rebelde». La Resistencia sospecha que la paz esconde la concentración del poder. Los soldados de la Federación visten de negro. **La Federación sirve al Rey Malvado:** es su brazo en la dimensión espacial; por eso Cami dice que ahí «el Rey Malvado ya ganó». `[CANON]`
 - **Cami:** su planeta entró a la Federación por una guerra civil en la que murieron sus padres. Quedó huérfana y vagó por el espacio con un grupo rebelde hasta encontrarse con Jair.
@@ -136,6 +137,17 @@ Sashi y Aylin **no existen** en la línea original.
 6. Consecuencias del descubrimiento; decide la versión del Capítulo 7.
 7A. Colapso del mundo real con el de la IA y fusión de Rikka y Cami en The Anothergirl (`final_canon_2`).
 7B. Epílogo tras el salto temporal: Cami vuelve con Jair (`final_canon_1`).
+
+### Capítulo 2: el viaje del héroe (plan del autor: `docs/guion/cap02_plan.md`)
+
+- Empieza en la **ciudadela de la Primavera**, hogar de Rikka, al otro lado de su puente. Ahí viven sus amigos **Mike y Nora**, dos niños. `[CANON]`
+- La ciudadela vive en prosperidad desde que derrotaron a **Tzai**, la heralda del Rey Malvado que la ocupaba (la trama de RikkaQuest). Desde entonces Rikka es la guardiana del puente de la entrada; no recuerda desde cuándo. `[CANON]`
+- Rikka tiene **más de 500 años**. Jair lo sabe porque hace años escribió un borrador sobre una heroína que peleó en una guerra dentro de su universo; le dice que lo leyó por ahí. `[CANON]`
+- Llegan soldados de la Federación buscando a Cami: entran porque Rikka no estaba en el puente. Cami dice que su misión es derrotar al Rey Malvado; Rikka la llama suicida; Jair la apoya. `[CANON]`
+- **Profecía:** un salvador que destruiría al Rey Malvado y se volvería el nuevo rey soberano, que no pertenecería a ninguna dimensión y vendría de más allá de esta existencia. Rikka cree que puede ser Jair y empieza a sentir algo por su determinación de ayudar. Perdió mucho por culpa del Rey Malvado (qué perdió: `[PENDIENTE]`). `[CANON]`
+- Los **caballeros estacionales** enfrentan a los soldados por entrar al reino. Rikka ayuda a escapar a Jair y Cami, pero no promete ayudarlos con su plan. `[CANON]`
+- **El Rey Malvado** busca a Cami porque ella es un **puente entre esta realidad y otra**: con lo que lleva dentro podría materializar su realidad en la otra, pero necesita que el creador dé la orden. Lo esperó más de un milenio; muchas civilizaciones lo adoraron como a un dios, **el Gran Ingeniero**. «Siempre dudé de ese dios… y ahora que lo veo, sigo dudando de él». En el Capítulo 2 no se dice la palabra «nexus»: se guarda para el Capítulo 3. `[CANON]`
+- Puesta en escena del borrador (no confirmada por el autor): el Rey mira a Jair en un estanque negro; Rikka leyó la profecía en los archivos del palacio; escapan por los tejados y se esconden en un almacén de té. `[SUGERIDO]`
 
 `[PENDIENTE]`: en qué capítulo ocurren la noche del bar entre Rikka y Nikki, el encuentro con `CREADORA_A` y `CREADORA_B` y la desconexión de GRAVITY; dónde encajan los 6 finales alternativos.
 

@@ -1,0 +1,4572 @@
+{
+  "ruta": "base",
+  "chapter": 2,
+  "title": "El viaje del héroe",
+  "estado": "borrador",
+  "nota": "Inicio del capítulo escrito por Claude a partir del plan del autor (docs/guion/cap02_plan.md). Todavía no está enlazado al final del Capítulo 1: para probarlo, abrir el juego con ?escena=cap02_001. No es canon hasta que el autor lo apruebe.",
+  "scenes": [
+    {
+      "scene_id": "cap02_001",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/dolor.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka le cura el tobillo a Cami en el refugio con un ungüento que huele a flores y a algo que mejor no preguntar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/serene.mp3",
+      "ui_effect": null,
+      "next": "cap02_002"
+    },
+    {
+      "scene_id": "cap02_002",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/dolor.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Arde."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_003"
+    },
+    {
+      "scene_id": "cap02_003",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/dolor.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Es para que aprendas a caer mejor."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_004"
+    },
+    {
+      "scene_id": "cap02_004",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Caí desde otra dimensión."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_005"
+    },
+    {
+      "scene_id": "cap02_005",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Por eso. Hay que aprender."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_006"
+    },
+    {
+      "scene_id": "cap02_006",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Una hora después, Cami camina. Cojea un poco, pero camina sola, y se encarga de que Jair lo note: le pasa por delante dos veces sin necesidad."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_007"
+    },
+    {
+      "scene_id": "cap02_007",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Recuperó el tobillo y yo perdí el trabajo de mochila. Es la primera vez que me despiden de algo y me alivia.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_008"
+    },
+    {
+      "scene_id": "cap02_008",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Vengan. Mi casa está al otro lado del bosque. La ciudadela de la Primavera."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_009"
+    },
+    {
+      "scene_id": "cap02_009",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿Ciudadela?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_010"
+    },
+    {
+      "scene_id": "cap02_010",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Es una ciudad con murallas, pero más elegante. Como yo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_011"
+    },
+    {
+      "scene_id": "cap02_011",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Una ciudad con murallas y una guardiana que se pasa el día mirando un arroyo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_012"
+    },
+    {
+      "scene_id": "cap02_012",
+      "chapter": 2,
+      "background": "fondos/puente_rojo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/celosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Lo miro con mucha concentración."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_013"
+    },
+    {
+      "scene_id": "cap02_013",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "La ciudadela aparece de golpe, como si el bosque se hubiera apartado para presentarla: murallas blancas, techos curvos, faroles de papel y cerezos en flor en cada esquina. Huele a té, a madera y a pan dulce."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_014"
+    },
+    {
+      "scene_id": "cap02_014",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "La gente saluda a Rikka con reverencias. Ella responde a cada una con una inclinación exacta, ni un grado más ni uno menos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_015"
+    },
+    {
+      "scene_id": "cap02_015",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Saluda como una noble. Y hace un rato me preguntó si le iba a cobrar por hablar con ella.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_016"
+    },
+    {
+      "scene_id": "cap02_016",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "???",
+        "text": "¡RIKKAAA!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_017"
+    },
+    {
+      "scene_id": "cap02_017",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Dos niños bajan corriendo por la calle. Un chico con una espada de madera más larga que él y una niña con una canasta llena de flores, la mitad aplastadas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_018"
+    },
+    {
+      "scene_id": "cap02_018",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Mike. Nora. ¿Qué les dije de correr por la calle principal?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_019"
+    },
+    {
+      "scene_id": "cap02_019",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "¡Que si corremos, que sea rápido!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_020"
+    },
+    {
+      "scene_id": "cap02_020",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nora",
+        "text": "Te trajimos flores. Bueno, eran flores. Mike se cayó encima."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_021"
+    },
+    {
+      "scene_id": "cap02_021",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "¡Fue una maniobra!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_022"
+    },
+    {
+      "scene_id": "cap02_022",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka se agacha y recibe las flores aplastadas como si fueran un tesoro. Por un segundo, la guardiana del puente desaparece y queda otra cosa: alguien que se acuerda de ser tierna."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_023"
+    },
+    {
+      "scene_id": "cap02_023",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Esto no lo escribí yo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_024"
+    },
+    {
+      "scene_id": "cap02_024",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(...¿O sí?)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_025"
+    },
+    {
+      "scene_id": "cap02_025",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nora",
+        "text": "¿Y él quién es? ¿Es tu novio?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_026"
+    },
+    {
+      "scene_id": "cap02_026",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "¡N-no! Es... un viajero."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_027"
+    },
+    {
+      "scene_id": "cap02_027",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "¿Y la rubia? ¿Es la novia del viajero?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_028"
+    },
+    {
+      "scene_id": "cap02_028",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Soy su escolta. Él es mi carga."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029"
+    },
+    {
+      "scene_id": "cap02_029",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "Todo el pueblo dice que algo cayó del cielo. ¿Fueron ustedes? ¿Se cayeron del cielo?"
+      },
+      "choices": [
+        {
+          "text": "«Sí. Soy un dios.»",
+          "next": "cap02_029a"
+        },
+        {
+          "text": "«No, vinimos caminando.»",
+          "next": "cap02_029b"
+        },
+        {
+          "text": "«Es complicado.»",
+          "next": "cap02_029c"
+        }
+      ],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null
+    },
+    {
+      "scene_id": "cap02_029a",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Sí. Del cielo. Soy un dios."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029a2"
+    },
+    {
+      "scene_id": "cap02_029a2",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "¡Mentira!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029a3"
+    },
+    {
+      "scene_id": "cap02_029a3",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nora",
+        "text": "Los dioses no tienen ojeras."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029a4"
+    },
+    {
+      "scene_id": "cap02_029a4",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ni los niños me creen. Y esta vez era verdad.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_030"
+    },
+    {
+      "scene_id": "cap02_029b",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "No, no. Vinimos caminando. Como la gente normal."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029b2"
+    },
+    {
+      "scene_id": "cap02_029b2",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nora",
+        "text": "Tienes pasto en el pelo. Y una hoja en la oreja."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029b3"
+    },
+    {
+      "scene_id": "cap02_029b3",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "Y hay un agujero con tu forma en el bosque. Lo vimos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029b4"
+    },
+    {
+      "scene_id": "cap02_029b4",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Me ganó una investigación de dos niños. Sin presupuesto.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_030"
+    },
+    {
+      "scene_id": "cap02_029c",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Es complicado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029c2"
+    },
+    {
+      "scene_id": "cap02_029c2",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "Eso dicen los grandes cuando no saben."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_029c3"
+    },
+    {
+      "scene_id": "cap02_029c3",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Tiene seis años y ya entendió cómo funciona la ingeniería de software.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_030"
+    },
+    {
+      "scene_id": "cap02_030",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka los lleva por la calle principal. Los niños se les pegan a los talones como dos perros que acaban de adoptar a un forastero."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_031"
+    },
+    {
+      "scene_id": "cap02_031",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Hace años esto no era así. Las calles estaban vacías. Las ventanas, cerradas con tablas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_032"
+    },
+    {
+      "scene_id": "cap02_032",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿Qué pasó?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_033"
+    },
+    {
+      "scene_id": "cap02_033",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Una heralda del Rey Malvado. Tzai. Ocupó la ciudadela durante mucho tiempo. Cobraba tributo por todo: por el agua, por el pan. Por mirar el cielo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_034"
+    },
+    {
+      "scene_id": "cap02_034",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "La derrotamos. Yo y... un grupo. Gente que ya no está aquí. Cada una siguió su camino."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_035"
+    },
+    {
+      "scene_id": "cap02_035",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Desde entonces cuido el puente de la entrada. Nadie entra a la ciudadela sin que yo lo vea."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_036"
+    },
+    {
+      "scene_id": "cap02_036",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¿Desde cuándo?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_037"
+    },
+    {
+      "scene_id": "cap02_037",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "...No me acuerdo. Mucho. Dejé de contar los inviernos cuando empezaron a parecerse."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_038"
+    },
+    {
+      "scene_id": "cap02_038",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "El Rey Malvado todavía quiere estas tierras. Siempre las quiso. Pero el Rey Primavera no se lo ha permitido. Gracias a él, los cuatro reinos están en paz."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_039"
+    },
+    {
+      "scene_id": "cap02_039",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Yo me acuerdo de cuando no lo estaban. Me acuerdo de las guerras."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_040"
+    },
+    {
+      "scene_id": "cap02_040",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Te acuerdas de muchas cosas. ¿Cuántos años tienes?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_041"
+    },
+    {
+      "scene_id": "cap02_041",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Esa es una pregunta muy grosera."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_042"
+    },
+    {
+      "scene_id": "cap02_042",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Más de quinientos, ¿verdad?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_043"
+    },
+    {
+      "scene_id": "cap02_043",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo dice sin pensar. Como quien completa una línea de código que ya escribió mil veces."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_044"
+    },
+    {
+      "scene_id": "cap02_044",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Dato recuperado: «guardiana, más de quinientos años». Origen: un archivo del usuario. Sin terminar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_045"
+    },
+    {
+      "scene_id": "cap02_045",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "...Más o menos. Se podría decir que sí. Creo que sí."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_046"
+    },
+    {
+      "scene_id": "cap02_046",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "¿Cómo sabes eso?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_047"
+    },
+    {
+      "scene_id": "cap02_047",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¿Quinientos?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_048"
+    },
+    {
+      "scene_id": "cap02_048",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Porque lo escribí yo. Hace años, en un borrador que nunca terminé: una heroína que peleó en una guerra dentro de su propio universo. Quinientos años de guardia. Me pareció un número épico.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_049"
+    },
+    {
+      "scene_id": "cap02_049",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(No puedo decir eso. «Hola, te inventé un martes a las dos de la mañana».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_050"
+    },
+    {
+      "scene_id": "cap02_050",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Lo... leí por ahí."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_051"
+    },
+    {
+      "scene_id": "cap02_051",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "¿Dónde?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_052"
+    },
+    {
+      "scene_id": "cap02_052",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "En un libro. De historia. De aquí. Muy famoso. Tú eres muy famosa."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_053"
+    },
+    {
+      "scene_id": "cap02_053",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "...Bueno. Eso es cierto."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_054"
+    },
+    {
+      "scene_id": "cap02_054",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka sigue caminando, satisfecha. Cami no. Cami lo mira con los ojos entrecerrados, como quien encuentra un error en un informe y decide no reportarlo todavía."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_055"
+    },
+    {
+      "scene_id": "cap02_055",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "(Susurrando) Tú no lees libros de historia."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_056"
+    },
+    {
+      "scene_id": "cap02_056",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Leo muchas cosas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_057"
+    },
+    {
+      "scene_id": "cap02_057",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Hace dos horas no sabías ni en qué dimensión estabas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_058"
+    },
+    {
+      "scene_id": "cap02_058",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Entonces la ciudadela se queda callada. No de golpe: por partes. Primero los pájaros. Después los vendedores. Después los niños."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/sad_suspense.mp3",
+      "ui_effect": null,
+      "next": "cap02_059"
+    },
+    {
+      "scene_id": "cap02_059",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Por la calle principal entran soldados de negro. Cascos lisos, sin cara. Los mismos del castillo. Marchan sin prisa, como si la calle ya fuera suya."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_060"
+    },
+    {
+      "scene_id": "cap02_060",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "No."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_061"
+    },
+    {
+      "scene_id": "cap02_061",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "¿Soldados de la Federación? ¿Aquí? Es imposible. Nadie de otra dimensión llega tan fácil hasta la ciudadela. Nadie."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_062"
+    },
+    {
+      "scene_id": "cap02_062",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "...Nadie, cuando yo estoy en el puente."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_063"
+    },
+    {
+      "scene_id": "cap02_063",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Y no estaba en el puente. Estaba con nosotros.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_064"
+    },
+    {
+      "scene_id": "cap02_064",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Soldado enmascarado",
+        "text": "Buscamos a una fugitiva de la dimensión espacial. Rubia. Traje azul. Peligrosa. Sabemos que está aquí."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_065"
+    },
+    {
+      "scene_id": "cap02_065",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Mike. Nora. A casa. Ahora."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_066"
+    },
+    {
+      "scene_id": "cap02_066",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Mike",
+        "text": "Pero..."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_067"
+    },
+    {
+      "scene_id": "cap02_067",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "mike",
+          "sprite": "PLACEHOLDER:mike",
+          "pos": "izquierda"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "nora",
+          "sprite": "PLACEHOLDER:nora",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Ahora."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_068"
+    },
+    {
+      "scene_id": "cap02_068",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Los niños corren. Esta vez nadie les dice que lo hagan rápido."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_069"
+    },
+    {
+      "scene_id": "cap02_069",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Vienen por mí. Ustedes no tienen nada que ver."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_070"
+    },
+    {
+      "scene_id": "cap02_070",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Tenemos que salir de aquí."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_071"
+    },
+    {
+      "scene_id": "cap02_071",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Por el mercado. Conozco un camino por los techos. Síganme y no pregunten."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_072"
+    },
+    {
+      "scene_id": "cap02_072",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_tejados",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka salta a un toldo, del toldo a una cornisa y de la cornisa a un tejado, sin despeinarse. Cami la sigue, cojeando y maldiciendo. Jair las sigue a las dos, sin dignidad."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/adventure1.mp3",
+      "ui_effect": null,
+      "next": "cap02_073"
+    },
+    {
+      "scene_id": "cap02_073",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_tejados",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(No hago ejercicio desde la secundaria. Ahora salto tejados. Mi doctor estaría orgulloso. Si tuviera doctor.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_074"
+    },
+    {
+      "scene_id": "cap02_074",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_tejados",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "No pises las tejas rojas. Son de la casa del herrero y me odia."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_075"
+    },
+    {
+      "scene_id": "cap02_075",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_tejados",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿Por qué te odia?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_076"
+    },
+    {
+      "scene_id": "cap02_076",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_tejados",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Porque siempre piso sus tejas rojas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_077"
+    },
+    {
+      "scene_id": "cap02_077",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Terminan escondidos en un almacén de té pegado a la muralla. Huele a hojas secas y a polvo. Afuera, las botas siguen marchando."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/sad_suspense.mp3",
+      "ui_effect": null,
+      "next": "cap02_078"
+    },
+    {
+      "scene_id": "cap02_078",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Bueno. Ahora sí pregunto. ¿Por qué la Federación cruzaría una dimensión entera por ti?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_079"
+    },
+    {
+      "scene_id": "cap02_079",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Porque soy un problema. Y porque mi misión es derrotar al Rey Malvado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_080"
+    },
+    {
+      "scene_id": "cap02_080",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "¿Derrotar al Rey Malvado? ¿Tú? ¿Con un tobillo recién curado y una pistola?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_081"
+    },
+    {
+      "scene_id": "cap02_081",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Y con él."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_082"
+    },
+    {
+      "scene_id": "cap02_082",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿Yo?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_083"
+    },
+    {
+      "scene_id": "cap02_083",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Es una idea suicida."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_084"
+    },
+    {
+      "scene_id": "cap02_084",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Nadie te pidió permiso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_085"
+    },
+    {
+      "scene_id": "cap02_085",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Nadie me pide permiso nunca. Por eso sigo viva."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_086"
+    },
+    {
+      "scene_id": "cap02_086",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Las dos se miran. Jair conoce esa mirada: la vio en mil reuniones de proyecto, justo antes de que alguien dijera «mejor lo hablamos por separado»."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_087"
+    },
+    {
+      "scene_id": "cap02_087",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Cami tiene sus motivos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_088"
+    },
+    {
+      "scene_id": "cap02_088",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "No los sé todos. Creo que ni ella los sabe todos. Pero los tiene. Y yo la voy a apoyar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_089"
+    },
+    {
+      "scene_id": "cap02_089",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo dice y se sorprende de decirlo. No tartamudea. No se justifica. Por una vez, no busca la salida de emergencia."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_090"
+    },
+    {
+      "scene_id": "cap02_090",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(¿Quién dijo eso? ¿Fui yo? Afuera no apoyo ni mis propias ideas.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_091"
+    },
+    {
+      "scene_id": "cap02_091",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "...No necesito que me apoyes."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_092"
+    },
+    {
+      "scene_id": "cap02_092",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Ya sé. Igual."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_093"
+    },
+    {
+      "scene_id": "cap02_093",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka no dice nada. Lo mira. Al chico de ojeras, sin espada, sin armadura y sin dinero, que acaba de ofrecerse para una guerra que no es suya como quien se ofrece a cargar las bolsas del mercado."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_094"
+    },
+    {
+      "scene_id": "cap02_094",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "(Hay una profecía. La leí hace siglos, en los archivos del palacio.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_095"
+    },
+    {
+      "scene_id": "cap02_095",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "(Un salvador que destruiría al Rey Malvado y se convertiría en el nuevo rey soberano. Que no pertenecería a ninguna dimensión. Que vendría de un lugar más allá de esta existencia.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_096"
+    },
+    {
+      "scene_id": "cap02_096",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "(Siempre creí que era un mito. Un cuento para que los niños durmieran tranquilos.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_097"
+    },
+    {
+      "scene_id": "cap02_097",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "(Pero cayó del cielo. Sabe mi edad. Y no tiene miedo de la manera correcta.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_098"
+    },
+    {
+      "scene_id": "cap02_098",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Algo le late a Rikka en el pecho. Algo que no es la guardiana. Lo aplasta enseguida, con la eficiencia de quien lleva siglos aplastando cosas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_099"
+    },
+    {
+      "scene_id": "cap02_099",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Yo perdí mucho por culpa del Rey Malvado. Hace años. Aprendí a vivir con eso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_100"
+    },
+    {
+      "scene_id": "cap02_100",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Y por eso te lo digo: son tres. Tres. No le harían ni cosquillas a su ejército."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_101"
+    },
+    {
+      "scene_id": "cap02_101",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Técnicamente somos dos y medio. Yo cuento como medio."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_102"
+    },
+    {
+      "scene_id": "cap02_102",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Como un cuarto."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_103"
+    },
+    {
+      "scene_id": "cap02_103",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/burla.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "...¿Y quién dijo que yo era la tercera?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_104"
+    },
+    {
+      "scene_id": "cap02_104",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Afuera, algo cambia. Un cuerno, largo y grave, cruza la ciudadela."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_105"
+    },
+    {
+      "scene_id": "cap02_105",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sospecha.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/sorprendida.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Los caballeros estacionales."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_106"
+    },
+    {
+      "scene_id": "cap02_106",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Por la ventana del almacén se ve la calle principal. Un grupo de jinetes con armaduras de cuatro colores, rosa, verde, ocre y blanco, les corta el paso a los soldados de negro."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/adventure1.mp3",
+      "ui_effect": null,
+      "next": "cap02_107"
+    },
+    {
+      "scene_id": "cap02_107",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Caballero estacional",
+        "text": "¿Con qué permiso entran seres de otra dimensión a la ciudadela de la Primavera? ¿Quién les abrió las puertas de este reino?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_108"
+    },
+    {
+      "scene_id": "cap02_108",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Soldado enmascarado",
+        "text": "Buscamos a una fugitiva. No es asunto del reino."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_109"
+    },
+    {
+      "scene_id": "cap02_109",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Caballero estacional",
+        "text": "Todo lo que pisa este suelo es asunto del reino."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_110"
+    },
+    {
+      "scene_id": "cap02_110",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Soldado enmascarado",
+        "text": "La fugitiva. Entréguenla y nos vamos."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_111"
+    },
+    {
+      "scene_id": "cap02_111",
+      "chapter": 2,
+      "background": "PLACEHOLDER:ciudadela_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "caballero_estacional",
+          "sprite": "PLACEHOLDER:caballero_estacional",
+          "pos": "izquierda"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Los caballeros no se mueven. Los soldados tampoco. Es el tipo de silencio que siempre termina igual."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_112"
+    },
+    {
+      "scene_id": "cap02_112",
+      "chapter": 2,
+      "background": "PLACEHOLDER:almacen_te",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/seria.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "No van a aguantar mucho. Vamos, ahora que están ocupados."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_113"
+    },
+    {
+      "scene_id": "cap02_113",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Rikka los saca por una puerta de servicio, entre huertos, y los deja en un sendero que baja hacia el bosque."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/serene.mp3",
+      "ui_effect": null,
+      "next": "cap02_114"
+    },
+    {
+      "scene_id": "cap02_114",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Desde aquí siguen solos. El sendero baja hacia el bosque y se aleja de la ciudadela."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_115"
+    },
+    {
+      "scene_id": "cap02_115",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¿No vienes?"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_116"
+    },
+    {
+      "scene_id": "cap02_116",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Los ayudé a escapar. No dije que los iba a ayudar con su idea loca de derrotar a un rey."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_117"
+    },
+    {
+      "scene_id": "cap02_117",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/base.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Tengo un puente que cuidar. Y dos niños que no saben correr despacio."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_118"
+    },
+    {
+      "scene_id": "cap02_118",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/orgullosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Nadie te lo pidió."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_119"
+    },
+    {
+      "scene_id": "cap02_119",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/celosa.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Rikka",
+        "text": "Lo sé. Lo noté."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_120"
+    },
+    {
+      "scene_id": "cap02_120",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sendero_primavera",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/base.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/fria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "rikka",
+          "sprite": "sprites/rikka/preocupada.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Pero no se va. Se queda en la puerta, mirándolos bajar, más tiempo del que haría falta."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_121"
+    },
+    {
+      "scene_id": "cap02_121",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lejos de ahí, en una sala sin ventanas, la oscuridad tiene forma de trono."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": "audio/musica/sad_suspense.mp3",
+      "ui_effect": null,
+      "next": "cap02_122",
+      "transicion": "negro"
+    },
+    {
+      "scene_id": "cap02_122",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Sobre un estanque negro se mueve una imagen: tres figuras pequeñas en un sendero. Una rubia que cojea. Una peliverde en una puerta. Y entre las dos, un chico sin espada."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_123"
+    },
+    {
+      "scene_id": "cap02_123",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo que Rikka no sabe: los cuatro reyes estacionales, también el Rey Primavera, al que tanto agradece, hace mucho que están a merced de alguien."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_124"
+    },
+    {
+      "scene_id": "cap02_124",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Rikka. Tan leal. Tan segura de que la paz se la debe a su rey."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_125"
+    },
+    {
+      "scene_id": "cap02_125",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "La paz es mía. Yo la presto. Y cobro intereses."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_126"
+    },
+    {
+      "scene_id": "cap02_126",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Los soldados no persiguen a la rubia porque alguien crea que puede derrotarlo. Nadie que la haya visto pelear lo cree."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_127"
+    },
+    {
+      "scene_id": "cap02_127",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "La buscan porque ella es un puente. Un puente entre esta realidad y otra."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_128"
+    },
+    {
+      "scene_id": "cap02_128",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Con lo que lleva dentro, este mundo podría tocar el otro. Lo que existe aquí podría existir allá."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_129"
+    },
+    {
+      "scene_id": "cap02_129",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Pero un puente no se cruza solo. Alguien tiene que dar la orden."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_130"
+    },
+    {
+      "scene_id": "cap02_130",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "La imagen del estanque se acerca al chico. A sus ojeras. A sus manos vacías."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_131"
+    },
+    {
+      "scene_id": "cap02_131",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "El creador de esta realidad."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_132"
+    },
+    {
+      "scene_id": "cap02_132",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Lo esperé más de un milenio. Muchas civilizaciones lo adoraron como a un dios. Lo llamaban el Gran Ingeniero."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_133"
+    },
+    {
+      "scene_id": "cap02_133",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "Yo siempre dudé de ese dios."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_134"
+    },
+    {
+      "scene_id": "cap02_134",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "En el estanque, el chico se tropieza con una raíz y casi se cae. La rubia lo agarra del cuello de la camisa sin mirarlo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap02_135"
+    },
+    {
+      "scene_id": "cap02_135",
+      "chapter": 2,
+      "background": "PLACEHOLDER:sala_rey_malvado",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": "???",
+        "text": "...Y ahora que lo veo, sigo dudando de él."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "fin_capitulo": 2
+    }
+  ]
+}
