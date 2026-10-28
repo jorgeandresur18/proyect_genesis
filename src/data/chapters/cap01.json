@@ -6203,10 +6203,7 @@
         },
         {
           "text": "Apartarla con cuidado",
-          "next": "cap01_103b",
-          "set": {
-            "noche": "rechazo"
-          }
+          "next": "cap01_103b"
         },
         {
           "text": "Hacer un chiste",
@@ -6350,13 +6347,417 @@
         },
         {
           "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo suelta como si le hubiera quemado la mano. Se le corre el rímel de un lado, solo de un lado, como si hasta para llorar le diera flojera."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103b4"
+    },
+    {
+      "scene_id": "cap01_103b4",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Ya. Perfecto. Gracias por la aclaración, doctor."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103b5"
+    },
+    {
+      "scene_id": "cap01_103b5",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Pídeme un taxi. O no, mejor no. Ya me lo pido yo. Para algo tengo dedos."
+      },
+      "choices": [
+        {
+          "text": "Dejar que ella pida su taxi",
+          "next": "cap01_103d",
+          "set": {
+            "noche": "rechazo"
+          }
+        },
+        {
+          "text": "Pedirle que se quede: «Te invito algo»",
+          "next": "cap01_103e"
+        }
+      ],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null
+    },
+    {
+      "scene_id": "cap01_103d",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Nikki saca el celular y pide el taxi apretando la pantalla con más fuerza de la necesaria. Jair paga la cuenta sin mirarla. Ella no discute. Esa es la peor señal."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103d2"
+    },
+    {
+      "scene_id": "cap01_103d2",
+      "chapter": 1,
+      "background": "fondos/calle_noche_taxi.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
           "sprite": "sprites/nikki/triste1.webp",
           "pos": "derecha"
         }
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Lo suelta. Le pide la cuenta al cantinero con un dedo en el aire, sin mirarlo."
+        "text": "La acompaña hasta la salida. Afuera hace el mismo calor de siempre, pero se siente distinto. El taxi ya está esperando, con el motor encendido."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103d3"
+    },
+    {
+      "scene_id": "cap01_103d3",
+      "chapter": 1,
+      "background": "fondos/calle_noche_taxi.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/triste1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "Avísame cuando llegues."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103d4"
+    },
+    {
+      "scene_id": "cap01_103d4",
+      "chapter": 1,
+      "background": "fondos/calle_noche_taxi.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/llorando1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "Búscate una novia, Jair. Una que sí quieras besar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_114"
+    },
+    {
+      "scene_id": "cap01_103e",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "No te vayas. Quédate un rato más. Te invito algo. Lo que quieras."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e2"
+    },
+    {
+      "scene_id": "cap01_103e2",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosa1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Nikki lo mira largo rato. Con los ojos entrecerrados, como quien calcula cuánto le va a cobrar a alguien por perdonarlo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e3"
+    },
+    {
+      "scene_id": "cap01_103e3",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/celosa1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "...Ya. Está bien. Pero quiero ese."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e4"
+    },
+    {
+      "scene_id": "cap01_103e4",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Señala la pizarra. No el cóctel barato. El de arriba de todo, el que viene con una sombrilla de papel, una cereza y un precio que Jair prefiere no leer dos veces."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e5"
+    },
+    {
+      "scene_id": "cap01_103e5",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/tierna1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Me lo merezco.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e6"
+    },
+    {
+      "scene_id": "cap01_103e6",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Se lo toma en cuatro tragos. Después le hace una seña al cantinero con dos dedos: otro igual. Esta vez con dos cerezas."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e7"
+    },
+    {
+      "scene_id": "cap01_103e7",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria2.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Nikki",
+        "text": "No creas que con esto te perdono. Con esto empiezo a pensarlo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e8"
+    },
+    {
+      "scene_id": "cap01_103e8",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/cansado2.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/ebria1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Cuando termina el segundo, le pide la cuenta al cantinero con un dedo en el aire."
       },
       "choices": [],
       "conditions": [],

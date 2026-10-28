@@ -35,7 +35,7 @@ No son bad ends: no le pasa nada malo a Jair. Simplemente la historia no empieza
 | ID | Nombre | Capítulo | Decisión que lo dispara | Estado |
 | --- | --- | --- | --- | --- |
 | `final_cap01_sin_bar` | Una noche normal | 1 | «Decir que estás cansado» a Nikki: no hay bar; sobrio, borra el correo de GRAVITY | Borrador |
-| `final_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso; en casa borra el correo de GRAVITY | Borrador |
+| `final_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso y «Dejar que ella pida su taxi»: se va del bar; en casa Jair borra el correo de GRAVITY. Si en cambio le pide que se quede («Te invito algo»), ella acepta un cóctel caro y la noche sigue normal | Borrador |
 | `final_cap01_correo` | Spam | 1 | Frente al correo de GRAVITY, «Eliminar el correo» | Borrador |
 
 ## La noche que crea el juego `[CANON]`

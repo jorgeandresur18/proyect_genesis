@@ -513,7 +513,7 @@
 
 > **DECISIÓN**
 - `102#0` Besarla ⟶ va a `103a` · beso_nikki = true
-- `102#1` Apartarla con cuidado ⟶ va a `103b` · noche = "rechazo"
+- `102#1` Apartarla con cuidado ⟶ va a `103b`
 - `102#2` Hacer un chiste ⟶ va a `103c`
 
 
@@ -537,7 +537,48 @@
 
 `103b2` **Nikki:** Yo siempre me acuerdo. El que se olvida eres tú.
 
-`103b3` — Lo suelta. Le pide la cuenta al cantinero con un dedo en el aire, sin mirarlo.
+`103b3` — Lo suelta como si le hubiera quemado la mano. Se le corre el rímel de un lado, solo de un lado, como si hasta para llorar le diera flojera.
+
+`103b4` **Nikki:** Ya. Perfecto. Gracias por la aclaración, doctor.
+
+`103b5` **Nikki:** Pídeme un taxi. O no, mejor no. Ya me lo pido yo. Para algo tengo dedos.
+
+
+> **DECISIÓN**
+- `103b5#0` Dejar que ella pida su taxi ⟶ va a `103d` · noche = "rechazo"
+- `103b5#1` Pedirle que se quede: «Te invito algo» ⟶ va a `103e`
+
+`103d` — Nikki saca el celular y pide el taxi apretando la pantalla con más fuerza de la necesaria. Jair paga la cuenta sin mirarla. Ella no discute. Esa es la peor señal.
+
+
+### fondos/calle_noche_taxi.webp
+
+`103d2` — La acompaña hasta la salida. Afuera hace el mismo calor de siempre, pero se siente distinto. El taxi ya está esperando, con el motor encendido.
+
+`103d3` **Jair:** Avísame cuando llegues.
+
+`103d4` **Nikki:** Búscate una novia, Jair. Una que sí quieras besar.
+
+> ⤷ continúa en `114`
+
+
+### fondos/bar_noche.webp
+
+`103e` **Jair:** No te vayas. Quédate un rato más. Te invito algo. Lo que quieras.
+
+`103e2` — Nikki lo mira largo rato. Con los ojos entrecerrados, como quien calcula cuánto le va a cobrar a alguien por perdonarlo.
+
+`103e3` **Nikki:** ...Ya. Está bien. Pero quiero ese.
+
+`103e4` — Señala la pizarra. No el cóctel barato. El de arriba de todo, el que viene con una sombrilla de papel, una cereza y un precio que Jair prefiere no leer dos veces.
+
+`103e5` **Jair:** (Me lo merezco.)
+
+`103e6` — Se lo toma en cuatro tragos. Después le hace una seña al cantinero con dos dedos: otro igual. Esta vez con dos cerezas.
+
+`103e7` **Nikki:** No creas que con esto te perdono. Con esto empiezo a pensarlo.
+
+`103e8` — Cuando termina el segundo, le pide la cuenta al cantinero con un dedo en el aire.
 
 > ⤷ continúa en `104`
 
