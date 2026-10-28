@@ -6403,7 +6403,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/muyenojada2.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
@@ -6471,7 +6471,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/triste1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6499,7 +6499,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/triste1.webp",
+          "sprite": "sprites/nikki/fria.webp",
           "pos": "derecha"
         }
       ],
@@ -6723,7 +6723,7 @@
         },
         {
           "id": "nikki",
-          "sprite": "sprites/nikki/celosa1.webp",
+          "sprite": "sprites/nikki/enojada.webp",
           "pos": "derecha"
         }
       ],
