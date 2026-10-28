@@ -18,6 +18,8 @@ function whenBackgroundReady(scene: Scene, done: () => void): () => void {
     return () => {};
   }
   let finished = false;
+  // El temporizador va primero: si la imagen ya estaba descargada, `finish` corre enseguida y lo usa.
+  let timer: ReturnType<typeof setTimeout> | undefined;
   const finish = () => {
     if (finished) return;
     finished = true;
@@ -29,7 +31,7 @@ function whenBackgroundReady(scene: Scene, done: () => void): () => void {
   img.onerror = finish;
   img.src = assetUrl(scene.background!);
   if (img.complete) finish();
-  const timer = setTimeout(finish, LOAD_TIMEOUT_MS);
+  else timer = setTimeout(finish, LOAD_TIMEOUT_MS);
   return () => {
     finished = true;
     clearTimeout(timer);
