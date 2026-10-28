@@ -24,8 +24,8 @@
 
 - **Idiomas:** español e inglés (`src/engine/i18n.ts`). «Automático» toma el idioma del navegador (que suele ser el del sistema); en una versión de escritorio se leería directamente el del sistema operativo. Se ve qué idioma se detectó al pie de la advertencia y en Opciones, donde también se cambia. Textos de la interfaz: `src/data/i18n/es.json` y `en.json`. Las pantallas y menús con texto en JSON tienen su versión en inglés en `src/data/en/` (solo lo traducido; el resto cae al español). Los finales tienen `nombre_en` y los capítulos `title_en`. **El guion de los capítulos todavía está solo en español**; en inglés, el título lo avisa.
 
-- **Menú del título:** botón «Nueva partida» y mosaicos (Cargar, Mapa, Extras, Opciones, Conoce más). Extras agrupa la galería y los finales. Cada opción suena con el sonido de decisión y los paneles se abren como una terminal. Versión en una esquina (`version` en `src/data/juego.json`).
-- **Easter egg:** 69 clics en el logo (la pista está en el código Coffee del fondo). Aparece Nikki pequeña con un globo que pide una donación (textos en `src/data/easter_egg.json`). Se queda hasta recargar; si se elige una opción del menú y se vuelve, se despide («será para otra ocasión») y desaparece con un glitch.
+- **Menú del título:** botón «Nueva partida» y mosaicos (Cargar, Mapa, Extras, Opciones, Conoce más). Extras agrupa la galería y los finales. Cada opción suena con el sonido de decisión; cerrar o cancelar suena con `cancel.mp3`. Los paneles se abren como una terminal. Versión en una esquina (`version` en `src/data/juego.json`).
+- **Easter egg:** 69 clics en el logo (cada clic hace un glitch de colores con `glitch.mp3`; la pista está en el código Coffee del fondo). Aparece Nikki con un globo que la apunta y escribe su texto como un diálogo, pidiendo una donación (textos en `src/data/easter_egg.json`). Se queda hasta recargar; si se elige una opción del menú y se vuelve, se despide («será para otra ocasión») y desaparece con un glitch.
 
 ## 3. Modelo de escena
 

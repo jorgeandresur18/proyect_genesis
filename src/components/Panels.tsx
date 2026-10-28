@@ -5,7 +5,7 @@ import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
 import conoceMasEs from '../data/conoce_mas.json';
 import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
-import { playSelect } from '../engine/sound';
+import { playCancel, playSelect } from '../engine/sound';
 
 export function Panel({
   title,
@@ -19,10 +19,14 @@ export function Panel({
   children: ReactNode;
 }) {
   const t = useT();
+  const close = () => {
+    playCancel();
+    onClose();
+  };
   // Cada panel se abre como una terminal: la ventana se enciende, se «escribe» el comando y aparece el contenido.
   const slug = title.toLowerCase().replace(/\s*\(.*\)$/, '').replace(/\s+/g, '_');
   return (
-    <div className="panel-backdrop" onClick={onClose}>
+    <div className="panel-backdrop" onClick={close}>
       <div className={`panel panel-terminal ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="panel-head">
           <span className="term-dots" aria-hidden>
@@ -34,7 +38,7 @@ export function Panel({
           <span className="term-path" aria-hidden>
             genesis@nexus:~/{slug}
           </span>
-          <button onClick={onClose}>{t('panel.cerrar')}</button>
+          <button onClick={close}>{t('panel.cerrar')}</button>
         </div>
         <div className="term-boot" aria-hidden>
           <span className="term-prompt">$</span> <span className="term-cmd">{t('terminal.abrir', { nombre: slug })}</span>

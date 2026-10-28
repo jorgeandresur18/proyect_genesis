@@ -1,4 +1,4 @@
-// Efectos de sonido de la interfaz: el texto que se escribe y la selección de una opción.
+// Efectos de sonido de la interfaz: el texto que se escribe, elegir una opción, cancelar o cerrar y el glitch.
 // Usa Web Audio: los bucles son exactos (sin el corte que deja <audio loop>) y se puede repetir solo
 // la parte que suena de un archivo, aunque traiga silencio al principio o al final.
 import { useStore } from './store';
@@ -9,6 +9,8 @@ const SILENCE = 0.01; // Amplitud por debajo de la cual se considera silencio.
 // El limitador del bus de efectos evita que se distorsionen con el volumen al máximo.
 const TYPING_LEVEL = 1.6;
 const SELECT_LEVEL = 2.2;
+const CANCEL_LEVEL = 2.2;
+const GLITCH_LEVEL = 1.6;
 
 let ctx: AudioContext | null = null;
 let sfxBus: AudioNode | null = null;
@@ -73,6 +75,8 @@ export function unlockAudio(): void {
   context();
   void load('texto.mp3').catch(() => {});
   void load('seleccion.mp3').catch(() => {});
+  void load('cancel.mp3').catch(() => {});
+  void load('glitch.mp3').catch(() => {});
 }
 
 let typing: { source: AudioBufferSourceNode; gain: GainNode } | null = null;
@@ -118,19 +122,26 @@ export function stopTyping(): void {
   stopSource();
 }
 
-/** Sonido al elegir una opción. */
-export function playSelect(): void {
+/** Reproduce un efecto corto una vez. */
+function playOnce(file: string, level: number): void {
   const { sfxVolume, muted } = useStore.getState().settings;
   if (muted || sfxVolume <= 0) return;
-  load('seleccion.mp3')
+  load(file)
     .then((buf) => {
       const c = context();
       const source = c.createBufferSource();
       source.buffer = buf;
       const gain = c.createGain();
-      gain.gain.value = sfxVolume * SELECT_LEVEL;
+      gain.gain.value = sfxVolume * level;
       source.connect(gain).connect(sfxOut());
       source.start();
     })
     .catch(() => {});
 }
+
+/** Sonido al elegir una opción. */
+export const playSelect = () => playOnce('seleccion.mp3', SELECT_LEVEL);
+/** Sonido al cancelar o cerrar un menú. */
+export const playCancel = () => playOnce('cancel.mp3', CANCEL_LEVEL);
+/** Sonido de glitch (p. ej. al tocar el logo del título). */
+export const playGlitch = () => playOnce('glitch.mp3', GLITCH_LEVEL);

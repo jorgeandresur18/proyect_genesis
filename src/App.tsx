@@ -21,7 +21,7 @@ import advertenciaEs from './data/advertencia.json';
 import advertenciaEn from './data/en/advertencia.json';
 import { detectLanguage, localized, useLang, useT } from './engine/i18n';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
-import { playSelect, unlockAudio } from './engine/sound';
+import { playGlitch, playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
 
@@ -250,6 +250,8 @@ interface TitleProps {
 
 function TitleScreen({ open, intro, onPick, onEgg }: TitleProps) {
   const clicks = useRef(0);
+  // Cada clic en el logo reinicia un glitch de colores (la key fuerza a repetir la animación).
+  const [hit, setHit] = useState(0);
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
   const still = useStore((s) => s.settings.reduceEffects);
@@ -274,14 +276,17 @@ function TitleScreen({ open, intro, onPick, onEgg }: TitleProps) {
       <h1 className={`title-logo ${still ? '' : 'title-logo-glitch'}`}>
         <span
           className="logo-float"
+          data-hit={hit > 0 ? '' : undefined}
           onClick={() => {
+            playGlitch();
+            setHit((h) => h + 1);
             if (++clicks.current >= easterEgg.clics) {
               clicks.current = 0;
               onEgg();
             }
           }}
         >
-          <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
+          <img key={hit} src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
           {!still && (
             <>
               <img

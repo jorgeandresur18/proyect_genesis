@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useStore } from '../engine/store';
 import { storyFiles } from '../engine/story';
-import { playSelect } from '../engine/sound';
+import { playCancel, playSelect } from '../engine/sound';
 import textosEs from '../data/fin_capitulo.json';
 import textosEn from '../data/en/fin_capitulo.json';
 import { localized, useLang } from '../engine/i18n';
@@ -72,7 +72,14 @@ export function ChapterEnd({ chapter, lastScene, onSave, onTitle }: Props) {
             <p className="chapter-soon-label">{textos.proximo.estado}</p>
             <h2>{n(textos.proximo.titulo, chapter + 1)}</h2>
             <p className="chapter-soon-text">{textos.proximo.texto}</p>
-            <button onClick={click(() => setSoon(false))}>{textos.proximo.cerrar}</button>
+            <button
+              onClick={() => {
+                playCancel();
+                setSoon(false);
+              }}
+            >
+              {textos.proximo.cerrar}
+            </button>
           </div>
         </div>
       )}

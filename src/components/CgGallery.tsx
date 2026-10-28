@@ -6,6 +6,7 @@ import galeriaEs from '../data/galeria.json';
 import galeriaEn from '../data/en/galeria.json';
 import { localized, useLang, useT } from '../engine/i18n';
 import { Panel } from './Panels';
+import { playCancel } from '../engine/sound';
 
 /** Todas las imágenes de la galería: los fondos `fondos/cg_*.webp` del guion, en el orden en que aparecen. */
 const CGS: string[] = (() => {
@@ -69,7 +70,14 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
             <button onClick={() => setOpen((open + 1) % unlocked.length)} aria-label={t('galeria.siguiente')}>
               ▶
             </button>
-            <button onClick={() => setOpen(null)}>{t('panel.cerrar')}</button>
+            <button
+              onClick={() => {
+                playCancel();
+                setOpen(null);
+              }}
+            >
+              {t('panel.cerrar')}
+            </button>
           </div>
         </div>
       )}
