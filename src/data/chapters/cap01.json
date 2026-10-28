@@ -6409,7 +6409,7 @@
       ],
       "dialogue": {
         "speaker": "Nikki",
-        "text": "Pídeme un taxi. O no, mejor no. Ya me lo pido yo. Para algo tengo dedos."
+        "text": "Pídeme un taxi. Ya. Ahora. O me lo pido yo, que para algo tengo dedos."
       },
       "choices": [
         {
@@ -6420,8 +6420,8 @@
           }
         },
         {
-          "text": "Pedirle que se quede: «Te invito algo»",
-          "next": "cap01_103e"
+          "text": "Pedirle el taxi",
+          "next": "cap01_103e0"
         }
       ],
       "conditions": [],
@@ -6542,6 +6542,118 @@
       "next": "cap01_114"
     },
     {
+      "scene_id": "cap01_103e0",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair saca el celular. Abre la app. Escribe la dirección de Nikki de memoria: la sabe mejor que la suya."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e0b"
+    },
+    {
+      "scene_id": "cap01_103e0b",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El dedo se le queda encima de «Confirmar viaje». Un segundo. Dos. Nikki mira la pared como si la pared le debiera plata."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e0c"
+    },
+    {
+      "scene_id": "cap01_103e0c",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Si aprieto, se va. Y mañana vamos a hacer como que esto no pasó. Como siempre.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e0d"
+    },
+    {
+      "scene_id": "cap01_103e0d",
+      "chapter": 1,
+      "background": "fondos/bar_noche.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "nikki",
+          "sprite": "sprites/nikki/muyenojada1.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Aprieta «Cancelar»."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_103e"
+    },
+    {
       "scene_id": "cap01_103e",
       "chapter": 1,
       "background": "fondos/bar_noche.webp",
@@ -6561,7 +6673,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "No te vayas. Quédate un rato más. Te invito algo. Lo que quieras."
+        "text": "No te vayas todavía. Quédate un rato más. Te invito un cóctel. El que quieras."
       },
       "choices": [],
       "conditions": [],
@@ -6617,7 +6729,7 @@
       ],
       "dialogue": {
         "speaker": "Nikki",
-        "text": "...Ya. Está bien. Pero quiero ese."
+        "text": "...Ya. Está bien. Me quedo. Pero quiero ese."
       },
       "choices": [],
       "conditions": [],

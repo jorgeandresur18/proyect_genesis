@@ -541,12 +541,12 @@
 
 `103b4` **Nikki:** Ya. Perfecto. Gracias por la aclaración, doctor.
 
-`103b5` **Nikki:** Pídeme un taxi. O no, mejor no. Ya me lo pido yo. Para algo tengo dedos.
+`103b5` **Nikki:** Pídeme un taxi. Ya. Ahora. O me lo pido yo, que para algo tengo dedos.
 
 
 > **DECISIÓN**
 - `103b5#0` Dejar que ella pida su taxi ⟶ va a `103d` · noche = "rechazo"
-- `103b5#1` Pedirle que se quede: «Te invito algo» ⟶ va a `103e`
+- `103b5#1` Pedirle el taxi ⟶ va a `103e0`
 
 `103d` — Nikki saca el celular y pide el taxi apretando la pantalla con más fuerza de la necesaria. Jair paga la cuenta sin mirarla. Ella no discute. Esa es la peor señal.
 
@@ -564,11 +564,19 @@
 
 ### fondos/bar_noche.webp
 
-`103e` **Jair:** No te vayas. Quédate un rato más. Te invito algo. Lo que quieras.
+`103e0` — Jair saca el celular. Abre la app. Escribe la dirección de Nikki de memoria: la sabe mejor que la suya.
+
+`103e0b` — El dedo se le queda encima de «Confirmar viaje». Un segundo. Dos. Nikki mira la pared como si la pared le debiera plata.
+
+`103e0c` **Jair:** (Si aprieto, se va. Y mañana vamos a hacer como que esto no pasó. Como siempre.)
+
+`103e0d` — Aprieta «Cancelar».
+
+`103e` **Jair:** No te vayas todavía. Quédate un rato más. Te invito un cóctel. El que quieras.
 
 `103e2` — Nikki lo mira largo rato. Con los ojos entrecerrados, como quien calcula cuánto le va a cobrar a alguien por perdonarlo.
 
-`103e3` **Nikki:** ...Ya. Está bien. Pero quiero ese.
+`103e3` **Nikki:** ...Ya. Está bien. Me quedo. Pero quiero ese.
 
 `103e4` — Señala la pizarra. No el cóctel barato. El de arriba de todo, el que viene con una sombrilla de papel, una cereza y un precio que Jair prefiere no leer dos veces.
 
