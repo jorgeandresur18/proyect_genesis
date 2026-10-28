@@ -7,6 +7,8 @@ import { startTyping, stopTyping } from '../engine/sound';
 interface Props {
   dialogue: Dialogue | null;
   aiVowels: boolean;
+  /** Hay decisiones en pantalla: el botón de avanzar no se muestra (se elige en el menú). */
+  hasChoices: boolean;
   onAdvance: () => void;
 }
 
@@ -14,7 +16,7 @@ interface Props {
  * Caja de diálogo con efecto máquina de escribir. Se monta de nuevo en cada escena (key = scene_id),
  * así que siempre empieza desde cero. Al terminar marca `textDone` en el estado global.
  */
-export function DialogBox({ dialogue, aiVowels, onAdvance }: Props) {
+export function DialogBox({ dialogue, aiVowels, hasChoices, onAdvance }: Props) {
   const textDone = useStore((s) => s.textDone);
   const setTextDone = useStore((s) => s.setTextDone);
   const speed = useStore((s) => s.settings.textSpeed);
@@ -57,8 +59,21 @@ export function DialogBox({ dialogue, aiVowels, onAdvance }: Props) {
         {render(visible)}
         {/* El resto del texto ocupa su lugar sin verse, para que la caja no cambie de tamaño al escribir. */}
         {!textDone && <span className="dialog-hidden">{text.slice(count)}</span>}
-        {textDone && <span className="dialog-next" aria-hidden>▼</span>}
       </div>
+      {/* Deja claro dónde tocar: mientras se escribe, completa el texto; al terminar, pasa al siguiente. */}
+      {!(hasChoices && textDone) && (
+        <button
+          className={`dialog-advance ${textDone ? 'dialog-advance-ready' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAdvance();
+          }}
+          onMouseDown={(e) => e.preventDefault()}
+          title="Clic, Espacio o Enter"
+        >
+          {textDone ? 'Siguiente ▶' : 'Mostrar todo ▸▸'}
+        </button>
+      )}
     </div>
   );
 }

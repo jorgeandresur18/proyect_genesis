@@ -299,6 +299,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
           {mode === 'auto' ? 'AUTO ▶' : 'SALTANDO ▶▶'}
         </div>
       )}
+      {/* Un clic en cualquier parte de la escena también avanza (no cuando hay que elegir). */}
+      {!(waitingChoice && textDone) && <div className="stage-click" onClick={advanceIfReady} aria-hidden />}
       {waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}
@@ -314,6 +316,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
           key={shown.scene_id}
           dialogue={shown.dialogue}
           aiVowels={!reduceEffects && effectsOf(shown).includes('ai_vowels')}
+          hasChoices={waitingChoice}
           onAdvance={advanceIfReady}
         />
       )}
