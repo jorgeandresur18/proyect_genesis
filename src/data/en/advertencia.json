@@ -1,0 +1,17 @@
+{
+  "etiqueta": "18+",
+  "clasificacion": "Recommended for ages 18 and up",
+  "titulo": "Content warning",
+  "texto": "PROYECT GENESIS is a work of fiction for adults. It deals with themes that some people may find disturbing or sensitive.",
+  "temas": [
+    { "titulo": "Emotional manipulation", "detalle": "Codependency and dysfunctional relationships." },
+    { "titulo": "Alcoholism", "detalle": "Alcohol use and its consequences." },
+    { "titulo": "Suggested sexuality", "detalle": "Innuendo and sexualization of characters, with no explicit content." },
+    { "titulo": "Psychological distress", "detalle": "Loneliness, existential tragedy and psychological horror." },
+    { "titulo": "Fantasy violence", "detalle": "Fights and deaths of fictional characters." },
+    { "titulo": "Strong language", "detalle": "Swearing and insults." }
+  ],
+  "nota_efectos": "The interface simulates glitches, flickering and image distortion. You can reduce them in Options.",
+  "ficcion": "All characters and events in this work are fictional.",
+  "aceptar": "I am an adult · Continue"
+}

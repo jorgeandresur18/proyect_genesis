@@ -22,6 +22,8 @@
 - Pantalla de advertencia de contenido al iniciar (contenido adulto).
 - Opción de accesibilidad `reduceEffects` que desactiva glitches y efectos de interfaz.
 
+- **Idiomas:** español e inglés (`src/engine/i18n.ts`). «Automático» toma el idioma del navegador (que suele ser el del sistema); en una versión de escritorio se leería directamente el del sistema operativo. Se ve qué idioma se detectó al pie de la advertencia y en Opciones, donde también se cambia. Textos de la interfaz: `src/data/i18n/es.json` y `en.json`. Las pantallas y menús con texto en JSON tienen su versión en inglés en `src/data/en/` (solo lo traducido; el resto cae al español). Los finales tienen `nombre_en` y los capítulos `title_en`. **El guion de los capítulos todavía está solo en español**; en inglés, el título lo avisa.
+
 ## 3. Modelo de escena
 
 ```json

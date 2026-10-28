@@ -1,7 +1,14 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import pantallas from '../data/pantallas.json';
+import pantallasEs from '../data/pantallas.json';
+import pantallasEn from '../data/en/pantallas.json';
+import { localized, useLang } from '../engine/i18n';
 import { assetUrl } from '../engine/assets';
 import s from './CodeScreen.module.css';
+
+/** Textos de las pantallas en el idioma en uso. */
+function usePantallas() {
+  return localized(pantallasEs, pantallasEn, useLang());
+}
 
 interface Line {
   speaker: string | null;
@@ -39,6 +46,7 @@ export function CodeScreen({ id, lines }: Props) {
 }
 
 function GravityIde({ lines }: { lines: Line[] }) {
+  const pantallas = usePantallas();
   const ide = pantallas.gravity_ide;
   const voices = ide.voces as Record<string, string>;
   const consola = lines.filter((l) => l.speaker !== null && l.speaker in voices).slice(-14);
@@ -106,6 +114,7 @@ function lastClick(lines: Line[], clics: Record<string, number>): { at: number; 
 }
 
 function Correo({ lines }: { lines: Line[] }) {
+  const pantallas = usePantallas();
   const c = pantallas.pc_correo;
   const click = lastClick(lines, c.clics as Record<string, number>);
   // La animación corre justo después de elegir (la decisión es lo anterior a la línea actual);
@@ -115,6 +124,7 @@ function Correo({ lines }: { lines: Line[] }) {
 }
 
 function CorreoVentana({ button, live }: { button: number | null; live: boolean }) {
+  const pantallas = usePantallas();
   const c = pantallas.pc_correo;
   const [phase, setPhase] = useState<ClickPhase>(button !== null && !live ? 'done' : 'idle');
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -236,6 +246,7 @@ interface PhoneProps {
 
 /** Celular con Boringram abierto: barra de estado (hora, señal, batería) y la barra de la app con el logo. */
 function Phone({ reloj, bateria, children, full }: PhoneProps) {
+  const pantallas = usePantallas();
   return (
     <div className={`${s.screen} ${s.night}`}>
       <div className={s.phone}>
@@ -285,6 +296,7 @@ function PhoneHead({ contacto, estado, foto, historia }: { contacto: string; est
 }
 
 function Celular({ lines }: { lines: Line[] }) {
+  const pantallas = usePantallas();
   const c = pantallas.celular_mensaje;
   const mensajes = lines.filter((l) => l.speaker === c.voz).slice(-6);
   return (
@@ -306,6 +318,7 @@ function Celular({ lines }: { lines: Line[] }) {
 
 /** Los mensajes destacados del chat con Nikki: hay uno solo. */
 function CelularFavorito() {
+  const pantallas = usePantallas();
   const c = pantallas.celular_favorito;
   return (
     <Phone reloj={c.reloj} bateria={c.bateria}>
@@ -323,6 +336,7 @@ function CelularFavorito() {
 
 /** La foto de perfil de Nikki, abierta en grande. */
 function CelularFoto() {
+  const pantallas = usePantallas();
   const c = pantallas.celular_foto_nikki;
   return (
     <Phone reloj={c.reloj} bateria={c.bateria}>
@@ -336,6 +350,7 @@ function CelularFoto() {
 
 /** Una historia de Boringram: imagen a pantalla completa, barra de avance, quién la subió y el texto. */
 function Historia() {
+  const pantallas = usePantallas();
   const c = pantallas.boringram_historia;
   return (
     <Phone reloj={c.reloj} bateria={c.bateria} full>

@@ -50,10 +50,12 @@ export interface Settings {
   textScale: number;
   /** Opacidad del fondo de la caja de diálogo, de 0,4 a 1. */
   boxOpacity: number;
+  /** Idioma: «auto» usa el del navegador (ver engine/i18n.ts). */
+  language: 'auto' | 'es' | 'en';
 }
 
 export const TEXT_SPEED_INSTANT = 130;
-const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false, textScale: 1, boxOpacity: 0.88 };
+const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false, textScale: 1, boxOpacity: 0.88, language: 'auto' };
 
 export type Mode = 'normal' | 'auto' | 'skip';
 

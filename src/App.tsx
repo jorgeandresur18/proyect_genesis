@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CHAPTER_END, useStore } from './engine/store';
-import { BAD_END, getEnding, scenes } from './engine/story';
+import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
 import { preloadFrom } from './engine/preload';
 import { TRANSITIONS, useSceneTransition } from './engine/useSceneTransition';
@@ -15,7 +15,9 @@ import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
 import { BadEnd } from './components/BadEnd';
 import { AudioToggle } from './components/AudioToggle';
-import advertencia from './data/advertencia.json';
+import advertenciaEs from './data/advertencia.json';
+import advertenciaEn from './data/en/advertencia.json';
+import { detectLanguage, localized, useLang, useT } from './engine/i18n';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
 import { playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
@@ -60,6 +62,11 @@ export default function App() {
     );
   };
   // Opciones de lectura: tamaño del texto y opacidad de la caja (las usa styles.css).
+  // El atributo lang de la página sigue al idioma del juego (lectores de pantalla, traducción del navegador).
+  const lang = useLang();
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
   const textScale = useStore((s) => s.settings.textScale);
   const boxOpacity = useStore((s) => s.settings.boxOpacity);
   useEffect(() => {
@@ -125,11 +132,12 @@ export default function App() {
 
 /** Celular en vertical durante el juego: se pide girarlo (solo se ve con CSS en esa situación). */
 function RotateHint() {
+  const t = useT();
   return (
     <div className="rotate-hint" role="alert">
       <div className="rotate-hint-phone" aria-hidden />
-      <p>Gira tu celular para jugar</p>
-      <p className="muted">PROYECT GENESIS se juega en horizontal.</p>
+      <p>{t('juego.girar')}</p>
+      <p className="muted">{t('juego.girar_nota')}</p>
     </div>
   );
 }
@@ -140,6 +148,12 @@ const WARNING_FADE_MS = 900;
 function ContentWarning({ onAccept }: { onAccept: () => void }) {
   const [leaving, setLeaving] = useState(false);
   const still = useStore((s) => s.settings.reduceEffects);
+  const lang = useLang();
+  const t = useT();
+  const advertencia = localized(advertenciaEs, advertenciaEn, lang);
+  const language = useStore((s) => s.settings.language);
+  const setSettings = useStore((s) => s.setSettings);
+  const detected = detectLanguage();
   const accept = () => {
     if (leaving) return;
     // El audio y la pantalla completa solo se habilitan dentro del clic: se piden ya, antes del fundido.
@@ -172,6 +186,21 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
         <button className="warning-accept" onClick={accept}>
           {advertencia.aceptar}
         </button>
+        {/* Qué idioma se detectó y cómo cambiarlo. */}
+        <div className="warning-lang">
+          <span className="muted">
+            {language === 'auto'
+              ? t('idioma.detectado', { idioma: t(`idioma.${detected.lang}`), codigo: detected.code })
+              : t('idioma.elegido', { idioma: t(`idioma.${lang}`) })}
+          </span>
+          <span className="segmented">
+            {(['es', 'en'] as const).map((l) => (
+              <button key={l} className={lang === l ? 'active' : ''} onClick={() => setSettings({ language: l })}>
+                {t(`idioma.${l}`)}
+              </button>
+            ))}
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -181,6 +210,8 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
   const still = useStore((s) => s.settings.reduceEffects);
+  const t = useT();
+  const storyNotice = t('idioma.historia_es');
   return (
     <div
       className={`screen title ${intro && !still ? 'title-intro' : ''} ${intro === 'advertencia' ? 'title-intro-velo' : ''}`}
@@ -209,7 +240,8 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
           )}
         </span>
       </h1>
-      <p className="muted">Prototipo</p>
+      <p className="muted">{t('titulo.prototipo')}</p>
+      {storyNotice && <p className="muted title-notice">{storyNotice}</p>}
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
         <button
@@ -219,14 +251,14 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
             newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
           }}
         >
-          Nueva partida
+          {t('titulo.nueva')}
         </button>
-        <button onClick={() => open('load')}>Cargar</button>
-        <button onClick={() => open('map')}>Mapa de escenas</button>
-        <button onClick={() => open('gallery')}>Galería</button>
-        <button onClick={() => open('endings')}>Finales</button>
-        <button onClick={() => open('options')}>Opciones</button>
-        <button onClick={() => open('about')}>Conoce más del proyecto</button>
+        <button onClick={() => open('load')}>{t('titulo.cargar')}</button>
+        <button onClick={() => open('map')}>{t('titulo.mapa')}</button>
+        <button onClick={() => open('gallery')}>{t('titulo.galeria')}</button>
+        <button onClick={() => open('endings')}>{t('titulo.finales')}</button>
+        <button onClick={() => open('options')}>{t('titulo.opciones')}</button>
+        <button onClick={() => open('about')}>{t('titulo.conoce')}</button>
       </nav>
     </div>
   );
@@ -239,6 +271,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const [menuOpen, setMenuOpen] = useState(false);
   // Ocultar la caja y los botones para mirar la imagen (tecla H o botón «Ocultar»; cualquier clic la devuelve).
   const [uiHidden, setUiHidden] = useState(false);
+  const t = useT();
+  const lang = useLang();
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
   const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
@@ -305,7 +339,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (ending?.tipo === BAD_END) {
       return (
         <BadEnd
-          name={ending.nombre}
+          name={endingName(ending, lang)}
           onTitle={onTitle}
           lastScene={
             <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history}>
@@ -317,9 +351,9 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     }
     return (
       <div className="screen ending-card" onClick={onTitle}>
-        <p className="muted">FIN</p>
-        <h1>{ending?.nombre ?? game.finished}</h1>
-        <p className="muted">Haz clic para volver al título</p>
+        <p className="muted">{t('juego.fin')}</p>
+        <h1>{ending ? endingName(ending, lang) : game.finished}</h1>
+        <p className="muted">{t('juego.volver_titulo')}</p>
       </div>
     );
   }
@@ -328,21 +362,21 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const buttons = (
     <>
       <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
-        Auto
+        {t('juego.auto')}
       </button>
       <button className={mode === 'skip' ? 'active' : ''} onClick={() => toggle('skip')}>
-        Saltar leído
+        {t('juego.saltar')}
       </button>
-      <button onClick={() => open('history')}>Historial</button>
-      <button onClick={() => open('save')}>Guardar</button>
-      <button onClick={() => open('load')}>Cargar</button>
-      <button onClick={() => open('map')}>Mapa</button>
-      <button onClick={() => open('options')}>Opciones</button>
-      <button onClick={() => setUiHidden(true)} title="Ocultar la caja para ver la imagen (tecla H)">
-        Ocultar
+      <button onClick={() => open('history')}>{t('juego.historial')}</button>
+      <button onClick={() => open('save')}>{t('juego.guardar')}</button>
+      <button onClick={() => open('load')}>{t('juego.cargar')}</button>
+      <button onClick={() => open('map')}>{t('juego.mapa')}</button>
+      <button onClick={() => open('options')}>{t('juego.opciones')}</button>
+      <button onClick={() => setUiHidden(true)} title={t('juego.ocultar_ayuda')}>
+        {t('juego.ocultar')}
       </button>
-      {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>Pantalla completa</button>}
-      <button onClick={onTitle}>Título</button>
+      {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>{t('juego.pantalla_completa')}</button>}
+      <button onClick={onTitle}>{t('juego.titulo')}</button>
     </>
   );
   return (
@@ -355,7 +389,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       {error && <p className="error stage-error">{error}</p>}
       {mode !== 'normal' && (
         <div className="mode-badge" aria-live="polite">
-          {mode === 'auto' ? 'AUTO ▶' : 'SALTANDO ▶▶'}
+          {mode === 'auto' ? t('juego.modo_auto') : t('juego.modo_saltar')}
         </div>
       )}
       {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
@@ -394,7 +428,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         <button
           className={`menu-toggle ${mode !== 'normal' ? 'active' : ''}`}
           onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Menú"
+          aria-label={t('juego.menu')}
         >
           ☰
         </button>

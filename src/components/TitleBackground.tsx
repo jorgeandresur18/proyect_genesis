@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { useStore } from '../engine/store';
 import styles from './TitleBackground.module.css';
-import coffee from '../data/codigo_coffee.json';
+import coffeeEs from '../data/codigo_coffee.json';
+import coffeeEn from '../data/en/codigo_coffee.json';
+import { localized, useLang } from '../engine/i18n';
 
 // Generador pseudoaleatorio con semilla fija: las estrellas quedan siempre en el mismo lugar.
 function seeded(seed: number) {
@@ -25,7 +27,9 @@ const COMETS = [
 /** Fondo del título: espacio negro con estrellas, nebulosas, cuadrícula y elementos flotando. */
 export function TitleBackground() {
   const still = useStore((s) => s.settings.reduceEffects);
+  const lang = useLang();
   const { stars, hexes, code } = useMemo(() => {
+    const coffee = localized(coffeeEs, coffeeEn, lang);
     const rnd = seeded(20261024);
     return {
       stars: Array.from({ length: STARS }, () => ({
@@ -53,7 +57,7 @@ export function TitleBackground() {
         size: 0.68 + rnd() * 0.22,
       })),
     };
-  }, []);
+  }, [lang]);
 
   return (
     <div className={`${styles.bg} ${still ? styles.still : ''}`} aria-hidden>

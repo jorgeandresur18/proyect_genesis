@@ -4,6 +4,7 @@ import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { highlightAiVowels } from '../effects/aiVowels';
 import { startTyping, stopTyping } from '../engine/sound';
 import personajes from '../data/personajes_ui.json';
+import { useT } from '../engine/i18n';
 
 /** Color (y si es una voz de máquina) del nombre de un hablante: «Nikki (mensaje)» usa el de Nikki. */
 function speakerStyle(speaker: string): { color: string; mono: boolean } {
@@ -28,6 +29,7 @@ export function DialogBox({ dialogue, aiVowels, hasChoices, onAdvance }: Props) 
   const textDone = useStore((s) => s.textDone);
   const setTextDone = useStore((s) => s.setTextDone);
   const speed = useStore((s) => s.settings.textSpeed);
+  const t = useT();
   const [count, setCount] = useState(0);
   const text = dialogue?.text ?? '';
 
@@ -83,9 +85,9 @@ export function DialogBox({ dialogue, aiVowels, hasChoices, onAdvance }: Props) 
             onAdvance();
           }}
           onMouseDown={(e) => e.preventDefault()}
-          title="Clic, Espacio o Enter"
+          title={t('dialogo.ayuda')}
         >
-          {textDone ? 'Siguiente ▶' : 'Mostrar todo ▸▸'}
+          {textDone ? t('dialogo.siguiente') : t('dialogo.mostrar_todo')}
         </button>
       )}
     </div>

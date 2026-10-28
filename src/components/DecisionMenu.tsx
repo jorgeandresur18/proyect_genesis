@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { Choice } from '../engine/types';
+import { useT } from '../engine/i18n';
 
 interface Props {
   choices: Choice[];
@@ -11,6 +12,7 @@ interface Props {
  * También se elige con las teclas 1, 2, 3…
  */
 export function DecisionMenu({ choices, onChoose }: Props) {
+  const t = useT();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const n = Number(e.key);
@@ -26,7 +28,7 @@ export function DecisionMenu({ choices, onChoose }: Props) {
     <>
       <div className="decisions-dim" aria-hidden />
       <div className="decisions" role="menu">
-        <p className="decisions-label">Elige</p>
+        <p className="decisions-label">{t('decision.elige')}</p>
         {choices.map((c, i) => (
           <button
             key={i}

@@ -1,7 +1,9 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
-import { BAD_END, endings } from '../engine/story';
-import conoceMas from '../data/conoce_mas.json';
+import { BAD_END, endingName, endings } from '../engine/story';
+import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
+import conoceMasEs from '../data/conoce_mas.json';
+import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
 
 export function Panel({
@@ -15,12 +17,13 @@ export function Panel({
   wide?: boolean;
   children: ReactNode;
 }) {
+  const t = useT();
   return (
     <div className="panel-backdrop" onClick={onClose}>
       <div className={`panel ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="panel-head">
           <h2>{title}</h2>
-          <button onClick={onClose}>Cerrar</button>
+          <button onClick={onClose}>{t('panel.cerrar')}</button>
         </div>
         <div className="panel-body">{children}</div>
       </div>
@@ -30,9 +33,10 @@ export function Panel({
 
 export function HistoryPanel({ onClose }: { onClose: () => void }) {
   const history = useStore((s) => s.game?.history ?? []);
+  const t = useT();
   return (
-    <Panel title="Historial" onClose={onClose}>
-      {history.length === 0 && <p className="muted">Vacío.</p>}
+    <Panel title={t('historial.titulo')} onClose={onClose}>
+      {history.length === 0 && <p className="muted">{t('historial.vacio')}</p>}
       {history.map((h, i) => (
         <p key={i} className={h.choice ? 'history-choice' : ''}>
           {h.choice ? '› ' : h.speaker ? <strong>{h.speaker}: </strong> : null}
@@ -47,27 +51,29 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
   const saves = useStore((s) => s.saves);
   const canSave = useStore((s) => !!s.game && canSaveGame(s.game));
   const { save, load, deleteSave } = useStore.getState();
+  const t = useT();
+  const lang = useLang();
   return (
-    <Panel title={mode === 'save' ? 'Guardar' : 'Cargar'} onClose={onClose}>
+    <Panel title={mode === 'save' ? t('guardar.titulo') : t('cargar.titulo')} onClose={onClose}>
       {Array.from({ length: SAVE_SLOTS }, (_, i) => {
         const slot = saves[i];
         return (
           <div key={i} className="slot">
             <div className="slot-info">
-              <strong>Espacio {i + 1}</strong>
+              <strong>{t('guardar.espacio', { n: i + 1 })}</strong>
               {slot ? (
                 <>
-                  <span className="muted">{new Date(slot.date).toLocaleString()}</span>
+                  <span className="muted">{new Date(slot.date).toLocaleString(lang)}</span>
                   <span>{slot.preview}</span>
                 </>
               ) : (
-                <span className="muted">Vacío</span>
+                <span className="muted">{t('guardar.vacio')}</span>
               )}
             </div>
             <div className="slot-actions">
               {mode === 'save' ? (
                 <button disabled={!canSave} onClick={() => save(i)}>
-                  Guardar
+                  {t('guardar.guardar')}
                 </button>
               ) : (
                 <button
@@ -78,11 +84,11 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
                     onClose();
                   }}
                 >
-                  Cargar
+                  {t('guardar.cargar')}
                 </button>
               )}
               <button disabled={!slot} onClick={() => deleteSave(i)}>
-                Borrar
+                {t('guardar.borrar')}
               </button>
             </div>
           </div>
@@ -94,28 +100,30 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
 
 export function EndingsGallery({ onClose }: { onClose: () => void }) {
   const seen = useStore((s) => s.endingsSeen);
+  const t = useT();
+  const lang = useLang();
   // Solo los finales que existen en esta versión: los del juego completo aparecen cuando estén escritos.
   const visible = endings.filter((e) => e.estado === 'jugable' && (!e.oculto || seen[e.id]));
   const groups = [
-    { title: 'Finales', list: visible.filter((e) => e.tipo !== BAD_END) },
-    { title: 'Bad ends', list: visible.filter((e) => e.tipo === BAD_END) },
+    { title: t('finales.grupo'), list: visible.filter((e) => e.tipo !== BAD_END) },
+    { title: t('finales.bad'), list: visible.filter((e) => e.tipo === BAD_END) },
   ];
   return (
-    <Panel title="Finales" onClose={onClose}>
+    <Panel title={t('finales.titulo')} onClose={onClose}>
       {groups.map((g) => (
         <section key={g.title} className="ending-group">
           <h3>
             {g.title} ({g.list.filter((e) => seen[e.id]).length}/{g.list.length})
           </h3>
           {g.list.length === 0 && (
-            <p className="muted">Los finales de la historia llegarán con los próximos capítulos.</p>
+            <p className="muted">{t('finales.proximos')}</p>
           )}
           {g.list.map((e) => (
             <div key={e.id} className={`ending ${seen[e.id] ? '' : 'ending-locked'}`}>
-              <strong>{seen[e.id] ? e.nombre : '???'}</strong>
+              <strong>{seen[e.id] ? endingName(e, lang) : '???'}</strong>
               <span className="muted">
                 {e.pieza} · {e.tipo}
-                {seen[e.id] ? ` · ${new Date(seen[e.id]).toLocaleDateString()}` : ''}
+                {seen[e.id] ? ` · ${new Date(seen[e.id]).toLocaleDateString(lang)}` : ''}
               </span>
             </div>
           ))}
@@ -127,6 +135,7 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
 
 /** «Conoce más del proyecto»: qué es el juego, de qué trata, sus temas, cómo nació y enlaces del autor. */
 export function AboutPanel({ onClose }: { onClose: () => void }) {
+  const conoceMas = localized(conoceMasEs, conoceMasEn, useLang());
   return (
     <Panel title={conoceMas.titulo} onClose={onClose}>
       <div className="about">
@@ -159,41 +168,61 @@ export function AboutPanel({ onClose }: { onClose: () => void }) {
 
 // Tamaños de texto de la caja de diálogo.
 const TEXT_SIZES = [
-  { label: 'Pequeña', value: 0.9 },
-  { label: 'Normal', value: 1 },
-  { label: 'Grande', value: 1.15 },
-  { label: 'Muy grande', value: 1.3 },
+  { label: 'opciones.tam_pequena', value: 0.9 },
+  { label: 'opciones.tam_normal', value: 1 },
+  { label: 'opciones.tam_grande', value: 1.15 },
+  { label: 'opciones.tam_muy_grande', value: 1.3 },
 ];
 
 export function OptionsPanel({ onClose }: { onClose: () => void }) {
   const settings = useStore((s) => s.settings);
   const setSettings = useStore((s) => s.setSettings);
+  const t = useT();
+  const lang = useLang();
+  const detected = detectLanguage();
   return (
-    <Panel title="Opciones" onClose={onClose}>
-      <h3 className="options-section">Lectura</h3>
+    <Panel title={t('opciones.titulo')} onClose={onClose}>
+      <h3 className="options-section">{t('opciones.idioma')}</h3>
+      <div className="option">
+        <div className="segmented">
+          {(['auto', 'es', 'en'] as const).map((l) => (
+            <button key={l} className={settings.language === l ? 'active' : ''} onClick={() => setSettings({ language: l })}>
+              {l === 'auto' ? `${t('idioma.auto')} (${t(`idioma.${detected.lang}`)})` : t(`idioma.${l}`)}
+            </button>
+          ))}
+        </div>
+        <span className="muted options-tip">
+          {settings.language === 'auto'
+            ? t('idioma.detectado', { idioma: t(`idioma.${detected.lang}`), codigo: detected.code })
+            : t('idioma.elegido', { idioma: t(`idioma.${lang}`) })}
+        </span>
+        {t('idioma.historia_es') && <span className="muted options-tip">{t('idioma.historia_es')}</span>}
+      </div>
+
+      <h3 className="options-section">{t('opciones.lectura')}</h3>
       {/* Vista previa: muestra al momento el tamaño del texto y la opacidad de la caja. */}
       <div className="reading-preview" aria-hidden>
         <div className="dialog dialog-has-speaker" style={{ '--speaker': '#ff6fa5' } as CSSProperties}>
           <div className="dialog-speaker">Nikki</div>
-          <div className="dialog-text">Así se va a ver el texto. Una sola. Lo juro por mi delantal.</div>
+          <div className="dialog-text">{t('opciones.preview')}</div>
         </div>
       </div>
       <div className="option">
-        Tamaño del texto
+        {t('opciones.tamano')}
         <div className="segmented">
-          {TEXT_SIZES.map((t) => (
+          {TEXT_SIZES.map((s) => (
             <button
-              key={t.value}
-              className={settings.textScale === t.value ? 'active' : ''}
-              onClick={() => setSettings({ textScale: t.value })}
+              key={s.value}
+              className={settings.textScale === s.value ? 'active' : ''}
+              onClick={() => setSettings({ textScale: s.value })}
             >
-              {t.label}
+              {t(s.label)}
             </button>
           ))}
         </div>
       </div>
       <label className="option">
-        Opacidad de la caja de texto: {Math.round(settings.boxOpacity * 100)} %
+        {t('opciones.opacidad', { n: Math.round(settings.boxOpacity * 100) })}
         <input
           type="range"
           min={0.4}
@@ -204,8 +233,9 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
-        Velocidad del texto:{' '}
-        {settings.textSpeed >= TEXT_SPEED_INSTANT ? 'instantáneo' : `${settings.textSpeed} letras por segundo`}
+        {t('opciones.velocidad', {
+          v: settings.textSpeed >= TEXT_SPEED_INSTANT ? t('opciones.instantaneo') : t('opciones.letras', { n: settings.textSpeed }),
+        })}
         <input
           type="range"
           min={10}
@@ -216,7 +246,7 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
-        Modo auto: pausa al terminar cada línea, {(settings.autoDelayMs / 1000).toFixed(1)} s
+        {t('opciones.auto', { n: (settings.autoDelayMs / 1000).toFixed(1) })}
         <input
           type="range"
           min={300}
@@ -226,17 +256,15 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
           onChange={(e) => setSettings({ autoDelayMs: Number(e.target.value) })}
         />
       </label>
-      <p className="muted options-tip">
-        Para ver la imagen sin la caja de texto: botón «Ocultar» o tecla H. Cualquier clic la vuelve a mostrar.
-      </p>
+      <p className="muted options-tip">{t('opciones.ocultar_tip')}</p>
 
-      <h3 className="options-section">Sonido</h3>
+      <h3 className="options-section">{t('opciones.sonido')}</h3>
       <label className="option">
         <input type="checkbox" checked={settings.muted} onChange={(e) => setSettings({ muted: e.target.checked })} />
-        Silenciar todo el audio (tecla M)
+        {t('opciones.silenciar')}
       </label>
       <label className="option">
-        Volumen de música: {Math.round(settings.musicVolume * 100)} %
+        {t('opciones.musica', { n: Math.round(settings.musicVolume * 100) })}
         <input
           type="range"
           min={0}
@@ -247,7 +275,7 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
       </label>
       <label className="option">
-        Volumen de efectos: {Math.round(settings.sfxVolume * 100)} %
+        {t('opciones.efectos', { n: Math.round(settings.sfxVolume * 100) })}
         <input
           type="range"
           min={0}
@@ -263,17 +291,17 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
           checked={settings.typingSound}
           onChange={(e) => setSettings({ typingSound: e.target.checked })}
         />
-        Sonido mientras se escribe el texto
+        {t('opciones.tecleo')}
       </label>
 
-      <h3 className="options-section">Pantalla</h3>
+      <h3 className="options-section">{t('opciones.pantalla')}</h3>
       <label className="option">
         <input
           type="checkbox"
           checked={settings.reduceEffects}
           onChange={(e) => setSettings({ reduceEffects: e.target.checked })}
         />
-        Reducir efectos (desactiva glitches y efectos de interfaz)
+        {t('opciones.reducir')}
       </label>
     </Panel>
   );

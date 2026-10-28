@@ -1,7 +1,9 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useStore } from '../engine/store';
 import { playSelect } from '../engine/sound';
-import textos from '../data/pantalla_final.json';
+import textosEs from '../data/pantalla_final.json';
+import textosEn from '../data/en/pantalla_final.json';
+import { localized, useLang } from '../engine/i18n';
 
 interface Props {
   /** Nombre del final (src/data/registro_finales.json). */
@@ -17,6 +19,7 @@ const FADE_MS = 1800;
 /** Bad end: fundido a negro, «BAD END» y el nombre del final en rojo con glitch, y el botón para volver al menú. */
 export function BadEnd({ name, lastScene, onTitle }: Props) {
   const still = useStore((s) => s.settings.reduceEffects);
+  const textos = localized(textosEs, textosEn, useLang());
   const [faded, setFaded] = useState(false);
 
   useEffect(() => {

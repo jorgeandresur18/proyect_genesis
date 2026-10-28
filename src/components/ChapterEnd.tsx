@@ -2,7 +2,9 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useStore } from '../engine/store';
 import { storyFiles } from '../engine/story';
 import { playSelect } from '../engine/sound';
-import textos from '../data/fin_capitulo.json';
+import textosEs from '../data/fin_capitulo.json';
+import textosEn from '../data/en/fin_capitulo.json';
+import { localized, useLang } from '../engine/i18n';
 import { assetUrl } from '../engine/assets';
 
 interface Props {
@@ -22,7 +24,10 @@ export function ChapterEnd({ chapter, lastScene, onSave, onTitle }: Props) {
   const still = useStore((s) => s.settings.reduceEffects);
   const [faded, setFaded] = useState(false);
   const [soon, setSoon] = useState(false);
-  const title = storyFiles.find((f) => f.ruta === 'base' && f.chapter === chapter)?.title;
+  const lang = useLang();
+  const textos = localized(textosEs, textosEn, lang);
+  const file = storyFiles.find((f) => f.ruta === 'base' && f.chapter === chapter);
+  const title = lang === 'en' ? (file?.title_en ?? file?.title) : file?.title;
   const background = (textos.fondos as Record<string, string>)[String(chapter)];
 
   useEffect(() => {

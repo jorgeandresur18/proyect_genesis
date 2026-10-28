@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useStore } from '../engine/store';
 import { stopTyping } from '../engine/sound';
+import { useT } from '../engine/i18n';
 
 /** Botón para silenciar o activar todo el audio (también con la tecla M). */
 export function AudioToggle() {
   const muted = useStore((s) => s.settings.muted);
+  const t = useT();
   const toggle = () => {
     const next = !useStore.getState().settings.muted;
     if (next) stopTyping();
@@ -21,7 +23,7 @@ export function AudioToggle() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  const label = muted ? 'Activar el audio (M)' : 'Silenciar el audio (M)';
+  const label = muted ? t('audio.activar') : t('audio.silenciar');
   return (
     <button
       className={`audio-toggle ${muted ? 'audio-toggle-off' : ''}`}

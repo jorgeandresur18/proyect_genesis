@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useStore } from '../engine/store';
 import { storyFiles } from '../engine/story';
 import { assetUrl } from '../engine/assets';
-import galeria from '../data/galeria.json';
+import galeriaEs from '../data/galeria.json';
+import galeriaEn from '../data/en/galeria.json';
+import { localized, useLang, useT } from '../engine/i18n';
 import { Panel } from './Panels';
-
-const titles = galeria.titulos as Record<string, string>;
 
 /** Todas las imágenes de la galería: los fondos `fondos/cg_*.webp` del guion, en el orden en que aparecen. */
 const CGS: string[] = (() => {
@@ -22,6 +22,8 @@ const CGS: string[] = (() => {
 /** Galería de imágenes: las que ya se vieron en el juego se pueden abrir en grande; las demás, bloqueadas. */
 export function CgGallery({ onClose }: { onClose: () => void }) {
   const seen = useStore((s) => s.cgSeen);
+  const t = useT();
+  const titles = localized(galeriaEs, galeriaEn, useLang()).titulos as Record<string, string>;
   const unlocked = CGS.filter((id) => seen[id]);
   const [open, setOpen] = useState<number | null>(null);
 
@@ -37,8 +39,8 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
   }, [open, unlocked.length]);
 
   return (
-    <Panel title={`Galería (${unlocked.length}/${CGS.length})`} onClose={onClose} wide>
-      {CGS.length === 0 && <p className="muted">Todavía no hay imágenes.</p>}
+    <Panel title={t('galeria.titulo', { vistas: unlocked.length, total: CGS.length })} onClose={onClose} wide>
+      {CGS.length === 0 && <p className="muted">{t('galeria.vacia')}</p>}
       <div className="gallery-grid">
         {CGS.map((id) =>
           seen[id] ? (
@@ -60,14 +62,14 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
         <div className="gallery-viewer" onClick={() => setOpen(null)}>
           <img src={assetUrl(`fondos/${unlocked[open]}.webp`)} alt="" draggable={false} />
           <div className="gallery-viewer-bar" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setOpen((open - 1 + unlocked.length) % unlocked.length)} aria-label="Anterior">
+            <button onClick={() => setOpen((open - 1 + unlocked.length) % unlocked.length)} aria-label={t('galeria.anterior')}>
               ◀
             </button>
             <span>{titles[unlocked[open]] ?? unlocked[open]}</span>
-            <button onClick={() => setOpen((open + 1) % unlocked.length)} aria-label="Siguiente">
+            <button onClick={() => setOpen((open + 1) % unlocked.length)} aria-label={t('galeria.siguiente')}>
               ▶
             </button>
-            <button onClick={() => setOpen(null)}>Cerrar</button>
+            <button onClick={() => setOpen(null)}>{t('panel.cerrar')}</button>
           </div>
         </div>
       )}

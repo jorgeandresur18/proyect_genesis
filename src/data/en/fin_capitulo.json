@@ -1,0 +1,12 @@
+{
+  "fin": "END OF CHAPTER {n}",
+  "continuar": "Continue",
+  "guardar": "Save",
+  "inicio": "Back to title",
+  "proximo": {
+    "titulo": "CHAPTER {n}",
+    "estado": "In development",
+    "texto": "Coming soon",
+    "cerrar": "Close"
+  }
+}

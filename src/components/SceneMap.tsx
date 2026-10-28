@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { useStore } from '../engine/store';
-import { BAD_END, config, getEnding, scenes, variables } from '../engine/story';
+import { BAD_END, config, endingName, getEnding, scenes, variables } from '../engine/story';
+import { useLang, useT } from '../engine/i18n';
 import { buildFlow, type FlowNode } from '../engine/flow';
 import { Panel } from './Panels';
 
@@ -38,6 +39,8 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   const endingsSeen = useStore((s) => s.endingsSeen);
   const current = useStore((s) => s.game?.sceneId);
   const jumpTo = useStore((s) => s.jumpTo);
+  const t = useT();
+  const lang = useLang();
   const viewportRef = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<View>({ x: 0, y: 0, k: 1 });
 
@@ -145,13 +148,14 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   };
 
   const label = (n: FlowNode): string => {
-    if (n.kind === 'start') return 'Inicio';
+    if (n.kind === 'start') return t('mapa.inicio');
     if (n.kind === 'ending') {
       const s = scenes.get(n.sceneId!)!;
-      if (!s.ending) return reached(n) ? `FIN DEL CAPÍTULO ${s.fin_capitulo}` : '???';
+      if (!s.ending) return reached(n) ? t('mapa.fin_capitulo', { n: s.fin_capitulo ?? '' }) : '???';
       const id = s.ending;
-      const prefix = getEnding(id)?.tipo === BAD_END ? 'BAD END' : 'FIN';
-      return reached(n) ? `${prefix}: ${getEnding(id)?.nombre ?? id}` : '???';
+      const e = getEnding(id);
+      const prefix = e?.tipo === BAD_END ? t('mapa.bad') : t('mapa.fin');
+      return reached(n) ? `${prefix}: ${e ? endingName(e, lang) : id}` : '???';
     }
     if (n.kind === 'decision') return reached(n) ? n.label : '???';
     // Opción: se ve si ya se eligió, o si está tachada en una decisión ya vista.
@@ -160,7 +164,7 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
   };
 
   return (
-    <Panel title="Mapa de decisiones" onClose={onClose} wide>
+    <Panel title={t('mapa.titulo')} onClose={onClose} wide>
       <div
         className={`flow-viewport ${gesture.current.moved > DRAG_THRESHOLD ? 'flow-dragging' : ''}`}
         ref={viewportRef}
@@ -214,7 +218,7 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
                 className={classes}
                 style={{ left: p.x, top: p.y, width: NODE_W, height: NODE_H }}
                 disabled={!canJump}
-                title={canJump ? 'Volver a esta decisión' : undefined}
+                title={canJump ? t('mapa.volver') : undefined}
                 onClick={() => {
                   // Si fue un arrastre, no es un clic.
                   if (gesture.current.moved > DRAG_THRESHOLD) return;
@@ -228,24 +232,24 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
           })}
         </div>
         <div className="flow-controls" onPointerDown={(e) => e.stopPropagation()}>
-          <button onClick={() => zoomCenter(1.25)} aria-label="Acercar">
+          <button onClick={() => zoomCenter(1.25)} aria-label={t('mapa.acercar')}>
             +
           </button>
           <span>{Math.round(view.k * 100)} %</span>
-          <button onClick={() => zoomCenter(0.8)} aria-label="Alejar">
+          <button onClick={() => zoomCenter(0.8)} aria-label={t('mapa.alejar')}>
             −
           </button>
-          <button onClick={fitAll}>Ver todo</button>
-          <button onClick={() => focusNode(focusTarget())}>Ir a la actual</button>
+          <button onClick={fitAll}>{t('mapa.ver_todo')}</button>
+          <button onClick={() => focusNode(focusTarget())}>{t('mapa.ir_actual')}</button>
         </div>
       </div>
       <div className="flow-legend">
-        <span className="flow-chip flow-chip-decision">◆ decisión · clic para volver</span>
-        <span className="flow-chip">● opción elegida</span>
-        <span className="flow-chip flow-chip-bad">✕ bad end</span>
-        <span className="flow-chip">■ fin de capítulo</span>
-        <span className="flow-chip flow-chip-unknown">??? sin descubrir</span>
-        <span className="muted flow-hint">Arrastra para moverte · rueda o pellizco para acercar</span>
+        <span className="flow-chip flow-chip-decision">{t('mapa.ley_decision')}</span>
+        <span className="flow-chip">{t('mapa.ley_opcion')}</span>
+        <span className="flow-chip flow-chip-bad">{t('mapa.ley_bad')}</span>
+        <span className="flow-chip">{t('mapa.ley_fin')}</span>
+        <span className="flow-chip flow-chip-unknown">{t('mapa.ley_desconocido')}</span>
+        <span className="muted flow-hint">{t('mapa.ayuda')}</span>
       </div>
     </Panel>
   );

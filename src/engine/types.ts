@@ -80,6 +80,8 @@ export interface StoryFile {
   ruta: string;
   chapter: number;
   title: string;
+  /** Título en inglés (pantalla de fin de capítulo). */
+  title_en?: string;
   /** `borrador` mientras el autor no apruebe los diálogos. */
   estado?: 'borrador' | 'aprobado';
   nota?: string;
@@ -91,6 +93,8 @@ export type VarDecl = Record<string, VarValue>;
 export interface EndingInfo {
   id: string;
   nombre: string;
+  /** Nombre en inglés. */
+  nombre_en?: string;
   pieza: string;
   tipo: string;
   /** Solo los finales `jugable` deben ser alcanzables en la prueba de rutas. */

@@ -1068,3 +1068,10 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
   96% { opacity: 0.8; transform: translate(-5px, 0); clip-path: inset(8% 0 80% 0); }
 }
 @media (prefers-reduced-motion: reduce) { .logo-slice { display: none; } }
+
+/* Idioma detectado, al pie de la advertencia. */
+.warning-lang { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem 1rem; margin-top: 1.2rem; font-size: 0.85rem; }
+.warning-lang .segmented button { min-width: 6.5rem; padding: 0.35rem 0.9rem; border-radius: 999px; background: rgba(255, 255, 255, 0.05); border-color: rgba(214, 218, 226, 0.25); }
+.warning-lang .segmented button.active { border-color: #e9ecf1; color: #fff; background: rgba(255, 255, 255, 0.12); }
+/* Aviso en inglés: la historia todavía está en español. */
+.title-notice { max-width: 26rem; margin: -0.4rem 0 0; font-size: 0.85rem; text-align: center; }

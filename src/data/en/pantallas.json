@@ -1,0 +1,121 @@
+{
+  "gravity_ide": {
+    "titulo": "GRAVITY — untitled_world",
+    "archivos": [
+      "world/",
+      "  sky.cf",
+      "  physics.cf",
+      "  castle.cf",
+      "entities/",
+      "  protagonist.cf",
+      "  heroine_01.cf",
+      "  heroine_02.cf",
+      "  evil_king.cf",
+      "  army.cf",
+      "references/",
+      "  (untitled)/",
+      "genesis.config"
+    ],
+    "pestana": "world.cf",
+    "codigo": [
+      "import { World } from 'reckt';",
+      "",
+      "const world = new World({",
+      "  genre: ['fantasy', 'science fiction'],",
+      "  antagonist: 'Evil King',",
+      "  protagonist: 'regular guy',",
+      "  heroines: 2,",
+      "  sky: undefined,",
+      "  gravity: undefined,",
+      "});",
+      "",
+      "// TODO: don't let them leave",
+      "world.compile();"
+    ],
+    "consola": "CONSOLE — GENESIS"
+  },
+  "pc_correo": {
+    "titulo": "Mail",
+    "carpetas": [
+      "Inbox (10)",
+      "Starred",
+      "Sent",
+      "Spam (99+)",
+      "Trash"
+    ],
+    "bandeja": [
+      {
+        "de": "Tech Support Forum",
+        "asunto": "New thread: «Why is the user always an idiot?» (2,341 replies, all agreeing)"
+      },
+      {
+        "de": "Your Bank",
+        "asunto": "Credit card pre-approved! Because your problems deserve interest too."
+      },
+      {
+        "de": "GRAVITY",
+        "asunto": "You have been selected for early access to GRAVITY",
+        "activo": true
+      },
+      {
+        "de": "Smile Dental Clinic",
+        "asunto": "Your cleaning has been overdue since March. Your molars have already written their will."
+      },
+      {
+        "de": "Geekdump",
+        "asunto": "[farm-final-final-v2] depenbot opened 47 pull requests. It's the only one who still writes to you."
+      },
+      {
+        "de": "Smart Flab",
+        "asunto": "News at Smart Flab! Now with 40% less sexual harassment from our trainers."
+      },
+      {
+        "de": "LinkedFired",
+        "asunto": "100,000 people viewed your profile this week to check if you were more miserable than them."
+      },
+      {
+        "de": "Stack Underflow",
+        "asunto": "Please come back. Since AI arrived nobody uses us… even though AI gets all its answers from us."
+      },
+      {
+        "de": "Human Resources",
+        "asunto": "Reminder: Friday's team-building activity is mandatory and unpaid. Have fun!"
+      },
+      {
+        "de": "Supervisor",
+        "asunto": "RE: RE: RE: this fortnight's pay (we're family, and in families nobody gets paid)"
+      }
+    ],
+    "remitente": "GRAVITY <early-access@gravity>",
+    "para": "To: me",
+    "asunto": "You have been selected for early access to GRAVITY.",
+    "cuerpo": [
+      "GRAVITY is a development environment with built-in artificial intelligence.",
+      "Describe the world you want. We build it."
+    ],
+    "botones": [
+      "Download",
+      "Delete"
+    ],
+    "descargando": "GRAVITY_installer — downloading…",
+    "descargado": "GRAVITY_installer — download complete",
+    "eliminado": "The email was moved to the trash."
+  },
+  "celular_mensaje": {
+    "estado": "Active 2 min ago",
+    "dia": "Today",
+    "escribir": "Message"
+  },
+  "celular_favorito": {
+    "estado": "Starred messages",
+    "fecha": "a year and a half ago",
+    "marca": "★ Starred"
+  },
+  "celular_foto_nikki": {
+    "estado": "Profile picture"
+  },
+  "boringram_historia": {
+    "hace": "3 h ago",
+    "responder": "Reply to nikki…"
+  }
+}

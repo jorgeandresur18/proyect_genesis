@@ -31,6 +31,11 @@ export function getScene(id: string): Scene {
 /** Valor de `tipo` en el registro para los game over (aparte de los finales de docs/FINALES.md). */
 export const BAD_END = 'Bad end';
 
+/** Nombre de un final en el idioma pedido (si no tiene traducción, el original). */
+export function endingName(e: EndingInfo, lang: 'es' | 'en'): string {
+  return lang === 'en' ? (e.nombre_en ?? e.nombre) : e.nombre;
+}
+
 export function getEnding(id: string): EndingInfo | undefined {
   return endings.find((e) => e.id === id);
 }
