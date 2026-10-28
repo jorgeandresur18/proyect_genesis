@@ -175,12 +175,6 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
       >
         <div className="flow" style={{ width, height, transform: `translate(${view.x}px, ${view.y}px) scale(${view.k})` }}>
           <svg className="flow-edges" width={width} height={height}>
-            <defs>
-              <linearGradient id="flow-taken" x1="0" x2="1">
-                <stop offset="0" stopColor="#ff4f7b" />
-                <stop offset="1" stopColor="#ff9a6a" />
-              </linearGradient>
-            </defs>
             {flow.edges.map((e, i) => {
               const a = byId.get(e.from)!;
               const b = byId.get(e.to)!;

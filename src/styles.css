@@ -416,7 +416,8 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 .flow { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .flow-edges { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
 .flow-edge { fill: none; stroke: rgba(214, 218, 226, 0.22); stroke-width: 1.5; stroke-dasharray: 5 6; }
-.flow-edge-taken { stroke: url(#flow-taken); stroke-dasharray: 10 8; stroke-width: 2.6; filter: drop-shadow(0 0 4px rgba(255, 79, 123, 0.6)); animation: flow-dash 1.2s linear infinite; }
+/* Color sólido: un degradado no se dibuja en líneas perfectamente horizontales (caja de alto cero). */
+.flow-edge-taken { stroke: #ff6a85; stroke-dasharray: 10 8; stroke-width: 2.6; filter: drop-shadow(0 0 4px rgba(255, 79, 123, 0.6)); animation: flow-dash 1.2s linear infinite; }
 @keyframes flow-dash { to { stroke-dashoffset: -18; } }
 .flow-node {
   position: absolute;
