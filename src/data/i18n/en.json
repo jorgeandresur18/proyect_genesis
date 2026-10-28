@@ -101,5 +101,6 @@
   "extras.finales": "Endings",
   "extras.finales_desc": "The endings and bad ends you found.",
   "terminal.abrir": "open {nombre}",
-  "terminal.listo": "ready."
+  "terminal.listo": "ready.",
+  "guardar.sin_datos": "NO DATA"
 }

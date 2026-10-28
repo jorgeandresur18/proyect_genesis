@@ -79,7 +79,15 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
         const slot = saves[i];
         return (
           <div key={i} className="slot">
-            {slot ? <SaveThumb sceneId={slot.sceneId} finished={slot.finished} /> : <div className="save-thumb save-thumb-empty" />}
+            {slot ? (
+              <SaveThumb sceneId={slot.sceneId} finished={slot.finished} />
+            ) : (
+              <div className="save-thumb save-thumb-empty" aria-hidden>
+                <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
+                  {t('guardar.sin_datos')}
+                </span>
+              </div>
+            )}
             <div className="slot-info">
               <strong>{t('guardar.espacio', { n: i + 1 })}</strong>
               {slot ? (

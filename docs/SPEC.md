@@ -27,7 +27,7 @@
 - **Menú del título:** botón «Nueva partida» y mosaicos (Cargar, Mapa, Extras, Opciones, Conoce más). Extras agrupa la galería y los finales. Cada opción suena con el sonido de decisión; cerrar o cancelar suena con `cancel.mp3`. Los paneles se abren como una terminal. Versión en una esquina (`version` en `src/data/juego.json`).
 - **Easter egg:** 69 clics en el logo (cada clic hace un glitch sutil de colores con `glitch.mp3`, bajo; la pista está en el código Coffee del fondo). La pantalla se oscurece y aparece Nikki con un globo que la apunta y escribe su texto como un diálogo, pidiendo una donación; el menú queda bloqueado hasta responder. «Donar con PayPal» abre PayPal y Nikki agradece; «En otro momento» la pone celosa («será para otra ocasión»). En los dos casos se va con un glitch. Textos en `src/data/easter_egg.json`.
 
-- **Partidas guardadas:** cada espacio muestra una miniatura de la escena (fondo y personajes; las pantallas en código, con su color) a partir de `sceneId`, así que también sirve con partidas viejas.
+- **Partidas guardadas:** los espacios vacíos muestran «SIN DATOS» con un glitch fuerte; los ocupados, una miniatura de la escena (fondo y personajes; las pantallas en código, con su color) a partir de `sceneId`, así que también sirve con partidas viejas.
 
 ## 3. Modelo de escena
 
