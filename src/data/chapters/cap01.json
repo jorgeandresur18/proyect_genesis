@@ -12697,8 +12697,7 @@
         },
         {
           "text": "Enfrentar al monstruo",
-          "next": "cap01_g3_019",
-          "locked": true
+          "next": "cap01_g3_018c"
         },
         {
           "text": "Esconderte detrás de Cami",
@@ -12707,8 +12706,371 @@
       ],
       "conditions": [],
       "audio": null,
-      "ui_effect": "locked_choice",
+      "ui_effect": null,
       "next": null
+    },
+    {
+      "scene_id": "cap01_g3_018c",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(No. Esta vez no. Esta vez el protagonista hace algo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c2"
+    },
+    {
+      "scene_id": "cap01_g3_018c2",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Agarra lo primero que encuentra: un pedazo de columna del tamaño de un teclado. Lo levanta con las dos manos y corre hacia la tinta gritando algo que quiere ser un grito de guerra y sale como un estornudo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c3"
+    },
+    {
+      "scene_id": "cap01_g3_018c3",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Le pega. La piedra entra en la tinta sin ruido, como una cuchara en un flan, y desaparece."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c4"
+    },
+    {
+      "scene_id": "cap01_g3_018c4",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Ataque registrado. Daño: cero. Estilo: tres de diez."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c5"
+    },
+    {
+      "scene_id": "cap01_g3_018c5",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El monstruo ni se voltea. Mueve un brazo, distraído, como quien espanta una mosca, y Jair sale volando contra la pared."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c6"
+    },
+    {
+      "scene_id": "cap01_g3_018c6",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¡¿Qué estás haciendo?!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c7"
+    },
+    {
+      "scene_id": "cap01_g3_018c7",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¡Lo distraje!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c8"
+    },
+    {
+      "scene_id": "cap01_g3_018c8",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¡Te distrajo a ti! ¡Contra una pared!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c9"
+    },
+    {
+      "scene_id": "cap01_g3_018c9",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Cami le dispara en la cara, o en el lugar donde debería estar la cara. La tinta retrocede un metro, ofendida."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c10"
+    },
+    {
+      "scene_id": "cap01_g3_018c10",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "Eso nos da un minuto. Ahora cárgame y corre, héroe."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_018c11"
+    },
+    {
+      "scene_id": "cap01_g3_018c11",
+      "chapter": 1,
+      "background": "fondos/pasillo_castillo.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/enojada.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(«Héroe». Lo dijo con el mismo tono con que mi supervisor dice «familia».)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g3_019"
     },
     {
       "scene_id": "cap01_g3_018b",
@@ -23707,14 +24069,310 @@
         },
         {
           "text": "Pelear contra los soldados",
-          "next": "cap01_g5_024b",
-          "locked": true
+          "next": "cap01_g5_023c"
         }
       ],
       "conditions": [],
       "audio": null,
-      "ui_effect": "locked_choice",
+      "ui_effect": null,
       "next": null
+    },
+    {
+      "scene_id": "cap01_g5_023c",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/sorprendida.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ocho segundos. Demasiados soldados. Las cuentas no dan. Pero las cuentas nunca me dieron y aquí estoy.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c2"
+    },
+    {
+      "scene_id": "cap01_g5_023c2",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair sale de detrás de la columna, se planta frente al soldado más cercano y levanta los puños como en las películas. Como en las películas que veía de niño, desde el sillón."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c3"
+    },
+    {
+      "scene_id": "cap01_g5_023c3",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El soldado lo mira, o hace algo parecido a mirarlo con un casco sin cara. Después lo empuja con una mano. Sin fuerza. Sin interés. Como quien corre una silla para pasar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c4"
+    },
+    {
+      "scene_id": "cap01_g5_023c4",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair rueda dos metros y queda otra vez detrás de la columna, sentado, con los puños todavía en alto."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c5"
+    },
+    {
+      "scene_id": "cap01_g5_023c5",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Soldado enmascarado",
+        "text": "Mueble fuera de lugar. Ignorar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c6"
+    },
+    {
+      "scene_id": "cap01_g5_023c6",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "(Susurrando) ¿Qué. Fue. Eso."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c7"
+    },
+    {
+      "scene_id": "cap01_g5_023c7",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Susurrando) Reconocimiento del terreno."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c8"
+    },
+    {
+      "scene_id": "cap01_g5_023c8",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "(Susurrando) Te reconocieron como un mueble. Ahora haz lo de tu bucle y no vuelvas a improvisar."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_023c9"
+    },
+    {
+      "scene_id": "cap01_g5_023c9",
+      "chapter": 1,
+      "background": "fondos/pozo_central.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/seria.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "soldado_enmascarado",
+          "sprite": "sprites/soldado_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Es la evaluación de desempeño más honesta que me han hecho en la vida.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g5_024a"
     },
     {
       "scene_id": "cap01_g5_024a",
@@ -26552,14 +27210,328 @@
         },
         {
           "text": "Pelear contra el capitán",
-          "next": "cap01_g6_054a",
-          "locked": true
+          "next": "cap01_g6_053c"
         }
       ],
       "conditions": [],
       "audio": null,
-      "ui_effect": "locked_choice",
+      "ui_effect": null,
       "next": null
+    },
+    {
+      "scene_id": "cap01_g6_053c",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Él tiene un rifle. Yo tengo una camisa chamuscada. Me parece justo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c2"
+    },
+    {
+      "scene_id": "cap01_g6_053c2",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair corre hacia el capitán. No hacia la Grieta, no hacia Cami: hacia el rifle. Es la decisión más valiente de su vida y dura un segundo y medio."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c3"
+    },
+    {
+      "scene_id": "cap01_g6_053c3",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Capitán enmascarado",
+        "text": "Objetivo hostil."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c4"
+    },
+    {
+      "scene_id": "cap01_g6_053c4",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El visor rojo se enciende. El disparo no hace ruido: solo una luz roja, muy limpia, que lo atraviesa a la altura del pecho."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c5"
+    },
+    {
+      "scene_id": "cap01_g6_053c5",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair cae de rodillas. No duele. Eso es lo peor: no duele nada, como en los sueños."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c6"
+    },
+    {
+      "scene_id": "cap01_g6_053c6",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¡JAIR!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c7"
+    },
+    {
+      "scene_id": "cap01_g6_053c7",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Usuario: integridad cero. Sesión terminada."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c8"
+    },
+    {
+      "scene_id": "cap01_g6_053c8",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Por lo menos esta vez no hui.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c9"
+    },
+    {
+      "scene_id": "cap01_g6_053c9",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/triste1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "capitan_enmascarado",
+          "sprite": "sprites/capitan_enmascarado/base.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Qué mal momento elegí para empezar.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g6_053c10"
+    },
+    {
+      "scene_id": "cap01_g6_053c10",
+      "chapter": 1,
+      "background": "PANTALLA:negro",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Un solo turno."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "ending": "bad_cap01_capitan"
     },
     {
       "scene_id": "cap01_g6_054a",
@@ -31080,14 +32052,328 @@
         },
         {
           "text": "Enfrentar al monstruo",
-          "next": "cap01_g7b_023a",
-          "locked": true
+          "next": "cap01_g7b_022c"
         }
       ],
       "conditions": [],
       "audio": null,
-      "ui_effect": "locked_choice",
+      "ui_effect": null,
       "next": null
+    },
+    {
+      "scene_id": "cap01_g7b_022c",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(Ya corrí bastante. Toda la vida corrí. Una vez. Una sola vez quiero quedarme.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c2"
+    },
+    {
+      "scene_id": "cap01_g7b_022c2",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/furia.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Jair deja a Cami en la nieve, detrás de una roca, y se da vuelta."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c3"
+    },
+    {
+      "scene_id": "cap01_g7b_022c3",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Cami",
+        "text": "¿Qué haces? ¡Jair! ¡El hielo! ¡Lo del hielo!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c4"
+    },
+    {
+      "scene_id": "cap01_g7b_022c4",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/verguenza1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El monstruo acorazado sale del otoño. Las rocas que le cubren el cuerpo crujen con el frío. Cada paso deja un agujero en la nieve."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c5"
+    },
+    {
+      "scene_id": "cap01_g7b_022c5",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "¡Eh! ¡Esto es mi sueño! ¡Aquí mando yo!"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c6"
+    },
+    {
+      "scene_id": "cap01_g7b_022c6",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Comando no reconocido."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c7"
+    },
+    {
+      "scene_id": "cap01_g7b_022c7",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "El monstruo no frena. Ni siquiera parece notar que Jair está ahí hasta que lo tiene encima."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c8"
+    },
+    {
+      "scene_id": "cap01_g7b_022c8",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": null,
+        "text": "Lo último que Jair ve es el cielo blanco del invierno, y a Cami gritándole algo que no alcanza a oír, como la Voz cuando habla muy bajito."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c9"
+    },
+    {
+      "scene_id": "cap01_g7b_022c9",
+      "chapter": 1,
+      "background": "fondos/claro_cuatro_estaciones.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/miedo.webp",
+          "pos": "centro"
+        },
+        {
+          "id": "monstruo_sombras",
+          "sprite": "sprites/monstruo_sombras/armored.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Jair",
+        "text": "(El hielo. Tenía razón con lo del hielo.)"
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": "cap01_g7b_022c10"
+    },
+    {
+      "scene_id": "cap01_g7b_022c10",
+      "chapter": 1,
+      "background": "PANTALLA:negro",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [],
+      "dialogue": {
+        "speaker": null,
+        "text": "Valiente, por una vez."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
+      "next": null,
+      "ending": "bad_cap01_acorazado"
     },
     {
       "scene_id": "cap01_g7b_023a",

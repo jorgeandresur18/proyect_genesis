@@ -24,8 +24,12 @@ Muertes o fracasos tempranos, estilo Shiny Days. No cuentan entre los 12 finales
 | `bad_cap01_sin_bar` | Una noche normal | 1 | «Decir que estás cansado» a Nikki: no hay bar; sobrio, borra el correo de GRAVITY | Borrador |
 | `bad_cap01_rechazo` | La única vez que dijo que no | 1 | Apartar a Nikki cuando pide el beso; en casa borra el correo de GRAVITY | Borrador |
 | `bad_cap01_correo` | Spam | 1 | Frente al correo de GRAVITY, «Eliminar el correo» | Borrador |
+| `bad_cap01_capitan` | Un solo turno | 1 | Frente al capitán en el núcleo de la Grieta, «Pelear contra el capitán» | Borrador |
+| `bad_cap01_acorazado` | Valiente, por una vez | 1 | En el invierno, frente al monstruo acorazado, «Enfrentar al monstruo» | Borrador |
 
 Los nombres son propuestas por confirmar.
+
+Pelear contra el primer monstruo o contra los soldados no es un bad end: Jair lo intenta, sale mal, Cami lo salva y la historia sigue por el camino de siempre. Las opciones de pelear ya no se muestran tachadas.
 
 ## La noche que crea el juego `[CANON]`
 

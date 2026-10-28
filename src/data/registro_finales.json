@@ -5,6 +5,8 @@
   { "id": "bad_cap01_huida", "nombre": "Nadie más se encarga", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "bad_cap01_escudo", "nombre": "Escudo humano", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "bad_cap01_patrulla", "nombre": "Pendiente de revisión", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_capitan", "nombre": "Un solo turno", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
+  { "id": "bad_cap01_acorazado", "nombre": "Valiente, por una vez", "pieza": "Juego base", "tipo": "Bad end", "estado": "jugable" },
   { "id": "final_canon_1", "nombre": "El Malo, \"La Jaula Voluntaria\"", "pieza": "Juego base", "tipo": "Canon", "estado": "por_escribir" },
   { "id": "final_canon_2", "nombre": "El Bueno, \"The Anothergirl\"", "pieza": "Juego base", "tipo": "Canon", "estado": "por_escribir" },
   { "id": "alt_1", "nombre": "Alternativo 1", "pieza": "Juego base", "tipo": "No canon", "estado": "por_escribir" },

@@ -1205,8 +1205,32 @@
 
 > **DECISIÓN**
 - `g3_018#0` Cargar a Cami y correr ⟶ va a `g3_019`
-- `g3_018#1` ~~Enfrentar al monstruo~~ ⟶ tachada
+- `g3_018#1` Enfrentar al monstruo ⟶ va a `g3_018c`
 - `g3_018#2` Esconderte detrás de Cami ⟶ va a `g3_018b`
+
+`g3_018c` **Jair:** (No. Esta vez no. Esta vez el protagonista hace algo.)
+
+`g3_018c2` — Agarra lo primero que encuentra: un pedazo de columna del tamaño de un teclado. Lo levanta con las dos manos y corre hacia la tinta gritando algo que quiere ser un grito de guerra y sale como un estornudo.
+
+`g3_018c3` — Le pega. La piedra entra en la tinta sin ruido, como una cuchara en un flan, y desaparece.
+
+`g3_018c4` **Voz:** Ataque registrado. Daño: cero. Estilo: tres de diez.
+
+`g3_018c5` — El monstruo ni se voltea. Mueve un brazo, distraído, como quien espanta una mosca, y Jair sale volando contra la pared.
+
+`g3_018c6` **Cami:** ¡¿Qué estás haciendo?!
+
+`g3_018c7` **Jair:** ¡Lo distraje!
+
+`g3_018c8` **Cami:** ¡Te distrajo a ti! ¡Contra una pared!
+
+`g3_018c9` — Cami le dispara en la cara, o en el lugar donde debería estar la cara. La tinta retrocede un metro, ofendida.
+
+`g3_018c10` **Cami:** Eso nos da un minuto. Ahora cárgame y corre, héroe.
+
+`g3_018c11` **Jair:** («Héroe». Lo dijo con el mismo tono con que mi supervisor dice «familia».)
+
+> ⤷ continúa en `g3_019`
 
 `g3_018b` **Jair:** (Ella tiene la pistola. Ella es la guerrera. Yo soy un civil. Los civiles se esconden. Es lo correcto. Es el protocolo.)
 
@@ -2065,7 +2089,25 @@
 > **DECISIÓN**
 - `g5_023#0` Esperar el momento exacto ⟶ va a `g5_024a`
 - `g5_023#1` Cruzar ya, antes de que te tiemblen las piernas ⟶ va a `g5_024b`
-- `g5_023#2` ~~Pelear contra los soldados~~ ⟶ tachada
+- `g5_023#2` Pelear contra los soldados ⟶ va a `g5_023c`
+
+`g5_023c` **Jair:** (Ocho segundos. Demasiados soldados. Las cuentas no dan. Pero las cuentas nunca me dieron y aquí estoy.)
+
+`g5_023c2` — Jair sale de detrás de la columna, se planta frente al soldado más cercano y levanta los puños como en las películas. Como en las películas que veía de niño, desde el sillón.
+
+`g5_023c3` — El soldado lo mira, o hace algo parecido a mirarlo con un casco sin cara. Después lo empuja con una mano. Sin fuerza. Sin interés. Como quien corre una silla para pasar.
+
+`g5_023c4` — Jair rueda dos metros y queda otra vez detrás de la columna, sentado, con los puños todavía en alto.
+
+`g5_023c5` **Soldado enmascarado:** Mueble fuera de lugar. Ignorar.
+
+`g5_023c6` **Cami:** (Susurrando) ¿Qué. Fue. Eso.
+
+`g5_023c7` **Jair:** (Susurrando) Reconocimiento del terreno.
+
+`g5_023c8` **Cami:** (Susurrando) Te reconocieron como un mueble. Ahora haz lo de tu bucle y no vuelvas a improvisar.
+
+`g5_023c9` **Jair:** (Es la evaluación de desempeño más honesta que me han hecho en la vida.)
 
 `g5_024a` — Jair espera. Cuenta. Los soldados llegan a la columna. Giro.
 
@@ -2277,7 +2319,36 @@
 > **DECISIÓN**
 - `g6_053#0` Esquivarlo ⟶ va a `g6_054a`
 - `g6_053#1` Pedirle a Cami que dispare ⟶ va a `g6_054b`
-- `g6_053#2` ~~Pelear contra el capitán~~ ⟶ tachada
+- `g6_053#2` Pelear contra el capitán ⟶ va a `g6_053c`
+
+`g6_053c` **Jair:** (Él tiene un rifle. Yo tengo una camisa chamuscada. Me parece justo.)
+
+`g6_053c2` — Jair corre hacia el capitán. No hacia la Grieta, no hacia Cami: hacia el rifle. Es la decisión más valiente de su vida y dura un segundo y medio.
+
+`g6_053c3` **Capitán enmascarado:** Objetivo hostil.
+
+`g6_053c4` — El visor rojo se enciende. El disparo no hace ruido: solo una luz roja, muy limpia, que lo atraviesa a la altura del pecho.
+
+`g6_053c5` — Jair cae de rodillas. No duele. Eso es lo peor: no duele nada, como en los sueños.
+
+`g6_053c6` **Cami:** ¡JAIR!
+
+`g6_053c7` **Voz:** Usuario: integridad cero. Sesión terminada.
+
+`g6_053c8` **Jair:** (Por lo menos esta vez no hui.)
+
+`g6_053c9` **Jair:** (Qué mal momento elegí para empezar.)
+
+
+### PANTALLA:negro
+
+`g6_053c10` — Un solo turno.
+
+> **BAD END: Un solo turno**
+
+---
+
+### fondos/nucleo_grieta.webp
 
 `g6_054a` — Jair hace lo único que sabe hacer bien: evitar el conflicto.
 
@@ -2649,8 +2720,34 @@
 > **DECISIÓN**
 - `g7b_022#0` Cruzar el arroyo congelado ⟶ va a `g7b_023a`
 - `g7b_022#1` Esconderse en la nieve ⟶ va a `g7b_023b`
-- `g7b_022#2` ~~Enfrentar al monstruo~~ ⟶ tachada
+- `g7b_022#2` Enfrentar al monstruo ⟶ va a `g7b_022c`
 
+`g7b_022c` **Jair:** (Ya corrí bastante. Toda la vida corrí. Una vez. Una sola vez quiero quedarme.)
+
+`g7b_022c2` — Jair deja a Cami en la nieve, detrás de una roca, y se da vuelta.
+
+`g7b_022c3` **Cami:** ¿Qué haces? ¡Jair! ¡El hielo! ¡Lo del hielo!
+
+`g7b_022c4` — El monstruo acorazado sale del otoño. Las rocas que le cubren el cuerpo crujen con el frío. Cada paso deja un agujero en la nieve.
+
+`g7b_022c5` **Jair:** ¡Eh! ¡Esto es mi sueño! ¡Aquí mando yo!
+
+`g7b_022c6` **Voz:** Comando no reconocido.
+
+`g7b_022c7` — El monstruo no frena. Ni siquiera parece notar que Jair está ahí hasta que lo tiene encima.
+
+`g7b_022c8` — Lo último que Jair ve es el cielo blanco del invierno, y a Cami gritándole algo que no alcanza a oír, como la Voz cuando habla muy bajito.
+
+`g7b_022c9` **Jair:** (El hielo. Tenía razón con lo del hielo.)
+
+
+### PANTALLA:negro
+
+`g7b_022c10` — Valiente, por una vez.
+
+> **BAD END: Valiente, por una vez**
+
+---
 
 ### fondos/bosque_invierno.webp
 
