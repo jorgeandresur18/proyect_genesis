@@ -1,6 +1,6 @@
 # Capítulo 2 — El viaje del héroe (plan del autor)
 
-Resumen por partes, tal como lo entregó el autor. Todavía no es guion: cuando una parte esté confirmada, se escribe en `src/data/chapters/cap02.json` (y su versión legible en `docs/guion/cap02.md`).
+Resumen de lo que entregó el autor. Cada parte nueva se agrega aquí y después se escribe como guion.
 
 Guion en borrador: `src/data/chapters/cap02.json` (libreto: `docs/guion/cap02.md`). Para jugarlo: abrir el juego con `?escena=cap02_001` y tocar «Nueva partida».
 
