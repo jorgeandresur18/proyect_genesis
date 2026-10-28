@@ -1,6 +1,6 @@
 # Fondos e imágenes del Capítulo 1 y cómo pedírselos a Gemini
 
-**Capítulo 1: todos los fondos y CG están listos** (25 imágenes). Este documento queda como guía para los capítulos siguientes.
+**Capítulo 1: todos los fondos y CG están listos** (28 imágenes, con el beso de Nikki en dos planos y la carga de Cami en el bosque). Este documento queda como guía para los capítulos siguientes.
 
 Pendientes y alternativas:
 - `dulce_frio_fachada`: por ahora se usa la imagen con el letrero «SWEET CHILL» (la versión en inglés). Falta la versión en español: pídela igual, pero con el letrero «DULCE FRÍO» (o sin texto); renombra la actual `dulcefrio_fachada_en.png`, guarda la nueva como `docs/fondos/dulcefrio_fachada.png` y corre `npm run fondos`.

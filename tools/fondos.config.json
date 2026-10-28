@@ -13,7 +13,10 @@
     "puente_espacial": "puente_torres",
     "dulcefrio_fachada": "dulce_frio_fachada",
     "poster": "departamento_poster",
-    "nebulosa": "nebulosa_magenta"
+    "nebulosa": "nebulosa_magenta",
+    "jai_nikk_beso": "cg_beso_nikki",
+    "jair_nikki_beso_cerca": "cg_beso_nikki_cerca",
+    "cg_jorge_carga_cami": "cg_jair_carga_cami_bosque"
   },
   "omitir": [
     "hangar_destruido",

@@ -516,9 +516,18 @@
 - `102#1` Apartarla con cuidado ⟶ va a `103b` · noche = "rechazo"
 - `102#2` Hacer un chiste ⟶ va a `103c`
 
+
+### fondos/cg_beso_nikki_cerca.webp
+
 `103a` — Jair la besa. Es un beso torpe, con sabor a tequila y a costumbre.
 
+
+### fondos/cg_beso_nikki.webp
+
 `103a2` **Nikki:** ...¿Ves? No era tan difícil.
+
+
+### fondos/bar_noche.webp
 
 `103a3` — Y luego, como si nada, se aparta y le pide la cuenta al cantinero con un dedo en el aire.
 
@@ -2432,7 +2441,7 @@
 - `g7_043#1` Ofrecerle el hombro para caminar ⟶ va a `g7_044b`
 
 
-### fondos/cg_jair_carga_cami.webp
+### fondos/cg_jair_carga_cami_bosque.webp
 
 `g7_044a` — Jair se agacha y la levanta en brazos, como en el castillo. Ella no protesta. Solo le pasa un brazo por el cuello y mira para otro lado.
 
@@ -2450,7 +2459,7 @@
 `g7_044b4` **Jair:** Ni una palabra.
 
 
-### fondos/cg_jair_carga_cami.webp
+### fondos/cg_jair_carga_cami_bosque.webp
 
 `g7_044b5` — Jair la levanta en brazos.
 

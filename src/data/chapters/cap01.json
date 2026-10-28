@@ -6220,21 +6220,10 @@
     {
       "scene_id": "cap01_103a",
       "chapter": 1,
-      "background": "fondos/bar_noche.webp",
+      "background": "fondos/cg_beso_nikki_cerca.webp",
       "video_fondo": null,
       "loop_video": false,
-      "characters": [
-        {
-          "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
-          "pos": "izquierda"
-        },
-        {
-          "id": "nikki",
-          "sprite": "sprites/nikki/tierna1.webp",
-          "pos": "derecha"
-        }
-      ],
+      "characters": [],
       "dialogue": {
         "speaker": null,
         "text": "Jair la besa. Es un beso torpe, con sabor a tequila y a costumbre."
@@ -6248,21 +6237,10 @@
     {
       "scene_id": "cap01_103a2",
       "chapter": 1,
-      "background": "fondos/bar_noche.webp",
+      "background": "fondos/cg_beso_nikki.webp",
       "video_fondo": null,
       "loop_video": false,
-      "characters": [
-        {
-          "id": "jair",
-          "sprite": "sprites/jair/verguenza1.webp",
-          "pos": "izquierda"
-        },
-        {
-          "id": "nikki",
-          "sprite": "sprites/nikki/ebria1.webp",
-          "pos": "derecha"
-        }
-      ],
+      "characters": [],
       "dialogue": {
         "speaker": "Nikki",
         "text": "...¿Ves? No era tan difícil."
@@ -28749,7 +28727,7 @@
     {
       "scene_id": "cap01_g7_044a",
       "chapter": 1,
-      "background": "fondos/cg_jair_carga_cami.webp",
+      "background": "fondos/cg_jair_carga_cami_bosque.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
@@ -28878,7 +28856,7 @@
     {
       "scene_id": "cap01_g7_044b5",
       "chapter": 1,
-      "background": "fondos/cg_jair_carga_cami.webp",
+      "background": "fondos/cg_jair_carga_cami_bosque.webp",
       "video_fondo": null,
       "loop_video": false,
       "characters": [],
