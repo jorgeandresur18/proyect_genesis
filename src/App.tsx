@@ -335,8 +335,6 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         </div>
       )}
       {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
-      {/* Un clic en cualquier parte de la escena también avanza (no cuando hay que elegir). */}
-      {!uiHidden && !(waitingChoice && textDone) && <div className="stage-click" onClick={advanceIfReady} aria-hidden />}
       {!uiHidden && waitingChoice && textDone && !fading && (
         <DecisionMenu
           choices={choices}

@@ -67,9 +67,6 @@ export function DialogBox({ dialogue, aiVowels, hasChoices, onAdvance }: Props) 
     <div
       className={`dialog ${who ? 'dialog-has-speaker' : 'dialog-narration'}`}
       style={who ? ({ '--speaker': who.color } as CSSProperties) : undefined}
-      onClick={onAdvance}
-      role="button"
-      tabIndex={-1}
     >
       {dialogue.speaker && <div className={`dialog-speaker ${who?.mono ? 'dialog-speaker-mono' : ''}`}>{render(dialogue.speaker)}</div>}
       <div className={`dialog-text ${thought ? 'dialog-thought' : ''} ${who?.mono ? 'dialog-mono' : ''}`}>
