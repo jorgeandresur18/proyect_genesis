@@ -107,4 +107,6 @@ export interface GameConfig {
   inicio: string;
   /** Tema de la pantalla de título. */
   musica_titulo?: string;
+  /** Versión que se ve en una esquina del título. */
+  version?: string;
 }

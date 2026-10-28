@@ -6,8 +6,6 @@
   "idioma.detectado": "Idioma: {idioma} · detectado en tu navegador ({codigo})",
   "idioma.elegido": "Idioma: {idioma}",
   "idioma.historia_es": "",
-
-  "titulo.prototipo": "Prototipo",
   "titulo.nueva": "Nueva partida",
   "titulo.cargar": "Cargar",
   "titulo.mapa": "Mapa de escenas",
@@ -15,7 +13,6 @@
   "titulo.finales": "Finales",
   "titulo.opciones": "Opciones",
   "titulo.conoce": "Conoce más del proyecto",
-
   "juego.auto": "Auto",
   "juego.saltar": "Saltar leído",
   "juego.historial": "Historial",
@@ -34,12 +31,10 @@
   "juego.girar_nota": "PROYECT GENESIS se juega en horizontal.",
   "juego.fin": "FIN",
   "juego.volver_titulo": "Haz clic para volver al título",
-
   "dialogo.siguiente": "Siguiente ▶",
   "dialogo.mostrar_todo": "Mostrar todo ▸▸",
   "dialogo.ayuda": "Clic, Espacio o Enter",
   "decision.elige": "Elige",
-
   "panel.cerrar": "Cerrar",
   "historial.titulo": "Historial",
   "historial.vacio": "Vacío.",
@@ -58,7 +53,6 @@
   "galeria.vacia": "Todavía no hay imágenes.",
   "galeria.anterior": "Anterior",
   "galeria.siguiente": "Siguiente",
-
   "opciones.titulo": "Opciones",
   "opciones.idioma": "Idioma",
   "opciones.lectura": "Lectura",
@@ -81,10 +75,8 @@
   "opciones.tecleo": "Sonido mientras se escribe el texto",
   "opciones.pantalla": "Pantalla",
   "opciones.reducir": "Reducir efectos (desactiva glitches y efectos de interfaz)",
-
   "audio.activar": "Activar el audio (M)",
   "audio.silenciar": "Silenciar el audio (M)",
-
   "mapa.titulo": "Mapa de decisiones",
   "mapa.inicio": "Inicio",
   "mapa.fin_capitulo": "FIN DEL CAPÍTULO {n}",
@@ -100,5 +92,14 @@
   "mapa.ley_bad": "✕ bad end",
   "mapa.ley_fin": "■ fin de capítulo",
   "mapa.ley_desconocido": "??? sin descubrir",
-  "mapa.ayuda": "Arrastra para moverte · rueda o pellizco para acercar"
+  "mapa.ayuda": "Arrastra para moverte · rueda o pellizco para acercar",
+  "titulo.extras": "Extras",
+  "titulo.version": "ver. {v}",
+  "extras.titulo": "Extras",
+  "extras.galeria": "Galería",
+  "extras.galeria_desc": "Las imágenes que desbloqueaste.",
+  "extras.finales": "Finales",
+  "extras.finales_desc": "Los finales y bad ends que encontraste.",
+  "terminal.abrir": "abrir {nombre}",
+  "terminal.listo": "listo."
 }

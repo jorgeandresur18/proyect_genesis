@@ -5,6 +5,7 @@ import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
 import conoceMasEs from '../data/conoce_mas.json';
 import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
+import { playSelect } from '../engine/sound';
 
 export function Panel({
   title,
@@ -18,12 +19,26 @@ export function Panel({
   children: ReactNode;
 }) {
   const t = useT();
+  // Cada panel se abre como una terminal: la ventana se enciende, se «escribe» el comando y aparece el contenido.
+  const slug = title.toLowerCase().replace(/\s*\(.*\)$/, '').replace(/\s+/g, '_');
   return (
     <div className="panel-backdrop" onClick={onClose}>
-      <div className={`panel ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
+      <div className={`panel panel-terminal ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="panel-head">
+          <span className="term-dots" aria-hidden>
+            <i />
+            <i />
+            <i />
+          </span>
           <h2>{title}</h2>
+          <span className="term-path" aria-hidden>
+            genesis@nexus:~/{slug}
+          </span>
           <button onClick={onClose}>{t('panel.cerrar')}</button>
+        </div>
+        <div className="term-boot" aria-hidden>
+          <span className="term-prompt">$</span> <span className="term-cmd">{t('terminal.abrir', { nombre: slug })}</span>
+          <span className="term-ok"> {t('terminal.listo')}</span>
         </div>
         <div className="panel-body">{children}</div>
       </div>
@@ -129,6 +144,38 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
           ))}
         </section>
       ))}
+    </Panel>
+  );
+}
+
+/** Extras: entradas a la galería de imágenes y a los finales, como comandos de la terminal. */
+export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: (o: 'gallery' | 'endings') => void }) {
+  const t = useT();
+  const entries = [
+    { id: 'gallery' as const, cmd: 'galeria', label: t('extras.galeria'), desc: t('extras.galeria_desc') },
+    { id: 'endings' as const, cmd: 'finales', label: t('extras.finales'), desc: t('extras.finales_desc') },
+  ];
+  return (
+    <Panel title={t('extras.titulo')} onClose={onClose}>
+      <div className="extras">
+        {entries.map((e) => (
+          <button
+            key={e.id}
+            className="extras-entry"
+            onClick={() => {
+              playSelect();
+              onOpen(e.id);
+            }}
+          >
+            <span className="term-prompt">&gt;</span>
+            <span>
+              <strong>{e.label}</strong>
+              <small>{e.desc}</small>
+            </span>
+            <span className="extras-run">./{e.cmd}</span>
+          </button>
+        ))}
+      </div>
     </Panel>
   );
 }

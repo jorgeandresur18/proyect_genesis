@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { CHAPTER_END, useStore } from './engine/store';
 import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
@@ -8,7 +8,9 @@ import { effectsOf } from './engine/logic';
 import { SceneStage } from './components/SceneStage';
 import { DialogBox } from './components/DialogBox';
 import { DecisionMenu } from './components/DecisionMenu';
-import { AboutPanel, EndingsGallery, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { AboutPanel, EndingsGallery, ExtrasPanel, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
+import { EasterEgg, type EggPhase } from './components/EasterEgg';
+import easterEgg from './data/easter_egg.json';
 import { CgGallery } from './components/CgGallery';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
@@ -31,12 +33,19 @@ const TITLE_REVEAL_MS = 1200;
 /** De dónde se llega al título: cambia cómo sale del negro. */
 type Intro = 'advertencia' | 'juego' | null;
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'endings' | 'gallery' | 'options' | 'about' | null;
+type Overlay = 'history' | 'save' | 'load' | 'map' | 'extras' | 'endings' | 'gallery' | 'options' | 'about' | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
+  // Easter egg del título: dura hasta recargar la página; si se elige una opción del menú y se vuelve, Nikki se va.
+  const [egg, setEgg] = useState<EggPhase>('off');
+  const [eggLeaving, setEggLeaving] = useState(false);
   const hasGame = useStore((s) => !!s.game);
+  const onTitleScreen = !hasGame && overlay === null;
+  useEffect(() => {
+    if (onTitleScreen && egg === 'on' && eggLeaving) setEgg('bye');
+  }, [onTitleScreen, egg, eggLeaving]);
   // Entrada elegante del título: al llegar desde la advertencia y al volver de una partida.
   const [intro, setIntro] = useState<Intro>('advertencia');
   useEffect(() => {
@@ -106,13 +115,27 @@ export default function App() {
       {hasGame ? (
         <Game open={setOverlay} paused={overlay !== null} onTitle={goToTitle} />
       ) : (
-        <TitleScreen open={setOverlay} intro={intro} />
+        <TitleScreen
+          open={setOverlay}
+          intro={intro}
+          onPick={() => {
+            if (egg === 'on') setEggLeaving(true);
+          }}
+          onEgg={() => {
+            if (egg === 'off' || egg === 'gone') {
+              setEggLeaving(false);
+              setEgg('on');
+            }
+          }}
+        />
       )}
       {overlay === 'history' && <HistoryPanel onClose={close} />}
       {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'gallery' && <CgGallery onClose={close} />}
+      {overlay === 'extras' && <ExtrasPanel onClose={close} onOpen={setOverlay} />}
+      {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       <AudioToggle />
@@ -206,19 +229,58 @@ function ContentWarning({ onAccept }: { onAccept: () => void }) {
   );
 }
 
-function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro }) {
+/** Íconos del menú del título (trazo, 24×24). */
+const MENU_ICONS: Record<string, ReactNode> = {
+  play: <path d="M8 5v14l11-7z" />,
+  load: <path d="M3 7h6l2 2h10v10H3z" />,
+  map: <><circle cx="6" cy="6" r="2.2" /><circle cx="18" cy="6" r="2.2" /><circle cx="12" cy="18" r="2.2" /><path d="M7.5 7.8 10.8 16M16.5 7.8 13.2 16" /></>,
+  extras: <path d="m12 3 2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5l-5.3 2.9 1.2-6-4.5-4.1 6-.7z" />,
+  options: <><path d="M4 7h9M17 7h3M4 17h3M11 17h9" /><circle cx="15" cy="7" r="2" /><circle cx="9" cy="17" r="2" /></>,
+  about: <><circle cx="12" cy="12" r="9" /><path d="M12 11v6M12 7.5v.5" /></>,
+};
+
+interface TitleProps {
+  open: (o: Overlay) => void;
+  intro: Intro;
+  /** Se eligió una opción del menú (el easter egg se despide al volver). */
+  onPick: () => void;
+  /** Se llegó a los clics del easter egg en el logo. */
+  onEgg: () => void;
+}
+
+function TitleScreen({ open, intro, onPick, onEgg }: TitleProps) {
+  const clicks = useRef(0);
   const newGame = useStore((s) => s.newGame);
   const error = useStore((s) => s.error);
   const still = useStore((s) => s.settings.reduceEffects);
   const t = useT();
   const storyNotice = t('idioma.historia_es');
+  const pick = () => {
+    playSelect();
+    onPick();
+  };
+  const tiles: [Overlay, string, string][] = [
+    ['load', 'load', 'titulo.cargar'],
+    ['map', 'map', 'titulo.mapa'],
+    ['extras', 'extras', 'titulo.extras'],
+    ['options', 'options', 'titulo.opciones'],
+    ['about', 'about', 'titulo.conoce'],
+  ];
   return (
     <div
       className={`screen title ${intro && !still ? 'title-intro' : ''} ${intro === 'advertencia' ? 'title-intro-velo' : ''}`}
     >
       <TitleBackground />
       <h1 className={`title-logo ${still ? '' : 'title-logo-glitch'}`}>
-        <span className="logo-float">
+        <span
+          className="logo-float"
+          onClick={() => {
+            if (++clicks.current >= easterEgg.clics) {
+              clicks.current = 0;
+              onEgg();
+            }
+          }}
+        >
           <img src={`${import.meta.env.BASE_URL}marca/logo.webp`} alt="PROYECT GENESIS" draggable={false} />
           {!still && (
             <>
@@ -240,26 +302,42 @@ function TitleScreen({ open, intro }: { open: (o: Overlay) => void; intro: Intro
           )}
         </span>
       </h1>
-      <p className="muted">{t('titulo.prototipo')}</p>
       {storyNotice && <p className="muted title-notice">{storyNotice}</p>}
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
         <button
+          className="title-primary"
           onClick={() => {
+            pick();
             void enterPlayMode();
             // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
             newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
           }}
         >
+          <svg viewBox="0 0 24 24" aria-hidden>
+            {MENU_ICONS.play}
+          </svg>
           {t('titulo.nueva')}
         </button>
-        <button onClick={() => open('load')}>{t('titulo.cargar')}</button>
-        <button onClick={() => open('map')}>{t('titulo.mapa')}</button>
-        <button onClick={() => open('gallery')}>{t('titulo.galeria')}</button>
-        <button onClick={() => open('endings')}>{t('titulo.finales')}</button>
-        <button onClick={() => open('options')}>{t('titulo.opciones')}</button>
-        <button onClick={() => open('about')}>{t('titulo.conoce')}</button>
+        <div className="title-tiles">
+          {tiles.map(([o, icon, label]) => (
+            <button
+              key={o}
+              className="title-tile"
+              onClick={() => {
+                pick();
+                open(o);
+              }}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden>
+                {MENU_ICONS[icon]}
+              </svg>
+              <span>{t(label)}</span>
+            </button>
+          ))}
+        </div>
       </nav>
+      {config.version && <span className="title-version">{t('titulo.version', { v: config.version })}</span>}
     </div>
   );
 }

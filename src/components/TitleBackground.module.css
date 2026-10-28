@@ -37,15 +37,6 @@
   animation: twinkle 3.2s ease-in-out infinite;
 }
 
-.hex {
-  position: absolute;
-  fill: none;
-  stroke: rgba(214, 218, 226, 0.3);
-  stroke-width: 2;
-  filter: drop-shadow(0 0 5px rgba(230, 233, 240, 0.35));
-  animation: drift 12s ease-in-out infinite;
-}
-.hexAcero { stroke: rgba(130, 136, 148, 0.4); filter: drop-shadow(0 0 4px rgba(160, 166, 178, 0.35)); }
 
 .comet {
   position: absolute;
@@ -62,10 +53,6 @@
 
 @keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.55; }
-  50% { transform: translate(10px, -22px) rotate(25deg); opacity: 1; }
-}
 @keyframes cross-x { 0% { left: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { left: 104%; opacity: 0; } }
 @keyframes cross-y { 0% { top: -2%; opacity: 0; } 8% { opacity: 1; } 70% { opacity: 1; } 85%, 100% { top: 104%; opacity: 0; } }
 

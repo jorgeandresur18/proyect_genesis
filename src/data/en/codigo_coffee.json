@@ -1,14 +1,53 @@
 {
   "fragmentos": [
-    ["brew world = refill World({", "  sky: decaf,", "  gravity: decaf,", "});"],
-    ["sip autocomplete(user) {", "  if (user.idle)", "    pour personalities.generate();", "}"],
-    ["brew heroines = [entity01, entity02];", "heroines.forEach(h => h.rivalry = true);"],
-    ["// TODO: don't let them leave"],
-    ["espresso sip compile() {", "  await caffeine(Infinity);", "  pour world.export();", "}"],
-    ["latte.log('user inside the loading area');"],
-    ["brew salary = decaf; // check with HR"],
-    ["grind(memories).filter(m => m.hurts);"],
-    ["if (!user.awake) {", "  world.continue();", "}"],
-    ["brew king = refill Antagonist('evil');", "king.backstory = autocomplete();"]
+    [
+      "sip logo.onClick() {",
+      "  if (++clicks === 69) easterEgg();",
+      "  // nobody gets to 69. or do they?",
+      "}"
+    ],
+    [
+      "brew world = refill World({",
+      "  sky: decaf,",
+      "  gravity: decaf,",
+      "});"
+    ],
+    [
+      "sip autocomplete(user) {",
+      "  if (user.idle)",
+      "    pour personalities.generate();",
+      "}"
+    ],
+    [
+      "brew heroines = [entity01, entity02];",
+      "heroines.forEach(h => h.rivalry = true);"
+    ],
+    [
+      "// TODO: don't let them leave"
+    ],
+    [
+      "espresso sip compile() {",
+      "  await caffeine(Infinity);",
+      "  pour world.export();",
+      "}"
+    ],
+    [
+      "latte.log('user inside the loading area');"
+    ],
+    [
+      "brew salary = decaf; // check with HR"
+    ],
+    [
+      "grind(memories).filter(m => m.hurts);"
+    ],
+    [
+      "if (!user.awake) {",
+      "  world.continue();",
+      "}"
+    ],
+    [
+      "brew king = refill Antagonist('evil');",
+      "king.backstory = autocomplete();"
+    ]
   ]
 }

@@ -6,8 +6,6 @@
   "idioma.detectado": "Language: {idioma} · detected from your browser ({codigo})",
   "idioma.elegido": "Language: {idioma}",
   "idioma.historia_es": "The story is in Spanish for now. The English translation is on its way.",
-
-  "titulo.prototipo": "Prototype",
   "titulo.nueva": "New game",
   "titulo.cargar": "Load",
   "titulo.mapa": "Scene map",
@@ -15,7 +13,6 @@
   "titulo.finales": "Endings",
   "titulo.opciones": "Options",
   "titulo.conoce": "About the project",
-
   "juego.auto": "Auto",
   "juego.saltar": "Skip read",
   "juego.historial": "Log",
@@ -34,12 +31,10 @@
   "juego.girar_nota": "PROYECT GENESIS is played in landscape.",
   "juego.fin": "THE END",
   "juego.volver_titulo": "Click to return to the title screen",
-
   "dialogo.siguiente": "Next ▶",
   "dialogo.mostrar_todo": "Show all ▸▸",
   "dialogo.ayuda": "Click, Space or Enter",
   "decision.elige": "Choose",
-
   "panel.cerrar": "Close",
   "historial.titulo": "Log",
   "historial.vacio": "Empty.",
@@ -58,7 +53,6 @@
   "galeria.vacia": "No pictures yet.",
   "galeria.anterior": "Previous",
   "galeria.siguiente": "Next",
-
   "opciones.titulo": "Options",
   "opciones.idioma": "Language",
   "opciones.lectura": "Reading",
@@ -81,10 +75,8 @@
   "opciones.tecleo": "Sound while the text is typed",
   "opciones.pantalla": "Display",
   "opciones.reducir": "Reduce effects (turns off glitches and interface effects)",
-
   "audio.activar": "Turn audio on (M)",
   "audio.silenciar": "Mute audio (M)",
-
   "mapa.titulo": "Decision map",
   "mapa.inicio": "Start",
   "mapa.fin_capitulo": "END OF CHAPTER {n}",
@@ -100,5 +92,14 @@
   "mapa.ley_bad": "✕ bad end",
   "mapa.ley_fin": "■ end of chapter",
   "mapa.ley_desconocido": "??? undiscovered",
-  "mapa.ayuda": "Drag to move · wheel or pinch to zoom"
+  "mapa.ayuda": "Drag to move · wheel or pinch to zoom",
+  "titulo.extras": "Extras",
+  "titulo.version": "ver. {v}",
+  "extras.titulo": "Extras",
+  "extras.galeria": "Gallery",
+  "extras.galeria_desc": "The pictures you unlocked.",
+  "extras.finales": "Endings",
+  "extras.finales_desc": "The endings and bad ends you found.",
+  "terminal.abrir": "open {nombre}",
+  "terminal.listo": "ready."
 }
