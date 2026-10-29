@@ -1439,3 +1439,39 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 ::-webkit-scrollbar-thumb:hover { border-color: #e9ecf1; background: linear-gradient(180deg, #3a3e48, #16171d); box-shadow: inset 0 0 0 2px #050506, 0 0 10px rgba(233, 236, 241, 0.45); }
 ::-webkit-scrollbar-thumb:active { border-color: #ff4f8b; box-shadow: inset 0 0 0 2px #050506, 0 0 12px rgba(255, 79, 139, 0.55); }
 ::-webkit-scrollbar-corner { background: #050506; }
+
+/* Retroceder · Parar · Adelantar: triángulos que suman uno por velocidad. */
+.toolbar .speed-btn, .menu-popup .speed-btn { display: inline-flex; align-items: center; gap: 0.35rem; }
+.triangles { display: inline-flex; }
+.triangles svg { width: 0.62rem; height: 0.62rem; fill: currentColor; }
+.triangles svg + svg { margin-left: -0.18rem; }
+.speed-x { font-family: ui-monospace, Consolas, monospace; font-size: 0.72rem; color: var(--accent); }
+.speed-stop svg { width: 0.6rem; height: 0.6rem; fill: currentColor; }
+.speed-btn:disabled { opacity: 0.4; }
+
+/* Aviso de Boringram durante la historia. */
+.bori-toast {
+  position: absolute;
+  top: 0.8rem;
+  left: 50%;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: min(24rem, 90vw);
+  padding: 0.55rem 1rem 0.55rem 0.6rem;
+  text-align: left;
+  color: #f1f1f4;
+  background: rgba(13, 13, 16, 0.92);
+  border: 1px solid rgba(255, 61, 127, 0.45);
+  border-radius: 1rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.5), 0 0 1.2rem rgba(255, 61, 127, 0.25);
+  backdrop-filter: blur(8px);
+  animation: bori-toast 4.2s ease both;
+}
+.bori-toast img { width: 2rem; height: 2rem; flex: none; }
+.bori-toast span { display: flex; flex-direction: column; min-width: 0; }
+.bori-toast small { color: #8d8d99; font-size: 0.7rem; }
+.bori-toast b { overflow: hidden; font-size: 0.88rem; white-space: nowrap; text-overflow: ellipsis; }
+@keyframes bori-toast { 0% { opacity: 0; transform: translate(-50%, -150%); } 8%, 88% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -150%); } }
+@media (prefers-reduced-motion: reduce) { .bori-toast { animation: none; transform: translateX(-50%); } }

@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json.",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena.",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -38,8 +38,14 @@
       "te_gusta": true,
       "hace": "hace 1 día",
       "comentarios": [
-        { "usuario": "kari_ok", "texto": "porque la vainilla no juzga" },
-        { "usuario": "el_flaco_dj", "texto": "yo soy ese cliente y no me arrepiento" }
+        {
+          "usuario": "kari_ok",
+          "texto": "porque la vainilla no juzga"
+        },
+        {
+          "usuario": "el_flaco_dj",
+          "texto": "yo soy ese cliente y no me arrepiento"
+        }
       ],
       "desbloqueo": "cap01_115n7"
     },
@@ -53,8 +59,14 @@
       "te_gusta": true,
       "hace": "hace 2 días",
       "comentarios": [
-        { "usuario": "kari_ok", "texto": "esa gorra te queda mejor que a mi la vida" },
-        { "usuario": "mari.sin.prisa", "texto": "sonrisa de atencion al cliente nivel experto" }
+        {
+          "usuario": "kari_ok",
+          "texto": "esa gorra te queda mejor que a mi la vida"
+        },
+        {
+          "usuario": "mari.sin.prisa",
+          "texto": "sonrisa de atencion al cliente nivel experto"
+        }
       ],
       "desbloqueo": "cap01_115n7"
     },
@@ -72,18 +84,29 @@
       "id": "nikki_repost_3am",
       "autor": "nikki",
       "tipo": "repost",
-      "repost": { "usuario": "frases_de_las_3am", "texto": "no te encariñes con alguien que solo te escribe de madrugada" },
+      "repost": {
+        "usuario": "frases_de_las_3am",
+        "texto": "no te encariñes con alguien que solo te escribe de madrugada"
+      },
       "likes": 154,
       "te_gusta": true,
       "hace": "hace 1 semana",
-      "comentarios": [{ "usuario": "ale.vibes", "texto": "esto es una indirecta?? 👀" }],
+      "comentarios": [
+        {
+          "usuario": "ale.vibes",
+          "texto": "esto es una indirecta?? 👀"
+        }
+      ],
       "desbloqueo": "cap01_115n7"
     },
     {
       "id": "jair_repost_maquina",
       "autor": "jair",
       "tipo": "repost",
-      "repost": { "usuario": "ingenieros_tristes", "texto": "«En mi máquina funciona.» Lo mismo dice mi autoestima." },
+      "repost": {
+        "usuario": "ingenieros_tristes",
+        "texto": "«En mi máquina funciona.» Lo mismo dice mi autoestima."
+      },
       "likes": 4,
       "hace": "hace 2 semanas",
       "comentarios": [],
@@ -99,8 +122,14 @@
       "te_gusta": true,
       "hace": "hace 3 semanas",
       "comentarios": [
-        { "usuario": "mari.sin.prisa", "texto": "la mejor noche del año y las fotos lo prueban" },
-        { "usuario": "ale.vibes", "texto": "las de siempre, los problemas de siempre 😂" }
+        {
+          "usuario": "mari.sin.prisa",
+          "texto": "la mejor noche del año y las fotos lo prueban"
+        },
+        {
+          "usuario": "ale.vibes",
+          "texto": "las de siempre, los problemas de siempre 😂"
+        }
       ],
       "desbloqueo": "cap01_115n7"
     },
@@ -114,8 +143,14 @@
       "te_gusta": true,
       "hace": "hace 5 semanas",
       "comentarios": [
-        { "usuario": "el_flaco_dj", "texto": "quien es esa y que hizo con nikki" },
-        { "usuario": "kari_ok", "texto": "reina 🖤" }
+        {
+          "usuario": "el_flaco_dj",
+          "texto": "quien es esa y que hizo con nikki"
+        },
+        {
+          "usuario": "kari_ok",
+          "texto": "reina 🖤"
+        }
       ],
       "desbloqueo": "cap01_115n7"
     },
@@ -127,7 +162,12 @@
       "likes": 208,
       "te_gusta": true,
       "hace": "hace 2 meses",
-      "comentarios": [{ "usuario": "mari.sin.prisa", "texto": "las dos cosas amiga. siempre son las dos cosas" }],
+      "comentarios": [
+        {
+          "usuario": "mari.sin.prisa",
+          "texto": "las dos cosas amiga. siempre son las dos cosas"
+        }
+      ],
       "desbloqueo": "cap01_115n7"
     },
     {
@@ -140,9 +180,18 @@
       "te_gusta": true,
       "hace": "hace 4 meses",
       "comentarios": [
-        { "usuario": "jair", "texto": "Feliz cumpleaños, Nikki 🌹" },
-        { "usuario": "kari_ok", "texto": "QUIEN TE MANDO ESO 👀" },
-        { "usuario": "mari.sin.prisa", "texto": "ese ramo cuesta mas que mi renta" }
+        {
+          "usuario": "jair",
+          "texto": "Feliz cumpleaños, Nikki 🌹"
+        },
+        {
+          "usuario": "kari_ok",
+          "texto": "QUIEN TE MANDO ESO 👀"
+        },
+        {
+          "usuario": "mari.sin.prisa",
+          "texto": "ese ramo cuesta mas que mi renta"
+        }
       ],
       "desbloqueo": "cap01_115n7"
     },
@@ -154,7 +203,12 @@
       "texto": "Viernes de sushi con la de siempre. Pagamos a medias, como todo.",
       "likes": 24,
       "hace": "hace 7 meses",
-      "comentarios": [{ "usuario": "nikki", "texto": "a medias de lo que comiste tu. yo comi el triple" }],
+      "comentarios": [
+        {
+          "usuario": "nikki",
+          "texto": "a medias de lo que comiste tu. yo comi el triple"
+        }
+      ],
       "desbloqueo": "cap01_115n2"
     },
     {
@@ -163,7 +217,7 @@
       "tipo": "texto",
       "texto": "Primer sueldo como ingeniero. Ya casi alcanza para la mitad de un departamento. La mitad de abajo.",
       "likes": 12,
-      "hace": "hace 7 años",
+      "hace": "hace 11 meses",
       "comentarios": [],
       "desbloqueo": "cap01_115n2"
     },
@@ -174,7 +228,7 @@
       "imagen": "fotos/boringram/jair_graduado.webp",
       "texto": "Ingeniero. Ahora sí, a ganar dinero.",
       "likes": 61,
-      "hace": "hace 8 años",
+      "hace": "hace 1 año",
       "comentarios": [],
       "desbloqueo": "cap01_115n2"
     }
@@ -196,11 +250,40 @@
       "perfil": "nikki",
       "estado": "Activa hace 2 min",
       "mensajes": [
-        { "de": "ella", "texto": "nunca te vayas de mi vida", "dia": "Hace 1 año y medio", "hora": "3:12", "destacado": true, "desbloqueo": "cap01_115n3" },
-        { "de": "ella", "texto": "ya llegue", "dia": "Hoy", "hora": "2:41", "desbloqueo": "cap01_g5m_006" },
-        { "de": "ella", "texto": "no te enojes por lo de hoy", "hora": "2:41", "desbloqueo": "cap01_g5m_007" },
-        { "de": "ella", "texto": "buenos dias adelantado", "hora": "2:41", "desbloqueo": "cap01_g5m_008" },
-        { "de": "yo", "texto": "llegaste bien?", "hora": "—", "pendiente": true, "desbloqueo": "cap01_g5m_017" }
+        {
+          "de": "ella",
+          "texto": "nunca te vayas de mi vida",
+          "dia": "Hace 1 año y medio",
+          "hora": "3:12",
+          "destacado": true,
+          "desbloqueo": "cap01_115n3"
+        },
+        {
+          "de": "ella",
+          "texto": "ya llegue",
+          "dia": "Hoy",
+          "hora": "2:41",
+          "desbloqueo": "cap01_g5m_006"
+        },
+        {
+          "de": "ella",
+          "texto": "no te enojes por lo de hoy",
+          "hora": "2:41",
+          "desbloqueo": "cap01_g5m_007"
+        },
+        {
+          "de": "ella",
+          "texto": "buenos dias adelantado",
+          "hora": "2:41",
+          "desbloqueo": "cap01_g5m_008"
+        },
+        {
+          "de": "yo",
+          "texto": "llegaste bien?",
+          "hora": "—",
+          "pendiente": true,
+          "desbloqueo": "cap01_g5m_017"
+        }
       ]
     },
     {
@@ -209,7 +292,13 @@
       "estado": "Cuenta de empresa",
       "visto": true,
       "mensajes": [
-        { "de": "ella", "texto": "¡Hola, Jair! Detectamos que nadie ha visto tus últimas 9 publicaciones. Con Boringram Premium, tampoco las verán, pero te dolerá menos.", "dia": "Hace 3 días", "hora": "10:02", "desbloqueo": "cap01_115n2" }
+        {
+          "de": "ella",
+          "texto": "¡Hola, Jair! Detectamos que nadie ha visto tus últimas 9 publicaciones. Con Boringram Premium, tampoco las verán, pero te dolerá menos.",
+          "dia": "Hace 3 días",
+          "hora": "10:02",
+          "desbloqueo": "cap01_115n2"
+        }
       ]
     },
     {
@@ -218,8 +307,20 @@
       "estado": "Activo hace 1 h",
       "visto": true,
       "mensajes": [
-        { "de": "ella", "texto": "¡Ingeniero! Cuánto tiempo. Te escribo por una oportunidad de negocio que te puede cambiar la vida. No es una pirámide, es un triángulo de prosperidad.", "dia": "Hace 2 semanas", "hora": "21:47", "desbloqueo": "cap01_115n2" },
-        { "de": "ella", "texto": "¿Viste mi mensaje? Ya somos 12 en el triángulo.", "dia": "Hace 1 semana", "hora": "08:15", "desbloqueo": "cap01_115n2" }
+        {
+          "de": "ella",
+          "texto": "¡Ingeniero! Cuánto tiempo. Te escribo por una oportunidad de negocio que te puede cambiar la vida. No es una pirámide, es un triángulo de prosperidad.",
+          "dia": "Hace 2 semanas",
+          "hora": "21:47",
+          "desbloqueo": "cap01_115n2"
+        },
+        {
+          "de": "ella",
+          "texto": "¿Viste mi mensaje? Ya somos 12 en el triángulo.",
+          "dia": "Hace 1 semana",
+          "hora": "08:15",
+          "desbloqueo": "cap01_115n2"
+        }
       ]
     },
     {
@@ -228,7 +329,13 @@
       "estado": "Cuenta nueva",
       "visto": true,
       "mensajes": [
-        { "de": "ella", "texto": "FELICIDADES 🎉 Ganaste un celular de última generación. Solo envíanos tu número de cuenta, tu clave y una foto de tu alma.", "dia": "Ayer", "hora": "04:33", "desbloqueo": "cap01_115n2" }
+        {
+          "de": "ella",
+          "texto": "FELICIDADES 🎉 Ganaste un celular de última generación. Solo envíanos tu número de cuenta, tu clave y una foto de tu alma.",
+          "dia": "Ayer",
+          "hora": "04:33",
+          "desbloqueo": "cap01_115n2"
+        }
       ]
     }
   ],
@@ -258,6 +365,124 @@
     "cerrar": "Cerrar",
     "girar": "Gira tu celular",
     "girar_nota": "Boringram se ve en vertical, como en un celular de verdad.",
-    "cargando": "Cargando…"
-  }
+    "cargando": "Cargando…",
+    "notificaciones": "Notificaciones",
+    "borrar_todo": "Borrar todo",
+    "sin_notificaciones": "Sin notificaciones. Como siempre.",
+    "al_dia": "Ya estás al día",
+    "notif_post": "{usuario} publicó algo nuevo",
+    "notif_historia": "{usuario} subió una historia",
+    "notif_mensaje": "Nuevo mensaje de {usuario}",
+    "abrir": "Abrir"
+  },
+  "notificaciones": [
+    {
+      "id": "alarma",
+      "app": "Reloj",
+      "icono": "⏰",
+      "titulo": "Alarma 7:00 · Trabajo",
+      "texto": "Faltan 4 h 12 min. Duerme rápido.",
+      "hace": "ahora",
+      "desbloqueo": null
+    },
+    {
+      "id": "bateria",
+      "app": "Sistema",
+      "icono": "🔋",
+      "titulo": "Batería baja: 12 %",
+      "texto": "Conecta el cargador. O no. Total, nadie te escribe.",
+      "hace": "hace 2 min",
+      "desbloqueo": null
+    },
+    {
+      "id": "chat_nikki",
+      "app": "Boringram",
+      "icono": "bori",
+      "titulo": "nikki",
+      "texto": "buenos dias adelantado",
+      "hace": "hace 6 min",
+      "desbloqueo": "cap01_g5m_008"
+    },
+    {
+      "id": "historia_nikki",
+      "app": "Boringram",
+      "icono": "bori",
+      "titulo": "nikki subió una historia",
+      "texto": "Toca para verla. Dura 5 segundos. La vas a ver tres veces.",
+      "hace": "hace 3 h",
+      "desbloqueo": "cap01_g5m_011h2"
+    },
+    {
+      "id": "gravity",
+      "app": "GRAVITY",
+      "icono": "◆",
+      "titulo": "Acceso anticipado activado",
+      "texto": "Describe el mundo que quieres. Nosotros lo construimos.",
+      "hace": "hace 4 h",
+      "desbloqueo": "cap01_128"
+    },
+    {
+      "id": "correo_linkedfired",
+      "app": "Correo",
+      "icono": "✉",
+      "titulo": "LinkedFired",
+      "texto": "100.000 personas vieron tu perfil para comprobar si eras más miserable que ellas.",
+      "hace": "hace 5 h",
+      "desbloqueo": "cap01_122"
+    },
+    {
+      "id": "correo_banco",
+      "app": "Correo",
+      "icono": "✉",
+      "titulo": "Tu Banco",
+      "texto": "¡Tarjeta preaprobada! Porque tus problemas también merecen intereses.",
+      "hace": "hace 6 h",
+      "desbloqueo": "cap01_122"
+    },
+    {
+      "id": "supervisor",
+      "app": "Chat de la oficina",
+      "icono": "💬",
+      "titulo": "Supervisor",
+      "texto": "Equipo: el pago se corre para el otro viernes. ¡Ánimo, que aquí somos familia!",
+      "hace": "hace 9 h",
+      "desbloqueo": "cap01_007"
+    },
+    {
+      "id": "duolingote",
+      "app": "DuoLingote",
+      "icono": "🦉",
+      "titulo": "El búho está decepcionado",
+      "texto": "Llevas 214 días sin practicar inglés. Él lleva 214 días esperándote. Despierto.",
+      "hace": "ayer",
+      "desbloqueo": null
+    },
+    {
+      "id": "internet",
+      "app": "Recordatorio",
+      "icono": "📅",
+      "titulo": "Pagar el internet (vence hoy)",
+      "texto": "Trabajas en la empresa de internet y aun así te cobran. Eso es lealtad.",
+      "hace": "ayer",
+      "desbloqueo": null
+    },
+    {
+      "id": "sweetchill",
+      "app": "Sweet Chill",
+      "icono": "🍦",
+      "titulo": "¡2x1 en conos los martes!",
+      "texto": "Promoción no válida para empleados. Ni para sus amigos raros.",
+      "hace": "hace 2 días",
+      "desbloqueo": null
+    }
+  ],
+  "ajustes_rapidos": [
+    "Wi‑Fi",
+    "Datos",
+    "Bluetooth",
+    "Linterna",
+    "No molestar",
+    "Modo avión"
+  ],
+  "dia": "sábado"
 }

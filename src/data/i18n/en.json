@@ -17,6 +17,7 @@
   "juego.retroceder": "Rewind",
   "juego.retroceder_ayuda": "Rewind (each tap: x2, x4, x8, x16; ← key one line)",
   "juego.adelantar": "Fast-forward",
+  "juego.parar": "Stop",
   "juego.adelantar_ayuda": "Fast-forward to the next choice (each tap: x2, x4, x8, x16)",
   "juego.modo_retroceder": "◀◀ REWINDING x{n}",
   "juego.modo_adelantar": "FAST-FORWARD x{n} ▶▶",

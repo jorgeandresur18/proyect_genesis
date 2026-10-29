@@ -48,7 +48,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 ### Jair
 - Se llamaba Jorge; el autor lo renombró **Jair** (el nombre de su agente de IA) el 2026-10-25. `[CANON]`
 - `TODO(canon)`: «Jair» tiene solo las vocales A e I, como los nombres que marca GENESIS (regla de las vocales). Confirmar con el autor si es intencional y si tiene consecuencias en la historia. Por ahora el efecto `ai_vowels` no lo incluye.
-- Ingeniero de software, 30 años. Trabaja en una empresa de internet. Vida precaria: le deben sueldo, gana poco. Aun así tiene dinero ahorrado y le obsesiona ahorrar; es importante, pero **nunca se dice la cifra**. `[CANON]`
+- Ingeniero de software, 30 años. Se graduó de la universidad hace un año. `[CANON]` Trabaja en una empresa de internet. Vida precaria: le deben sueldo, gana poco. Aun así tiene dinero ahorrado y le obsesiona ahorrar; es importante, pero **nunca se dice la cifra**. `[CANON]`
 - Cobarde pero no cruel. Siempre sonrojado, en pánico o cansado; nunca posa como héroe.
 - Aspecto: lentes, camisa negra estampada de manga corta, pantalón beige.
 - Quiere los beneficios emocionales de una relación sin aceptar la autonomía de la otra persona; se relaciona con lo que necesita que los demás sean. Usa a Cami como «perro de ataque» para pelear lo que él evita. Comprenderlo no es absolverlo. `[CANON]`

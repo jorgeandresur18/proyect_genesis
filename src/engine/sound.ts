@@ -122,6 +122,11 @@ export function stopTyping(): void {
   stopSource();
 }
 
+/** Aviso de Boringram durante la historia (el sonido de decisión, más bajo). */
+export function playNotify(): void {
+  playOnce('seleccion.mp3', 0.35);
+}
+
 /** Reproduce un efecto corto una vez. */
 function playOnce(file: string, level: number): void {
   const { sfxVolume, muted } = useStore.getState().settings;

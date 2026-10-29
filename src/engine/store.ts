@@ -97,6 +97,8 @@ interface Store {
   cgSeen: Record<string, true>;
   /** Imágenes y sprites ya abiertos en el visor de la galería (lo demás desbloqueado sale como nuevo). */
   galleryOpened: Record<string, true>;
+  /** Me gusta que el jugador dio o quitó en Boringram (id de la publicación -> le gusta). */
+  boringramLikes: Record<string, boolean>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -115,6 +117,7 @@ interface Store {
   /** Marca una imagen de la galería como vista. */
   markCg: (id: string) => void;
   markGalleryOpened: (key: string) => void;
+  setBoringramLike: (id: string, liked: boolean) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -180,6 +183,7 @@ export const useStore = create<Store>()(
         endingsSeen: {},
         cgSeen: {},
         galleryOpened: {},
+        boringramLikes: {},
         choicesTaken: {},
         mode: 'normal',
         speed: 2,
@@ -198,6 +202,8 @@ export const useStore = create<Store>()(
         markCg: (id) => {
           if (!get().cgSeen[id]) set({ cgSeen: { ...get().cgSeen, [id]: true } });
         },
+
+        setBoringramLike: (id, liked) => set({ boringramLikes: { ...get().boringramLikes, [id]: liked } }),
 
         markGalleryOpened: (key) => {
           if (!get().galleryOpened[key]) set({ galleryOpened: { ...get().galleryOpened, [key]: true } });
@@ -335,6 +341,7 @@ export const useStore = create<Store>()(
         endingsSeen: s.endingsSeen,
         cgSeen: s.cgSeen,
         galleryOpened: s.galleryOpened,
+        boringramLikes: s.boringramLikes,
         choicesTaken: s.choicesTaken,
       }),
     },

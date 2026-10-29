@@ -3,7 +3,7 @@ import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
-import { enterPortraitMode, releaseOrientation } from '../engine/mobile';
+import { enterPlayMode, enterPortraitMode, releaseOrientation } from '../engine/mobile';
 import pantallas from '../data/pantallas.json';
 import { NewDot } from './CgGallery';
 import s from './Boringram.module.css';
@@ -32,11 +32,15 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const reduce = useStore((st) => st.settings.reduceEffects);
   const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
   const [closing, setClosing] = useState(false);
+  const [shade, setShade] = useState(false);
 
   // En celular, Boringram va en vertical; al cerrarlo se suelta la orientación.
   useEffect(() => {
     void enterPortraitMode();
-    return releaseOrientation;
+    return () => {
+      if (useStore.getState().game) void enterPlayMode();
+      else releaseOrientation();
+    };
   }, []);
 
   useEffect(() => {
@@ -56,7 +60,11 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
     setTimeout(onClose, CLOSE_MS);
   };
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (shade) setShade(false);
+      else close();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   });
@@ -64,7 +72,8 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   return (
     <div className={`${s.screen} ${closing ? s.closing : ''}`}>
       <div className={s.phone}>
-        <StatusBar b={b} />
+        <StatusBar b={b} onPull={() => boot === 'app' && setShade(true)} />
+        {shade && <Shade b={b} onClose={() => setShade(false)} />}
         {boot === 'logo' ? (
           <div className={s.splash}>
             <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
@@ -93,11 +102,29 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
  * nuevas, mensajes si hay chats nuevos y el correo lleno de spam); a la derecha la alarma, la señal, el wifi
  * y la batería con su porcentaje (la de la historia: 12 %, en rojo).
  */
-function StatusBar({ b }: { b: B }) {
+function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
   const c = pantallas.boringram_historia;
   const low = c.bateria <= 15;
+  // Se baja el panel de notificaciones arrastrando la barra hacia abajo (o tocándola).
+  const start = useRef<number | null>(null);
   return (
-    <div className={s.status}>
+    <div
+      className={s.status}
+      onPointerDown={(e) => {
+        start.current = e.clientY;
+        e.currentTarget.setPointerCapture(e.pointerId);
+      }}
+      onPointerMove={(e) => {
+        if (start.current !== null && e.clientY - start.current > 24) {
+          start.current = null;
+          onPull();
+        }
+      }}
+      onPointerUp={() => {
+        if (start.current !== null) onPull();
+        start.current = null;
+      }}
+    >
       <span className={s.statusSide}>
         <span>{c.reloj}</span>
         {(b.newPosts.size > 0 || b.newStories.size > 0) && (
@@ -148,6 +175,96 @@ function StatusBar({ b }: { b: B }) {
           <i style={{ width: `${c.bateria}%` }} />
         </span>
       </span>
+    </div>
+  );
+}
+
+/**
+ * Panel de notificaciones: baja desde la barra de estado, con la hora grande, ajustes rápidos que se prenden
+ * y apagan y las notificaciones (apps parodia; se desbloquean con la historia). Se cierra arrastrando hacia
+ * arriba, con la manija o tocando fuera de la lista.
+ */
+function Shade({ b, onClose }: { b: B; onClose: () => void }) {
+  const tx = b.data.textos;
+  const c = pantallas.boringram_historia;
+  const [tiles, setTiles] = useState<Record<string, boolean>>({ 0: true, 1: true });
+  const [cleared, setCleared] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  const start = useRef<number | null>(null);
+  const close = () => {
+    if (leaving) return;
+    playCancel();
+    setLeaving(true);
+    setTimeout(onClose, 220);
+  };
+  const list = cleared ? [] : b.notificaciones;
+  return (
+    <div
+      className={`${s.shade} ${leaving ? s.shadeOut : ''}`}
+      onPointerDown={(e) => (start.current = e.clientY)}
+      onPointerMove={(e) => {
+        if (start.current !== null && start.current - e.clientY > 40) {
+          start.current = null;
+          close();
+        }
+      }}
+      onPointerUp={() => (start.current = null)}
+    >
+      <div className={s.shadeHead}>
+        <span className={s.shadeClock}>{c.reloj}</span>
+        <span className={s.shadeDay}>{b.data.dia}</span>
+      </div>
+      <div className={s.tiles}>
+        {b.data.ajustes_rapidos.map((name, i) => (
+          <button
+            key={name}
+            className={tiles[i] ? s.tileOn : ''}
+            onClick={() => {
+              playSelect();
+              setTiles({ ...tiles, [i]: !tiles[i] });
+            }}
+          >
+            {name}
+          </button>
+        ))}
+      </div>
+      <div className={s.notifHead}>
+        <b>{tx.notificaciones}</b>
+        {list.length > 0 && (
+          <button
+            onClick={() => {
+              playCancel();
+              setCleared(true);
+            }}
+          >
+            {tx.borrar_todo}
+          </button>
+        )}
+      </div>
+      <div className={s.notifList}>
+        {list.length === 0 && <p className={s.empty}>{tx.sin_notificaciones}</p>}
+        {list.map((n) => (
+          <div key={n.id} className={s.notif}>
+            <span className={s.notifIcon}>
+              {n.icono === 'bori' ? (
+                <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+              ) : (
+                n.icono
+              )}
+            </span>
+            <span className={s.notifBody}>
+              <small>
+                {n.app} · {n.hace}
+              </small>
+              <b>{n.titulo}</b>
+              <span>{n.texto}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+      <button className={s.shadeHandle} onClick={close} aria-label={tx.cerrar}>
+        <i />
+      </button>
     </div>
   );
 }
@@ -246,10 +363,76 @@ function useDragScroll() {
   return ref;
 }
 
+/**
+ * Jalar para recargar: en el inicio, arrastrando hacia abajo desde arriba del todo (mouse o dedo) aparece
+ * el icono girando; al soltar lo bastante abajo, «recarga» un momento y avisa que ya estás al día.
+ */
+function usePullToRefresh(ref: React.RefObject<HTMLDivElement | null>, enabled: boolean) {
+  const [pull, setPull] = useState(0);
+  const [state, setState] = useState<'idle' | 'loading' | 'done'>('idle');
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !enabled) return;
+    let startY: number | null = null;
+    let current = 0;
+    const begin = (y: number) => {
+      if (el.scrollTop <= 0 && state === 'idle') startY = y;
+    };
+    const drag = (y: number, e?: Event) => {
+      if (startY === null) return;
+      const dy = y - startY;
+      if (dy <= 0) {
+        current = 0;
+        setPull(0);
+        return;
+      }
+      if (e && e.cancelable) e.preventDefault();
+      current = Math.min(110, dy * 0.5);
+      setPull(current);
+    };
+    const end = () => {
+      if (startY === null) return;
+      startY = null;
+      if (current > 60) {
+        setState('loading');
+        setPull(56);
+        setTimeout(() => {
+          setState('done');
+          setTimeout(() => {
+            setState('idle');
+            setPull(0);
+          }, 900);
+        }, 1000);
+      } else setPull(0);
+      current = 0;
+    };
+    const md = (e: PointerEvent) => e.pointerType === 'mouse' && begin(e.clientY);
+    const mm = (e: PointerEvent) => e.pointerType === 'mouse' && drag(e.clientY);
+    const ts = (e: TouchEvent) => begin(e.touches[0].clientY);
+    const tm = (e: TouchEvent) => drag(e.touches[0].clientY, e);
+    el.addEventListener('pointerdown', md);
+    window.addEventListener('pointermove', mm);
+    window.addEventListener('pointerup', end);
+    el.addEventListener('touchstart', ts, { passive: true });
+    el.addEventListener('touchmove', tm, { passive: false });
+    el.addEventListener('touchend', end);
+    return () => {
+      el.removeEventListener('pointerdown', md);
+      window.removeEventListener('pointermove', mm);
+      window.removeEventListener('pointerup', end);
+      el.removeEventListener('touchstart', ts);
+      el.removeEventListener('touchmove', tm);
+      el.removeEventListener('touchend', end);
+    };
+  }, [ref, enabled, state]);
+  return { pull, state };
+}
+
 function App({ b }: { b: B }) {
   const tx = b.data.textos;
   const [view, setView] = useState<View>({ kind: 'feed' });
   const scroller = useDragScroll();
+  const refresh = usePullToRefresh(scroller, view.kind === 'feed');
   // Cada vista empieza arriba, como al cambiar de pantalla en el celular.
   useEffect(() => {
     scroller.current?.scrollTo(0, 0);
@@ -299,6 +482,25 @@ function App({ b }: { b: B }) {
     <>
       <AppBar />
       <div className={s.content} ref={scroller}>
+        {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
+          <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
+            {refresh.state === 'done' ? (
+              <span className={s.pullDone}>✓ {tx.al_dia}</span>
+            ) : (
+              <img
+                className={refresh.state === 'loading' ? s.pullSpin : ''}
+                style={
+                  refresh.state === 'idle'
+                    ? { transform: `rotate(${refresh.pull * 4}deg)`, opacity: refresh.pull / 60 }
+                    : undefined
+                }
+                src={assetUrl('marca/boringram_icono.webp')}
+                alt=""
+                draggable={false}
+              />
+            )}
+          </div>
+        )}
         {view.kind === 'feed' && (
           <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
         )}
@@ -391,23 +593,36 @@ function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (i
 /** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
 function PostActions({ b, post }: { b: B; post: Publicacion }) {
   const tx = b.data.textos;
+  const setLike = useStore((st) => st.setBoringramLike);
+  const liked = b.liked(post);
+  const [pop, setPop] = useState(0);
+  const n = b.likeCount(post);
   return (
     <>
-      <div className={s.postActions} aria-hidden>
-        <svg viewBox="0 0 24 24" className={post.te_gusta ? s.liked : ''}>
-          <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
-        </svg>
-        <svg viewBox="0 0 24 24">
+      <div className={s.postActions}>
+        <button
+          className={s.likeBtn}
+          aria-pressed={liked}
+          aria-label={tx.me_gusta.replace('{n}', String(n))}
+          onClick={() => {
+            if (!liked) playSelect();
+            setLike(post.id, !liked);
+            setPop((p) => p + 1);
+          }}
+        >
+          <svg key={pop} viewBox="0 0 24 24" className={`${liked ? s.liked : ''} ${pop ? s.likePop : ''}`}>
+            <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+          </svg>
+        </button>
+        <svg viewBox="0 0 24 24" aria-hidden>
           <path d="M4 5h16v11H8l-4 4z" />
         </svg>
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden>
           <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
         </svg>
       </div>
       <p className={s.likes}>
-        {post.te_gusta
-          ? tx.te_gusta.replace('{n}', String(post.likes - 1))
-          : tx.me_gusta.replace('{n}', String(post.likes))}
+        {liked ? tx.te_gusta.replace('{n}', String(n - 1)) : tx.me_gusta.replace('{n}', String(n))}
       </p>
     </>
   );
@@ -450,13 +665,26 @@ function Post({
   const tx = b.data.textos;
   const user = b.perfiles[post.autor]?.usuario ?? post.autor;
   const isNew = b.newPosts.has(post.id);
+  const setLike = useStore((st) => st.setBoringramLike);
+  const [burst, setBurst] = useState(0);
+  // Doble toque en la foto: me gusta (nunca lo quita), con el corazón grande.
+  const doubleTap = () => {
+    if (!b.liked(post)) playSelect();
+    setLike(post.id, true);
+    setBurst((x) => x + 1);
+  };
   return (
     <article className={`${s.post} ${post.tipo !== 'foto' ? s.textPost : ''}`}>
       {post.tipo === 'repost' && <p className={s.repostTag}>⟳ {tx.reposteo.replace('{usuario}', user)}</p>}
       <PostHead b={b} post={post} onPerfil={onPerfil} />
       {post.tipo === 'foto' && (
-        <div className={s.postImage}>
+        <div className={s.postImage} onDoubleClick={doubleTap}>
           <img src={assetUrl(post.imagen!)} alt="" loading="lazy" draggable={false} />
+          {burst > 0 && (
+            <svg key={burst} viewBox="0 0 24 24" className={s.burst} aria-hidden>
+              <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+            </svg>
+          )}
           {isNew && <NewDot className={s.itemDot} />}
         </div>
       )}

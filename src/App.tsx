@@ -25,7 +25,7 @@ import advertenciaEs from './data/advertencia.json';
 import advertenciaEn from './data/en/advertencia.json';
 import { detectLanguage, localized, useLang, useT } from './engine/i18n';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
-import { playGlitch, playSelect, unlockAudio } from './engine/sound';
+import { playGlitch, playNotify, playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
 import { assetUrl } from './engine/assets';
@@ -146,6 +146,64 @@ export default function App() {
         />
       )}
     </div>
+  );
+}
+
+/** Triángulos de adelantar/retroceder: uno más por cada velocidad (x2 = 2 … x16 = 5). */
+function Triangles({ dir, n }: { dir: 'left' | 'right'; n: number }) {
+  return (
+    <span className={`triangles triangles-${dir}`} aria-hidden>
+      {Array.from({ length: n }, (_, i) => (
+        <svg key={i} viewBox="0 0 10 10">
+          <path d={dir === 'right' ? 'M1 1 9 5 1 9z' : 'M9 1 1 5 9 9z'} />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+/**
+ * Aviso de Boringram durante la historia: cuando una escena desbloquea una publicación, una historia o un
+ * mensaje, baja una notificación como en el celular. Tocarla abre Boringram.
+ */
+function BoringramToast({ onOpen }: { onOpen: () => void }) {
+  const b = useBoringram();
+  const tx = b.data.textos;
+  const seen = useRef<Set<string> | null>(null);
+  const [toast, setToast] = useState<{ key: number; text: string; user: string } | null>(null);
+  const items = [
+    // No avisa de lo que publica el propio Jair ni de los chats que deja en visto.
+    ...b.publicaciones.filter((p) => p.autor !== b.data.yo).map((p) => ({ id: `p:${p.id}`, user: p.autor, text: tx.notif_post })),
+    ...b.destacadas.map((d) => ({ id: `s:${d.id}`, user: d.autor, text: tx.notif_historia })),
+    ...b.chats.filter((c) => !c.visto).map((c) => ({ id: `c:${c.id}:${c.mensajes.length}`, user: c.perfil ?? c.nombre ?? '', text: tx.notif_mensaje })),
+  ];
+  const ids = items.map((x) => x.id).join('|');
+  useEffect(() => {
+    const now = new Set(ids.split('|'));
+    if (seen.current === null) {
+      seen.current = now; // Lo que ya estaba desbloqueado al empezar no avisa.
+      return;
+    }
+    const fresh = items.filter((x) => !seen.current!.has(x.id));
+    seen.current = now;
+    if (fresh.length === 0) return;
+    const f = fresh[fresh.length - 1];
+    const user = b.perfiles[f.user]?.usuario ?? f.user;
+    setToast({ key: Date.now(), user, text: f.text.replace('{usuario}', user) });
+    playNotify();
+    const timer = setTimeout(() => setToast(null), 4200);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids]);
+  if (!toast) return null;
+  return (
+    <button key={toast.key} className="bori-toast" onClick={onOpen}>
+      <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+      <span>
+        <small>Boringram · {tx.abrir}</small>
+        <b>{toast.text}</b>
+      </span>
+    </button>
   );
 }
 
@@ -510,21 +568,34 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const buttons = (
     <>
       <button
-        className={mode === 'rew' ? 'active' : ''}
+        className={`speed-btn ${mode === 'rew' ? 'active' : ''}`}
         onClick={() => cycle('rew')}
-        disabled={!canGoBack}
+        disabled={!canGoBack && mode !== 'rew'}
         title={t('juego.retroceder_ayuda')}
-        aria-label={t('juego.retroceder')}
       >
-        ⏪{mode === 'rew' ? ` x${speed}` : ''}
+        <Triangles dir="left" n={mode === 'rew' ? SPEEDS.indexOf(speed) + 2 : 2} />
+        {t('juego.retroceder')}
+        {mode === 'rew' && <span className="speed-x">x{speed}</span>}
       </button>
       <button
-        className={mode === 'ff' ? 'active' : ''}
+        className="speed-btn speed-stop"
+        onClick={() => setMode('normal')}
+        disabled={mode !== 'ff' && mode !== 'rew'}
+        title={t('juego.parar')}
+        aria-label={t('juego.parar')}
+      >
+        <svg viewBox="0 0 10 10" aria-hidden>
+          <rect x="1" y="1" width="8" height="8" rx="1" />
+        </svg>
+      </button>
+      <button
+        className={`speed-btn ${mode === 'ff' ? 'active' : ''}`}
         onClick={() => cycle('ff')}
         title={t('juego.adelantar_ayuda')}
-        aria-label={t('juego.adelantar')}
       >
-        ⏩{mode === 'ff' ? ` x${speed}` : ''}
+        {t('juego.adelantar')}
+        {mode === 'ff' && <span className="speed-x">x{speed}</span>}
+        <Triangles dir="right" n={mode === 'ff' ? SPEEDS.indexOf(speed) + 2 : 2} />
       </button>
       <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
         {t('juego.auto')}
@@ -533,6 +604,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         {t('juego.saltar')}
       </button>
       <button onClick={() => open('history')}>{t('juego.historial')}</button>
+      <button onClick={() => open('boringram')}>{t('titulo.boringram')}</button>
       <button onClick={() => open('save')}>{t('juego.guardar')}</button>
       <button onClick={() => open('load')}>{t('juego.cargar')}</button>
       <button onClick={() => open('map')}>{t('juego.mapa')}</button>
@@ -552,6 +624,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       lines={game.history}
     >
       {error && <p className="error stage-error">{error}</p>}
+      <BoringramToast onOpen={() => open('boringram')} />
       {mode !== 'normal' && (
         <div className="mode-badge" aria-live="polite">
           {mode === 'auto'

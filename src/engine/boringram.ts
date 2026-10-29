@@ -64,6 +64,16 @@ export interface Chat {
   visto?: boolean;
   mensajes: Mensaje[];
 }
+export interface Notificacion {
+  id: string;
+  app: string;
+  /** Emoji o símbolo; «bori» = el icono de Boringram. */
+  icono: string;
+  titulo: string;
+  texto: string;
+  hace: string;
+  desbloqueo: string | null;
+}
 export interface BoringramData {
   yo: string;
   sin_senal: { titulo: string; texto: string };
@@ -71,6 +81,9 @@ export interface BoringramData {
   publicaciones: Publicacion[];
   destacadas: Destacada[];
   chats: Chat[];
+  notificaciones: Notificacion[];
+  ajustes_rapidos: string[];
+  dia: string;
   textos: Record<string, string>;
 }
 
@@ -91,7 +104,7 @@ const EN = merge(dataEs, dataEn) as BoringramData;
 
 /** Todas las escenas que desbloquean algo (para la prueba de rutas). */
 export const unlockScenes = (): string[] =>
-  [...Object.values(ES.perfiles), ...ES.publicaciones, ...ES.destacadas, ...ES.chats.flatMap((c) => c.mensajes)]
+  [...Object.values(ES.perfiles), ...ES.publicaciones, ...ES.destacadas, ...ES.chats.flatMap((c) => c.mensajes), ...ES.notificaciones]
     .map((x) => x.desbloqueo)
     .filter((x): x is string => !!x);
 
@@ -104,6 +117,7 @@ export function useBoringram() {
   const data = useLang() === 'en' ? EN : ES;
   const visited = useStore((s) => s.snapshots);
   const opened = useStore((s) => s.galleryOpened);
+  const likes = useStore((s) => s.boringramLikes);
   const open = (x: { desbloqueo: string | null }) => !x.desbloqueo || !!visited[x.desbloqueo];
   const perfiles = Object.fromEntries(Object.entries(data.perfiles).filter(([, p]) => open(p)));
   const publicaciones = data.publicaciones.filter((p) => open(p) && perfiles[p.autor]);
@@ -111,6 +125,10 @@ export function useBoringram() {
   const chats = data.chats
     .map((c) => ({ ...c, mensajes: c.mensajes.filter(open) }))
     .filter((c) => c.mensajes.length > 0);
+  const notificaciones = data.notificaciones.filter(open);
+  // Me gusta: lo que el jugador tocó manda; si no tocó nada, lo de la historia (te_gusta).
+  const liked = (p: Publicacion) => likes[p.id] ?? !!p.te_gusta;
+  const likeCount = (p: Publicacion) => p.likes - (p.te_gusta ? 1 : 0) + (liked(p) ? 1 : 0);
   const newPosts = new Set(publicaciones.filter((p) => !opened[postKey(p.id)]).map((p) => p.id));
   const newStories = new Set(destacadas.filter((d) => !opened[storyKey(d.id)]).map((d) => d.id));
   // Los chats que Jair dejó en visto ya están leídos: no cuentan como nuevos.
@@ -122,6 +140,9 @@ export function useBoringram() {
     publicaciones,
     destacadas,
     chats,
+    notificaciones,
+    liked,
+    likeCount,
     newPosts,
     newStories,
     newChats,
