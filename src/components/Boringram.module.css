@@ -195,3 +195,36 @@
 @media (prefers-reduced-motion: reduce) {
   .screen, .phone, .splash img, .skeleton i, .closing, .closing .phone { animation: none; }
 }
+
+/* Celular en horizontal: Boringram se ve en vertical, así que se pide girar el celular. */
+.rotateHint { display: none; }
+@media (orientation: landscape) and (pointer: coarse) {
+  .rotateHint {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #07060a;
+    color: #f1f1f4;
+  }
+  .rotateHint p { margin: 0; font-size: 1.05rem; }
+  .rotateHint .rotateNote { color: #8d8d99; font-size: 0.85rem; }
+  .screen .closeBtn { z-index: 4; }
+}
+.rotatePhone {
+  width: 5.4rem;
+  height: 3.2rem;
+  margin-bottom: 0.8rem;
+  border: 3px solid #ff3d7f;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 1rem rgba(255, 61, 127, 0.4);
+  animation: rotatePhone 2.4s ease-in-out infinite;
+}
+@keyframes rotatePhone { 0%, 25% { transform: rotate(0deg); } 55%, 85% { transform: rotate(90deg); } 100% { transform: rotate(0deg); } }
+@media (prefers-reduced-motion: reduce) { .rotatePhone { animation: none; transform: rotate(90deg); } }

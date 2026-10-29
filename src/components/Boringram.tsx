@@ -3,6 +3,7 @@ import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
+import { enterPortraitMode, releaseOrientation } from '../engine/mobile';
 import pantallas from '../data/pantallas.json';
 import { NewDot } from './CgGallery';
 import s from './Boringram.module.css';
@@ -31,6 +32,12 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const reduce = useStore((st) => st.settings.reduceEffects);
   const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
   const [closing, setClosing] = useState(false);
+
+  // En celular, Boringram va en vertical; al cerrarlo se suelta la orientación.
+  useEffect(() => {
+    void enterPortraitMode();
+    return releaseOrientation;
+  }, []);
 
   useEffect(() => {
     if (boot === 'app') return;
@@ -67,6 +74,12 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         ) : (
           <App b={b} />
         )}
+      </div>
+      {/* Celular en horizontal: se pide girarlo (solo se ve con CSS en esa situación). */}
+      <div className={s.rotateHint} role="alert">
+        <div className={s.rotatePhone} aria-hidden />
+        <p>{b.data.textos.girar}</p>
+        <p className={s.rotateNote}>{b.data.textos.girar_nota}</p>
       </div>
       <button className={s.closeBtn} onClick={close}>
         {b.data.textos.cerrar}
