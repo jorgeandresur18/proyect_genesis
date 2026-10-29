@@ -4,7 +4,15 @@ import { assetUrl } from '../engine/assets';
 import galeriaEs from '../data/galeria.json';
 import galeriaEn from '../data/en/galeria.json';
 import { localized, useLang, useT } from '../engine/i18n';
-import { CGS, CHARACTERS, TOTAL_SPRITES, characterColor, imageKey, spriteKey, useGalleryState } from '../engine/gallery';
+import {
+  CGS,
+  CHARACTERS,
+  TOTAL_SPRITES,
+  characterColor,
+  imageKey,
+  spriteKey,
+  useGalleryState,
+} from '../engine/gallery';
 import { Panel } from './Panels';
 import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
 
@@ -43,8 +51,18 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
       <TermWindow
         className="gallery-term"
         tabs={[
-          { key: 'imagenes', label: t('galeria.imagenes'), extra: `${g.images.length}/${CGS.length}`, dot: g.newImages.size > 0 },
-          { key: 'personajes', label: t('galeria.personajes'), extra: `${g.spriteCount}/${TOTAL_SPRITES}`, dot: g.newSpriteCount > 0 },
+          {
+            key: 'imagenes',
+            label: t('galeria.imagenes'),
+            extra: `${g.images.length}/${CGS.length}`,
+            dot: g.newImages.size > 0,
+          },
+          {
+            key: 'personajes',
+            label: t('galeria.personajes'),
+            extra: `${g.spriteCount}/${TOTAL_SPRITES}`,
+            dot: g.newSpriteCount > 0,
+          },
         ]}
         active={tab}
         onTab={(k) => pick(k as Tab)}
@@ -93,7 +111,10 @@ function TermWindow({
   const t = useT();
   const current = active ?? tabs[0].key;
   return (
-    <section className={`wt-window ${color ? 'wt-colored' : ''} ${className}`} style={color ? ({ '--wt': color } as CSSProperties) : undefined}>
+    <section
+      className={`wt-window ${color ? 'wt-colored' : ''} ${className}`}
+      style={color ? ({ '--wt': color } as CSSProperties) : undefined}
+    >
       <div className="wt-tabs" role="tablist">
         {tabs.map((tab) => (
           <div
@@ -182,10 +203,14 @@ function Images() {
 }
 
 const ALL = 'todos';
+const MISC = 'varios';
+/** Personajes con pestaña propia (galeria.json «principales»); el resto (enemigos, NPC) va en «Varios». */
+const MAIN = CHARACTERS.filter((c) => galeriaEs.principales.includes(c.id));
+const OTHERS = CHARACTERS.filter((c) => !galeriaEs.principales.includes(c.id));
 
 /**
- * Pestañas por personaje (más «Todos»), cada una con su color. Un personaje que todavía no apareció
- * en la historia se llama «???».
+ * Pestañas: Todos, una por personaje principal con su color, y Varios. Un personaje que todavía no
+ * apareció en la historia se llama «???».
  */
 function Characters() {
   const t = useT();
@@ -200,7 +225,9 @@ function Characters() {
   const label = (id: string) => (known(id) ? (texts.personajes[id] ?? id) : '???');
   const current = open && CHARACTERS.find((c) => c.id === open.id);
   const currentSeen = current ? seenOf(current.id) : [];
-  const shown = sel === ALL ? CHARACTERS : CHARACTERS.filter((c) => c.id === sel);
+  const shown = sel === ALL ? CHARACTERS : sel === MISC ? OTHERS : CHARACTERS.filter((c) => c.id === sel);
+  const newIn = (list: typeof CHARACTERS) => list.some((c) => (g.newSprites.get(c.id)?.length ?? 0) > 0);
+  const miscKnown = OTHERS.some((c) => known(c.id));
   const pick = (key: string) => {
     if (key === sel) return;
     playSelect();
@@ -211,7 +238,11 @@ function Characters() {
     <div className="sprite-grid">
       {c.sprites.map((s) =>
         seenOf(c.id).includes(s) ? (
-          <button key={s.expr} className="sprite-item" onClick={() => setOpen({ id: c.id, index: seenOf(c.id).indexOf(s) })}>
+          <button
+            key={s.expr}
+            className="sprite-item"
+            onClick={() => setOpen({ id: c.id, index: seenOf(c.id).indexOf(s) })}
+          >
             <span className="sprite-cell">
               <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
               {g.newSprites.get(c.id)?.includes(s) && <NewDot className="new-dot-item" />}
@@ -238,26 +269,52 @@ function Characters() {
         className="character-tabs"
         tabs={[
           { key: ALL, label: t('galeria.todos'), dot: g.newSpriteCount > 0 },
-          ...CHARACTERS.map((c) => ({
+          ...MAIN.map((c) => ({
             key: c.id,
             label: label(c.id),
             color: known(c.id) ? characterColor(c.id) : undefined,
             muted: !known(c.id),
-            dot: (g.newSprites.get(c.id)?.length ?? 0) > 0,
+            dot: newIn([c]),
           })),
+          ...(OTHERS.length
+            ? [
+                {
+                  key: MISC,
+                  label: miscKnown ? t('galeria.varios') : '???',
+                  color: miscKnown ? characterColor(MISC) : undefined,
+                  muted: !miscKnown,
+                  dot: newIn(OTHERS),
+                },
+              ]
+            : []),
         ]}
         active={sel}
         onTab={pick}
-        color={sel !== ALL && known(sel) ? characterColor(sel) : undefined}
+        color={
+          sel === MISC
+            ? miscKnown
+              ? characterColor(MISC)
+              : undefined
+            : sel !== ALL && known(sel)
+              ? characterColor(sel)
+              : undefined
+        }
       >
-        {sel === ALL ? (
+        {sel === ALL || sel === MISC ? (
           <div className="sprite-windows">
             {shown.map((c) => (
               <TermWindow
                 key={c.id}
                 className={known(c.id) ? '' : 'sprite-window-locked'}
                 color={known(c.id) ? characterColor(c.id) : undefined}
-                tabs={[{ key: c.id, label: label(c.id), color: known(c.id) ? characterColor(c.id) : undefined, dot: (g.newSprites.get(c.id)?.length ?? 0) > 0 }]}
+                tabs={[
+                  {
+                    key: c.id,
+                    label: label(c.id),
+                    color: known(c.id) ? characterColor(c.id) : undefined,
+                    dot: (g.newSprites.get(c.id)?.length ?? 0) > 0,
+                  },
+                ]}
                 right={`${seenOf(c.id).length}/${c.sprites.length}`}
               >
                 {grid(c)}
@@ -333,29 +390,33 @@ function Viewer({
   }, [index, count, onIndex, onClose]);
   const current = info(index);
   return (
-    <div className={`gallery-viewer ${sprite ? 'gallery-viewer-sprite' : ''} ${showInfo ? 'gallery-viewer-info' : ''}`}>
-      <img key={index} src={src(index)} alt="" draggable={false} />
-      {showInfo && (
-        <TermWindow
-          className="info-window"
-          tabs={[{ key: 'info', label: current.file }]}
-          onClose={() => {
-            playCancel();
-            setShowInfo(false);
-          }}
-        >
-          <TypedInfo key={current.file} file={current.file} text={current.text} />
-          <button
-            className="info-close"
-            onClick={() => {
+    <div className={`gallery-viewer ${sprite ? 'gallery-viewer-sprite' : ''}`}>
+      <div className="viewer-main">
+        <div className="viewer-stage">
+          <img key={index} src={src(index)} alt="" draggable={false} />
+        </div>
+        {showInfo && (
+          <TermWindow
+            className="info-window"
+            tabs={[{ key: 'info', label: current.file }]}
+            onClose={() => {
               playCancel();
               setShowInfo(false);
             }}
           >
-            {t('panel.cerrar')}
-          </button>
-        </TermWindow>
-      )}
+            <TypedInfo key={current.file} file={current.file} text={current.text} />
+            <button
+              className="info-close"
+              onClick={() => {
+                playCancel();
+                setShowInfo(false);
+              }}
+            >
+              {t('galeria.cerrar_ficha')}
+            </button>
+          </TermWindow>
+        )}
+      </div>
       <div className="gallery-viewer-bar">
         <button onClick={() => onIndex((index - 1 + count) % count)} aria-label={t('galeria.anterior')}>
           ◀
@@ -364,12 +425,14 @@ function Viewer({
         <button onClick={() => onIndex((index + 1) % count)} aria-label={t('galeria.siguiente')}>
           ▶
         </button>
+        {/* Solo abre la ficha: se cierra desde la ficha (× o «Cerrar»). El «Cerrar» de esta barra cierra el visor. */}
         <button
           className={showInfo ? 'active' : ''}
+          aria-pressed={showInfo}
           onClick={() => {
-            if (showInfo) playCancel();
-            else playSelect();
-            setShowInfo(!showInfo);
+            if (showInfo) return;
+            playSelect();
+            setShowInfo(true);
           }}
         >
           {t('galeria.informacion')}

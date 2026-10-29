@@ -1016,12 +1016,16 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
   position: fixed;
   inset: 0;
   z-index: 70;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 4.6rem;
   background: rgba(0, 0, 0, 0.94);
   animation: decisions-fade 0.25s ease-out both;
 }
-.gallery-viewer img { max-width: 100%; max-height: 100%; object-fit: contain; }
+/* La imagen y la ficha van lado a lado: la imagen se achica para caber, nunca se corta. */
+.viewer-main { flex: 1; min-height: 0; display: flex; gap: 1rem; }
+.viewer-stage { flex: 1; min-width: 0; min-height: 0; display: flex; }
+.viewer-stage img { flex: 1; min-width: 0; min-height: 0; width: 100%; height: 100%; object-fit: contain; }
 .gallery-viewer-bar {
   position: absolute;
   bottom: 1rem;
@@ -1035,7 +1039,7 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
   border: 1px solid rgba(214, 218, 226, 0.2);
   border-radius: 999px;
 }
-.gallery-viewer-bar span { padding: 0 0.4rem; font-size: 0.9rem; color: #d9dde4; }
+.gallery-viewer-bar span { min-width: 0; max-width: 40vw; padding: 0 0.4rem; overflow: hidden; font-size: 0.9rem; color: #d9dde4; white-space: nowrap; text-overflow: ellipsis; }
 .gallery-viewer-bar button { border-radius: 999px; }
 
 /* Vista previa de las opciones de lectura. */
@@ -1208,12 +1212,10 @@ button.sprite-item:hover .sprite-cell { border-color: #e9ecf1; box-shadow: 0 0 1
 button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 .sprite-cell .save-thumb-nodata { font-size: 0.62rem; letter-spacing: 0.12em; }
 .sprite-name { font-size: 0.78rem; line-height: 1.25; color: #d9dde4; }
-.gallery-viewer-sprite { display: flex; flex-direction: column; padding: 1rem 1rem 4.5rem; background: radial-gradient(ellipse at 50% 35%, #1c1e26, #050507 75%); }
-.gallery-viewer-sprite img { flex: 1 1 0; min-height: 0; width: 100%; max-height: none; object-fit: contain; }
-.gallery-viewer-info img { transition: transform 0.3s ease; transform: translateX(-18%); }
+.gallery-viewer-sprite { background: radial-gradient(ellipse at 50% 35%, #1c1e26, #050507 75%); }
 .gallery-viewer-bar button.active { border-color: #e9ecf1; background: rgba(233, 236, 241, 0.14); }
 /* Colores por personaje: la pestaña lleva su color y la ventana, un borde y un brillo de ese color. */
-.wt-tabs { overflow-x: auto; scrollbar-width: thin; }
+.wt-tabs { overflow-x: auto; }
 .wt-tab { flex: none; }
 .wt-tab-colored .wt-icon { background: var(--wt); color: #0c0c0c; }
 .wt-tab-colored.active { box-shadow: inset 0 2px 0 var(--wt); color: var(--wt); }
@@ -1238,7 +1240,7 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) { .new-dot, .new-dot::after { animation: none; } }
 
 /* Ficha: una ventana de terminal al lado de la imagen. */
-.info-window { position: absolute; top: 1rem; right: 1rem; width: min(26rem, 42%); max-height: calc(100% - 6rem); display: flex; flex-direction: column; box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.7); animation: term-on 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.info-window { flex: none; align-self: flex-start; width: min(26rem, 40%); max-height: 100%; display: flex; flex-direction: column; box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.7); animation: term-on 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 .info-window .wt-body { display: flex; flex-direction: column; gap: 0.8rem; overflow-y: auto; }
 .info-text .term-boot { padding: 0; white-space: normal; }
 .info-text p { margin: 0.5rem 0 0; font-family: ui-monospace, Consolas, monospace; font-size: 0.9rem; line-height: 1.6; color: #e6e8ee; }
@@ -1248,8 +1250,8 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 @keyframes info-blink { 50% { opacity: 0; } }
 .info-close { align-self: flex-end; border-radius: 999px; padding: 0.3rem 0.9rem; font-size: 0.85rem; }
 @media (max-width: 760px) {
-  .info-window { left: 0.6rem; right: 0.6rem; top: auto; bottom: 4.2rem; width: auto; max-height: 45%; }
-  .gallery-viewer-info img { transform: none; }
+  .viewer-main { flex-direction: column; gap: 0.6rem; }
+  .info-window { align-self: stretch; width: auto; max-height: 48%; }
   .wt-plus, .wt-caret { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .panel-closing, .panel-closing .panel-terminal { animation: none; } }
@@ -1393,3 +1395,18 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 .chapter-intro { position: absolute; inset: 0; z-index: 20; cursor: pointer; }
 .chapter-intro-out { animation: chapter-intro-out ease-in forwards; }
 @keyframes chapter-intro-out { to { opacity: 0; } }
+
+/* Barras de desplazamiento al estilo de la interfaz: canal negro y barra negra con borde plateado,
+   que se enciende al pasar el mouse. */
+* { scrollbar-width: thin; scrollbar-color: #8a8f9c #050506; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #050506; border-left: 1px solid rgba(214, 218, 226, 0.08); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2a2d35, #111217);
+  border: 1px solid rgba(214, 218, 226, 0.45);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px #050506, 0 0 6px rgba(214, 218, 226, 0.15);
+}
+::-webkit-scrollbar-thumb:hover { border-color: #e9ecf1; background: linear-gradient(180deg, #3a3e48, #16171d); box-shadow: inset 0 0 0 2px #050506, 0 0 10px rgba(233, 236, 241, 0.45); }
+::-webkit-scrollbar-thumb:active { border-color: #ff4f8b; box-shadow: inset 0 0 0 2px #050506, 0 0 12px rgba(255, 79, 139, 0.55); }
+::-webkit-scrollbar-corner { background: #050506; }
