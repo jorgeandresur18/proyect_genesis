@@ -24,4 +24,18 @@ describe('retroceder', () => {
     expect(back.vars.noche).toBe(start.vars.noche);
     expect(back.history).toEqual(start.history);
   });
+
+  it('salta a la próxima decisión y vuelve a la anterior', () => {
+    const st = useStore.getState();
+    st.newGame('cap01_001');
+    useStore.getState().toNextChoice();
+    const first = useStore.getState().game!.sceneId;
+    expect(first).not.toBe('cap01_001');
+    useStore.getState().choose(0);
+    useStore.getState().toNextChoice();
+    const second = useStore.getState().game!.sceneId;
+    expect(second).not.toBe(first);
+    useStore.getState().toPrevChoice();
+    expect(useStore.getState().game!.sceneId).toBe(first);
+  });
 });

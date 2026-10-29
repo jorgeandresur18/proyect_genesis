@@ -1476,9 +1476,13 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 @keyframes bori-toast { 0% { opacity: 0; transform: translate(-50%, -150%); } 8%, 88% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -150%); } }
 @media (prefers-reduced-motion: reduce) { .bori-toast { animation: none; transform: translateX(-50%); } }
 
-/* Botón redondo de Boringram durante la partida, junto al del sonido. */
-.bori-ball { position: absolute; top: 0.62rem; left: 3.5rem; z-index: 6; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; padding: 0; border-radius: 50%; background: rgba(13, 13, 16, 0.7); border: 1px solid rgba(255, 61, 127, 0.45); box-shadow: 0 0 1rem rgba(255, 61, 127, 0.25); transition: transform 0.15s; }
+/* Botón redondo de Boringram en medio de la barra de abajo, más grande que los demás. */
+.bori-ball { position: relative; display: grid !important; place-items: center; width: 3.1rem; height: 3.1rem; margin: -0.9rem 0.3rem 0; padding: 0 !important; border-radius: 50% !important; background: radial-gradient(circle at 50% 35%, #2a1724, #0d0d10) !important; border: 1.5px solid rgba(255, 61, 127, 0.6) !important; box-shadow: 0 0 1.2rem rgba(255, 61, 127, 0.35); transition: transform 0.15s; }
 .bori-ball:hover { transform: scale(1.08); }
-.bori-ball img { width: 1.5rem; height: 1.5rem; }
+.bori-ball img { width: 1.9rem; height: 1.9rem; }
 .bori-badge { position: absolute; top: -0.3rem; right: -0.35rem; min-width: 1.15rem; height: 1.15rem; padding: 0 0.25rem; border-radius: 999px; background: #ff3d5a; color: #fff; font-size: 0.68rem; font-weight: 700; line-height: 1.15rem; text-align: center; box-shadow: 0 0 0 2px #0b0b0d; animation: badge-in 0.3s ease-out; }
 @keyframes badge-in { from { transform: scale(0); } }
+
+.jump-icon { font-size: 0.75rem; font-weight: 700; line-height: 1; }
+.toolbar { align-items: center; }
+.menu-popup .bori-ball { margin: 0.2rem auto; }

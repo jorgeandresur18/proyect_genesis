@@ -447,7 +447,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
 
 function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: boolean; onTitle: () => void }) {
   const { game, scene, choices, waitingChoice, mode, textDone } = useStoryEngine();
-  const { next, choose, setMode, back } = useStore.getState();
+  const { next, choose, setMode, back, toNextChoice, toPrevChoice } = useStore.getState();
   const speed = useStore((s) => s.speed);
   const canGoBack = useStore((s) => (s.game?.trail?.length ?? 0) > 0);
   const error = useStore((s) => s.error);
@@ -582,6 +582,21 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const buttons = (
     <>
       <button
+        className="speed-btn"
+        onClick={() => {
+          playSelect();
+          toPrevChoice();
+        }}
+        disabled={!canGoBack}
+        title={t('juego.decision_anterior')}
+      >
+        <span className="jump-icon" aria-hidden>
+          ⏐
+        </span>
+        <Triangles dir="left" n={1} />
+        {t('juego.decision_anterior')}
+      </button>
+      <button
         className={`speed-btn ${mode === 'rew' ? 'active' : ''}`}
         onClick={() => cycle('rew')}
         disabled={!canGoBack && mode !== 'rew'}
@@ -611,12 +626,25 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         {mode === 'ff' && <span className="speed-x">x{speed}</span>}
         <Triangles dir="right" n={mode === 'ff' ? SPEEDS.indexOf(speed) + 2 : 2} />
       </button>
+      <button
+        className="speed-btn"
+        onClick={() => {
+          playSelect();
+          toNextChoice();
+        }}
+        disabled={waitingChoice}
+        title={t('juego.proxima_decision')}
+      >
+        {t('juego.proxima_decision')}
+        <Triangles dir="right" n={1} />
+        <span className="jump-icon" aria-hidden>
+          ⏐
+        </span>
+      </button>
       <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
         {t('juego.auto')}
       </button>
-      <button className={mode === 'skip' ? 'active' : ''} onClick={() => toggle('skip')}>
-        {t('juego.saltar')}
-      </button>
+      {!onPhone && <BoringramBall onOpen={() => open('boringram')} label={t('titulo.boringram')} />}
       <button onClick={() => open('history')}>{t('juego.historial')}</button>
       <button onClick={() => open('save')}>{t('juego.guardar')}</button>
       <button onClick={() => open('load')}>{t('juego.cargar')}</button>
@@ -639,7 +667,6 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       {error && <p className="error stage-error">{error}</p>}
       {/* En las escenas del celular la historia ya lo muestra: el botón y el aviso esperan. */}
       {!onPhone && <BoringramToast onOpen={() => open('boringram')} />}
-      {!onPhone && !uiHidden && <BoringramBall onOpen={() => open('boringram')} label={t('titulo.boringram')} />}
       {mode !== 'normal' && (
         <div className="mode-badge" aria-live="polite">
           {mode === 'auto'

@@ -47,7 +47,7 @@ La historia completa tendrá siete capítulos, dos finales principales que ocurr
 - **Pantallas hechas en código:** el IDE GRAVITY, el correo con su bandeja de spam, el celular con Boringram (la parodia de Instagram), los mensajes y las historias de Nikki.
 - **Efectos de meta-horror:** glitches, opciones que el sistema intenta imponer y una voz que solo Jair oye.
 - **Retroceder y adelantar** a x2, x4, x8 o x16. Retroceder deshace también las decisiones.
-- **Opciones de lectura:** velocidad y tamaño del texto, opacidad de la caja, modo automático, saltar lo leído, ocultar la interfaz, volumen y silencio, y reducir efectos.
+- **Opciones de lectura:** velocidad y tamaño del texto, opacidad de la caja, modo automático, ir a la decisión anterior o a la próxima, ocultar la interfaz, volumen y silencio, y reducir efectos.
 - **Guardado** en el navegador, con miniatura de cada partida. «Continuar» retoma el último guardado.
 - **Celular:** se juega en horizontal y a pantalla completa; Boringram se ve en vertical, como una app.
 - Y un easter egg en la pantalla de título.

@@ -18,6 +18,8 @@
   "juego.retroceder_ayuda": "Retroceder: cada toque más rápido (x2, x4, x8, x16). Tecla ←: una línea",
   "juego.adelantar": "Adelantar",
   "juego.parar": "Parar",
+  "juego.decision_anterior": "Decisión anterior",
+  "juego.proxima_decision": "Próxima decisión",
   "juego.adelantar_ayuda": "Adelantar hasta la próxima decisión: cada toque más rápido (x2, x4, x8, x16)",
   "juego.modo_retroceder": "◀◀ RETROCEDIENDO x{n}",
   "juego.modo_adelantar": "ADELANTANDO x{n} ▶▶",

@@ -127,6 +127,10 @@ interface Store {
   setMode: (mode: Mode, speed?: Speed) => void;
   /** Vuelve a la línea anterior (deshace también las decisiones). */
   back: () => boolean;
+  /** Avanza hasta la próxima decisión (o un final). */
+  toNextChoice: () => void;
+  /** Vuelve a la decisión anterior (deshaciéndola). */
+  toPrevChoice: () => void;
   setSettings: (patch: Partial<Settings>) => void;
 }
 
@@ -232,6 +236,29 @@ export const useStore = create<Store>()(
             return;
           }
           goTo(next, game.vars, game.history, stepFrom(game));
+        },
+
+        toNextChoice: () => {
+          for (let i = 0; i < 5000; i++) {
+            const g = get().game;
+            const scene = g && scenes.get(g.sceneId);
+            if (!g || !scene || g.finished || get().error || visibleChoices(scene, g.vars).length > 0) break;
+            get().advance();
+          }
+          set({ mode: 'normal', textDone: true });
+        },
+
+        toPrevChoice: () => {
+          const atChoice = () => {
+            const g = get().game;
+            const scene = g && scenes.get(g.sceneId);
+            return !!(g && scene && visibleChoices(scene, g.vars).length > 0);
+          };
+          if (!get().back()) return;
+          while (!atChoice() && get().back()) {
+            // Sigue volviendo hasta llegar a una escena con decisión (o al comienzo del recorrido).
+          }
+          set({ mode: 'normal', textDone: true });
         },
 
         back: () => {
