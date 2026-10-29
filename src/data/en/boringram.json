@@ -228,7 +228,8 @@
     "copiado": "Link copied!",
     "mas": "More…",
     "instagram_nota": "We saved the image and copied the link. Upload it on Instagram (opened in another tab) and paste the link in the caption.",
-    "compartir_texto": "Look at this in PROYECT GENESIS (18+)"
+    "compartir_texto": "Look at this in PROYECT GENESIS (18+)",
+    "ahorro": "Battery saver"
   },
   "notificaciones": [
     {
@@ -239,7 +240,7 @@
     },
     {
       "app": "System",
-      "titulo": "Low battery: 12%",
+      "titulo": "Low battery: {bateria}%",
       "texto": "Plug in the charger. Or don't. Nobody's texting you anyway.",
       "hace": "2 min ago"
     },

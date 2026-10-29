@@ -133,14 +133,14 @@
     "fecha": "hace 1 año y medio",
     "marca": "★ Destacado",
     "reloj": "1:58",
-    "bateria": 41
+    "bateria": 25
   },
   "celular_foto_nikki": {
     "contacto": "Nikki",
     "estado": "Foto de perfil",
     "foto": "fotos/nikki_boringram.webp",
     "reloj": "1:58",
-    "bateria": 41
+    "bateria": 25
   },
   "boringram": {
     "nota": "Marco común del celular: Boringram es la app con la que Jair habla con Nikki y ve sus historias.",

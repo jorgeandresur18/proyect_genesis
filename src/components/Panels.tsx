@@ -256,6 +256,53 @@ const TEXT_SIZES = [
   { label: 'opciones.tam_muy_grande', value: 1.3 },
 ];
 
+/**
+ * Borrar todos los datos: partidas, lo desbloqueado (galería, finales, Boringram, lo leído) y las opciones.
+ * Pide confirmación y vuelve a cargar el juego desde cero.
+ */
+function ResetData() {
+  const t = useT();
+  const [confirm, setConfirm] = useState(false);
+  if (!confirm)
+    return (
+      <div className="option">
+        <button
+          className="danger"
+          onClick={() => {
+            playCancel();
+            setConfirm(true);
+          }}
+        >
+          {t('opciones.borrar_datos')}
+        </button>
+      </div>
+    );
+  return (
+    <div className="option reset-confirm">
+      <p>{t('opciones.borrar_seguro')}</p>
+      <div className="reset-actions">
+        <button
+          className="danger"
+          onClick={() => {
+            useStore.persist.clearStorage();
+            window.location.reload();
+          }}
+        >
+          {t('opciones.borrar_si')}
+        </button>
+        <button
+          onClick={() => {
+            playSelect();
+            setConfirm(false);
+          }}
+        >
+          {t('opciones.borrar_no')}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function OptionsPanel({ onClose }: { onClose: () => void }) {
   const settings = useStore((s) => s.settings);
   const setSettings = useStore((s) => s.setSettings);
@@ -385,6 +432,9 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         />
         {t('opciones.reducir')}
       </label>
+
+      <h3 className="options-section">{t('opciones.datos')}</h3>
+      <ResetData />
     </Panel>
   );
 }

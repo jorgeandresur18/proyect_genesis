@@ -188,7 +188,7 @@ function BoringramToast({ onOpen }: { onOpen: () => void }) {
   const items = [
     // No avisa de lo que publica el propio Jair ni de los chats que deja en visto.
     ...b.publicaciones.filter((p) => p.autor !== b.data.yo).map((p) => ({ id: `p:${p.id}`, user: p.autor, text: tx.notif_post })),
-    ...b.destacadas.map((d) => ({ id: `s:${d.id}`, user: d.autor, text: tx.notif_historia })),
+    ...b.destacadas.filter((d) => d.autor !== b.data.yo).map((d) => ({ id: `s:${d.id}`, user: d.autor, text: tx.notif_historia })),
     ...b.chats.filter((c) => !c.visto).map((c) => ({ id: `c:${c.id}:${c.mensajes.length}`, user: c.perfil ?? c.nombre ?? '', text: tx.notif_mensaje })),
   ];
   const ids = items.map((x) => x.id).join('|');

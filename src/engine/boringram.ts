@@ -72,7 +72,16 @@ export interface Notificacion {
   titulo: string;
   texto: string;
   hace: string;
+  /** Solo se muestra con la batería baja (15 % o menos). */
+  solo_bateria_baja?: boolean;
   desbloqueo: string | null;
+}
+export interface Estado {
+  desbloqueo: string | null;
+  reloj: string;
+  bateria: number;
+  /** Modo de ahorro de energía (batería en naranja). */
+  ahorro?: boolean;
 }
 export interface BoringramData {
   yo: string;
@@ -84,6 +93,7 @@ export interface BoringramData {
   destacadas: Destacada[];
   chats: Chat[];
   notificaciones: Notificacion[];
+  estado: Estado[];
   ajustes_rapidos: string[];
   dia: string;
   textos: Record<string, string>;
@@ -101,12 +111,44 @@ function merge(a: unknown, b: unknown): unknown {
   return b;
 }
 
-const ES = dataEs as unknown as BoringramData;
-const EN = merge(dataEs, dataEn) as BoringramData;
+/** Lo que agregan los capítulos siguientes (src/data/boringram/capNN.json), en orden de capítulo. */
+type Extra = Partial<Pick<BoringramData, 'publicaciones' | 'destacadas' | 'notificaciones' | 'estado' | 'chats'>>;
+const byName = (g: Record<string, Extra>) =>
+  Object.keys(g)
+    .sort()
+    .map((k) => ({ name: k.split('/').pop()!, data: g[k] }));
+const EXTRAS_ES = byName(import.meta.glob<Extra>('../data/boringram/*.json', { eager: true, import: 'default' }));
+const EXTRAS_EN = byName(import.meta.glob<Extra>('../data/en/boringram/*.json', { eager: true, import: 'default' }));
+
+/** Suma los extras: lo nuevo arriba en el inicio, los mensajes en su chat y el estado al final. */
+function withExtras(base: BoringramData, extras: Extra[]): BoringramData {
+  const out: BoringramData = { ...base, chats: base.chats.map((c) => ({ ...c, mensajes: [...c.mensajes] })) };
+  for (const x of extras) {
+    out.publicaciones = [...(x.publicaciones ?? []), ...out.publicaciones];
+    out.destacadas = [...(x.destacadas ?? []), ...out.destacadas];
+    out.notificaciones = [...(x.notificaciones ?? []), ...out.notificaciones];
+    out.estado = [...out.estado, ...(x.estado ?? [])];
+    for (const chat of x.chats ?? []) {
+      const own = out.chats.find((c) => c.id === chat.id);
+      if (own) own.mensajes.push(...chat.mensajes);
+      else out.chats.unshift({ ...chat, mensajes: [...chat.mensajes] });
+    }
+  }
+  return out;
+}
+
+const ES = withExtras(
+  dataEs as unknown as BoringramData,
+  EXTRAS_ES.map((x) => x.data),
+);
+const EN = withExtras(
+  merge(dataEs, dataEn) as BoringramData,
+  EXTRAS_ES.map((x) => merge(x.data, EXTRAS_EN.find((y) => y.name === x.name)?.data) as Extra),
+);
 
 /** Todas las escenas que desbloquean algo (para la prueba de rutas). */
 export const unlockScenes = (): string[] =>
-  [...Object.values(ES.perfiles), ...ES.publicaciones, ...ES.destacadas, ...ES.chats.flatMap((c) => c.mensajes), ...ES.notificaciones]
+  [...Object.values(ES.perfiles), ...ES.publicaciones, ...ES.destacadas, ...ES.chats.flatMap((c) => c.mensajes), ...ES.notificaciones, ...ES.estado]
     .map((x) => x.desbloqueo)
     .filter((x): x is string => !!x);
 
@@ -127,7 +169,12 @@ export function useBoringram() {
   const chats = data.chats
     .map((c) => ({ ...c, mensajes: c.mensajes.filter(open) }))
     .filter((c) => c.mensajes.length > 0);
-  const notificaciones = data.notificaciones.filter(open);
+  // Hora y batería: las del último punto de la historia que ya se jugó.
+  const estado = [...data.estado].reverse().find((x) => open(x)) ?? data.estado[0];
+  const notificaciones = data.notificaciones
+    .filter(open)
+    .filter((n) => !n.solo_bateria_baja || estado.bateria <= 15)
+    .map((n) => ({ ...n, titulo: n.titulo.replace('{bateria}', String(estado.bateria)) }));
   // Me gusta: lo que el jugador tocó manda; si no tocó nada, lo de la historia (te_gusta).
   const liked = (p: Publicacion) => likes[p.id] ?? !!p.te_gusta;
   const likeCount = (p: Publicacion) => p.likes - (p.te_gusta ? 1 : 0) + (liked(p) ? 1 : 0);
@@ -143,6 +190,7 @@ export function useBoringram() {
     destacadas,
     chats,
     notificaciones,
+    estado,
     liked,
     likeCount,
     newPosts,

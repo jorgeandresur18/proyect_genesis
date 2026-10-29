@@ -58,23 +58,40 @@ describe('rutas de la historia', () => {
 
   it('todo lo de Boringram se desbloquea con una escena que existe', () => {
     const data = JSON.parse(readFileSync('src/data/boringram.json', 'utf8'));
+    const base = JSON.parse(readFileSync('src/data/boringram.json', 'utf8'));
+    // Lo que agregan los capítulos siguientes (src/data/boringram/capNN.json).
+    const extras = existsSync('src/data/boringram') ? readdirSync('src/data/boringram') : [];
+    for (const f of extras) {
+      const x = JSON.parse(readFileSync(`src/data/boringram/${f}`, 'utf8'));
+      for (const k of ['publicaciones', 'destacadas', 'notificaciones', 'estado'])
+        data[k] = [...(data[k] ?? []), ...(x[k] ?? [])];
+      data.chats = [...data.chats, ...(x.chats ?? [])];
+      const en = `src/data/en/boringram/${f}`;
+      if (existsSync(en)) {
+        const y = JSON.parse(readFileSync(en, 'utf8'));
+        for (const k of ['publicaciones', 'destacadas', 'notificaciones'])
+          expect(y[k]?.length ?? 0, `${en}: ${k}`).toBe(x[k]?.length ?? 0);
+      }
+    }
     const ids = new Set(storyFiles.flatMap((f) => f.scenes.map((s) => s.scene_id)));
     const refs = [
       ...Object.values(data.perfiles),
       ...data.publicaciones,
       ...data.destacadas,
       ...data.chats.flatMap((c: { mensajes: unknown[] }) => c.mensajes),
+      ...data.notificaciones,
+      ...data.estado,
     ].map((x) => (x as { desbloqueo: string | null }).desbloqueo);
     expect(refs.filter((r) => r && !ids.has(r))).toEqual([]);
-    for (const p of data.publicaciones) if (p.imagen) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
+    for (const p of data.publicaciones) if (p.imagen && !p.imagen.startsWith('PLACEHOLDER:')) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
     // Cada foto tiene su página para compartir (npm run compartir).
-    for (const p of data.publicaciones.filter((x: { tipo: string }) => x.tipo === 'foto'))
+    for (const p of base.publicaciones.filter((x: { tipo: string }) => x.tipo === 'foto'))
       expect(existsSync(`public/compartir/${p.id}.html`), `falta public/compartir/${p.id}.html: corre npm run compartir`).toBe(true);
     // La versión en inglés se mezcla por posición: las listas tienen que tener el mismo largo.
     const en = JSON.parse(readFileSync('src/data/en/boringram.json', 'utf8'));
-    expect(en.publicaciones.length).toBe(data.publicaciones.length);
-    expect(en.chats.length).toBe(data.chats.length);
-    data.publicaciones.forEach((p: { comentarios: unknown[] }, i: number) =>
+    expect(en.publicaciones.length).toBe(base.publicaciones.length);
+    expect(en.chats.length).toBe(base.chats.length);
+    base.publicaciones.forEach((p: { comentarios: unknown[] }, i: number) =>
       expect(en.publicaciones[i].comentarios?.length ?? p.comentarios.length, `comentarios de ${i}`).toBe(p.comentarios.length),
     );
   });

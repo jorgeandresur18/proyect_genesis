@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useStore } from '../engine/store';
-import { assetUrl } from '../engine/assets';
+import { assetUrl, isPlaceholder } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
 import { enterPlayMode, enterPortraitMode, isTouch, releaseOrientation } from '../engine/mobile';
@@ -19,9 +19,11 @@ type View =
 type B = ReturnType<typeof useBoringram>;
 
 /** Al abrir: el logo sobre negro y, un instante, el esqueleto de la app cargando. */
-const BOOT_LOGO_MS = 900;
+// El celular sube con la pantalla apagada (RISE_MS); después se prende con el logo.
+const RISE_MS = 600;
+const BOOT_LOGO_MS = 900 + RISE_MS;
 const BOOT_SKELETON_MS = 650;
-const CLOSE_MS = 260;
+const CLOSE_MS = 700;
 
 /**
  * Extras › Boringram: el celular de Jair, a pantalla completa y en vertical. Se llena con lo que pasa
@@ -72,6 +74,13 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   return (
     <div className={`${s.screen} ${closing ? s.closing : ''}`}>
       <div className={s.phone}>
+        {/* Pantalla apagada: se va al terminar de subir y vuelve al bloquear el celular. */}
+        <div className={s.screenOff} aria-hidden>
+          <svg viewBox="0 0 24 24">
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" />
+          </svg>
+        </div>
         <StatusBar b={b} onPull={() => boot === 'app' && setShade(true)} />
         {shade && <Shade b={b} onClose={() => setShade(false)} />}
         {boot === 'logo' ? (
@@ -103,7 +112,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
  * y la batería con su porcentaje (la de la historia: 12 %, en rojo).
  */
 function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
-  const c = pantallas.boringram_historia;
+  const c = b.estado;
   const low = c.bateria <= 15;
   // Se baja el panel de notificaciones arrastrando la barra hacia abajo (o tocándola).
   const start = useRef<number | null>(null);
@@ -170,8 +179,8 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
           <path d="M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
           <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
         </svg>
-        <span className={`${s.batteryText} ${low ? s.batteryLow : ''}`}>{c.bateria}%</span>
-        <span className={`${s.battery} ${low ? s.batteryLow : ''}`}>
+        <span className={`${s.batteryText} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`}>{c.bateria}%</span>
+        <span className={`${s.battery} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`} title={c.ahorro ? b.data.textos.ahorro : undefined}>
           <i style={{ width: `${c.bateria}%` }} />
         </span>
       </span>
@@ -186,7 +195,7 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
  */
 function Shade({ b, onClose }: { b: B; onClose: () => void }) {
   const tx = b.data.textos;
-  const c = pantallas.boringram_historia;
+  const c = b.estado;
   const [tiles, setTiles] = useState<Record<string, boolean>>({ 0: true, 1: true });
   const [cleared, setCleared] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -267,6 +276,12 @@ function Shade({ b, onClose }: { b: B; onClose: () => void }) {
       </button>
     </div>
   );
+}
+
+/** Imagen de Boringram; mientras falte el arte (PLACEHOLDER:<nombre>), un cuadro gris con su nombre. */
+function Pic({ src, className = '' }: { src: string; className?: string }) {
+  if (isPlaceholder(src)) return <span className={`${s.picPlaceholder} ${className}`}>{src.replace('PLACEHOLDER:', '')}</span>;
+  return <img className={className} src={assetUrl(src)} alt="" loading="lazy" draggable={false} />;
 }
 
 /** Abre la ventana de compartir de una foto (ver ShareSheet). */
@@ -819,7 +834,7 @@ function Post({
       <PostHead b={b} post={post} onPerfil={onPerfil} />
       {post.tipo === 'foto' && (
         <div className={s.postImage} onDoubleClick={doubleTap}>
-          <img src={assetUrl(post.imagen!)} alt="" loading="lazy" draggable={false} />
+          <Pic src={post.imagen!} />
           {burst > 0 && (
             <svg key={burst} viewBox="0 0 24 24" className={s.burst} aria-hidden>
               <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
@@ -927,7 +942,7 @@ function Profile({
           {stories.map((h) => (
             <button key={h.id} className={s.highlight} onClick={() => onStory(h.id)}>
               <span className={`${s.highlightRing} ${b.newStories.has(h.id) ? s.avatarStory : ''}`}>
-                <img src={assetUrl(h.imagen)} alt="" draggable={false} />
+                <Pic src={h.imagen} />
               </span>
               <small>{h.titulo}</small>
               {b.newStories.has(h.id) && <NewDot className={s.highlightDot} />}
@@ -968,7 +983,7 @@ function Profile({
             {likedPosts.map((x) =>
               x.tipo === 'foto' ? (
                 <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
-                  <img src={assetUrl(x.imagen!)} alt="" loading="lazy" draggable={false} />
+                  <Pic src={x.imagen!} />
                 </button>
               ) : (
                 <button key={x.id} className={`${s.gridItem} ${s.gridText}`} onClick={() => onPost(x.id)}>
@@ -982,7 +997,7 @@ function Profile({
         <div className={s.grid}>
           {photos.map((x) => (
             <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
-              <img src={assetUrl(x.imagen!)} alt="" loading="lazy" draggable={false} />
+              <Pic src={x.imagen!} />
               {b.newPosts.has(x.id) && <NewDot className={s.itemDot} />}
             </button>
           ))}
@@ -1035,7 +1050,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
   const p = b.perfiles[h.autor];
   return (
     <div className={s.story}>
-      <img className={s.storyImage} src={assetUrl(h.imagen)} alt="" draggable={false} />
+      <Pic className={s.storyImage} src={h.imagen} />
       <div className={s.storyProgress}>
         <i />
       </div>

@@ -121,5 +121,10 @@
   "extras.finales_desc": "The endings and bad ends you found.",
   "terminal.abrir": "open {nombre}",
   "terminal.listo": "ready.",
-  "guardar.sin_datos": "NO DATA"
+  "guardar.sin_datos": "NO DATA",
+  "opciones.datos": "Data",
+  "opciones.borrar_datos": "Delete all data",
+  "opciones.borrar_seguro": "This deletes saved games, everything unlocked (gallery, endings, Boringram, read text) and the options. It cannot be undone.",
+  "opciones.borrar_si": "Yes, delete everything",
+  "opciones.borrar_no": "Cancel"
 }

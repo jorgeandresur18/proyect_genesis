@@ -1488,3 +1488,10 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 .menu-popup .bori-ball { margin: 0.2rem auto; }
 
 .title-chapter-notice { color: #ff8ab5; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; letter-spacing: 0.06em; }
+
+/* Opciones › Datos: borrar todo, con confirmación. */
+button.danger { border-color: rgba(255, 74, 90, 0.6); color: #ff8a95; }
+button.danger:hover:not(:disabled) { border-color: #ff4a5a; color: #fff; background: rgba(255, 74, 90, 0.18); }
+.reset-confirm { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+.reset-confirm p { margin: 0; color: #ffb3bb; font-size: 0.9rem; }
+.reset-actions { display: flex; gap: 0.6rem; }
