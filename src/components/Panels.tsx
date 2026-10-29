@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { CHAPTER_END, SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
 import { choiceText, lineText, speakerName } from '../engine/storyText';
 import { BAD_END, endingName, endings } from '../engine/story';
@@ -8,6 +8,9 @@ import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
 import { playCancel, playSelect } from '../engine/sound';
 import { SaveThumb } from './SaveThumb';
+
+/** Duración de la animación de cierre (ver .panel-closing en styles.css). */
+const PANEL_CLOSE_MS = 280;
 
 export function Panel({
   title,
@@ -21,15 +24,23 @@ export function Panel({
   children: ReactNode;
 }) {
   const t = useT();
+  const [closing, setClosing] = useState(false);
+  // Solo se cierra con «Cerrar» (un clic afuera no hace nada), con la animación de apagado antes de desaparecer.
   const close = () => {
+    if (closing) return;
     playCancel();
-    onClose();
+    if (useStore.getState().settings.reduceEffects || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      onClose();
+      return;
+    }
+    setClosing(true);
+    setTimeout(onClose, PANEL_CLOSE_MS);
   };
   // Cada panel se abre como una terminal: la ventana se enciende, se «escribe» el comando y aparece el contenido.
   const slug = title.toLowerCase().replace(/\s*\(.*\)$/, '').replace(/\s+/g, '_');
   return (
-    <div className="panel-backdrop" onClick={close}>
-      <div className={`panel panel-terminal ${wide ? 'panel-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
+    <div className={`panel-backdrop ${closing ? 'panel-closing' : ''}`}>
+      <div className={`panel panel-terminal ${wide ? 'panel-wide' : ''}`}>
         <div className="panel-head">
           <span className="term-dots" aria-hidden>
             <i />

@@ -6,5 +6,10 @@
     "cg_jair_carga_cami_bosque": "In his arms again",
     "cg_beso_nikki_cerca": "A taste of tequila",
     "cg_beso_nikki": "See? That wasn't so hard"
+  },
+  "personajes": {
+    "soldado_enmascarado": "Masked Soldier",
+    "capitan_enmascarado": "Masked Captain",
+    "monstruo_sombras": "Shadow Monster"
   }
 }

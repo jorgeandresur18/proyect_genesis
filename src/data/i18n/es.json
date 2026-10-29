@@ -51,6 +51,8 @@
   "finales.proximos": "Los finales de la historia llegarán con los próximos capítulos.",
   "galeria.titulo": "Galería ({vistas}/{total})",
   "galeria.vacia": "Todavía no hay imágenes.",
+  "galeria.imagenes": "Imágenes",
+  "galeria.personajes": "Personajes",
   "galeria.anterior": "Anterior",
   "galeria.siguiente": "Siguiente",
   "opciones.titulo": "Opciones",

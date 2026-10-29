@@ -51,6 +51,8 @@
   "finales.proximos": "The story's endings will arrive with the next chapters.",
   "galeria.titulo": "Gallery ({vistas}/{total})",
   "galeria.vacia": "No pictures yet.",
+  "galeria.imagenes": "Pictures",
+  "galeria.personajes": "Characters",
   "galeria.anterior": "Previous",
   "galeria.siguiente": "Next",
   "opciones.titulo": "Options",

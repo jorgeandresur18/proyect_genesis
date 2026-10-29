@@ -1,5 +1,5 @@
 {
-  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego.",
+  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego. «personajes»: sprites de los capítulos de «capitulos_sprites», en este orden; un personaje que todavía no apareció se ve como «???» y cada sprite no visto, como «SIN DATOS».",
   "titulos": {
     "cg_jair_carga_cami": "En brazos",
     "cg_jair_carga_cami_espalda": "Una mochila muy enojada",
@@ -7,5 +7,17 @@
     "cg_jair_carga_cami_bosque": "Otra vez en brazos",
     "cg_beso_nikki_cerca": "Sabor a tequila",
     "cg_beso_nikki": "¿Ves? No era tan difícil"
+  },
+  "capitulos_sprites": [
+    1
+  ],
+  "personajes": {
+    "jair": "Jair",
+    "nikki": "Nikki",
+    "cami": "Cami",
+    "rikka": "Rikka",
+    "soldado_enmascarado": "Soldado enmascarado",
+    "capitan_enmascarado": "Capitán enmascarado",
+    "monstruo_sombras": "Monstruo de sombras"
   }
 }
