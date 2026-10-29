@@ -45,7 +45,22 @@ export interface Choice {
   conditions?: Condition[];
 }
 
-export const UI_EFFECTS = ['os_menu', 'glitch', 'boringram_flash', 'ai_vowels', 'locked_choice'] as const;
+// Luces: luz_carga (blanco que parpadea cada vez más rápido y termina en blanco total), luz_revela (empieza en
+// blanco y se aclara), flash (destello blanco rápido), flash_rayo (destello azul).
+export const UI_EFFECTS = [
+  'os_menu',
+  'glitch',
+  'boringram_flash',
+  'ai_vowels',
+  'locked_choice',
+  'luz_carga',
+  'luz_revela',
+  'flash',
+  'flash_rayo',
+] as const;
+const LIGHTS = ['luz_carga', 'luz_revela', 'flash', 'flash_rayo'];
+/** Efecto de luz de la escena (se dibuja encima de los personajes), si tiene uno. */
+export const lightOf = (effects: string[]) => effects.find((e) => LIGHTS.includes(e)) ?? null;
 export type UiEffect = (typeof UI_EFFECTS)[number];
 
 export interface Scene {

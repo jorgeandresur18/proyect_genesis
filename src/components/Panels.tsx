@@ -283,52 +283,59 @@ function DangerZone() {
           <b>{t('opciones.borrar_datos')}</b>
           <p>{t('opciones.borrar_desc')}</p>
         </div>
-        {!open && (
-          <button
-            className="danger"
-            onClick={() => {
-              playCancel();
-              setOpen(true);
-            }}
-          >
-            {t('opciones.borrar_datos')}
-          </button>
-        )}
+        <button
+          className="danger"
+          onClick={() => {
+            playCancel();
+            setOpen(true);
+          }}
+        >
+          {t('opciones.borrar_datos')}
+        </button>
       </div>
       {open && (
-        <div className="danger-confirm">
-          <p className="danger-warning">{t('opciones.borrar_seguro')}</p>
-          <label>
-            {t('opciones.borrar_escribe')} <code>{phrase}</code>
-            <input
-              value={typed}
-              onChange={(e) => setTyped(e.target.value)}
-              autoComplete="off"
-              spellCheck={false}
-              placeholder={phrase}
-            />
-          </label>
-          <small className="muted">{t('opciones.borrar_nota')}</small>
-          <div className="reset-actions">
-            <button
-              className="danger"
-              disabled={!ok}
-              onClick={() => {
-                useStore.persist.clearStorage();
-                window.location.reload();
-              }}
-            >
-              {t('opciones.borrar_si')}
-            </button>
-            <button
-              onClick={() => {
-                playSelect();
-                setOpen(false);
-                setTyped('');
-              }}
-            >
-              {t('opciones.borrar_no')}
-            </button>
+        <div className="danger-modal-backdrop">
+          <div className="danger-modal" role="dialog" aria-modal="true" aria-labelledby="danger-title">
+            <div className="danger-modal-head">
+              <h3 id="danger-title">{t('opciones.borrar_datos')}</h3>
+              <button
+                className="danger-modal-x"
+                aria-label={t('opciones.borrar_no')}
+                onClick={() => {
+                  playCancel();
+                  setOpen(false);
+                  setTyped('');
+                }}
+              >
+                ×
+              </button>
+            </div>
+            <div className="danger-confirm">
+              <p className="danger-warning">{t('opciones.borrar_seguro')}</p>
+              <p className="muted">{t('opciones.borrar_desc')}</p>
+              <label>
+                {t('opciones.borrar_escribe')} <code>{phrase}</code>
+                <input
+                  value={typed}
+                  onChange={(e) => setTyped(e.target.value)}
+                  autoComplete="off"
+                  spellCheck={false}
+                  autoFocus
+                  placeholder={phrase}
+                />
+              </label>
+              <small className="muted">{t('opciones.borrar_nota')}</small>
+              <button
+                className="danger danger-full"
+                disabled={!ok}
+                onClick={() => {
+                  useStore.persist.clearStorage();
+                  window.location.reload();
+                }}
+              >
+                {t('opciones.borrar_si')}
+              </button>
+            </div>
           </div>
         </div>
       )}

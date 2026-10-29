@@ -1507,3 +1507,38 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 .danger-confirm input:focus { outline: none; border-color: #ff6b78; }
 @media (max-width: 760px) { .danger-row { flex-direction: column; align-items: flex-start; } }
 .reset-actions { display: flex; gap: 0.6rem; }
+
+/* Luces de escena (ui_effect). Van encima de los personajes y debajo de la caja de diálogo. */
+.light-fx { position: absolute; inset: 0; pointer-events: none; background: #fff; opacity: 0; }
+/* Carga: parpadeos blancos, cada vez más intensos y más rápidos, hasta quedar en blanco total. */
+.light-luz_carga { animation: luz-carga 2.6s ease-in forwards; }
+@keyframes luz-carga {
+  0% { opacity: 0; } 8% { opacity: 0.25; } 14% { opacity: 0; }
+  26% { opacity: 0.35; } 31% { opacity: 0; }
+  42% { opacity: 0.5; } 46% { opacity: 0.05; }
+  55% { opacity: 0.6; } 58% { opacity: 0.1; }
+  65% { opacity: 0.7; } 67% { opacity: 0.15; }
+  73% { opacity: 0.8; } 75% { opacity: 0.25; }
+  80% { opacity: 0.9; } 81.5% { opacity: 0.4; }
+  86% { opacity: 1; } 87% { opacity: 0.6; }
+  91%, 100% { opacity: 1; }
+}
+/* Revela: la escena empieza en blanco (después de una carga) y se aclara. */
+.light-luz_revela { animation: luz-revela 1.1s ease-out forwards; }
+@keyframes luz-revela { 0%, 15% { opacity: 1; } 100% { opacity: 0; } }
+/* Flash: un destello blanco rápido. */
+.light-flash { animation: luz-flash 0.45s ease-out forwards; }
+@keyframes luz-flash { 0% { opacity: 0; } 15% { opacity: 0.95; } 100% { opacity: 0; } }
+/* Rayo: destello azul eléctrico, doble. */
+.light-flash_rayo { background: radial-gradient(circle at 60% 50%, #e8f6ff, #6fc8ff 40%, rgba(40, 120, 255, 0.6)); animation: luz-rayo 0.6s ease-out forwards; }
+@keyframes luz-rayo { 0% { opacity: 0; } 10% { opacity: 0.85; } 22% { opacity: 0.1; } 32% { opacity: 0.7; } 100% { opacity: 0; } }
+
+/* Ventana aparte para confirmar el borrado, en el centro, encima de todo. */
+.danger-modal-backdrop { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(3px); animation: decisions-fade 0.2s ease-out both; }
+.danger-modal { width: min(30rem, 100%); overflow: hidden; border: 1px solid rgba(255, 74, 90, 0.6); border-radius: 0.6rem; background: #0d0d10; box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.7), 0 0 2rem rgba(255, 74, 90, 0.15); animation: term-on 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.danger-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; border-bottom: 1px solid rgba(255, 74, 90, 0.35); background: #16090c; }
+.danger-modal-head h3 { margin: 0; font-size: 1rem; color: #ff8a95; }
+.danger-modal-x { padding: 0 0.4rem; border: none; background: none; color: #c9c9d2; font-size: 1.4rem; line-height: 1; }
+.danger-modal .danger-confirm { margin: 0; border: none; border-radius: 0; background: none; }
+.danger-modal .danger-confirm .muted { margin: 0; font-size: 0.85rem; }
+.danger-full { width: 100%; margin-top: 0.2rem; }

@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
-import type { Scene } from '../engine/types';
+import { lightOf, type Scene } from '../engine/types';
 import glitch from '../effects/glitch.module.css';
 import { assetUrl, isPlaceholder, screenOf } from '../engine/assets';
 import { CodeScreen } from './CodeScreen';
@@ -32,6 +32,7 @@ function mirroredSprite(sprite: string): string | null {
 /** Fondo, video y personajes. En greyboxing todo se dibuja como cajas grises con su marcador. */
 export function SceneStage({ scene, effects, speakers, lines, children }: Props) {
   const glitching = effects.includes('glitch');
+  const light = lightOf(effects);
   const flipped = flippedCharacters(scene.characters, speakers);
   // Todos a la misma escala; si hay alguien más alto que 1,65 m (un enemigo), la «cámara» se aleja para que entre entero.
   const heights = new Map(scene.characters.map((c) => [c.id, canvasHeight(statureOf(c))]));
@@ -78,6 +79,7 @@ export function SceneStage({ scene, effects, speakers, lines, children }: Props)
           );
         })}
       </div>
+      {light && <div key={`${scene.scene_id}-${light}`} className={`light-fx light-${light}`} aria-hidden />}
       {children}
     </div>
   );
