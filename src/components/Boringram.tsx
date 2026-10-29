@@ -3,7 +3,7 @@ import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
-import { enterPlayMode, enterPortraitMode, releaseOrientation } from '../engine/mobile';
+import { enterPlayMode, enterPortraitMode, isTouch, releaseOrientation } from '../engine/mobile';
 import pantallas from '../data/pantallas.json';
 import { NewDot } from './CgGallery';
 import s from './Boringram.module.css';
@@ -283,6 +283,21 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
   const tx = b.data.textos;
   const post = b.publicaciones.find((p) => p.id === id);
   const [note, setNote] = useState('');
+  // La imagen se prepara al abrir: compartir tiene que pedirse en el mismo toque, sin esperar una descarga
+  // (si no, el navegador lo bloquea en silencio).
+  const file = useRef<File | null>(null);
+  useEffect(() => {
+    let alive = true;
+    fetch(assetUrl(`compartir/${id}.jpg`))
+      .then((r) => r.blob())
+      .then((blob) => {
+        if (alive) file.current = new File([blob], `${id}.jpg`, { type: 'image/jpeg' });
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [id]);
   if (!post) return null;
   const user = b.perfiles[post.autor]?.usuario ?? post.autor;
   const url = `${b.data.sitio}compartir/${id}.html`;
@@ -301,25 +316,30 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
       setNote(url);
     }
   };
-  const instagram = async () => {
+  // En computadora, Instagram no deja publicar desde la web: se guarda la imagen, se copia el enlace y se
+  // abre Instagram en otra pestaña para subirla.
+  const instagramWeb = () => {
+    const f = file.current;
+    const a = document.createElement('a');
+    a.href = f ? URL.createObjectURL(f) : card;
+    a.download = `${id}.jpg`;
+    a.click();
+    if (f) setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    navigator.clipboard?.writeText(url).catch(() => {});
+    window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
+    setNote(tx.instagram_nota);
+  };
+  // En el celular: el menú de compartir del teléfono con la imagen (ahí se elige Instagram).
+  const instagram = () => {
     playSelect();
-    try {
-      const blob = await (await fetch(card)).blob();
-      const file = new File([blob], `${id}.jpg`, { type: 'image/jpeg' });
-      if (navigator.canShare?.({ files: [file] })) {
-        await navigator.share({ files: [file], text: `${text} ${url}` });
-        return;
-      }
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `${id}.jpg`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-      await navigator.clipboard.writeText(url).catch(() => {});
-      setNote(tx.instagram_nota);
-    } catch {
-      // Se canceló o el navegador no deja: no pasa nada.
+    const f = file.current;
+    if (isTouch() && f && navigator.canShare?.({ files: [f] })) {
+      navigator.share({ files: [f] }).catch((e: Error) => {
+        if (e.name !== 'AbortError') instagramWeb();
+      });
+      return;
     }
+    instagramWeb();
   };
   const native = async () => {
     playSelect();
@@ -342,17 +362,19 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
             <span className={s.shareFb}>f</span>Facebook
           </button>
           <button onClick={instagram}>
-            <span className={s.shareIg}>◎</span>Instagram
+            <img className={s.shareImg} src={assetUrl('marca/redes/instagram.webp')} alt="" draggable={false} />
+            Instagram
           </button>
           <button onClick={() => open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`)}>
-            <span className={s.shareWa}>✆</span>WhatsApp
+            <img className={s.shareImg} src={assetUrl('marca/redes/whatsapp.webp')} alt="" draggable={false} />
+            WhatsApp
           </button>
           <button
             onClick={() =>
               open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`)
             }
           >
-            <span className={s.shareX}>𝕏</span>X
+            <img className={s.shareImg} src={assetUrl('marca/redes/x.webp')} alt="" draggable={false} />X
           </button>
           <button onClick={copy}>
             <span className={s.shareLink}>🔗</span>
