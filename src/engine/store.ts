@@ -6,6 +6,7 @@ import { applyChoice, enterScene, resolveNext, visibleChoices } from './logic';
 
 export const SAVE_SLOTS = 6;
 const HISTORY_LIMIT = 300;
+const TRAIL_LIMIT = 300;
 
 export interface HistoryEntry {
   speaker: string | null;
@@ -17,10 +18,19 @@ export interface HistoryEntry {
   ci?: number;
 }
 
+/** Un paso atrás: la escena, sus variables y cuántas líneas tenía el historial ahí. */
+export interface TrailStep {
+  sceneId: string;
+  vars: Vars;
+  historyLen: number;
+}
+
 export interface GameState {
   sceneId: string;
   vars: Vars;
   history: HistoryEntry[];
+  /** Por dónde pasó el jugador, para retroceder (no se guarda en las partidas). */
+  trail?: TrailStep[];
   /** ID del final mostrado al terminar la partida. */
   finished: string | null;
 }
@@ -60,7 +70,10 @@ export interface Settings {
 export const TEXT_SPEED_INSTANT = 130;
 const DEFAULT_SETTINGS: Settings = { reduceEffects: false, autoDelayMs: 1500, textSpeed: 45, sfxVolume: 0.6, typingSound: true, musicVolume: 0.5, muted: false, textScale: 1, boxOpacity: 0.88, language: 'auto' };
 
-export type Mode = 'normal' | 'auto' | 'skip';
+/** auto y skip, más adelantar (ff) y retroceder (rew) a velocidad `speed`. */
+export type Mode = 'normal' | 'auto' | 'skip' | 'ff' | 'rew';
+export const SPEEDS = [2, 4, 8, 16] as const;
+export type Speed = (typeof SPEEDS)[number];
 
 /** Prefijo de `game.finished` cuando la partida se detiene en un fin de capítulo (no es un final). */
 export const CHAPTER_END = 'capitulo:';
@@ -87,6 +100,8 @@ interface Store {
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
+  /** Velocidad de adelantar o retroceder (x2, x4, x8, x16). */
+  speed: Speed;
   error: string | null;
   /** El texto de la línea actual ya terminó de escribirse (efecto máquina de escribir). */
   textDone: boolean;
@@ -106,7 +121,9 @@ interface Store {
   save: (slot: number) => void;
   load: (slot: number) => void;
   deleteSave: (slot: number) => void;
-  setMode: (mode: Mode) => void;
+  setMode: (mode: Mode, speed?: Speed) => void;
+  /** Vuelve a la línea anterior (deshace también las decisiones). */
+  back: () => boolean;
   setSettings: (patch: Partial<Settings>) => void;
 }
 
@@ -114,7 +131,7 @@ export const useStore = create<Store>()(
   persist(
     (set, get) => {
       /** Entra en una escena y registra lectura, historial, instantánea y final. */
-      function goTo(id: string, vars: Vars, history: HistoryEntry[]) {
+      function goTo(id: string, vars: Vars, history: HistoryEntry[], trail: TrailStep[] = []) {
         const { scene, error } = enterScene(id, vars, (s) => scenes.get(s));
         if (!scene) {
           set({ error: error ?? 'Error desconocido', mode: 'normal' });
@@ -140,8 +157,14 @@ export const useStore = create<Store>()(
           ...patch,
           error: null,
           textDone: !scene.dialogue,
-          game: { sceneId: scene.scene_id, vars: nextVars, history: nextHistory, finished: null },
+          game: { sceneId: scene.scene_id, vars: nextVars, history: nextHistory, trail, finished: null },
         });
+      }
+
+      /** El paso actual, para poder volver a él. */
+      function stepFrom(game: GameState): TrailStep[] {
+        const step = { sceneId: game.sceneId, vars: game.vars, historyLen: game.history.length };
+        return [...(game.trail ?? []), step].slice(-TRAIL_LIMIT);
       }
 
       function markRead(id: string) {
@@ -159,6 +182,7 @@ export const useStore = create<Store>()(
         galleryOpened: {},
         choicesTaken: {},
         mode: 'normal',
+        speed: 2,
         error: null,
         textDone: false,
 
@@ -201,7 +225,26 @@ export const useStore = create<Store>()(
             set({ error: `La escena ${scene.scene_id} no tiene continuación`, mode: 'normal' });
             return;
           }
-          goTo(next, game.vars, game.history);
+          goTo(next, game.vars, game.history, stepFrom(game));
+        },
+
+        back: () => {
+          const { game } = get();
+          const trail = game?.trail ?? [];
+          if (!game || game.finished || trail.length === 0) return false;
+          const prev = trail[trail.length - 1];
+          set({
+            error: null,
+            textDone: true,
+            game: {
+              sceneId: prev.sceneId,
+              vars: prev.vars,
+              history: game.history.slice(0, prev.historyLen),
+              trail: trail.slice(0, -1),
+              finished: null,
+            },
+          });
+          return true;
         },
 
         choose: (index) => {
@@ -214,11 +257,13 @@ export const useStore = create<Store>()(
           const ci = scene.choices.indexOf(choice);
           const key = `${scene.scene_id}#${ci}`;
           if (!get().choicesTaken[key]) set({ choicesTaken: { ...get().choicesTaken, [key]: true } });
-          goTo(choice.next, applyChoice(choice, game.vars), [
-            ...game.history,
-            { speaker: null, text: choice.text, choice: true, sid: scene.scene_id, ci },
-          ]);
-          if (get().mode === 'skip') set({ mode: 'normal' });
+          goTo(
+            choice.next,
+            applyChoice(choice, game.vars),
+            [...game.history, { speaker: null, text: choice.text, choice: true, sid: scene.scene_id, ci }],
+            stepFrom(game),
+          );
+          if (get().mode !== 'normal' && get().mode !== 'auto') set({ mode: 'normal' });
         },
 
         jumpTo: (sceneId) => {
@@ -268,7 +313,7 @@ export const useStore = create<Store>()(
           set({ saves: next });
         },
 
-        setMode: (mode) => set({ mode }),
+        setMode: (mode, speed) => set(speed ? { mode, speed } : { mode }),
         setSettings: (patch) => set({ settings: { ...get().settings, ...patch } }),
       };
     },

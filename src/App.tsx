@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import { CHAPTER_END, useStore } from './engine/store';
+import { CHAPTER_END, useStore, SPEEDS } from './engine/store';
 import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
 import { preloadFrom } from './engine/preload';
@@ -376,7 +376,9 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
 
 function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: boolean; onTitle: () => void }) {
   const { game, scene, choices, waitingChoice, mode, textDone } = useStoryEngine();
-  const { next, choose, setMode } = useStore.getState();
+  const { next, choose, setMode, back } = useStore.getState();
+  const speed = useStore((s) => s.speed);
+  const canGoBack = useStore((s) => (s.game?.trail?.length ?? 0) > 0);
   const error = useStore((s) => s.error);
   const [menuOpen, setMenuOpen] = useState(false);
   // Ocultar la caja y los botones para mirar la imagen (tecla H o botón «Ocultar»; cualquier clic la devuelve).
@@ -387,11 +389,17 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   // Portada «CAPÍTULO N» al llegar a la primera escena de un capítulo.
   const [card, setCard] = useState<{ chapter: number; leaving: boolean } | null>(null);
   const cardFor = useRef<string | null>(null);
+  const trailLen = useRef(0);
   const sceneNow = useStore((s) => s.game?.sceneId);
   useEffect(() => {
     if (!sceneNow || cardFor.current === sceneNow) return;
     const chapter = CHAPTER_STARTS.get(sceneNow);
     cardFor.current = sceneNow;
+    // Al retroceder hasta el comienzo del capítulo (el recorrido se acortó) no vuelve a salir la portada.
+    const steps = useStore.getState().game?.trail?.length ?? 0;
+    const wentBack = steps < trailLen.current;
+    trailLen.current = steps;
+    if (wentBack) return;
     if (chapter !== undefined) setCard({ chapter, leaving: false });
   }, [sceneNow]);
   const leaveCard = useCallback(() => {
@@ -399,7 +407,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     setTimeout(() => setCard(null), CHAPTER_INTRO_OUT_MS);
   }, []);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
-  const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
+  const { shown, phase, color } = useSceneTransition(scene, mode === 'skip' || mode === 'ff' || mode === 'rew');
   // Fondos y sprites de lo que viene, descargados de antemano.
   const sceneId = scene?.scene_id;
   useEffect(() => {
@@ -425,6 +433,13 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         setUiHidden((h) => !h);
         return;
       }
+      // ← o Retroceso: una línea atrás.
+      if ((e.key === 'ArrowLeft' || e.key === 'Backspace') && !fading) {
+        e.preventDefault();
+        setMode('normal');
+        back();
+        return;
+      }
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         if (uiHidden) {
@@ -436,7 +451,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [paused, fading, waitingChoice, textDone, next, uiHidden, card]);
+  }, [paused, fading, waitingChoice, textDone, next, back, setMode, uiHidden, card]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
@@ -485,8 +500,32 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   }
 
   const toggle = (m: 'auto' | 'skip') => setMode(mode === m ? 'normal' : m);
+  // ⏪ / ⏩: cada toque sube la velocidad (x2 → x4 → x8 → x16) y el siguiente lo apaga.
+  const cycle = (m: 'ff' | 'rew') => {
+    if (mode !== m) return setMode(m, SPEEDS[0]);
+    const i = SPEEDS.indexOf(speed);
+    if (i === SPEEDS.length - 1) setMode('normal');
+    else setMode(m, SPEEDS[i + 1]);
+  };
   const buttons = (
     <>
+      <button
+        className={mode === 'rew' ? 'active' : ''}
+        onClick={() => cycle('rew')}
+        disabled={!canGoBack}
+        title={t('juego.retroceder_ayuda')}
+        aria-label={t('juego.retroceder')}
+      >
+        ⏪{mode === 'rew' ? ` x${speed}` : ''}
+      </button>
+      <button
+        className={mode === 'ff' ? 'active' : ''}
+        onClick={() => cycle('ff')}
+        title={t('juego.adelantar_ayuda')}
+        aria-label={t('juego.adelantar')}
+      >
+        ⏩{mode === 'ff' ? ` x${speed}` : ''}
+      </button>
       <button className={mode === 'auto' ? 'active' : ''} onClick={() => toggle('auto')}>
         {t('juego.auto')}
       </button>
@@ -515,7 +554,11 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       {error && <p className="error stage-error">{error}</p>}
       {mode !== 'normal' && (
         <div className="mode-badge" aria-live="polite">
-          {mode === 'auto' ? t('juego.modo_auto') : t('juego.modo_saltar')}
+          {mode === 'auto'
+            ? t('juego.modo_auto')
+            : mode === 'skip'
+              ? t('juego.modo_saltar')
+              : t(mode === 'ff' ? 'juego.modo_adelantar' : 'juego.modo_retroceder', { n: speed })}
         </div>
       )}
       {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
