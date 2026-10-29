@@ -122,9 +122,13 @@
   "terminal.abrir": "abrir {nombre}",
   "terminal.listo": "listo.",
   "guardar.sin_datos": "SIN DATOS",
-  "opciones.datos": "Datos",
   "opciones.borrar_datos": "Borrar todos los datos",
-  "opciones.borrar_seguro": "Se borran las partidas guardadas, todo lo desbloqueado (galería, finales, Boringram, lo leído) y las opciones. No se puede deshacer.",
-  "opciones.borrar_si": "Sí, borrar todo",
-  "opciones.borrar_no": "Cancelar"
+  "opciones.borrar_seguro": "Esto no se puede deshacer. No hay papelera, no hay respaldo y GENESIS no va a autocompletar nada de lo que pierdas.",
+  "opciones.borrar_si": "Entiendo, borrar todo",
+  "opciones.borrar_no": "Mejor no",
+  "opciones.peligro": "Zona de peligro",
+  "opciones.borrar_desc": "Partidas, galería, finales, Boringram, lo leído y las opciones. Todo. Como si nunca hubieras jugado.",
+  "opciones.borrar_escribe": "Para confirmar, escribe:",
+  "opciones.borrar_frase": "acepto perder todo, igual que mi sueldo",
+  "opciones.borrar_nota": "Las mayúsculas y las tildes son opcionales. La resignación, no."
 }

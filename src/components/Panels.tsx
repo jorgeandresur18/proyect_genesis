@@ -256,50 +256,83 @@ const TEXT_SIZES = [
   { label: 'opciones.tam_muy_grande', value: 1.3 },
 ];
 
+/** Quita tildes y espacios de más, para comparar la frase de confirmación sin exigir ortografía perfecta. */
+const plain = (x: string) =>
+  x
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+
 /**
- * Borrar todos los datos: partidas, lo desbloqueado (galería, finales, Boringram, lo leído) y las opciones.
- * Pide confirmación y vuelve a cargar el juego desde cero.
+ * Zona de peligro (como la de GitHub): borrar todos los datos. Hay que escribir la frase de confirmación;
+ * borra partidas, lo desbloqueado (galería, finales, Boringram, lo leído) y las opciones, y recarga el juego.
  */
-function ResetData() {
+function DangerZone() {
   const t = useT();
-  const [confirm, setConfirm] = useState(false);
-  if (!confirm)
-    return (
-      <div className="option">
-        <button
-          className="danger"
-          onClick={() => {
-            playCancel();
-            setConfirm(true);
-          }}
-        >
-          {t('opciones.borrar_datos')}
-        </button>
-      </div>
-    );
+  const [open, setOpen] = useState(false);
+  const [typed, setTyped] = useState('');
+  const phrase = t('opciones.borrar_frase');
+  const ok = plain(typed) === plain(phrase);
   return (
-    <div className="option reset-confirm">
-      <p>{t('opciones.borrar_seguro')}</p>
-      <div className="reset-actions">
-        <button
-          className="danger"
-          onClick={() => {
-            useStore.persist.clearStorage();
-            window.location.reload();
-          }}
-        >
-          {t('opciones.borrar_si')}
-        </button>
-        <button
-          onClick={() => {
-            playSelect();
-            setConfirm(false);
-          }}
-        >
-          {t('opciones.borrar_no')}
-        </button>
+    <section className="danger-zone">
+      <h3>{t('opciones.peligro')}</h3>
+      <div className="danger-row">
+        <div>
+          <b>{t('opciones.borrar_datos')}</b>
+          <p>{t('opciones.borrar_desc')}</p>
+        </div>
+        {!open && (
+          <button
+            className="danger"
+            onClick={() => {
+              playCancel();
+              setOpen(true);
+            }}
+          >
+            {t('opciones.borrar_datos')}
+          </button>
+        )}
       </div>
-    </div>
+      {open && (
+        <div className="danger-confirm">
+          <p className="danger-warning">{t('opciones.borrar_seguro')}</p>
+          <label>
+            {t('opciones.borrar_escribe')} <code>{phrase}</code>
+            <input
+              value={typed}
+              onChange={(e) => setTyped(e.target.value)}
+              autoComplete="off"
+              spellCheck={false}
+              placeholder={phrase}
+            />
+          </label>
+          <small className="muted">{t('opciones.borrar_nota')}</small>
+          <div className="reset-actions">
+            <button
+              className="danger"
+              disabled={!ok}
+              onClick={() => {
+                useStore.persist.clearStorage();
+                window.location.reload();
+              }}
+            >
+              {t('opciones.borrar_si')}
+            </button>
+            <button
+              onClick={() => {
+                playSelect();
+                setOpen(false);
+                setTyped('');
+              }}
+            >
+              {t('opciones.borrar_no')}
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -433,8 +466,7 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
         {t('opciones.reducir')}
       </label>
 
-      <h3 className="options-section">{t('opciones.datos')}</h3>
-      <ResetData />
+      <DangerZone />
     </Panel>
   );
 }

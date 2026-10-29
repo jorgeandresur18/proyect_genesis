@@ -1489,9 +1489,21 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 
 .title-chapter-notice { color: #ff8ab5; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; letter-spacing: 0.06em; }
 
-/* Opciones › Datos: borrar todo, con confirmación. */
+/* Opciones › Zona de peligro (como la de GitHub): recuadro rojo, botón rojo y frase de confirmación. */
 button.danger { border-color: rgba(255, 74, 90, 0.6); color: #ff8a95; }
-button.danger:hover:not(:disabled) { border-color: #ff4a5a; color: #fff; background: rgba(255, 74, 90, 0.18); }
-.reset-confirm { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
-.reset-confirm p { margin: 0; color: #ffb3bb; font-size: 0.9rem; }
+button.danger:hover:not(:disabled) { border-color: #ff4a5a; color: #fff; background: #d93848; }
+button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
+.danger-zone { margin-top: 1.4rem; }
+.danger-zone h3 { margin: 0 0 0.5rem; color: #ff6b78; font-size: 1rem; }
+.danger-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 1rem; border: 1px solid rgba(255, 74, 90, 0.55); border-radius: 0.5rem; }
+.danger-row b { font-size: 0.92rem; }
+.danger-row p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.82rem; }
+.danger-row button { flex: none; }
+.danger-confirm { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.6rem; padding: 0.9rem 1rem; border: 1px solid rgba(255, 74, 90, 0.55); border-radius: 0.5rem; background: rgba(255, 74, 90, 0.06); }
+.danger-warning { margin: 0; padding: 0.55rem 0.7rem; border-radius: 0.35rem; background: rgba(255, 196, 0, 0.1); border: 1px solid rgba(255, 196, 0, 0.35); color: #ffd666; font-size: 0.85rem; }
+.danger-confirm label { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.88rem; }
+.danger-confirm code { padding: 0.1rem 0.35rem; border-radius: 0.25rem; background: rgba(255, 255, 255, 0.08); font-family: ui-monospace, Consolas, monospace; color: #fff; }
+.danger-confirm input { padding: 0.5rem 0.6rem; border: 1px solid rgba(214, 218, 226, 0.25); border-radius: 0.35rem; background: #0b0b0e; color: #f1f1f4; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; }
+.danger-confirm input:focus { outline: none; border-color: #ff6b78; }
+@media (max-width: 760px) { .danger-row { flex-direction: column; align-items: flex-start; } }
 .reset-actions { display: flex; gap: 0.6rem; }

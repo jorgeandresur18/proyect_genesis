@@ -122,9 +122,13 @@
   "terminal.abrir": "open {nombre}",
   "terminal.listo": "ready.",
   "guardar.sin_datos": "NO DATA",
-  "opciones.datos": "Data",
   "opciones.borrar_datos": "Delete all data",
-  "opciones.borrar_seguro": "This deletes saved games, everything unlocked (gallery, endings, Boringram, read text) and the options. It cannot be undone.",
-  "opciones.borrar_si": "Yes, delete everything",
-  "opciones.borrar_no": "Cancel"
+  "opciones.borrar_seguro": "This can't be undone. No trash bin, no backup, and GENESIS won't autocomplete anything you lose.",
+  "opciones.borrar_si": "I understand, delete everything",
+  "opciones.borrar_no": "Never mind",
+  "opciones.peligro": "Danger zone",
+  "opciones.borrar_desc": "Saves, gallery, endings, Boringram, read text and options. Everything. As if you'd never played.",
+  "opciones.borrar_escribe": "To confirm, type:",
+  "opciones.borrar_frase": "i accept losing everything, just like my paycheck",
+  "opciones.borrar_nota": "Capital letters are optional. Resignation is not."
 }
