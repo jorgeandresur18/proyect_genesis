@@ -368,12 +368,21 @@
     "cargando": "Cargando…",
     "notificaciones": "Notificaciones",
     "borrar_todo": "Borrar todo",
-    "sin_notificaciones": "Sin notificaciones. Como siempre.",
+    "sin_notificaciones": "Sin notificaciones. Como siempre. No te emociones: en cuanto cierres esto vuelven todas, igual que las deudas.",
     "al_dia": "Ya estás al día",
     "notif_post": "{usuario} publicó algo nuevo",
     "notif_historia": "{usuario} subió una historia",
     "notif_mensaje": "Nuevo mensaje de {usuario}",
-    "abrir": "Abrir"
+    "abrir": "Abrir",
+    "me_gusta_tab": "Me gusta",
+    "likes_privados": "Los me gusta de {usuario} son privados. Como casi todo lo que siente.",
+    "likes_vacios": "Todavía no le diste me gusta a nada. Ni a ti mismo, que ya es decir.",
+    "compartir": "Compartir",
+    "copiar_enlace": "Copiar enlace",
+    "copiado": "¡Enlace copiado!",
+    "mas": "Más…",
+    "instagram_nota": "Instagram no deja publicar desde la web: guardamos la imagen y copiamos el enlace para que la subas tú.",
+    "compartir_texto": "Mira esto en PROYECT GENESIS (18+)"
   },
   "notificaciones": [
     {
@@ -484,5 +493,6 @@
     "No molestar",
     "Modo avión"
   ],
-  "dia": "sábado"
+  "dia": "sábado",
+  "sitio": "https://proyect-genesis.vercel.app/"
 }

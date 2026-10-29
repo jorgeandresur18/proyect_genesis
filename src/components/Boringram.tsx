@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
@@ -269,6 +269,108 @@ function Shade({ b, onClose }: { b: B; onClose: () => void }) {
   );
 }
 
+/** Abre la ventana de compartir de una foto (ver ShareSheet). */
+const ShareContext = createContext<(id: string) => void>(() => {});
+const useShare = () => useContext(ShareContext);
+
+/**
+ * Compartir una foto de verdad: muestra la miniatura que se verá en las redes (public/compartir/<id>.jpg,
+ * con su página <id>.html, ver tools/compartir.mjs) y abre Facebook, WhatsApp o X con el enlace, copia el
+ * enlace, o comparte la imagen (Instagram no deja publicar desde la web: se guarda la imagen y se copia el
+ * enlace).
+ */
+function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void }) {
+  const tx = b.data.textos;
+  const post = b.publicaciones.find((p) => p.id === id);
+  const [note, setNote] = useState('');
+  if (!post) return null;
+  const user = b.perfiles[post.autor]?.usuario ?? post.autor;
+  const url = `${b.data.sitio}compartir/${id}.html`;
+  const text = `${tx.compartir_texto} · ${user}: «${post.texto}»`;
+  const card = assetUrl(`compartir/${id}.jpg`);
+  const open = (href: string) => {
+    playSelect();
+    window.open(href, '_blank', 'noopener,noreferrer');
+  };
+  const copy = async () => {
+    playSelect();
+    try {
+      await navigator.clipboard.writeText(url);
+      setNote(tx.copiado);
+    } catch {
+      setNote(url);
+    }
+  };
+  const instagram = async () => {
+    playSelect();
+    try {
+      const blob = await (await fetch(card)).blob();
+      const file = new File([blob], `${id}.jpg`, { type: 'image/jpeg' });
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], text: `${text} ${url}` });
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${id}.jpg`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      await navigator.clipboard.writeText(url).catch(() => {});
+      setNote(tx.instagram_nota);
+    } catch {
+      // Se canceló o el navegador no deja: no pasa nada.
+    }
+  };
+  const native = async () => {
+    playSelect();
+    await navigator.share?.({ title: 'PROYECT GENESIS', text, url }).catch(() => {});
+  };
+  return (
+    <div className={s.sheetBackdrop} onClick={onClose}>
+      <div className={s.sheet} onClick={(e) => e.stopPropagation()}>
+        <i className={s.sheetHandle} />
+        <b className={s.sheetTitle}>{tx.compartir}</b>
+        <a className={s.preview} href={url} target="_blank" rel="noreferrer">
+          <img src={card} alt="" draggable={false} />
+          <span>
+            <b>{user} en Boringram · PROYECT GENESIS</b>
+            <small>{new URL(b.data.sitio).host}</small>
+          </span>
+        </a>
+        <div className={s.shareRow}>
+          <button onClick={() => open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)}>
+            <span className={s.shareFb}>f</span>Facebook
+          </button>
+          <button onClick={instagram}>
+            <span className={s.shareIg}>◎</span>Instagram
+          </button>
+          <button onClick={() => open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`)}>
+            <span className={s.shareWa}>✆</span>WhatsApp
+          </button>
+          <button
+            onClick={() =>
+              open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`)
+            }
+          >
+            <span className={s.shareX}>𝕏</span>X
+          </button>
+          <button onClick={copy}>
+            <span className={s.shareLink}>🔗</span>
+            {tx.copiar_enlace}
+          </button>
+          {typeof navigator.share === 'function' && (
+            <button onClick={native}>
+              <span className={s.shareLink}>⋯</span>
+              {tx.mas}
+            </button>
+          )}
+        </div>
+        {note && <p className={s.shareNote}>{note}</p>}
+      </div>
+    </div>
+  );
+}
+
 /** Esqueleto mientras «carga»: bloques grises en lugar de la cabecera, la foto y el texto. */
 function Skeleton({ label }: { label: string }) {
   return (
@@ -433,6 +535,7 @@ function App({ b }: { b: B }) {
   const [view, setView] = useState<View>({ kind: 'feed' });
   const scroller = useDragScroll();
   const refresh = usePullToRefresh(scroller, view.kind === 'feed');
+  const [sharing, setSharing] = useState<string | null>(null);
   // Cada vista empieza arriba, como al cambiar de pantalla en el celular.
   useEffect(() => {
     scroller.current?.scrollTo(0, 0);
@@ -479,7 +582,12 @@ function App({ b }: { b: B }) {
         ? 'perfil'
         : 'inicio';
   return (
-    <>
+    <ShareContext.Provider
+      value={(id) => {
+        playSelect();
+        setSharing(id);
+      }}
+    >
       <AppBar />
       <div className={s.content} ref={scroller}>
         {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
@@ -519,6 +627,7 @@ function App({ b }: { b: B }) {
           <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
         )}
       </div>
+      {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
       {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
       <nav className={s.nav}>
         <button className={tab === 'inicio' ? s.navOn : ''} onClick={() => go({ kind: 'feed' })} aria-label={tx.inicio}>
@@ -545,7 +654,7 @@ function App({ b }: { b: B }) {
           <Avatar perfil={b.perfiles[b.data.yo]} small />
         </button>
       </nav>
-    </>
+    </ShareContext.Provider>
   );
 }
 
@@ -592,6 +701,7 @@ function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (i
 
 /** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
 function PostActions({ b, post }: { b: B; post: Publicacion }) {
+  const onShare = useShare();
   const tx = b.data.textos;
   const setLike = useStore((st) => st.setBoringramLike);
   const liked = b.liked(post);
@@ -617,9 +727,17 @@ function PostActions({ b, post }: { b: B; post: Publicacion }) {
         <svg viewBox="0 0 24 24" aria-hidden>
           <path d="M4 5h16v11H8l-4 4z" />
         </svg>
-        <svg viewBox="0 0 24 24" aria-hidden>
-          <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
-        </svg>
+        {post.tipo === 'foto' ? (
+          <button className={s.likeBtn} onClick={() => onShare(post.id)} aria-label={tx.compartir}>
+            <svg viewBox="0 0 24 24" className={s.shareIcon}>
+              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+            </svg>
+          </button>
+        ) : (
+          <svg viewBox="0 0 24 24" aria-hidden>
+            <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+          </svg>
+        )}
       </div>
       <p className={s.likes}>
         {liked ? tx.te_gusta.replace('{n}', String(n - 1)) : tx.me_gusta.replace('{n}', String(n))}
@@ -737,7 +855,9 @@ function Profile({
   onBack?: () => void;
 }) {
   const tx = b.data.textos;
-  const [tab, setTab] = useState<'fotos' | 'pensamientos'>('fotos');
+  const [tab, setTab] = useState<'fotos' | 'pensamientos' | 'me_gusta'>('fotos');
+  const mine = id === b.data.yo;
+  const likedPosts = b.publicaciones.filter((x) => b.liked(x));
   const p = b.perfiles[id];
   const photos = b.publicaciones.filter((x) => x.autor === id && x.tipo === 'foto');
   const thoughts = b.publicaciones.filter((x) => x.autor === id && x.tipo !== 'foto');
@@ -794,7 +914,7 @@ function Profile({
         </div>
       )}
       <div className={s.profileTabs} role="tablist">
-        {(['fotos', 'pensamientos'] as const).map((k) => (
+        {(['fotos', 'pensamientos', 'me_gusta'] as const).map((k) => (
           <button
             key={k}
             role="tab"
@@ -806,14 +926,37 @@ function Profile({
               setTab(k);
             }}
           >
-            {tx[k]}
-            {(k === 'fotos' ? photos : thoughts).some((x) => b.newPosts.has(x.id)) && (
+            {k === 'me_gusta' ? tx.me_gusta_tab : tx[k]}
+            {k !== 'me_gusta' && (k === 'fotos' ? photos : thoughts).some((x) => b.newPosts.has(x.id)) && (
               <NewDot className={s.inlineDot} />
             )}
           </button>
         ))}
       </div>
-      {tab === 'fotos' ? (
+      {tab === 'me_gusta' ? (
+        !mine ? (
+          <p className={s.privateLikes}>
+            <span aria-hidden>🔒</span>
+            {tx.likes_privados.replace('{usuario}', p.usuario)}
+          </p>
+        ) : likedPosts.length === 0 ? (
+          <p className={s.empty}>{tx.likes_vacios}</p>
+        ) : (
+          <div className={s.grid}>
+            {likedPosts.map((x) =>
+              x.tipo === 'foto' ? (
+                <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
+                  <img src={assetUrl(x.imagen!)} alt="" loading="lazy" draggable={false} />
+                </button>
+              ) : (
+                <button key={x.id} className={`${s.gridItem} ${s.gridText}`} onClick={() => onPost(x.id)}>
+                  <span>{x.tipo === 'repost' ? x.repost!.texto : x.texto}</span>
+                </button>
+              ),
+            )}
+          </div>
+        )
+      ) : tab === 'fotos' ? (
         <div className={s.grid}>
           {photos.map((x) => (
             <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>

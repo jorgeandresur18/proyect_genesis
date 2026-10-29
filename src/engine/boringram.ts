@@ -76,6 +76,8 @@ export interface Notificacion {
 }
 export interface BoringramData {
   yo: string;
+  /** Dirección del juego publicado (para compartir). */
+  sitio: string;
   sin_senal: { titulo: string; texto: string };
   perfiles: Record<string, Perfil>;
   publicaciones: Publicacion[];

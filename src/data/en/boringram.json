@@ -214,12 +214,21 @@
     "cargando": "Loading…",
     "notificaciones": "Notifications",
     "borrar_todo": "Clear all",
-    "sin_notificaciones": "No notifications. As usual.",
+    "sin_notificaciones": "No notifications. As usual. Don't get excited: they'll all be back as soon as you close this, just like your debts.",
     "al_dia": "You're all caught up",
     "notif_post": "{usuario} posted something new",
     "notif_historia": "{usuario} posted a story",
     "notif_mensaje": "New message from {usuario}",
-    "abrir": "Open"
+    "abrir": "Open",
+    "me_gusta_tab": "Likes",
+    "likes_privados": "{usuario}'s likes are private. Like almost everything she feels.",
+    "likes_vacios": "You haven't liked anything yet. Not even yourself, which says a lot.",
+    "compartir": "Share",
+    "copiar_enlace": "Copy link",
+    "copiado": "Link copied!",
+    "mas": "More…",
+    "instagram_nota": "Instagram doesn't allow posting from the web: we saved the image and copied the link so you can upload it.",
+    "compartir_texto": "Look at this in PROYECT GENESIS (18+)"
   },
   "notificaciones": [
     {
