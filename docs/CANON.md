@@ -61,6 +61,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 - La relación con Jair es codependiente y asfixiante; los dos obtienen algo de ella y por eso no la rompen. `[CANON]`
 - En el chat de Jair con Nikki hay un solo mensaje destacado, el único que él marcó con estrella: «nunca te vayas de mi vida», que ella le envió hace un año y medio. Jair suele leerlo y mirar su foto de perfil (una foto de fiesta de su Boringram, `public/fotos/nikki_boringram.webp`). Lo hace la noche del bar, cuando ella se va en el taxi. `[CANON]`
 - En el epílogo están separados y Nikki está embarazada de cuatro meses (el bebé es de Jair). No es un castigo moral: es una responsabilidad real que Jair no puede programar ni abandonar. `[CANON]`
+- En su último cumpleaños, Jair le mandó un ramo de rosas rojas («Happy Birthday Nikki»); ella lo subió a Boringram y él le comentó la foto. Jair le da «me gusta» a todas sus fotos. `[CANON]`
 - Trabaja en la heladería Dulce Frío. Uniforme: gorra, camiseta y falda rosa con blanco, delantal blanco con un cono y gafete con su nombre. Antes de ir al bar se cambia (camiseta y pantalón negros) y lleva el uniforme en la mochila. Ojos de dos puntos negros en la escena cómica del bar.
 
 ### Cami

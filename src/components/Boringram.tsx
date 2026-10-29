@@ -1,11 +1,9 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
-import { useT } from '../engine/i18n';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
 import pantallas from '../data/pantallas.json';
-import { Panel } from './Panels';
 import { NewDot } from './CgGallery';
 import s from './Boringram.module.css';
 
@@ -17,20 +15,105 @@ type View =
   | { kind: 'story'; id: string; back: View }
   | { kind: 'chat'; id: string };
 
-/** Extras › Boringram: el celular de Jair. Se llena con lo que pasa en la historia. */
-export function BoringramPanel({ onClose }: { onClose: () => void }) {
-  const t = useT();
+type B = ReturnType<typeof useBoringram>;
+
+/** Al abrir: el logo sobre negro y, un instante, el esqueleto de la app cargando. */
+const BOOT_LOGO_MS = 900;
+const BOOT_SKELETON_MS = 650;
+const CLOSE_MS = 260;
+
+/**
+ * Extras › Boringram: el celular de Jair, a pantalla completa y en vertical. Se llena con lo que pasa
+ * en la historia. Se cierra con «Cerrar» (o Escape).
+ */
+export function BoringramScreen({ onClose }: { onClose: () => void }) {
+  const b = useBoringram();
+  const reduce = useStore((st) => st.settings.reduceEffects);
+  const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
+  const [closing, setClosing] = useState(false);
+
+  useEffect(() => {
+    if (boot === 'app') return;
+    const timer = setTimeout(
+      () => setBoot(boot === 'logo' ? 'skeleton' : 'app'),
+      boot === 'logo' ? BOOT_LOGO_MS : BOOT_SKELETON_MS,
+    );
+    return () => clearTimeout(timer);
+  }, [boot]);
+
+  const close = () => {
+    if (closing) return;
+    playCancel();
+    if (reduce) return onClose();
+    setClosing(true);
+    setTimeout(onClose, CLOSE_MS);
+  };
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
   return (
-    <Panel title={t('extras.boringram')} onClose={onClose}>
-      <div className={s.wrap}>
-        <Phone />
+    <div className={`${s.screen} ${closing ? s.closing : ''}`}>
+      <div className={s.phone}>
+        <StatusBar />
+        {boot === 'logo' ? (
+          <div className={s.splash}>
+            <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
+          </div>
+        ) : boot === 'skeleton' ? (
+          <Skeleton label={b.data.textos.cargando} />
+        ) : (
+          <App b={b} />
+        )}
       </div>
-    </Panel>
+      <button className={s.closeBtn} onClick={close}>
+        {b.data.textos.cerrar}
+      </button>
+    </div>
   );
 }
 
-function Phone() {
-  const b = useBoringram();
+function StatusBar() {
+  const c = pantallas.boringram_historia;
+  return (
+    <div className={s.status}>
+      <span>{c.reloj}</span>
+      <span className={s.notch} />
+      <span className={s.battery}>
+        <i style={{ width: `${c.bateria}%` }} />
+      </span>
+    </div>
+  );
+}
+
+/** Esqueleto mientras «carga»: bloques grises en lugar de la cabecera, la foto y el texto. */
+function Skeleton({ label }: { label: string }) {
+  return (
+    <div className={s.skeleton} aria-label={label}>
+      <div className={s.skBar} />
+      {[0, 1].map((i) => (
+        <div key={i} className={s.skPost}>
+          <div className={s.skHead}>
+            <i className={s.skAvatar} />
+            <i className={s.skLine} style={{ width: '38%' }} />
+          </div>
+          <i className={s.skImage} />
+          <i className={s.skLine} style={{ width: '70%' }} />
+          <i className={s.skLine} style={{ width: '45%' }} />
+        </div>
+      ))}
+      <div className={s.skNav}>
+        <i />
+        <i />
+        <i />
+      </div>
+    </div>
+  );
+}
+
+function App({ b }: { b: B }) {
   const tx = b.data.textos;
   const [view, setView] = useState<View>({ kind: 'feed' });
   const markOpened = useStore((st) => st.markGalleryOpened);
@@ -52,7 +135,8 @@ function Phone() {
 
   if (!b.unlocked) {
     return (
-      <Frame>
+      <>
+        <AppBar />
         <div className={s.noSignal}>
           <span className={s.noSignalIcon} aria-hidden>
             ✕
@@ -60,10 +144,13 @@ function Phone() {
           <b>{b.data.sin_senal.titulo}</b>
           <p>{b.data.sin_senal.texto}</p>
         </div>
-      </Frame>
+      </>
     );
   }
 
+  const onPerfil = (id: string) => {
+    if (b.perfiles[id]) go({ kind: 'perfil', id });
+  };
   const tab =
     view.kind === 'mensajes' || view.kind === 'chat'
       ? 'mensajes'
@@ -71,9 +158,12 @@ function Phone() {
         ? 'perfil'
         : 'inicio';
   return (
-    <Frame>
+    <>
+      <AppBar />
       <div className={s.content}>
-        {view.kind === 'feed' && <Feed b={b} onPerfil={(id) => go({ kind: 'perfil', id })} />}
+        {view.kind === 'feed' && (
+          <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
+        )}
         {view.kind === 'perfil' && (
           <Profile
             b={b}
@@ -83,17 +173,10 @@ function Phone() {
             onBack={view.id === b.data.yo ? undefined : () => back({ kind: 'feed' })}
           />
         )}
-        {view.kind === 'post' && (
-          <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={(id) => go({ kind: 'perfil', id })} />
-        )}
+        {view.kind === 'post' && <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={onPerfil} />}
         {view.kind === 'mensajes' && <Inbox b={b} onChat={(id) => go({ kind: 'chat', id })} />}
         {view.kind === 'chat' && (
-          <ChatView
-            b={b}
-            id={view.id}
-            onBack={() => back({ kind: 'mensajes' })}
-            onPerfil={(id) => go({ kind: 'perfil', id })}
-          />
+          <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
         )}
       </div>
       {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
@@ -122,28 +205,14 @@ function Phone() {
           <Avatar perfil={b.perfiles[b.data.yo]} small />
         </button>
       </nav>
-    </Frame>
+    </>
   );
 }
 
-type B = ReturnType<typeof useBoringram>;
-
-/** Marco del celular: barra de estado y la barra de la app, como en las escenas del juego. */
-function Frame({ children }: { children: ReactNode }) {
-  const c = pantallas.boringram_historia;
+function AppBar() {
   return (
-    <div className={s.phone}>
-      <div className={s.status}>
-        <span>{c.reloj}</span>
-        <span className={s.notch} />
-        <span className={s.battery}>
-          <i style={{ width: `${c.bateria}%` }} />
-        </span>
-      </div>
-      <div className={s.appBar}>
-        <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
-      </div>
-      {children}
+    <div className={s.appBar}>
+      <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
     </div>
   );
 }
@@ -170,28 +239,24 @@ function Avatar({
   );
 }
 
-function PostHead({ b, autor, hace, onPerfil }: { b: B; autor: string; hace: string; onPerfil: (id: string) => void }) {
-  const p = b.perfiles[autor];
+function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (id: string) => void }) {
+  const p = b.perfiles[post.autor];
   return (
-    <button className={s.postHead} onClick={() => onPerfil(autor)}>
-      <Avatar perfil={p} small ring={b.destacadas.some((d) => d.autor === autor && b.newStories.has(d.id))} />
-      <b>{p?.usuario ?? autor}</b>
-      <small>{hace}</small>
+    <button className={s.postHead} onClick={() => onPerfil(post.autor)}>
+      <Avatar perfil={p} small ring={b.destacadas.some((d) => d.autor === post.autor && b.newStories.has(d.id))} />
+      <b>{p?.usuario ?? post.autor}</b>
+      <small>{post.hace}</small>
     </button>
   );
 }
 
-function Post({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (id: string) => void }) {
+/** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
+function PostActions({ b, post }: { b: B; post: Publicacion }) {
   const tx = b.data.textos;
   return (
-    <article className={s.post}>
-      <PostHead b={b} autor={post.autor} hace={post.hace} onPerfil={onPerfil} />
-      <div className={s.postImage}>
-        <img src={assetUrl(post.imagen)} alt="" loading="lazy" draggable={false} />
-        {b.newPosts.has(post.id) && <NewDot className={s.itemDot} />}
-      </div>
+    <>
       <div className={s.postActions} aria-hidden>
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" className={post.te_gusta ? s.liked : ''}>
           <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
         </svg>
         <svg viewBox="0 0 24 24">
@@ -201,20 +266,92 @@ function Post({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (id: s
           <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
         </svg>
       </div>
-      <p className={s.likes}>{tx.me_gusta.replace('{n}', String(post.likes))}</p>
-      <p className={s.caption}>
-        <b>{b.perfiles[post.autor]?.usuario}</b> {post.texto}
+      <p className={s.likes}>
+        {post.te_gusta
+          ? tx.te_gusta.replace('{n}', String(post.likes - 1))
+          : tx.me_gusta.replace('{n}', String(post.likes))}
       </p>
+    </>
+  );
+}
+
+/** En el inicio, los dos primeros comentarios (y «Ver los N comentarios» si hay más); abierta, todos. */
+function Comments({ b, post, all, onMore }: { b: B; post: Publicacion; all?: boolean; onMore?: () => void }) {
+  const tx = b.data.textos;
+  if (post.comentarios.length === 0) return null;
+  const list = all ? post.comentarios : post.comentarios.slice(0, 2);
+  return (
+    <div className={s.comments}>
+      {!all && post.comentarios.length > 2 && (
+        <button className={s.moreComments} onClick={onMore}>
+          {tx.ver_comentarios.replace('{n}', String(post.comentarios.length))}
+        </button>
+      )}
+      {list.map((c, i) => (
+        <p key={i} className={c.usuario === b.data.yo ? s.myComment : ''}>
+          <b>{c.usuario}</b> {c.texto}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function Post({
+  b,
+  post,
+  onPerfil,
+  onPost,
+  full,
+}: {
+  b: B;
+  post: Publicacion;
+  onPerfil: (id: string) => void;
+  onPost?: (id: string) => void;
+  full?: boolean;
+}) {
+  const tx = b.data.textos;
+  const user = b.perfiles[post.autor]?.usuario ?? post.autor;
+  const isNew = b.newPosts.has(post.id);
+  return (
+    <article className={`${s.post} ${post.tipo !== 'foto' ? s.textPost : ''}`}>
+      {post.tipo === 'repost' && <p className={s.repostTag}>⟳ {tx.reposteo.replace('{usuario}', user)}</p>}
+      <PostHead b={b} post={post} onPerfil={onPerfil} />
+      {post.tipo === 'foto' && (
+        <div className={s.postImage}>
+          <img src={assetUrl(post.imagen!)} alt="" loading="lazy" draggable={false} />
+          {isNew && <NewDot className={s.itemDot} />}
+        </div>
+      )}
+      {post.tipo === 'texto' && (
+        <p className={s.thought}>
+          {post.texto}
+          {isNew && <NewDot className={s.inlineDot} />}
+        </p>
+      )}
+      {post.tipo === 'repost' && (
+        <blockquote className={s.quoted}>
+          <b>@{post.repost!.usuario}</b>
+          <span>{post.repost!.texto}</span>
+          {isNew && <NewDot className={s.inlineDot} />}
+        </blockquote>
+      )}
+      <PostActions b={b} post={post} />
+      {post.tipo === 'foto' && (
+        <p className={s.caption}>
+          <b>{user}</b> {post.texto}
+        </p>
+      )}
+      <Comments b={b} post={post} all={full} onMore={() => onPost?.(post.id)} />
     </article>
   );
 }
 
-function Feed({ b, onPerfil }: { b: B; onPerfil: (id: string) => void }) {
+function Feed({ b, onPerfil, onPost }: { b: B; onPerfil: (id: string) => void; onPost: (id: string) => void }) {
   if (b.publicaciones.length === 0) return <p className={s.empty}>{b.data.textos.sin_publicaciones}</p>;
   return (
     <div className={s.feed}>
       {b.publicaciones.map((p) => (
-        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} />
+        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} />
       ))}
     </div>
   );
@@ -234,8 +371,10 @@ function Profile({
   onBack?: () => void;
 }) {
   const tx = b.data.textos;
+  const [tab, setTab] = useState<'fotos' | 'pensamientos'>('fotos');
   const p = b.perfiles[id];
-  const posts = b.publicaciones.filter((x) => x.autor === id);
+  const photos = b.publicaciones.filter((x) => x.autor === id && x.tipo === 'foto');
+  const thoughts = b.publicaciones.filter((x) => x.autor === id && x.tipo !== 'foto');
   const stories = b.destacadas.filter((x) => x.autor === id);
   if (!p) return null;
   return (
@@ -288,14 +427,42 @@ function Profile({
           ))}
         </div>
       )}
-      <div className={s.grid}>
-        {posts.map((x) => (
-          <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
-            <img src={assetUrl(x.imagen)} alt="" loading="lazy" draggable={false} />
-            {b.newPosts.has(x.id) && <NewDot className={s.itemDot} />}
+      <div className={s.profileTabs} role="tablist">
+        {(['fotos', 'pensamientos'] as const).map((k) => (
+          <button
+            key={k}
+            role="tab"
+            aria-selected={tab === k}
+            className={tab === k ? s.profileTabOn : ''}
+            onClick={() => {
+              if (tab === k) return;
+              playSelect();
+              setTab(k);
+            }}
+          >
+            {tx[k]}
+            {(k === 'fotos' ? photos : thoughts).some((x) => b.newPosts.has(x.id)) && (
+              <NewDot className={s.inlineDot} />
+            )}
           </button>
         ))}
       </div>
+      {tab === 'fotos' ? (
+        <div className={s.grid}>
+          {photos.map((x) => (
+            <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
+              <img src={assetUrl(x.imagen!)} alt="" loading="lazy" draggable={false} />
+              {b.newPosts.has(x.id) && <NewDot className={s.itemDot} />}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className={s.feed}>
+          {thoughts.map((x) => (
+            <Post key={x.id} b={b} post={x} onPerfil={() => undefined} onPost={onPost} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -323,7 +490,7 @@ function PostView({
         </button>
         <b>{b.perfiles[post.autor]?.usuario}</b>
       </div>
-      <Post b={b} post={post} onPerfil={onPerfil} />
+      <Post b={b} post={post} onPerfil={onPerfil} full />
     </div>
   );
 }
@@ -408,7 +575,7 @@ function ChatView({
         <button className={s.backBtn} onClick={onBack} aria-label={tx.atras}>
           ‹
         </button>
-        <button className={s.chatTitle} onClick={() => perfil && onPerfil(chat.perfil!)} disabled={!perfil}>
+        <button className={s.chatTitle} onClick={() => chat.perfil && onPerfil(chat.perfil)} disabled={!perfil}>
           <Avatar perfil={perfil} small inicial={chat.nombre} />
           <span>
             <b>{perfil?.usuario ?? chat.nombre}</b>

@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes.",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json.",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -30,57 +30,152 @@
   },
   "publicaciones": [
     {
+      "id": "nikki_vainilla",
+      "autor": "nikki",
+      "tipo": "texto",
+      "texto": "por que el cliente que prueba los 24 sabores siempre termina pidiendo vainilla",
+      "likes": 93,
+      "te_gusta": true,
+      "hace": "hace 1 día",
+      "comentarios": [
+        { "usuario": "kari_ok", "texto": "porque la vainilla no juzga" },
+        { "usuario": "el_flaco_dj", "texto": "yo soy ese cliente y no me arrepiento" }
+      ],
+      "desbloqueo": "cap01_115n7"
+    },
+    {
       "id": "nikki_selfie_trabajo",
       "autor": "nikki",
+      "tipo": "foto",
       "imagen": "fotos/boringram/nikki_selfie_trabajo.webp",
       "texto": "hora 11 del turno. el sabor del dia es cansancio 🍦",
       "likes": 186,
+      "te_gusta": true,
       "hace": "hace 2 días",
+      "comentarios": [
+        { "usuario": "kari_ok", "texto": "esa gorra te queda mejor que a mi la vida" },
+        { "usuario": "mari.sin.prisa", "texto": "sonrisa de atencion al cliente nivel experto" }
+      ],
       "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "jair_aire",
+      "autor": "jair",
+      "tipo": "texto",
+      "texto": "El aire acondicionado de la oficina lleva tres meses «en mantenimiento». Igual que mi sueldo.",
+      "likes": 7,
+      "hace": "hace 3 días",
+      "comentarios": [],
+      "desbloqueo": "cap01_115n2"
+    },
+    {
+      "id": "nikki_repost_3am",
+      "autor": "nikki",
+      "tipo": "repost",
+      "repost": { "usuario": "frases_de_las_3am", "texto": "no te encariñes con alguien que solo te escribe de madrugada" },
+      "likes": 154,
+      "te_gusta": true,
+      "hace": "hace 1 semana",
+      "comentarios": [{ "usuario": "ale.vibes", "texto": "esto es una indirecta?? 👀" }],
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "jair_repost_maquina",
+      "autor": "jair",
+      "tipo": "repost",
+      "repost": { "usuario": "ingenieros_tristes", "texto": "«En mi máquina funciona.» Lo mismo dice mi autoestima." },
+      "likes": 4,
+      "hace": "hace 2 semanas",
+      "comentarios": [],
+      "desbloqueo": "cap01_115n2"
     },
     {
       "id": "nikki_fiesta_amigas",
       "autor": "nikki",
+      "tipo": "foto",
       "imagen": "fotos/boringram/nikki_fiesta_amigas.webp",
       "texto": "las de siempre 🥂 no pregunten por el resto de la noche",
       "likes": 341,
+      "te_gusta": true,
       "hace": "hace 3 semanas",
+      "comentarios": [
+        { "usuario": "mari.sin.prisa", "texto": "la mejor noche del año y las fotos lo prueban" },
+        { "usuario": "ale.vibes", "texto": "las de siempre, los problemas de siempre 😂" }
+      ],
       "desbloqueo": "cap01_115n7"
     },
     {
       "id": "nikki_perfil",
       "autor": "nikki",
+      "tipo": "foto",
       "imagen": "fotos/nikki_boringram.webp",
       "texto": "una noche sin uniforme y sin gafete. casi parezco una persona",
       "likes": 412,
+      "te_gusta": true,
       "hace": "hace 5 semanas",
+      "comentarios": [
+        { "usuario": "el_flaco_dj", "texto": "quien es esa y que hizo con nikki" },
+        { "usuario": "kari_ok", "texto": "reina 🖤" }
+      ],
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "nikki_ocho_anos",
+      "autor": "nikki",
+      "tipo": "texto",
+      "texto": "8 años y todavia no se si tengo un amigo o un problema",
+      "likes": 208,
+      "te_gusta": true,
+      "hace": "hace 2 meses",
+      "comentarios": [{ "usuario": "mari.sin.prisa", "texto": "las dos cosas amiga. siempre son las dos cosas" }],
       "desbloqueo": "cap01_115n7"
     },
     {
       "id": "nikki_rosas",
       "autor": "nikki",
+      "tipo": "foto",
       "imagen": "fotos/boringram/nikki_rosas.webp",
-      "texto": "otro año sobreviviendo 🎂🌹",
+      "texto": "otro año sobreviviendo 🎂🌹 gracias a quien ya sabe",
       "likes": 528,
+      "te_gusta": true,
       "hace": "hace 4 meses",
+      "comentarios": [
+        { "usuario": "jair", "texto": "Feliz cumpleaños, Nikki 🌹" },
+        { "usuario": "kari_ok", "texto": "QUIEN TE MANDO ESO 👀" },
+        { "usuario": "mari.sin.prisa", "texto": "ese ramo cuesta mas que mi renta" }
+      ],
       "desbloqueo": "cap01_115n7"
     },
     {
       "id": "jair_sushi",
       "autor": "jair",
+      "tipo": "foto",
       "imagen": "fotos/boringram/jair_sushi.webp",
       "texto": "Viernes de sushi con la de siempre. Pagamos a medias, como todo.",
       "likes": 24,
       "hace": "hace 7 meses",
+      "comentarios": [{ "usuario": "nikki", "texto": "a medias de lo que comiste tu. yo comi el triple" }],
+      "desbloqueo": "cap01_115n2"
+    },
+    {
+      "id": "jair_primer_sueldo",
+      "autor": "jair",
+      "tipo": "texto",
+      "texto": "Primer sueldo como ingeniero. Ya casi alcanza para la mitad de un departamento. La mitad de abajo.",
+      "likes": 12,
+      "hace": "hace 7 años",
+      "comentarios": [],
       "desbloqueo": "cap01_115n2"
     },
     {
       "id": "jair_graduado",
       "autor": "jair",
+      "tipo": "foto",
       "imagen": "fotos/boringram/jair_graduado.webp",
       "texto": "Ingeniero. Ahora sí, a ganar dinero.",
       "likes": 61,
       "hace": "hace 8 años",
+      "comentarios": [],
       "desbloqueo": "cap01_115n2"
     }
   ],
@@ -147,6 +242,11 @@
     "te_sigue": "Te sigue",
     "siguiendo": "Siguiendo",
     "me_gusta": "Me gusta: {n}",
+    "te_gusta": "Le gusta a jair y a {n} personas más",
+    "ver_comentarios": "Ver los {n} comentarios",
+    "reposteo": "{usuario} reposteó",
+    "fotos": "Fotos",
+    "pensamientos": "Pensamientos",
     "visto": "En visto",
     "visto_chat": "Lo dejaste en visto.",
     "tu": "Tú:",
@@ -154,6 +254,8 @@
     "destacado": "★ Destacado",
     "escribir": "Mensaje…",
     "sin_publicaciones": "Todavía no hay nada que ver aquí.",
-    "atras": "Atrás"
+    "atras": "Atrás",
+    "cerrar": "Cerrar",
+    "cargando": "Cargando…"
   }
 }

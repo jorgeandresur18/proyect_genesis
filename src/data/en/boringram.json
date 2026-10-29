@@ -8,11 +8,49 @@
     "nikki": { "bio": "sweet chill monday to saturday 🍦 the rest is none of your business" }
   },
   "publicaciones": [
-    { "texto": "hour 11 of the shift. flavor of the day is exhaustion 🍦", "hace": "2 days ago" },
-    { "texto": "the usual girls 🥂 dont ask about the rest of the night", "hace": "3 weeks ago" },
-    { "texto": "one night without the uniform or the name tag. i almost look like a person", "hace": "5 weeks ago" },
-    { "texto": "another year survived 🎂🌹", "hace": "4 months ago" },
-    { "texto": "Sushi Friday with the usual. We split it, like everything.", "hace": "7 months ago" },
+    {
+      "texto": "why does the customer who tries all 24 flavors always end up ordering vanilla",
+      "hace": "1 day ago",
+      "comentarios": [{ "texto": "because vanilla doesnt judge" }, { "texto": "im that customer and i regret nothing" }]
+    },
+    {
+      "texto": "hour 11 of the shift. flavor of the day is exhaustion 🍦",
+      "hace": "2 days ago",
+      "comentarios": [{ "texto": "that cap looks better on you than life looks on me" }, { "texto": "expert level customer service smile" }]
+    },
+    { "texto": "The office air conditioning has been «under maintenance» for three months. Same as my paycheck.", "hace": "3 days ago" },
+    {
+      "repost": { "texto": "dont get attached to someone who only texts you after midnight" },
+      "hace": "1 week ago",
+      "comentarios": [{ "texto": "is this about someone?? 👀" }]
+    },
+    { "repost": { "texto": "«It works on my machine.» So does my self-esteem." }, "hace": "2 weeks ago" },
+    {
+      "texto": "the usual girls 🥂 dont ask about the rest of the night",
+      "hace": "3 weeks ago",
+      "comentarios": [{ "texto": "best night of the year and the photos prove it" }, { "texto": "same girls, same problems 😂" }]
+    },
+    {
+      "texto": "one night without the uniform or the name tag. i almost look like a person",
+      "hace": "5 weeks ago",
+      "comentarios": [{ "texto": "who is this and what did she do with nikki" }, { "texto": "queen 🖤" }]
+    },
+    {
+      "texto": "8 years and i still dont know if i have a friend or a problem",
+      "hace": "2 months ago",
+      "comentarios": [{ "texto": "both girl. its always both" }]
+    },
+    {
+      "texto": "another year survived 🎂🌹 thanks to you know who",
+      "hace": "4 months ago",
+      "comentarios": [{ "texto": "Happy birthday, Nikki 🌹" }, { "texto": "WHO SENT YOU THAT 👀" }, { "texto": "that bouquet costs more than my rent" }]
+    },
+    {
+      "texto": "Sushi Friday with the usual. We split it, like everything.",
+      "hace": "7 months ago",
+      "comentarios": [{ "texto": "half of what YOU ate. i ate triple" }]
+    },
+    { "texto": "First paycheck as an engineer. Almost enough for half an apartment. The bottom half.", "hace": "7 years ago" },
     { "texto": "Engineer. Now it's time to make money.", "hace": "8 years ago" }
   ],
   "destacadas": [{ "titulo": "nights out", "texto": "just one", "hace": "3 h ago" }],
@@ -57,6 +95,11 @@
     "te_sigue": "Follows you",
     "siguiendo": "Following",
     "me_gusta": "{n} likes",
+    "te_gusta": "Liked by jair and {n} others",
+    "ver_comentarios": "View all {n} comments",
+    "reposteo": "{usuario} reposted",
+    "fotos": "Photos",
+    "pensamientos": "Thoughts",
     "visto": "Left on read",
     "visto_chat": "You left them on read.",
     "tu": "You:",
@@ -64,6 +107,8 @@
     "destacado": "★ Starred",
     "escribir": "Message…",
     "sin_publicaciones": "Nothing to see here yet.",
-    "atras": "Back"
+    "atras": "Back",
+    "cerrar": "Close",
+    "cargando": "Loading…"
   }
 }

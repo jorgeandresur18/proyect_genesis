@@ -66,7 +66,14 @@ describe('rutas de la historia', () => {
       ...data.chats.flatMap((c: { mensajes: unknown[] }) => c.mensajes),
     ].map((x) => (x as { desbloqueo: string | null }).desbloqueo);
     expect(refs.filter((r) => r && !ids.has(r))).toEqual([]);
-    for (const p of data.publicaciones) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
+    for (const p of data.publicaciones) if (p.imagen) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
+    // La versión en inglés se mezcla por posición: las listas tienen que tener el mismo largo.
+    const en = JSON.parse(readFileSync('src/data/en/boringram.json', 'utf8'));
+    expect(en.publicaciones.length).toBe(data.publicaciones.length);
+    expect(en.chats.length).toBe(data.chats.length);
+    data.publicaciones.forEach((p: { comentarios: unknown[] }, i: number) =>
+      expect(en.publicaciones[i].comentarios?.length ?? p.comentarios.length, `comentarios de ${i}`).toBe(p.comentarios.length),
+    );
   });
 
   it('un final canon no cambia sin cambiar también docs/FINALES.md', () => {

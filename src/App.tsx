@@ -14,7 +14,7 @@ import easterEgg from './data/easter_egg.json';
 import { CgGallery, NewDot } from './components/CgGallery';
 import { useGalleryState } from './engine/gallery';
 import { useBoringram } from './engine/boringram';
-import { BoringramPanel } from './components/Boringram';
+import { BoringramScreen } from './components/Boringram';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -128,7 +128,7 @@ export default function App() {
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'gallery' && <CgGallery onClose={close} />}
-      {overlay === 'boringram' && <BoringramPanel onClose={close} />}
+      {overlay === 'boringram' && <BoringramScreen onClose={close} />}
       {overlay === 'extras' && <ExtrasPanel onClose={close} onOpen={setOverlay} />}
       {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}

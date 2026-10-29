@@ -1,21 +1,62 @@
 /* Boringram en Extras: el celular de Jair, en modo oscuro como en las escenas del juego. */
-.wrap { display: grid; place-items: center; padding: 0.4rem 0 0.8rem; }
+/* A pantalla completa: el celular en vertical, tan alto como la ventana. */
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: radial-gradient(ellipse at 50% 40%, #2a1724 0%, #07060a 70%);
+  animation: screenIn 0.35s ease-out both;
+}
+.closing { animation: screenOut 0.26s ease-in both; pointer-events: none; }
+.closing .phone { animation: phoneOut 0.26s ease-in both; }
+@keyframes screenIn { from { opacity: 0; } }
+@keyframes screenOut { to { opacity: 0; } }
+@keyframes phoneOut { to { transform: translateY(1.5rem) scale(0.96); } }
 .phone {
   --brand: linear-gradient(45deg, #ff8a3d, #ff3d7f 55%, #a64dff);
   position: relative;
-  width: min(22rem, 100%);
-  height: min(40rem, 68vh);
+  height: min(100%, 52rem);
+  aspect-ratio: 9 / 19;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   background: #0d0d10;
-  border: 0.45rem solid #1d1d22;
-  border-radius: 2.4rem;
-  box-shadow: 0 0 0 1px #3a3a42, 0 0 3.5rem rgba(255, 61, 127, 0.25), 0 0 1.2rem rgba(166, 77, 255, 0.18);
+  border: 0.5rem solid #1d1d22;
+  border-radius: 2.8rem;
+  box-shadow: 0 0 0 1px #3a3a42, 0 0 4rem rgba(255, 61, 127, 0.28), 0 0 1.4rem rgba(166, 77, 255, 0.2);
   overflow: hidden;
   font-family: system-ui, 'Segoe UI', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: #f1f1f4;
+  animation: phoneIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
+@keyframes phoneIn { from { opacity: 0; transform: translateY(2rem) scale(0.97); } }
+.closeBtn { position: absolute; top: 1rem; right: 1rem; border-radius: 999px; padding: 0.4rem 1.1rem; }
+@media (max-width: 600px) {
+  .screen { padding: 0; }
+  .phone { height: 100%; width: 100%; aspect-ratio: auto; border: none; border-radius: 0; }
+  .closeBtn { top: 2.35rem; right: 0.7rem; z-index: 1; padding: 0.25rem 0.8rem; font-size: 0.8rem; }
+}
+
+/* Al abrir: el logo sobre negro y después el esqueleto de la app cargando. */
+.splash { flex: 1; display: grid; place-items: center; background: #000; }
+.splash img { width: 52%; height: auto; animation: splashIn 0.6s ease-out both; }
+@keyframes splashIn { from { opacity: 0; transform: scale(0.92); } }
+.skeleton { flex: 1; display: flex; flex-direction: column; gap: 0.9rem; padding: 0.5rem 0.9rem 0; overflow: hidden; }
+.skeleton i { display: block; border-radius: 0.4rem; background: linear-gradient(90deg, #1b1b21 25%, #2a2a33 50%, #1b1b21 75%); background-size: 200% 100%; animation: shimmer 0.9s linear infinite; }
+.skBar { height: 1.4rem; width: 40%; border-radius: 0.4rem; background: #1b1b21; }
+.skPost { display: flex; flex-direction: column; gap: 0.5rem; }
+.skHead { display: flex; align-items: center; gap: 0.6rem; }
+.skHead .skAvatar { width: 2rem; height: 2rem; border-radius: 50%; }
+.skLine { height: 0.7rem; }
+.skImage { aspect-ratio: 4 / 4; }
+.skNav { display: flex; justify-content: space-around; margin-top: auto; padding: 0.6rem 0 0.9rem; }
+.skNav i { width: 1.5rem; height: 1.5rem; border-radius: 0.4rem; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
 .status { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 1.3rem 0.2rem; font-size: 0.75rem; font-weight: 600; }
 .notch { width: 5.2rem; height: 1.15rem; border-radius: 999px; background: #000; }
 .battery { position: relative; width: 1.5rem; height: 0.7rem; border: 1.5px solid #e9e9ee; border-radius: 0.2rem; }
@@ -63,7 +104,8 @@
 /* Perfil. */
 .profile { padding-bottom: 1rem; }
 .profileHead { display: flex; align-items: center; gap: 1.1rem; padding: 0.9rem 1rem 0.5rem; }
-.counts { flex: 1; display: flex; justify-content: space-around; text-align: center; font-size: 0.75rem; color: #c9c9d2; }
+.counts { flex: 1; display: flex; justify-content: space-around; gap: 0.4rem; text-align: center; font-size: 0.7rem; color: #c9c9d2; }
+.counts span { min-width: 0; }
 .counts b { display: block; font-size: 1rem; color: #fff; }
 .bio { padding: 0 1rem; }
 .bio b { font-size: 0.9rem; }
@@ -122,4 +164,31 @@
 @media (prefers-reduced-motion: reduce) {
   .story, .storyProgress i { animation: none; }
   .storyProgress i { width: 100%; }
+}
+
+/* Me gusta de Jair: el corazón en rojo. */
+.postActions svg.liked { fill: #ff3d5a; stroke: #ff3d5a; }
+
+/* Comentarios. */
+.comments { display: flex; flex-direction: column; gap: 0.15rem; margin: 0.3rem 0.8rem 0; font-size: 0.84rem; line-height: 1.35; }
+.comments p { margin: 0; color: #dcdce3; }
+.myComment b { color: #ffb3cf; }
+.moreComments { align-self: flex-start; padding: 0; border: none; background: none; color: #8d8d99; font-size: 0.82rem; }
+
+/* Publicaciones de texto (pensamientos, como en X) y reposts. */
+.textPost { padding-bottom: 0.7rem; }
+.repostTag { margin: 0.55rem 0.8rem -0.3rem; color: #8d8d99; font-size: 0.76rem; font-weight: 600; }
+.thought { position: relative; margin: 0.1rem 0.9rem 0.2rem; font-size: 1rem; line-height: 1.45; }
+.quoted { position: relative; display: flex; flex-direction: column; gap: 0.25rem; margin: 0.1rem 0.8rem 0.2rem; padding: 0.65rem 0.8rem; border: 1px solid #2a2a31; border-radius: 0.8rem; font-size: 0.92rem; line-height: 1.4; }
+.quoted b { color: #c9c9d2; font-size: 0.8rem; }
+.inlineDot { display: inline-block; margin-left: 0.45rem; vertical-align: middle; width: 0.5rem; height: 0.5rem; }
+
+/* Pestañas del perfil: fotos y pensamientos. */
+.profileTabs { display: flex; margin-top: 0.8rem; border-bottom: 1px solid #1f1f25; }
+.profileTabs button { flex: 1; padding: 0.55rem 0; border: none; border-bottom: 2px solid transparent; background: none; color: #8d8d99; font-size: 0.82rem; font-weight: 600; }
+.profileTabs .profileTabOn { color: #fff; border-bottom-color: #fff; }
+.profileTabs + .grid { margin-top: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .screen, .phone, .splash img, .skeleton i, .closing, .closing .phone { animation: none; }
 }

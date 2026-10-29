@@ -19,13 +19,23 @@ export interface Perfil {
   te_sigue?: boolean;
   desbloqueo: string | null;
 }
+export interface Comentario {
+  usuario: string;
+  texto: string;
+}
 export interface Publicacion {
   id: string;
   autor: string;
-  imagen: string;
-  texto: string;
+  /** foto, texto (un pensamiento, como en X) o repost (de otra cuenta). */
+  tipo: 'foto' | 'texto' | 'repost';
+  imagen?: string;
+  texto?: string;
+  repost?: { usuario: string; texto: string };
   likes: number;
+  /** Jair le dio me gusta. */
+  te_gusta?: boolean;
   hace: string;
+  comentarios: Comentario[];
   desbloqueo: string | null;
 }
 export interface Destacada {
