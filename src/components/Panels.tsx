@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
+import { CHAPTER_END, SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
+import { choiceText, lineText, speakerName } from '../engine/storyText';
 import { BAD_END, endingName, endings } from '../engine/story';
 import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
 import conoceMasEs from '../data/conoce_mas.json';
@@ -54,13 +55,14 @@ export function Panel({
 export function HistoryPanel({ onClose }: { onClose: () => void }) {
   const history = useStore((s) => s.game?.history ?? []);
   const t = useT();
+  const lang = useLang();
   return (
     <Panel title={t('historial.titulo')} onClose={onClose}>
       {history.length === 0 && <p className="muted">{t('historial.vacio')}</p>}
       {history.map((h, i) => (
         <p key={i} className={h.choice ? 'history-choice' : ''}>
-          {h.choice ? '› ' : h.speaker ? <strong>{h.speaker}: </strong> : null}
-          {h.text}
+          {h.choice ? '› ' : h.speaker ? <strong>{speakerName(h.speaker, lang)}: </strong> : null}
+          {h.choice ? choiceText(h.sid, h.ci, h.text, lang) : lineText(h.sid, h.text, lang)}
         </p>
       ))}
     </Panel>
@@ -93,7 +95,11 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
               {slot ? (
                 <>
                   <span className="muted">{new Date(slot.date).toLocaleString(lang)}</span>
-                  <span>{slot.preview}</span>
+                  <span>
+                    {slot.finished?.startsWith(CHAPTER_END)
+                      ? t('mapa.fin_capitulo', { n: slot.finished.slice(CHAPTER_END.length) })
+                      : lineText(slot.sceneId, slot.preview, lang).slice(0, 80)}
+                  </span>
                 </>
               ) : (
                 <span className="muted">{t('guardar.vacio')}</span>

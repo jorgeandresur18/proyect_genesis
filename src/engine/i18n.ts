@@ -4,7 +4,7 @@
 // - Los textos de la interfaz están en src/data/i18n/<idioma>.json. Los textos de pantallas y menús que viven en
 //   otros JSON (advertencia, correo, fin de capítulo…) tienen su versión en inglés en src/data/en/, que solo
 //   reemplaza lo que traduce (ver `localized`).
-// - El guion de los capítulos todavía está solo en español.
+// - El guion de los capítulos se traduce aparte, por escena (ver storyText.ts).
 import { useStore } from './store';
 import es from '../data/i18n/es.json';
 import en from '../data/i18n/en.json';

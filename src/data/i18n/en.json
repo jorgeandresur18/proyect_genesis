@@ -5,7 +5,7 @@
   "idioma.auto": "Automatic",
   "idioma.detectado": "Language: {idioma} · detected from your browser ({codigo})",
   "idioma.elegido": "Language: {idioma}",
-  "idioma.historia_es": "The story is in Spanish for now. The English translation is on its way.",
+  "idioma.historia_es": "",
   "titulo.nueva": "New game",
   "titulo.cargar": "Load",
   "titulo.mapa": "Scene map",

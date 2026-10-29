@@ -3,6 +3,7 @@ import pantallasEs from '../data/pantallas.json';
 import pantallasEn from '../data/en/pantallas.json';
 import { localized, useLang } from '../engine/i18n';
 import { assetUrl } from '../engine/assets';
+import { lineText } from '../engine/storyText';
 import s from './CodeScreen.module.css';
 
 /** Textos de las pantallas en el idioma en uso. */
@@ -15,6 +16,8 @@ interface Line {
   text: string;
   /** Decisión del jugador (el correo la usa para saber qué botón se apretó). */
   choice?: boolean;
+  /** Escena de la línea, para mostrarla en el idioma en uso. */
+  sid?: string;
 }
 
 interface Props {
@@ -49,6 +52,7 @@ export function CodeScreen({ id, lines, accion }: Props) {
 
 function GravityIde({ lines }: { lines: Line[] }) {
   const pantallas = usePantallas();
+  const lang = useLang();
   const ide = pantallas.gravity_ide;
   const voices = ide.voces as Record<string, string>;
   const consola = lines.filter((l) => l.speaker !== null && l.speaker in voices).slice(-14);
@@ -87,12 +91,12 @@ function GravityIde({ lines }: { lines: Line[] }) {
               {consola.map((l, i) =>
                 voices[l.speaker!] === 'usuario' ? (
                   <div key={i} className={s.user}>
-                    <span className={s.prompt}>{ide.prompt}</span> {l.text}
+                    <span className={s.prompt}>{ide.prompt}</span> {lineText(l.sid, l.text, lang)}
                   </div>
                 ) : (
                   <div key={i} className={s.genesis}>
                     {'> '}
-                    {l.text.replace(/^>\s*/, '')}
+                    {lineText(l.sid, l.text, lang).replace(/^>\s*/, '')}
                   </div>
                 ),
               )}
@@ -302,6 +306,7 @@ function PhoneHead({ contacto, estado, foto, historia }: { contacto: string; est
 
 function Celular({ lines }: { lines: Line[] }) {
   const pantallas = usePantallas();
+  const lang = useLang();
   const c = pantallas.celular_mensaje;
   const mensajes = lines.filter((l) => l.speaker === c.voz).slice(-6);
   return (
@@ -311,7 +316,7 @@ function Celular({ lines }: { lines: Line[] }) {
         <span className={s.day}>{c.dia}</span>
         {mensajes.map((m, i) => (
           <div key={i} className={s.bubble}>
-            {m.text}
+            {lineText(m.sid, m.text, lang)}
             <small>{c.hora}</small>
           </div>
         ))}

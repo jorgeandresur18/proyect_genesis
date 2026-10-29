@@ -25,6 +25,7 @@ import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engin
 import { playGlitch, playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
+import { choiceText, sceneDialogue } from './engine/storyText';
 
 // Fundido a negro al volver al título.
 const TITLE_FADE_MS = 800;
@@ -479,7 +480,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       {uiHidden && <div className="stage-click stage-unhide" onClick={() => setUiHidden(false)} aria-hidden />}
       {!uiHidden && waitingChoice && textDone && !fading && (
         <DecisionMenu
-          choices={choices}
+          choices={choices.map((c) => ({ ...c, text: choiceText(scene?.scene_id, scene?.choices.indexOf(c), c.text, lang) }))}
           onChoose={(i) => {
             playSelect();
             choose(i);
@@ -490,7 +491,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       {!fading && !uiHidden && !card && (
         <DialogBox
           key={shown.scene_id}
-          dialogue={shown.dialogue}
+          dialogue={sceneDialogue(shown, lang)}
           aiVowels={!reduceEffects && effectsOf(shown).includes('ai_vowels')}
           hasChoices={waitingChoice}
           onAdvance={advanceIfReady}

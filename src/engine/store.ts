@@ -12,6 +12,9 @@ export interface HistoryEntry {
   text: string;
   /** true si la entrada es una decisión del jugador. */
   choice?: boolean;
+  /** Escena de la línea (y posición de la opción elegida), para mostrarla traducida. */
+  sid?: string;
+  ci?: number;
 }
 
 export interface GameState {
@@ -128,7 +131,7 @@ export const useStore = create<Store>()(
           patch.snapshots = { ...get().snapshots, [scene.scene_id]: vars };
         }
         const nextHistory = scene.dialogue
-          ? [...history, { speaker: scene.dialogue.speaker, text: scene.dialogue.text }].slice(-HISTORY_LIMIT)
+          ? [...history, { speaker: scene.dialogue.speaker, text: scene.dialogue.text, sid: scene.scene_id }].slice(-HISTORY_LIMIT)
           : history;
         set({
           ...patch,
@@ -200,11 +203,12 @@ export const useStore = create<Store>()(
           const choice = scene && visibleChoices(scene, game.vars)[index];
           if (!scene || !choice || choice.locked) return;
           markRead(scene.scene_id);
-          const key = `${scene.scene_id}#${scene.choices.indexOf(choice)}`;
+          const ci = scene.choices.indexOf(choice);
+          const key = `${scene.scene_id}#${ci}`;
           if (!get().choicesTaken[key]) set({ choicesTaken: { ...get().choicesTaken, [key]: true } });
           goTo(choice.next, applyChoice(choice, game.vars), [
             ...game.history,
-            { speaker: null, text: choice.text, choice: true },
+            { speaker: null, text: choice.text, choice: true, sid: scene.scene_id, ci },
           ]);
           if (get().mode === 'skip') set({ mode: 'normal' });
         },

@@ -1,5 +1,5 @@
 {
-  "nota": "Color del nombre de cada hablante en la caja de diálogo. «prefijo»: cómo empieza el nombre del hablante en el guion (sin mayúsculas). «mono»: voces de máquina, con letra de computadora.",
+  "nota": "Color del nombre de cada hablante en la caja de diálogo. «prefijo»: cómo empieza el nombre del hablante en el guion (sin mayúsculas; también el nombre en inglés, ver src/data/en/hablantes.json). «mono»: voces de máquina, con letra de computadora.",
   "colores": [
     { "prefijo": "jair", "color": "#f0b54a" },
     { "prefijo": "cami", "color": "#5ea8ff" },
@@ -7,7 +7,9 @@
     { "prefijo": "rikka", "color": "#ef4f5c" },
     { "prefijo": "capitán", "color": "#ff4a3d" },
     { "prefijo": "soldado", "color": "#ff4a3d" },
+    { "prefijo": "masked", "color": "#ff4a3d" },
     { "prefijo": "voz", "color": "#4fe3d6", "mono": true },
+    { "prefijo": "voice", "color": "#4fe3d6", "mono": true },
     { "prefijo": "gravity", "color": "#7ee2a8", "mono": true },
     { "prefijo": "???", "color": "#a3a8b2" }
   ],

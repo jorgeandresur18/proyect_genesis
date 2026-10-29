@@ -13,7 +13,7 @@ interface Props {
   /** Hablantes del historial, del más viejo a la línea actual (para que los personajes se miren). */
   speakers: (string | null)[];
   /** Historial de diálogo (para las pantallas en código: consola de GENESIS, mensajes). */
-  lines: { speaker: string | null; text: string; choice?: boolean }[];
+  lines: { speaker: string | null; text: string; choice?: boolean; sid?: string }[];
   children: ReactNode;
 }
 

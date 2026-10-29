@@ -33,7 +33,7 @@ PROYECT GENESIS empieza como un isekai con dos heroínas que se disputan al prot
 | Capítulo 2 | 🚧 En escritura (borrador; todavía no se puede jugar desde el Capítulo 1) |
 | Capítulos 3 a 7 | 📝 Planificados |
 | Expansiones | 📝 Planificadas: RikkaQuest, Génesis++ y Génesis# |
-| Idiomas | Interfaz en español e inglés; la historia, por ahora, solo en español |
+| Idiomas | Español e inglés (el capítulo 1 está traducido completo) |
 
 La historia completa tendrá siete capítulos, dos finales principales que ocurren en dos líneas temporales distintas, seis finales alternativos y tres expansiones.
 
@@ -85,7 +85,7 @@ src/
   data/
     chapters/   cap01.json, cap02.json…
     i18n/       textos de la interfaz en español e inglés
-    en/         versiones en inglés de pantallas y menús
+    en/         versiones en inglés de pantallas, menús y capítulos (en/chapters/)
 docs/           canon, tono, finales, especificación técnica y libretos
 tools/          scripts de sprites, fondos, guion e imagen para compartir
 tests/          prueba automática de rutas

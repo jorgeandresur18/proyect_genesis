@@ -1,9 +1,10 @@
 // Prueba automática de rutas: `npm run test:routes`. Ver docs/SPEC.md, sección 7.
 import { execSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { config, endings, storyFiles, variables } from '../src/engine/story';
 import { validateStory } from '../src/engine/validate';
+import type { Scene } from '../src/engine/types';
 
 const report = validateStory(storyFiles, variables, endings, config, (ref) => existsSync(`public/${ref}`));
 
@@ -37,6 +38,22 @@ describe('rutas de la historia', () => {
     expect(all).toMatch(/escena inexistente "no_existe"/);
     expect(all).toMatch(/variable sin declarar "inventada"/);
     expect(all).toMatch(/Final inalcanzable: f/);
+  });
+
+  it('cada capítulo traducido al inglés tiene todas sus líneas y opciones', () => {
+    for (const file of readdirSync('src/data/en/chapters')) {
+      const en = JSON.parse(readFileSync(`src/data/en/chapters/${file}`, 'utf8')) as Record<string, { t: string; c?: string[] }>;
+      const es = JSON.parse(readFileSync(`src/data/chapters/${file}`, 'utf8')) as { scenes: Scene[] };
+      const problems: string[] = [];
+      for (const s of es.scenes) {
+        const tr = en[s.scene_id];
+        if (s.dialogue?.text && !tr?.t) problems.push(`${s.scene_id}: falta la línea`);
+        if ((tr?.c?.length ?? 0) !== s.choices.length) problems.push(`${s.scene_id}: opciones ${tr?.c?.length ?? 0}/${s.choices.length}`);
+      }
+      const ids = new Set(es.scenes.map((s) => s.scene_id));
+      for (const id of Object.keys(en)) if (!ids.has(id)) problems.push(`${id}: no existe en ${file}`);
+      expect(problems, file).toEqual([]);
+    }
   });
 
   it('un final canon no cambia sin cambiar también docs/FINALES.md', () => {

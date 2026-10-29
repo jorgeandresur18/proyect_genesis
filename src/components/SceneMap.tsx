@@ -3,6 +3,7 @@ import { useStore } from '../engine/store';
 import { BAD_END, config, endingName, getEnding, scenes, variables } from '../engine/story';
 import { useLang, useT } from '../engine/i18n';
 import { buildFlow, type FlowNode } from '../engine/flow';
+import { choiceText, lineText } from '../engine/storyText';
 import { Panel } from './Panels';
 
 const NODE_W = 190;
@@ -157,9 +158,9 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
       const prefix = e?.tipo === BAD_END ? t('mapa.bad') : t('mapa.fin');
       return reached(n) ? `${prefix}: ${e ? endingName(e, lang) : id}` : '???';
     }
-    if (n.kind === 'decision') return reached(n) ? n.label : '???';
+    if (n.kind === 'decision') return reached(n) ? lineText(n.sceneId, n.label, lang) : '???';
     // Opción: se ve si ya se eligió, o si está tachada en una decisión ya vista.
-    if (reached(n) || (n.locked && snapshots[n.sceneId!])) return n.label;
+    if (reached(n) || (n.locked && snapshots[n.sceneId!])) return choiceText(n.sceneId, n.choiceIndex, n.label, lang);
     return '???';
   };
 
