@@ -149,6 +149,20 @@ export default function App() {
   );
 }
 
+/**
+ * Para probar un capítulo: abrir el juego en /capN (p. ej. /cap2) hace que «Nueva partida» empiece en la
+ * primera escena de ese capítulo; ?escena=<scene_id> empieza en una escena cualquiera.
+ */
+function urlStart(): { scene: string; chapter?: number } | null {
+  const escena = new URLSearchParams(window.location.search).get('escena');
+  if (escena) return { scene: escena };
+  const m = window.location.pathname.match(/\/cap0?(\d+)\/?$/i);
+  if (!m) return null;
+  const chapter = Number(m[1]);
+  const first = [...CHAPTER_STARTS].find(([, n]) => n === chapter);
+  return first ? { scene: first[0], chapter } : null;
+}
+
 /** Triángulos de adelantar/retroceder: uno más por cada velocidad (x2 = 2 … x16 = 5). */
 function Triangles({ dir, n }: { dir: 'left' | 'right'; n: number }) {
   return (
@@ -378,6 +392,9 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
         </span>
       </h1>
       {storyNotice && <p className="muted title-notice">{storyNotice}</p>}
+      {urlStart()?.chapter && (
+        <p className="title-notice title-chapter-notice">{t('titulo.empieza_en', { n: urlStart()!.chapter! })}</p>
+      )}
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
         <div className="title-main-actions">
@@ -403,7 +420,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
               pick();
               void enterPlayMode();
               // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
-              newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
+              newGame(urlStart()?.scene);
             }}
           >
             {lastSave < 0 && (

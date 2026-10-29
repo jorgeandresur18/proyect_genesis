@@ -1486,3 +1486,5 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 .jump-icon { font-size: 0.75rem; font-weight: 700; line-height: 1; }
 .toolbar { align-items: center; }
 .menu-popup .bori-ball { margin: 0.2rem auto; }
+
+.title-chapter-notice { color: #ff8ab5; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; letter-spacing: 0.06em; }
