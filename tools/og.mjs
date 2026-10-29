@@ -56,23 +56,22 @@ const background = `
   <!-- Una franja de glitch fina, como en el título. -->
   <rect x="0" y="292" width="${W}" height="2" fill="#bfe9ff" opacity="0.18"/>
   <rect x="140" y="301" width="420" height="1" fill="#ff3c5a" opacity="0.25"/>
-  <text x="${W / 2}" y="432" text-anchor="middle" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="21" letter-spacing="7" fill="#d9dde4">NOVELA VISUAL · DEMO DEL CAPÍTULO 1</text>
-  <!-- Advertencia de contenido: franja inferior con el sello 18+. -->
-  <rect x="0" y="468" width="${W}" height="${H - 468}" fill="#000" opacity="0.72"/>
-  <rect x="0" y="468" width="${W}" height="1" fill="url(#rule)"/>
-  <rect x="60" y="497" width="104" height="104" rx="12" fill="url(#badge)"/>
-  <text x="112" y="566" text-anchor="middle" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="700" fill="#0a0a0c">18+</text>
-  <text x="196" y="518" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="5" fill="#f2f4f7">ADVERTENCIA · SOLO PARA MAYORES DE 18 AÑOS</text>
-  <text x="196" y="552" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#c9ced6">Este videojuego toca temas referentes a manipulación emocional, alcoholismo,</text>
-  <text x="196" y="578" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#c9ced6">sexualidad sugerida, angustia psicológica, violencia fantástica y lenguaje vulgar.</text>
-  <text x="196" y="604" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#8f96a2">Obra de ficción. Ciencia ficción psicológica · comedia negra · meta-horror.</text>
+  <text x="${W / 2}" y="496" text-anchor="middle" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="21" letter-spacing="7" fill="#d9dde4">NOVELA VISUAL · DEMO DEL CAPÍTULO 1</text>
+  <!-- Advertencia de contenido: franja inferior, discreta, con el sello 18+. -->
+  <rect x="0" y="534" width="${W}" height="${H - 534}" fill="#000" opacity="0.72"/>
+  <rect x="0" y="534" width="${W}" height="1" fill="url(#rule)"/>
+  <rect x="200" y="555" width="54" height="54" rx="8" fill="url(#badge)"/>
+  <text x="227" y="590" text-anchor="middle" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="21" font-weight="700" fill="#0a0a0c">18+</text>
+  <text x="272" y="574" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="#f2f4f7">ADVERTENCIA · SOLO PARA MAYORES DE 18 AÑOS</text>
+  <text x="272" y="598" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#b9bfca">Este videojuego toca temas referentes a manipulación emocional, alcoholismo, sexualidad sugerida,</text>
+  <text x="272" y="616" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#b9bfca">angustia psicológica, violencia fantástica y lenguaje vulgar.</text>
 </svg>`;
 
-const logo = await sharp('public/marca/logo.webp').resize({ height: 370 }).png().toBuffer();
+const logo = await sharp('public/marca/logo.webp').resize({ height: 410 }).png().toBuffer();
 const { width: lw } = await sharp(logo).metadata();
 
 await sharp(Buffer.from(background))
-  .composite([{ input: logo, left: Math.round((W - lw) / 2), top: 28 }])
+  .composite([{ input: logo, left: Math.round((W - lw) / 2), top: 34 }])
   .png({ compressionLevel: 9 })
   .toFile('public/og-image.png');
 console.log('public/og-image.png listo');
