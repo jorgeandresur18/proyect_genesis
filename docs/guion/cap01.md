@@ -2267,6 +2267,8 @@
 
 `g6_009` — A medida que se acercan, la Grieta tiembla. Se cierra un poco. Se abre otro poco. Como un ojo que intenta no dormirse.
 
+`g6_009b` **Voz:** Entidad 01 en rango. Paso: respondiendo.
+
 `g6_010` **Voz:** Puente entre dimensiones: inestable. Autocompletado de la dimensión ancestral: 68 %.
 
 `g6_011` **Jair:** ¿Sesenta y ocho por ciento? ¿Del otro lado todavía no está terminado?

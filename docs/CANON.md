@@ -19,7 +19,7 @@ Género y tono por etapas `[CANON]`: el Capítulo 1 es un isekai adulto (humor n
 ## 2. Mundo y reglas
 
 - Ambientación: ciudad sin nombre, español neutro. Sin referencias a Guayaquil ni modismos regionales. `[CANON]`
-- El mundo del juego tiene dimensiones: la **espacial** (de Cami) y la **ancestral** (el reino ancestral de RikkaQuest, de Rikka). `[CANON]` Cómo se cruza entre ellas: `[SUGERIDO]` un portal, la Grieta.
+- El mundo del juego tiene dimensiones: la **espacial** (de Cami) y la **ancestral** (el reino ancestral de RikkaQuest, de Rikka). `[CANON]` Cómo se cruza entre ellas: la **Grieta**, que no se abre sola. La del Capítulo 1 (en el núcleo del Bastión) es la **primera activación de la llave**: Cami está cerca y Jair quiere salir de esa dimensión; ninguno de los dos lo sabe. Por eso la Grieta reacciona cuando se acercan («Entidad 01 en rango. Paso: respondiendo») y se cierra después de que la cruzan. La activación del Capítulo 2 es la segunda. `[CANON]`
 - GRAVITY y GENESIS son nuevos para Jair: los descubre la misma noche del Capítulo 1 (acceso anticipado). `[CANON]` Cómo llega el acceso: `[PENDIENTE]`
 - GRAVITY es el IDE; GENESIS es la IA; Reckt el framework (antes se llamaba NEXUS; el autor lo cambió porque THE NEXUS es el metaverso); Coffee el front; Cobra el back. `[CANON]`
 - Boringram: parodia de Instagram (logo: `public/marca/boringram.webp`). Es la app con la que Jair habla con Nikki y ve sus historias. La noche del bar, Nikki sube una historia en El Último con una cerveza y el texto «una sola»; Jair la ve dentro del juego, junto con sus mensajes de las 2:41. Dulce Frío: la heladería donde trabaja Nikki; en la versión en inglés se llama Sweet Chill. `[CANON]`

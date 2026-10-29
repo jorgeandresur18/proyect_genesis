@@ -26333,6 +26333,34 @@
       "conditions": [],
       "audio": null,
       "ui_effect": null,
+      "next": "cap01_g6_009b"
+    },
+    {
+      "scene_id": "cap01_g6_009b",
+      "chapter": 1,
+      "background": "fondos/nucleo_grieta.webp",
+      "video_fondo": null,
+      "loop_video": false,
+      "characters": [
+        {
+          "id": "jair",
+          "sprite": "sprites/jair/asustado1.webp",
+          "pos": "izquierda"
+        },
+        {
+          "id": "cami",
+          "sprite": "sprites/cami/asombro.webp",
+          "pos": "derecha"
+        }
+      ],
+      "dialogue": {
+        "speaker": "Voz",
+        "text": "Entidad 01 en rango. Paso: respondiendo."
+      },
+      "choices": [],
+      "conditions": [],
+      "audio": null,
+      "ui_effect": null,
       "next": "cap01_g6_010"
     },
     {
