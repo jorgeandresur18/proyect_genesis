@@ -393,7 +393,8 @@
     "historia_sin_comentarios": "{usuario} desactivó los comentarios de sus historias. Por acosadores. Sí, como tú.",
     "responder_a": "Responder a {usuario}…",
     "enviado": "Enviado. Seguro lo deja en visto.",
-    "historias_gustadas": "Historias"
+    "historias_gustadas": "Historias",
+    "borrar": "Borrar"
   },
   "notificaciones": [
     {

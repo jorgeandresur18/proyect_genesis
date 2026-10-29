@@ -121,6 +121,7 @@ interface Store {
   markGalleryOpened: (key: string) => void;
   setBoringramLike: (id: string, liked: boolean) => void;
   addBoringramComment: (id: string, text: string) => void;
+  removeBoringramComment: (id: string, index: number) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -214,6 +215,13 @@ export const useStore = create<Store>()(
         },
 
         setBoringramLike: (id, liked) => set({ boringramLikes: { ...get().boringramLikes, [id]: liked } }),
+        removeBoringramComment: (id, index) =>
+          set({
+            boringramComments: {
+              ...get().boringramComments,
+              [id]: (get().boringramComments[id] ?? []).filter((_, i) => i !== index),
+            },
+          }),
         addBoringramComment: (id, text) =>
           set({ boringramComments: { ...get().boringramComments, [id]: [...(get().boringramComments[id] ?? []), text] } }),
 

@@ -818,15 +818,7 @@ function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onCommen
  * Escribir un comentario: queda guardado debajo de la publicación. Máximo 2 por publicación («no seas
  * acosador»); comentarse a uno mismo se puede, pero la app te dice que das pena.
  */
-function Composer({
-  b,
-  post,
-  inputRef,
-}: {
-  b: B;
-  post: Publicacion;
-  inputRef: React.RefObject<HTMLInputElement>;
-}) {
+function Composer({ b, post, inputRef }: { b: B; post: Publicacion; inputRef: React.RefObject<HTMLInputElement> }) {
   const tx = b.data.textos;
   const toast = useToast();
   const add = useStore((st) => st.addBoringramComment);
@@ -871,6 +863,7 @@ function Composer({
 function Comments({ b, post, all, onMore }: { b: B; post: Publicacion; all?: boolean; onMore?: () => void }) {
   const tx = b.data.textos;
   const comments = b.commentsOf(post);
+  const remove = useStore((st) => st.removeBoringramComment);
   if (comments.length === 0) return null;
   const list = all ? comments : comments.slice(0, 2);
   return (
@@ -880,11 +873,26 @@ function Comments({ b, post, all, onMore }: { b: B; post: Publicacion; all?: boo
           {tx.ver_comentarios.replace('{n}', String(comments.length))}
         </button>
       )}
-      {list.map((c, i) => (
-        <p key={i} className={c.usuario === b.data.yo ? s.myComment : ''}>
-          <b>{c.usuario}</b> {c.texto}
-        </p>
-      ))}
+      {list.map((c, i) => {
+        // Los comentarios del jugador van después de los de la historia: esos se pueden borrar.
+        const mine = i - post.comentarios.length;
+        return (
+          <p key={i} className={c.usuario === b.data.yo ? s.myComment : ''}>
+            <b>{c.usuario}</b> {c.texto}
+            {mine >= 0 && (
+              <button
+                className={s.deleteComment}
+                onClick={() => {
+                  playCancel();
+                  remove(post.id, mine);
+                }}
+              >
+                {tx.borrar}
+              </button>
+            )}
+          </p>
+        );
+      })}
     </div>
   );
 }
@@ -1199,7 +1207,8 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
             timer: window.setTimeout(() => {
               if (!hold.current) return;
               hold.current.long = true;
-              like();
+              if (!liked) playSelect();
+              setLike(`story:${id}`, true);
               setRain((x) => x + 1);
             }, HOLD_MS),
           };
@@ -1221,23 +1230,26 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
         </svg>
       )}
       {rain > 0 && (
-        <div key={`rain-${rain}`} className={s.heartRain} aria-hidden>
-          {Array.from({ length: 26 }, (_, i) => (
+        <div key={`rain-${rain}`} className={s.heartBlast} aria-hidden>
+          {Array.from({ length: 22 }, (_, i) => (
             <svg
               key={i}
               viewBox="0 0 24 24"
               style={
                 {
-                  '--x': `${(((i * 37) % 100) - 50) * 0.1}rem`,
-                  '--s': `${0.7 + ((i * 13) % 10) / 10}`,
-                  '--d': `${(i % 9) * 0.06}s`,
-                  '--r': `${((i * 29) % 60) - 30}deg`,
+                  '--a': `${(i * 360) / 22 + ((i * 47) % 14) - 7}deg`,
+                  '--dist': `${5 + ((i * 31) % 6)}rem`,
+                  '--s': `${0.5 + ((i * 13) % 8) / 10}`,
+                  '--d': `${((i * 7) % 5) * 0.03}s`,
                 } as React.CSSProperties
               }
             >
               <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
             </svg>
           ))}
+          <svg viewBox="0 0 24 24" className={s.bigHeart}>
+            <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+          </svg>
         </div>
       )}
       <span className={s.storyText}>{h.texto}</span>

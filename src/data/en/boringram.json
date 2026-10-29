@@ -238,7 +238,8 @@
     "historia_sin_comentarios": "{usuario} turned off comments on her stories. Because of creeps. Yes, like you.",
     "responder_a": "Reply to {usuario}…",
     "enviado": "Sent. She'll probably leave it on read.",
-    "historias_gustadas": "Stories"
+    "historias_gustadas": "Stories",
+    "borrar": "Delete"
   },
   "notificaciones": [
     {
