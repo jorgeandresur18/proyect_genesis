@@ -17,6 +17,8 @@ export interface Perfil {
   seguidores: number;
   seguidos: number;
   te_sigue?: boolean;
+  /** Desactivó los comentarios de sus historias. */
+  historias_sin_comentarios?: boolean;
   desbloqueo: string | null;
 }
 export interface Comentario {
@@ -162,6 +164,7 @@ export function useBoringram() {
   const visited = useStore((s) => s.snapshots);
   const opened = useStore((s) => s.galleryOpened);
   const likes = useStore((s) => s.boringramLikes);
+  const myComments = useStore((s) => s.boringramComments);
   const open = (x: { desbloqueo: string | null }) => !x.desbloqueo || !!visited[x.desbloqueo];
   const perfiles = Object.fromEntries(Object.entries(data.perfiles).filter(([, p]) => open(p)));
   const publicaciones = data.publicaciones.filter((p) => open(p) && perfiles[p.autor]);
@@ -177,6 +180,12 @@ export function useBoringram() {
     .map((n) => ({ ...n, titulo: n.titulo.replace('{bateria}', String(estado.bateria)) }));
   // Me gusta: lo que el jugador tocó manda; si no tocó nada, lo de la historia (te_gusta).
   const liked = (p: Publicacion) => likes[p.id] ?? !!p.te_gusta;
+  // Comentarios: los de la historia más los que escribió el jugador.
+  const commentsOf = (p: Publicacion) => [
+    ...p.comentarios,
+    ...(myComments[p.id] ?? []).map((texto) => ({ usuario: data.yo, texto })),
+  ];
+  const storyLiked = (id: string) => !!likes[`story:${id}`];
   const likeCount = (p: Publicacion) => p.likes - (p.te_gusta ? 1 : 0) + (liked(p) ? 1 : 0);
   const newPosts = new Set(publicaciones.filter((p) => !opened[postKey(p.id)]).map((p) => p.id));
   const newStories = new Set(destacadas.filter((d) => !opened[storyKey(d.id)]).map((d) => d.id));
@@ -193,6 +202,9 @@ export function useBoringram() {
     estado,
     liked,
     likeCount,
+    commentsOf,
+    myComments,
+    storyLiked,
     newPosts,
     newStories,
     newChats,

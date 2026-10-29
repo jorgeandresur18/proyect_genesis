@@ -25,7 +25,8 @@
       "seguidores": 1284,
       "seguidos": 497,
       "te_sigue": true,
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "historias_sin_comentarios": true
     }
   },
   "publicaciones": [
@@ -383,7 +384,16 @@
     "mas": "Más…",
     "instagram_nota": "Guardamos la imagen y copiamos el enlace. Súbela en Instagram (se abrió en otra pestaña) y pega el enlace en la descripción.",
     "compartir_texto": "Mira esto en PROYECT GENESIS (18+)",
-    "ahorro": "Ahorro de energía"
+    "ahorro": "Ahorro de energía",
+    "agregar_comentario": "Agrega un comentario…",
+    "publicar": "Publicar",
+    "acosador": "Ya comentaste 2 veces aquí. Boringram detectó un patrón: no seas acosador.",
+    "propio_post": "Te comentaste a ti mismo. Boringram te tiene lástima. Das pena.",
+    "propio_historia": "No puedes comentarte a ti mismo. Eso es dar pena.",
+    "historia_sin_comentarios": "{usuario} desactivó los comentarios de sus historias. Por acosadores. Sí, como tú.",
+    "responder_a": "Responder a {usuario}…",
+    "enviado": "Enviado. Seguro lo deja en visto.",
+    "historias_gustadas": "Historias"
   },
   "notificaciones": [
     {

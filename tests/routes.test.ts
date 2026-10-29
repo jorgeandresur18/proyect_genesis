@@ -87,6 +87,8 @@ describe('rutas de la historia', () => {
     // Cada foto tiene su página para compartir (npm run compartir).
     for (const p of base.publicaciones.filter((x: { tipo: string }) => x.tipo === 'foto'))
       expect(existsSync(`public/compartir/${p.id}.html`), `falta public/compartir/${p.id}.html: corre npm run compartir`).toBe(true);
+    for (const h of base.destacadas.filter((x: { imagen: string }) => !x.imagen.startsWith('PLACEHOLDER:')))
+      expect(existsSync(`public/compartir/${h.id}.html`), `falta public/compartir/${h.id}.html: corre npm run compartir`).toBe(true);
     // La versión en inglés se mezcla por posición: las listas tienen que tener el mismo largo.
     const en = JSON.parse(readFileSync('src/data/en/boringram.json', 'utf8'));
     expect(en.publicaciones.length).toBe(base.publicaciones.length);

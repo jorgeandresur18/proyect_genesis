@@ -10,7 +10,6 @@ const W = 1200;
 const H = 630;
 const OUT = 'public/compartir';
 const data = JSON.parse(readFileSync('src/data/boringram.json', 'utf8'));
-const en = JSON.parse(readFileSync('src/data/en/boringram.json', 'utf8'));
 const SITIO = data.sitio;
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -30,7 +29,11 @@ function wrap(text, max) {
 }
 
 mkdirSync(OUT, { recursive: true });
-const fotos = data.publicaciones.map((p, i) => ({ ...p, en: en.publicaciones[i] })).filter((p) => p.tipo === 'foto');
+const fotos = [
+  ...data.publicaciones.filter((p) => p.tipo === 'foto'),
+  // Historias destacadas (las que ya tienen imagen).
+  ...data.destacadas.filter((h) => !h.imagen.startsWith('PLACEHOLDER:')),
+];
 for (const p of fotos) {
   const user = data.perfiles[p.autor]?.usuario ?? p.autor;
   const src = `public/${p.imagen}`;

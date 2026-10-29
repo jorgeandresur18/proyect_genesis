@@ -229,7 +229,16 @@
     "mas": "More…",
     "instagram_nota": "We saved the image and copied the link. Upload it on Instagram (opened in another tab) and paste the link in the caption.",
     "compartir_texto": "Look at this in PROYECT GENESIS (18+)",
-    "ahorro": "Battery saver"
+    "ahorro": "Battery saver",
+    "agregar_comentario": "Add a comment…",
+    "publicar": "Post",
+    "acosador": "You've already commented twice here. Boringram detected a pattern: don't be a creep.",
+    "propio_post": "You commented on your own post. Boringram feels sorry for you. Pathetic.",
+    "propio_historia": "You can't comment on yourself. That's just sad.",
+    "historia_sin_comentarios": "{usuario} turned off comments on her stories. Because of creeps. Yes, like you.",
+    "responder_a": "Reply to {usuario}…",
+    "enviado": "Sent. She'll probably leave it on read.",
+    "historias_gustadas": "Stories"
   },
   "notificaciones": [
     {

@@ -179,8 +179,13 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
           <path d="M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
           <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
         </svg>
-        <span className={`${s.batteryText} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`}>{c.bateria}%</span>
-        <span className={`${s.battery} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`} title={c.ahorro ? b.data.textos.ahorro : undefined}>
+        <span className={`${s.batteryText} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`}>
+          {c.bateria}%
+        </span>
+        <span
+          className={`${s.battery} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`}
+          title={c.ahorro ? b.data.textos.ahorro : undefined}
+        >
           <i style={{ width: `${c.bateria}%` }} />
         </span>
       </span>
@@ -280,12 +285,16 @@ function Shade({ b, onClose }: { b: B; onClose: () => void }) {
 
 /** Imagen de Boringram; mientras falte el arte (PLACEHOLDER:<nombre>), un cuadro gris con su nombre. */
 function Pic({ src, className = '' }: { src: string; className?: string }) {
-  if (isPlaceholder(src)) return <span className={`${s.picPlaceholder} ${className}`}>{src.replace('PLACEHOLDER:', '')}</span>;
+  if (isPlaceholder(src))
+    return <span className={`${s.picPlaceholder} ${className}`}>{src.replace('PLACEHOLDER:', '')}</span>;
   return <img className={className} src={assetUrl(src)} alt="" loading="lazy" draggable={false} />;
 }
 
 /** Abre la ventana de compartir de una foto (ver ShareSheet). */
 const ShareContext = createContext<(id: string) => void>(() => {});
+/** Aviso de la app arriba del celular (p. ej. «no seas acosador»). */
+const ToastContext = createContext<(text: string) => void>(() => {});
+const useToast = () => useContext(ToastContext);
 const useShare = () => useContext(ShareContext);
 
 /**
@@ -296,7 +305,8 @@ const useShare = () => useContext(ShareContext);
  */
 function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void }) {
   const tx = b.data.textos;
-  const post = b.publicaciones.find((p) => p.id === id);
+  const story = b.destacadas.find((x) => x.id === id);
+  const post = b.publicaciones.find((p) => p.id === id) ?? (story && { autor: story.autor, texto: story.texto });
   const [note, setNote] = useState('');
   // La imagen se prepara al abrir: compartir tiene que pedirse en el mismo toque, sin esperar una descarga
   // (si no, el navegador lo bloquea en silencio).
@@ -573,6 +583,13 @@ function App({ b }: { b: B }) {
   const scroller = useDragScroll();
   const refresh = usePullToRefresh(scroller, view.kind === 'feed');
   const [sharing, setSharing] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ key: number; text: string } | null>(null);
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 3200);
+    return () => clearTimeout(timer);
+  }, [toast]);
+  const showToast = (text: string) => setToast({ key: Date.now(), text });
   // Cada vista empieza arriba, como al cambiar de pantalla en el celular.
   useEffect(() => {
     scroller.current?.scrollTo(0, 0);
@@ -625,72 +642,84 @@ function App({ b }: { b: B }) {
         setSharing(id);
       }}
     >
-      <AppBar />
-      <div className={s.content} ref={scroller}>
-        {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
-          <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
-            {refresh.state === 'done' ? (
-              <span className={s.pullDone}>✓ {tx.al_dia}</span>
-            ) : (
-              <img
-                className={refresh.state === 'loading' ? s.pullSpin : ''}
-                style={
-                  refresh.state === 'idle'
-                    ? { transform: `rotate(${refresh.pull * 4}deg)`, opacity: refresh.pull / 60 }
-                    : undefined
-                }
-                src={assetUrl('marca/boringram_icono.webp')}
-                alt=""
-                draggable={false}
-              />
-            )}
+      <ToastContext.Provider value={showToast}>
+        <AppBar />
+        <div className={s.content} ref={scroller}>
+          {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
+            <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
+              {refresh.state === 'done' ? (
+                <span className={s.pullDone}>✓ {tx.al_dia}</span>
+              ) : (
+                <img
+                  className={refresh.state === 'loading' ? s.pullSpin : ''}
+                  style={
+                    refresh.state === 'idle'
+                      ? { transform: `rotate(${refresh.pull * 4}deg)`, opacity: refresh.pull / 60 }
+                      : undefined
+                  }
+                  src={assetUrl('marca/boringram_icono.webp')}
+                  alt=""
+                  draggable={false}
+                />
+              )}
+            </div>
+          )}
+          {view.kind === 'feed' && (
+            <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
+          )}
+          {view.kind === 'perfil' && (
+            <Profile
+              b={b}
+              id={view.id}
+              onPost={(id) => go({ kind: 'post', id, back: view })}
+              onStory={(id) => go({ kind: 'story', id, back: view })}
+              onBack={view.id === b.data.yo ? undefined : () => back({ kind: 'feed' })}
+            />
+          )}
+          {view.kind === 'post' && <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={onPerfil} />}
+          {view.kind === 'mensajes' && <Inbox b={b} onChat={(id) => go({ kind: 'chat', id })} />}
+          {view.kind === 'chat' && (
+            <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
+          )}
+        </div>
+        {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
+        {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
+        <nav className={s.nav}>
+          <button
+            className={tab === 'inicio' ? s.navOn : ''}
+            onClick={() => go({ kind: 'feed' })}
+            aria-label={tx.inicio}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden>
+              <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
+            </svg>
+            {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
+          </button>
+          <button
+            className={tab === 'mensajes' ? s.navOn : ''}
+            onClick={() => go({ kind: 'mensajes' })}
+            aria-label={tx.mensajes}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden>
+              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+            </svg>
+            {b.newChats.size > 0 && <NewDot className={s.navDot} />}
+          </button>
+          <button
+            className={tab === 'perfil' ? s.navOn : ''}
+            onClick={() => go({ kind: 'perfil', id: b.data.yo })}
+            aria-label={tx.perfil}
+          >
+            <Avatar perfil={b.perfiles[b.data.yo]} small />
+          </button>
+        </nav>
+        {toast && (
+          <div key={toast.key} className={s.appToast} role="status">
+            <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+            <span>{toast.text}</span>
           </div>
         )}
-        {view.kind === 'feed' && (
-          <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
-        )}
-        {view.kind === 'perfil' && (
-          <Profile
-            b={b}
-            id={view.id}
-            onPost={(id) => go({ kind: 'post', id, back: view })}
-            onStory={(id) => go({ kind: 'story', id, back: view })}
-            onBack={view.id === b.data.yo ? undefined : () => back({ kind: 'feed' })}
-          />
-        )}
-        {view.kind === 'post' && <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={onPerfil} />}
-        {view.kind === 'mensajes' && <Inbox b={b} onChat={(id) => go({ kind: 'chat', id })} />}
-        {view.kind === 'chat' && (
-          <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
-        )}
-      </div>
-      {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
-      {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
-      <nav className={s.nav}>
-        <button className={tab === 'inicio' ? s.navOn : ''} onClick={() => go({ kind: 'feed' })} aria-label={tx.inicio}>
-          <svg viewBox="0 0 24 24" aria-hidden>
-            <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
-          </svg>
-          {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
-        </button>
-        <button
-          className={tab === 'mensajes' ? s.navOn : ''}
-          onClick={() => go({ kind: 'mensajes' })}
-          aria-label={tx.mensajes}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden>
-            <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
-          </svg>
-          {b.newChats.size > 0 && <NewDot className={s.navDot} />}
-        </button>
-        <button
-          className={tab === 'perfil' ? s.navOn : ''}
-          onClick={() => go({ kind: 'perfil', id: b.data.yo })}
-          aria-label={tx.perfil}
-        >
-          <Avatar perfil={b.perfiles[b.data.yo]} small />
-        </button>
-      </nav>
+      </ToastContext.Provider>
     </ShareContext.Provider>
   );
 }
@@ -737,7 +766,7 @@ function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (i
 }
 
 /** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
-function PostActions({ b, post }: { b: B; post: Publicacion }) {
+function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onComment: () => void }) {
   const onShare = useShare();
   const tx = b.data.textos;
   const setLike = useStore((st) => st.setBoringramLike);
@@ -761,9 +790,11 @@ function PostActions({ b, post }: { b: B; post: Publicacion }) {
             <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
           </svg>
         </button>
-        <svg viewBox="0 0 24 24" aria-hidden>
-          <path d="M4 5h16v11H8l-4 4z" />
-        </svg>
+        <button className={s.likeBtn} onClick={onComment} aria-label={tx.agregar_comentario}>
+          <svg viewBox="0 0 24 24" className={s.shareIcon}>
+            <path d="M4 5h16v11H8l-4 4z" />
+          </svg>
+        </button>
         {post.tipo === 'foto' ? (
           <button className={s.likeBtn} onClick={() => onShare(post.id)} aria-label={tx.compartir}>
             <svg viewBox="0 0 24 24" className={s.shareIcon}>
@@ -783,16 +814,70 @@ function PostActions({ b, post }: { b: B; post: Publicacion }) {
   );
 }
 
+/**
+ * Escribir un comentario: queda guardado debajo de la publicación. Máximo 2 por publicación («no seas
+ * acosador»); comentarse a uno mismo se puede, pero la app te dice que das pena.
+ */
+function Composer({
+  b,
+  post,
+  inputRef,
+}: {
+  b: B;
+  post: Publicacion;
+  inputRef: React.RefObject<HTMLInputElement>;
+}) {
+  const tx = b.data.textos;
+  const toast = useToast();
+  const add = useStore((st) => st.addBoringramComment);
+  const [text, setText] = useState('');
+  const send = () => {
+    const t = text.trim();
+    if (!t) return;
+    if ((b.myComments[post.id]?.length ?? 0) >= 2) {
+      playCancel();
+      toast(tx.acosador);
+      return;
+    }
+    playSelect();
+    add(post.id, t);
+    setText('');
+    if (post.autor === b.data.yo) toast(tx.propio_post);
+  };
+  return (
+    <form
+      className={s.composer}
+      onSubmit={(e) => {
+        e.preventDefault();
+        send();
+      }}
+    >
+      <Avatar perfil={b.perfiles[b.data.yo]} small />
+      <input
+        ref={inputRef}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder={tx.agregar_comentario}
+        maxLength={140}
+      />
+      <button type="submit" disabled={!text.trim()}>
+        {tx.publicar}
+      </button>
+    </form>
+  );
+}
+
 /** En el inicio, los dos primeros comentarios (y «Ver los N comentarios» si hay más); abierta, todos. */
 function Comments({ b, post, all, onMore }: { b: B; post: Publicacion; all?: boolean; onMore?: () => void }) {
   const tx = b.data.textos;
-  if (post.comentarios.length === 0) return null;
-  const list = all ? post.comentarios : post.comentarios.slice(0, 2);
+  const comments = b.commentsOf(post);
+  if (comments.length === 0) return null;
+  const list = all ? comments : comments.slice(0, 2);
   return (
     <div className={s.comments}>
-      {!all && post.comentarios.length > 2 && (
+      {!all && comments.length > 2 && (
         <button className={s.moreComments} onClick={onMore}>
-          {tx.ver_comentarios.replace('{n}', String(post.comentarios.length))}
+          {tx.ver_comentarios.replace('{n}', String(comments.length))}
         </button>
       )}
       {list.map((c, i) => (
@@ -822,6 +907,7 @@ function Post({
   const isNew = b.newPosts.has(post.id);
   const setLike = useStore((st) => st.setBoringramLike);
   const [burst, setBurst] = useState(0);
+  const composer = useRef<HTMLInputElement>(null);
   // Doble toque en la foto: me gusta (nunca lo quita), con el corazón grande.
   const doubleTap = () => {
     if (!b.liked(post)) playSelect();
@@ -856,13 +942,14 @@ function Post({
           {isNew && <NewDot className={s.inlineDot} />}
         </blockquote>
       )}
-      <PostActions b={b} post={post} />
+      <PostActions b={b} post={post} onComment={() => (full ? composer.current?.focus() : onPost?.(post.id))} />
       {post.tipo === 'foto' && (
         <p className={s.caption}>
           <b>{user}</b> {post.texto}
         </p>
       )}
       <Comments b={b} post={post} all={full} onMore={() => onPost?.(post.id)} />
+      {full && <Composer b={b} post={post} inputRef={composer} />}
     </article>
   );
 }
@@ -895,6 +982,7 @@ function Profile({
   const [tab, setTab] = useState<'fotos' | 'pensamientos' | 'me_gusta'>('fotos');
   const mine = id === b.data.yo;
   const likedPosts = b.publicaciones.filter((x) => b.liked(x));
+  const likedStories = b.destacadas.filter((x) => b.storyLiked(x.id));
   const p = b.perfiles[id];
   const photos = b.publicaciones.filter((x) => x.autor === id && x.tipo === 'foto');
   const thoughts = b.publicaciones.filter((x) => x.autor === id && x.tipo !== 'foto');
@@ -976,10 +1064,16 @@ function Profile({
             <span aria-hidden>🔒</span>
             {tx.likes_privados.replace('{usuario}', p.usuario)}
           </p>
-        ) : likedPosts.length === 0 ? (
+        ) : likedPosts.length + likedStories.length === 0 ? (
           <p className={s.empty}>{tx.likes_vacios}</p>
         ) : (
           <div className={s.grid}>
+            {likedStories.map((x) => (
+              <button key={`story-${x.id}`} className={`${s.gridItem} ${s.gridStory}`} onClick={() => onStory(x.id)}>
+                <Pic src={x.imagen} />
+                <span className={s.gridStoryTag}>{tx.historias_gustadas}</span>
+              </button>
+            ))}
             {likedPosts.map((x) =>
               x.tipo === 'foto' ? (
                 <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
@@ -1041,13 +1135,48 @@ function PostView({
   );
 }
 
-/** Historia destacada: ocupa todo el celular, con la barra de progreso arriba. Se cierra con la ×. */
+/** Cuánto hay que mantener presionado el centro de una historia para la lluvia de corazones. */
+const HOLD_MS = 550;
+
+/**
+ * Historia destacada: ocupa todo el celular, con la barra de progreso arriba. Tocar el centro le da me
+ * gusta; mantenerlo presionado, además, suelta una lluvia de corazones. Abajo: responder, me gusta y
+ * compartir. Se cierra con la ×.
+ */
 function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }) {
+  const tx = b.data.textos;
+  const toast = useToast();
+  const onShare = useShare();
   const markOpened = useStore((st) => st.markGalleryOpened);
+  const setLike = useStore((st) => st.setBoringramLike);
   useEffect(() => markOpened(storyKey(id)), [id, markOpened]);
+  const [reply, setReply] = useState('');
+  const [pop, setPop] = useState(0);
+  const [rain, setRain] = useState(0);
+  const hold = useRef<{ timer: number; long: boolean } | null>(null);
   const h = b.destacadas.find((x) => x.id === id);
   if (!h) return null;
   const p = b.perfiles[h.autor];
+  const liked = b.storyLiked(id);
+  const like = () => {
+    if (!liked) playSelect();
+    setLike(`story:${id}`, true);
+    setPop((x) => x + 1);
+  };
+  const send = () => {
+    if (!reply.trim()) return;
+    if (h.autor === b.data.yo) {
+      playCancel();
+      toast(tx.propio_historia);
+    } else if (p?.historias_sin_comentarios) {
+      playCancel();
+      toast(tx.historia_sin_comentarios.replace('{usuario}', p.usuario));
+    } else {
+      playSelect();
+      toast(tx.enviado);
+    }
+    setReply('');
+  };
   return (
     <div className={s.story}>
       <Pic className={s.storyImage} src={h.imagen} />
@@ -1058,11 +1187,98 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
         <Avatar perfil={p} small />
         <b>{p?.usuario}</b>
         <small>{h.hace}</small>
-        <button className={s.storyClose} onClick={onClose} aria-label={b.data.textos.atras}>
+        <button className={s.storyClose} onClick={onClose} aria-label={tx.atras}>
           ×
         </button>
       </div>
+      <div
+        className={s.storyTouch}
+        onPointerDown={() => {
+          hold.current = {
+            long: false,
+            timer: window.setTimeout(() => {
+              if (!hold.current) return;
+              hold.current.long = true;
+              like();
+              setRain((x) => x + 1);
+            }, HOLD_MS),
+          };
+        }}
+        onPointerUp={() => {
+          if (!hold.current) return;
+          clearTimeout(hold.current.timer);
+          if (!hold.current.long) like();
+          hold.current = null;
+        }}
+        onPointerLeave={() => {
+          if (hold.current) clearTimeout(hold.current.timer);
+          hold.current = null;
+        }}
+      />
+      {pop > 0 && (
+        <svg key={`pop-${pop}`} viewBox="0 0 24 24" className={s.burst} aria-hidden>
+          <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+        </svg>
+      )}
+      {rain > 0 && (
+        <div key={`rain-${rain}`} className={s.heartRain} aria-hidden>
+          {Array.from({ length: 26 }, (_, i) => (
+            <svg
+              key={i}
+              viewBox="0 0 24 24"
+              style={
+                {
+                  '--x': `${(((i * 37) % 100) - 50) * 0.1}rem`,
+                  '--s': `${0.7 + ((i * 13) % 10) / 10}`,
+                  '--d': `${(i % 9) * 0.06}s`,
+                  '--r': `${((i * 29) % 60) - 30}deg`,
+                } as React.CSSProperties
+              }
+            >
+              <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+            </svg>
+          ))}
+        </div>
+      )}
       <span className={s.storyText}>{h.texto}</span>
+      <form
+        className={s.storyFoot}
+        onSubmit={(e) => {
+          e.preventDefault();
+          send();
+        }}
+      >
+        <input
+          value={reply}
+          onChange={(e) => setReply(e.target.value)}
+          placeholder={tx.responder_a.replace('{usuario}', p?.usuario ?? '')}
+          maxLength={140}
+        />
+        <button
+          type="button"
+          className={s.storyBtn}
+          aria-pressed={liked}
+          aria-label={tx.me_gusta_tab}
+          onClick={() => {
+            if (liked) {
+              setLike(`story:${id}`, false);
+              return;
+            }
+            like();
+          }}
+        >
+          <svg key={pop} viewBox="0 0 24 24" className={`${liked ? s.liked : ''} ${pop ? s.likePop : ''}`}>
+            <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+          </svg>
+        </button>
+        {!isPlaceholder(h.imagen) && (
+          <button type="button" className={s.storyBtn} aria-label={tx.compartir} onClick={() => onShare(id)}>
+            <svg viewBox="0 0 24 24">
+              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+            </svg>
+          </button>
+        )}
+      </form>
     </div>
   );
 }

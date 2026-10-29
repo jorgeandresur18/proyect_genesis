@@ -99,6 +99,8 @@ interface Store {
   galleryOpened: Record<string, true>;
   /** Me gusta que el jugador dio o quitó en Boringram (id de la publicación -> le gusta). */
   boringramLikes: Record<string, boolean>;
+  /** Comentarios que el jugador escribió en Boringram (id de la publicación -> textos). */
+  boringramComments: Record<string, string[]>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -118,6 +120,7 @@ interface Store {
   markCg: (id: string) => void;
   markGalleryOpened: (key: string) => void;
   setBoringramLike: (id: string, liked: boolean) => void;
+  addBoringramComment: (id: string, text: string) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -190,6 +193,7 @@ export const useStore = create<Store>()(
         cgSeen: {},
         galleryOpened: {},
         boringramLikes: {},
+        boringramComments: {},
         choicesTaken: {},
         mode: 'normal',
         speed: 2,
@@ -210,6 +214,8 @@ export const useStore = create<Store>()(
         },
 
         setBoringramLike: (id, liked) => set({ boringramLikes: { ...get().boringramLikes, [id]: liked } }),
+        addBoringramComment: (id, text) =>
+          set({ boringramComments: { ...get().boringramComments, [id]: [...(get().boringramComments[id] ?? []), text] } }),
 
         markGalleryOpened: (key) => {
           if (!get().galleryOpened[key]) set({ galleryOpened: { ...get().galleryOpened, [key]: true } });
@@ -361,6 +367,7 @@ export const useStore = create<Store>()(
             cgSeen: {},
             galleryOpened: {},
             boringramLikes: {},
+            boringramComments: {},
             choicesTaken: {},
             mode: 'normal',
             error: null,
@@ -388,6 +395,7 @@ export const useStore = create<Store>()(
         cgSeen: s.cgSeen,
         galleryOpened: s.galleryOpened,
         boringramLikes: s.boringramLikes,
+        boringramComments: s.boringramComments,
         choicesTaken: s.choicesTaken,
       }),
     },
