@@ -11,7 +11,8 @@ import { DecisionMenu } from './components/DecisionMenu';
 import { AboutPanel, EndingsGallery, ExtrasPanel, HistoryPanel, OptionsPanel, SaveLoadPanel } from './components/Panels';
 import { EasterEgg, type EggPhase } from './components/EasterEgg';
 import easterEgg from './data/easter_egg.json';
-import { CgGallery } from './components/CgGallery';
+import { CgGallery, NewDot } from './components/CgGallery';
+import { useGalleryState } from './engine/gallery';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -247,6 +248,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const t = useT();
   const storyNotice = t('idioma.historia_es');
   const pick = () => playSelect();
+  const galleryNew = useGalleryState().hasNew;
   const tiles: [Overlay, string, string][] = [
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],
@@ -324,6 +326,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
                 {MENU_ICONS[icon]}
               </svg>
               <span>{t(label)}</span>
+              {o === 'extras' && galleryNew && <NewDot className="new-dot-tile" />}
             </button>
           ))}
         </div>

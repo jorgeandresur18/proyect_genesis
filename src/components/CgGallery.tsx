@@ -1,63 +1,12 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
-import { storyFiles } from '../engine/story';
 import { assetUrl } from '../engine/assets';
 import galeriaEs from '../data/galeria.json';
 import galeriaEn from '../data/en/galeria.json';
-import spriteConfig from '../../tools/sprites.config.json';
 import { localized, useLang, useT } from '../engine/i18n';
+import { CGS, CHARACTERS, TOTAL_SPRITES, characterColor, imageKey, spriteKey, useGalleryState } from '../engine/gallery';
 import { Panel } from './Panels';
 import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
-
-/** Todas las imágenes de la galería: los fondos `fondos/cg_*.webp` del guion, en el orden en que aparecen. */
-const CGS: string[] = (() => {
-  const ids: string[] = [];
-  for (const file of storyFiles) {
-    for (const scene of file.scenes) {
-      const m = scene.background?.match(/^fondos\/(cg_[a-z0-9_]+)\.webp$/);
-      if (m && !ids.includes(m[1])) ids.push(m[1]);
-    }
-  }
-  return ids;
-})();
-
-const ALIAS = Object.fromEntries(
-  Object.entries(spriteConfig.personajes).map(([id, c]) => [id, ('alias' in c ? c.alias : {}) as Record<string, string>]),
-);
-
-interface CharacterSprites {
-  id: string;
-  /** Expresión (archivo real, sin sustitutos repetidos) -> escenas donde aparece. */
-  sprites: { expr: string; scenes: string[] }[];
-}
-
-/**
- * Sprites de la galería: solo los que salen en los capítulos listados en galeria.json («capitulos_sprites»),
- * en el orden de «personajes». Una expresión que hoy es un sustituto de otra (ver tools/sprites.config.json)
- * cuenta como la otra, para no repetir la misma imagen.
- */
-const CHARACTERS: CharacterSprites[] = (() => {
-  const byId = new Map<string, Map<string, string[]>>();
-  for (const file of storyFiles) {
-    if (!galeriaEs.capitulos_sprites.includes(file.chapter)) continue;
-    for (const scene of file.scenes) {
-      for (const c of scene.characters) {
-        const m = c.sprite.match(/^sprites\/([^/]+)\/([^/.]+)\.webp$/);
-        if (!m) continue;
-        const expr = ALIAS[m[1]]?.[m[2]] ?? m[2];
-        const sprites = byId.get(m[1]) ?? new Map<string, string[]>();
-        sprites.set(expr, [...(sprites.get(expr) ?? []), scene.scene_id]);
-        byId.set(m[1], sprites);
-      }
-    }
-  }
-  const order = Object.keys(galeriaEs.personajes);
-  return [...byId.keys()]
-    .sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99))
-    .map((id) => ({ id, sprites: [...byId.get(id)!].map(([expr, scenes]) => ({ expr, scenes })) }));
-})();
-
-const TOTAL_SPRITES = CHARACTERS.reduce((n, c) => n + c.sprites.length, 0);
 
 interface Texts {
   titulos: Record<string, string>;
@@ -67,28 +16,35 @@ interface Texts {
 }
 const useTexts = () => localized(galeriaEs, galeriaEn, useLang()) as unknown as Texts;
 
+/** Bolita que parpadea sobre lo recién desbloqueado (hasta abrirlo en el visor). */
+export function NewDot({ className = '' }: { className?: string }) {
+  const t = useT();
+  return <span className={`new-dot ${className}`} role="img" aria-label={t('galeria.nuevo')} />;
+}
+
 type Tab = 'imagenes' | 'personajes';
 
 /** Galería: imágenes del juego y sprites de los personajes. Lo que no se vio todavía queda bloqueado. */
 export function CgGallery({ onClose }: { onClose: () => void }) {
   const t = useT();
   const [tab, setTab] = useState<Tab>('imagenes');
-  const cgSeen = useStore((s) => s.cgSeen);
-  const visited = useStore((s) => s.snapshots);
-  const cgCount = CGS.filter((id) => cgSeen[id]).length;
-  const spriteCount = CHARACTERS.reduce((n, c) => n + c.sprites.filter((s) => s.scenes.some((id) => visited[id])).length, 0);
+  const g = useGalleryState();
   const pick = (next: Tab) => {
     if (next === tab) return;
     playSelect();
     setTab(next);
   };
   return (
-    <Panel title={t('galeria.titulo', { vistas: cgCount + spriteCount, total: CGS.length + TOTAL_SPRITES })} onClose={onClose} wide>
+    <Panel
+      title={t('galeria.titulo', { vistas: g.images.length + g.spriteCount, total: CGS.length + TOTAL_SPRITES })}
+      onClose={onClose}
+      wide
+    >
       <TermWindow
         className="gallery-term"
         tabs={[
-          { key: 'imagenes', label: t('galeria.imagenes'), extra: `${cgCount}/${CGS.length}` },
-          { key: 'personajes', label: t('galeria.personajes'), extra: `${spriteCount}/${TOTAL_SPRITES}` },
+          { key: 'imagenes', label: t('galeria.imagenes'), extra: `${g.images.length}/${CGS.length}`, dot: g.newImages.size > 0 },
+          { key: 'personajes', label: t('galeria.personajes'), extra: `${g.spriteCount}/${TOTAL_SPRITES}`, dot: g.newSpriteCount > 0 },
         ]}
         active={tab}
         onTab={(k) => pick(k as Tab)}
@@ -99,9 +55,20 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
   );
 }
 
+interface TabSpec {
+  key: string;
+  label: string;
+  extra?: string;
+  /** Color de la pestaña (el del personaje). */
+  color?: string;
+  /** Hay algo nuevo adentro. */
+  dot?: boolean;
+  muted?: boolean;
+}
+
 /**
  * Ventana con pestañas como las de una terminal (ícono, título, ×, «+» y la flecha).
- * `onClose` en una pestaña muestra su ×; el «+» y la flecha son decorativos.
+ * `onClose` muestra la × de la pestaña; el «+» y la flecha son decorativos.
  */
 function TermWindow({
   tabs,
@@ -109,27 +76,32 @@ function TermWindow({
   onTab,
   onClose,
   right,
+  color,
   className = '',
   children,
 }: {
-  tabs: { key: string; label: string; extra?: string }[];
+  tabs: TabSpec[];
   active?: string;
   onTab?: (key: string) => void;
   onClose?: () => void;
   right?: ReactNode;
+  /** Color de la ventana entera (el del personaje). */
+  color?: string;
   className?: string;
   children: ReactNode;
 }) {
   const t = useT();
+  const current = active ?? tabs[0].key;
   return (
-    <section className={`wt-window ${className}`}>
+    <section className={`wt-window ${color ? 'wt-colored' : ''} ${className}`} style={color ? ({ '--wt': color } as CSSProperties) : undefined}>
       <div className="wt-tabs" role="tablist">
         {tabs.map((tab) => (
           <div
             key={tab.key}
             role="tab"
-            aria-selected={tab.key === (active ?? tabs[0].key)}
-            className={`wt-tab ${tab.key === (active ?? tabs[0].key) ? 'active' : ''} ${onTab ? 'clickable' : ''}`}
+            aria-selected={tab.key === current}
+            className={`wt-tab ${tab.key === current ? 'active' : ''} ${onTab ? 'clickable' : ''} ${tab.color ? 'wt-tab-colored' : ''} ${tab.muted ? 'wt-tab-muted' : ''}`}
+            style={tab.color ? ({ '--wt': tab.color } as CSSProperties) : undefined}
             onClick={() => onTab?.(tab.key)}
           >
             <span className="wt-icon" aria-hidden>
@@ -137,6 +109,7 @@ function TermWindow({
             </span>
             <span className="wt-label">{tab.label}</span>
             {tab.extra && <span className="wt-extra">{tab.extra}</span>}
+            {tab.dot && <NewDot className="new-dot-tab" />}
             {onClose && (
               <button
                 className="wt-close"
@@ -165,20 +138,22 @@ function TermWindow({
 }
 
 function Images() {
-  const seen = useStore((s) => s.cgSeen);
   const t = useT();
   const texts = useTexts();
-  const unlocked = CGS.filter((id) => seen[id]);
+  const g = useGalleryState();
+  const unlocked = g.images;
+  const markOpened = useStore((s) => s.markGalleryOpened);
   const [open, setOpen] = useState<number | null>(null);
   return (
     <>
       {CGS.length === 0 && <p className="muted">{t('galeria.vacia')}</p>}
       <div className="gallery-grid">
         {CGS.map((id) =>
-          seen[id] ? (
+          unlocked.includes(id) ? (
             <button key={id} className="gallery-item" onClick={() => setOpen(unlocked.indexOf(id))}>
               <div className="gallery-thumb">
                 <img src={assetUrl(`fondos/${id}.webp`)} alt="" loading="lazy" draggable={false} />
+                {g.newImages.has(id) && <NewDot className="new-dot-item" />}
               </div>
               <span className="gallery-title">{texts.titulos[id] ?? id}</span>
             </button>
@@ -195,6 +170,7 @@ function Images() {
           src={(i) => assetUrl(`fondos/${unlocked[i]}.webp`)}
           label={(i) => texts.titulos[unlocked[i]] ?? unlocked[i]}
           info={(i) => ({ file: `${unlocked[i]}.webp`, text: texts.info_imagenes[unlocked[i]] ?? '' })}
+          onShow={(i) => markOpened(imageKey(unlocked[i]))}
           count={unlocked.length}
           index={open}
           onIndex={setOpen}
@@ -205,54 +181,100 @@ function Images() {
   );
 }
 
-/** Una ventana por personaje. Si todavía no apareció en la historia, su nombre es «???». */
+const ALL = 'todos';
+
+/**
+ * Pestañas por personaje (más «Todos»), cada una con su color. Un personaje que todavía no apareció
+ * en la historia se llama «???».
+ */
 function Characters() {
-  const visited = useStore((s) => s.snapshots);
   const t = useT();
   const texts = useTexts();
+  const g = useGalleryState();
+  const markOpened = useStore((s) => s.markGalleryOpened);
+  const [sel, setSel] = useState(ALL);
   const [open, setOpen] = useState<{ id: string; index: number } | null>(null);
-  const seenOf = (c: CharacterSprites) => c.sprites.filter((s) => s.scenes.some((id) => visited[id]));
+  const seenOf = (id: string) => g.sprites.get(id) ?? [];
+  const known = (id: string) => seenOf(id).length > 0;
   const nameOf = (id: string, expr: string) => texts.sprites[`${id}/${expr}`]?.nombre ?? expr.replace(/_/g, ' ');
+  const label = (id: string) => (known(id) ? (texts.personajes[id] ?? id) : '???');
   const current = open && CHARACTERS.find((c) => c.id === open.id);
-  const currentSeen = current ? seenOf(current) : [];
+  const currentSeen = current ? seenOf(current.id) : [];
+  const shown = sel === ALL ? CHARACTERS : CHARACTERS.filter((c) => c.id === sel);
+  const pick = (key: string) => {
+    if (key === sel) return;
+    playSelect();
+    setSel(key);
+  };
+
+  const grid = (c: (typeof CHARACTERS)[number]) => (
+    <div className="sprite-grid">
+      {c.sprites.map((s) =>
+        seenOf(c.id).includes(s) ? (
+          <button key={s.expr} className="sprite-item" onClick={() => setOpen({ id: c.id, index: seenOf(c.id).indexOf(s) })}>
+            <span className="sprite-cell">
+              <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
+              {g.newSprites.get(c.id)?.includes(s) && <NewDot className="new-dot-item" />}
+            </span>
+            <span className="sprite-name">{nameOf(c.id, s.expr)}</span>
+          </button>
+        ) : (
+          <div key={s.expr} className="sprite-item" aria-hidden>
+            <span className="sprite-cell save-thumb-empty">
+              <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
+                {t('guardar.sin_datos')}
+              </span>
+            </span>
+            <span className="sprite-name muted">???</span>
+          </div>
+        ),
+      )}
+    </div>
+  );
+
   return (
     <>
-      <div className="sprite-windows">
-        {CHARACTERS.map((c) => {
-          const seen = seenOf(c);
-          const known = seen.length > 0;
-          return (
-            <TermWindow
-              key={c.id}
-              className={known ? '' : 'sprite-window-locked'}
-              tabs={[{ key: c.id, label: known ? (texts.personajes[c.id] ?? c.id) : '???' }]}
-              right={`${seen.length}/${c.sprites.length}`}
-            >
-              <div className="sprite-grid">
-                {c.sprites.map((s) =>
-                  seen.includes(s) ? (
-                    <button key={s.expr} className="sprite-item" onClick={() => setOpen({ id: c.id, index: seen.indexOf(s) })}>
-                      <span className="sprite-cell">
-                        <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
-                      </span>
-                      <span className="sprite-name">{nameOf(c.id, s.expr)}</span>
-                    </button>
-                  ) : (
-                    <div key={s.expr} className="sprite-item" aria-hidden>
-                      <span className="sprite-cell save-thumb-empty">
-                        <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
-                          {t('guardar.sin_datos')}
-                        </span>
-                      </span>
-                      <span className="sprite-name muted">???</span>
-                    </div>
-                  ),
-                )}
-              </div>
-            </TermWindow>
-          );
-        })}
-      </div>
+      <TermWindow
+        className="character-tabs"
+        tabs={[
+          { key: ALL, label: t('galeria.todos'), dot: g.newSpriteCount > 0 },
+          ...CHARACTERS.map((c) => ({
+            key: c.id,
+            label: label(c.id),
+            color: known(c.id) ? characterColor(c.id) : undefined,
+            muted: !known(c.id),
+            dot: (g.newSprites.get(c.id)?.length ?? 0) > 0,
+          })),
+        ]}
+        active={sel}
+        onTab={pick}
+        color={sel !== ALL && known(sel) ? characterColor(sel) : undefined}
+      >
+        {sel === ALL ? (
+          <div className="sprite-windows">
+            {shown.map((c) => (
+              <TermWindow
+                key={c.id}
+                className={known(c.id) ? '' : 'sprite-window-locked'}
+                color={known(c.id) ? characterColor(c.id) : undefined}
+                tabs={[{ key: c.id, label: label(c.id), color: known(c.id) ? characterColor(c.id) : undefined, dot: (g.newSprites.get(c.id)?.length ?? 0) > 0 }]}
+                right={`${seenOf(c.id).length}/${c.sprites.length}`}
+              >
+                {grid(c)}
+              </TermWindow>
+            ))}
+          </div>
+        ) : (
+          shown.map((c) => (
+            <div key={c.id}>
+              <p className="sprite-count muted">
+                {seenOf(c.id).length}/{c.sprites.length}
+              </p>
+              {grid(c)}
+            </div>
+          ))
+        )}
+      </TermWindow>
       {current && open && (
         <Viewer
           sprite
@@ -262,6 +284,7 @@ function Characters() {
             file: `${current.id}/${currentSeen[i].expr}.webp`,
             text: texts.sprites[`${current.id}/${currentSeen[i].expr}`]?.info ?? '',
           })}
+          onShow={(i) => markOpened(spriteKey(current.id, currentSeen[i].expr))}
           count={currentSeen.length}
           index={open.index}
           onIndex={(index) => setOpen({ id: current.id, index })}
@@ -277,6 +300,7 @@ function Viewer({
   src,
   label,
   info,
+  onShow,
   count,
   index,
   onIndex,
@@ -286,6 +310,8 @@ function Viewer({
   src: (i: number) => string;
   label: (i: number) => string;
   info: (i: number) => { file: string; text: string };
+  /** Se llama con cada imagen que se muestra (para quitarle la marca de nueva). */
+  onShow: (i: number) => void;
   count: number;
   index: number;
   onIndex: (i: number) => void;
@@ -294,6 +320,8 @@ function Viewer({
 }) {
   const t = useT();
   const [showInfo, setShowInfo] = useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => onShow(index), [index]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();

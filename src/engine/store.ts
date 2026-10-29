@@ -82,6 +82,8 @@ interface Store {
   endingsSeen: Record<string, string>;
   /** Imágenes de la galería ya vistas (id del fondo, p. ej. `cg_beso_nikki`). */
   cgSeen: Record<string, true>;
+  /** Imágenes y sprites ya abiertos en el visor de la galería (lo demás desbloqueado sale como nuevo). */
+  galleryOpened: Record<string, true>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -97,6 +99,7 @@ interface Store {
   setTextDone: (done: boolean) => void;
   /** Marca una imagen de la galería como vista. */
   markCg: (id: string) => void;
+  markGalleryOpened: (key: string) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -153,6 +156,7 @@ export const useStore = create<Store>()(
         snapshots: {},
         endingsSeen: {},
         cgSeen: {},
+        galleryOpened: {},
         choicesTaken: {},
         mode: 'normal',
         error: null,
@@ -169,6 +173,10 @@ export const useStore = create<Store>()(
 
         markCg: (id) => {
           if (!get().cgSeen[id]) set({ cgSeen: { ...get().cgSeen, [id]: true } });
+        },
+
+        markGalleryOpened: (key) => {
+          if (!get().galleryOpened[key]) set({ galleryOpened: { ...get().galleryOpened, [key]: true } });
         },
 
         advance: () => {
@@ -280,6 +288,7 @@ export const useStore = create<Store>()(
         snapshots: s.snapshots,
         endingsSeen: s.endingsSeen,
         cgSeen: s.cgSeen,
+        galleryOpened: s.galleryOpened,
         choicesTaken: s.choicesTaken,
       }),
     },

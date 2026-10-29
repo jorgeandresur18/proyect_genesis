@@ -1212,6 +1212,31 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 .gallery-viewer-sprite img { flex: 1 1 0; min-height: 0; width: 100%; max-height: none; object-fit: contain; }
 .gallery-viewer-info img { transition: transform 0.3s ease; transform: translateX(-18%); }
 .gallery-viewer-bar button.active { border-color: #e9ecf1; background: rgba(233, 236, 241, 0.14); }
+/* Colores por personaje: la pestaña lleva su color y la ventana, un borde y un brillo de ese color. */
+.wt-tabs { overflow-x: auto; scrollbar-width: thin; }
+.wt-tab { flex: none; }
+.wt-tab-colored .wt-icon { background: var(--wt); color: #0c0c0c; }
+.wt-tab-colored.active { box-shadow: inset 0 2px 0 var(--wt); color: var(--wt); }
+.wt-tab-colored:not(.active) .wt-label { color: color-mix(in srgb, var(--wt) 70%, #cfd2d8); }
+.wt-tab-muted .wt-label { color: var(--muted); letter-spacing: 0.25em; }
+.wt-tab-muted .wt-icon { background: #3a3d44; }
+.wt-colored { border-color: color-mix(in srgb, var(--wt) 45%, transparent); box-shadow: 0 0 1.4rem color-mix(in srgb, var(--wt) 12%, transparent); }
+.wt-colored > .wt-tabs { background: color-mix(in srgb, var(--wt) 10%, #1f1f1f); }
+.wt-colored button.sprite-item:hover .sprite-cell { border-color: var(--wt); box-shadow: 0 0 1rem color-mix(in srgb, var(--wt) 35%, transparent); }
+.wt-colored .sprite-cell { background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--wt) 16%, #14151b), #0b0c10 70%); }
+.character-tabs > .wt-body { padding: 0.9rem; }
+.sprite-count { margin: 0 0 0.6rem; font-family: ui-monospace, Consolas, monospace; font-size: 0.8rem; text-align: right; }
+
+/* Nuevo: bolita que parpadea sobre lo recién desbloqueado, hasta abrirlo. */
+.new-dot { position: relative; display: inline-block; flex: none; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #ff4f8b; box-shadow: 0 0 0.5rem #ff4f8b; animation: new-dot 1.1s ease-in-out infinite; }
+.new-dot::after { content: ''; position: absolute; inset: -0.25rem; border-radius: 50%; border: 2px solid #ff4f8b; animation: new-ring 1.1s ease-out infinite; }
+.new-dot-item { position: absolute; top: 0.45rem; right: 0.45rem; z-index: 2; width: 0.75rem; height: 0.75rem; }
+.new-dot-tab { width: 0.5rem; height: 0.5rem; }
+.new-dot-tile { position: absolute; top: 0.45rem; right: 0.45rem; }
+@keyframes new-dot { 50% { opacity: 0.35; transform: scale(0.8); } }
+@keyframes new-ring { from { opacity: 0.9; transform: scale(0.6); } to { opacity: 0; transform: scale(1.7); } }
+@media (prefers-reduced-motion: reduce) { .new-dot, .new-dot::after { animation: none; } }
+
 /* Ficha: una ventana de terminal al lado de la imagen. */
 .info-window { position: absolute; top: 1rem; right: 1rem; width: min(26rem, 42%); max-height: calc(100% - 6rem); display: flex; flex-direction: column; box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.7); animation: term-on 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 .info-window .wt-body { display: flex; flex-direction: column; gap: 0.8rem; overflow-y: auto; }

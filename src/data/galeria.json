@@ -1,5 +1,5 @@
 {
-  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego. «personajes»: sprites de los capítulos de «capitulos_sprites», en este orden; un personaje que todavía no apareció se ve como «???» y cada sprite no visto, como «SIN DATOS». «sprites»: nombre y ficha de cada sprite (personaje/expresión real, sin sustitutos); «info_imagenes»: ficha de cada imagen. Las fichas se abren con «Información» en el visor.",
+  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego. «personajes»: sprites de los capítulos de «capitulos_sprites», en este orden; un personaje que todavía no apareció se ve como «???» y cada sprite no visto, como «SIN DATOS». «sprites»: nombre y ficha de cada sprite (personaje/expresión real, sin sustitutos); «info_imagenes»: ficha de cada imagen. Las fichas se abren con «Información» en el visor. «colores»: color de la ventana de cada personaje (los mismos de la caja de diálogo).",
   "titulos": {
     "cg_jair_carga_cami": "Princesa con licencia para matar",
     "cg_jair_carga_cami_espalda": "Mochila con opiniones",
@@ -233,5 +233,14 @@
       "nombre": "Parche aplicado",
       "info": "La misma sombra, ahora con piedras. Se congela igual, porque nadie le escribió reglas para el invierno."
     }
+  },
+  "colores": {
+    "jair": "#f0b54a",
+    "nikki": "#ff6fa5",
+    "cami": "#5ea8ff",
+    "rikka": "#ef4f5c",
+    "soldado_enmascarado": "#ff7a45",
+    "capitan_enmascarado": "#ff4a3d",
+    "monstruo_sombras": "#a46bff"
   }
 }
