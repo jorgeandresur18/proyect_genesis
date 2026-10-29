@@ -360,3 +360,19 @@
 /* Foto de perfil abierta: ocupa el ancho del celular, en 4:5. */
 .photoView { flex: 1; display: grid; place-items: center; background: #000; }
 .photoView img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* Celular de la historia, igual al Boringram de Extras. */
+.statusSide { flex: 1; display: flex; align-items: center; gap: 0.55cqh; min-width: 0; }
+.statusRight { justify-content: flex-end; }
+.statusIcon { width: 1.5cqh; height: 1.5cqh; flex: none; color: #f1f1f4; }
+.batteryLowText { color: #ff4d4d; }
+.batteryLow { border-color: #ff4d4d; }
+.back { font-size: 3.6cqh; line-height: 1; margin-right: -0.3cqh; color: #f1f1f4; }
+.bubble { border-radius: 2.2cqh; background: #26262d; border: none; }
+.compose { color: #6f6f7b; background: none; border-color: #2a2a31; }
+.starred { background: #26262d; border: 0.15cqh solid rgba(255, 210, 90, 0.6); box-shadow: none; }
+.star { color: #ffd25a; font-weight: 700; }
+.phoneNav { display: flex; justify-content: space-around; align-items: center; padding: 1cqh 0 1.4cqh; border-top: 0.15cqh solid #1f1f25; }
+.phoneNav svg { width: 2.6cqh; height: 2.6cqh; fill: none; stroke: #8d8d99; stroke-width: 1.8; stroke-linejoin: round; }
+.phoneNav .navOn { stroke: #fff; }
+.phoneNav img { width: 2.8cqh; height: 2.8cqh; border-radius: 50%; object-fit: cover; border: 0.2cqh solid #2a2a31; }

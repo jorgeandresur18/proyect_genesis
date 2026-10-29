@@ -259,27 +259,56 @@ function Phone({ reloj, bateria, children, full }: PhoneProps) {
   return (
     <div className={`${s.screen} ${s.night}`}>
       <div className={s.phone}>
+        {/* Igual que el Boringram de Extras: hora y notificaciones; alarma, señal, wifi y batería. */}
         <div className={`${s.statusBar} ${full ? s.statusOver : ''}`}>
-          <span>{reloj}</span>
+          <span className={s.statusSide}>
+            {reloj}
+            <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+              <path d="M4 5h16v11H9l-5 4z" fill="currentColor" />
+            </svg>
+            <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+              <path d="M3 6h18v12H3z M3 7l9 6 9-6" fill="none" stroke="currentColor" strokeWidth="2.2" />
+            </svg>
+          </span>
           <span className={s.notch} />
-          <span className={s.statusIcons}>
-            <i className={s.signal} />
+          <span className={`${s.statusSide} ${s.statusRight}`}>
+            <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+              <circle cx="12" cy="13" r="7" fill="none" stroke="currentColor" strokeWidth="2.2" />
+              <path d="M12 9v4l2.5 2M5 4 2 7M19 4l3 3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            </svg>
+            <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+              <rect x="2" y="15" width="3.6" height="5" rx="0.8" fill="currentColor" />
+              <rect x="7.4" y="11" width="3.6" height="9" rx="0.8" fill="currentColor" />
+              <rect x="12.8" y="7" width="3.6" height="13" rx="0.8" fill="currentColor" />
+              <rect x="18.2" y="3" width="3.6" height="17" rx="0.8" fill="currentColor" opacity="0.35" />
+            </svg>
+            <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+              <path d="M2 9.5a15 15 0 0 1 20 0M5.5 13a10 10 0 0 1 13 0M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+              <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
+            </svg>
+            <span className={bateria <= 15 ? s.batteryLowText : ''}>{bateria}%</span>
             <span className={`${s.battery} ${bateria <= 15 ? s.batteryLow : ''}`}>
               <i style={{ width: `${bateria}%` }} />
             </span>
-            {bateria}%
           </span>
         </div>
         {!full && (
           <div className={s.appBar}>
             <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
-            <span className={s.appIcons} aria-hidden>
-              <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /></svg>
-              <svg viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 2.5 2.5 7z" /></svg>
-            </span>
           </div>
         )}
         {children}
+        {!full && (
+          <div className={s.phoneNav} aria-hidden>
+            <svg viewBox="0 0 24 24">
+              <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
+            </svg>
+            <svg viewBox="0 0 24 24" className={s.navOn}>
+              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+            </svg>
+            <img src={assetUrl(pantallas.boringram.yo)} alt="" draggable={false} />
+          </div>
+        )}
       </div>
     </div>
   );
@@ -289,6 +318,9 @@ function Phone({ reloj, bateria, children, full }: PhoneProps) {
 function PhoneHead({ contacto, estado, foto, historia }: { contacto: string; estado: string; foto?: string; historia?: boolean }) {
   return (
     <div className={s.phoneHead}>
+      <span className={s.back} aria-hidden>
+        ‹
+      </span>
       <span className={`${s.avatarRing} ${historia ? s.avatarStory : ''}`}>
         {foto ? (
           <img className={s.avatar} src={assetUrl(foto)} alt="" draggable={false} />

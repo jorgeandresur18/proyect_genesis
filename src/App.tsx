@@ -207,6 +207,19 @@ function BoringramToast({ onOpen }: { onOpen: () => void }) {
   );
 }
 
+/** Botón redondo de Boringram en la esquina, con la cantidad de cosas nuevas. */
+function BoringramBall({ onOpen, label }: { onOpen: () => void; label: string }) {
+  const b = useBoringram();
+  if (!b.unlocked) return null;
+  const n = b.newPosts.size + b.newStories.size + b.newChats.size;
+  return (
+    <button className="bori-ball" onClick={onOpen} aria-label={n ? `${label} (${n})` : label} title={label}>
+      <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+      {n > 0 && <span className="bori-badge">{n > 9 ? '9+' : n}</span>}
+    </button>
+  );
+}
+
 /** Celular en vertical durante el juego: se pide girarlo (solo se ve con CSS en esa situación). */
 function RotateHint() {
   const t = useT();
@@ -472,6 +485,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (sceneId) preloadFrom(sceneId);
   }, [sceneId]);
   const fading = phase === 'out';
+  const onPhone = /^PANTALLA:(celular|boringram)/.test(shown?.background ?? '');
   // Las imágenes de la galería (fondos cg_*) se desbloquean al verlas.
   const shownBackground = shown?.background;
   useEffect(() => {
@@ -604,7 +618,6 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         {t('juego.saltar')}
       </button>
       <button onClick={() => open('history')}>{t('juego.historial')}</button>
-      <button onClick={() => open('boringram')}>{t('titulo.boringram')}</button>
       <button onClick={() => open('save')}>{t('juego.guardar')}</button>
       <button onClick={() => open('load')}>{t('juego.cargar')}</button>
       <button onClick={() => open('map')}>{t('juego.mapa')}</button>
@@ -624,7 +637,9 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
       lines={game.history}
     >
       {error && <p className="error stage-error">{error}</p>}
-      <BoringramToast onOpen={() => open('boringram')} />
+      {/* En las escenas del celular la historia ya lo muestra: el botón y el aviso esperan. */}
+      {!onPhone && <BoringramToast onOpen={() => open('boringram')} />}
+      {!onPhone && !uiHidden && <BoringramBall onOpen={() => open('boringram')} label={t('titulo.boringram')} />}
       {mode !== 'normal' && (
         <div className="mode-badge" aria-live="polite">
           {mode === 'auto'

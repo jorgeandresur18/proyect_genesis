@@ -144,7 +144,8 @@
   },
   "boringram": {
     "nota": "Marco común del celular: Boringram es la app con la que Jair habla con Nikki y ve sus historias.",
-    "logo": "marca/boringram.webp"
+    "logo": "marca/boringram.webp",
+    "yo": "fotos/boringram/jair_graduado.webp"
   },
   "boringram_historia": {
     "contacto": "nikki",
