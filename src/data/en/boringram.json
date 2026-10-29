@@ -239,7 +239,8 @@
     "responder_a": "Reply to {usuario}…",
     "enviado": "Sent. She'll probably leave it on read.",
     "historias_gustadas": "Stories",
-    "borrar": "Delete"
+    "borrar": "Delete",
+    "enviar": "Send"
   },
   "notificaciones": [
     {

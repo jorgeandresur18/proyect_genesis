@@ -6,6 +6,7 @@ import { playCancel, playSelect } from '../engine/sound';
 import { enterPlayMode, enterPortraitMode, isTouch, releaseOrientation } from '../engine/mobile';
 import pantallas from '../data/pantallas.json';
 import { NewDot } from './CgGallery';
+import { KeyboardField, KeyboardProvider } from './PhoneKeyboard';
 import s from './Boringram.module.css';
 
 type View =
@@ -643,82 +644,84 @@ function App({ b }: { b: B }) {
       }}
     >
       <ToastContext.Provider value={showToast}>
-        <AppBar />
-        <div className={s.content} ref={scroller}>
-          {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
-            <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
-              {refresh.state === 'done' ? (
-                <span className={s.pullDone}>✓ {tx.al_dia}</span>
-              ) : (
-                <img
-                  className={refresh.state === 'loading' ? s.pullSpin : ''}
-                  style={
-                    refresh.state === 'idle'
-                      ? { transform: `rotate(${refresh.pull * 4}deg)`, opacity: refresh.pull / 60 }
-                      : undefined
-                  }
-                  src={assetUrl('marca/boringram_icono.webp')}
-                  alt=""
-                  draggable={false}
-                />
-              )}
+        <KeyboardProvider>
+          <AppBar />
+          <div className={s.content} ref={scroller}>
+            {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
+              <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
+                {refresh.state === 'done' ? (
+                  <span className={s.pullDone}>✓ {tx.al_dia}</span>
+                ) : (
+                  <img
+                    className={refresh.state === 'loading' ? s.pullSpin : ''}
+                    style={
+                      refresh.state === 'idle'
+                        ? { transform: `rotate(${refresh.pull * 4}deg)`, opacity: refresh.pull / 60 }
+                        : undefined
+                    }
+                    src={assetUrl('marca/boringram_icono.webp')}
+                    alt=""
+                    draggable={false}
+                  />
+                )}
+              </div>
+            )}
+            {view.kind === 'feed' && (
+              <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
+            )}
+            {view.kind === 'perfil' && (
+              <Profile
+                b={b}
+                id={view.id}
+                onPost={(id) => go({ kind: 'post', id, back: view })}
+                onStory={(id) => go({ kind: 'story', id, back: view })}
+                onBack={view.id === b.data.yo ? undefined : () => back({ kind: 'feed' })}
+              />
+            )}
+            {view.kind === 'post' && <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={onPerfil} />}
+            {view.kind === 'mensajes' && <Inbox b={b} onChat={(id) => go({ kind: 'chat', id })} />}
+            {view.kind === 'chat' && (
+              <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
+            )}
+          </div>
+          {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
+          {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
+          <nav className={s.nav}>
+            <button
+              className={tab === 'inicio' ? s.navOn : ''}
+              onClick={() => go({ kind: 'feed' })}
+              aria-label={tx.inicio}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden>
+                <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
+              </svg>
+              {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
+            </button>
+            <button
+              className={tab === 'mensajes' ? s.navOn : ''}
+              onClick={() => go({ kind: 'mensajes' })}
+              aria-label={tx.mensajes}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden>
+                <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+              </svg>
+              {b.newChats.size > 0 && <NewDot className={s.navDot} />}
+            </button>
+            <button
+              className={tab === 'perfil' ? s.navOn : ''}
+              onClick={() => go({ kind: 'perfil', id: b.data.yo })}
+              aria-label={tx.perfil}
+            >
+              <Avatar perfil={b.perfiles[b.data.yo]} small />
+            </button>
+          </nav>
+          {toast && (
+            <div key={toast.key} className={s.appToast} role="status">
+              <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+              <span>{toast.text}</span>
             </div>
           )}
-          {view.kind === 'feed' && (
-            <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
-          )}
-          {view.kind === 'perfil' && (
-            <Profile
-              b={b}
-              id={view.id}
-              onPost={(id) => go({ kind: 'post', id, back: view })}
-              onStory={(id) => go({ kind: 'story', id, back: view })}
-              onBack={view.id === b.data.yo ? undefined : () => back({ kind: 'feed' })}
-            />
-          )}
-          {view.kind === 'post' && <PostView b={b} id={view.id} onBack={() => back(view.back)} onPerfil={onPerfil} />}
-          {view.kind === 'mensajes' && <Inbox b={b} onChat={(id) => go({ kind: 'chat', id })} />}
-          {view.kind === 'chat' && (
-            <ChatView b={b} id={view.id} onBack={() => back({ kind: 'mensajes' })} onPerfil={onPerfil} />
-          )}
-        </div>
-        {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
-        {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
-        <nav className={s.nav}>
-          <button
-            className={tab === 'inicio' ? s.navOn : ''}
-            onClick={() => go({ kind: 'feed' })}
-            aria-label={tx.inicio}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden>
-              <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
-            </svg>
-            {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
-          </button>
-          <button
-            className={tab === 'mensajes' ? s.navOn : ''}
-            onClick={() => go({ kind: 'mensajes' })}
-            aria-label={tx.mensajes}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden>
-              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
-            </svg>
-            {b.newChats.size > 0 && <NewDot className={s.navDot} />}
-          </button>
-          <button
-            className={tab === 'perfil' ? s.navOn : ''}
-            onClick={() => go({ kind: 'perfil', id: b.data.yo })}
-            aria-label={tx.perfil}
-          >
-            <Avatar perfil={b.perfiles[b.data.yo]} small />
-          </button>
-        </nav>
-        {toast && (
-          <div key={toast.key} className={s.appToast} role="status">
-            <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
-            <span>{toast.text}</span>
-          </div>
-        )}
+        </KeyboardProvider>
       </ToastContext.Provider>
     </ShareContext.Provider>
   );
@@ -818,44 +821,40 @@ function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onCommen
  * Escribir un comentario: queda guardado debajo de la publicación. Máximo 2 por publicación («no seas
  * acosador»); comentarse a uno mismo se puede, pero la app te dice que das pena.
  */
-function Composer({ b, post, inputRef }: { b: B; post: Publicacion; inputRef: React.RefObject<HTMLInputElement> }) {
+function Composer({
+  b,
+  post,
+  openRef,
+}: {
+  b: B;
+  post: Publicacion;
+  openRef: React.MutableRefObject<(() => void) | null>;
+}) {
   const tx = b.data.textos;
   const toast = useToast();
   const add = useStore((st) => st.addBoringramComment);
-  const [text, setText] = useState('');
-  const send = () => {
-    const t = text.trim();
-    if (!t) return;
-    if ((b.myComments[post.id]?.length ?? 0) >= 2) {
+  const send = (t: string) => {
+    if ((useStore.getState().boringramComments[post.id]?.length ?? 0) >= 2) {
       playCancel();
       toast(tx.acosador);
-      return;
+      return true;
     }
     playSelect();
     add(post.id, t);
-    setText('');
     if (post.autor === b.data.yo) toast(tx.propio_post);
+    return true;
   };
   return (
-    <form
-      className={s.composer}
-      onSubmit={(e) => {
-        e.preventDefault();
-        send();
-      }}
-    >
+    <div className={s.composer}>
       <Avatar perfil={b.perfiles[b.data.yo]} small />
-      <input
-        ref={inputRef}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+      <KeyboardField
+        id={`post:${post.id}`}
         placeholder={tx.agregar_comentario}
-        maxLength={140}
+        submitLabel={tx.publicar}
+        onSubmit={send}
+        openRef={openRef}
       />
-      <button type="submit" disabled={!text.trim()}>
-        {tx.publicar}
-      </button>
-    </form>
+    </div>
   );
 }
 
@@ -915,7 +914,7 @@ function Post({
   const isNew = b.newPosts.has(post.id);
   const setLike = useStore((st) => st.setBoringramLike);
   const [burst, setBurst] = useState(0);
-  const composer = useRef<HTMLInputElement>(null);
+  const composer = useRef<(() => void) | null>(null);
   // Doble toque en la foto: me gusta (nunca lo quita), con el corazón grande.
   const doubleTap = () => {
     if (!b.liked(post)) playSelect();
@@ -950,14 +949,14 @@ function Post({
           {isNew && <NewDot className={s.inlineDot} />}
         </blockquote>
       )}
-      <PostActions b={b} post={post} onComment={() => (full ? composer.current?.focus() : onPost?.(post.id))} />
+      <PostActions b={b} post={post} onComment={() => (full ? composer.current?.() : onPost?.(post.id))} />
       {post.tipo === 'foto' && (
         <p className={s.caption}>
           <b>{user}</b> {post.texto}
         </p>
       )}
       <Comments b={b} post={post} all={full} onMore={() => onPost?.(post.id)} />
-      {full && <Composer b={b} post={post} inputRef={composer} />}
+      {full && <Composer b={b} post={post} openRef={composer} />}
     </article>
   );
 }
@@ -1158,7 +1157,6 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
   const markOpened = useStore((st) => st.markGalleryOpened);
   const setLike = useStore((st) => st.setBoringramLike);
   useEffect(() => markOpened(storyKey(id)), [id, markOpened]);
-  const [reply, setReply] = useState('');
   const [pop, setPop] = useState(0);
   const [rain, setRain] = useState(0);
   const hold = useRef<{ timer: number; long: boolean } | null>(null);
@@ -1172,7 +1170,6 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
     setPop((x) => x + 1);
   };
   const send = () => {
-    if (!reply.trim()) return;
     if (h.autor === b.data.yo) {
       playCancel();
       toast(tx.propio_historia);
@@ -1183,7 +1180,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
       playSelect();
       toast(tx.enviado);
     }
-    setReply('');
+    return true;
   };
   return (
     <div className={s.story}>
@@ -1253,18 +1250,13 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
         </div>
       )}
       <span className={s.storyText}>{h.texto}</span>
-      <form
-        className={s.storyFoot}
-        onSubmit={(e) => {
-          e.preventDefault();
-          send();
-        }}
-      >
-        <input
-          value={reply}
-          onChange={(e) => setReply(e.target.value)}
+      <div className={s.storyFoot}>
+        <KeyboardField
+          id={`story:${id}`}
+          className={s.storyField}
           placeholder={tx.responder_a.replace('{usuario}', p?.usuario ?? '')}
-          maxLength={140}
+          submitLabel={tx.enviar}
+          onSubmit={send}
         />
         <button
           type="button"
@@ -1290,7 +1282,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
             </svg>
           </button>
         )}
-      </form>
+      </div>
     </div>
   );
 }

@@ -332,10 +332,6 @@
 
 /* Escribir un comentario. */
 .composer { display: flex; align-items: center; gap: 0.5rem; margin: 0.6rem 0.8rem 0; padding-top: 0.6rem; border-top: 1px solid #1f1f25; }
-.composer input { flex: 1; min-width: 0; padding: 0.45rem 0.7rem; border: 1px solid #2a2a31; border-radius: 999px; background: #121216; color: #f1f1f4; font-size: 0.82rem; }
-.composer input:focus { outline: none; border-color: #ff3d7f; }
-.composer button { padding: 0; border: none; background: none; color: #4ea3ff; font-size: 0.82rem; font-weight: 700; }
-.composer button:disabled { color: #3a4b66; }
 /* Aviso de la app, arriba del celular. */
 .appToast { position: absolute; top: 2.4rem; left: 0.6rem; right: 0.6rem; z-index: 9; display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; border-radius: 0.9rem; background: rgba(28, 28, 34, 0.96); border: 1px solid rgba(255, 61, 127, 0.4); box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.6); font-size: 0.8rem; line-height: 1.35; animation: appToast 3.2s ease both; }
 .appToast img { width: 1.5rem; height: 1.5rem; flex: none; }
@@ -377,3 +373,28 @@
 
 .deleteComment { margin-left: 0.4rem; padding: 0; border: none; background: none; color: #8d8d99; font-size: 0.72rem; }
 .deleteComment:hover { color: #ff6b78; }
+
+/* Campo de texto que se escribe con el teclado del celular. */
+.kbField { flex: 1; min-width: 0; display: flex; align-items: center; min-height: 2.1rem; padding: 0.4rem 0.75rem; border: 1px solid #2a2a31; border-radius: 999px; background: #121216; color: #f1f1f4; font-size: 0.82rem; text-align: left; cursor: text; }
+.kbFieldOn { border-color: #ff3d7f; }
+.kbText { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; direction: rtl; text-align: left; unicode-bidi: plaintext; }
+.kbPlaceholder { overflow: hidden; color: #6f6f7b; white-space: nowrap; text-overflow: ellipsis; }
+.kbCaret { flex: none; width: 1.5px; height: 1em; margin-left: 1px; background: #ff3d7f; animation: kbCaret 1s steps(1) infinite; }
+@keyframes kbCaret { 50% { opacity: 0; } }
+.storyField { border-color: rgba(255, 255, 255, 0.55); background: rgba(0, 0, 0, 0.25); color: #fff; }
+.storyField .kbPlaceholder { color: rgba(255, 255, 255, 0.75); }
+/* Teclado del celular. */
+.keyboard { position: absolute; left: 0; right: 0; bottom: 0; z-index: 8; display: flex; flex-direction: column; gap: 0.3rem; padding: 0.35rem 0.25rem 0.8rem; background: #1b1b21; border-top: 1px solid #2a2a31; box-shadow: 0 -0.6rem 1.5rem rgba(0, 0, 0, 0.5); animation: kbIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both; touch-action: none; }
+@keyframes kbIn { from { transform: translateY(100%); } }
+.kbBar { display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; padding: 0 0.3rem 0.25rem; }
+.kbPreview { flex: 1; min-width: 0; display: flex; align-items: center; padding: 0.35rem 0.7rem; border: 1px solid #ff3d7f; border-radius: 999px; background: #121216; font-size: 0.8rem; }
+.kbHide { padding: 0 0.4rem; border: none; background: none; color: #8d8d99; font-size: 1.1rem; }
+.kbSend { padding: 0.25rem 0.9rem; border: none; border-radius: 999px; background: linear-gradient(135deg, #a64dff, #ff3d7f); color: #fff; font-size: 0.78rem; font-weight: 700; }
+.kbSend:disabled { opacity: 0.35; }
+.kbRow { display: flex; justify-content: center; gap: 0.22rem; }
+.kbKey { flex: 1; min-width: 0; height: 2.3rem; padding: 0; border: none; border-radius: 0.4rem; background: #3a3a44; color: #f1f1f4; font-size: 0.95rem; box-shadow: 0 1px 0 #0d0d10; }
+.kbKey:active { background: #5a5a66; }
+.kbSmall { height: 1.8rem; font-size: 0.8rem; background: #2c2c34; }
+.kbWide { flex: 1.5; background: #2c2c34; }
+.kbSpace { flex: 5; font-size: 0.75rem; color: #c9c9d2; }
+.kbOn { background: #f1f1f4; color: #0d0d10; }

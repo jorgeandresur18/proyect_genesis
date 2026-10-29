@@ -394,7 +394,8 @@
     "responder_a": "Responder a {usuario}…",
     "enviado": "Enviado. Seguro lo deja en visto.",
     "historias_gustadas": "Historias",
-    "borrar": "Borrar"
+    "borrar": "Borrar",
+    "enviar": "Enviar"
   },
   "notificaciones": [
     {
