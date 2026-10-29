@@ -85,6 +85,7 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
   return (
     <Panel title={t('galeria.titulo', { vistas: cgCount + spriteCount, total: CGS.length + TOTAL_SPRITES })} onClose={onClose} wide>
       <TermWindow
+        className="gallery-term"
         tabs={[
           { key: 'imagenes', label: t('galeria.imagenes'), extra: `${cgCount}/${CGS.length}` },
           { key: 'personajes', label: t('galeria.personajes'), extra: `${spriteCount}/${TOTAL_SPRITES}` },
