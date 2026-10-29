@@ -64,7 +64,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   return (
     <div className={`${s.screen} ${closing ? s.closing : ''}`}>
       <div className={s.phone}>
-        <StatusBar />
+        <StatusBar b={b} />
         {boot === 'logo' ? (
           <div className={s.splash}>
             <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
@@ -88,14 +88,65 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   );
 }
 
-function StatusBar() {
+/**
+ * Barra de estado: a la izquierda la hora y las notificaciones (Boringram si hay publicaciones o historias
+ * nuevas, mensajes si hay chats nuevos y el correo lleno de spam); a la derecha la alarma, la señal, el wifi
+ * y la batería con su porcentaje (la de la historia: 12 %, en rojo).
+ */
+function StatusBar({ b }: { b: B }) {
   const c = pantallas.boringram_historia;
+  const low = c.bateria <= 15;
   return (
     <div className={s.status}>
-      <span>{c.reloj}</span>
+      <span className={s.statusSide}>
+        <span>{c.reloj}</span>
+        {(b.newPosts.size > 0 || b.newStories.size > 0) && (
+          <img className={s.statusApp} src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+        )}
+        {b.newChats.size > 0 && (
+          <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+            <path d="M4 5h16v11H9l-5 4z" fill="currentColor" />
+          </svg>
+        )}
+        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+          <path d="M3 6h18v12H3z" fill="none" stroke="currentColor" strokeWidth="2.2" />
+          <path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" strokeWidth="2.2" />
+        </svg>
+      </span>
       <span className={s.notch} />
-      <span className={s.battery}>
-        <i style={{ width: `${c.bateria}%` }} />
+      <span className={`${s.statusSide} ${s.statusRight}`}>
+        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+          <circle cx="12" cy="13" r="7" fill="none" stroke="currentColor" strokeWidth="2.2" />
+          <path
+            d="M12 9v4l2.5 2M5 4 2 7M19 4l3 3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          />
+        </svg>
+        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+          <rect x="2" y="15" width="3.6" height="5" rx="0.8" fill="currentColor" />
+          <rect x="7.4" y="11" width="3.6" height="9" rx="0.8" fill="currentColor" />
+          <rect x="12.8" y="7" width="3.6" height="13" rx="0.8" fill="currentColor" />
+          <rect x="18.2" y="3" width="3.6" height="17" rx="0.8" fill="currentColor" opacity="0.35" />
+        </svg>
+        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+          <path d="M2 9.5a15 15 0 0 1 20 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          <path
+            d="M5.5 13a10 10 0 0 1 13 0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          />
+          <path d="M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
+        </svg>
+        <span className={`${s.batteryText} ${low ? s.batteryLow : ''}`}>{c.bateria}%</span>
+        <span className={`${s.battery} ${low ? s.batteryLow : ''}`}>
+          <i style={{ width: `${c.bateria}%` }} />
+        </span>
       </span>
     </div>
   );

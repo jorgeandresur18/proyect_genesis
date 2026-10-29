@@ -57,10 +57,19 @@
 .skNav i { width: 1.5rem; height: 1.5rem; border-radius: 0.4rem; }
 @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 
-.status { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 1.3rem 0.2rem; font-size: 0.75rem; font-weight: 600; }
-.notch { width: 5.2rem; height: 1.15rem; border-radius: 999px; background: #000; }
-.battery { position: relative; width: 1.5rem; height: 0.7rem; border: 1.5px solid #e9e9ee; border-radius: 0.2rem; }
-.battery i { position: absolute; inset: 1px; right: auto; background: #ff4d4d; border-radius: 1px; }
+.status { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; padding: 0.55rem 1.1rem 0.2rem; font-size: 0.75rem; font-weight: 600; }
+.statusSide { flex: 1; display: flex; align-items: center; gap: 0.3rem; min-width: 0; }
+.statusRight { justify-content: flex-end; }
+.statusIcon { width: 0.8rem; height: 0.8rem; flex: none; color: #f1f1f4; }
+.statusApp { width: 0.82rem; height: 0.82rem; flex: none; }
+.batteryText { font-size: 0.68rem; }
+.batteryText.batteryLow { color: #ff4d4d; }
+.notch { flex: none; width: 5.2rem; height: 1.15rem; border-radius: 999px; background: #000; }
+.battery { position: relative; flex: none; width: 1.5rem; height: 0.7rem; border: 1.5px solid #e9e9ee; border-radius: 0.2rem; }
+.battery i { position: absolute; inset: 1px; right: auto; background: #f1f1f4; border-radius: 1px; }
+.battery.batteryLow { border-color: #ff4d4d; }
+.battery.batteryLow i { background: #ff4d4d; }
+.battery::after { content: ''; position: absolute; right: -3.5px; top: 50%; width: 2px; height: 0.3rem; transform: translateY(-50%); border-radius: 0 1px 1px 0; background: #e9e9ee; }
 .appBar { display: flex; align-items: center; padding: 0.35rem 1rem 0.45rem; border-bottom: 1px solid #1f1f25; }
 .appBar img { height: 1.35rem; width: auto; }
 .content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; cursor: grab; user-select: none; -webkit-user-select: none; }
