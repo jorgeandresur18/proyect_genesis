@@ -103,13 +103,15 @@ function Nikki({ onGone }: { onGone: () => void }) {
           alt=""
           draggable={false}
         />
-        <div className="egg-bubble">
-          <span className="egg-name">Nikki</span>
-          {/* Lo que falta escribir ocupa su lugar sin verse: el globo no cambia de tamaño mientras habla. */}
-          <p>
-            {shown}
-            <span className="dialog-hidden">{line.slice(shown.length)}</span>
-          </p>
+        <div className="egg-side">
+          <div className="egg-bubble">
+            <span className="egg-name">Nikki</span>
+            {/* Lo que falta escribir ocupa su lugar sin verse: el globo no cambia de tamaño mientras habla. */}
+            <p>
+              {shown}
+              <span className="dialog-hidden">{line.slice(shown.length)}</span>
+            </p>
+          </div>
           {reply === 'ask' && (
             <div className="egg-actions">
               {!last || !done ? (
@@ -132,7 +134,8 @@ function Nikki({ onGone }: { onGone: () => void }) {
                         answer('thanks');
                       }}
                     >
-                      {egg.donar}
+                      <span>{egg.donar}</span>
+                      <img src={assetUrl('marca/paypal.webp')} alt="PayPal" draggable={false} />
                     </a>
                   )}
                   <button
