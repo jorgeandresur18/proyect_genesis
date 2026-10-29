@@ -80,7 +80,7 @@
 .battery::after { content: ''; position: absolute; right: -3.5px; top: 50%; width: 2px; height: 0.3rem; transform: translateY(-50%); border-radius: 0 1px 1px 0; background: #e9e9ee; }
 .appBar { display: flex; align-items: center; padding: 0.35rem 1rem 0.45rem; border-bottom: 1px solid #1f1f25; }
 .appBar img { height: 1.35rem; width: auto; }
-.content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.content { flex: 1; min-height: 0; padding-bottom: var(--kb-h, 0px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; cursor: grab; user-select: none; -webkit-user-select: none; }
 .content::-webkit-scrollbar { display: none; }
 .content:active { cursor: grabbing; }
 .content img { -webkit-user-drag: none; }
@@ -340,7 +340,7 @@
 .storyTouch { position: absolute; left: 0; right: 0; top: 4.5rem; bottom: 4.5rem; z-index: 1; touch-action: none; }
 .storyText { pointer-events: none; }
 .story .burst { z-index: 2; }
-.storyFoot { position: absolute; left: 0.6rem; right: 0.6rem; bottom: 0.8rem; z-index: 2; display: flex; align-items: center; gap: 0.5rem; }
+.storyFoot { position: absolute; left: 0.6rem; right: 0.6rem; bottom: calc(0.8rem + var(--kb-h, 0px)); transition: bottom 0.22s; z-index: 2; display: flex; align-items: center; gap: 0.5rem; }
 .storyFoot input { flex: 1; min-width: 0; padding: 0.55rem 0.9rem; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 999px; background: rgba(0, 0, 0, 0.25); color: #fff; font-size: 0.82rem; }
 .storyFoot input::placeholder { color: rgba(255, 255, 255, 0.75); }
 .storyFoot input:focus { outline: none; border-color: #fff; }
@@ -386,11 +386,15 @@
 /* Teclado del celular. */
 .keyboard { position: absolute; left: 0; right: 0; bottom: 0; z-index: 8; display: flex; flex-direction: column; gap: 0.3rem; padding: 0.35rem 0.25rem 0.8rem; background: #1b1b21; border-top: 1px solid #2a2a31; box-shadow: 0 -0.6rem 1.5rem rgba(0, 0, 0, 0.5); animation: kbIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both; touch-action: none; }
 @keyframes kbIn { from { transform: translateY(100%); } }
-.kbBar { display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; padding: 0 0.3rem 0.25rem; }
-.kbPreview { flex: 1; min-width: 0; display: flex; align-items: center; padding: 0.35rem 0.7rem; border: 1px solid #ff3d7f; border-radius: 999px; background: #121216; font-size: 0.8rem; }
+.kbBar { display: flex; justify-content: flex-start; align-items: center; gap: 0.4rem; padding: 0 0.3rem 0.25rem; }
 .kbHide { padding: 0 0.4rem; border: none; background: none; color: #8d8d99; font-size: 1.1rem; }
-.kbSend { padding: 0.25rem 0.9rem; border: none; border-radius: 999px; background: linear-gradient(135deg, #a64dff, #ff3d7f); color: #fff; font-size: 0.78rem; font-weight: 700; }
-.kbSend:disabled { opacity: 0.35; }
+.kbKey.kbEnter { flex: 1.5; background: linear-gradient(135deg, #ff3d7f, #d6339f); color: #fff; font-size: 1.15rem; font-weight: 700; box-shadow: 0 0 0.7rem rgba(255, 61, 127, 0.45); }
+.kbKey.kbEnter:active { background: linear-gradient(135deg, #ff5c93, #e04aae); }
+.kbKey.kbEnter:disabled { opacity: 0.4; box-shadow: none; }
+.kbKey.kbMode { font-size: 0.72rem; font-weight: 700; }
+.kbEmojis { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.22rem; }
+.kbKey.kbEmoji { height: 2.3rem; background: transparent; box-shadow: none; font-size: 1.25rem; }
+.kbKey.kbEmoji:active { background: #3a3a44; }
 .kbRow { display: flex; justify-content: center; gap: 0.22rem; }
 .kbKey { flex: 1; min-width: 0; height: 2.3rem; padding: 0; border: none; border-radius: 0.4rem; background: #3a3a44; color: #f1f1f4; font-size: 0.95rem; box-shadow: 0 1px 0 #0d0d10; }
 .kbKey:active { background: #5a5a66; }
