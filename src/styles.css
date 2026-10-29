@@ -1477,7 +1477,7 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) { .bori-toast { animation: none; transform: translateX(-50%); } }
 
 /* Botón redondo de Boringram en medio de la barra de abajo, más grande que los demás. */
-.bori-ball { position: relative; display: grid !important; place-items: center; width: 3.1rem; height: 3.1rem; margin: -0.9rem 0.3rem 0; padding: 0 !important; border-radius: 50% !important; background: radial-gradient(circle at 50% 35%, #2a1724, #0d0d10) !important; border: 1.5px solid rgba(255, 61, 127, 0.6) !important; box-shadow: 0 0 1.2rem rgba(255, 61, 127, 0.35); transition: transform 0.15s; }
+.bori-ball { position: relative; z-index: 6; display: grid !important; place-items: center; width: 3.1rem; height: 3.1rem; margin: -0.9rem 0.3rem 0; padding: 0 !important; border-radius: 50% !important; background: radial-gradient(circle at 50% 35%, #2a1724, #0d0d10) !important; border: 1.5px solid rgba(255, 61, 127, 0.6) !important; box-shadow: 0 0 1.2rem rgba(255, 61, 127, 0.35); transition: transform 0.15s; }
 .bori-ball:hover { transform: scale(1.08); }
 .bori-ball img { width: 1.9rem; height: 1.9rem; }
 .bori-badge { position: absolute; top: -0.3rem; right: -0.35rem; min-width: 1.15rem; height: 1.15rem; padding: 0 0.25rem; border-radius: 999px; background: #ff3d5a; color: #fff; font-size: 0.68rem; font-weight: 700; line-height: 1.15rem; text-align: center; box-shadow: 0 0 0 2px #0b0b0d; animation: badge-in 0.3s ease-out; }
@@ -1557,3 +1557,6 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 .deleting-done b { margin-right: 0.3rem; }
 .deleting-fade { position: fixed; inset: 0; z-index: 100; background: #000; animation: deleting-fade 0.8s ease-in forwards; }
 @keyframes deleting-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* La barra de abajo va encima de la caja de diálogo: el botón de Boringram sobresale y no debe quedar tapado. */
+.toolbar { z-index: 6; }
