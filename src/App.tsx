@@ -28,6 +28,7 @@ import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engin
 import { playGlitch, playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
+import { assetUrl } from './engine/assets';
 import { choiceText, sceneDialogue } from './engine/storyText';
 
 // Fundido a negro al volver al título.
@@ -253,10 +254,10 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const pick = () => playSelect();
   const galleryNew = useGalleryState().hasNew;
   const boringramNew = useBoringram().hasNew;
-  const extrasNew = galleryNew || boringramNew;
   const tiles: [Overlay, string, string][] = [
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],
+    ['boringram', 'boringram', 'titulo.boringram'],
     ['extras', 'extras', 'titulo.extras'],
     ['options', 'options', 'titulo.opciones'],
     ['about', 'about', 'titulo.conoce'],
@@ -327,11 +328,18 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
                 open(o);
               }}
             >
-              <svg viewBox="0 0 24 24" aria-hidden>
-                {MENU_ICONS[icon]}
-              </svg>
+              {icon === 'boringram' ? (
+                // La cámara con las «zzz» del logo de Boringram, sin las letras.
+                <img className="title-tile-icon" src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden>
+                  {MENU_ICONS[icon]}
+                </svg>
+              )}
               <span>{t(label)}</span>
-              {o === 'extras' && extrasNew && <NewDot className="new-dot-tile" />}
+              {((o === 'extras' && galleryNew) || (o === 'boringram' && boringramNew)) && (
+                <NewDot className="new-dot-tile" />
+              )}
             </button>
           ))}
         </div>

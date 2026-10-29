@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
@@ -113,9 +113,83 @@ function Skeleton({ label }: { label: string }) {
   );
 }
 
+/**
+ * Se desplaza como un celular: sin barra, arrastrando con el mouse (y soltando con inercia). Con el dedo,
+ * el navegador ya desplaza solo. Si se arrastró, el clic al soltar no cuenta.
+ */
+function useDragScroll() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let startY = 0;
+    let startTop = 0;
+    let lastY = 0;
+    let lastT = 0;
+    let speed = 0;
+    let dragging = false;
+    let moved = false;
+    let frame = 0;
+    const down = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      cancelAnimationFrame(frame);
+      dragging = true;
+      moved = false;
+      startY = lastY = e.clientY;
+      startTop = el.scrollTop;
+      lastT = performance.now();
+      speed = 0;
+    };
+    const move = (e: PointerEvent) => {
+      if (!dragging) return;
+      if (Math.abs(e.clientY - startY) > 4) moved = true;
+      el.scrollTop = startTop - (e.clientY - startY);
+      const now = performance.now();
+      speed = (lastY - e.clientY) / Math.max(1, now - lastT);
+      lastY = e.clientY;
+      lastT = now;
+    };
+    const up = () => {
+      if (!dragging) return;
+      dragging = false;
+      let v = speed * 16;
+      const glide = () => {
+        if (Math.abs(v) < 0.4) return;
+        el.scrollTop += v;
+        v *= 0.94;
+        frame = requestAnimationFrame(glide);
+      };
+      frame = requestAnimationFrame(glide);
+    };
+    const click = (e: MouseEvent) => {
+      if (!moved) return;
+      e.stopPropagation();
+      e.preventDefault();
+      moved = false;
+    };
+    el.addEventListener('pointerdown', down);
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    el.addEventListener('click', click, true);
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener('pointerdown', down);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      el.removeEventListener('click', click, true);
+    };
+  }, []);
+  return ref;
+}
+
 function App({ b }: { b: B }) {
   const tx = b.data.textos;
   const [view, setView] = useState<View>({ kind: 'feed' });
+  const scroller = useDragScroll();
+  // Cada vista empieza arriba, como al cambiar de pantalla en el celular.
+  useEffect(() => {
+    scroller.current?.scrollTo(0, 0);
+  }, [view, scroller]);
   const markOpened = useStore((st) => st.markGalleryOpened);
   const go = (next: View) => {
     playSelect();
@@ -160,7 +234,7 @@ function App({ b }: { b: B }) {
   return (
     <>
       <AppBar />
-      <div className={s.content}>
+      <div className={s.content} ref={scroller}>
         {view.kind === 'feed' && (
           <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
         )}

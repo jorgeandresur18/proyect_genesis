@@ -63,7 +63,10 @@
 .battery i { position: absolute; inset: 1px; right: auto; background: #ff4d4d; border-radius: 1px; }
 .appBar { display: flex; align-items: center; padding: 0.35rem 1rem 0.45rem; border-bottom: 1px solid #1f1f25; }
 .appBar img { height: 1.35rem; width: auto; }
-.content { flex: 1; min-height: 0; overflow-y: auto; }
+.content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.content::-webkit-scrollbar { display: none; }
+.content:active { cursor: grabbing; }
+.content img { -webkit-user-drag: none; }
 .empty { padding: 2rem 1rem; color: #8d8d99; text-align: center; }
 
 /* Sin señal: Jair todavía no abrió su celular en la historia. */
