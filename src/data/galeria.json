@@ -1,11 +1,11 @@
 {
-  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego. «personajes»: sprites de los capítulos de «capitulos_sprites», en este orden; un personaje que todavía no apareció se ve como «???» y cada sprite no visto, como «SIN DATOS».",
+  "nota": "Títulos de las imágenes de la galería. Entra a la galería todo fondo «fondos/cg_*.webp» del guion, en el orden en que aparece; se desbloquea al verlo en el juego. «personajes»: sprites de los capítulos de «capitulos_sprites», en este orden; un personaje que todavía no apareció se ve como «???» y cada sprite no visto, como «SIN DATOS». «sprites»: nombre y ficha de cada sprite (personaje/expresión real, sin sustitutos); «info_imagenes»: ficha de cada imagen. Las fichas se abren con «Información» en el visor.",
   "titulos": {
-    "cg_jair_carga_cami": "En brazos",
-    "cg_jair_carga_cami_espalda": "Una mochila muy enojada",
-    "cg_caida_multiverso": "La caída",
-    "cg_jair_carga_cami_bosque": "Otra vez en brazos",
-    "cg_beso_nikki_cerca": "Sabor a tequila",
+    "cg_jair_carga_cami": "Princesa con licencia para matar",
+    "cg_jair_carga_cami_espalda": "Mochila con opiniones",
+    "cg_caida_multiverso": "Renuncia por gravedad",
+    "cg_jair_carga_cami_bosque": "Transporte sin viáticos",
+    "cg_beso_nikki_cerca": "Sabor a tequila y malas decisiones",
     "cg_beso_nikki": "¿Ves? No era tan difícil"
   },
   "capitulos_sprites": [
@@ -19,5 +19,219 @@
     "soldado_enmascarado": "Soldado enmascarado",
     "capitan_enmascarado": "Capitán enmascarado",
     "monstruo_sombras": "Monstruo de sombras"
+  },
+  "info_imagenes": {
+    "cg_jair_carga_cami": "Primer contacto físico de Jair con una mujer en meses. Ella le apunta con una pistola. Él lo va a contar como una cita.",
+    "cg_jair_carga_cami_espalda": "Peso estimado: cuarenta y tantos kilos de piloto y trescientos de desprecio. Jair no cargaba tanto desde que se mudó solo y descubrió que nadie iba a ayudarlo con la lavadora.",
+    "cg_caida_multiverso": "Caída libre entre dimensiones a velocidad terminal. Según Jair, sigue siendo menos estresante que una reunión de lunes con cámara encendida.",
+    "cg_jair_carga_cami_bosque": "Otra vez en brazos. Nadie le paga el kilometraje. Igual que en su trabajo, pero con mejor paisaje y la misma espalda destruida.",
+    "cg_beso_nikki_cerca": "Ocho años de «somos amigos» resumidos en un segundo. Mañana nadie va a hablar de esto. Ese siempre fue el plan.",
+    "cg_beso_nikki": "Lo difícil viene después: despertar, abrir el chat y fingir que no pasó nada. Los dos tienen años de práctica."
+  },
+  "sprites": {
+    "jair/base": {
+      "nombre": "Modo ahorro de energía",
+      "info": "Jair en estado natural: sin sueldo completo, sin sueño y sin expectativas. Treinta años en versión beta y nadie ha reportado el bug."
+    },
+    "jair/cansado1": {
+      "nombre": "Viernes, 5:30 p. m.",
+      "info": "La cara de alguien que todavía tiene que contestar tres correos «urgentes» de un cliente que no lee. El sudor es real; el aire acondicionado, no."
+    },
+    "jair/cansado2": {
+      "nombre": "Sobreviviente de la reunión diaria",
+      "info": "Lleva quince minutos explicando por qué el error no es suyo. El error es suyo."
+    },
+    "jair/molesto": {
+      "nombre": "Ticket cerrado sin resolver",
+      "info": "Su versión más agresiva: cruzarse de brazos y pensar la respuesta perfecta tres horas después, en la ducha."
+    },
+    "jair/triste1": {
+      "nombre": "Saldo suficiente, vida insuficiente",
+      "info": "Mira su cuenta de ahorros como otros miran fotos de su ex. Nunca dice cuánto tiene. Nunca lo gasta. Nunca le alcanza."
+    },
+    "jair/sabelotodo": {
+      "nombre": "Ingeniero certificado en tener razón",
+      "info": "Postura de quien acaba de explicar algo que nadie preguntó. Funciona mejor con monstruos que con personas."
+    },
+    "jair/verguenza1": {
+      "nombre": "Error 404: dignidad",
+      "info": "Se sonroja si una mujer le habla, si no le habla y si existe cerca. Se rasca la nuca porque leyó que eso se ve casual. No se ve casual."
+    },
+    "jair/atontado_cansado": {
+      "nombre": "Enamorado con sueño atrasado",
+      "info": "Sonrisa de alguien que recibió un «buenos días adelantado» y ya lo leyó once veces. Va por la doce."
+    },
+    "jair/asustado1": {
+      "nombre": "Pánico, edición estándar",
+      "info": "Su reacción ante monstruos, soldados, mujeres armadas y la frase «¿tienes un minuto?». La cara es la misma para todo."
+    },
+    "jair/orgulloso": {
+      "nombre": "Héroe por accidente",
+      "info": "La única vez que algo le salió bien. Disfrútenlo: no hay otro sprite así en mucho tiempo."
+    },
+    "nikki/trabajo_base": {
+      "nombre": "Empleada del mes (de todos los meses)",
+      "info": "Doce horas sonriendo en Dulce Frío. El gafete dice su nombre para que los clientes la llamen sin mirarla a la cara."
+    },
+    "nikki/trabajo_cansada": {
+      "nombre": "Sonrisa con horas extra",
+      "info": "Hora once del turno. La sonrisa sigue puesta; la persona se fue hace rato."
+    },
+    "nikki/trabajo_puchero": {
+      "nombre": "Atención al cliente con puchero",
+      "info": "A los clientes les toca la sonrisa; a Jair, el puchero. Es una forma de confianza, o algo que se le parece mucho."
+    },
+    "nikki/trabajo_orgullosa": {
+      "nombre": "Vendedora de consuelo en cono",
+      "info": "Vende helado como quien vende alivio: frío, dulce y se acaba antes de que te des cuenta."
+    },
+    "nikki/base": {
+      "nombre": "Fuera de servicio",
+      "info": "Sin uniforme y sin sonrisa obligatoria. Así es Nikki cuando nadie le paga por ser amable."
+    },
+    "nikki/tierna1": {
+      "nombre": "La versión que él colecciona",
+      "info": "La cara que Jair guarda para las noches malas. Aparece poco. Por eso él la confunde con amor."
+    },
+    "nikki/celosa1": {
+      "nombre": "«Búscate una novia» (no lo dice en serio)",
+      "info": "Le pide que se consiga a alguien y después lo mira así. Ocho años de instrucciones contradictorias y ningún manual."
+    },
+    "nikki/celosa2": {
+      "nombre": "Auditoría sentimental",
+      "info": "Está calculando quién es la chica de la que él no le ha hablado. Spoiler: no hay ninguna. Eso también le molesta."
+    },
+    "nikki/enojada": {
+      "nombre": "Mensaje en visto",
+      "info": "La respuesta que Jair recibe cuando hace la pregunta equivocada. Es decir, cualquier pregunta."
+    },
+    "nikki/muyenojada1": {
+      "nombre": "Nivel de amenaza: crítico",
+      "info": "Se recomienda no hablar, no respirar fuerte y, sobre todo, no mencionar el taxi."
+    },
+    "nikki/fria": {
+      "nombre": "Temperatura: Dulce Frío",
+      "info": "Tan fría que podría venderse en su propia heladería. Sin chispas, sin cono, sin devolución."
+    },
+    "nikki/wtf": {
+      "nombre": "Procesando la estupidez",
+      "info": "Lo que hace su cara cuando Jair habla de su trabajo con entusiasmo. Tarda en cargar."
+    },
+    "nikki/celosaebria": {
+      "nombre": "Lo que no se dice de día",
+      "info": "Sobria no lo pregunta. A estas horas sí. Mañana ninguno de los dos va a recordarlo en voz alta: ese es el trato."
+    },
+    "nikki/ebria1": {
+      "nombre": "La que dijo «solo una»",
+      "info": "Nunca es solo una. El chiste deja de dar risa cuando llega la cuenta, y la cuenta siempre llega."
+    },
+    "nikki/ebria2": {
+      "nombre": "Ronda de las confesiones",
+      "info": "A esta hora pide lo que nunca pide de día: que él se quede. Él siempre se queda. Ninguno de los dos aprende."
+    },
+    "nikki/triste1": {
+      "nombre": "Cierre de caja emocional",
+      "info": "La cara que pone cuando el bar se calla y ya no hay ruido que tape nada."
+    },
+    "nikki/llorando1": {
+      "nombre": "Rímel a prueba de nada",
+      "info": "Llora como alguien que lleva meses aguantando y eligió el peor momento para dejar de hacerlo. O el único."
+    },
+    "nikki/llorando2": {
+      "nombre": "Reembolso no disponible",
+      "info": "No hay respuesta correcta para esto. Jair lo sabe, y aun así busca una en la documentación."
+    },
+    "cami/base": {
+      "nombre": "Piloto sin flota",
+      "info": "Huérfana, rebelde, sin nave y con un tobillo roto. Aun así, la persona más estable de esta historia."
+    },
+    "cami/apuntando": {
+      "nombre": "Saludo protocolario",
+      "info": "Así saluda Cami. Si sigues vivo después de este sprite, le caíste bien."
+    },
+    "cami/molesta2": {
+      "nombre": "Paciencia: 0 %",
+      "info": "La cara de quien acaba de descubrir que su rescatista no sabe disparar, pelear ni caminar en línea recta."
+    },
+    "cami/dudosa1": {
+      "nombre": "Detector de mentiras con tobillo roto",
+      "info": "Ya sabe que Jair miente. Solo está decidiendo si vale la pena el esfuerzo de decírselo."
+    },
+    "cami/burlona": {
+      "nombre": "Sonrisa de depredador",
+      "info": "Cuando sonríe así, alguien va a salir humillado. Normalmente Jair. Casi siempre Jair. Bueno, siempre."
+    },
+    "cami/fria": {
+      "nombre": "Cero absoluto",
+      "info": "Menos doscientos setenta grados de cariño. Ideal para conservar el orgullo ajeno durante años."
+    },
+    "cami/cansada": {
+      "nombre": "Daño crítico, actitud intacta",
+      "info": "Le duele todo, pero lo que más le duele es tener que dejarse cargar."
+    },
+    "cami/molesta1": {
+      "nombre": "Fastidio en reposo",
+      "info": "Su estado por defecto cada vez que Jair abre la boca."
+    },
+    "cami/impactada": {
+      "nombre": "Sorpresa no programada",
+      "info": "Algo la tomó desprevenida, cosa rarísima. Probablemente Jair hizo algo útil."
+    },
+    "cami/molesta3": {
+      "nombre": "Furia en el modo correcto",
+      "info": "No es la pistola lo que da miedo. Es que todavía no la ha sacado."
+    },
+    "cami/sorprendida": {
+      "nombre": "Asombro sin autorización",
+      "info": "Una emoción que no venía en su manual. Se nota que no sabe dónde ponerla."
+    },
+    "cami/triste": {
+      "nombre": "Recuerdos de relleno",
+      "info": "Se acuerda de su flota, de su planeta y de un dibujo en una puerta. Algunos recuerdos le pesan raro, como si fueran prestados."
+    },
+    "cami/wtf": {
+      "nombre": "«¿Qué carajos, ingeniero?»",
+      "info": "La cara exacta que pone cuando Jair dice que este mundo es su sueño. Todavía no le cree. Todavía."
+    },
+    "cami/sonrojada1": {
+      "nombre": "Error del sistema: ternura",
+      "info": "Un rubor que nadie pidió. Si preguntas, lo niega. Si insistes, te dispara."
+    },
+    "rikka/base": {
+      "nombre": "Guardiana del puente (sin sueldo)",
+      "info": "Más de quinientos años cuidando un puente y nadie le ha pagado nunca. Jair siente que por fin encontró a su gente."
+    },
+    "rikka/celosa": {
+      "nombre": "Celos con siglos de práctica",
+      "info": "Esperó siglos a que alguien cayera del cielo. Cayó, y cayó cargando a otra. Mala suerte milenaria."
+    },
+    "rikka/orgullosa": {
+      "nombre": "Nobleza de la Primavera",
+      "info": "Restos de orgullo de una familia antigua. Le duran exactamente hasta que alguien menciona un precio."
+    },
+    "rikka/preocupada": {
+      "nombre": "¿Cuánto cuesta esto?",
+      "info": "Su miedo más grande no son los monstruos: es que le cobren. Pregunta el precio del aire por si acaso."
+    },
+    "rikka/sorprendida": {
+      "nombre": "Edad adivinada",
+      "info": "Un forastero acaba de adivinar que tiene más de quinientos años. Ninguna mujer está preparada para eso, ni siquiera una inmortal."
+    },
+    "soldado_enmascarado/base": {
+      "nombre": "Recurso humano reutilizable",
+      "info": "Patrulla en bucle, no improvisa y nunca pide aumento. El empleado ideal según la gerencia de Jair."
+    },
+    "capitan_enmascarado/base": {
+      "nombre": "PLACEHOLDER_CAPITAN_01",
+      "info": "Ni siquiera le pusieron nombre. Tiene un rifle, un visor rojo y menos identidad que Jair, que ya es decir."
+    },
+    "monstruo_sombras/base": {
+      "nombre": "Bug con dientes",
+      "info": "No sabía cruzar huecos. Lo parcharon. Así funcionan las actualizaciones: arreglan justo lo que te salvaba."
+    },
+    "monstruo_sombras/armored": {
+      "nombre": "Parche aplicado",
+      "info": "La misma sombra, ahora con piedras. Se congela igual, porque nadie le escribió reglas para el invierno."
+    }
   }
 }

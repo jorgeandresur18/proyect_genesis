@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useStore } from '../engine/store';
+import { useEffect, useState, type ReactNode } from 'react';
+import { TEXT_SPEED_INSTANT, useStore } from '../engine/store';
 import { storyFiles } from '../engine/story';
 import { assetUrl } from '../engine/assets';
 import galeriaEs from '../data/galeria.json';
@@ -7,7 +7,7 @@ import galeriaEn from '../data/en/galeria.json';
 import spriteConfig from '../../tools/sprites.config.json';
 import { localized, useLang, useT } from '../engine/i18n';
 import { Panel } from './Panels';
-import { playCancel, playSelect } from '../engine/sound';
+import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
 
 /** Todas las imágenes de la galería: los fondos `fondos/cg_*.webp` del guion, en el orden en que aparecen. */
 const CGS: string[] = (() => {
@@ -59,6 +59,14 @@ const CHARACTERS: CharacterSprites[] = (() => {
 
 const TOTAL_SPRITES = CHARACTERS.reduce((n, c) => n + c.sprites.length, 0);
 
+interface Texts {
+  titulos: Record<string, string>;
+  info_imagenes: Record<string, string>;
+  personajes: Record<string, string>;
+  sprites: Record<string, { nombre: string; info: string }>;
+}
+const useTexts = () => localized(galeriaEs, galeriaEn, useLang()) as unknown as Texts;
+
 type Tab = 'imagenes' | 'personajes';
 
 /** Galería: imágenes del juego y sprites de los personajes. Lo que no se vio todavía queda bloqueado. */
@@ -76,23 +84,89 @@ export function CgGallery({ onClose }: { onClose: () => void }) {
   };
   return (
     <Panel title={t('galeria.titulo', { vistas: cgCount + spriteCount, total: CGS.length + TOTAL_SPRITES })} onClose={onClose} wide>
-      <div className="gallery-tabs" role="tablist">
-        <button role="tab" aria-selected={tab === 'imagenes'} className={tab === 'imagenes' ? 'active' : ''} onClick={() => pick('imagenes')}>
-          {t('galeria.imagenes')} <span className="muted">{cgCount}/{CGS.length}</span>
-        </button>
-        <button role="tab" aria-selected={tab === 'personajes'} className={tab === 'personajes' ? 'active' : ''} onClick={() => pick('personajes')}>
-          {t('galeria.personajes')} <span className="muted">{spriteCount}/{TOTAL_SPRITES}</span>
-        </button>
-      </div>
-      {tab === 'imagenes' ? <Images /> : <Characters />}
+      <TermWindow
+        tabs={[
+          { key: 'imagenes', label: t('galeria.imagenes'), extra: `${cgCount}/${CGS.length}` },
+          { key: 'personajes', label: t('galeria.personajes'), extra: `${spriteCount}/${TOTAL_SPRITES}` },
+        ]}
+        active={tab}
+        onTab={(k) => pick(k as Tab)}
+      >
+        {tab === 'imagenes' ? <Images /> : <Characters />}
+      </TermWindow>
     </Panel>
+  );
+}
+
+/**
+ * Ventana con pestañas como las de una terminal (ícono, título, ×, «+» y la flecha).
+ * `onClose` en una pestaña muestra su ×; el «+» y la flecha son decorativos.
+ */
+function TermWindow({
+  tabs,
+  active,
+  onTab,
+  onClose,
+  right,
+  className = '',
+  children,
+}: {
+  tabs: { key: string; label: string; extra?: string }[];
+  active?: string;
+  onTab?: (key: string) => void;
+  onClose?: () => void;
+  right?: ReactNode;
+  className?: string;
+  children: ReactNode;
+}) {
+  const t = useT();
+  return (
+    <section className={`wt-window ${className}`}>
+      <div className="wt-tabs" role="tablist">
+        {tabs.map((tab) => (
+          <div
+            key={tab.key}
+            role="tab"
+            aria-selected={tab.key === (active ?? tabs[0].key)}
+            className={`wt-tab ${tab.key === (active ?? tabs[0].key) ? 'active' : ''} ${onTab ? 'clickable' : ''}`}
+            onClick={() => onTab?.(tab.key)}
+          >
+            <span className="wt-icon" aria-hidden>
+              ›_
+            </span>
+            <span className="wt-label">{tab.label}</span>
+            {tab.extra && <span className="wt-extra">{tab.extra}</span>}
+            {onClose && (
+              <button
+                className="wt-close"
+                aria-label={t('panel.cerrar')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClose();
+                }}
+              >
+                ×
+              </button>
+            )}
+          </div>
+        ))}
+        <span className="wt-plus" aria-hidden>
+          +
+        </span>
+        <span className="wt-caret" aria-hidden>
+          ⌄
+        </span>
+        {right && <span className="wt-right">{right}</span>}
+      </div>
+      <div className="wt-body">{children}</div>
+    </section>
   );
 }
 
 function Images() {
   const seen = useStore((s) => s.cgSeen);
   const t = useT();
-  const titles = localized(galeriaEs, galeriaEn, useLang()).titulos as Record<string, string>;
+  const texts = useTexts();
   const unlocked = CGS.filter((id) => seen[id]);
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -105,7 +179,7 @@ function Images() {
               <div className="gallery-thumb">
                 <img src={assetUrl(`fondos/${id}.webp`)} alt="" loading="lazy" draggable={false} />
               </div>
-              <span className="gallery-title">{titles[id] ?? id}</span>
+              <span className="gallery-title">{texts.titulos[id] ?? id}</span>
             </button>
           ) : (
             <button key={id} className="gallery-item gallery-locked" disabled>
@@ -118,7 +192,8 @@ function Images() {
       {open !== null && (
         <Viewer
           src={(i) => assetUrl(`fondos/${unlocked[i]}.webp`)}
-          label={(i) => titles[unlocked[i]] ?? unlocked[i]}
+          label={(i) => texts.titulos[unlocked[i]] ?? unlocked[i]}
+          info={(i) => ({ file: `${unlocked[i]}.webp`, text: texts.info_imagenes[unlocked[i]] ?? '' })}
           count={unlocked.length}
           index={open}
           onIndex={setOpen}
@@ -133,9 +208,10 @@ function Images() {
 function Characters() {
   const visited = useStore((s) => s.snapshots);
   const t = useT();
-  const names = localized(galeriaEs, galeriaEn, useLang()).personajes as Record<string, string>;
+  const texts = useTexts();
   const [open, setOpen] = useState<{ id: string; index: number } | null>(null);
   const seenOf = (c: CharacterSprites) => c.sprites.filter((s) => s.scenes.some((id) => visited[id]));
+  const nameOf = (id: string, expr: string) => texts.sprites[`${id}/${expr}`]?.nombre ?? expr.replace(/_/g, ' ');
   const current = open && CHARACTERS.find((c) => c.id === open.id);
   const currentSeen = current ? seenOf(current) : [];
   return (
@@ -145,39 +221,34 @@ function Characters() {
           const seen = seenOf(c);
           const known = seen.length > 0;
           return (
-            <section key={c.id} className={`sprite-window ${known ? '' : 'sprite-window-locked'}`}>
-              <header className="sprite-window-head">
-                <span className="term-dots" aria-hidden>
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <h3>{known ? (names[c.id] ?? c.id) : '???'}</h3>
-                <span className="muted">
-                  {seen.length}/{c.sprites.length}
-                </span>
-              </header>
+            <TermWindow
+              key={c.id}
+              className={known ? '' : 'sprite-window-locked'}
+              tabs={[{ key: c.id, label: known ? (texts.personajes[c.id] ?? c.id) : '???' }]}
+              right={`${seen.length}/${c.sprites.length}`}
+            >
               <div className="sprite-grid">
                 {c.sprites.map((s) =>
                   seen.includes(s) ? (
-                    <button
-                      key={s.expr}
-                      className="sprite-cell"
-                      onClick={() => setOpen({ id: c.id, index: seen.indexOf(s) })}
-                      title={s.expr}
-                    >
-                      <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
+                    <button key={s.expr} className="sprite-item" onClick={() => setOpen({ id: c.id, index: seen.indexOf(s) })}>
+                      <span className="sprite-cell">
+                        <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
+                      </span>
+                      <span className="sprite-name">{nameOf(c.id, s.expr)}</span>
                     </button>
                   ) : (
-                    <div key={s.expr} className="sprite-cell save-thumb-empty" aria-hidden>
-                      <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
-                        {t('guardar.sin_datos')}
+                    <div key={s.expr} className="sprite-item" aria-hidden>
+                      <span className="sprite-cell save-thumb-empty">
+                        <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
+                          {t('guardar.sin_datos')}
+                        </span>
                       </span>
+                      <span className="sprite-name muted">???</span>
                     </div>
                   ),
                 )}
               </div>
-            </section>
+            </TermWindow>
           );
         })}
       </div>
@@ -185,7 +256,11 @@ function Characters() {
         <Viewer
           sprite
           src={(i) => assetUrl(`sprites/${current.id}/${currentSeen[i].expr}.webp`)}
-          label={(i) => `${names[current.id] ?? current.id} · ${currentSeen[i].expr.replace(/_/g, ' ')}`}
+          label={(i) => `${texts.personajes[current.id] ?? current.id} · ${nameOf(current.id, currentSeen[i].expr)}`}
+          info={(i) => ({
+            file: `${current.id}/${currentSeen[i].expr}.webp`,
+            text: texts.sprites[`${current.id}/${currentSeen[i].expr}`]?.info ?? '',
+          })}
           count={currentSeen.length}
           index={open.index}
           onIndex={(index) => setOpen({ id: current.id, index })}
@@ -196,10 +271,11 @@ function Characters() {
   );
 }
 
-/** Visor a pantalla completa con flechas. Se cierra con «Cerrar» o Escape. */
+/** Visor a pantalla completa con flechas e «Información». Se cierra con «Cerrar» o Escape. */
 function Viewer({
   src,
   label,
+  info,
   count,
   index,
   onIndex,
@@ -208,6 +284,7 @@ function Viewer({
 }: {
   src: (i: number) => string;
   label: (i: number) => string;
+  info: (i: number) => { file: string; text: string };
   count: number;
   index: number;
   onIndex: (i: number) => void;
@@ -215,6 +292,7 @@ function Viewer({
   sprite?: boolean;
 }) {
   const t = useT();
+  const [showInfo, setShowInfo] = useState(false);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -224,9 +302,31 @@ function Viewer({
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [index, count, onIndex, onClose]);
+  const current = info(index);
   return (
-    <div className={`gallery-viewer ${sprite ? 'gallery-viewer-sprite' : ''}`}>
+    <div className={`gallery-viewer ${sprite ? 'gallery-viewer-sprite' : ''} ${showInfo ? 'gallery-viewer-info' : ''}`}>
       <img key={index} src={src(index)} alt="" draggable={false} />
+      {showInfo && (
+        <TermWindow
+          className="info-window"
+          tabs={[{ key: 'info', label: current.file }]}
+          onClose={() => {
+            playCancel();
+            setShowInfo(false);
+          }}
+        >
+          <TypedInfo key={current.file} file={current.file} text={current.text} />
+          <button
+            className="info-close"
+            onClick={() => {
+              playCancel();
+              setShowInfo(false);
+            }}
+          >
+            {t('panel.cerrar')}
+          </button>
+        </TermWindow>
+      )}
       <div className="gallery-viewer-bar">
         <button onClick={() => onIndex((index - 1 + count) % count)} aria-label={t('galeria.anterior')}>
           ◀
@@ -234,6 +334,16 @@ function Viewer({
         <span>{label(index)}</span>
         <button onClick={() => onIndex((index + 1) % count)} aria-label={t('galeria.siguiente')}>
           ▶
+        </button>
+        <button
+          className={showInfo ? 'active' : ''}
+          onClick={() => {
+            if (showInfo) playCancel();
+            else playSelect();
+            setShowInfo(!showInfo);
+          }}
+        >
+          {t('galeria.informacion')}
         </button>
         <button
           onClick={() => {
@@ -244,6 +354,47 @@ function Viewer({
           {t('panel.cerrar')}
         </button>
       </div>
+    </div>
+  );
+}
+
+/** Ficha que se escribe letra por letra, con el sonido de escritura de la caja de diálogo. */
+function TypedInfo({ file, text }: { file: string; text: string }) {
+  const speed = useStore((s) => s.settings.textSpeed);
+  const instant = speed >= TEXT_SPEED_INSTANT || useStore.getState().settings.reduceEffects;
+  const [count, setCount] = useState(instant ? text.length : 0);
+  useEffect(() => {
+    if (instant || !text) return;
+    const start = performance.now();
+    let frame = 0;
+    startTyping();
+    const tick = (now: number) => {
+      const n = Math.floor(((now - start) / 1000) * Math.max(speed, 45));
+      if (n >= text.length) {
+        setCount(text.length);
+        stopTyping();
+        return;
+      }
+      setCount(n);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+      stopTyping();
+    };
+  }, [text, speed, instant]);
+  const done = count >= text.length;
+  return (
+    <div className="info-text">
+      <div className="term-boot">
+        <span className="term-prompt">$</span> <span>cat {file.replace(/\.webp$/, '.txt')}</span>
+      </div>
+      <p>
+        {text.slice(0, count)}
+        <span className={`info-cursor ${done ? 'blink' : ''}`}>▌</span>
+        <span className="info-hidden">{text.slice(count)}</span>
+      </p>
     </div>
   );
 }

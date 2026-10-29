@@ -1,15 +1,229 @@
 {
   "titulos": {
-    "cg_jair_carga_cami": "In his arms",
-    "cg_jair_carga_cami_espalda": "A very angry backpack",
-    "cg_caida_multiverso": "The fall",
-    "cg_jair_carga_cami_bosque": "In his arms again",
-    "cg_beso_nikki_cerca": "A taste of tequila",
+    "cg_jair_carga_cami": "Princess with a license to kill",
+    "cg_jair_carga_cami_espalda": "Backpack with opinions",
+    "cg_caida_multiverso": "Resignation by gravity",
+    "cg_jair_carga_cami_bosque": "Unpaid transport service",
+    "cg_beso_nikki_cerca": "A taste of tequila and bad decisions",
     "cg_beso_nikki": "See? That wasn't so hard"
   },
   "personajes": {
     "soldado_enmascarado": "Masked Soldier",
     "capitan_enmascarado": "Masked Captain",
     "monstruo_sombras": "Shadow Monster"
+  },
+  "info_imagenes": {
+    "cg_jair_carga_cami": "Jair's first physical contact with a woman in months. She's pointing a gun at him. He's going to call it a date.",
+    "cg_jair_carga_cami_espalda": "Estimated weight: forty-something kilos of pilot and three hundred of contempt. Jair hasn't carried this much since he moved out and learned nobody would help with the washing machine.",
+    "cg_caida_multiverso": "Free fall between dimensions at terminal velocity. According to Jair, still less stressful than a Monday meeting with the camera on.",
+    "cg_jair_carga_cami_bosque": "In his arms again. Nobody covers the mileage. Just like his job, but with a better view and the same wrecked back.",
+    "cg_beso_nikki_cerca": "Eight years of «we're just friends» summed up in one second. Tomorrow nobody will talk about it. That was always the plan.",
+    "cg_beso_nikki": "The hard part comes later: waking up, opening the chat and pretending nothing happened. They both have years of practice."
+  },
+  "sprites": {
+    "jair/base": {
+      "nombre": "Power saving mode",
+      "info": "Jair in his natural state: no full paycheck, no sleep and no expectations. Thirty years in beta and nobody has filed the bug."
+    },
+    "jair/cansado1": {
+      "nombre": "Friday, 5:30 p.m.",
+      "info": "The face of someone who still has to answer three «urgent» emails from a client who doesn't read. The sweat is real; the air conditioning isn't."
+    },
+    "jair/cansado2": {
+      "nombre": "Daily stand-up survivor",
+      "info": "He's spent fifteen minutes explaining why the bug isn't his. The bug is his."
+    },
+    "jair/molesto": {
+      "nombre": "Ticket closed, not resolved",
+      "info": "His most aggressive version: crossing his arms and coming up with the perfect comeback three hours later, in the shower."
+    },
+    "jair/triste1": {
+      "nombre": "Enough savings, not enough life",
+      "info": "He looks at his savings account the way other people look at photos of their ex. He never says how much. He never spends it. It's never enough."
+    },
+    "jair/sabelotodo": {
+      "nombre": "Certified engineer in being right",
+      "info": "The pose of someone who just explained something nobody asked about. Works better on monsters than on people."
+    },
+    "jair/verguenza1": {
+      "nombre": "Error 404: dignity",
+      "info": "He blushes if a woman talks to him, if she doesn't, and if she exists nearby. He scratches his neck because he read it looks casual. It doesn't."
+    },
+    "jair/atontado_cansado": {
+      "nombre": "In love and behind on sleep",
+      "info": "The smile of someone who got a «good morning in advance» and has read it eleven times. Going for twelve."
+    },
+    "jair/asustado1": {
+      "nombre": "Panic, standard edition",
+      "info": "His reaction to monsters, soldiers, armed women and the phrase «got a minute?». Same face for all of them."
+    },
+    "jair/orgulloso": {
+      "nombre": "Hero by accident",
+      "info": "The one time something worked out for him. Enjoy it: there won't be another sprite like this for a long time."
+    },
+    "nikki/trabajo_base": {
+      "nombre": "Employee of the month (every month)",
+      "info": "Twelve hours smiling at Sweet Chill. The name tag is there so customers can call her without looking at her face."
+    },
+    "nikki/trabajo_cansada": {
+      "nombre": "Smile on overtime",
+      "info": "Hour eleven of the shift. The smile is still on; the person left a while ago."
+    },
+    "nikki/trabajo_puchero": {
+      "nombre": "Customer service with a pout",
+      "info": "Customers get the smile; Jair gets the pout. It's a kind of trust, or something that looks a lot like it."
+    },
+    "nikki/trabajo_orgullosa": {
+      "nombre": "Comfort sold by the cone",
+      "info": "She sells ice cream the way you'd sell relief: cold, sweet and gone before you notice."
+    },
+    "nikki/base": {
+      "nombre": "Off duty",
+      "info": "No uniform and no mandatory smile. This is Nikki when nobody pays her to be nice."
+    },
+    "nikki/tierna1": {
+      "nombre": "The version he collects",
+      "info": "The face Jair saves for bad nights. It doesn't show up often. That's why he mistakes it for love."
+    },
+    "nikki/celosa1": {
+      "nombre": "«Get a girlfriend» (she doesn't mean it)",
+      "info": "She tells him to find someone and then looks at him like this. Eight years of contradictory instructions and no manual."
+    },
+    "nikki/celosa2": {
+      "nombre": "Emotional audit",
+      "info": "She's working out who the girl is that he hasn't mentioned. Spoiler: there isn't one. That bothers her too."
+    },
+    "nikki/enojada": {
+      "nombre": "Left on read",
+      "info": "The answer Jair gets when he asks the wrong question. Meaning: any question."
+    },
+    "nikki/muyenojada1": {
+      "nombre": "Threat level: critical",
+      "info": "Recommended: don't talk, don't breathe loudly and, above all, don't mention the taxi."
+    },
+    "nikki/fria": {
+      "nombre": "Temperature: Sweet Chill",
+      "info": "So cold she could be sold at her own shop. No sprinkles, no cone, no refunds."
+    },
+    "nikki/wtf": {
+      "nombre": "Processing the stupidity",
+      "info": "What her face does when Jair talks about his job with enthusiasm. It takes a while to load."
+    },
+    "nikki/celosaebria": {
+      "nombre": "What doesn't get said by day",
+      "info": "Sober, she doesn't ask. At this hour she does. Tomorrow neither of them will mention it out loud: that's the deal."
+    },
+    "nikki/ebria1": {
+      "nombre": "The one who said «just one»",
+      "info": "It's never just one. The joke stops being funny when the bill comes, and the bill always comes."
+    },
+    "nikki/ebria2": {
+      "nombre": "Confession round",
+      "info": "At this hour she asks for what she never asks for by day: that he stays. He always stays. Neither of them learns."
+    },
+    "nikki/triste1": {
+      "nombre": "Closing time, emotionally",
+      "info": "The face she makes when the bar goes quiet and there's no noise left to cover anything."
+    },
+    "nikki/llorando1": {
+      "nombre": "Mascara proof against nothing",
+      "info": "She cries like someone who's held it in for months and picked the worst moment to stop. Or the only one."
+    },
+    "nikki/llorando2": {
+      "nombre": "Refund not available",
+      "info": "There's no right answer to this. Jair knows it, and he still looks for one in the documentation."
+    },
+    "cami/base": {
+      "nombre": "Pilot without a fleet",
+      "info": "Orphan, rebel, no ship and a broken ankle. Still the most stable person in this story."
+    },
+    "cami/apuntando": {
+      "nombre": "Formal greeting",
+      "info": "This is how Cami says hello. If you're still alive after this sprite, she likes you."
+    },
+    "cami/molesta2": {
+      "nombre": "Patience: 0%",
+      "info": "The face of someone who just found out her rescuer can't shoot, fight or walk in a straight line."
+    },
+    "cami/dudosa1": {
+      "nombre": "Lie detector with a broken ankle",
+      "info": "She already knows Jair is lying. She's just deciding whether it's worth the effort to say so."
+    },
+    "cami/burlona": {
+      "nombre": "Predator smile",
+      "info": "When she smiles like this, someone is about to be humiliated. Usually Jair. Almost always Jair. Fine, always."
+    },
+    "cami/fria": {
+      "nombre": "Absolute zero",
+      "info": "Minus two hundred seventy degrees of affection. Ideal for preserving other people's pride for years."
+    },
+    "cami/cansada": {
+      "nombre": "Critical damage, attitude intact",
+      "info": "Everything hurts, but what hurts most is having to let him carry her."
+    },
+    "cami/molesta1": {
+      "nombre": "Idle annoyance",
+      "info": "Her default state every time Jair opens his mouth."
+    },
+    "cami/impactada": {
+      "nombre": "Unscheduled surprise",
+      "info": "Something caught her off guard, which is very rare. Jair probably did something useful."
+    },
+    "cami/molesta3": {
+      "nombre": "Fury, correctly configured",
+      "info": "It's not the gun that's scary. It's that she hasn't drawn it yet."
+    },
+    "cami/sorprendida": {
+      "nombre": "Unauthorized awe",
+      "info": "An emotion that wasn't in her manual. You can tell she doesn't know where to put it."
+    },
+    "cami/triste": {
+      "nombre": "Filler memories",
+      "info": "She remembers her fleet, her planet and a drawing on a door. Some memories feel strangely heavy, as if they were borrowed."
+    },
+    "cami/wtf": {
+      "nombre": "«What the hell, engineer?»",
+      "info": "The exact face she makes when Jair says this world is his dream. She doesn't believe him yet. Yet."
+    },
+    "cami/sonrojada1": {
+      "nombre": "System error: tenderness",
+      "info": "A blush nobody asked for. If you ask, she denies it. If you insist, she shoots you."
+    },
+    "rikka/base": {
+      "nombre": "Bridge guardian (unpaid)",
+      "info": "Over five hundred years guarding a bridge and nobody has ever paid her. Jair feels he's finally found his people."
+    },
+    "rikka/celosa": {
+      "nombre": "Centuries of jealousy practice",
+      "info": "She waited centuries for someone to fall from the sky. Someone did, carrying someone else. Millennial bad luck."
+    },
+    "rikka/orgullosa": {
+      "nombre": "Nobility of Spring",
+      "info": "Leftover pride from an ancient family. It lasts exactly until someone mentions a price."
+    },
+    "rikka/preocupada": {
+      "nombre": "How much does this cost?",
+      "info": "Her biggest fear isn't monsters: it's being charged. She asks the price of air, just in case."
+    },
+    "rikka/sorprendida": {
+      "nombre": "Age guessed correctly",
+      "info": "A stranger just guessed she's over five hundred years old. No woman is ready for that, not even an immortal one."
+    },
+    "soldado_enmascarado/base": {
+      "nombre": "Reusable human resource",
+      "info": "Patrols in a loop, never improvises and never asks for a raise. The ideal employee according to Jair's management."
+    },
+    "capitan_enmascarado/base": {
+      "nombre": "PLACEHOLDER_CAPITAN_01",
+      "info": "They didn't even give him a name. He has a rifle, a red visor and less identity than Jair, which is saying something."
+    },
+    "monstruo_sombras/base": {
+      "nombre": "Bug with teeth",
+      "info": "It couldn't cross gaps. They patched it. That's how updates work: they fix exactly the thing that was saving you."
+    },
+    "monstruo_sombras/armored": {
+      "nombre": "Patch applied",
+      "info": "Same shadow, now with rocks. It still freezes, because nobody wrote it any rules for winter."
+    }
   }
 }
