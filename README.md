@@ -42,19 +42,21 @@ La historia completa tendrá siete capítulos, dos finales principales que ocurr
 - **La noche del bar y el isekai:** el mundo real (la oficina, la heladería, el bar, el departamento) y la dimensión espacial del juego, hasta conocer a Rikka en el puente.
 - **Decisiones que importan:** algunas solo cambian una conversación; otras terminan la partida antes de tiempo. Ocho bad ends, cada uno con su pantalla.
 - **Mapa de decisiones** interactivo (se arrastra y se hace zoom) para ver los caminos recorridos y volver a cualquier decisión.
-- **Galería** de imágenes y de finales, que se desbloquean al jugar.
+- **Galería** de imágenes y de personajes (cada sprite con nombre y una ficha de humor negro que se escribe sola), y de finales. Todo se desbloquea al jugar, y lo nuevo se marca con una bolita.
+- **Boringram, el celular de Jair:** publicaciones, historias destacadas, mensajes, perfiles y un panel de notificaciones de apps parodia. Se llena a medida que avanza la historia, avisa cuando hay algo nuevo y se abre desde el título o desde la partida. Se pueden dar y quitar «me gusta» y **compartir las fotos de verdad** en Facebook, WhatsApp, X o Instagram, con su miniatura.
 - **Pantallas hechas en código:** el IDE GRAVITY, el correo con su bandeja de spam, el celular con Boringram (la parodia de Instagram), los mensajes y las historias de Nikki.
 - **Efectos de meta-horror:** glitches, opciones que el sistema intenta imponer y una voz que solo Jair oye.
+- **Retroceder y adelantar** a x2, x4, x8 o x16. Retroceder deshace también las decisiones.
 - **Opciones de lectura:** velocidad y tamaño del texto, opacidad de la caja, modo automático, saltar lo leído, ocultar la interfaz, volumen y silencio, y reducir efectos.
-- **Guardado** en el navegador, con miniatura de cada partida.
-- **Celular:** se juega en horizontal y a pantalla completa.
+- **Guardado** en el navegador, con miniatura de cada partida. «Continuar» retoma el último guardado.
+- **Celular:** se juega en horizontal y a pantalla completa; Boringram se ve en vertical, como una app.
 - Y un easter egg en la pantalla de título.
 
 ## Cómo jugar
 
 En el navegador, sin instalar nada: **https://proyect-genesis.vercel.app/**
 
-Avanza con el botón «Siguiente», Espacio o Enter. Las decisiones también se eligen con las teclas 1, 2, 3… La tecla H oculta la caja de texto y la M silencia el audio.
+Avanza con el botón «Siguiente», Espacio o Enter, y vuelve una línea con ← o Retroceso. Las decisiones también se eligen con las teclas 1, 2, 3… La tecla H oculta la caja de texto y la M silencia el audio.
 
 ## Para desarrolladores
 
@@ -72,9 +74,10 @@ Herramientas del proyecto:
 | Comando | Qué hace |
 | --- | --- |
 | `npm run guion:exportar` / `guion:importar` | Sincroniza el guion en JSON con un libreto legible en `docs/guion/` |
-| `npm run sprites` | Exporta los sprites desde los PSD, con la estatura de cada personaje y alineados entre expresiones |
+| `npm run sprites` | Exporta los sprites desde un PSB por personaje (`docs/sprites/`), con la estatura de cada uno y alineados entre expresiones; solo relee los archivos que cambiaron |
 | `npm run fondos` | Convierte los fondos a WebP y los coloca en las escenas que los usan |
 | `npm run og` | Genera la imagen que se ve al compartir el enlace |
+| `npm run compartir` | Genera la página y la miniatura de cada foto de Boringram para compartir en redes |
 
 La historia vive en JSON, nunca dentro de los componentes:
 
