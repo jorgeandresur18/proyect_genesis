@@ -1,5 +1,5 @@
 {
-  "nota": "Textos de la pantalla de fin de capítulo. {n} es el número del capítulo. «fondos»: imagen de fondo (oscurecida) de cada capítulo; si no hay, fondo negro.",
+  "nota": "Textos de la pantalla de fin de capítulo. {n} es el número del capítulo. «fondos»: imagen de fondo (oscurecida) de cada capítulo; si no hay, fondo negro. «fondos_inicio»: imagen de la portada al empezar cada capítulo.",
   "fin": "FIN DEL CAPÍTULO {n}",
   "continuar": "Continuar",
   "guardar": "Guardar",
@@ -12,5 +12,9 @@
   },
   "fondos": {
     "1": "fondos/departamento_noche.webp"
-  }
+  },
+  "fondos_inicio": {
+    "1": "fondos/bar_noche.webp"
+  },
+  "portada": "CAPÍTULO {n}"
 }

@@ -1298,3 +1298,8 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 .end-calm .bad-end-title::before, .end-calm .bad-end-title::after { display: none; }
 .end-calm .bad-end-button { color: #e9ecf1; background: rgba(255, 255, 255, 0.05); border-color: rgba(214, 218, 226, 0.35); }
 .end-calm .bad-end-button:hover:not(:disabled) { border-color: #e9ecf1; background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 1.2rem rgba(230, 233, 240, 0.2); }
+
+/* Portada de inicio de capítulo: encima de la escena; al irse se funde y deja ver la primera escena. */
+.chapter-intro { position: absolute; inset: 0; z-index: 20; cursor: pointer; }
+.chapter-intro-out { animation: chapter-intro-out ease-in forwards; }
+@keyframes chapter-intro-out { to { opacity: 0; } }

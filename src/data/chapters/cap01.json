@@ -15,28 +15,11 @@
       "characters": [],
       "dialogue": {
         "speaker": null,
-        "text": "Capítulo 1 — Una vida en bucle."
-      },
-      "choices": [],
-      "conditions": [],
-      "audio": "audio/musica/afterwork.mp3",
-      "ui_effect": null,
-      "next": "cap01_002"
-    },
-    {
-      "scene_id": "cap01_002",
-      "chapter": 1,
-      "background": "fondos/oficina_dia.webp",
-      "video_fondo": null,
-      "loop_video": false,
-      "characters": [],
-      "dialogue": {
-        "speaker": null,
         "text": "Viernes, cinco y media de la tarde. El calor de la oficina tiene la consistencia de una sopa."
       },
       "choices": [],
       "conditions": [],
-      "audio": null,
+      "audio": "audio/musica/afterwork.mp3",
       "ui_effect": null,
       "next": "cap01_003"
     },

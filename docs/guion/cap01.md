@@ -13,9 +13,7 @@
 ### fondos/oficina_dia.webp
 
 > ♪ música: afterwork
-`001` — Capítulo 1 — Una vida en bucle.
-
-`002` — Viernes, cinco y media de la tarde. El calor de la oficina tiene la consistencia de una sopa.
+`001` — Viernes, cinco y media de la tarde. El calor de la oficina tiene la consistencia de una sopa.
 
 `003` — El aire acondicionado lleva tres meses «en mantenimiento». Igual que la quincena.
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { CHAPTER_END, useStore } from './engine/store';
 import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
@@ -16,6 +16,7 @@ import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
 import { BadEnd } from './components/BadEnd';
+import { CHAPTER_INTRO_OUT_MS, CHAPTER_STARTS, ChapterIntro } from './components/ChapterIntro';
 import { AudioToggle } from './components/AudioToggle';
 import advertenciaEs from './data/advertencia.json';
 import advertenciaEn from './data/en/advertencia.json';
@@ -341,6 +342,20 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
   const t = useT();
   const lang = useLang();
   const reduceEffects = useStore((s) => s.settings.reduceEffects);
+  // Portada «CAPÍTULO N» al llegar a la primera escena de un capítulo.
+  const [card, setCard] = useState<{ chapter: number; leaving: boolean } | null>(null);
+  const cardFor = useRef<string | null>(null);
+  const sceneNow = useStore((s) => s.game?.sceneId);
+  useEffect(() => {
+    if (!sceneNow || cardFor.current === sceneNow) return;
+    const chapter = CHAPTER_STARTS.get(sceneNow);
+    cardFor.current = sceneNow;
+    if (chapter !== undefined) setCard({ chapter, leaving: false });
+  }, [sceneNow]);
+  const leaveCard = useCallback(() => {
+    setCard((c) => (c && !c.leaving ? { ...c, leaving: true } : c));
+    setTimeout(() => setCard(null), CHAPTER_INTRO_OUT_MS);
+  }, []);
   // Cambio de lugar: fundido a negro. Durante el oscurecimiento se muestra la escena anterior.
   const { shown, phase, color } = useSceneTransition(scene, mode === 'skip');
   // Fondos y sprites de lo que viene, descargados de antemano.
@@ -363,6 +378,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     if (paused) return;
     const onKey = (e: KeyboardEvent) => {
       if (useStore.getState().game?.finished) return; // En los finales se elige con los botones.
+      if (card) return; // La portada del capítulo se salta sola (ver ChapterIntro).
       if (e.key.toLowerCase() === 'h' && !e.ctrlKey && !e.metaKey) {
         setUiHidden((h) => !h);
         return;
@@ -378,7 +394,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [paused, fading, waitingChoice, textDone, next, uiHidden]);
+  }, [paused, fading, waitingChoice, textDone, next, uiHidden, card]);
 
   // Abrir un panel detiene el autoavance y el salto.
   useEffect(() => {
@@ -471,7 +487,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         />
       )}
       {/* La línea nueva empieza a escribirse cuando aparece su escena, no detrás del negro. */}
-      {!fading && !uiHidden && (
+      {!fading && !uiHidden && !card && (
         <DialogBox
           key={shown.scene_id}
           dialogue={shown.dialogue}
@@ -488,6 +504,7 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         aria-hidden
       />
       {/* Evita que los botones queden enfocados y Espacio los vuelva a pulsar en vez de avanzar. */}
+      {card && <ChapterIntro chapter={card.chapter} leaving={card.leaving} onLeave={leaveCard} />}
       <div className={`toolbar ${uiHidden ? 'ui-hidden' : ''}`} onMouseDown={(e) => e.preventDefault()}>
         {buttons}
       </div>
