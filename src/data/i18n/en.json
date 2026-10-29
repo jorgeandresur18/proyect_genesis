@@ -107,6 +107,8 @@
   "extras.galeria_desc": "The pictures and characters you've unlocked.",
   "extras.finales": "Endings",
   "extras.finales_desc": "The endings and bad ends you found.",
+  "extras.boringram": "Boringram",
+  "extras.boringram_desc": "Jair's phone: posts, stories and messages.",
   "terminal.abrir": "open {nombre}",
   "terminal.listo": "ready.",
   "guardar.sin_datos": "NO DATA"

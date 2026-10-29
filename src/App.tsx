@@ -13,6 +13,8 @@ import { EasterEgg, type EggPhase } from './components/EasterEgg';
 import easterEgg from './data/easter_egg.json';
 import { CgGallery, NewDot } from './components/CgGallery';
 import { useGalleryState } from './engine/gallery';
+import { useBoringram } from './engine/boringram';
+import { BoringramPanel } from './components/Boringram';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -36,7 +38,7 @@ const TITLE_REVEAL_MS = 1200;
 /** De dónde se llega al título: cambia cómo sale del negro. */
 type Intro = 'advertencia' | 'juego' | null;
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'extras' | 'endings' | 'gallery' | 'options' | 'about' | null;
+type Overlay = 'history' | 'save' | 'load' | 'map' | 'extras' | 'endings' | 'gallery' | 'boringram' | 'options' | 'about' | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
@@ -126,6 +128,7 @@ export default function App() {
       {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'gallery' && <CgGallery onClose={close} />}
+      {overlay === 'boringram' && <BoringramPanel onClose={close} />}
       {overlay === 'extras' && <ExtrasPanel onClose={close} onOpen={setOverlay} />}
       {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
@@ -249,6 +252,8 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const storyNotice = t('idioma.historia_es');
   const pick = () => playSelect();
   const galleryNew = useGalleryState().hasNew;
+  const boringramNew = useBoringram().hasNew;
+  const extrasNew = galleryNew || boringramNew;
   const tiles: [Overlay, string, string][] = [
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],
@@ -326,7 +331,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
                 {MENU_ICONS[icon]}
               </svg>
               <span>{t(label)}</span>
-              {o === 'extras' && galleryNew && <NewDot className="new-dot-tile" />}
+              {o === 'extras' && extrasNew && <NewDot className="new-dot-tile" />}
             </button>
           ))}
         </div>

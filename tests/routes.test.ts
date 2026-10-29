@@ -56,6 +56,19 @@ describe('rutas de la historia', () => {
     }
   });
 
+  it('todo lo de Boringram se desbloquea con una escena que existe', () => {
+    const data = JSON.parse(readFileSync('src/data/boringram.json', 'utf8'));
+    const ids = new Set(storyFiles.flatMap((f) => f.scenes.map((s) => s.scene_id)));
+    const refs = [
+      ...Object.values(data.perfiles),
+      ...data.publicaciones,
+      ...data.destacadas,
+      ...data.chats.flatMap((c: { mensajes: unknown[] }) => c.mensajes),
+    ].map((x) => (x as { desbloqueo: string | null }).desbloqueo);
+    expect(refs.filter((r) => r && !ids.has(r))).toEqual([]);
+    for (const p of data.publicaciones) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
+  });
+
   it('un final canon no cambia sin cambiar también docs/FINALES.md', () => {
     let staged: string[];
     try {

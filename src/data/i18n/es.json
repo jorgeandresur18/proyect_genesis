@@ -107,6 +107,8 @@
   "extras.galeria_desc": "Las imágenes y los personajes que desbloqueaste.",
   "extras.finales": "Finales",
   "extras.finales_desc": "Los finales y bad ends que encontraste.",
+  "extras.boringram": "Boringram",
+  "extras.boringram_desc": "El celular de Jair: publicaciones, historias y mensajes.",
   "terminal.abrir": "abrir {nombre}",
   "terminal.listo": "listo.",
   "guardar.sin_datos": "SIN DATOS"

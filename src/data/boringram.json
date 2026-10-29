@@ -1,0 +1,159 @@
+{
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes.",
+  "yo": "jair",
+  "sin_senal": {
+    "titulo": "Sin señal",
+    "texto": "Jair todavía no ha mirado su celular en esta historia."
+  },
+  "perfiles": {
+    "jair": {
+      "usuario": "jair",
+      "nombre": "Jair",
+      "foto": "fotos/boringram/jair_graduado.webp",
+      "bio": "Ingeniero de software. Opiniones propias, sueldo ajeno.",
+      "publicaciones": 9,
+      "seguidores": 83,
+      "seguidos": 214,
+      "desbloqueo": "cap01_115n2"
+    },
+    "nikki": {
+      "usuario": "nikki",
+      "nombre": "Nikki",
+      "foto": "fotos/nikki_boringram.webp",
+      "bio": "dulce frio de lunes a sabado 🍦 lo demas no es asunto tuyo",
+      "publicaciones": 214,
+      "seguidores": 1284,
+      "seguidos": 497,
+      "te_sigue": true,
+      "desbloqueo": "cap01_115n7"
+    }
+  },
+  "publicaciones": [
+    {
+      "id": "nikki_selfie_trabajo",
+      "autor": "nikki",
+      "imagen": "fotos/boringram/nikki_selfie_trabajo.webp",
+      "texto": "hora 11 del turno. el sabor del dia es cansancio 🍦",
+      "likes": 186,
+      "hace": "hace 2 días",
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "nikki_fiesta_amigas",
+      "autor": "nikki",
+      "imagen": "fotos/boringram/nikki_fiesta_amigas.webp",
+      "texto": "las de siempre 🥂 no pregunten por el resto de la noche",
+      "likes": 341,
+      "hace": "hace 3 semanas",
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "nikki_perfil",
+      "autor": "nikki",
+      "imagen": "fotos/nikki_boringram.webp",
+      "texto": "una noche sin uniforme y sin gafete. casi parezco una persona",
+      "likes": 412,
+      "hace": "hace 5 semanas",
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "nikki_rosas",
+      "autor": "nikki",
+      "imagen": "fotos/boringram/nikki_rosas.webp",
+      "texto": "otro año sobreviviendo 🎂🌹",
+      "likes": 528,
+      "hace": "hace 4 meses",
+      "desbloqueo": "cap01_115n7"
+    },
+    {
+      "id": "jair_sushi",
+      "autor": "jair",
+      "imagen": "fotos/boringram/jair_sushi.webp",
+      "texto": "Viernes de sushi con la de siempre. Pagamos a medias, como todo.",
+      "likes": 24,
+      "hace": "hace 7 meses",
+      "desbloqueo": "cap01_115n2"
+    },
+    {
+      "id": "jair_graduado",
+      "autor": "jair",
+      "imagen": "fotos/boringram/jair_graduado.webp",
+      "texto": "Ingeniero. Ahora sí, a ganar dinero.",
+      "likes": 61,
+      "hace": "hace 8 años",
+      "desbloqueo": "cap01_115n2"
+    }
+  ],
+  "destacadas": [
+    {
+      "id": "nikki_una_sola",
+      "autor": "nikki",
+      "titulo": "salidas",
+      "imagen": "fotos/historia_nikki_boringram.webp",
+      "texto": "una sola",
+      "hace": "hace 3 h",
+      "desbloqueo": "cap01_g5m_011h2"
+    }
+  ],
+  "chats": [
+    {
+      "id": "nikki",
+      "perfil": "nikki",
+      "estado": "Activa hace 2 min",
+      "mensajes": [
+        { "de": "ella", "texto": "nunca te vayas de mi vida", "dia": "Hace 1 año y medio", "hora": "3:12", "destacado": true, "desbloqueo": "cap01_115n3" },
+        { "de": "ella", "texto": "ya llegue", "dia": "Hoy", "hora": "2:41", "desbloqueo": "cap01_g5m_006" },
+        { "de": "ella", "texto": "no te enojes por lo de hoy", "hora": "2:41", "desbloqueo": "cap01_g5m_007" },
+        { "de": "ella", "texto": "buenos dias adelantado", "hora": "2:41", "desbloqueo": "cap01_g5m_008" },
+        { "de": "yo", "texto": "llegaste bien?", "hora": "—", "pendiente": true, "desbloqueo": "cap01_g5m_017" }
+      ]
+    },
+    {
+      "id": "promo",
+      "nombre": "boringram.premium",
+      "estado": "Cuenta de empresa",
+      "visto": true,
+      "mensajes": [
+        { "de": "ella", "texto": "¡Hola, Jair! Detectamos que nadie ha visto tus últimas 9 publicaciones. Con Boringram Premium, tampoco las verán, pero te dolerá menos.", "dia": "Hace 3 días", "hora": "10:02", "desbloqueo": "cap01_115n2" }
+      ]
+    },
+    {
+      "id": "excompanero",
+      "nombre": "ing.marcelo.exitoso",
+      "estado": "Activo hace 1 h",
+      "visto": true,
+      "mensajes": [
+        { "de": "ella", "texto": "¡Ingeniero! Cuánto tiempo. Te escribo por una oportunidad de negocio que te puede cambiar la vida. No es una pirámide, es un triángulo de prosperidad.", "dia": "Hace 2 semanas", "hora": "21:47", "desbloqueo": "cap01_115n2" },
+        { "de": "ella", "texto": "¿Viste mi mensaje? Ya somos 12 en el triángulo.", "dia": "Hace 1 semana", "hora": "08:15", "desbloqueo": "cap01_115n2" }
+      ]
+    },
+    {
+      "id": "sorteo",
+      "nombre": "sorteos_oficiales_100_real",
+      "estado": "Cuenta nueva",
+      "visto": true,
+      "mensajes": [
+        { "de": "ella", "texto": "FELICIDADES 🎉 Ganaste un celular de última generación. Solo envíanos tu número de cuenta, tu clave y una foto de tu alma.", "dia": "Ayer", "hora": "04:33", "desbloqueo": "cap01_115n2" }
+      ]
+    }
+  ],
+  "textos": {
+    "inicio": "Inicio",
+    "mensajes": "Mensajes",
+    "perfil": "Perfil",
+    "publicaciones": "publicaciones",
+    "seguidores": "seguidores",
+    "seguidos": "seguidos",
+    "te_sigue": "Te sigue",
+    "siguiendo": "Siguiendo",
+    "me_gusta": "Me gusta: {n}",
+    "visto": "En visto",
+    "visto_chat": "Lo dejaste en visto.",
+    "tu": "Tú:",
+    "enviando": "Enviando…",
+    "destacado": "★ Destacado",
+    "escribir": "Mensaje…",
+    "sin_publicaciones": "Todavía no hay nada que ver aquí.",
+    "atras": "Atrás"
+  }
+}

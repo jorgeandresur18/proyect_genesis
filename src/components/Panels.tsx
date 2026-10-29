@@ -10,6 +10,7 @@ import { playCancel, playSelect } from '../engine/sound';
 import { SaveThumb } from './SaveThumb';
 import { NewDot } from './CgGallery';
 import { useGalleryState } from '../engine/gallery';
+import { useBoringram } from '../engine/boringram';
 
 /** Duración de la animación de cierre (ver .panel-closing en styles.css). */
 const PANEL_CLOSE_MS = 280;
@@ -182,11 +183,13 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
 }
 
 /** Extras: entradas a la galería de imágenes y a los finales, como comandos de la terminal. */
-export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: (o: 'gallery' | 'endings') => void }) {
+export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: (o: 'gallery' | 'boringram' | 'endings') => void }) {
   const t = useT();
   const galleryNew = useGalleryState().hasNew;
+  const boringramNew = useBoringram().hasNew;
   const entries = [
     { id: 'gallery' as const, cmd: 'galeria', label: t('extras.galeria'), desc: t('extras.galeria_desc') },
+    { id: 'boringram' as const, cmd: 'boringram', label: t('extras.boringram'), desc: t('extras.boringram_desc') },
     { id: 'endings' as const, cmd: 'finales', label: t('extras.finales'), desc: t('extras.finales_desc') },
   ];
   return (
@@ -206,7 +209,7 @@ export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: 
               <strong>{e.label}</strong>
               <small>{e.desc}</small>
             </span>
-            {e.id === 'gallery' && galleryNew && <NewDot />}
+            {((e.id === 'gallery' && galleryNew) || (e.id === 'boringram' && boringramNew)) && <NewDot />}
             <span className="extras-run">./{e.cmd}</span>
           </button>
         ))}

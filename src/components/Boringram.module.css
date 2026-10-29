@@ -1,0 +1,125 @@
+/* Boringram en Extras: el celular de Jair, en modo oscuro como en las escenas del juego. */
+.wrap { display: grid; place-items: center; padding: 0.4rem 0 0.8rem; }
+.phone {
+  --brand: linear-gradient(45deg, #ff8a3d, #ff3d7f 55%, #a64dff);
+  position: relative;
+  width: min(22rem, 100%);
+  height: min(40rem, 68vh);
+  display: flex;
+  flex-direction: column;
+  background: #0d0d10;
+  border: 0.45rem solid #1d1d22;
+  border-radius: 2.4rem;
+  box-shadow: 0 0 0 1px #3a3a42, 0 0 3.5rem rgba(255, 61, 127, 0.25), 0 0 1.2rem rgba(166, 77, 255, 0.18);
+  overflow: hidden;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-size: 0.88rem;
+  color: #f1f1f4;
+}
+.status { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 1.3rem 0.2rem; font-size: 0.75rem; font-weight: 600; }
+.notch { width: 5.2rem; height: 1.15rem; border-radius: 999px; background: #000; }
+.battery { position: relative; width: 1.5rem; height: 0.7rem; border: 1.5px solid #e9e9ee; border-radius: 0.2rem; }
+.battery i { position: absolute; inset: 1px; right: auto; background: #ff4d4d; border-radius: 1px; }
+.appBar { display: flex; align-items: center; padding: 0.35rem 1rem 0.45rem; border-bottom: 1px solid #1f1f25; }
+.appBar img { height: 1.35rem; width: auto; }
+.content { flex: 1; min-height: 0; overflow-y: auto; }
+.empty { padding: 2rem 1rem; color: #8d8d99; text-align: center; }
+
+/* Sin señal: Jair todavía no abrió su celular en la historia. */
+.noSignal { flex: 1; display: grid; place-content: center; justify-items: center; gap: 0.5rem; padding: 1.5rem; text-align: center; color: #8d8d99; }
+.noSignal b { color: #f1f1f4; font-size: 1.05rem; }
+.noSignal p { margin: 0; font-size: 0.85rem; }
+.noSignalIcon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; border: 2px solid #3a3a42; font-size: 1.3rem; }
+
+/* Barra inferior. */
+.nav { display: flex; justify-content: space-around; align-items: center; padding: 0.45rem 0 0.7rem; border-top: 1px solid #1f1f25; background: #0d0d10; }
+.nav button { position: relative; display: grid; place-items: center; width: 2.6rem; height: 2.2rem; padding: 0; border: none; background: none; color: #8d8d99; }
+.nav svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+.nav .navOn { color: #fff; }
+.nav .navDot { position: absolute; top: 0.15rem; right: 0.35rem; width: 0.45rem; height: 0.45rem; }
+
+.avatarRing { display: inline-grid; place-items: center; flex: none; padding: 2px; border-radius: 50%; background: #2a2a31; }
+.avatarStory { background: var(--brand); padding: 3px; }
+.avatar { display: block; width: 4.6rem; height: 4.6rem; border-radius: 50%; border: 2px solid #0d0d10; object-fit: cover; background: #2a2a31; }
+.initial { display: grid; place-items: center; color: #8d8d99; font-weight: 700; font-size: 1.1rem; }
+.small .avatar { width: 1.9rem; height: 1.9rem; }
+
+.topBar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 0.5rem; min-height: 2.6rem; padding: 0.35rem 0.8rem; background: #0d0d10; border-bottom: 1px solid #1a1a20; }
+.backBtn { padding: 0 0.3rem; border: none; background: none; color: #f1f1f4; font-size: 1.6rem; line-height: 1; }
+
+/* Publicaciones. */
+.feed { display: flex; flex-direction: column; }
+.post { border-bottom: 1px solid #1a1a20; padding-bottom: 0.6rem; }
+.postHead { display: flex; align-items: center; gap: 0.55rem; width: 100%; padding: 0.55rem 0.8rem; border: none; background: none; color: inherit; text-align: left; }
+.postHead small { margin-left: auto; color: #8d8d99; font-size: 0.75rem; }
+.postImage { position: relative; aspect-ratio: 4 / 5; background: #16161b; }
+.postImage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.postActions { display: flex; gap: 0.9rem; padding: 0.55rem 0.8rem 0.2rem; }
+.postActions svg { width: 1.35rem; height: 1.35rem; fill: none; stroke: #f1f1f4; stroke-width: 1.8; stroke-linejoin: round; }
+.likes { margin: 0.2rem 0.8rem; font-weight: 700; font-size: 0.82rem; }
+.caption { margin: 0.2rem 0.8rem 0; font-size: 0.85rem; line-height: 1.4; }
+.postImage .itemDot, .gridItem .itemDot { position: absolute; top: 0.5rem; right: 0.5rem; }
+
+/* Perfil. */
+.profile { padding-bottom: 1rem; }
+.profileHead { display: flex; align-items: center; gap: 1.1rem; padding: 0.9rem 1rem 0.5rem; }
+.counts { flex: 1; display: flex; justify-content: space-around; text-align: center; font-size: 0.75rem; color: #c9c9d2; }
+.counts b { display: block; font-size: 1rem; color: #fff; }
+.bio { padding: 0 1rem; }
+.bio b { font-size: 0.9rem; }
+.bio p { margin: 0.15rem 0 0; font-size: 0.83rem; line-height: 1.4; color: #dcdce3; }
+.followRow { display: flex; gap: 0.5rem; padding: 0.7rem 1rem 0; }
+.following, .followsYou { flex: 1; padding: 0.4rem; border-radius: 0.5rem; background: #24242b; font-size: 0.8rem; font-weight: 600; text-align: center; }
+.followsYou { flex: none; padding: 0.4rem 0.8rem; color: #ffb3cf; background: rgba(255, 61, 127, 0.14); }
+.highlights { display: flex; gap: 0.9rem; padding: 0.9rem 1rem 0.3rem; }
+.highlight { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; padding: 0; border: none; background: none; color: #dcdce3; font-size: 0.72rem; }
+.highlightRing { display: grid; place-items: center; padding: 2px; border-radius: 50%; background: #3a3a42; }
+.highlightRing img { width: 3.6rem; height: 3.6rem; border-radius: 50%; border: 2px solid #0d0d10; object-fit: cover; }
+.highlight .highlightDot { position: absolute; top: 0; right: 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 0.8rem; }
+.gridItem { position: relative; aspect-ratio: 1; padding: 0; border: none; background: #16161b; overflow: hidden; }
+.gridItem img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.25s; }
+.gridItem:hover img { transform: scale(1.05); }
+.grid .gridItem .itemDot { top: 0.3rem; right: 0.3rem; width: 0.55rem; height: 0.55rem; }
+
+/* Historia destacada: ocupa todo el celular. */
+.story { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; background: #000; animation: storyIn 0.25s ease-out both; }
+.storyImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.storyProgress { position: relative; z-index: 1; height: 3px; margin: 0.6rem 0.7rem 0; border-radius: 3px; background: rgba(255, 255, 255, 0.35); overflow: hidden; }
+.storyProgress i { display: block; height: 100%; background: #fff; animation: storyBar 5s linear forwards; }
+.storyHead { position: relative; z-index: 1; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.7rem; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); }
+.storyHead small { color: rgba(255, 255, 255, 0.75); }
+.storyClose { margin-left: auto; padding: 0 0.3rem; border: none; background: none; color: #fff; font-size: 1.6rem; line-height: 1; }
+.storyText { position: absolute; z-index: 1; left: 50%; bottom: 22%; transform: translateX(-50%); padding: 0.3rem 0.8rem; border-radius: 0.4rem; background: rgba(0, 0, 0, 0.55); font-size: 1.15rem; font-weight: 700; white-space: nowrap; }
+@keyframes storyBar { from { width: 0; } to { width: 100%; } }
+@keyframes storyIn { from { opacity: 0; transform: scale(0.96); } }
+
+/* Mensajes. */
+.inbox { display: flex; flex-direction: column; }
+.chatRow { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.9rem; border: none; background: none; color: inherit; text-align: left; }
+.chatRow:hover { background: #15151a; }
+.chatRow .avatar { width: 3rem; height: 3rem; }
+.chatInfo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.chatInfo small { overflow: hidden; color: #8d8d99; font-size: 0.8rem; white-space: nowrap; text-overflow: ellipsis; }
+.unread .chatInfo b, .unread .chatInfo small { color: #fff; font-weight: 700; }
+.seen { flex: none; color: #6f6f7b; font-size: 0.72rem; }
+.chatView { display: flex; flex-direction: column; min-height: 100%; }
+.chatTitle { display: flex; align-items: center; gap: 0.5rem; padding: 0; border: none; background: none; color: inherit; text-align: left; }
+.chatTitle span { display: flex; flex-direction: column; }
+.chatTitle small { color: #8d8d99; font-size: 0.72rem; }
+.messages { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; padding: 0.8rem; }
+.messageBlock { display: flex; flex-direction: column; }
+.day { align-self: center; margin: 0.6rem 0 0.4rem; color: #8d8d99; font-size: 0.72rem; }
+.bubble { align-self: flex-start; max-width: 80%; padding: 0.5rem 0.75rem; border-radius: 1.1rem; background: #26262d; font-size: 0.86rem; line-height: 1.35; }
+.bubble small { margin-left: 0.6rem; color: #8d8d99; font-size: 0.68rem; }
+.mine { align-self: flex-end; background: linear-gradient(135deg, #a64dff, #ff3d7f); }
+.mine small { color: rgba(255, 255, 255, 0.75); }
+.starred { box-shadow: 0 0 0 1px rgba(255, 210, 90, 0.6); }
+.star { display: block; margin-bottom: 0.2rem; color: #ffd25a; font-size: 0.7rem; font-weight: 700; }
+.seenLine { align-self: flex-start; margin-top: 0.3rem; color: #6f6f7b; font-size: 0.72rem; }
+.compose { margin: 0.4rem 0.8rem 0.6rem; padding: 0.55rem 1rem; border: 1px solid #2a2a31; border-radius: 999px; color: #6f6f7b; font-size: 0.82rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .story, .storyProgress i { animation: none; }
+  .storyProgress i { width: 100%; }
+}

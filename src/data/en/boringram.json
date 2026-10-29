@@ -1,0 +1,69 @@
+{
+  "sin_senal": {
+    "titulo": "No signal",
+    "texto": "Jair hasn't looked at his phone in this story yet."
+  },
+  "perfiles": {
+    "jair": { "bio": "Software engineer. Opinions my own, paycheck someone else's." },
+    "nikki": { "bio": "sweet chill monday to saturday 🍦 the rest is none of your business" }
+  },
+  "publicaciones": [
+    { "texto": "hour 11 of the shift. flavor of the day is exhaustion 🍦", "hace": "2 days ago" },
+    { "texto": "the usual girls 🥂 dont ask about the rest of the night", "hace": "3 weeks ago" },
+    { "texto": "one night without the uniform or the name tag. i almost look like a person", "hace": "5 weeks ago" },
+    { "texto": "another year survived 🎂🌹", "hace": "4 months ago" },
+    { "texto": "Sushi Friday with the usual. We split it, like everything.", "hace": "7 months ago" },
+    { "texto": "Engineer. Now it's time to make money.", "hace": "8 years ago" }
+  ],
+  "destacadas": [{ "titulo": "nights out", "texto": "just one", "hace": "3 h ago" }],
+  "chats": [
+    {
+      "estado": "Active 2 min ago",
+      "mensajes": [
+        { "texto": "never leave my life", "dia": "A year and a half ago" },
+        { "texto": "home", "dia": "Today" },
+        { "texto": "dont be mad about today" },
+        { "texto": "good morning in advance" },
+        { "texto": "home ok?" }
+      ]
+    },
+    {
+      "estado": "Business account",
+      "mensajes": [
+        { "texto": "Hi, Jair! We noticed nobody has seen your last 9 posts. With Boringram Premium, they still won't, but it'll hurt less.", "dia": "3 days ago" }
+      ]
+    },
+    {
+      "estado": "Active 1 h ago",
+      "mensajes": [
+        { "texto": "Engineer! Long time. I'm reaching out about a business opportunity that could change your life. It's not a pyramid, it's a prosperity triangle.", "dia": "2 weeks ago" },
+        { "texto": "Did you see my message? There are 12 of us in the triangle now.", "dia": "1 week ago" }
+      ]
+    },
+    {
+      "estado": "New account",
+      "mensajes": [
+        { "texto": "CONGRATULATIONS 🎉 You won a brand-new phone. Just send us your account number, your password and a photo of your soul.", "dia": "Yesterday" }
+      ]
+    }
+  ],
+  "textos": {
+    "inicio": "Home",
+    "mensajes": "Messages",
+    "perfil": "Profile",
+    "publicaciones": "posts",
+    "seguidores": "followers",
+    "seguidos": "following",
+    "te_sigue": "Follows you",
+    "siguiendo": "Following",
+    "me_gusta": "{n} likes",
+    "visto": "Left on read",
+    "visto_chat": "You left them on read.",
+    "tu": "You:",
+    "enviando": "Sending…",
+    "destacado": "★ Starred",
+    "escribir": "Message…",
+    "sin_publicaciones": "Nothing to see here yet.",
+    "atras": "Back"
+  }
+}
