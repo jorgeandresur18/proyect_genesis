@@ -254,6 +254,11 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const pick = () => playSelect();
   const galleryNew = useGalleryState().hasNew;
   const boringramNew = useBoringram().hasNew;
+  const load = useStore((s) => s.load);
+  // Espacio de la partida guardada más reciente (-1 si no hay ninguna).
+  const lastSave = useStore((s) =>
+    s.saves.reduce((best, slot, i) => (slot && (best < 0 || slot.date > s.saves[best]!.date) ? i : best), -1),
+  );
   const tiles: [Overlay, string, string][] = [
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],
@@ -304,20 +309,40 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
       {storyNotice && <p className="muted title-notice">{storyNotice}</p>}
       {error && <p className="error">{error}</p>}
       <nav className="title-menu">
-        <button
-          className="title-primary"
-          onClick={() => {
-            pick();
-            void enterPlayMode();
-            // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
-            newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
-          }}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden>
-            {MENU_ICONS.play}
-          </svg>
-          {t('titulo.nueva')}
-        </button>
+        <div className="title-main-actions">
+          {/* Con partidas guardadas, «Continuar» carga la más reciente. */}
+          {lastSave >= 0 && (
+            <button
+              className="title-primary"
+              onClick={() => {
+                pick();
+                void enterPlayMode();
+                load(lastSave);
+              }}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden>
+                {MENU_ICONS.play}
+              </svg>
+              {t('titulo.continuar')}
+            </button>
+          )}
+          <button
+            className={lastSave >= 0 ? 'title-secondary' : 'title-primary'}
+            onClick={() => {
+              pick();
+              void enterPlayMode();
+              // Para probar un capítulo en borrador: abrir el juego con ?escena=<scene_id>.
+              newGame(new URLSearchParams(window.location.search).get('escena') ?? undefined);
+            }}
+          >
+            {lastSave < 0 && (
+              <svg viewBox="0 0 24 24" aria-hidden>
+                {MENU_ICONS.play}
+              </svg>
+            )}
+            {t('titulo.nueva')}
+          </button>
+        </div>
         <div className="title-tiles">
           {tiles.map(([o, icon, label]) => (
             <button

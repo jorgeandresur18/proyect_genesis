@@ -218,16 +218,18 @@ function Characters() {
   const g = useGalleryState();
   const markOpened = useStore((s) => s.markGalleryOpened);
   const [sel, setSel] = useState(ALL);
-  const [open, setOpen] = useState<{ id: string; index: number } | null>(null);
+  // Posición en `flat`: el visor recorre todo lo visto de la pestaña abierta (en «Todos», de todos).
+  const [open, setOpen] = useState<number | null>(null);
   const seenOf = (id: string) => g.sprites.get(id) ?? [];
   const known = (id: string) => seenOf(id).length > 0;
   const nameOf = (id: string, expr: string) => texts.sprites[`${id}/${expr}`]?.nombre ?? expr.replace(/_/g, ' ');
   const label = (id: string) => (known(id) ? (texts.personajes[id] ?? id) : '???');
-  const current = open && CHARACTERS.find((c) => c.id === open.id);
-  const currentSeen = current ? seenOf(current.id) : [];
-  const shown = sel === ALL ? CHARACTERS : sel === MISC ? OTHERS : CHARACTERS.filter((c) => c.id === sel);
+  const shown = sel === ALL ? [...MAIN, ...OTHERS] : sel === MISC ? OTHERS : CHARACTERS.filter((c) => c.id === sel);
+  const flat = shown.flatMap((c) => seenOf(c.id).map((sp) => ({ id: c.id, expr: sp.expr })));
   const newIn = (list: typeof CHARACTERS) => list.some((c) => (g.newSprites.get(c.id)?.length ?? 0) > 0);
   const miscKnown = OTHERS.some((c) => known(c.id));
+  const count = (list: typeof CHARACTERS) =>
+    `${list.reduce((n, c) => n + seenOf(c.id).length, 0)}/${list.reduce((n, c) => n + c.sprites.length, 0)}`;
   const pick = (key: string) => {
     if (key === sel) return;
     playSelect();
@@ -241,7 +243,7 @@ function Characters() {
           <button
             key={s.expr}
             className="sprite-item"
-            onClick={() => setOpen({ id: c.id, index: seenOf(c.id).indexOf(s) })}
+            onClick={() => setOpen(flat.findIndex((f) => f.id === c.id && f.expr === s.expr))}
           >
             <span className="sprite-cell">
               <img src={assetUrl(`sprites/${c.id}/${s.expr}.webp`)} alt="" loading="lazy" draggable={false} />
@@ -263,6 +265,48 @@ function Characters() {
     </div>
   );
 
+  /** Una ventana por personaje principal, con su color. */
+  const characterWindow = (c: (typeof CHARACTERS)[number]) => (
+    <TermWindow
+      key={c.id}
+      className={known(c.id) ? '' : 'sprite-window-locked'}
+      color={known(c.id) ? characterColor(c.id) : undefined}
+      tabs={[{ key: c.id, label: label(c.id), color: known(c.id) ? characterColor(c.id) : undefined, dot: newIn([c]) }]}
+      right={count([c])}
+    >
+      {grid(c)}
+    </TermWindow>
+  );
+
+  /** Varios: una sección por personaje (enemigos y NPC), cada una con su nombre y su color. */
+  const miscSections = (
+    <div className="misc-sections">
+      {OTHERS.map((c) => (
+        <section
+          key={c.id}
+          className={`misc-section ${known(c.id) ? '' : 'misc-section-locked'}`}
+          style={{ '--wt': known(c.id) ? characterColor(c.id) : '#5d626c' } as CSSProperties}
+        >
+          <header>
+            <span className="misc-swatch" aria-hidden />
+            <h4>{label(c.id)}</h4>
+            {newIn([c]) && <NewDot className="new-dot-tab" />}
+            <span className="misc-count">{count([c])}</span>
+          </header>
+          {grid(c)}
+        </section>
+      ))}
+    </div>
+  );
+
+  const miscTab = {
+    key: MISC,
+    label: miscKnown ? t('galeria.varios') : '???',
+    color: miscKnown ? characterColor(MISC) : undefined,
+    muted: !miscKnown,
+    dot: newIn(OTHERS),
+  };
+  const windowColor = sel === MISC ? miscTab.color : sel !== ALL && known(sel) ? characterColor(sel) : undefined;
   return (
     <>
       <TermWindow
@@ -276,75 +320,53 @@ function Characters() {
             muted: !known(c.id),
             dot: newIn([c]),
           })),
-          ...(OTHERS.length
-            ? [
-                {
-                  key: MISC,
-                  label: miscKnown ? t('galeria.varios') : '???',
-                  color: miscKnown ? characterColor(MISC) : undefined,
-                  muted: !miscKnown,
-                  dot: newIn(OTHERS),
-                },
-              ]
-            : []),
+          ...(OTHERS.length ? [miscTab] : []),
         ]}
         active={sel}
         onTab={pick}
-        color={
-          sel === MISC
-            ? miscKnown
-              ? characterColor(MISC)
-              : undefined
-            : sel !== ALL && known(sel)
-              ? characterColor(sel)
-              : undefined
-        }
+        color={windowColor}
       >
-        {sel === ALL || sel === MISC ? (
+        {sel === ALL ? (
           <div className="sprite-windows">
-            {shown.map((c) => (
+            {MAIN.map(characterWindow)}
+            {OTHERS.length > 0 && (
               <TermWindow
-                key={c.id}
-                className={known(c.id) ? '' : 'sprite-window-locked'}
-                color={known(c.id) ? characterColor(c.id) : undefined}
-                tabs={[
-                  {
-                    key: c.id,
-                    label: label(c.id),
-                    color: known(c.id) ? characterColor(c.id) : undefined,
-                    dot: (g.newSprites.get(c.id)?.length ?? 0) > 0,
-                  },
-                ]}
-                right={`${seenOf(c.id).length}/${c.sprites.length}`}
+                className={miscKnown ? '' : 'sprite-window-locked'}
+                color={miscTab.color}
+                tabs={[{ ...miscTab, muted: false }]}
+                right={count(OTHERS)}
               >
-                {grid(c)}
+                {miscSections}
               </TermWindow>
-            ))}
+            )}
           </div>
+        ) : sel === MISC ? (
+          <>
+            <p className="sprite-count muted">{count(OTHERS)}</p>
+            {miscSections}
+          </>
         ) : (
           shown.map((c) => (
             <div key={c.id}>
-              <p className="sprite-count muted">
-                {seenOf(c.id).length}/{c.sprites.length}
-              </p>
+              <p className="sprite-count muted">{count([c])}</p>
               {grid(c)}
             </div>
           ))
         )}
       </TermWindow>
-      {current && open && (
+      {open !== null && flat[open] && (
         <Viewer
           sprite
-          src={(i) => assetUrl(`sprites/${current.id}/${currentSeen[i].expr}.webp`)}
-          label={(i) => `${texts.personajes[current.id] ?? current.id} · ${nameOf(current.id, currentSeen[i].expr)}`}
+          src={(i) => assetUrl(`sprites/${flat[i].id}/${flat[i].expr}.webp`)}
+          label={(i) => `${texts.personajes[flat[i].id] ?? flat[i].id} · ${nameOf(flat[i].id, flat[i].expr)}`}
           info={(i) => ({
-            file: `${current.id}/${currentSeen[i].expr}.webp`,
-            text: texts.sprites[`${current.id}/${currentSeen[i].expr}`]?.info ?? '',
+            file: `${flat[i].id}/${flat[i].expr}.webp`,
+            text: texts.sprites[`${flat[i].id}/${flat[i].expr}`]?.info ?? '',
           })}
-          onShow={(i) => markOpened(spriteKey(current.id, currentSeen[i].expr))}
-          count={currentSeen.length}
-          index={open.index}
-          onIndex={(index) => setOpen({ id: current.id, index })}
+          onShow={(i) => markOpened(spriteKey(flat[i].id, flat[i].expr))}
+          count={flat.length}
+          index={open}
+          onIndex={setOpen}
           onClose={() => setOpen(null)}
         />
       )}

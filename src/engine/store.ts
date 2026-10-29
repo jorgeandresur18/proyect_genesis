@@ -278,11 +278,12 @@ export const useStore = create<Store>()(
       // Las opciones guardadas antes de agregar una opción nueva toman su valor por defecto.
       merge: (persisted, current) => {
         const p = persisted as Partial<Store>;
-        return { ...current, ...p, settings: { ...current.settings, ...p.settings } };
+        // El juego siempre abre en el título: la partida en curso no se restaura (se sigue con «Continuar»,
+        // que carga el último guardado). Las versiones anteriores sí la guardaban: se ignora.
+        return { ...current, ...p, game: null, settings: { ...current.settings, ...p.settings } };
       },
       partialize: (s) => ({
         settings: s.settings,
-        game: s.game,
         saves: s.saves,
         readScenes: s.readScenes,
         snapshots: s.snapshots,
