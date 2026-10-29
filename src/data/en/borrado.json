@@ -1,0 +1,20 @@
+{
+  "titulo": "Deleting data…",
+  "borrando": "Deleting",
+  "archivos": [
+    "saved_games.sav  (your choices; just as bad as before)",
+    "gallery/unlocked_endings.png",
+    "boringram/likes_for_nikki_at_3am.json",
+    "boringram/left_on_read.txt  (they weren't going to answer either)",
+    "jair/secret_savings.xlsx  (the amount goes to the grave)",
+    "jair/self_esteem.dll  (file not found)",
+    "cami/patience.cfg  (0 bytes)",
+    "rikka/price_of_air.csv",
+    "nikki/good_morning_in_advance.txt",
+    "settings/volume_at_100.ini  (your neighbors thank you)",
+    "browser_history.tmp  (you're welcome)",
+    "GENESIS/regrets.log  (folder too large; deleted anyway)"
+  ],
+  "completado": "Deletion complete.",
+  "remate": "0 bytes. Like your account at the end of the month."
+}

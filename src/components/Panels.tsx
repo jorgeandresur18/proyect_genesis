@@ -1,9 +1,11 @@
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { CHAPTER_END, SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
 import { choiceText, lineText, speakerName } from '../engine/storyText';
 import { BAD_END, endingName, endings } from '../engine/story';
 import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
 import conoceMasEs from '../data/conoce_mas.json';
+import borradoEs from '../data/borrado.json';
+import borradoEn from '../data/en/borrado.json';
 import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
 import { playCancel, playSelect } from '../engine/sound';
@@ -39,7 +41,10 @@ export function Panel({
     setTimeout(onClose, PANEL_CLOSE_MS);
   };
   // Cada panel se abre como una terminal: la ventana se enciende, se «escribe» el comando y aparece el contenido.
-  const slug = title.toLowerCase().replace(/\s*\(.*\)$/, '').replace(/\s+/g, '_');
+  const slug = title
+    .toLowerCase()
+    .replace(/\s*\(.*\)$/, '')
+    .replace(/\s+/g, '_');
   return (
     <div className={`panel-backdrop ${closing ? 'panel-closing' : ''}`}>
       <div className={`panel panel-terminal ${wide ? 'panel-wide' : ''}`}>
@@ -56,7 +61,8 @@ export function Panel({
           <button onClick={close}>{t('panel.cerrar')}</button>
         </div>
         <div className="term-boot" aria-hidden>
-          <span className="term-prompt">$</span> <span className="term-cmd">{t('terminal.abrir', { nombre: slug })}</span>
+          <span className="term-prompt">$</span>{' '}
+          <span className="term-cmd">{t('terminal.abrir', { nombre: slug })}</span>
           <span className="term-ok"> {t('terminal.listo')}</span>
         </div>
         <div className="panel-body">{children}</div>
@@ -163,9 +169,7 @@ export function EndingsGallery({ onClose }: { onClose: () => void }) {
           <h3>
             {g.title} ({g.list.filter((e) => seen[e.id]).length}/{g.list.length})
           </h3>
-          {g.list.length === 0 && (
-            <p className="muted">{t('finales.proximos')}</p>
-          )}
+          {g.list.length === 0 && <p className="muted">{t('finales.proximos')}</p>}
           {g.list.map((e) => (
             <div key={e.id} className={`ending ${seen[e.id] ? '' : 'ending-locked'}`}>
               <strong>{seen[e.id] ? endingName(e, lang) : '???'}</strong>
@@ -256,6 +260,71 @@ const TEXT_SIZES = [
   { label: 'opciones.tam_muy_grande', value: 1.3 },
 ];
 
+/** Cuánto tarda cada parte del borrado (ms). */
+const DELETE_FILE_MS = 260;
+const DELETE_DONE_MS = 1100;
+const DELETE_FADE_MS = 800;
+
+/**
+ * El borrado en sí: barra de progreso y los archivos que se van «borrando» (con chistes), «Borrado completado»,
+ * fundido a negro y vuelta al título con todo en cero (sin recargar la página). Textos en src/data/borrado.json.
+ */
+function Deleting() {
+  const lang = useLang();
+  const tx = localized(borradoEs, borradoEn, lang);
+  const files = tx.archivos;
+  const [n, setN] = useState(0);
+  const [phase, setPhase] = useState<'files' | 'done' | 'fade'>('files');
+  useEffect(() => {
+    if (phase === 'files') {
+      if (n >= files.length) {
+        setPhase('done');
+        return;
+      }
+      const timer = setTimeout(() => setN(n + 1), DELETE_FILE_MS);
+      return () => clearTimeout(timer);
+    }
+    if (phase === 'done') {
+      const timer = setTimeout(() => setPhase('fade'), DELETE_DONE_MS);
+      return () => clearTimeout(timer);
+    }
+    const timer = setTimeout(() => {
+      useStore.getState().resetAll();
+      window.dispatchEvent(new Event('genesis:borrado'));
+    }, DELETE_FADE_MS);
+    return () => clearTimeout(timer);
+  }, [n, phase, files.length]);
+  const pct = Math.round((Math.min(n, files.length) / files.length) * 100);
+  return (
+    <>
+      <div className="danger-modal deleting" role="status" aria-live="polite">
+        <div className="danger-modal-head">
+          <h3>{phase === 'files' ? tx.titulo : tx.completado}</h3>
+          <span className="deleting-pct">{pct}%</span>
+        </div>
+        <div className="deleting-body">
+          <div className="deleting-bar">
+            <i style={{ width: `${pct}%` }} />
+          </div>
+          <ul className="deleting-files">
+            {files.slice(Math.max(0, n - 6), n).map((f, i) => (
+              <li key={f} className={i === Math.min(n, 6) - 1 && phase === 'files' ? 'current' : ''}>
+                <span className="deleting-x">✕</span> {tx.borrando} {f}
+              </li>
+            ))}
+          </ul>
+          {phase !== 'files' && (
+            <p className="deleting-done">
+              <b>✓ {tx.completado}</b> {tx.remate}
+            </p>
+          )}
+        </div>
+      </div>
+      {phase === 'fade' && <div className="deleting-fade" aria-hidden />}
+    </>
+  );
+}
+
 /** Quita tildes y espacios de más, para comparar la frase de confirmación sin exigir ortografía perfecta. */
 const plain = (x: string) =>
   x
@@ -273,6 +342,7 @@ function DangerZone() {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [typed, setTyped] = useState('');
+  const [deleting, setDeleting] = useState(false);
   const phrase = t('opciones.borrar_frase');
   const ok = plain(typed) === plain(phrase);
   return (
@@ -295,48 +365,52 @@ function DangerZone() {
       </div>
       {open && (
         <div className="danger-modal-backdrop">
-          <div className="danger-modal" role="dialog" aria-modal="true" aria-labelledby="danger-title">
-            <div className="danger-modal-head">
-              <h3 id="danger-title">{t('opciones.borrar_datos')}</h3>
-              <button
-                className="danger-modal-x"
-                aria-label={t('opciones.borrar_no')}
-                onClick={() => {
-                  playCancel();
-                  setOpen(false);
-                  setTyped('');
-                }}
-              >
-                ×
-              </button>
+          {deleting ? (
+            <Deleting />
+          ) : (
+            <div className="danger-modal" role="dialog" aria-modal="true" aria-labelledby="danger-title">
+              <div className="danger-modal-head">
+                <h3 id="danger-title">{t('opciones.borrar_datos')}</h3>
+                <button
+                  className="danger-modal-x"
+                  aria-label={t('opciones.borrar_no')}
+                  onClick={() => {
+                    playCancel();
+                    setOpen(false);
+                    setTyped('');
+                  }}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="danger-confirm">
+                <p className="danger-warning">{t('opciones.borrar_seguro')}</p>
+                <p className="muted">{t('opciones.borrar_desc')}</p>
+                <label>
+                  {t('opciones.borrar_escribe')} <code>{phrase}</code>
+                  <input
+                    value={typed}
+                    onChange={(e) => setTyped(e.target.value)}
+                    autoComplete="off"
+                    spellCheck={false}
+                    autoFocus
+                    placeholder={phrase}
+                  />
+                </label>
+                <small className="muted">{t('opciones.borrar_nota')}</small>
+                <button
+                  className="danger danger-full"
+                  disabled={!ok}
+                  onClick={() => {
+                    playCancel();
+                    setDeleting(true);
+                  }}
+                >
+                  {t('opciones.borrar_si')}
+                </button>
+              </div>
             </div>
-            <div className="danger-confirm">
-              <p className="danger-warning">{t('opciones.borrar_seguro')}</p>
-              <p className="muted">{t('opciones.borrar_desc')}</p>
-              <label>
-                {t('opciones.borrar_escribe')} <code>{phrase}</code>
-                <input
-                  value={typed}
-                  onChange={(e) => setTyped(e.target.value)}
-                  autoComplete="off"
-                  spellCheck={false}
-                  autoFocus
-                  placeholder={phrase}
-                />
-              </label>
-              <small className="muted">{t('opciones.borrar_nota')}</small>
-              <button
-                className="danger danger-full"
-                disabled={!ok}
-                onClick={() => {
-                  useStore.persist.clearStorage();
-                  window.location.reload();
-                }}
-              >
-                {t('opciones.borrar_si')}
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       )}
     </section>
@@ -355,7 +429,11 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
       <div className="option">
         <div className="segmented">
           {(['auto', 'es', 'en'] as const).map((l) => (
-            <button key={l} className={settings.language === l ? 'active' : ''} onClick={() => setSettings({ language: l })}>
+            <button
+              key={l}
+              className={settings.language === l ? 'active' : ''}
+              onClick={() => setSettings({ language: l })}
+            >
               {l === 'auto' ? `${t('idioma.auto')} (${t(`idioma.${detected.lang}`)})` : t(`idioma.${l}`)}
             </button>
           ))}
@@ -403,7 +481,10 @@ export function OptionsPanel({ onClose }: { onClose: () => void }) {
       </label>
       <label className="option">
         {t('opciones.velocidad', {
-          v: settings.textSpeed >= TEXT_SPEED_INSTANT ? t('opciones.instantaneo') : t('opciones.letras', { n: settings.textSpeed }),
+          v:
+            settings.textSpeed >= TEXT_SPEED_INSTANT
+              ? t('opciones.instantaneo')
+              : t('opciones.letras', { n: settings.textSpeed }),
         })}
         <input
           type="range"

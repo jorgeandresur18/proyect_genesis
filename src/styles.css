@@ -1542,3 +1542,18 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 .danger-modal .danger-confirm { margin: 0; border: none; border-radius: 0; background: none; }
 .danger-modal .danger-confirm .muted { margin: 0; font-size: 0.85rem; }
 .danger-full { width: 100%; margin-top: 0.2rem; }
+
+/* Borrado de datos: barra de progreso, archivos con chistes, «completado» y fundido a negro. */
+.deleting .danger-modal-head h3 { font-family: ui-monospace, Consolas, monospace; }
+.deleting-pct { font-family: ui-monospace, Consolas, monospace; color: #ff8a95; font-size: 0.9rem; }
+.deleting-body { display: flex; flex-direction: column; gap: 0.8rem; padding: 1rem; }
+.deleting-bar { height: 0.55rem; overflow: hidden; border-radius: 999px; background: #22161a; border: 1px solid rgba(255, 74, 90, 0.35); }
+.deleting-bar i { display: block; height: 100%; background: linear-gradient(90deg, #d93848, #ff6b78); box-shadow: 0 0 0.8rem rgba(255, 74, 90, 0.6); transition: width 0.25s linear; }
+.deleting-files { display: flex; flex-direction: column; gap: 0.25rem; min-height: 9.2rem; margin: 0; padding: 0; list-style: none; font-family: ui-monospace, Consolas, monospace; font-size: 0.78rem; color: #8d8d99; }
+.deleting-files li { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; animation: decisions-fade 0.2s ease-out both; }
+.deleting-files li.current { color: #f1f1f4; }
+.deleting-x { color: #ff6b78; }
+.deleting-done { margin: 0; color: #8ef0bd; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; animation: decisions-fade 0.3s ease-out both; }
+.deleting-done b { margin-right: 0.3rem; }
+.deleting-fade { position: fixed; inset: 0; z-index: 100; background: #000; animation: deleting-fade 0.8s ease-in forwards; }
+@keyframes deleting-fade { from { opacity: 0; } to { opacity: 1; } }

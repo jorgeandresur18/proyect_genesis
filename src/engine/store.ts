@@ -125,6 +125,8 @@ interface Store {
   load: (slot: number) => void;
   deleteSave: (slot: number) => void;
   setMode: (mode: Mode, speed?: Speed) => void;
+  /** Borra todo: partidas, desbloqueables, lo leído y las opciones (Opciones › Zona de peligro). */
+  resetAll: () => void;
   /** Vuelve a la línea anterior (deshace también las decisiones). */
   back: () => boolean;
   /** Avanza hasta la próxima decisión (o un final). */
@@ -347,6 +349,23 @@ export const useStore = create<Store>()(
         },
 
         setMode: (mode, speed) => set(speed ? { mode, speed } : { mode }),
+
+        resetAll: () =>
+          set({
+            settings: DEFAULT_SETTINGS,
+            game: null,
+            saves: Array(SAVE_SLOTS).fill(null),
+            readScenes: {},
+            snapshots: {},
+            endingsSeen: {},
+            cgSeen: {},
+            galleryOpened: {},
+            boringramLikes: {},
+            choicesTaken: {},
+            mode: 'normal',
+            error: null,
+            textDone: false,
+          }),
         setSettings: (patch) => set({ settings: { ...get().settings, ...patch } }),
       };
     },

@@ -1,0 +1,21 @@
+{
+  "nota": "Lo que se ve al borrar todos los datos (Opciones › Zona de peligro): los archivos que se «borran» uno por uno y el mensaje final.",
+  "titulo": "Borrando datos…",
+  "borrando": "Borrando",
+  "archivos": [
+    "partidas_guardadas.sav  (tus decisiones; igual de malas que antes)",
+    "galeria/finales_desbloqueados.png",
+    "boringram/likes_a_nikki_a_las_3am.json",
+    "boringram/mensajes_en_visto.txt  (ellos tampoco te iban a contestar)",
+    "jair/ahorros_secretos.xlsx  (la cifra se va a la tumba)",
+    "jair/autoestima.dll  (no se encontró el archivo)",
+    "cami/paciencia.cfg  (0 bytes)",
+    "rikka/precio_del_aire.csv",
+    "nikki/buenos_dias_adelantado.txt",
+    "opciones/volumen_al_100.ini  (tus vecinos te lo agradecen)",
+    "historial_del_navegador.tmp  (de nada)",
+    "GENESIS/remordimientos.log  (carpeta demasiado grande; se borró igual)"
+  ],
+  "completado": "Borrado completado.",
+  "remate": "0 bytes. Como tu cuenta a fin de mes."
+}

@@ -71,6 +71,17 @@ export default function App() {
       still ? 150 : TITLE_FADE_MS,
     );
   };
+  // Al terminar el borrado de datos (Opciones › Zona de peligro), el título aparece desde negro.
+  useEffect(() => {
+    const onReset = () => {
+      setOverlay(null);
+      setIntro('juego');
+      setToTitle('in');
+      setTimeout(() => setToTitle(null), still ? 150 : TITLE_REVEAL_MS);
+    };
+    window.addEventListener('genesis:borrado', onReset);
+    return () => window.removeEventListener('genesis:borrado', onReset);
+  }, [still]);
   // Opciones de lectura: tamaño del texto y opacidad de la caja (las usa styles.css).
   // El atributo lang de la página sigue al idioma del juego (lectores de pantalla, traducción del navegador).
   const lang = useLang();
