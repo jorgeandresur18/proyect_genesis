@@ -36,6 +36,33 @@
       ]
     },
     {
+      "titulo": "El tono",
+      "parrafos": [
+        "Cambia por etapas. Empieza como un isekai adulto: una aventura épica y brillante, con humor negro, groserías y chistes subidos de tono. Cuando la historia llega al mundo real, el tono se vuelve áspero, sofocante y sudado. Y cuando los personajes empiezan a descubrir de dónde vienen, se vuelve un drama psicológico crudo y directo.",
+        "El humor no está para premiar al jugador, sino para incomodarlo. Cada chiste apunta a algo: el control, el escapismo, el dinero o la dependencia. Muchos te van a hacer reír hoy y se van a leer distinto más adelante.",
+        "La sexualidad es sugerida, nunca explícita. Y no hay moralejas: nadie se redime."
+      ]
+    },
+    {
+      "titulo": "La mirada psicológica",
+      "parrafos": [
+        "Jair quiere los beneficios de una relación sin aceptar que la otra persona sea libre. Entiende su problema y aun así no cambia. La historia intenta comprenderlo, no absolverlo.",
+        "La obra habla de codependencia y apego; de usar a otros como escudo para no pelear las propias batallas; de amar una imagen idealizada en lugar de a una persona; del alcoholismo, contado por sus consecuencias y no como chiste; y del miedo a la libertad: a veces una jaula conocida asusta menos que una vida propia.",
+        "Ningún personaje está escrito solo para sufrir ni solo para hacer brillar a otro. Todos desean, deciden y se equivocan."
+      ]
+    },
+    {
+      "titulo": "Las ideas de fondo",
+      "parrafos": [
+        "El absurdo y el sentido: una vida en bucle, como la roca de Sísifo, y la pregunta de qué hacer con la libertad cuando por fin se tiene y no se encuentra para qué vivirla.",
+        "«Yo soy yo y mi circunstancia»: nadie elige cómo lo hicieron, pero sí qué hace con eso.",
+        "La muerte de Dios: qué les pasa a las criaturas cuando su creador resulta ser solo un hombre, y si son capaces de crear sus propios valores.",
+        "El poder total: el Gran Ingeniero, el dios de este universo, está inspirado en el Gran Hermano de 1984. Un dios al que todos adoran y casi nadie ha visto.",
+        "El libre albedrío frente al condicionamiento: ¿es bondad la que no se elige?",
+        "La realidad simulada y la identidad copiada: qué es real, qué es una copia y si una copia puede llegar a ser alguien."
+      ]
+    },
+    {
       "titulo": "Cómo se juega",
       "parrafos": [
         "Lees, decides y cargas con las consecuencias. Algunas decisiones solo cambian una conversación; otras desvían la historia o la terminan antes de tiempo. El mapa de decisiones muestra los caminos que ya recorriste y los que faltan, y la galería guarda los finales que encontraste.",
@@ -46,8 +73,17 @@
       "titulo": "Cómo nació",
       "parrafos": [
         "PROYECT GENESIS nació en octubre de 2026. Es un proyecto indie hecho por una sola persona: Jorge Andrés Urgilés Ruiz. La historia, la dirección, el diseño y la programación salieron de una sola cabeza.",
-        "Es, a propósito, una historia sobre una inteligencia artificial que crea personajes, hecha con ayuda de inteligencias artificiales. Se construyó con herramientas de IA, muchas de ellas gratuitas: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte. Hasta el protagonista lleva el nombre de Jair, el agente de IA de su autor.",
-        "Influencias de atmósfera: Welcome to the NHK, Perfect Blue, Neon Genesis Evangelion y Scott Pilgrim."
+        "Es, a propósito, una historia sobre una inteligencia artificial que crea personajes, hecha con ayuda de inteligencias artificiales. Se construyó con herramientas de IA, muchas de ellas gratuitas: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte. Hasta el protagonista lleva el nombre de Jair, el agente de IA de su autor. Aunque, ojo: el Jair de la historia no es una IA. Es tan humano como sus deudas."
+      ]
+    },
+    {
+      "titulo": "Las influencias",
+      "parrafos": [
+        "Literatura y filosofía: 1984, El extranjero, El mito de Sísifo, Siddhartha, Así habló Zaratustra, La naranja mecánica, El señor de los anillos, «Yo soy yo y mi circunstancia», Persépolis y El hombre en busca de sentido.",
+        "Anime y manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days y Welcome to the NHK.",
+        "Cómics: Scott Pilgrim, La última cacería de Kraven, la melancolía de Spider-Man: Blue y la crudeza de Daredevil: Born Again.",
+        "Cine: Matrix, Yo, robot y The Truman Show.",
+        "Música: la melancolía honesta y pura de The Smiths sobre el amor y la soledad; las relaciones rotas y los sentimientos imperfectos de The Strokes; la vulnerabilidad de The Cranberries; la poesía oscura y la teatralidad gótica de The Cure; y The Killers, con la idea de que, aunque todo salga mal, puede haber una luz."
       ]
     },
     {

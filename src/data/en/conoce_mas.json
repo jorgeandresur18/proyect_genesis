@@ -36,6 +36,33 @@
       ]
     },
     {
+      "titulo": "The tone",
+      "parrafos": [
+        "It changes in stages. It starts as an adult isekai: an epic, bright adventure, with black humor, swearing and dirty jokes. When the story reaches the real world, the tone turns rough, stifling and sweaty. And when the characters start to discover where they come from, it becomes a raw, direct psychological drama.",
+        "The humor isn't there to reward the player, but to make them uncomfortable. Every joke points at something: control, escapism, money or dependency. Many will make you laugh today and read differently later on.",
+        "Sexuality is suggested, never explicit. And there are no morals: nobody is redeemed."
+      ]
+    },
+    {
+      "titulo": "The psychological lens",
+      "parrafos": [
+        "Jair wants the benefits of a relationship without accepting that the other person is free. He understands his problem and still doesn't change. The story tries to understand him, not to absolve him.",
+        "The work is about codependency and attachment; about using others as a shield so you never fight your own battles; about loving an idealized image instead of a person; about alcoholism, told through its consequences and not as a joke; and about the fear of freedom: sometimes a familiar cage is less frightening than a life of your own.",
+        "No character is written only to suffer or only to make someone else shine. They all want, decide and make mistakes."
+      ]
+    },
+    {
+      "titulo": "The ideas underneath",
+      "parrafos": [
+        "The absurd and meaning: a life on a loop, like the rock of Sisyphus, and the question of what to do with freedom when you finally have it and can't find anything to live it for.",
+        "«I am I and my circumstance»: nobody chooses how they were made, but they do choose what to do with it.",
+        "The death of God: what happens to creatures when their creator turns out to be just a man, and whether they can create their own values.",
+        "Total power: the Great Engineer, the god of this universe, is inspired by Big Brother from 1984. A god everyone worships and almost nobody has seen.",
+        "Free will versus conditioning: is it goodness if it isn't chosen?",
+        "Simulated reality and copied identity: what is real, what is a copy, and whether a copy can become someone."
+      ]
+    },
+    {
       "titulo": "How to play",
       "parrafos": [
         "You read, you choose and you live with the consequences. Some choices only change a conversation; others divert the story or end it too early. The decision map shows the paths you've already taken and the ones still missing, and the gallery keeps the endings you've found.",
@@ -46,8 +73,17 @@
       "titulo": "How it was born",
       "parrafos": [
         "PROYECT GENESIS was born in October 2026. It is an indie project made by a single person: Jorge Andrés Urgilés Ruiz. The story, direction, design and programming came from one single head.",
-        "It is, on purpose, a story about an artificial intelligence that creates characters, made with the help of artificial intelligences. It was built with AI tools, many of them free: ChatGPT and Gemini to shape the story bible, Claude Code to program the engine and write drafts, and Gemini to generate the art. Even the protagonist is named after Jair, his author's AI agent.",
-        "Atmospheric influences: Welcome to the NHK, Perfect Blue, Neon Genesis Evangelion and Scott Pilgrim."
+        "It is, on purpose, a story about an artificial intelligence that creates characters, made with the help of artificial intelligences. It was built with AI tools, many of them free: ChatGPT and Gemini to shape the story bible, Claude Code to program the engine and write drafts, and Gemini to generate the art. Even the protagonist is named after Jair, his author's AI agent. But careful: the Jair in the story is not an AI. He's as human as his debts."
+      ]
+    },
+    {
+      "titulo": "The influences",
+      "parrafos": [
+        "Literature and philosophy: 1984, The Stranger, The Myth of Sisyphus, Siddhartha, Thus Spoke Zarathustra, A Clockwork Orange, The Lord of the Rings, «I am I and my circumstance», Persepolis and Man's Search for Meaning.",
+        "Anime and manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days and Welcome to the NHK.",
+        "Comics: Scott Pilgrim, Kraven's Last Hunt, the melancholy of Spider-Man: Blue and the rawness of Daredevil: Born Again.",
+        "Film: The Matrix, I, Robot and The Truman Show.",
+        "Music: the honest, pure melancholy of The Smiths about love and loneliness; the broken relationships and imperfect feelings of The Strokes; the vulnerability of The Cranberries; the dark poetry and gothic theatricality of The Cure; and The Killers, with the idea that even if everything goes wrong, there can be a light."
       ]
     },
     {
