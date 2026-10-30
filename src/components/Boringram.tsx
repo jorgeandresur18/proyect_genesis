@@ -3,8 +3,11 @@ import { createPortal } from 'react-dom';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
 import {
+  AVION_KEY,
   chatKey,
   LINTERNA_KEY,
+  LINTERNA_OLVIDADA_KEY,
+  NO_MOLESTAR_KEY,
   postKey,
   storyKey,
   TUTORIAL_KEY,
@@ -47,6 +50,30 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const [closing, setClosing] = useState(false);
   const [shade, setShade] = useState(false);
   const torch = useTorch();
+  const aj = useStore((st) => st.boringramAjustes);
+  const setAj = useStore((st) => st.setBoringramAjustes);
+  const markOpened = useStore((st) => st.markGalleryOpened);
+  // Si se salió en modo avión, el celular vuelve con wifi y datos (y llega su notificación).
+  useEffect(() => {
+    if (!useStore.getState().boringramAjustes.avion) return;
+    setAj({ avion: false, wifi: true, datos: true });
+    markOpened(AVION_KEY);
+  }, [setAj, markOpened]);
+  const toggleAjuste = (icon: string) => {
+    if (icon === 'linterna') return void torch.toggle();
+    const on = !aj[icon];
+    if (icon === 'avion') {
+      if (on && torch.on) void torch.toggle();
+      return setAj(
+        on ? { avion: true, wifi: false, datos: false, bluetooth: false } : { avion: false, wifi: true, datos: true },
+      );
+    }
+    // Los datos no funcionan en modo avión: prenderlos lo quita (el wifi y el bluetooth sí se pueden).
+    if (icon === 'datos' && on && aj.avion) return setAj({ datos: true, avion: false });
+    if (icon === 'no_molestar' && on) markOpened(NO_MOLESTAR_KEY);
+    setAj({ [icon]: on });
+  };
+  const net = { online: !!(aj.wifi || aj.datos), msg: aj.avion ? b.data.textos.sin_red_avion : b.data.textos.sin_red };
   // «Cómo usar» desde fuera del celular: cada toque pide el recorrido otra vez.
   const [tourRequest, setTourRequest] = useState(0);
   // Lupa (solo en computadora): la app en vertical a toda la altura, sin el marco del celular. Se recuerda.
@@ -118,8 +145,8 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
             <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" />
           </svg>
         </div>
-        <StatusBar b={b} onPull={() => boot === 'app' && setShade(true)} />
-        {shade && <Shade b={b} torch={torch.on} onTorch={torch.toggle} onClose={() => setShade(false)} />}
+        <StatusBar b={b} aj={aj} torch={torch.on} onPull={() => boot === 'app' && setShade(true)} />
+        {shade && <Shade b={b} aj={aj} torch={torch.on} onTile={toggleAjuste} onClose={() => setShade(false)} />}
         {/* Celular sin linterna real (o sin permiso): la pantalla se ilumina. */}
         {torch.on && torch.touch && !torch.real && <div className={s.torchScreen} aria-hidden />}
         {boot === 'logo' ? (
@@ -129,7 +156,9 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         ) : boot === 'skeleton' ? (
           <Skeleton label={b.data.textos.cargando} />
         ) : (
-          <App b={b} tourRequest={tourRequest} onClose={close} />
+          <NetContext.Provider value={net}>
+            <App b={b} tourRequest={tourRequest} onClose={close} />
+          </NetContext.Provider>
         )}
       </div>
       {/* Celular en horizontal: se pide girarlo (solo se ve con CSS en esa situación). */}
@@ -169,8 +198,24 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
 
 const BIG_KEY = 'genesis-boringram-grande';
 
-/** Iconos de los ajustes rápidos del panel de notificaciones. */
-function TileIcon({ kind }: { kind: string }) {
+/** Cada notificación que se va con «Borrar todo» sale un poco después que la anterior. */
+const SWEEP_STEP_MS = 45;
+
+/** Sin conexión (wifi y datos apagados, o modo avión): lo que necesita internet avisa y no se hace. */
+const NetContext = createContext({ online: true, msg: '' });
+function useOffline() {
+  const net = useContext(NetContext);
+  const toast = useToast();
+  return () => {
+    if (net.online) return false;
+    playCancel();
+    toast(net.msg);
+    return true;
+  };
+}
+
+/** Iconos de los ajustes rápidos (en el panel y, prendidos, en la barra de estado). */
+function TileIcon({ kind, className = s.tileIcon }: { kind: string; className?: string }) {
   const paths: Record<string, ReactNode> = {
     wifi: <path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0M12 19.5h.01" />,
     datos: <path d="M8 20V8M4 12l4-4 4 4M16 4v12M12 12l4 4 4-4" />,
@@ -185,7 +230,7 @@ function TileIcon({ kind }: { kind: string }) {
     avion: <path d="M10.5 21v-6L3 17v-2l7.5-5V4.5a1.5 1.5 0 0 1 3 0V10L21 15v2l-7.5-2v6l-1.5-1z" />,
   };
   return (
-    <svg viewBox="0 0 24 24" className={s.tileIcon} aria-hidden>
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
       {paths[kind]}
     </svg>
   );
@@ -206,8 +251,16 @@ function useTorch() {
     stream.current = null;
     setReal(false);
   };
-  // Al cerrar Boringram, la linterna se apaga.
-  useEffect(() => () => stream.current?.getTracks().forEach((t) => t.stop()), []);
+  const onRef = useRef(false);
+  onRef.current = on;
+  // Al cerrar Boringram, la linterna se apaga (si quedó prendida, llega su notificación).
+  useEffect(
+    () => () => {
+      stream.current?.getTracks().forEach((t) => t.stop());
+      if (onRef.current) useStore.getState().markGalleryOpened(LINTERNA_OLVIDADA_KEY);
+    },
+    [],
+  );
   const toggle = async () => {
     const next = !on;
     wanted.current = next;
@@ -241,7 +294,17 @@ function useTorch() {
  * nuevas, mensajes si hay chats nuevos y el correo lleno de spam); a la derecha la alarma, la señal, el wifi
  * y la batería con su porcentaje (la de la historia: 12 %, en rojo).
  */
-function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
+function StatusBar({
+  b,
+  aj,
+  torch,
+  onPull,
+}: {
+  b: B;
+  aj: Record<string, boolean>;
+  torch: boolean;
+  onPull: () => void;
+}) {
   const c = b.estado;
   const low = c.bateria <= 15;
   // Se baja el panel de notificaciones arrastrando la barra hacia abajo (o tocándola).
@@ -279,9 +342,13 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
           <path d="M3 6h18v12H3z" fill="none" stroke="currentColor" strokeWidth="2.2" />
           <path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" strokeWidth="2.2" />
         </svg>
+        {/* La linterna va a la izquierda, con las notificaciones: a la derecha ya no cabe. */}
+        {torch && <TileIcon kind="linterna" className={s.statusTile} />}
       </span>
       <span className={s.notch} />
       <span className={`${s.statusSide} ${s.statusRight}`}>
+        {aj.no_molestar && <TileIcon kind="no_molestar" className={s.statusTile} />}
+        {aj.bluetooth && <TileIcon kind="bluetooth" className={s.statusTile} />}
         <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
           <circle cx="12" cy="13" r="7" fill="none" stroke="currentColor" strokeWidth="2.2" />
           <path
@@ -292,24 +359,31 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
             strokeLinecap="round"
           />
         </svg>
-        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
-          <rect x="2" y="15" width="3.6" height="5" rx="0.8" fill="currentColor" />
+        {aj.avion ? (
+          <TileIcon kind="avion" className={s.statusTile} />
+        ) : (
+          <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+            <rect x="2" y="15" width="3.6" height="5" rx="0.8" fill="currentColor" />
           <rect x="7.4" y="11" width="3.6" height="9" rx="0.8" fill="currentColor" />
           <rect x="12.8" y="7" width="3.6" height="13" rx="0.8" fill="currentColor" />
-          <rect x="18.2" y="3" width="3.6" height="17" rx="0.8" fill="currentColor" opacity="0.35" />
-        </svg>
-        <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
-          <path d="M2 9.5a15 15 0 0 1 20 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-          <path
-            d="M5.5 13a10 10 0 0 1 13 0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-          />
-          <path d="M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-          <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
-        </svg>
+            <rect x="18.2" y="3" width="3.6" height="17" rx="0.8" fill="currentColor" opacity="0.35" />
+          </svg>
+        )}
+        {aj.datos && !aj.wifi && <span className={s.statusData}>4G</span>}
+        {aj.wifi && (
+          <svg viewBox="0 0 24 24" className={s.statusIcon} aria-hidden>
+            <path d="M2 9.5a15 15 0 0 1 20 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+            <path
+              d="M5.5 13a10 10 0 0 1 13 0"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+            />
+            <path d="M9 16.5a5 5 0 0 1 6 0" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+            <circle cx="12" cy="19.6" r="1.6" fill="currentColor" />
+          </svg>
+        )}
         <span className={`${s.batteryText} ${low ? s.batteryLow : ''} ${c.ahorro ? s.batterySaver : ''}`}>
           {c.bateria}%
         </span>
@@ -329,11 +403,24 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
  * y apagan y las notificaciones (apps parodia; se desbloquean con la historia). Se cierra arrastrando hacia
  * arriba, con la manija o tocando fuera de la lista.
  */
-function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: () => void; onClose: () => void }) {
+function Shade({
+  b,
+  aj,
+  torch,
+  onTile,
+  onClose,
+}: {
+  b: B;
+  aj: Record<string, boolean>;
+  torch: boolean;
+  onTile: (icon: string) => void;
+  onClose: () => void;
+}) {
   const tx = b.data.textos;
   const c = b.estado;
-  const [tiles, setTiles] = useState<Record<string, boolean>>({ 0: true, 1: true });
   const [cleared, setCleared] = useState<string[]>([]);
+  // «Borrar todo»: se van hacia un costado, una tras otra (al volver a abrir el panel, vuelven).
+  const [sweeping, setSweeping] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const start = useRef<number | null>(null);
   const close = () => {
@@ -362,8 +449,7 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
       <div className={s.tiles}>
         {b.data.ajustes_rapidos.map((name, i) => {
           const icon = b.data.ajustes_iconos[i];
-          const isTorch = icon === 'linterna';
-          const on = isTorch ? torch : tiles[i];
+          const on = icon === 'linterna' ? torch : aj[icon];
           return (
             <button
               key={name}
@@ -371,8 +457,7 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
               aria-pressed={!!on}
               onClick={() => {
                 playSelect();
-                if (isTorch) onTorch();
-                else setTiles({ ...tiles, [i]: !tiles[i] });
+                onTile(icon);
               }}
             >
               <TileIcon kind={icon} />
@@ -385,9 +470,17 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
         <b>{tx.notificaciones}</b>
         {list.length > 0 && (
           <button
+            disabled={sweeping}
             onClick={() => {
               playCancel();
-              setCleared(list.map((n) => n.id));
+              setSweeping(true);
+              setTimeout(
+                () => {
+                  setCleared(list.map((n) => n.id));
+                  setSweeping(false);
+                },
+                list.length * SWEEP_STEP_MS + 320,
+              );
             }}
           >
             {tx.borrar_todo}
@@ -396,8 +489,12 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
       </div>
       <div className={s.notifList}>
         {list.length === 0 && <p className={s.empty}>{tx.sin_notificaciones}</p>}
-        {list.map((n) => (
-          <div key={n.id} className={s.notif}>
+        {list.map((n, i) => (
+          <div
+            key={n.id}
+            className={`${s.notif} ${sweeping ? s.notifOut : ''}`}
+            style={sweeping ? { animationDelay: `${i * SWEEP_STEP_MS}ms` } : undefined}
+          >
             <span className={s.notifIcon}>
               {n.icono === 'bori' ? (
                 <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
@@ -795,6 +892,7 @@ function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: 
     return () => clearTimeout(timer);
   }, [toast]);
   const showToast = (text: string) => setToast({ key: Date.now(), text });
+  const net = useContext(NetContext);
   // Cada vista empieza arriba, como al cambiar de pantalla en el celular.
   useEffect(() => {
     scroller.current?.scrollTo(0, 0);
@@ -853,6 +951,10 @@ function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: 
   return (
     <ShareContext.Provider
       value={(id) => {
+        if (!net.online) {
+          playCancel();
+          return showToast(net.msg);
+        }
         playSelect();
         setSharing(id);
       }}
@@ -1245,6 +1347,7 @@ function PostActions({ b, post, onComment, tour }: { b: B; post: Publicacion; on
   const onShare = useShare();
   const tx = b.data.textos;
   const setLike = useStore((st) => st.setBoringramLike);
+  const offline = useOffline();
   const liked = b.liked(post);
   const [pop, setPop] = useState(0);
   const n = b.likeCount(post);
@@ -1257,6 +1360,7 @@ function PostActions({ b, post, onComment, tour }: { b: B; post: Publicacion; on
           aria-pressed={liked}
           aria-label={tx.me_gusta.replace('{n}', String(n))}
           onClick={() => {
+            if (offline()) return;
             if (!liked) playSelect();
             setLike(post.id, !liked);
             setPop((p) => p + 1);
@@ -1316,7 +1420,9 @@ function Composer({
   const tx = b.data.textos;
   const toast = useToast();
   const add = useStore((st) => st.addBoringramComment);
+  const offline = useOffline();
   const send = (t: string) => {
+    if (offline()) return false;
     if ((useStore.getState().boringramComments[post.id]?.length ?? 0) >= 2) {
       playCancel();
       toast(tx.acosador);
@@ -1403,8 +1509,10 @@ function Post({
   const setLike = useStore((st) => st.setBoringramLike);
   const [burst, setBurst] = useState(0);
   const composer = useRef<(() => void) | null>(null);
+  const offline = useOffline();
   // Doble toque en la foto: me gusta (nunca lo quita), con el corazón grande.
   const doubleTap = () => {
+    if (offline()) return;
     if (!b.liked(post)) playSelect();
     setLike(post.id, true);
     setBurst((x) => x + 1);
@@ -1701,6 +1809,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
   const onShare = useShare();
   const markOpened = useStore((st) => st.markGalleryOpened);
   const setLike = useStore((st) => st.setBoringramLike);
+  const offline = useOffline();
   useEffect(() => markOpened(storyKey(id)), [id, markOpened]);
   const [pop, setPop] = useState(0);
   const [rain, setRain] = useState(0);
@@ -1710,11 +1819,13 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
   const p = b.perfiles[h.autor];
   const liked = b.storyLiked(id);
   const like = () => {
+    if (offline()) return;
     if (!liked) playSelect();
     setLike(`story:${id}`, true);
     setPop((x) => x + 1);
   };
   const send = () => {
+    if (offline()) return false;
     if (h.autor === b.data.yo) {
       playCancel();
       toast(tx.propio_historia);
@@ -1747,7 +1858,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
           hold.current = {
             long: false,
             timer: window.setTimeout(() => {
-              if (!hold.current) return;
+              if (!hold.current || offline()) return;
               hold.current.long = true;
               if (!liked) playSelect();
               setLike(`story:${id}`, true);
@@ -1810,6 +1921,7 @@ function StoryView({ b, id, onClose }: { b: B; id: string; onClose: () => void }
           aria-label={tx.me_gusta_tab}
           onClick={() => {
             if (liked) {
+              if (offline()) return;
               setLike(`story:${id}`, false);
               return;
             }

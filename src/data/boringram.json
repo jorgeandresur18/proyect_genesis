@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento.",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento. Ajustes rápidos: se guardan (boringramAjustes); con el wifi y los datos apagados (o en modo avión) no se puede dar me gusta, comentar, responder ni compartir. Notificaciones que se ganan con los ajustes: «bor:no_molestar» (prender No molestar), «bor:avion» (volver a entrar después de salir en modo avión: se vuelve con wifi y datos) y «bor:linterna_olvidada» (salir con la linterna prendida).",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -451,7 +451,9 @@
     "carrusel": "Foto {n} de {total}",
     "ampliar": "Ampliar",
     "modo_celular": "Modo celular",
-    "tu_historia": "Tu historia"
+    "tu_historia": "Tu historia",
+    "sin_red": "Sin conexión. Prende el wifi o los datos. O habla con alguien en persona: dicen que todavía se puede.",
+    "sin_red_avion": "Estás en modo avión. El celular cree que vuela; tú sigues acostado."
   },
   "notificaciones": [
     {
@@ -462,6 +464,36 @@
       "texto": "Ilumina tres metros y gasta como un estadio. Batería: {bateria} %. Si lo que buscas es el cargador, ya es tarde.",
       "hace": "ahora",
       "clave": "bor:linterna",
+      "desbloqueo": null
+    },
+    {
+      "id": "no_molestar",
+      "app": "Sistema",
+      "icono": "🌙",
+      "titulo": "No molestar activado",
+      "texto": "Nadie te va a molestar. Igual que antes, pero ahora fue decisión tuya.",
+      "hace": "ahora",
+      "clave": "bor:no_molestar",
+      "desbloqueo": null
+    },
+    {
+      "id": "avion",
+      "app": "Sistema",
+      "icono": "✈",
+      "titulo": "Modo avión desactivado",
+      "texto": "Aterrizaste sin salir de la cama. Wifi y datos otra vez prendidos: el mundo no notó que te fuiste.",
+      "hace": "ahora",
+      "clave": "bor:avion",
+      "desbloqueo": null
+    },
+    {
+      "id": "linterna_olvidada",
+      "app": "Sistema",
+      "icono": "🔦",
+      "titulo": "Linterna apagada",
+      "texto": "La dejaste prendida al salir. La apagamos para salvar el {bateria} % que te queda. De nada.",
+      "hace": "ahora",
+      "clave": "bor:linterna_olvidada",
       "desbloqueo": null
     },
     {

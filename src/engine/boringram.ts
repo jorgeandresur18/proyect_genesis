@@ -181,6 +181,12 @@ export const chatKey = (id: string, n: number) => `bor:chat:${id}:${n}`;
 export const TUTORIAL_KEY = 'bor:tutorial';
 /** Prendió la linterna alguna vez (desbloquea su notificación). */
 export const LINTERNA_KEY = 'bor:linterna';
+/** Prendió No molestar. */
+export const NO_MOLESTAR_KEY = 'bor:no_molestar';
+/** Salió de Boringram en modo avión y volvió a entrar. */
+export const AVION_KEY = 'bor:avion';
+/** Salió de Boringram con la linterna prendida. */
+export const LINTERNA_OLVIDADA_KEY = 'bor:linterna_olvidada';
 
 /** Lo desbloqueado en la partida guardada, y qué es nuevo. */
 export function useBoringram() {
@@ -238,5 +244,26 @@ export function useBoringram() {
     newStories,
     newChats,
     hasNew: newPosts.size + newStories.size + newChats.size > 0,
+  };
+}
+
+/** Para el 100 %: cuánto hay de cada cosa en el celular y cuánto se desbloqueó (sin importar si ya se abrió). */
+export function useBoringramProgress() {
+  const visited = useStore((s) => s.snapshots);
+  const opened = useStore((s) => s.galleryOpened);
+  const open = (x: { desbloqueo: string | null; clave?: string }) =>
+    (!x.desbloqueo || !!visited[x.desbloqueo]) && (!x.clave || !!opened[x.clave]);
+  // Antes de que Jair mire su celular en la historia, no hay nada.
+  const on = open(ES.perfiles[ES.yo]);
+  const count = <T extends { desbloqueo: string | null; clave?: string }>(list: T[]) => ({
+    got: on ? list.filter(open).length : 0,
+    total: list.length,
+  });
+  return {
+    publicaciones: count(ES.publicaciones.filter((p) => p.tipo !== 'texto')),
+    pensamientos: count(ES.publicaciones.filter((p) => p.tipo === 'texto')),
+    historias: count(ES.destacadas),
+    mensajes: count(ES.chats.flatMap((c) => c.mensajes)),
+    notificaciones: count(ES.notificaciones),
   };
 }

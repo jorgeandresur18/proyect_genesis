@@ -284,13 +284,33 @@
     "carrusel": "Photo {n} of {total}",
     "ampliar": "Enlarge",
     "modo_celular": "Phone mode",
-    "tu_historia": "Your story"
+    "tu_historia": "Your story",
+    "sin_red": "No connection. Turn on Wi‑Fi or data. Or talk to someone in person: rumor has it that still works.",
+    "sin_red_avion": "You're in airplane mode. The phone thinks it's flying; you're still in bed."
   },
   "notificaciones": [
     {
       "app": "System",
       "titulo": "You turned on the flashlight",
       "texto": "Lights up three meters and drains like a stadium. Battery: {bateria}%. If you're looking for the charger, it's already too late.",
+      "hace": "now"
+    },
+    {
+      "app": "System",
+      "titulo": "Do Not Disturb on",
+      "texto": "Nobody's going to bother you. Same as before, but now it was your call.",
+      "hace": "now"
+    },
+    {
+      "app": "System",
+      "titulo": "Airplane mode off",
+      "texto": "You landed without leaving bed. Wi‑Fi and data back on: the world never noticed you were gone.",
+      "hace": "now"
+    },
+    {
+      "app": "System",
+      "titulo": "Flashlight turned off",
+      "texto": "You left it on when you left. We turned it off to save the {bateria}% you've got left. You're welcome.",
       "hace": "now"
     },
     {

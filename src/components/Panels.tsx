@@ -12,6 +12,7 @@ import { playCancel, playSelect } from '../engine/sound';
 import { SaveThumb } from './SaveThumb';
 import { NewDot } from './CgGallery';
 import { useGalleryState } from '../engine/gallery';
+import { useCompletion } from '../engine/completion';
 
 /** Duración de la animación de cierre (ver .panel-closing en styles.css). */
 const PANEL_CLOSE_MS = 280;
@@ -195,6 +196,7 @@ export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: 
   ];
   return (
     <Panel title={t('extras.titulo')} onClose={onClose}>
+      <CompletionMeter />
       <div className="extras">
         {entries.map((e) => (
           <button
@@ -216,6 +218,36 @@ export function ExtrasPanel({ onClose, onOpen }: { onClose: () => void; onOpen: 
         ))}
       </div>
     </Panel>
+  );
+}
+
+/** Cuánto falta para el 100 % (todo lo desbloqueable cuenta), con el detalle por tipo. */
+function CompletionMeter() {
+  const t = useT();
+  const c = useCompletion();
+  return (
+    <section className="completion">
+      <div className="completion-head">
+        <strong>{c.percent} %</strong>
+        <span>{c.missing === 0 ? t('progreso.completo') : t('progreso.falta', { n: 100 - c.percent, k: c.missing })}</span>
+      </div>
+      <div className="completion-bar" role="progressbar" aria-valuenow={c.percent} aria-valuemin={0} aria-valuemax={100}>
+        <i style={{ width: `${c.percent}%` }} />
+      </div>
+      <details className="completion-detail">
+        <summary>{t('progreso.detalle')}</summary>
+        <ul>
+          {c.parts.map((p) => (
+            <li key={p.id} className={p.got === p.total ? 'completion-done' : ''}>
+              <span>{t(`progreso.${p.id}`)}</span>
+              <span>
+                {p.got}/{p.total}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </section>
   );
 }
 

@@ -83,6 +83,9 @@ export function canSaveGame(game: GameState): boolean {
   return !game.finished || game.finished.startsWith(CHAPTER_END);
 }
 
+/** Celular recién prendido: wifi y datos encendidos, lo demás apagado. */
+const AJUSTES_INICIALES: Record<string, boolean> = { wifi: true, datos: true };
+
 interface Store {
   settings: Settings;
   game: GameState | null;
@@ -101,6 +104,8 @@ interface Store {
   boringramLikes: Record<string, boolean>;
   /** Comentarios que el jugador escribió en Boringram (id de la publicación -> textos). */
   boringramComments: Record<string, string[]>;
+  /** Ajustes rápidos del celular de Boringram (wifi, datos, bluetooth, no_molestar, avion -> prendido). */
+  boringramAjustes: Record<string, boolean>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -122,6 +127,7 @@ interface Store {
   setBoringramLike: (id: string, liked: boolean) => void;
   addBoringramComment: (id: string, text: string) => void;
   removeBoringramComment: (id: string, index: number) => void;
+  setBoringramAjustes: (patch: Record<string, boolean>) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -195,6 +201,7 @@ export const useStore = create<Store>()(
         galleryOpened: {},
         boringramLikes: {},
         boringramComments: {},
+        boringramAjustes: AJUSTES_INICIALES,
         choicesTaken: {},
         mode: 'normal',
         speed: 2,
@@ -224,6 +231,8 @@ export const useStore = create<Store>()(
           }),
         addBoringramComment: (id, text) =>
           set({ boringramComments: { ...get().boringramComments, [id]: [...(get().boringramComments[id] ?? []), text] } }),
+
+        setBoringramAjustes: (patch) => set({ boringramAjustes: { ...get().boringramAjustes, ...patch } }),
 
         markGalleryOpened: (key) => {
           if (!get().galleryOpened[key]) set({ galleryOpened: { ...get().galleryOpened, [key]: true } });
@@ -376,6 +385,7 @@ export const useStore = create<Store>()(
             galleryOpened: {},
             boringramLikes: {},
             boringramComments: {},
+            boringramAjustes: AJUSTES_INICIALES,
             choicesTaken: {},
             mode: 'normal',
             error: null,
@@ -404,6 +414,7 @@ export const useStore = create<Store>()(
         galleryOpened: s.galleryOpened,
         boringramLikes: s.boringramLikes,
         boringramComments: s.boringramComments,
+        boringramAjustes: s.boringramAjustes,
         choicesTaken: s.choicesTaken,
       }),
     },

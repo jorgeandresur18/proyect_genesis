@@ -67,7 +67,7 @@
 
 .status { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; padding: 0.55rem 1.1rem 0.2rem; font-size: 0.75rem; font-weight: 600; }
 .statusSide { flex: 1; display: flex; align-items: center; gap: 0.3rem; min-width: 0; }
-.statusRight { justify-content: flex-end; }
+.statusRight { justify-content: flex-end; gap: 0.2rem; }
 .statusIcon { width: 0.8rem; height: 0.8rem; flex: none; color: #f1f1f4; }
 .statusApp { width: 0.82rem; height: 0.82rem; flex: none; }
 .batteryText { font-size: 0.68rem; }
@@ -492,3 +492,10 @@
 .torchOn .phone { box-shadow: 0 0 0 1px #3a3a42, 0 -1.5rem 6rem 1.5rem rgba(255, 246, 220, 0.75), 0 0 10rem 3rem rgba(255, 238, 200, 0.35); }
 /* Celular sin linterna real: la pantalla se ilumina un poco, como si la luz rebotara. */
 .torchScreen { position: absolute; inset: 0; z-index: 30; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(255, 250, 235, 0.55), rgba(255, 250, 235, 0.12) 45%, transparent 75%); }
+
+/* Ajustes prendidos en la barra de estado y «Borrar todo» que barre las notificaciones hacia un costado. */
+.statusTile { flex: none; width: 0.78rem; height: 0.78rem; color: #f1f1f4; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.statusData { font-size: 0.55rem; font-weight: 700; letter-spacing: -0.02em; }
+.notifOut { animation: notifOut 0.3s ease-in both; }
+@keyframes notifOut { from { transform: none; opacity: 1; } to { transform: translateX(115%); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .notifOut { animation: none; opacity: 0; } }
