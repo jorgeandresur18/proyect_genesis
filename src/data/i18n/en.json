@@ -44,6 +44,8 @@
   "juego.volver_titulo": "Click to return to the title screen",
   "salir.titulo": "Back to the menu?",
   "salir.texto": "You'll lose any progress you haven't saved. There's no autosave here: this isn't the office cloud.",
+  "salir.texto_fin": "If you leave without saving, you'll have to replay this whole chapter to reach the next one. Like a Monday, only longer.",
+  "salir.cancelar": "Cancel",
   "salir.guardar": "Save first",
   "salir.seguir": "Keep playing",
   "salir.si": "Back to the menu",

@@ -158,7 +158,12 @@ export default function App() {
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       {overlay === 'salir' && (
-        <ConfirmTitle onCancel={close} onSave={() => setOverlay('save')} onConfirm={goToTitle} />
+        <ConfirmTitle
+          chapterEnd={!!useStore.getState().game?.finished}
+          onCancel={close}
+          onSave={() => setOverlay('save')}
+          onConfirm={goToTitle}
+        />
       )}
       <AudioToggle />
       {/* Siempre montado: lleva la cuenta aunque Boringram esté abierto (adentro avisa el propio celular). */}
@@ -287,8 +292,21 @@ function EventToast({ hidden, onOpen }: { hidden: boolean; onOpen: () => void })
   );
 }
 
-/** «¿Volver al menú?»: lo que no se guardó se pierde. Se puede guardar primero o seguir jugando (también con Escape). */
-function ConfirmTitle({ onCancel, onSave, onConfirm }: { onCancel: () => void; onSave: () => void; onConfirm: () => void }) {
+/**
+ * «¿Volver al menú?»: lo que no se guardó se pierde. Se puede guardar primero o seguir jugando (también con
+ * Escape). En el fin de capítulo cambia el aviso (sin guardar, hay que repetir el capítulo) y «Cancelar».
+ */
+function ConfirmTitle({
+  chapterEnd,
+  onCancel,
+  onSave,
+  onConfirm,
+}: {
+  chapterEnd: boolean;
+  onCancel: () => void;
+  onSave: () => void;
+  onConfirm: () => void;
+}) {
   const t = useT();
   const cancel = () => {
     playCancel();
@@ -307,7 +325,7 @@ function ConfirmTitle({ onCancel, onSave, onConfirm }: { onCancel: () => void; o
     <div className="confirm-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
       <div className="confirm-box">
         <b id="confirm-title">{t('salir.titulo')}</b>
-        <p>{t('salir.texto')}</p>
+        <p>{t(chapterEnd ? 'salir.texto_fin' : 'salir.texto')}</p>
         <div className="confirm-actions">
           <button
             onClick={() => {
@@ -318,7 +336,7 @@ function ConfirmTitle({ onCancel, onSave, onConfirm }: { onCancel: () => void; o
             {t('salir.guardar')}
           </button>
           <button onClick={cancel} autoFocus>
-            {t('salir.seguir')}
+            {t(chapterEnd ? 'salir.cancelar' : 'salir.seguir')}
           </button>
           <button
             className="confirm-danger"
