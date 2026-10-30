@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { CHAPTER_END, useStore, SPEEDS } from './engine/store';
 import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
@@ -612,10 +612,11 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
           </button>
         </div>
         <div className="title-tiles">
-          {tiles.map(([o, icon, label]) => (
+          {tiles.map(([o, icon, label], i) => (
             <button
               key={o}
               className={`title-tile ${o === 'bootcamp' && !bootcampOpen ? 'title-tile-locked' : ''}`}
+              style={{ '--i': i } as CSSProperties}
               onClick={() => {
                 pick();
                 open(o);

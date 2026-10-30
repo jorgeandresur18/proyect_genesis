@@ -829,12 +829,8 @@ img.sprite.sprite-swap { animation: sprite-swap-in 180ms ease-out; }
 .title-intro .title-logo + p { animation: title-item-in 1s ease-out 2.2s both; }
 .title-intro .title-primary, .title-intro .title-secondary, .title-intro .title-tile { animation: title-item-in 0.8s ease-out both; }
 .title-intro .title-primary, .title-intro .title-secondary { animation-delay: 2.5s; }
-.title-intro .title-tile:nth-child(1) { animation-delay: 2.65s; }
-.title-intro .title-tile:nth-child(2) { animation-delay: 2.75s; }
-.title-intro .title-tile:nth-child(3) { animation-delay: 2.85s; }
-.title-intro .title-tile:nth-child(4) { animation-delay: 2.95s; }
-.title-intro .title-tile:nth-child(5) { animation-delay: 3.05s; }
-.title-intro .title-tile:nth-child(6) { animation-delay: 3.15s; }
+/* Los botones entran de izquierda a derecha, cada uno 0,1 s después del anterior (--i: su posición; sirve para cualquier cantidad). */
+.title-intro .title-tile { animation-delay: calc(2.65s + var(--i, 0) * 0.1s); }
 @keyframes title-veil { to { opacity: 0; } }
 @keyframes title-logo-in {
   from { opacity: 0; transform: scale(0.92); filter: blur(14px); }
@@ -1993,3 +1989,11 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 .bc-review-own > span { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
 .ide-ai-input.agotado span { color: #ff8a95; }
 .ide-ai-input button:disabled { opacity: 0.35; }
+
+/* Menú en pantallas bajas o angostas: botones más chicos para que los siete entren en una fila (esta regla va
+   después de la de .title-tile; si va antes, la general la pisa). */
+@media (max-height: 520px), (max-width: 760px) {
+  .title-tiles { gap: 0.4rem; }
+  .title-tile { width: 5.6rem; padding: 0.45rem 0.3rem; font-size: 0.72rem; gap: 0.2rem; }
+  .title-tile svg, .title-tile .title-tile-icon { width: 1.2rem; height: 1.2rem; }
+}
