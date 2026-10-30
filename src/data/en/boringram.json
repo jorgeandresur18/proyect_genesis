@@ -288,6 +288,12 @@
   },
   "notificaciones": [
     {
+      "app": "System",
+      "titulo": "You turned on the flashlight",
+      "texto": "Lights up three meters and drains like a stadium. Battery: {bateria}%. If you're looking for the charger, it's already too late.",
+      "hace": "now"
+    },
+    {
       "app": "Clock",
       "titulo": "Alarm 7:00 · Work",
       "texto": "4 h 12 min left. Sleep fast.",

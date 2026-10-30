@@ -80,6 +80,8 @@ export interface Notificacion {
   hace: string;
   /** Solo se muestra con la batería baja (15 % o menos). */
   solo_bateria_baja?: boolean;
+  /** Se desbloquea con algo que hace el jugador (clave en galleryOpened), no con una escena. */
+  clave?: string;
   desbloqueo: string | null;
 }
 export interface Estado {
@@ -177,6 +179,8 @@ export const storyKey = (id: string) => `bor:story:${id}`;
 export const chatKey = (id: string, n: number) => `bor:chat:${id}:${n}`;
 /** Ya se vio el tutorial (se guarda con lo abierto de la galería; «Borrar todo» lo vuelve a mostrar). */
 export const TUTORIAL_KEY = 'bor:tutorial';
+/** Prendió la linterna alguna vez (desbloquea su notificación). */
+export const LINTERNA_KEY = 'bor:linterna';
 
 /** Lo desbloqueado en la partida guardada, y qué es nuevo. */
 export function useBoringram() {
@@ -196,8 +200,13 @@ export function useBoringram() {
   const estado = [...data.estado].reverse().find((x) => open(x)) ?? data.estado[0];
   const notificaciones = data.notificaciones
     .filter(open)
+    .filter((n) => !n.clave || opened[n.clave])
     .filter((n) => !n.solo_bateria_baja || estado.bateria <= 15)
-    .map((n) => ({ ...n, titulo: n.titulo.replace('{bateria}', String(estado.bateria)) }));
+    .map((n) => ({
+      ...n,
+      titulo: n.titulo.replace('{bateria}', String(estado.bateria)),
+      texto: n.texto.replace('{bateria}', String(estado.bateria)),
+    }));
   // Me gusta: lo que el jugador tocó manda; si no tocó nada, lo de la historia (te_gusta).
   const liked = (p: Publicacion) => likes[p.id] ?? !!p.te_gusta;
   // Comentarios: los de la historia más los que escribió el jugador.

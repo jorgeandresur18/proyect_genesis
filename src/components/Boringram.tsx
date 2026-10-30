@@ -4,6 +4,7 @@ import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
 import {
   chatKey,
+  LINTERNA_KEY,
   postKey,
   storyKey,
   TUTORIAL_KEY,
@@ -212,6 +213,8 @@ function useTorch() {
     wanted.current = next;
     setOn(next);
     if (!next) return stop();
+    // La primera vez llega la notificación de la linterna (un desbloqueable más).
+    useStore.getState().markGalleryOpened(LINTERNA_KEY);
     if (!window.matchMedia('(pointer: coarse)').matches || !navigator.mediaDevices?.getUserMedia) return;
     try {
       const media = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } } });
@@ -330,7 +333,7 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
   const tx = b.data.textos;
   const c = b.estado;
   const [tiles, setTiles] = useState<Record<string, boolean>>({ 0: true, 1: true });
-  const [cleared, setCleared] = useState(false);
+  const [cleared, setCleared] = useState<string[]>([]);
   const [leaving, setLeaving] = useState(false);
   const start = useRef<number | null>(null);
   const close = () => {
@@ -339,7 +342,7 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
     setLeaving(true);
     setTimeout(onClose, 220);
   };
-  const list = cleared ? [] : b.notificaciones;
+  const list = b.notificaciones.filter((n) => !cleared.includes(n.id));
   return (
     <div
       className={`${s.shade} ${leaving ? s.shadeOut : ''}`}
@@ -384,7 +387,7 @@ function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: 
           <button
             onClick={() => {
               playCancel();
-              setCleared(true);
+              setCleared(list.map((n) => n.id));
             }}
           >
             {tx.borrar_todo}
