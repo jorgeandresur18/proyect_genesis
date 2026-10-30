@@ -499,3 +499,7 @@
 .notifOut { animation: notifOut 0.3s ease-in both; }
 @keyframes notifOut { from { transform: none; opacity: 1; } to { transform: translateX(115%); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .notifOut { animation: none; opacity: 0; } }
+/* Deslizar una notificación hacia un costado para borrarla. */
+.notif { touch-action: pan-y; user-select: none; cursor: grab; }
+.notifDrag { animation: none; transition: transform 0.22s ease-out, opacity 0.22s ease-out; }
+.notifHeld { transition: none; cursor: grabbing; }

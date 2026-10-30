@@ -14,7 +14,6 @@
   "publicaciones": [
     {
       "texto": "why does the customer who tries all 24 flavors always end up ordering vanilla",
-      "hace": "1 day ago",
       "comentarios": [
         {
           "texto": "because vanilla doesnt judge"
@@ -26,7 +25,6 @@
     },
     {
       "texto": "hour 11 of the shift. flavor of the day is exhaustion 🍦",
-      "hace": "2 days ago",
       "comentarios": [
         {
           "texto": "that cap looks better on you than life looks on me"
@@ -37,14 +35,12 @@
       ]
     },
     {
-      "texto": "The office air conditioning has been «under maintenance» for three months. Same as my paycheck.",
-      "hace": "3 days ago"
+      "texto": "The office air conditioning has been «under maintenance» for three months. Same as my paycheck."
     },
     {
       "repost": {
         "texto": "dont get attached to someone who only texts you after midnight"
       },
-      "hace": "1 week ago",
       "comentarios": [
         {
           "texto": "is this about someone?? 👀"
@@ -54,12 +50,10 @@
     {
       "repost": {
         "texto": "«It works on my machine.» So does my self-esteem."
-      },
-      "hace": "2 weeks ago"
+      }
     },
     {
       "texto": "the usual girls 🥂 dont ask about the rest of the night",
-      "hace": "3 weeks ago",
       "comentarios": [
         {
           "texto": "best night of the year and the photos prove it"
@@ -71,7 +65,6 @@
     },
     {
       "texto": "one night without the uniform or the name tag. i almost look like a person",
-      "hace": "5 weeks ago",
       "comentarios": [
         {
           "texto": "who is this and what did she do with nikki"
@@ -83,7 +76,6 @@
     },
     {
       "texto": "8 years and i still dont know if i have a friend or a problem",
-      "hace": "2 months ago",
       "comentarios": [
         {
           "texto": "both girl. its always both"
@@ -92,7 +84,6 @@
     },
     {
       "texto": "another year survived 🎂🌹 thanks to you know who",
-      "hace": "4 months ago",
       "comentarios": [
         {
           "texto": "Happy birthday, Nikki 🌹"
@@ -107,7 +98,6 @@
     },
     {
       "texto": "Sushi Friday with the usual. We split it, like everything.",
-      "hace": "7 months ago",
       "comentarios": [
         {
           "texto": "half of what YOU ate. i ate triple"
@@ -115,12 +105,10 @@
       ]
     },
     {
-      "texto": "First paycheck as an engineer. Almost enough for half an apartment. The bottom half.",
-      "hace": "11 months ago"
+      "texto": "First paycheck as an engineer. Almost enough for half an apartment. The bottom half."
     },
     {
       "texto": "Engineer. Now it's time to make money.",
-      "hace": "1 year ago",
       "carrusel": [
         {
           "texto": "Engineer. Now it's time to make money."
@@ -154,13 +142,11 @@
   "destacadas": [
     {
       "titulo": "always",
-      "texto": "the usual one 🍻",
-      "hace": "1 year ago"
+      "texto": "the usual one 🍻"
     },
     {
       "titulo": "nights out",
-      "texto": "just one",
-      "hace": "3 h ago"
+      "texto": "just one"
     }
   ],
   "chats": [
@@ -286,98 +272,96 @@
     "modo_celular": "Phone mode",
     "tu_historia": "Your story",
     "sin_red": "No connection. Turn on Wi‑Fi or data. Or talk to someone in person: rumor has it that still works.",
-    "sin_red_avion": "You're in airplane mode. The phone thinks it's flying; you're still in bed."
+    "sin_red_avion": "You're in airplane mode. The phone thinks it's flying; you're still in bed.",
+    "hace_ahora": "1 s ago",
+    "hace_min": "{n} min ago",
+    "hace_h": "{n} h ago",
+    "hace_dia": "1 day ago",
+    "hace_dias": "{n} days ago",
+    "hace_semana": "1 week ago",
+    "hace_semanas": "{n} weeks ago",
+    "hace_mes": "1 month ago",
+    "hace_meses": "{n} months ago",
+    "hace_ano": "1 year ago",
+    "hace_anos": "{n} years ago",
+    "alarma_proxima": "scheduled"
   },
   "notificaciones": [
     {
       "app": "System",
       "titulo": "You turned on the flashlight",
-      "texto": "Lights up three meters and drains like a stadium. Battery: {bateria}%. If you're looking for the charger, it's already too late.",
-      "hace": "now"
+      "texto": "Lights up three meters and drains like a stadium. Battery: {bateria}%. If you're looking for the charger, it's already too late."
     },
     {
       "app": "System",
       "titulo": "Do Not Disturb on",
-      "texto": "Nobody's going to bother you. Same as before, but now it was your call.",
-      "hace": "now"
+      "texto": "Nobody's going to bother you. Same as before, but now it was your call."
     },
     {
       "app": "System",
       "titulo": "Airplane mode off",
-      "texto": "You landed without leaving bed. Wi‑Fi and data back on: the world never noticed you were gone.",
-      "hace": "now"
+      "texto": "You landed without leaving bed. Wi‑Fi and data back on: the world never noticed you were gone."
     },
     {
       "app": "System",
       "titulo": "Flashlight turned off",
-      "texto": "You left it on when you left. We turned it off to save the {bateria}% you've got left. You're welcome.",
-      "hace": "now"
+      "texto": "You left it on when you left. We turned it off to save the {bateria}% you've got left. You're welcome."
     },
     {
       "app": "Clock",
       "titulo": "Alarm 7:00 · Work",
-      "texto": "4 h 12 min left. Sleep fast.",
-      "hace": "now"
+      "texto": "{falta} to go. Sleep fast.",
+      "texto_pasada": "It rang at 7:00. Nobody turned it off. It's still ringing."
     },
     {
       "app": "System",
       "titulo": "Low battery: {bateria}%",
-      "texto": "Plug in the charger. Or don't. Nobody's texting you anyway.",
-      "hace": "2 min ago"
+      "texto": "Plug in the charger. Or don't. Nobody's texting you anyway."
     },
     {
       "app": "Boringram",
       "titulo": "nikki",
-      "texto": "good morning in advance",
-      "hace": "6 min ago"
+      "texto": "good morning in advance"
     },
     {
       "app": "Boringram",
       "titulo": "nikki posted a story",
-      "texto": "Tap to watch it. It lasts 5 seconds. You'll watch it three times.",
-      "hace": "3 h ago"
+      "texto": "Tap to watch it. It lasts 5 seconds. You'll watch it three times."
     },
     {
       "app": "GRAVITY",
       "titulo": "Early access activated",
-      "texto": "Describe the world you want. We build it.",
-      "hace": "4 h ago"
+      "texto": "Describe the world you want. We build it."
     },
     {
       "app": "Mail",
       "titulo": "LinkedFired",
-      "texto": "100,000 people viewed your profile to check if you were more miserable than them.",
-      "hace": "5 h ago"
+      "texto": "100,000 people viewed your profile to check if you were more miserable than them."
     },
     {
       "app": "Mail",
       "titulo": "Your Bank",
-      "texto": "Pre-approved credit card! Because your problems deserve interest too.",
-      "hace": "6 h ago"
+      "texto": "Pre-approved credit card! Because your problems deserve interest too."
     },
     {
       "app": "Office chat",
       "titulo": "Supervisor",
-      "texto": "Team: payday moves to next Friday. Chin up, we're family here!",
-      "hace": "9 h ago"
+      "texto": "Team: payday moves to next Friday. Chin up, we're family here!"
     },
     {
       "app": "DuoLingote",
       "titulo": "The owl is disappointed",
-      "texto": "214 days without practicing. He's been waiting 214 days. Awake.",
-      "hace": "yesterday"
+      "texto": "214 days without practicing. He's been waiting 214 days. Awake."
     },
     {
       "app": "Reminder",
       "titulo": "Pay the internet bill (due today)",
-      "texto": "You work at the internet company and they still charge you. That's loyalty.",
-      "hace": "yesterday"
+      "texto": "You work at the internet company and they still charge you. That's loyalty."
     },
     {
       "app": "Sweet Chill",
       "titulo": "2-for-1 cones on Tuesdays!",
-      "texto": "Not valid for employees. Or their weird friends.",
-      "hace": "2 days ago"
+      "texto": "Not valid for employees. Or their weird friends."
     }
   ],
   "ajustes_rapidos": [
@@ -388,7 +372,6 @@
     "Do not disturb",
     "Airplane mode"
   ],
-  "dia": "Saturday",
   "tutorial": [
     {
       "titulo": "Welcome to Boringram",
@@ -446,5 +429,14 @@
       "titulo": "Done",
       "texto": "Now you know how to use Boringram. Time to waste time like a pro."
     }
+  ],
+  "dias": [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
   ]
 }

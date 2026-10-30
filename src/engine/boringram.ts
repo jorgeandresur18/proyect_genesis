@@ -3,6 +3,8 @@
 //   y se mezcla por posición también dentro de las listas.
 // - Cada cosa se desbloquea al visitar su escena de «desbloqueo» (snapshots) y es nueva hasta que se ve
 //   en el celular (galleryOpened, con claves «bor:…», igual que la galería).
+// - Hora: el celular sigue el mundo real (allá el tiempo corre 45 veces más lento que en el juego). Cada cosa
+//   tiene «cuando» («D HH:MM», D = días desde el sábado de la historia) y los «hace» se calculan contra el reloj.
 import { useStore } from './store';
 import { useLang } from './i18n';
 import dataEs from '../data/boringram.json';
@@ -38,6 +40,8 @@ export interface Publicacion {
   likes: number;
   /** Jair le dio me gusta. */
   te_gusta?: boolean;
+  cuando: string;
+  /** Calculado contra el reloj del celular. */
   hace: string;
   comentarios: Comentario[];
   desbloqueo: string | null;
@@ -48,6 +52,7 @@ export interface Destacada {
   titulo: string;
   imagen: string;
   texto: string;
+  cuando: string;
   hace: string;
   /** Fijada: siempre la primera de su perfil. */
   fijada?: boolean;
@@ -77,7 +82,12 @@ export interface Notificacion {
   icono: string;
   titulo: string;
   texto: string;
+  /** Sin «cuando», la de «clave» toma la hora en que el jugador la desbloqueó. */
+  cuando?: string;
   hace: string;
+  /** La alarma: hasta cuándo falta ({falta} en el texto); después, «texto_pasada». */
+  hasta?: string;
+  texto_pasada?: string;
   /** Solo se muestra con la batería baja (15 % o menos). */
   solo_bateria_baja?: boolean;
   /** Se desbloquea con algo que hace el jugador (clave en galleryOpened), no con una escena. */
@@ -86,8 +96,9 @@ export interface Notificacion {
 }
 export interface Estado {
   desbloqueo: string | null;
-  reloj: string;
-  bateria: number;
+  cuando: string;
+  /** Sin batería, sigue la del estado anterior. */
+  bateria?: number;
   /** Modo de ahorro de energía (batería en naranja). */
   ahorro?: boolean;
 }
@@ -115,7 +126,8 @@ export interface BoringramData {
   ajustes_rapidos: string[];
   /** Icono de cada ajuste rápido, por posición (wifi, datos, bluetooth, linterna, no_molestar, avion). */
   ajustes_iconos: string[];
-  dia: string;
+  /** Días de la semana, desde el domingo. */
+  dias: string[];
   textos: Record<string, string>;
   /** Recorrido de «Cómo usar» (sale solo la primera vez). */
   tutorial: PasoTutorial[];
@@ -188,6 +200,32 @@ export const AVION_KEY = 'bor:avion';
 /** Salió de Boringram con la linterna prendida. */
 export const LINTERNA_OLVIDADA_KEY = 'bor:linterna_olvidada';
 
+/** «D HH:MM» -> minutos desde el sábado 0:00 de la historia (el viernes es -1). */
+export const minutos = (cuando: string) => {
+  const [d, hm] = cuando.trim().split(/\s+/);
+  const [h, m] = hm.split(':').map(Number);
+  return Number(d) * 1440 + h * 60 + m;
+};
+
+/** Hora del celular, como en la barra de estado (12 h, sin a. m. ni p. m.). */
+const reloj = (min: number) => {
+  const m = ((min % 1440) + 1440) % 1440;
+  return `${Math.floor(m / 60) % 12 || 12}:${String(m % 60).padStart(2, '0')}`;
+};
+
+/** «hace…» de Boringram (como en Instagram: segundos, minutos, horas, días, semanas, meses y años). */
+function hace(tx: Record<string, string>, diff: number) {
+  const n = (one: string, many: string, v: number) => (v === 1 ? tx[one] : tx[many].replace('{n}', String(v)));
+  const dias = Math.floor(diff / 1440);
+  if (diff < 1) return tx.hace_ahora;
+  if (diff < 60) return tx.hace_min.replace('{n}', String(diff));
+  if (diff < 1440) return tx.hace_h.replace('{n}', String(Math.floor(diff / 60)));
+  if (dias < 7) return n('hace_dia', 'hace_dias', dias);
+  if (dias < 60) return n('hace_semana', 'hace_semanas', Math.floor(dias / 7));
+  if (dias < 365) return n('hace_mes', 'hace_meses', Math.floor(dias / 30));
+  return n('hace_ano', 'hace_anos', Math.floor(dias / 365));
+}
+
 /** Lo desbloqueado en la partida guardada, y qué es nuevo. */
 export function useBoringram() {
   const data = useLang() === 'en' ? EN : ES;
@@ -195,24 +233,56 @@ export function useBoringram() {
   const opened = useStore((s) => s.galleryOpened);
   const likes = useStore((s) => s.boringramLikes);
   const myComments = useStore((s) => s.boringramComments);
+  const horas = useStore((s) => s.boringramHoras);
+  const tx = data.textos;
   const open = (x: { desbloqueo: string | null }) => !x.desbloqueo || !!visited[x.desbloqueo];
+  // El reloj: la hora más reciente entre los puntos de la historia ya jugados y lo que desbloquearon.
+  const reached = [...data.estado, ...data.publicaciones, ...data.destacadas, ...data.notificaciones].filter(
+    (x): x is typeof x & { cuando: string } => !!x.desbloqueo && !!visited[x.desbloqueo] && !!x.cuando,
+  );
+  const ahora = Math.max(minutos(data.estado[0].cuando), ...reached.map((x) => minutos(x.cuando)));
+  // La batería: la del último estado (en el tiempo) que la cambia.
+  const bat = data.estado
+    .filter((x) => open(x) && x.bateria !== undefined && minutos(x.cuando) <= ahora)
+    .sort((a, b) => minutos(a.cuando) - minutos(b.cuando))
+    .pop() ?? data.estado[0];
+  const estado = {
+    reloj: reloj(ahora),
+    dia: data.dias[(((Math.floor(ahora / 1440) + 6) % 7) + 7) % 7],
+    bateria: bat.bateria ?? 0,
+    ahorro: !!bat.ahorro,
+  };
+  // Lo que todavía no pasó a esta hora no se ve; lo demás, de lo más nuevo a lo más viejo.
+  const timed = <T extends { cuando?: string }>(list: T[], at: (x: T) => number = (x) => minutos(x.cuando!)) =>
+    list
+      .map((x) => ({ x, t: at(x) }))
+      .filter((y) => y.t <= ahora)
+      .sort((a, b) => b.t - a.t)
+      .map(({ x, t }) => ({ ...x, hace: hace(tx, ahora - t) }));
   const perfiles = Object.fromEntries(Object.entries(data.perfiles).filter(([, p]) => open(p)));
-  const publicaciones = data.publicaciones.filter((p) => open(p) && perfiles[p.autor]);
-  const destacadas = data.destacadas.filter((d) => open(d) && perfiles[d.autor]);
+  const publicaciones = timed(data.publicaciones.filter((p) => open(p) && perfiles[p.autor]));
+  const destacadas = timed(data.destacadas.filter((d) => open(d) && perfiles[d.autor]));
   const chats = data.chats
     .map((c) => ({ ...c, mensajes: c.mensajes.filter(open) }))
     .filter((c) => c.mensajes.length > 0);
-  // Hora y batería: las del último punto de la historia que ya se jugó.
-  const estado = [...data.estado].reverse().find((x) => open(x)) ?? data.estado[0];
-  const notificaciones = data.notificaciones
-    .filter(open)
-    .filter((n) => !n.clave || opened[n.clave])
-    .filter((n) => !n.solo_bateria_baja || estado.bateria <= 15)
-    .map((n) => ({
+  const notificaciones = timed(
+    data.notificaciones
+      .filter(open)
+      .filter((n) => !n.clave || opened[n.clave])
+      .filter((n) => !n.solo_bateria_baja || estado.bateria <= 15),
+    (n) => (n.hasta && minutos(n.hasta) <= ahora ? minutos(n.hasta) : n.clave ? (horas[n.clave] ?? ahora) : n.cuando ? minutos(n.cuando) : ahora),
+  ).map((n) => {
+    const falta = n.hasta ? minutos(n.hasta) - ahora : 0;
+    const texto = n.hasta && falta <= 0 ? (n.texto_pasada ?? n.texto) : n.texto;
+    return {
       ...n,
+      hace: n.hasta && falta > 0 ? tx.alarma_proxima : n.hace,
       titulo: n.titulo.replace('{bateria}', String(estado.bateria)),
-      texto: n.texto.replace('{bateria}', String(estado.bateria)),
-    }));
+      texto: texto
+        .replace('{bateria}', String(estado.bateria))
+        .replace('{falta}', `${Math.floor(falta / 60)} h ${falta % 60} min`),
+    };
+  });
   // Me gusta: lo que el jugador tocó manda; si no tocó nada, lo de la historia (te_gusta).
   const liked = (p: Publicacion) => likes[p.id] ?? !!p.te_gusta;
   // Comentarios: los de la historia más los que escribió el jugador.
@@ -235,6 +305,8 @@ export function useBoringram() {
     chats,
     notificaciones,
     estado,
+    /** Minutos del reloj (para la hora de lo que desbloquea el jugador). */
+    ahora,
     liked,
     likeCount,
     commentsOf,

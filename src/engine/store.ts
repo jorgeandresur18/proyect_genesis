@@ -106,6 +106,8 @@ interface Store {
   boringramComments: Record<string, string[]>;
   /** Ajustes rápidos del celular de Boringram (wifi, datos, bluetooth, no_molestar, avion -> prendido). */
   boringramAjustes: Record<string, boolean>;
+  /** Hora del celular (minutos) en que el jugador desbloqueó cada notificación de «clave». */
+  boringramHoras: Record<string, number>;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -128,6 +130,8 @@ interface Store {
   addBoringramComment: (id: string, text: string) => void;
   removeBoringramComment: (id: string, index: number) => void;
   setBoringramAjustes: (patch: Record<string, boolean>) => void;
+  /** Desbloquea una notificación de «clave» y guarda la hora del celular (solo la primera vez). */
+  markBoringramEvento: (key: string, minutos: number) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -202,6 +206,7 @@ export const useStore = create<Store>()(
         boringramLikes: {},
         boringramComments: {},
         boringramAjustes: AJUSTES_INICIALES,
+        boringramHoras: {},
         choicesTaken: {},
         mode: 'normal',
         speed: 2,
@@ -233,6 +238,13 @@ export const useStore = create<Store>()(
           set({ boringramComments: { ...get().boringramComments, [id]: [...(get().boringramComments[id] ?? []), text] } }),
 
         setBoringramAjustes: (patch) => set({ boringramAjustes: { ...get().boringramAjustes, ...patch } }),
+        markBoringramEvento: (key, minutos) => {
+          if (get().galleryOpened[key]) return;
+          set({
+            galleryOpened: { ...get().galleryOpened, [key]: true },
+            boringramHoras: { ...get().boringramHoras, [key]: minutos },
+          });
+        },
 
         markGalleryOpened: (key) => {
           if (!get().galleryOpened[key]) set({ galleryOpened: { ...get().galleryOpened, [key]: true } });
@@ -386,6 +398,7 @@ export const useStore = create<Store>()(
             boringramLikes: {},
             boringramComments: {},
             boringramAjustes: AJUSTES_INICIALES,
+            boringramHoras: {},
             choicesTaken: {},
             mode: 'normal',
             error: null,
@@ -415,6 +428,7 @@ export const useStore = create<Store>()(
         boringramLikes: s.boringramLikes,
         boringramComments: s.boringramComments,
         boringramAjustes: s.boringramAjustes,
+        boringramHoras: s.boringramHoras,
         choicesTaken: s.choicesTaken,
       }),
     },

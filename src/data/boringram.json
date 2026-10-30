@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento. Ajustes rápidos: se guardan (boringramAjustes); con el wifi y los datos apagados (o en modo avión) no se puede dar me gusta, comentar, responder ni compartir. Notificaciones que se ganan con los ajustes: «bor:no_molestar» (prender No molestar), «bor:avion» (volver a entrar después de salir en modo avión: se vuelve con wifi y datos) y «bor:linterna_olvidada» (salir con la linterna prendida).",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento. Ajustes rápidos: se guardan (boringramAjustes); con el wifi y los datos apagados (o en modo avión) no se puede dar me gusta, comentar, responder ni compartir. Notificaciones que se ganan con los ajustes: «bor:no_molestar» (prender No molestar), «bor:avion» (volver a entrar después de salir en modo avión: se vuelve con wifi y datos) y «bor:linterna_olvidada» (salir con la linterna prendida). HORA: el celular sigue la hora del mundo real (no la del juego: allá el tiempo corre 45 veces más rápido). Cada cosa tiene «cuando» («D HH:MM»: D son los días desde el sábado de la historia; el viernes es -1); los «hace» se calculan solos contra el reloj del celular, que es la hora más reciente entre los «estado» y las cosas que ya se desbloquearon con una escena. Lo que todavía no pasó a esa hora no se ve. «estado» marca la hora en escenas donde pasa el tiempo (y la batería, si cambia: si no se pone, sigue la de antes). Las notificaciones se apilan de la más nueva a la más vieja. Las de «clave» toman la hora del celular cuando el jugador las desbloquea. «hasta» (la alarma): mientras falta, {falta}; después, «texto_pasada».",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -37,7 +37,6 @@
       "texto": "por que el cliente que prueba los 24 sabores siempre termina pidiendo vainilla",
       "likes": 93,
       "te_gusta": true,
-      "hace": "hace 1 día",
       "comentarios": [
         {
           "usuario": "kari_ok",
@@ -48,7 +47,8 @@
           "texto": "yo soy ese cliente y no me arrepiento"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-2 15:40"
     },
     {
       "id": "nikki_selfie_trabajo",
@@ -58,7 +58,6 @@
       "texto": "hora 11 del turno. el sabor del dia es cansancio 🍦",
       "likes": 186,
       "te_gusta": true,
-      "hace": "hace 2 días",
       "comentarios": [
         {
           "usuario": "kari_ok",
@@ -69,7 +68,8 @@
           "texto": "sonrisa de atencion al cliente nivel experto"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-3 11:05"
     },
     {
       "id": "jair_aire",
@@ -77,9 +77,9 @@
       "tipo": "texto",
       "texto": "El aire acondicionado de la oficina lleva tres meses «en mantenimiento». Igual que mi sueldo.",
       "likes": 7,
-      "hace": "hace 3 días",
       "comentarios": [],
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "cuando": "-4 23:50"
     },
     {
       "id": "nikki_repost_3am",
@@ -91,14 +91,14 @@
       },
       "likes": 154,
       "te_gusta": true,
-      "hace": "hace 1 semana",
       "comentarios": [
         {
           "usuario": "ale.vibes",
           "texto": "esto es una indirecta?? 👀"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-8 03:00"
     },
     {
       "id": "jair_repost_maquina",
@@ -109,9 +109,9 @@
         "texto": "«En mi máquina funciona.» Lo mismo dice mi autoestima."
       },
       "likes": 4,
-      "hace": "hace 2 semanas",
       "comentarios": [],
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "cuando": "-15 22:10"
     },
     {
       "id": "nikki_fiesta_amigas",
@@ -121,7 +121,6 @@
       "texto": "las de siempre 🥂 no pregunten por el resto de la noche",
       "likes": 341,
       "te_gusta": true,
-      "hace": "hace 3 semanas",
       "comentarios": [
         {
           "usuario": "mari.sin.prisa",
@@ -132,7 +131,8 @@
           "texto": "las de siempre, los problemas de siempre 😂"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-22 23:30"
     },
     {
       "id": "nikki_perfil",
@@ -142,7 +142,6 @@
       "texto": "una noche sin uniforme y sin gafete. casi parezco una persona",
       "likes": 412,
       "te_gusta": true,
-      "hace": "hace 5 semanas",
       "comentarios": [
         {
           "usuario": "el_flaco_dj",
@@ -153,7 +152,8 @@
           "texto": "reina 🖤"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-36 20:15"
     },
     {
       "id": "nikki_ocho_anos",
@@ -162,14 +162,14 @@
       "texto": "8 años y todavia no se si tengo un amigo o un problema",
       "likes": 208,
       "te_gusta": true,
-      "hace": "hace 2 meses",
       "comentarios": [
         {
           "usuario": "mari.sin.prisa",
           "texto": "las dos cosas amiga. siempre son las dos cosas"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-62 19:00"
     },
     {
       "id": "nikki_rosas",
@@ -179,7 +179,6 @@
       "texto": "otro año sobreviviendo 🎂🌹 gracias a quien ya sabe",
       "likes": 528,
       "te_gusta": true,
-      "hace": "hace 4 meses",
       "comentarios": [
         {
           "usuario": "jair",
@@ -194,7 +193,8 @@
           "texto": "ese ramo cuesta mas que mi renta"
         }
       ],
-      "desbloqueo": "cap01_115n7"
+      "desbloqueo": "cap01_115n7",
+      "cuando": "-123 18:30"
     },
     {
       "id": "jair_sushi",
@@ -203,14 +203,14 @@
       "imagen": "fotos/boringram/jair_sushi.webp",
       "texto": "Viernes de sushi con la de siempre. Pagamos a medias, como todo.",
       "likes": 24,
-      "hace": "hace 7 meses",
       "comentarios": [
         {
           "usuario": "nikki",
           "texto": "a medias de lo que comiste tu. yo comi el triple"
         }
       ],
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "cuando": "-214 21:00"
     },
     {
       "id": "jair_primer_sueldo",
@@ -218,9 +218,9 @@
       "tipo": "texto",
       "texto": "Primer sueldo como ingeniero. Ya casi alcanza para la mitad de un departamento. La mitad de abajo.",
       "likes": 12,
-      "hace": "hace 11 meses",
       "comentarios": [],
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "cuando": "-336 19:45"
     },
     {
       "id": "jair_graduado",
@@ -229,7 +229,6 @@
       "imagen": "fotos/boringram/jair_graduado.webp",
       "texto": "Ingeniero. Ahora sí, a ganar dinero.",
       "likes": 97,
-      "hace": "hace 1 año",
       "comentarios": [
         {
           "usuario": "lady.compila",
@@ -266,7 +265,8 @@
           "imagen": "fotos/boringram/jair_tesis_aprobada.webp",
           "texto": "Hace unas semanas: TESIS APROBADA. Dos tutores, tres versiones finales y un servidor que se cayó la noche antes de la defensa."
         }
-      ]
+      ],
+      "cuando": "-367 12:00"
     }
   ],
   "destacadas": [
@@ -276,9 +276,9 @@
       "titulo": "siempre",
       "imagen": "fotos/boringram/historia_jair_favorita.webp",
       "texto": "la de siempre 🍻",
-      "hace": "hace 1 año",
       "fijada": true,
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "cuando": "-367 12:30"
     },
     {
       "id": "nikki_una_sola",
@@ -286,8 +286,8 @@
       "titulo": "salidas",
       "imagen": "fotos/historia_nikki_boringram.webp",
       "texto": "una sola",
-      "hace": "hace 3 h",
-      "desbloqueo": "cap01_g5m_011h2"
+      "desbloqueo": "cap01_g5m_011h2",
+      "cuando": "-1 22:30"
     }
   ],
   "chats": [
@@ -453,7 +453,19 @@
     "modo_celular": "Modo celular",
     "tu_historia": "Tu historia",
     "sin_red": "Sin conexión. Prende el wifi o los datos. O habla con alguien en persona: dicen que todavía se puede.",
-    "sin_red_avion": "Estás en modo avión. El celular cree que vuela; tú sigues acostado."
+    "sin_red_avion": "Estás en modo avión. El celular cree que vuela; tú sigues acostado.",
+    "hace_ahora": "hace 1 s",
+    "hace_min": "hace {n} min",
+    "hace_h": "hace {n} h",
+    "hace_dia": "hace 1 día",
+    "hace_dias": "hace {n} días",
+    "hace_semana": "hace 1 semana",
+    "hace_semanas": "hace {n} semanas",
+    "hace_mes": "hace 1 mes",
+    "hace_meses": "hace {n} meses",
+    "hace_ano": "hace 1 año",
+    "hace_anos": "hace {n} años",
+    "alarma_proxima": "programada"
   },
   "notificaciones": [
     {
@@ -462,7 +474,6 @@
       "icono": "🔦",
       "titulo": "Has encendido la linterna",
       "texto": "Ilumina tres metros y gasta como un estadio. Batería: {bateria} %. Si lo que buscas es el cargador, ya es tarde.",
-      "hace": "ahora",
       "clave": "bor:linterna",
       "desbloqueo": null
     },
@@ -472,7 +483,6 @@
       "icono": "🌙",
       "titulo": "No molestar activado",
       "texto": "Nadie te va a molestar. Igual que antes, pero ahora fue decisión tuya.",
-      "hace": "ahora",
       "clave": "bor:no_molestar",
       "desbloqueo": null
     },
@@ -482,7 +492,6 @@
       "icono": "✈",
       "titulo": "Modo avión desactivado",
       "texto": "Aterrizaste sin salir de la cama. Wifi y datos otra vez prendidos: el mundo no notó que te fuiste.",
-      "hace": "ahora",
       "clave": "bor:avion",
       "desbloqueo": null
     },
@@ -492,7 +501,6 @@
       "icono": "🔦",
       "titulo": "Linterna apagada",
       "texto": "La dejaste prendida al salir. La apagamos para salvar el {bateria} % que te queda. De nada.",
-      "hace": "ahora",
       "clave": "bor:linterna_olvidada",
       "desbloqueo": null
     },
@@ -501,9 +509,10 @@
       "app": "Reloj",
       "icono": "⏰",
       "titulo": "Alarma 7:00 · Trabajo",
-      "texto": "Faltan 4 h 12 min. Duerme rápido.",
-      "hace": "ahora",
-      "desbloqueo": null
+      "texto": "Faltan {falta}. Duerme rápido.",
+      "desbloqueo": null,
+      "hasta": "0 07:00",
+      "texto_pasada": "Sonó a las 7:00. Nadie la apagó. Sigue sonando."
     },
     {
       "id": "bateria",
@@ -511,9 +520,9 @@
       "icono": "🔋",
       "titulo": "Batería baja: {bateria} %",
       "texto": "Conecta el cargador. O no. Total, nadie te escribe.",
-      "hace": "hace 2 min",
       "desbloqueo": null,
-      "solo_bateria_baja": true
+      "solo_bateria_baja": true,
+      "cuando": "0 01:29"
     },
     {
       "id": "chat_nikki",
@@ -521,8 +530,8 @@
       "icono": "bori",
       "titulo": "nikki",
       "texto": "buenos dias adelantado",
-      "hace": "hace 6 min",
-      "desbloqueo": "cap01_g5m_008"
+      "desbloqueo": "cap01_g5m_008",
+      "cuando": "0 01:31"
     },
     {
       "id": "historia_nikki",
@@ -530,8 +539,8 @@
       "icono": "bori",
       "titulo": "nikki subió una historia",
       "texto": "Toca para verla. Dura 5 segundos. La vas a ver tres veces.",
-      "hace": "hace 3 h",
-      "desbloqueo": "cap01_g5m_011h2"
+      "desbloqueo": "cap01_g5m_011h2",
+      "cuando": "-1 22:30"
     },
     {
       "id": "gravity",
@@ -539,8 +548,8 @@
       "icono": "◆",
       "titulo": "Acceso anticipado activado",
       "texto": "Describe el mundo que quieres. Nosotros lo construimos.",
-      "hace": "hace 4 h",
-      "desbloqueo": "cap01_128"
+      "desbloqueo": "cap01_128",
+      "cuando": "0 01:05"
     },
     {
       "id": "correo_linkedfired",
@@ -548,8 +557,8 @@
       "icono": "✉",
       "titulo": "LinkedFired",
       "texto": "100.000 personas vieron tu perfil para comprobar si eras más miserable que ellas.",
-      "hace": "hace 5 h",
-      "desbloqueo": "cap01_122"
+      "desbloqueo": "cap01_122",
+      "cuando": "-1 20:30"
     },
     {
       "id": "correo_banco",
@@ -557,8 +566,8 @@
       "icono": "✉",
       "titulo": "Tu Banco",
       "texto": "¡Tarjeta preaprobada! Porque tus problemas también merecen intereses.",
-      "hace": "hace 6 h",
-      "desbloqueo": "cap01_122"
+      "desbloqueo": "cap01_122",
+      "cuando": "-1 19:30"
     },
     {
       "id": "supervisor",
@@ -566,8 +575,8 @@
       "icono": "💬",
       "titulo": "Supervisor",
       "texto": "Equipo: el pago se corre para el otro viernes. ¡Ánimo, que aquí somos familia!",
-      "hace": "hace 9 h",
-      "desbloqueo": "cap01_007"
+      "desbloqueo": "cap01_007",
+      "cuando": "-1 17:32"
     },
     {
       "id": "duolingote",
@@ -575,8 +584,8 @@
       "icono": "🦉",
       "titulo": "El búho está decepcionado",
       "texto": "Llevas 214 días sin practicar inglés. Él lleva 214 días esperándote. Despierto.",
-      "hace": "ayer",
-      "desbloqueo": null
+      "desbloqueo": null,
+      "cuando": "-2 21:00"
     },
     {
       "id": "internet",
@@ -584,8 +593,8 @@
       "icono": "📅",
       "titulo": "Pagar el internet (vence hoy)",
       "texto": "Trabajas en la empresa de internet y aun así te cobran. Eso es lealtad.",
-      "hace": "ayer",
-      "desbloqueo": null
+      "desbloqueo": null,
+      "cuando": "-1 09:00"
     },
     {
       "id": "sweetchill",
@@ -593,8 +602,8 @@
       "icono": "🍦",
       "titulo": "¡2x1 en conos los martes!",
       "texto": "Promoción no válida para empleados. Ni para sus amigos raros.",
-      "hace": "hace 2 días",
-      "desbloqueo": null
+      "desbloqueo": null,
+      "cuando": "-3 15:00"
     }
   ],
   "ajustes_rapidos": [
@@ -605,23 +614,50 @@
     "No molestar",
     "Modo avión"
   ],
-  "dia": "sábado",
   "sitio": "https://proyect-genesis.vercel.app/",
   "estado": [
     {
       "desbloqueo": "cap01_001",
-      "reloj": "5:30",
+      "cuando": "-1 17:30",
       "bateria": 37
     },
     {
+      "desbloqueo": "cap01_010",
+      "cuando": "-1 18:00"
+    },
+    {
       "desbloqueo": "cap01_021",
-      "reloj": "8:14",
+      "cuando": "-1 20:14",
       "bateria": 25
     },
     {
-      "desbloqueo": "cap01_g5m_005",
-      "reloj": "1:31",
+      "desbloqueo": "cap01_108",
+      "cuando": "0 00:05"
+    },
+    {
+      "desbloqueo": "cap01_115n2",
+      "cuando": "0 00:20"
+    },
+    {
+      "desbloqueo": "cap01_118",
+      "cuando": "0 01:00"
+    },
+    {
+      "desbloqueo": "cap01_155",
+      "cuando": "0 01:30"
+    },
+    {
+      "desbloqueo": "cap01_g1_015",
+      "cuando": "0 01:30",
       "bateria": 12
+    },
+    {
+      "desbloqueo": "cap01_g5m_005",
+      "cuando": "0 01:31"
+    },
+    {
+      "desbloqueo": "cap01_g8_072",
+      "cuando": "0 01:33"
     }
   ],
   "tutorial": [
@@ -725,5 +761,14 @@
     "linterna",
     "no_molestar",
     "avion"
+  ],
+  "dias": [
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado"
   ]
 }

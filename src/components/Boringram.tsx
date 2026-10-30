@@ -49,16 +49,18 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
   const [closing, setClosing] = useState(false);
   const [shade, setShade] = useState(false);
-  const torch = useTorch();
+  const torch = useTorch(b.ahora);
   const aj = useStore((st) => st.boringramAjustes);
   const setAj = useStore((st) => st.setBoringramAjustes);
-  const markOpened = useStore((st) => st.markGalleryOpened);
+  const evento = useStore((st) => st.markBoringramEvento);
   // Si se salió en modo avión, el celular vuelve con wifi y datos (y llega su notificación).
   useEffect(() => {
     if (!useStore.getState().boringramAjustes.avion) return;
     setAj({ avion: false, wifi: true, datos: true });
-    markOpened(AVION_KEY);
-  }, [setAj, markOpened]);
+    evento(AVION_KEY, b.ahora);
+    // Solo al entrar.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const toggleAjuste = (icon: string) => {
     if (icon === 'linterna') return void torch.toggle();
     const on = !aj[icon];
@@ -70,7 +72,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
     }
     // Los datos no funcionan en modo avión: prenderlos lo quita (el wifi y el bluetooth sí se pueden).
     if (icon === 'datos' && on && aj.avion) return setAj({ datos: true, avion: false });
-    if (icon === 'no_molestar' && on) markOpened(NO_MOLESTAR_KEY);
+    if (icon === 'no_molestar' && on) evento(NO_MOLESTAR_KEY, b.ahora);
     setAj({ [icon]: on });
   };
   const net = { online: !!(aj.wifi || aj.datos), msg: aj.avion ? b.data.textos.sin_red_avion : b.data.textos.sin_red };
@@ -241,8 +243,10 @@ function TileIcon({ kind, className = s.tileIcon }: { kind: string; className?: 
  * prender la linterna de verdad (Chrome en Android, con permiso de cámara: es la única forma de llegar al flash);
  * si no se puede, la pantalla se ilumina.
  */
-function useTorch() {
+function useTorch(ahora: number) {
   const [on, setOn] = useState(false);
+  const now = useRef(ahora);
+  now.current = ahora;
   const [real, setReal] = useState(false);
   const stream = useRef<MediaStream | null>(null);
   const wanted = useRef(false);
@@ -257,7 +261,7 @@ function useTorch() {
   useEffect(
     () => () => {
       stream.current?.getTracks().forEach((t) => t.stop());
-      if (onRef.current) useStore.getState().markGalleryOpened(LINTERNA_OLVIDADA_KEY);
+      if (onRef.current) useStore.getState().markBoringramEvento(LINTERNA_OLVIDADA_KEY, now.current);
     },
     [],
   );
@@ -267,7 +271,7 @@ function useTorch() {
     setOn(next);
     if (!next) return stop();
     // La primera vez llega la notificación de la linterna (un desbloqueable más).
-    useStore.getState().markGalleryOpened(LINTERNA_KEY);
+    useStore.getState().markBoringramEvento(LINTERNA_KEY, now.current);
     if (!window.matchMedia('(pointer: coarse)').matches || !navigator.mediaDevices?.getUserMedia) return;
     try {
       const media = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } } });
@@ -444,7 +448,7 @@ function Shade({
     >
       <div className={s.shadeHead}>
         <span className={s.shadeClock}>{c.reloj}</span>
-        <span className={s.shadeDay}>{b.data.dia}</span>
+        <span className={s.shadeDay}>{c.dia}</span>
       </div>
       <div className={s.tiles}>
         {b.data.ajustes_rapidos.map((name, i) => {
@@ -490,31 +494,93 @@ function Shade({
       <div className={s.notifList}>
         {list.length === 0 && <p className={s.empty}>{tx.sin_notificaciones}</p>}
         {list.map((n, i) => (
-          <div
+          <NotifCard
             key={n.id}
-            className={`${s.notif} ${sweeping ? s.notifOut : ''}`}
-            style={sweeping ? { animationDelay: `${i * SWEEP_STEP_MS}ms` } : undefined}
-          >
-            <span className={s.notifIcon}>
-              {n.icono === 'bori' ? (
-                <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
-              ) : (
-                n.icono
-              )}
-            </span>
-            <span className={s.notifBody}>
-              <small>
-                {n.app} · {n.hace}
-              </small>
-              <b>{n.titulo}</b>
-              <span>{n.texto}</span>
-            </span>
-          </div>
+            n={n}
+            sweeping={sweeping}
+            delay={i * SWEEP_STEP_MS}
+            onDismiss={() => setCleared((ids) => [...ids, n.id])}
+          />
         ))}
       </div>
       <button className={s.shadeHandle} onClick={close} aria-label={tx.cerrar}>
         <i />
       </button>
+    </div>
+  );
+}
+
+/**
+ * Una notificación del panel. Se borra deslizándola hacia un costado, como en el celular (si no pasa del
+ * 30 % de su ancho, vuelve a su lugar). Igual que con «Borrar todo», al volver a abrir el panel regresa.
+ */
+function NotifCard({
+  n,
+  sweeping,
+  delay,
+  onDismiss,
+}: {
+  n: B['notificaciones'][number];
+  sweeping: boolean;
+  delay: number;
+  onDismiss: () => void;
+}) {
+  const [dx, setDx] = useState(0);
+  const [touched, setTouched] = useState(false);
+  const [gone, setGone] = useState(0);
+  const start = useRef<{ x: number; y: number; drag: boolean } | null>(null);
+  const style: CSSProperties = sweeping
+    ? { animationDelay: `${delay}ms` }
+    : gone
+      ? { transform: `translateX(${gone * 115}%)`, opacity: 0 }
+      : { transform: dx ? `translateX(${dx}px)` : undefined, opacity: 1 - Math.min(Math.abs(dx) / 300, 0.6) };
+  return (
+    <div
+      className={`${s.notif} ${sweeping ? s.notifOut : touched ? s.notifDrag : ''} ${start.current?.drag ? s.notifHeld : ''}`}
+      style={style}
+      onPointerDown={(e) => {
+        if (!sweeping && !gone) start.current = { x: e.clientX, y: e.clientY, drag: false };
+      }}
+      onPointerMove={(e) => {
+        const st = start.current;
+        if (!st) return;
+        const mx = e.clientX - st.x;
+        if (!st.drag) {
+          // Solo cuenta como deslizar si va más de lado que hacia arriba (eso cierra el panel).
+          if (Math.abs(mx) < 8 || Math.abs(mx) < Math.abs(e.clientY - st.y)) return;
+          st.drag = true;
+          setTouched(true);
+          e.currentTarget.setPointerCapture(e.pointerId);
+        }
+        e.stopPropagation();
+        setDx(mx);
+      }}
+      onPointerUp={(e) => {
+        const st = start.current;
+        start.current = null;
+        if (!st?.drag) return;
+        e.stopPropagation();
+        if (Math.abs(dx) > e.currentTarget.offsetWidth * 0.3) {
+          playCancel();
+          setGone(dx > 0 ? 1 : -1);
+          setTimeout(onDismiss, 220);
+        } else setDx(0);
+      }}
+      onPointerCancel={() => {
+        start.current = null;
+        setDx(0);
+      }}
+    >
+      <span className={s.notifIcon}>
+        {n.icono === 'bori' ? <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} /> : n.icono}
+      </span>
+      <span className={s.notifBody}>
+        <small>
+          {n.app} · {n.hace}
+        </small>
+        <b>{n.titulo}</b>
+        <span>{n.texto}</span>
+      </span>
     </div>
   );
 }
