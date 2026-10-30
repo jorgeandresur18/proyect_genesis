@@ -47,6 +47,25 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const [shade, setShade] = useState(false);
   // «Cómo usar» desde fuera del celular: cada toque pide el recorrido otra vez.
   const [tourRequest, setTourRequest] = useState(0);
+  // Lupa (solo en computadora): la app en vertical a toda la altura, sin el marco del celular. Se recuerda.
+  const [big, setBig] = useState(() => {
+    try {
+      return localStorage.getItem(BIG_KEY) === '1';
+    } catch {
+      return false;
+    }
+  });
+  const toggleBig = () => {
+    playSelect();
+    setBig((v) => {
+      try {
+        localStorage.setItem(BIG_KEY, v ? '0' : '1');
+      } catch {
+        // Sin almacenamiento: solo dura esta vez.
+      }
+      return !v;
+    });
+  };
 
   // En celular, Boringram va en vertical; al cerrarlo se suelta la orientación.
   useEffect(() => {
@@ -84,7 +103,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   });
 
   return (
-    <div className={`${s.screen} ${closing ? s.closing : ''}`}>
+    <div className={`${s.screen} ${closing ? s.closing : ''} ${big ? s.big : ''}`}>
       <div className={s.phone}>
         {/* Pantalla apagada: se va al terminar de subir y vuelve al bloquear el celular. */}
         <div className={s.screenOff} aria-hidden>
@@ -126,10 +145,21 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         >
           <span aria-hidden>?</span> {b.data.textos.como_usar}
         </button>
+        <button className={s.helpOut} onClick={toggleBig} aria-pressed={big}>
+          <span aria-hidden>
+            <svg viewBox="0 0 24 24">
+              <circle cx="10.5" cy="10.5" r="6" />
+              <path d={big ? 'M8 10.5h5M20 20l-5-5' : 'M8 10.5h5M10.5 8v5M20 20l-5-5'} />
+            </svg>
+          </span>{' '}
+          {big ? b.data.textos.modo_celular : b.data.textos.ampliar}
+        </button>
       </div>
     </div>
   );
 }
+
+const BIG_KEY = 'genesis-boringram-grande';
 
 /**
  * Barra de estado: a la izquierda la hora y las notificaciones (Boringram si hay publicaciones o historias
@@ -768,7 +798,12 @@ function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: 
               </div>
             )}
             {view.kind === 'feed' && (
-              <Feed b={b} onPerfil={onPerfil} onPost={(id) => go({ kind: 'post', id, back: view })} />
+              <Feed
+                b={b}
+                onPerfil={onPerfil}
+                onPost={(id) => go({ kind: 'post', id, back: view })}
+                onStory={(id) => go({ kind: 'story', id, back: view })}
+              />
             )}
             {view.kind === 'perfil' && (
               <Profile
@@ -886,7 +921,8 @@ function AppBar({ b, onClose, onHelp }: { b: B; onClose: () => void; onHelp?: ()
   );
 }
 
-type TourView = { kind: 'feed' } | { kind: 'perfil'; id: string } | { kind: 'post'; id: string; back: { kind: 'feed' } };
+type TourView =
+  { kind: 'feed' } | { kind: 'perfil'; id: string } | { kind: 'post'; id: string; back: { kind: 'feed' } };
 
 /**
  * «Cómo usar»: recorrido guiado. Cada paso lleva a su pantalla, ilumina lo que explica (un elemento con
@@ -1341,10 +1377,50 @@ function MultiIcon() {
   );
 }
 
-function Feed({ b, onPerfil, onPost }: { b: B; onPerfil: (id: string) => void; onPost: (id: string) => void }) {
+/**
+ * Historias arriba del inicio: un círculo por cuenta con historias desbloqueadas (la tuya primero; después
+ * las que tienen algo sin ver). Abre la más nueva sin ver o, si ya se vio todo, la más nueva.
+ */
+function StoryRail({ b, onStory }: { b: B; onStory: (id: string) => void }) {
+  const authors = [...new Set(b.destacadas.map((d) => d.autor))].filter((a) => b.perfiles[a]);
+  if (authors.length === 0) return null;
+  const unseen = (a: string) => b.destacadas.some((d) => d.autor === a && b.newStories.has(d.id));
+  const order = authors.sort(
+    (x, y) => Number(y === b.data.yo) - Number(x === b.data.yo) || Number(unseen(y)) - Number(unseen(x)),
+  );
+  const open = (a: string) => {
+    const mine = b.destacadas.filter((d) => d.autor === a);
+    const pick = mine.find((d) => b.newStories.has(d.id)) ?? mine.find((d) => !d.fijada) ?? mine[0];
+    onStory(pick.id);
+  };
+  return (
+    <div className={s.storyRail}>
+      {order.map((a) => (
+        <button key={a} type="button" className={s.storyRailItem} onClick={() => open(a)}>
+          <Avatar perfil={b.perfiles[a]} ring={unseen(a)} />
+          <small>{a === b.data.yo ? b.data.textos.tu_historia : b.perfiles[a].usuario}</small>
+          {unseen(a) && <NewDot className={s.railDot} />}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Feed({
+  b,
+  onPerfil,
+  onPost,
+  onStory,
+}: {
+  b: B;
+  onPerfil: (id: string) => void;
+  onPost: (id: string) => void;
+  onStory: (id: string) => void;
+}) {
   if (b.publicaciones.length === 0) return <p className={s.empty}>{b.data.textos.sin_publicaciones}</p>;
   return (
     <div className={s.feed}>
+      <StoryRail b={b} onStory={onStory} />
       {b.publicaciones.map((p) => (
         <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} />
       ))}

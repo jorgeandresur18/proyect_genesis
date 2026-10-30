@@ -448,7 +448,10 @@
     "paso": "{n} de {total}",
     "menu": "Menú",
     "cerrar_app": "Cerrar Boringram",
-    "carrusel": "Foto {n} de {total}"
+    "carrusel": "Foto {n} de {total}",
+    "ampliar": "Ampliar",
+    "modo_celular": "Modo celular",
+    "tu_historia": "Tu historia"
   },
   "notificaciones": [
     {

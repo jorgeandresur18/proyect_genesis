@@ -465,3 +465,18 @@
 .tourStep { color: #ff6f9e; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .tourBack { padding: 0.5rem 0.9rem; border: 1px solid #3a3a44; border-radius: 999px; background: none; color: #d4d4dc; font-size: 0.82rem; }
 @media (prefers-reduced-motion: reduce) { .tourHand { animation: none; } .tourSpot { transition: none; } }
+
+/* Lupa (solo computadora): la app en vertical a toda la altura, sin el marco del celular. */
+.helpOut svg { width: 0.85rem; height: 0.85rem; fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; }
+.screen.big { padding: 0; }
+.screen.big .phone { height: 100%; max-height: none; aspect-ratio: 10 / 16; border: none; border-radius: 0; box-shadow: 0 0 0 1px #24242b, 0 0 5rem rgba(255, 61, 127, 0.18); font-size: 1rem; animation: bigIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes bigIn { from { transform: scale(0.94); opacity: 0.6; } }
+@media (pointer: coarse), (max-width: 600px) { .sideBtns .helpOut[aria-pressed] { display: none; } }
+
+/* Historias arriba del inicio. */
+.storyRail { display: flex; gap: 0.85rem; padding: 0.7rem 0.9rem 0.8rem; overflow-x: auto; border-bottom: 1px solid #1f1f25; scrollbar-width: none; }
+.storyRail::-webkit-scrollbar { display: none; }
+.storyRailItem { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; flex: none; width: 4.1rem; padding: 0; border: none; background: none; color: #d4d4dc; }
+.storyRailItem .avatar { width: 3.5rem; height: 3.5rem; }
+.storyRailItem small { max-width: 100%; overflow: hidden; font-size: 0.68rem; white-space: nowrap; text-overflow: ellipsis; }
+.railDot { position: absolute; top: 0; right: 0.1rem; }

@@ -63,6 +63,7 @@ export function KeyboardField({
     <button
       type="button"
       className={`${s.kbField} ${active ? s.kbFieldOn : ''} ${className}`}
+      data-kb-field
       data-kb-on={active || undefined}
       onClick={start}
     >
@@ -150,6 +151,16 @@ function Keyboard({ field, setField }: { field: Field; setField: (f: Field | nul
     if (!field.text.trim()) return;
     if (field.onSubmit(field.text.trim())) setField(null);
   };
+  // Tocar fuera del teclado (y fuera de un campo de texto) lo cierra, como en un celular.
+  useEffect(() => {
+    const onDown = (e: PointerEvent) => {
+      const target = e.target as Element | null;
+      if (!target || ref.current?.contains(target) || target.closest('[data-kb-field]')) return;
+      setField(null);
+    };
+    window.addEventListener('pointerdown', onDown, true);
+    return () => window.removeEventListener('pointerdown', onDown, true);
+  }, [setField]);
   // La altura del teclado queda en --kb-h, para que la pantalla suba lo que tapa (el pie de las historias, la lista).
   useLayoutEffect(() => {
     const host = ref.current?.offsetParent as HTMLElement | null;
