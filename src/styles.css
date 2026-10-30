@@ -1585,3 +1585,12 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 
 /* La barra de abajo va encima de la caja de diálogo: el botón de Boringram sobresale y no debe quedar tapado. */
 .toolbar { z-index: 6; }
+
+/* «¿Volver al menú?» */
+.confirm-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px); animation: confirm-in 0.18s ease-out both; }
+.confirm-box { display: flex; flex-direction: column; gap: 0.7rem; width: min(31rem, 100%); padding: 1.2rem 1.3rem; border: 1px solid rgba(255, 74, 90, 0.55); border-radius: 0.6rem; background: #0e0e12; box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.6); }
+.confirm-box b { font-size: 1.05rem; }
+.confirm-box p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.confirm-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; margin-top: 0.3rem; }
+.confirm-danger { border-color: rgba(255, 74, 90, 0.7) !important; color: #ff8a95 !important; }
+@keyframes confirm-in { from { opacity: 0; } }

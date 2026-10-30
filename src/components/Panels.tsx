@@ -227,8 +227,12 @@ function CompletionMeter() {
   return (
     <section className="completion">
       <div className="completion-head">
-        <strong>{c.percent} %</strong>
-        <span>{c.missing === 0 ? t('progreso.completo') : t('progreso.falta', { n: 100 - c.percent, k: c.missing })}</span>
+        <strong>{c.percent.toFixed(2)} %</strong>
+        <span>
+          {c.missing === 0
+            ? t('progreso.completo')
+            : t('progreso.falta', { n: ((10000 - Math.round(c.percent * 100)) / 100).toFixed(2), k: c.missing })}
+        </span>
       </div>
       <div className="completion-bar" role="progressbar" aria-valuenow={c.percent} aria-valuemin={0} aria-valuemax={100}>
         <i style={{ width: `${c.percent}%` }} />

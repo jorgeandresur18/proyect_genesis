@@ -35,6 +35,7 @@ export function useCompletion() {
   const total = parts.reduce((n, p) => n + p.total, 0);
   // Promedio de los tipos; solo es 100 cuando no falta nada (no se redondea hacia arriba).
   const ratio = parts.length ? parts.reduce((n, p) => n + p.got / p.total, 0) / parts.length : 0;
-  const percent = got === total ? 100 : Math.min(99, Math.floor(ratio * 100));
+  // Con dos decimales: hasta lo más chico se nota (0.01 %).
+  const percent = got === total ? 100 : Math.min(99.99, Math.floor(ratio * 10000) / 100);
   return { parts, got, total, percent, missing: total - got };
 }

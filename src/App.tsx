@@ -25,7 +25,7 @@ import advertenciaEs from './data/advertencia.json';
 import advertenciaEn from './data/en/advertencia.json';
 import { detectLanguage, localized, useLang, useT } from './engine/i18n';
 import { canFullscreen, enterPlayMode, isTouch, toggleFullscreen } from './engine/mobile';
-import { playGlitch, playNotify, playSelect, unlockAudio } from './engine/sound';
+import { playCancel, playGlitch, playNotify, playSelect, unlockAudio } from './engine/sound';
 import { playMusic, SILENCE } from './engine/music';
 import { config } from './engine/story';
 import { assetUrl } from './engine/assets';
@@ -39,7 +39,19 @@ const TITLE_REVEAL_MS = 1200;
 /** De dónde se llega al título: cambia cómo sale del negro. */
 type Intro = 'advertencia' | 'juego' | null;
 
-type Overlay = 'history' | 'save' | 'load' | 'map' | 'extras' | 'endings' | 'gallery' | 'boringram' | 'options' | 'about' | null;
+type Overlay =
+  | 'history'
+  | 'save'
+  | 'load'
+  | 'map'
+  | 'extras'
+  | 'endings'
+  | 'gallery'
+  | 'boringram'
+  | 'options'
+  | 'about'
+  | 'salir'
+  | null;
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
@@ -145,6 +157,9 @@ export default function App() {
       {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
+      {overlay === 'salir' && (
+        <ConfirmTitle onCancel={close} onSave={() => setOverlay('save')} onConfirm={goToTitle} />
+      )}
       <AudioToggle />
       {/* Siempre montado: lleva la cuenta aunque Boringram esté abierto (adentro avisa el propio celular). */}
       <EventToast hidden={overlay === 'boringram'} onOpen={() => setOverlay('boringram')} />
@@ -269,6 +284,54 @@ function EventToast({ hidden, onOpen }: { hidden: boolean; onOpen: () => void })
         <b>{toast.titulo}</b>
       </span>
     </button>
+  );
+}
+
+/** «¿Volver al menú?»: lo que no se guardó se pierde. Se puede guardar primero o seguir jugando (también con Escape). */
+function ConfirmTitle({ onCancel, onSave, onConfirm }: { onCancel: () => void; onSave: () => void; onConfirm: () => void }) {
+  const t = useT();
+  const cancel = () => {
+    playCancel();
+    onCancel();
+  };
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      e.stopImmediatePropagation();
+      cancel();
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  });
+  return (
+    <div className="confirm-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <div className="confirm-box">
+        <b id="confirm-title">{t('salir.titulo')}</b>
+        <p>{t('salir.texto')}</p>
+        <div className="confirm-actions">
+          <button
+            onClick={() => {
+              playSelect();
+              onSave();
+            }}
+          >
+            {t('salir.guardar')}
+          </button>
+          <button onClick={cancel} autoFocus>
+            {t('salir.seguir')}
+          </button>
+          <button
+            className="confirm-danger"
+            onClick={() => {
+              playSelect();
+              onConfirm();
+            }}
+          >
+            {t('salir.si')}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -722,7 +785,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         {t('juego.ocultar')}
       </button>
       {isTouch() && canFullscreen() && <button onClick={() => void toggleFullscreen()}>{t('juego.pantalla_completa')}</button>}
-      <button onClick={onTitle}>{t('juego.titulo')}</button>
+      {/* Volver al título pide confirmación: lo no guardado se pierde. */}
+      <button onClick={() => open('salir')}>{t('juego.titulo')}</button>
     </>
   );
   return (
