@@ -308,19 +308,19 @@
           "de": "ella",
           "texto": "ya llegue",
           "dia": "Hoy",
-          "hora": "2:41",
+          "hora": "1:31",
           "desbloqueo": "cap01_g5m_006"
         },
         {
           "de": "ella",
           "texto": "no te enojes por lo de hoy",
-          "hora": "2:41",
+          "hora": "1:31",
           "desbloqueo": "cap01_g5m_007"
         },
         {
           "de": "ella",
           "texto": "buenos dias adelantado",
-          "hora": "2:41",
+          "hora": "1:31",
           "desbloqueo": "cap01_g5m_008"
         },
         {
@@ -575,7 +575,7 @@
     },
     {
       "desbloqueo": "cap01_g5m_005",
-      "reloj": "2:48",
+      "reloj": "1:31",
       "bateria": 12
     }
   ],

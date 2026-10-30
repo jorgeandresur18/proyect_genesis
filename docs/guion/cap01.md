@@ -1986,7 +1986,7 @@
 
 ### PANTALLA:celular_mensaje
 
-`g5m_005` — Una notificación. Un mensaje de Nikki, enviado a las 2:41 a. m.
+`g5m_005` — Una notificación. Un mensaje de Nikki, enviado a la 1:31 a. m.
 
 `g5m_006` **Nikki (mensaje):** ya llegue
 
@@ -2551,9 +2551,9 @@
 
 `g7_021` **Jair:** ¿Cuánto llevo dormido?
 
-`g7_022` **Voz:** Tiempo del usuario: 1 h 12 min.
+`g7_022` **Voz:** Tiempo del usuario: 1 min 36 s.
 
-`g7_023` — Jair siente un vértigo que no tiene nada que ver con la caída. Una hora y doce minutos. Ochocientos cuarenta y siete años. Alguien vivió esos años. Alguien nació, creció y murió en este bosque mientras él roncaba sobre un teclado.
+`g7_023` — Jair siente un vértigo que no tiene nada que ver con la caída. Un minuto y treinta y seis segundos. Ochocientos cuarenta y siete años. Alguien vivió esos años. Alguien nació, creció y murió en este bosque mientras él roncaba sobre un teclado.
 
 `g7_024` **Jair:** (Y yo me quejo de que mi semana es larga.)
 
