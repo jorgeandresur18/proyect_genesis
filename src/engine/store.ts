@@ -110,6 +110,18 @@ interface Store {
   boringramAjustes: Record<string, boolean>;
   /** Hora del celular (minutos) en que el jugador desbloqueó cada notificación de «clave». */
   boringramHoras: Record<string, number>;
+  /** Bootcamp Genesis (extra, no canon): clases terminadas con sus estrellas (1-3), la introducción y los diplomas. */
+  bootcampHechas: Record<string, number>;
+  /** Nombre del alumno del Bootcamp (se pide la primera vez; sale en los diplomas). */
+  bootcampNombre: string;
+  /** Diplomas emitidos: código al azar (para que parezca de verdad) y fecha. */
+  bootcampDiplomas: Record<string, { codigo: string; fecha: string }>;
+  /** Niveles del Bootcamp cuyo desbloqueo ya se avisó en el menú. */
+  bootcampAvisos: Record<string, true>;
+  /** Calificación que le puso el jugador al curso (0: todavía no). */
+  bootcampCalificacion: number;
+  /** La reseña que escribió el jugador (sale primera, con su nombre). */
+  bootcampResena: { texto: string; fecha: string } | null;
   /** Opciones elegidas alguna vez, como `scene_id#índice` (índice en `scene.choices`). Para el mapa. */
   choicesTaken: Record<string, true>;
   mode: Mode;
@@ -134,6 +146,15 @@ interface Store {
   setBoringramAjustes: (patch: Record<string, boolean>) => void;
   /** Desbloquea una notificación de «clave» y guarda la hora del celular (solo la primera vez). */
   markBoringramEvento: (key: string, minutos: number) => void;
+  /** Marca algo del Bootcamp; si ya estaba, se queda con lo mejor (las estrellas). */
+  markBootcamp: (id: string, valor?: number) => void;
+  setBootcampNombre: (nombre: string) => void;
+  avisarBootcamp: (nivel: string) => void;
+  calificarBootcamp: (estrellas: number) => void;
+  /** Publica (o borra, con null) la reseña del jugador. */
+  resenarBootcamp: (texto: string | null) => void;
+  /** Emite el diploma de un nivel la primera vez (código y fecha); después devuelve siempre el mismo. */
+  emitirDiploma: (nivel: string, codigo: string) => void;
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
@@ -211,6 +232,12 @@ export const useStore = create<Store>()(
         boringramComments: {},
         boringramAjustes: AJUSTES_INICIALES,
         boringramHoras: {},
+        bootcampHechas: {},
+        bootcampNombre: '',
+        bootcampDiplomas: {},
+        bootcampAvisos: {},
+        bootcampCalificacion: 0,
+        bootcampResena: null,
         choicesTaken: {},
         mode: 'normal',
         speed: 2,
@@ -242,6 +269,18 @@ export const useStore = create<Store>()(
           set({ boringramComments: { ...get().boringramComments, [id]: [...(get().boringramComments[id] ?? []), text] } }),
 
         setBoringramAjustes: (patch) => set({ boringramAjustes: { ...get().boringramAjustes, ...patch } }),
+        setBootcampNombre: (nombre) => set({ bootcampNombre: nombre.trim() }),
+        avisarBootcamp: (nivel) => set({ bootcampAvisos: { ...get().bootcampAvisos, [nivel]: true } }),
+        calificarBootcamp: (estrellas) => set({ bootcampCalificacion: estrellas }),
+        resenarBootcamp: (texto) =>
+          set({ bootcampResena: texto?.trim() ? { texto: texto.trim(), fecha: new Date().toISOString() } : null }),
+        emitirDiploma: (nivel, codigo) => {
+          if (get().bootcampDiplomas[nivel]) return;
+          set({ bootcampDiplomas: { ...get().bootcampDiplomas, [nivel]: { codigo, fecha: new Date().toISOString() } } });
+        },
+        markBootcamp: (id, valor = 1) => {
+          if ((get().bootcampHechas[id] ?? 0) < valor) set({ bootcampHechas: { ...get().bootcampHechas, [id]: valor } });
+        },
         markBoringramEvento: (key, minutos) => {
           if (get().galleryOpened[key]) return;
           set({
@@ -413,6 +452,12 @@ export const useStore = create<Store>()(
             boringramComments: {},
             boringramAjustes: AJUSTES_INICIALES,
             boringramHoras: {},
+            bootcampHechas: {},
+            bootcampNombre: '',
+            bootcampDiplomas: {},
+            bootcampAvisos: {},
+            bootcampCalificacion: 0,
+            bootcampResena: null,
             choicesTaken: {},
             mode: 'normal',
             error: null,
@@ -443,6 +488,12 @@ export const useStore = create<Store>()(
         boringramComments: s.boringramComments,
         boringramAjustes: s.boringramAjustes,
         boringramHoras: s.boringramHoras,
+        bootcampHechas: s.bootcampHechas,
+        bootcampNombre: s.bootcampNombre,
+        bootcampDiplomas: s.bootcampDiplomas,
+        bootcampAvisos: s.bootcampAvisos,
+        bootcampCalificacion: s.bootcampCalificacion,
+        bootcampResena: s.bootcampResena,
         choicesTaken: s.choicesTaken,
       }),
     },

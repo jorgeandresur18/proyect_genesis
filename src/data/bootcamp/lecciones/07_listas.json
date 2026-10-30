@@ -1,0 +1,179 @@
+{
+  "id": "listas",
+  "titulo": "Listas (arrays)",
+  "tema": "Una lista guarda varias cosas en orden: empieza en 0, push agrega al final, length cuenta.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Clase siete: listas. Varias cosas en una sola variable, entre corchetes: ['a', 'b', 'c']."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "La primera posición es la 0, no la 1. Todos se equivocan con eso. Yo todavía, a veces."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "Como una formación de soldados: el primero de la fila es el soldado cero. Y el que llega tarde va al final."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Exacto. Para mandar a alguien al final de la fila se usa push. Y length te dice cuántos hay."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "las listas empiezan en cero. como los derechos laborales de un practicante"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "Mi lista de pendientes: uno, aprender Coffee. Cero, mirar el culo de Rikka. El cero va primero, lo dijo el profe."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/enojada.webp",
+      "texto": "¡Esa no es una lista de pendientes, Cami, es una confesión!"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Ejercicio: el backlog del sprint. Agreguen una tarea, lean la primera y cuenten cuántas hay."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/listas",
+    "principal": "backlog.coffee",
+    "archivos": [
+      {
+        "ruta": "backlog.coffee",
+        "lineas": [
+          "// Clase 7: listas. Completa los huecos.",
+          "brew backlog = ['arreglar el login', 'arreglar el arreglo del login', 'reunión para hablar del login'];",
+          "backlog.[[1]]('hacer horas extra (sin pago)');",
+          "latte.log('Primero: ' + backlog[ [[2]] ]);",
+          "latte.log('Pendientes: ' + backlog.[[3]]);",
+          "// Salida esperada:",
+          "// Primero: arreglar el login",
+          "// Pendientes: 4"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL INSTRUCTOR",
+          "",
+          "brew lista = ['a', 'b', 'c'];",
+          "lista[0]        -> 'a'   (¡la primera es la 0!)",
+          "lista.push('d') -> agrega 'd' al final.",
+          "lista.length    -> cuántos elementos hay.",
+          "",
+          "Tareas que salieron del backlog este año: 0. Tareas que entraron: todas."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "push",
+        "error": "backlog.{valor} no agrega al final. Para meter una tarea más se usa push."
+      },
+      "2": {
+        "respuesta": "0",
+        "error": "La posición {valor} no es la primera. En Coffee (y en JavaScript) se cuenta desde 0."
+      },
+      "3": {
+        "respuesta": "length",
+        "error": "backlog.{valor} no existe. Para contar los elementos de una lista: length."
+      }
+    },
+    "paleta": [
+      "push",
+      "add",
+      "pop",
+      "0",
+      "1",
+      "length",
+      "size",
+      "count"
+    ],
+    "exito": [
+      "Primero: arreglar el login",
+      "Pendientes: 4",
+      "✔ Compiló. El backlog creció. Como siempre."
+    ],
+    "reacciones": {
+      "Rikka": [
+        "La primera es la cero. Lo anoté tres veces en mi cuaderno.",
+        "push manda al final de la fila. Como a los que llegan tarde a la guardia."
+      ],
+      "Cami": [
+        {
+          "texto": "pop saca el último de la lista. Profe, ¿y para sacar a Rikka de la silla qué uso? Con ese culo, una grúa.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/enojada.webp",
+            "texto": "Usa la puerta, Cami. Para irte."
+          }
+        },
+        "Mi lista de exes tiene chicos y chicas. Es una lista mixta, profe. Muy inclusiva."
+      ],
+      "Nikki": [
+        "pusiste 1. tranquilo, a todos nos enseñaron que somos el número uno. luego llega el mercado laboral",
+        "el backlog no baja nunca. es lo más parecido a la deuda pública que vas a programar"
+      ],
+      "Jair": [
+        "Off-by-one: el bug más viejo de la humanidad. Y el más común.",
+        "size es de otros lenguajes. Aquí es length."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "push agrega, los índices empiezan en 0 y length cuenta. Con eso sale."
+      },
+      {
+        "quien": "Rikka",
+        "texto": "Yo leo las notas por ti si quieres. Las tengo subrayadas.",
+        "sprite": "sprites/rikka/tierna.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Jair",
+        "texto": "Cuatro pendientes. Mañana van a ser ocho. Bienvenidos al desarrollo ágil.",
+        "sprite": "sprites/jair/cansado1.webp"
+      },
+      {
+        "quien": "Rikka",
+        "texto": "¡La primera era la cero! Ahora sí no se me olvida.",
+        "sprite": "sprites/rikka/orgullosa.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Listas: la estructura que más van a usar. Y la que más se llena de cosas que nadie va a hacer."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/sonrojada1.webp",
+      "texto": "Mi lista sigue igual: cero, Rikka. Uno, Coffee. Dos, el profe, si se baña."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/verguenza1.webp",
+      "texto": "Me baño. Es el ventilador el que no ayuda."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/triste1.webp",
+      "texto": "…yo también estuve en una lista tuya una vez, ¿no? en la posición cero. bueno. da igual"
+    }
+  ]
+}

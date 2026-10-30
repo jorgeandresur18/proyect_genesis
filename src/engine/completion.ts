@@ -4,6 +4,7 @@ import { useStore } from './store';
 import { endings, storyFiles } from './story';
 import { CGS, TOTAL_SPRITES, useGalleryState } from './gallery';
 import { useBoringramProgress } from './boringram';
+import { useBootcamp } from './bootcamp';
 
 /** Todas las escenas (cada una es una línea de diálogo) y todas las opciones de todas las decisiones. */
 const SCENES = storyFiles.flatMap((f) => f.scenes);
@@ -22,6 +23,7 @@ export function useCompletion() {
   const taken = useStore((s) => s.choicesTaken);
   const g = useGalleryState();
   const bor = useBoringramProgress();
+  const bootcamp = useBootcamp();
   const playable = endings.filter((e) => e.estado === 'jugable');
   const parts: Progress[] = [
     { id: 'escenas', got: SCENES.filter((sc) => read[sc.scene_id]).length, total: SCENES.length },
@@ -30,6 +32,7 @@ export function useCompletion() {
     { id: 'imagenes', got: g.images.length, total: CGS.length },
     { id: 'sprites', got: g.spriteCount, total: TOTAL_SPRITES },
     ...Object.entries(bor).map(([id, p]) => ({ id, ...p })),
+    { id: 'bootcamp', got: bootcamp.progreso.hechas, total: bootcamp.progreso.total },
   ].filter((p) => p.total > 0);
   const got = parts.reduce((n, p) => n + p.got, 0);
   const total = parts.reduce((n, p) => n + p.total, 0);

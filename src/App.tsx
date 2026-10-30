@@ -15,6 +15,8 @@ import { CgGallery, NewDot } from './components/CgGallery';
 import { useGalleryState } from './engine/gallery';
 import { useBoringram } from './engine/boringram';
 import { BoringramScreen } from './components/Boringram';
+import { BootcampScreen } from './components/Bootcamp';
+import { CURSO as bootcampCurso, NIVELES, PRUEBA, useBootcamp } from './engine/bootcamp';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -51,6 +53,7 @@ type Overlay =
   | 'options'
   | 'about'
   | 'salir'
+  | 'bootcamp'
   | null;
 
 export default function App() {
@@ -107,8 +110,12 @@ export default function App() {
     document.documentElement.style.setProperty('--box-alpha', String(boxOpacity));
   }, [textScale, boxOpacity]);
   // Título y fin de capítulo: el tema del título. En juego: el tema vigente de la escena. En una pantalla de final: silencio.
+  // El Bootcamp tiene su propio tema (mientras no exista, sigue el del título).
+  const bootcampMusic = overlay === 'bootcamp' ? (config.musica_bootcamp ?? null) : null;
   const music = useStore((s) =>
-    !s.game || s.game.finished?.startsWith(CHAPTER_END)
+    bootcampMusic
+      ? bootcampMusic
+      : !s.game || s.game.finished?.startsWith(CHAPTER_END)
       ? (config.musica_titulo ?? SILENCE)
       : s.game.finished
         ? SILENCE
@@ -154,6 +161,7 @@ export default function App() {
       {overlay === 'gallery' && <CgGallery onClose={close} />}
       {overlay === 'boringram' && <BoringramScreen onClose={close} />}
       {overlay === 'extras' && <ExtrasPanel onClose={close} onOpen={setOverlay} />}
+      {overlay === 'bootcamp' && <BootcampScreen onClose={close} />}
       {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
@@ -353,6 +361,42 @@ function ConfirmTitle({
   );
 }
 
+/**
+ * En el menú: al terminar un capítulo por primera vez, avisa que se desbloqueó su nivel del Bootcamp (uno a la vez).
+ * Tocarlo abre el Bootcamp.
+ */
+function BootcampAviso({ onOpen }: { onOpen: () => void }) {
+  const b = useBootcamp();
+  const avisados = useStore((s) => s.bootcampAvisos);
+  const avisar = useStore((s) => s.avisarBootcamp);
+  const nivel = PRUEBA ? undefined : NIVELES.find((n) => b.nivelAbierto(n) && !avisados[n.id]);
+  const [toast, setToast] = useState<{ key: number; n: number; nombre: string; color: string } | null>(null);
+  useEffect(() => {
+    if (!nivel) return;
+    const timer = setTimeout(() => {
+      setToast({ key: Date.now(), n: NIVELES.indexOf(nivel) + 1, nombre: nivel.nombre, color: nivel.color });
+      avisar(nivel.id);
+      playNotify();
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [nivel, avisar]);
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 4200);
+    return () => clearTimeout(timer);
+  }, [toast]);
+  if (!toast) return null;
+  return (
+    <button key={toast.key} className="bori-toast bc-toast" style={{ ['--lvl' as string]: toast.color }} onClick={onOpen}>
+      <img src={assetUrl('marca/bootcamp_emblema.webp')} alt="" draggable={false} />
+      <span>
+        <small>{bootcampCurso.textos.aviso_app}</small>
+        <b>{bootcampCurso.textos.aviso.replace('{n}', String(toast.n)).replace('{nombre}', toast.nombre)}</b>
+      </span>
+    </button>
+  );
+}
+
 /** Botón redondo de Boringram en la esquina, con la cantidad de cosas nuevas. */
 function BoringramBall({ onOpen, label }: { onOpen: () => void; label: string }) {
   const b = useBoringram();
@@ -450,6 +494,7 @@ const MENU_ICONS: Record<string, ReactNode> = {
   extras: <path d="m12 3 2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5l-5.3 2.9 1.2-6-4.5-4.1 6-.7z" />,
   options: <><path d="M4 7h9M17 7h3M4 17h3M11 17h9" /><circle cx="15" cy="7" r="2" /><circle cx="9" cy="17" r="2" /></>,
   about: <><circle cx="12" cy="12" r="9" /><path d="M12 11v6M12 7.5v.5" /></>,
+  bootcamp: <><rect x="3" y="4" width="18" height="12" rx="1.5" /><path d="M9 20h6M12 16v4M7 8l2 2-2 2M11 12h4" /></>,
 };
 
 interface TitleProps {
@@ -471,6 +516,8 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const pick = () => playSelect();
   const galleryNew = useGalleryState().hasNew;
   const boringramNew = useBoringram().hasNew;
+  // El Bootcamp se abre al terminar el Capítulo 1; antes, su botón sale con candado.
+  const bootcampOpen = useBootcamp().abierto;
   const load = useStore((s) => s.load);
   // Espacio de la partida guardada más reciente (-1 si no hay ninguna).
   const lastSave = useStore((s) =>
@@ -480,6 +527,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
     ['load', 'load', 'titulo.cargar'],
     ['map', 'map', 'titulo.mapa'],
     ['boringram', 'boringram', 'titulo.boringram'],
+    ['bootcamp', 'bootcamp', 'titulo.bootcamp'],
     ['extras', 'extras', 'titulo.extras'],
     ['options', 'options', 'titulo.opciones'],
     ['about', 'about', 'titulo.conoce'],
@@ -567,13 +615,15 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
           {tiles.map(([o, icon, label]) => (
             <button
               key={o}
-              className="title-tile"
+              className={`title-tile ${o === 'bootcamp' && !bootcampOpen ? 'title-tile-locked' : ''}`}
               onClick={() => {
                 pick();
                 open(o);
               }}
             >
-              {icon === 'boringram' ? (
+              {icon === 'bootcamp' ? (
+                <img className="title-tile-icon" src={assetUrl('marca/bootcamp_emblema.webp')} alt="" draggable={false} />
+              ) : icon === 'boringram' ? (
                 // La cámara con las «zzz» del logo de Boringram, sin las letras.
                 <img className="title-tile-icon" src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
               ) : (
@@ -582,6 +632,11 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
                 </svg>
               )}
               <span>{t(label)}</span>
+              {o === 'bootcamp' && !bootcampOpen && (
+                <span className="title-tile-lock" aria-label={t('titulo.bootcamp_bloqueado')}>
+                  🔒
+                </span>
+              )}
               {((o === 'extras' && galleryNew) || (o === 'boringram' && boringramNew)) && (
                 <NewDot className="new-dot-tile" />
               )}
@@ -589,6 +644,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
           ))}
         </div>
       </nav>
+      <BootcampAviso onOpen={() => open('bootcamp')} />
       {config.version && <span className="title-version">{t('titulo.version', { v: config.version })}</span>}
     </div>
   );

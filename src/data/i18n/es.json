@@ -127,6 +127,8 @@
   "mapa.ley_desconocido": "??? sin descubrir",
   "mapa.ayuda": "Arrastra para moverte · rueda o pellizco para acercar",
   "titulo.boringram": "Boringram",
+  "titulo.bootcamp": "Bootcamp",
+  "titulo.bootcamp_bloqueado": "Se abre al terminar el Capítulo 1",
   "titulo.extras": "Extras",
   "titulo.version": "ver. {v}",
   "extras.titulo": "Extras",
@@ -161,5 +163,6 @@
   "opciones.borrar_desc": "Partidas, galería, finales, Boringram, lo leído y las opciones. Todo. Como si nunca hubieras jugado.",
   "opciones.borrar_escribe": "Para confirmar, escribe:",
   "opciones.borrar_frase": "acepto perder todo, igual que mi sueldo",
-  "opciones.borrar_nota": "Las mayúsculas y las tildes son opcionales. La resignación, no."
+  "opciones.borrar_nota": "Las mayúsculas y las tildes son opcionales. La resignación, no.",
+  "progreso.bootcamp": "Clases del Bootcamp"
 }

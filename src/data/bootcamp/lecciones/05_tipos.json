@@ -1,0 +1,176 @@
+{
+  "id": "tipos",
+  "titulo": "Tipos y operadores",
+  "tema": "Números y textos no se mezclan: + suma o junta; typeof dice qué es; === compara.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Clase cinco: tipos. En Coffee, 1200 es un número y '1200' es un texto. Se parecen. No son lo mismo."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "El + con números suma: 2 + 2 da 4. Con textos junta: '2' + 2 da '22'. Así se rompieron más nóminas que con cualquier crisis."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "Entonces, si quiero saber qué es algo, ¿lo pregunto? En mi reino se preguntaba con la espada."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Casi. Se pregunta con typeof: typeof 1200 da 'number'; typeof 'hola' da 'string'. Sin espada."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "rikka, tus apuntes están mejor que los del instructor. no se lo digas, que se le sube el sueldo emocional"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "Yo soy como el +, profe: con chicos sumo, con chicas junto. El tipo me da igual."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "y el sueldo de jair es de tipo «undefined». existe en el contrato, pero nadie lo ha visto"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/triste1.webp",
+      "texto": "…Ejercicio: calculen el sueldo con las horas extra. Las horas extra se pagan a cero. Es un ejercicio realista."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/tipos",
+    "principal": "nomina.coffee",
+    "archivos": [
+      {
+        "ruta": "nomina.coffee",
+        "lineas": [
+          "// Clase 5: tipos y operadores. Completa los huecos.",
+          "brew sueldo = 1200;",
+          "brew horasExtra = 40;",
+          "brew pagoPorHoraExtra = [[1]]; // política de la empresa",
+          "brew total = sueldo [[2]] horasExtra * pagoPorHoraExtra;",
+          "brew esNumero = typeof total [[3]] 'number';",
+          "latte.log('Sueldo: ' + total + ' / ¿es número?: ' + esNumero);",
+          "// Salida esperada: Sueldo: 1200 / ¿es número?: true"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL INSTRUCTOR",
+          "",
+          "number: 1200, 0, 3.5   (sin comillas)",
+          "string: '1200', 'hola' (con comillas)",
+          "+ con dos números suma. Con un texto en medio, junta: '2' + 2 = '22'.",
+          "* se hace antes que +, como en matemática: 1200 + 40 * 0 = 1200.",
+          "typeof x  -> dice el tipo: 'number', 'string', 'boolean'…",
+          "===       -> compara valor Y tipo. 0 === '0' es false.",
+          "",
+          "Horas extra pagadas este año: 0. Tipo: number. Sentimiento: undefined."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "0",
+        "error": "«{valor}» no es el número cero. Las horas extra se pagan a 0 (número, sin comillas); con comillas sería un texto y la nómina se rompe."
+      },
+      "2": {
+        "respuesta": "+",
+        "error": "«{valor}» no suma. Para sumar el sueldo y las horas extra se usa +."
+      },
+      "3": {
+        "respuesta": "===",
+        "error": "«{valor}» no compara. Para preguntar si typeof total es 'number' se usa ===."
+      }
+    },
+    "paleta": [
+      "0",
+      "'0'",
+      "decaf",
+      "15",
+      "+",
+      "-",
+      "=",
+      "===",
+      "typeof"
+    ],
+    "exito": [
+      "Sueldo: 1200 / ¿es número?: true",
+      "✔ Compiló. Las horas extra valieron exactamente lo que dice el contrato: nada."
+    ],
+    "reacciones": {
+      "Cami": [
+        "Con comillas, sin comillas… a mí me gustan de los dos tipos, profe. Ya lo dije.",
+        {
+          "texto": "¿Y el culo de Rikka de qué tipo es? Ni number alcanza: es Infinity.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/enojada.webp",
+            "texto": "¡Es de tipo «no es asunto tuyo», Cami!"
+          }
+        }
+      ],
+      "Nikki": [
+        "pusiste '0' con comillas. felicidades: ahora tu sueldo es un texto. como el de todos, en realidad",
+        "si las horas extra pagaran 15 por hora, esto ya no sería parodia, sería ciencia ficción"
+      ],
+      "Rikka": [
+        "El instructor dijo: la multiplicación va antes que la suma. Primero las horas por el pago, después el sueldo.",
+        "Fíjate en las comillas. Un número con comillas es un texto disfrazado."
+      ],
+      "Jair": [
+        "typeof no miente. La empresa sí.",
+        "Si da '12000' es que juntaste textos. Ojalá fuera tu sueldo."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "Ojo: las horas extra se pagan a cero, como número. Y el * se calcula antes que el +."
+      },
+      {
+        "quien": "Rikka",
+        "texto": "Yo empiezo por el primer hueco. Un número sin comillas. Fácil.",
+        "sprite": "sprites/rikka/orgullosa.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Nikki",
+        "texto": "1200 y true. lo único verdadero de esta nómina es el booleano",
+        "sprite": "sprites/nikki/fria.webp"
+      },
+      {
+        "quien": "Rikka",
+        "texto": "¡Lo entendí! Los textos se juntan, los números se suman. Y el sueldo no sube.",
+        "sprite": "sprites/rikka/orgullosa.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Bien. Ya distinguen un número de un texto. Más de lo que hace el sistema de nómina de mi empresa."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/tierna.webp",
+      "texto": "Instructor, ¿y si le pagan las horas extra con comillas? Al menos tendría un texto bonito."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "ya se las pagan así. se llama «reconocimiento». viene en un correo con confeti"
+    }
+  ]
+}

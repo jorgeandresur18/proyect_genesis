@@ -1,0 +1,83 @@
+{
+  "id": "reasignacion",
+  "titulo": "brew y let: lo que no se reasigna",
+  "tema": "brew no se vuelve a asignar; let sí. Comentar con // apaga una línea.",
+  "charla": [
+    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase seis: lo que no se reasigna. brew guarda un valor para siempre. Si lo quieres cambiar después, usa let." },
+    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Si intentas reasignar un brew, Coffee te frena: TypeError. Es de los pocos errores que protegen algo." },
+    { "quien": "Rikka", "sprite": "sprites/rikka/seria.webp", "texto": "Como un juramento. Lo que se jura con brew no se rompe. Lo que se dice con let… se negocia." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "regla de la clase: no ocupes un espacio que ya está ocupado. no importa si lo reclama un gobierno, un ejército o el gran ingeniero en persona con su libro sagrado en la mano." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/molesta.webp", "texto": "y si lo intentas a la fuerza, el sistema te tira error. o eso debería. el compilador por lo menos es coherente" },
+    { "quien": "Jair", "sprite": "sprites/jair/atontado.webp", "texto": "…Eso es exactamente lo que hace brew. No sé si estamos hablando de Coffee." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "claro que estamos hablando de coffee, jair. de qué más iba a ser" },
+    { "quien": "Cami", "sprite": "sprites/cami/burlona.webp", "texto": "Hablando de espacios ocupados: el escritorio de Rikka lo ocupa entero su trasero. Y eso sí que no se reasigna." },
+    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi escritorio lo ocupo yo, entera, con mis apuntes. Concéntrate en el ejercicio." }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/reasignacion",
+    "principal": "escritorios.coffee",
+    "archivos": [
+      {
+        "ruta": "escritorios.coffee",
+        "lineas": [
+          "// Clase 6: brew y let. Completa los huecos.",
+          "brew escritorio = 'ocupado por Rikka';",
+          "[[1]] tazas = 1; // el contador de café cambia (y mucho)",
+          "tazas = tazas [[2]] 1;",
+          "[[3]] escritorio = 'ahora es mío'; // ← esto no puede ejecutarse: apágalo",
+          "latte.log(escritorio + ' / tazas: ' + tazas);",
+          "// Salida esperada: ocupado por Rikka / tazas: 2"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL INSTRUCTOR",
+          "",
+          "brew x = 1;  x = 2;  -> TypeError: x ya está ocupado (brew no se reasigna).",
+          "let  y = 1;  y = 2;  -> bien: let sí cambia.",
+          "y = y + 1;           -> suma 1 a lo que ya tenía.",
+          "// al principio de una línea la convierte en comentario: no se ejecuta.",
+          "",
+          "Por defecto usen brew. let solo para lo que de verdad cambia (las tazas de café, por ejemplo)."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "respuesta": "let", "error": "«{valor}» no deja cambiar el valor después. Las tazas van a cambiar: se declaran con let." },
+      "2": { "respuesta": "+", "error": "«{valor}» no suma una taza más. Para sumar: tazas + 1." },
+      "3": { "respuesta": "//", "error": "TypeError: «escritorio» ya está ocupado (es brew); con «{valor}» delante igual intenta quitárselo. No se reasigna a la fuerza: apaga esa línea con //." }
+    },
+    "paleta": ["let", "brew", "+", "-", "//", "brew!", "refill"],
+    "exito": ["ocupado por Rikka / tazas: 2", "✔ Compiló. El escritorio sigue siendo de quien ya estaba. El compilador, más sensato que muchos."],
+    "reacciones": {
+      "Nikki": [
+        "intentaste ocupar el escritorio a la fuerza. el compilador dijo que no. ojalá el mundo tuviera linter",
+        "«brew!» no existe. ponerle un signo de exclamación a algo no te da derecho a quedártelo"
+      ],
+      "Cami": [
+        {
+          "texto": "Si quieres ocupar el asiento de Rikka, primero pídeselo. Yo lo hice y casi me gano un espadazo.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": { "quien": "Rikka", "sprite": "sprites/rikka/sonrojada.webp", "texto": "Porque me lo pediste sentándote encima, Cami." }
+        },
+        "let es como yo: abierta a cambios. brew es como Rikka: decidida y con un asiento muy bien ocupado."
+      ],
+      "Rikka": ["El escritorio es brew. No se toca. Apaga esa línea, no la pelees.", "Primero let para las tazas. Después, más uno."],
+      "Jair": ["TypeError: Assignment to constant variable. El error más honesto de la industria.", "Comentar código que no funciona: la mitad de mi carrera."]
+    },
+    "al_abrir": [
+      { "quien": "Jair", "texto": "Tres huecos: declarar las tazas, sumar una, y apagar la línea que intenta quedarse con el escritorio." },
+      { "quien": "Nikki", "texto": "esa línea 5 me cae mal. sabe lo que hace y lo hace igual", "sprite": "sprites/nikki/molesta.webp" }
+    ],
+    "al_resolver": [
+      { "quien": "Nikki", "texto": "el escritorio sigue siendo de quien estaba. ves que no era tan difícil", "sprite": "sprites/nikki/tierna1.webp" },
+      { "quien": "Rikka", "texto": "Mi escritorio sigue siendo mío. Gracias, compilador.", "sprite": "sprites/rikka/orgullosa.webp" }
+    ]
+  },
+  "cierre": [
+    { "quien": "Jair", "sprite": "sprites/jair/orgulloso.webp", "texto": "Por defecto, brew. let solo para lo que de verdad cambia. Y lo que no compila, se comenta y se arregla después." },
+    { "quien": "Jair", "sprite": "sprites/jair/cansado1.webp", "texto": "«Después» es nunca, pero eso lo aprenden en el nivel Senior." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "lo más subversivo de esta clase fue el compilador. anótenlo" }
+  ]
+}

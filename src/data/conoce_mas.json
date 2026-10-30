@@ -58,12 +58,30 @@
     },
     {
       "titulo": "Sígueme y apoya el proyecto",
-      "parrafos": ["Si el juego te gustó, puedes conocer más de mi trabajo, escribirme o apoyar su desarrollo con una donación."]
+      "parrafos": [
+        "Si el juego te gustó, puedes conocer más de mi trabajo, escribirme o apoyar su desarrollo con una donación."
+      ]
     }
   ],
   "enlaces": [
-    { "texto": "Mi página", "url": "https://jorge-urgiles-ruiz.vercel.app/" },
-    { "texto": "LinkedIn", "url": "https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/" },
-    { "texto": "Donar con PayPal", "url": "https://paypal.me/jorgeandresur", "destacado": true }
+    {
+      "texto": "Mi página",
+      "url": "https://jorge-urgiles-ruiz.vercel.app/",
+      "en_diploma": true
+    },
+    {
+      "texto": "El juego en GitHub",
+      "url": "https://github.com/jorgeandresur18/proyect_genesis",
+      "en_diploma": true
+    },
+    {
+      "texto": "LinkedIn",
+      "url": "https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/"
+    },
+    {
+      "texto": "Donar con PayPal",
+      "url": "https://paypal.me/jorgeandresur",
+      "destacado": true
+    }
   ]
 }

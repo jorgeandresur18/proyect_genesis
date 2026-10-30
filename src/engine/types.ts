@@ -124,6 +124,8 @@ export interface GameConfig {
   inicio: string;
   /** Tema de la pantalla de título. */
   musica_titulo?: string;
+  /** Tema del Bootcamp Genesis (sin él, sigue el del título). */
+  musica_bootcamp?: string | null;
   /** Versión que se ve en una esquina del título. */
   version?: string;
 }

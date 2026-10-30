@@ -1,0 +1,183 @@
+{
+  "id": "bucles",
+  "titulo": "Bucles",
+  "tema": "for repite algo con cada elemento de una lista (for … of).",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Clase cuatro: bucles. Un bucle repite algo muchas veces sin que tengas que escribirlo muchas veces."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/cansado1.webp",
+      "texto": "Como mi vida: oficina, bus, casa. Oficina, bus, casa. Solo que el bucle por lo menos termina."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "el bucle favorito de jair: abrir mi chat, escribir, borrar, cerrar. desde hace ocho años"
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "En mi reino, los soldados entrenan en bucle: mil estocadas al día."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "El profe también entrena en bucle, Rikka. Solo, de noche, con la puerta cerrada. Tiene unos antebrazos…"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/molesto.webp",
+      "texto": "¡Hago ejercicio con pesas! Bueno, con una botella de agua. Pero cuenta."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Ejercicio: recorran la lista de tazas y muestren cada una. Con for y of."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/clase04",
+    "principal": "clase04.coffee",
+    "archivos": [
+      {
+        "ruta": "clase04.coffee",
+        "lineas": [
+          "// Clase 4: bucles. Completa los huecos.",
+          "brew tazas = ['espresso', 'latte', 'decaf'];",
+          "",
+          "[[1]] (brew taza [[2]] tazas) {",
+          "  latte.log('El profe se toma un ' + taza);",
+          "}",
+          "",
+          "latte.log('Tazas: ' + tazas.[[3]]); // Salida esperada: Tazas: 3"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL PROFE",
+          "",
+          "for (brew cosa of lista) { ... }  -> repite el bloque con cada cosa de la lista.",
+          "OJO: of da cada elemento; in da las posiciones (0, 1, 2). Casi siempre quieren of.",
+          "lista.length -> cuántas cosas tiene la lista.",
+          "",
+          "Tazas de café hoy: 3. Horas de sueño: tampoco 3."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "for",
+        "error": "«{valor}» no repite nada. Un bucle que recorre una lista empieza con for."
+      },
+      "2": {
+        "respuesta": "of",
+        "error": "«{valor}» da las posiciones (0, 1, 2), no las tazas. Para cada elemento se usa of."
+      },
+      "3": {
+        "respuesta": "length",
+        "error": "tazas.{valor} no existe. Para saber cuántas cosas tiene una lista: length."
+      }
+    },
+    "paleta": [
+      "for",
+      "if",
+      "while",
+      "of",
+      "in",
+      "length",
+      "size",
+      "count"
+    ],
+    "exito": [
+      "El profe se toma un espresso",
+      "El profe se toma un latte",
+      "El profe se toma un decaf",
+      "Tazas: 3",
+      "✔ Compiló. Nivel básico terminado. Ya saben más que el último practicante que contrataron."
+    ],
+    "reacciones": {
+      "Cami": [
+        "Un bucle infinito… como las miradas del profe a los senos de la rubia del verano. O sea, a los míos.",
+        {
+          "texto": "Profe, si te sale bien te doy una nalgada. Pregúntale a Rikka: no duele tanto.",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/enojada.webp",
+            "texto": "¡Sí dolió! En el orgullo, pero dolió."
+          }
+        }
+      ],
+      "Nikki": [
+        "pusiste in. siempre te quedas con las posiciones y nunca con lo importante",
+        "un bucle que no termina. igual que nuestras peleas"
+      ],
+      "Rikka": [
+        "¡Cami! Deja de prometer nalgadas en clase.",
+        "Mil estocadas, mil errores. Así se aprende."
+      ],
+      "Jair": [
+        "Esto en producción no pasa. Bueno, sí pasa. Siempre pasa."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "for recorre la lista, of les da cada taza. Con in les da las posiciones, y nadie quiere tomarse una posición."
+      },
+      {
+        "quien": "Cami",
+        "texto": "Yo sí quiero tomarme una posición, profe.",
+        "sprite": "sprites/cami/burla.webp"
+      },
+      {
+        "quien": "Rikka",
+        "texto": "¡Cami!",
+        "sprite": "sprites/rikka/enojada.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Nikki",
+        "texto": "tres cafés y cero horas de sueño. eres tú en código",
+        "sprite": "sprites/nikki/tierna1.webp"
+      },
+      {
+        "quien": "Jair",
+        "texto": "Nivel básico terminado. Estoy tan orgulloso que me tomaría un cuarto café.",
+        "sprite": "sprites/jair/orgulloso.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Nivel básico terminado. Variables, funciones, condicionales y bucles. Con eso se hace casi todo."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/triste1.webp",
+      "texto": "Lo demás es buscar en internet a las tres de la mañana, solo, con el ventilador. Bienvenidas a la programación."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/tierna1.webp",
+      "texto": "…no estás tan solo, tonto. tienes alumnas. y me tienes a mí. a veces"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/sonrojada.webp",
+      "texto": "Y la próxima clase, que la dé Rikka. Quiero verla en la pizarra… de espaldas."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/enojada.webp",
+      "texto": "¡CAMI!"
+    }
+  ]
+}

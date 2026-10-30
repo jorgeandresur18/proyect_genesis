@@ -13,6 +13,9 @@ function speakerStyle(speaker: string): { color: string; mono: boolean } {
   return { color: found?.color ?? personajes.por_defecto, mono: !!(found && 'mono' in found && found.mono) };
 }
 
+/** Color del nombre de un hablante (el mismo de la caja de diálogo). */
+export const speakerColor = (speaker: string) => speakerStyle(speaker).color;
+
 interface Props {
   dialogue: Dialogue | null;
   aiVowels: boolean;

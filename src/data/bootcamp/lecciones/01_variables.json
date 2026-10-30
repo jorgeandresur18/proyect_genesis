@@ -1,0 +1,177 @@
+{
+  "id": "variables",
+  "titulo": "Variables",
+  "tema": "brew guarda un valor con nombre; latte.log lo muestra.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Clase uno: variables. Una variable es una caja con nombre donde guardas un valor."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "¿Una caja? No van ni dos minutos de clase y ya empezamos con los dobles sentidos, profe."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/verguenza1.webp",
+      "texto": "…En Coffee se escribe brew. Lo que guardas con brew ya no cambia. Como un tatuaje. O como mis sentimientos."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "o como tu historial de búsqueda, que también es el mismo desde hace años"
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/orgullosa.webp",
+      "texto": "Tengo más de quinientos años y jamás necesité guardar nada en una caja."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/apuntando.webp",
+      "texto": "Porque tú guardas todo en ese culo, Rikka. Ahí cabe medio reino ancestral."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/sonrojada.webp",
+      "texto": "¡Cami! Estamos en clase."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Ejercicio: guarden el nombre de una alumna y su edad, y muéstrenlos con latte.log. Las notas están en el explorador."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/clase01",
+    "principal": "clase01.coffee",
+    "archivos": [
+      {
+        "ruta": "clase01.coffee",
+        "lineas": [
+          "// Clase 1: variables. Completa los huecos.",
+          "[[1]] alumna = 'Rikka';",
+          "brew edad = [[2]]; // más de quinientos, pero que no se entere",
+          "latte.[[3]](alumna + ' tiene ' + edad + ' años');",
+          "// Salida esperada: Rikka tiene 500 años"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL PROFE (escritas un viernes a las 3 a. m., solo, como siempre)",
+          "",
+          "brew nombre = valor;   -> guarda un valor con nombre. No cambia.",
+          "Los textos van entre comillas: 'Nikki'.",
+          "Los números van SIN comillas: 500. Con comillas, '500' es un texto, no un número.",
+          "latte.log(algo);       -> muestra algo en la terminal.",
+          "",
+          "Nota personal: comprar café. Y un amigo."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "brew",
+        "error": "«{valor}» no declara nada. Para guardar un valor se usa brew."
+      },
+      "2": {
+        "respuesta": "500",
+        "error": "«{valor}» no es la edad de Rikka. Los números van sin comillas, y son quinientos (que no se entere que lo dijiste)."
+      },
+      "3": {
+        "respuesta": "log",
+        "error": "latte.{valor} no existe. Para mostrar algo en la terminal: latte.log."
+      }
+    },
+    "paleta": [
+      "brew",
+      "sip",
+      "pour",
+      "500",
+      "'500'",
+      "5000",
+      "log",
+      "print",
+      "decaf"
+    ],
+    "exito": [
+      "Rikka tiene 500 años",
+      "✔ Compiló. Primera variable de tu vida. El profe está orgulloso (y un poco solo)."
+    ],
+    "reacciones": {
+      "Cami": [
+        "Si no compila, prueba con más brew. A mí me funciona en la taberna.",
+        "Tengo estos senos y ni así me cabe una variable. La vida es injusta, profe.",
+        {
+          "texto": "Rikka, deja de moverte en la silla, que con ese culo tapas la pizarra.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/enojada.webp",
+            "texto": "¡Mi trasero no es parte del temario!"
+          }
+        }
+      ],
+      "Nikki": [
+        "otro error. como lo nuestro, jair, pero este por lo menos te avisa",
+        "tranquilo, tu código y tu vida amorosa fallan en la misma línea"
+      ],
+      "Rikka": [
+        "Quizá el compilador está ofendido. En mi reino le ofreceríamos un tributo.",
+        "Lee las notas. Yo las leí y no entendí nada, pero se veía serio."
+      ],
+      "Jair": [
+        "En mi máquina funcionaba.",
+        "Esto es culpa del framework. Siempre es culpa del framework."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "Toquen un hueco y elijan una palabra. Si se pierden, abran mis notas: están a la izquierda."
+      },
+      {
+        "quien": "Cami",
+        "texto": "¿Y si toco otra cosa que no sea un hueco, profe?",
+        "sprite": "sprites/cami/burla.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Rikka",
+        "texto": "¡Quinientos años guardados en una variable! Me siento… declarada.",
+        "sprite": "sprites/rikka/orgullosa.webp"
+      },
+      {
+        "quien": "Jair",
+        "texto": "Primera variable. Enmárquenla. Yo enmarqué la mía y nadie vino a verla.",
+        "sprite": "sprites/jair/orgulloso.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Perfecto. Ya saben guardar cosas con nombre. Es lo único que yo sé hacer bien: guardar."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/tierna1.webp",
+      "texto": "guardar rencores, guardar mensajes viejos, guardar la ropa que dejé en tu depa hace años"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/sonrojada.webp",
+      "texto": "Yo guardo otra cosa: el beso que le gané a Rikka en el verdad o reto. Bajo brew. No cambia."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/sonrojada.webp",
+      "texto": "Fue un reto. Diplomacia. Nada más."
+    }
+  ]
+}

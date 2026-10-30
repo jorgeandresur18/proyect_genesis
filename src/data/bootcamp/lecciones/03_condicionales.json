@@ -1,0 +1,185 @@
+{
+  "id": "condicionales",
+  "titulo": "Condicionales",
+  "tema": "if decide; else es el plan B; === compara.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Clase tres: condicionales. if pregunta algo. Si es verdad, hace una cosa; si no, else hace otra."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "Para comparar se usan tres iguales: ===. Uno solo, =, no compara: asigna. Es el error más común del mundo."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "jair vive en el else. hace ocho años que el if no se cumple"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/sonrojada1.webp",
+      "texto": "if (Rikka me besa) { gano el reto } else { …también me gusta }. ¿Eso lo dije en voz alta?"
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/sorprendida.webp",
+      "texto": "¡Lo dijiste en voz alta, Cami! ¡Y delante del profe!"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "No te pongas así. Te di una nalgada en las termas y ni te quejaste."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/enojada.webp",
+      "texto": "¡Porque estaba en shock! Una heroína de quinientos años no sabe qué hacer con eso."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/atontado.webp",
+      "texto": "…Ejercicio. Una función que decide qué hacer según el mensaje de Nikki. Por favor. Concentración."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/clase03",
+    "principal": "clase03.coffee",
+    "archivos": [
+      {
+        "ruta": "clase03.coffee",
+        "lineas": [
+          "// Clase 3: condicionales. Completa los huecos.",
+          "sip leerMensaje(mensaje) {",
+          "  if (mensaje [[1]] 'ya llegue') {",
+          "    pour 'Llegó bien. Respira.';",
+          "  } [[2]] {",
+          "    pour [[3]]; // sin mensaje no hay nada que devolver",
+          "  }",
+          "}",
+          "",
+          "latte.log(leerMensaje('ya llegue')); // Salida esperada: Llegó bien. Respira."
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL PROFE",
+          "",
+          "if (condición) { ... } else { ... }",
+          "===  compara (¿son iguales?).",
+          "=    asigna (guarda). NO compara. No lo confundan.",
+          "decaf = nada. Un valor vacío (en JavaScript, null).",
+          "",
+          "Escrito a la 1:31 a. m., esperando un mensaje."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "===",
+        "error": "«{valor}» no compara. Para preguntar si dos cosas son iguales se usa ===."
+      },
+      "2": {
+        "respuesta": "else",
+        "error": "«{valor}» no es el plan B. Después de un if, lo que pasa si no se cumple va en else."
+      },
+      "3": {
+        "respuesta": "decaf",
+        "error": "«{valor}» no es «nada». En Coffee, el valor vacío es decaf."
+      }
+    },
+    "paleta": [
+      "===",
+      "=",
+      "else",
+      "if",
+      "decaf",
+      "true",
+      "'nada'",
+      "pour"
+    ],
+    "exito": [
+      "Llegó bien. Respira.",
+      "✔ Compiló. Por fin un if que se cumple en la vida del profe."
+    ],
+    "reacciones": {
+      "Cami": [
+        {
+          "texto": "Un solo = no compara, solo se asigna. Como yo con Rikka: ya la asigné.",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/sonrojada.webp",
+            "texto": "No me asignaste nada. Yo no soy una variable, Cami."
+          }
+        },
+        {
+          "texto": "Si Rikka es tan buena besando como compilando, mejor nos vamos al else.",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/sonrojada.webp",
+            "texto": "¡Nadie va a ir a ningún else contigo!"
+          }
+        }
+      ],
+      "Nikki": [
+        "pusiste = en vez de ===. así te declaraste la primera vez. asignaste sin preguntar",
+        "si tu código fuera una relación ya te habría dejado en visto"
+      ],
+      "Rikka": [
+        "No estoy sonrojada. Es la luz de la pantalla.",
+        "Cami, deja de mirarme así. Mira la pantalla."
+      ],
+      "Jair": [
+        "El if está bien. Es el universo el que no compila."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "Ojo con el = y el ===. Uno guarda, el otro pregunta. Es el error más caro de la historia."
+      },
+      {
+        "quien": "Rikka",
+        "texto": "Cami me está mirando. No es una condición: es una amenaza.",
+        "sprite": "sprites/rikka/sonrojada.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Jair",
+        "texto": "«Llegó bien. Respira.» Ojalá mi vida tuviera un if así de claro.",
+        "sprite": "sprites/jair/triste1.webp"
+      },
+      {
+        "quien": "Cami",
+        "texto": "Ya saben decidir. Yo ya decidí: me siento al lado de Rikka.",
+        "sprite": "sprites/cami/burlona.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Muy bien. Ya saben tomar decisiones. En código, al menos."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/seria.webp",
+      "texto": "Yo tomé una decisión: el próximo verdad o reto lo elijo yo."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/sonrojada.webp",
+      "texto": "Elige lo que quieras, mientras el reto no sea besarme otra vez. Yo voy a elegir verdad."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/celosa1.webp",
+      "texto": "genial. hasta las de tu sueño tienen más vida amorosa que tú"
+    }
+  ]
+}

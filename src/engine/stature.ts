@@ -25,3 +25,10 @@ export function statureOf(c: Character): number {
 export function canvasHeight(cm: number): number {
   return BASE_CANVAS + Math.max(0, cm - BASE_CM) * PX_PER_CM;
 }
+
+/** Dónde empieza la cabeza en un sprite, como fracción del alto del lienzo (para encuadrar retratos). */
+export function headTop(sprite: string): number {
+  const cm = statureOf({ id: '', sprite, pos: 'centro' });
+  const canvas = BASE_CANVAS + Math.max(0, cm - BASE_CM) * PX_PER_CM;
+  return (HEAD_MARGIN + Math.max(0, BASE_CM - cm) * PX_PER_CM) / canvas;
+}

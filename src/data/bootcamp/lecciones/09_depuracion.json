@@ -1,0 +1,185 @@
+{
+  "id": "depuracion",
+  "titulo": "Examen Trainee: depuración",
+  "tema": "Encuentra y arregla los tres bugs del código del practicante anterior.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Examen final del nivel Trainee. Hoy no escriben código: arreglan el de otro. Eso es el ochenta por ciento del trabajo."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "El practicante anterior hizo una función que saca el promedio de las evaluaciones. Tiene tres bugs. Encuéntrenlos."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "¿Y dónde está el practicante anterior? Podríamos preguntarle."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "no se fue. lo «desvincularon». ahora es una variable declarada que nadie usa. el linter la marca en gris"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/triste1.webp",
+      "texto": "Pista: los bugs están donde aprendieron. Un valor que no es cero, un for que no recorre lo que debe y una propiedad que no existe."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "Si apruebo, profe, quiero mi premio: sentarme detrás de Rikka en la graduación. Por la vista."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/enojada.webp",
+      "texto": "En la graduación me siento contra la pared. Ya lo decidí."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/examen-trainee",
+    "principal": "promedio.coffee",
+    "archivos": [
+      {
+        "ruta": "promedio.coffee",
+        "lineas": [
+          "// Examen Trainee: el código del practicante anterior. Tiene 3 bugs.",
+          "// Cada hueco es un bug: elige la corrección.",
+          "sip promedio(notas) {",
+          "  let suma = [[1]]; // antes decía decaf",
+          "  for (brew n [[2]] notas) { // antes decía in",
+          "    suma = suma + n;",
+          "  }",
+          "  pour suma / notas.[[3]]; // antes decía size",
+          "}",
+          "",
+          "latte.log('Promedio del equipo: ' + promedio([7, 9, 8]));",
+          "// Salida esperada: Promedio del equipo: 8"
+        ]
+      },
+      {
+        "ruta": "log_del_error.txt",
+        "lineas": [
+          "> coffee run promedio.coffee",
+          "Promedio del equipo: NaN",
+          "",
+          "Nota del practicante anterior (último commit, 3:47 a. m.):",
+          "«funciona en mi máquina. si no funciona en la de ustedes, cámbienla»",
+          "",
+          "Pistas del instructor:",
+          "- decaf + 7 no da 7: da cualquier cosa. Una suma empieza en 0.",
+          "- for … in da las posiciones (0, 1, 2), no las notas. Para las notas: of.",
+          "- size no existe en las listas de Coffee. Lo que cuenta es length."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "0",
+        "error": "La suma empieza en {valor} y por eso da NaN. Toda suma empieza en 0."
+      },
+      "2": {
+        "respuesta": "of",
+        "error": "Con «{valor}» el for no recorre las notas. Para cada nota de la lista se usa of."
+      },
+      "3": {
+        "respuesta": "length",
+        "error": "notas.{valor} no existe y divide por nada. La cantidad de notas es notas.length."
+      }
+    },
+    "paleta": [
+      "0",
+      "decaf",
+      "1",
+      "of",
+      "in",
+      "length",
+      "size",
+      "count"
+    ],
+    "exito": [
+      "Promedio del equipo: 8",
+      "✔ Compiló. Bugs encontrados: 3. Bugs creados: 0. Ya eres mejor que el practicante anterior.",
+      "🎓 Nivel Trainee aprobado."
+    ],
+    "reacciones": {
+      "Jair": [
+        "NaN significa «no es un número». En la práctica significa «alguien sumó un decaf».",
+        "Lean el log. El error siempre deja huellas."
+      ],
+      "Rikka": [
+        "El log dice NaN. Eso viene de la suma, estoy segura.",
+        "Las pistas están en el log del error. Yo las leería antes de seguir."
+      ],
+      "Nikki": [
+        "el practicante anterior dejó tres bugs y un mensaje a las 3:47. la empresa lo llama «cultura de compromiso»",
+        "arreglar código ajeno sin que te paguen: el examen más realista que has dado"
+      ],
+      "Cami": [
+        {
+          "texto": "Tres bugs. Como las tres veces que Rikka se agachó hoy. Sí, las conté.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/sonrojada.webp",
+            "texto": "¡Se me cayó el lápiz! ¡Tres veces! No es lo mismo."
+          }
+        },
+        "Si apruebo, me beso a quien esté más cerca. Profe, Rikka, Nikki… no tengo preferencias."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "Abran el log del error primero. Ahí está lo que pasó. Después, el código."
+      },
+      {
+        "quien": "Nikki",
+        "texto": "3:47 a. m. el último commit de alguien que todavía creía en algo",
+        "sprite": "sprites/nikki/fria.webp"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Jair",
+        "texto": "Promedio: 8. Aprobado. Ya pueden decir que tienen experiencia en mantenimiento de código legado.",
+        "sprite": "sprites/jair/orgulloso.webp"
+      },
+      {
+        "quien": "Rikka",
+        "texto": "¡Lo arreglamos! El practicante anterior estaría orgulloso. Si siguiera existiendo.",
+        "sprite": "sprites/rikka/orgullosa.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Nivel Trainee aprobado. Saben variables, tipos, decisiones, bucles, listas, objetos y cómo arreglar lo ajeno."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/tierna.webp",
+      "texto": "Fue difícil, pero lo hicimos juntos. Gracias, instructor."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/triste1.webp",
+      "texto": "jair… ¿y a ti quién te arregla los bugs? …no contestes. no era una pregunta"
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/sonrojada.webp",
+      "texto": "Y yo cumplí mi promesa: me senté detrás de Rikka todo el examen. Excelente vista. Cinco estrellas."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/tierna1.webp",
+      "texto": "ahora viene el diploma. sirve para lo mismo que todos los diplomas: para publicarlo"
+    }
+  ]
+}

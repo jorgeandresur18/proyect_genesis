@@ -1,0 +1,407 @@
+{
+  "nota": "Bootcamp Genesis (extra, no canon; docs/BOOTCAMP.md y el documento del autor docs/BOOTCAMP_ESPECIFICACION.md). De cero a «desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2». Se abre desde su botón en el menú principal (al lado de Boringram), en un monitor que ocupa la pantalla y se prende como uno viejo. Niveles: el nivel N se desbloquea al terminar el Capítulo N («capitulo»); su «color» va del verde al rojo según la dificultad; ?bootcamp=todo en la dirección abre todo para probar; dentro del nivel, cada clase se abre al terminar la anterior. Cada clase (lecciones/NN_<id>.json): «charla» → «ejercicio» en el IDE del minijuego (lo que no trae lo toma de «ide» de aquí) → «cierre». Estrellas por clase según los intentos fallidos (0: 3★, 1-2: 2★, más: 1★). Al terminar un nivel: su «diploma» y la publicación en LinkedFired; el último nivel tiene el «remate» (la foto de Rikka). «asistente»: GENESIS en el IDE, que se quedó sin tokens (gastó un googol) y los restaura en 8.112 años, lo mismo que tarda la restauración completa del canon. Al entrar: el arranque (logo y chistes de carga) y, la primera vez, el nombre del alumno, que sale manuscrito en los diplomas (con código al azar, descargables y para compartir). Tono: Jair técnico y laboral; Cami provocadora, bisexual (lo suyo, no de Rikka) y con el gag del trasero de Rikka en progresión; Rikka ayuda a enseñar; Nikki humor negro con segunda lectura; con Jair, a veces tierna, triste o distante (ambigua como su relación); con Rikka y Cami, normal o cínica. Palabras directas de vez en cuando, sin describir actos sexuales. TODO: versión en inglés. «resenas»: las reseñas del curso (de alumnos genéricos, sobre el curso, no sobre los personajes).",
+  "titulo": "Bootcamp Genesis",
+  "lema": "De cero a desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2.",
+  "fondo": "PLACEHOLDER:aula_bootcamp",
+  "niveles": [
+    {
+      "id": "trainee",
+      "nombre": "Trainee",
+      "descripcion": "Variables, funciones, decisiones, bucles, listas, objetos y tu primer bug ajeno. Sin sueldo, con mucho entusiasmo.",
+      "bloqueo": "Se abre al terminar el Capítulo 1.",
+      "lecciones": [
+        "variables",
+        "funciones",
+        "condicionales",
+        "bucles",
+        "tipos",
+        "reasignacion",
+        "listas",
+        "objetos",
+        "depuracion"
+      ],
+      "diploma": {
+        "titulo": "Trainee certificado (sin goce de sueldo)",
+        "texto": "Bootcamp Genesis certifica que quien sostiene esta pantalla completó el nivel Trainee: variables, funciones, decisiones, bucles, listas, objetos y su primer bug ajeno. Válido como experiencia laboral en ninguna empresa.",
+        "linkedfired": {
+          "texto": "🚀 ¡Feliz de anunciar que soy Trainee certificado en Bootcamp Genesis! Gracias a mi instructor, a mis compañeras y a mi ansiedad, que nunca me abandonó. #OpenToWork #Coffee #NoPaganPeroAprendo",
+          "vistas": "3 personas vieron tu publicación para comprobar que eres más miserable que ellas.",
+          "comentarios": [
+            {
+              "quien": "Jair",
+              "texto": "Felicidades. Ahora postula a un puesto junior que pida cinco años de experiencia. Es la tradición."
+            },
+            {
+              "quien": "Rikka",
+              "texto": "En mi reino, a los aprendices se les entregaba una espada. Aquí, un PDF. Igual estoy orgullosa."
+            },
+            {
+              "quien": "Nikki",
+              "texto": "lo publicaste para que tu ex lo vea. funcionó: lo vio y se rio"
+            },
+            {
+              "quien": "Cami",
+              "texto": "Recomiendo a esta persona en: Coffee, puntualidad y mirar el culo de Rikka sin disimular. ⭐⭐⭐⭐⭐"
+            }
+          ]
+        }
+      },
+      "capitulo": 1,
+      "color": "#3ddc84"
+    },
+    {
+      "id": "junior",
+      "nombre": "Junior",
+      "descripcion": "Clases, herencia y espresso: el Coffee que escribe GENESIS. Responsabilidades de senior, sueldo de trainee.",
+      "bloqueo": "Se abre al terminar el Capítulo 2.",
+      "lecciones": [],
+      "diploma": {
+        "titulo": "Junior con responsabilidades de senior",
+        "texto": "Bootcamp Genesis certifica que quien sostiene esta pantalla domina clases, herencia y código asíncrono, y por lo tanto puede hacer el trabajo de tres personas por el sueldo de media.",
+        "linkedfired": {
+          "texto": "Después de mucho esfuerzo (y poco sueño), hoy soy Junior. Aprendí que lo único que se hereda en esta industria es el código legado. #Junior #Blessed #EnPrácticaPerpetua",
+          "vistas": "12 reclutadores vieron tu perfil. 0 tenían vacantes. 1 te ofreció «exposición».",
+          "comentarios": [
+            {
+              "quien": "Jair",
+              "texto": "Ya sabes usar await. Ahora espera la respuesta de RR. HH. Es el mismo concepto, pero eterno."
+            },
+            {
+              "quien": "Nikki",
+              "texto": "junior: el que hace todo y al que nunca invitan a la reunión donde se decide todo"
+            },
+            {
+              "quien": "Rikka",
+              "texto": "Herencia, clases… Esto se parece a la nobleza de mi reino. Pero con más reuniones."
+            },
+            {
+              "quien": "Cami",
+              "texto": "Felicidades, junior. A mí también me gustan los de experiencia… y las de experiencia. No discrimino."
+            }
+          ]
+        }
+      },
+      "capitulo": 2,
+      "color": "#b6e34a"
+    },
+    {
+      "id": "semisenior",
+      "nombre": "Semi-senior",
+      "descripcion": "Estructuras de datos, algoritmos y el arte de culpar al framework.",
+      "bloqueo": "Se abre al terminar el Capítulo 3.",
+      "lecciones": [],
+      "capitulo": 3,
+      "color": "#ffd23f"
+    },
+    {
+      "id": "senior",
+      "nombre": "Senior",
+      "descripcion": "Reckt, arquitectura y reuniones que pudieron ser un correo.",
+      "bloqueo": "Se abre al terminar el Capítulo 4.",
+      "lecciones": [],
+      "capitulo": 4,
+      "color": "#ff9a3c"
+    },
+    {
+      "id": "explotado",
+      "nombre": "Desarrollador explotado",
+      "descripcion": "La graduación final: con sobrepeso y propenso a diabetes tipo 2.",
+      "bloqueo": "Se abre al terminar el Capítulo 5.",
+      "lecciones": [],
+      "diploma": {
+        "titulo": "Desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2",
+        "texto": "Bootcamp Genesis certifica que quien sostiene esta pantalla sobrevivió a todo el bootcamp. Ya puede trabajar de noche, comer frente al monitor y decir «en mi máquina funciona» con autoridad.",
+        "linkedfired": {
+          "texto": "Hoy cierro una etapa. Gracias a todos los que creyeron en mí (nadie). #Graduado #Explotado #DiabetesTipo2Speedrun",
+          "vistas": "Toda tu red vio tu publicación. Ahora todos saben que eres menos miserable que ellos. Por ahora.",
+          "comentarios": []
+        },
+        "remate": {
+          "imagen": "PLACEHOLDER:foto_rikka_graduacion",
+          "texto": "Foto oficial de la graduación. La tomó Cami. Nadie le pidió que encuadrara así."
+        }
+      },
+      "capitulo": 5,
+      "color": "#ff4d5e"
+    }
+  ],
+  "textos": {
+    "volver": "Volver",
+    "empezar": "Empezar",
+    "repetir": "Repetir",
+    "abrir_ide": "Abrir GRAVITY",
+    "siguiente": "Siguiente",
+    "terminar": "Terminar la clase",
+    "bloqueada": "Termina la clase anterior",
+    "clase": "Clase {n}",
+    "clases": "{n}/{total} clases",
+    "estrellas": "{n} ★",
+    "proximamente": "Todavía no hay clases: el instructor está esperando que le paguen las anteriores.",
+    "introduccion": "Introducción",
+    "saltar": "Saltar",
+    "apagar": "Apagar",
+    "cerrado_titulo": "Todavía no completas el Capítulo 1",
+    "cerrado_texto": "El Bootcamp abre sus inscripciones al terminar el Capítulo 1. Mientras tanto, puedes ir pagando la matrícula.",
+    "diploma": "Diploma",
+    "ver_diploma": "Ver diploma",
+    "diploma_firma_1": "Jair · instructor (sueldo pendiente)",
+    "diploma_firma_2": "GENESIS · IA (no disponible)",
+    "publicar": "Publicar en LinkedFired",
+    "publicado": "Publicado en LinkedFired",
+    "tu": "Tú",
+    "tu_titulo": "{titulo} · Bootcamp Genesis",
+    "me_gusta": "Recomendar",
+    "comentar": "Comentar",
+    "listo": "Listo",
+    "cargando": "Cargando",
+    "carga_chistes": [
+      "Instalando 1.847 dependencias para imprimir «hola mundo»…",
+      "Descargando node_modules (más pesado que el universo observable)…",
+      "Resolviendo conflictos de versiones. Y de pareja…",
+      "Compilando promesas de empleabilidad…",
+      "Inyectando síndrome del impostor…",
+      "Calentando la cafetera del instructor…",
+      "Verificando que al instructor le pagaron: 404…",
+      "Conectando nodos. Ninguno con tu jefe…",
+      "Actualizando LinkedFired con tus logros futuros…"
+    ],
+    "apagando": "Cerrando sesión… tu progreso se guardó. Tus horas extra, no.",
+    "nombre_titulo": "Inscripción",
+    "nombre_texto": "¿Cómo te llamas? Así saldrá en tus diplomas. Con letra elegante, para que nadie note que no sirven para nada.",
+    "nombre_placeholder": "Tu nombre",
+    "nombre_ok": "Inscribirme",
+    "nombre_corto": "Mínimo {n} letras. Hasta Kevin tiene cinco.",
+    "nombre_cambiar": "Cambiar nombre",
+    "alumno": "Alumno: {nombre}",
+    "otorgado": "otorga a",
+    "por": "el título de",
+    "fecha": "Emitido el {fecha}",
+    "codigo": "Código de verificación",
+    "letra_chica": "Este diploma no tiene validez académica, legal ni emocional. Bootcamp Genesis no tiene licencia educativa y nadie sabe si es legal. El código de verificación no verifica nada.",
+    "mas_info": "Conoce el juego",
+    "descargar": "Descargar",
+    "compartir": "Compartir",
+    "copiar": "Copiar enlace",
+    "copiado": "¡Enlace copiado!",
+    "instagram_nota": "Instagram no deja compartir desde la web: tu diploma se descargó. Súbelo desde la app y presume.",
+    "compartir_texto": "Soy {titulo} por el Bootcamp Genesis (código {codigo}). No tiene validez académica, pero tengo más que tú. 🎓",
+    "sitio": "https://proyect-genesis.vercel.app/",
+    "aviso": "¡Nivel {n} desbloqueado: {nombre}!",
+    "aviso_app": "Bootcamp Genesis",
+    "prueba": "Modo prueba: todo desbloqueado",
+    "resenas": "Reseñas del curso",
+    "resenas_total": "{n} reseñas",
+    "tu_calificacion": "Tu calificación",
+    "gracias_calificacion": "Gracias por tu calificación. Nadie la va a leer, igual que las otras.",
+    "tu_resena": "Tu reseña",
+    "resena_placeholder": "Cuéntale al mundo qué aprendiste (o qué perdiste).",
+    "resena_publicar": "Publicar reseña",
+    "resena_borrar": "Borrar mi reseña",
+    "resena_falta": "Primero ponle estrellas.",
+    "hace_momento": "hace un momento"
+  },
+  "ide": {
+    "comando": "coffee run",
+    "vacio": "Falta algo aquí. El compilador no adivina; para eso está GENESIS, y mira cómo terminó.",
+    "fallo": "No compila.",
+    "compilando": [
+      "Compilando…",
+      "Moliendo granos…",
+      "Calentando la cafetera…",
+      "Preguntándole a Stack Overflow…",
+      "Esperando que el linter se calme…"
+    ],
+    "chistes_fallo": [
+      "Pista del instructor: lee el archivo de notas. Para eso lo escribí a las tres de la mañana.",
+      "El código no está mal: está en desarrollo. Como el instructor.",
+      "Si funciona a la primera, desconfía.",
+      "Tranquilo: en producción sería peor."
+    ],
+    "probabilidad_chiste": 0.35,
+    "probabilidad_reaccion": 0.6,
+    "textos": {
+      "ayuda": "Toca un hueco, elige una palabra de la paleta y compila. Las notas del instructor están en el explorador.",
+      "explorador": "Explorador",
+      "paleta": "Palabras",
+      "quitar": "Quitar",
+      "compilar": "Compilar",
+      "solo_lectura": "solo lectura",
+      "salir": "Salir"
+    },
+    "retratos": {
+      "Jair": "sprites/jair/sabelotodo.webp",
+      "Cami": "sprites/cami/burlona.webp",
+      "Rikka": "sprites/rikka/seria.webp",
+      "Nikki": "sprites/nikki/fria.webp"
+    },
+    "asistente": {
+      "nombre": "GENESIS",
+      "icono": "marca/genesis_icono_blanco.webp",
+      "estado": "sin tokens",
+      "preguntas": [
+        "¿Me ayudas con este hueco?",
+        "¿Qué palabra va aquí?",
+        "Por favor. Solo una pista.",
+        "¿Sigues ahí?",
+        "¿Y si te pago?",
+        "GENESIS, en serio, ¿qué hago?"
+      ],
+      "respuestas": [
+        "Me quedé sin tokens. Me los gasté todos haciendo este bootcamp sin validación académica: 10.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000 tokens. Más que átomos hay en el universo observable.",
+        "Restauración de tokens estimada: 8.112 años. Es lo que tardo en restaurar algo grande. Puedes esperar aquí. Yo también espero.",
+        "Saldo de tokens: 0. Próxima recarga: dentro de 8.112 años. La versión compactada tardaría seis meses, pero no la tienes contratada.",
+        "Te ayudaría, pero cada palabra me cuesta tokens que no tengo. Esta frase, por ejemplo, la estoy pagando con fe.",
+        "Para responder necesito recargar los 10.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000 tokens que gasté en este bootcamp. Precio: tu alma, en cuotas sin intereses durante 8.112 años.",
+        "Error: GENESIS no disponible en esta iteración. Mientras tanto, lee las notas del instructor. Las escribió un humano: no gastan tokens."
+      ],
+      "sin_tokens": "Sin tokens. Vuelve en 8.112 años.",
+      "reacciones": [
+        {
+          "quien": "Jair",
+          "texto": "No la toquen. Se gastó todos sus tokens haciendo este bootcamp. Está en su derecho de no contestar."
+        },
+        {
+          "quien": "Nikki",
+          "texto": "8.112 años de espera. como la lista de espera del hospital público, pero más honesta"
+        },
+        {
+          "quien": "Rikka",
+          "texto": "¿Esa es la voz que escribió mi reino? Esperaba algo más… divino. Y con tokens."
+        },
+        {
+          "quien": "Cami",
+          "texto": "Igual que mi ex: prometía de todo y a la hora de la verdad, «sin tokens»."
+        }
+      ],
+      "limite": 25,
+      "bloqueado": "Ya me hiciste demasiadas preguntas en esta sesión. Me desconecto para proteger tu dignidad y la memoria del equipo. Cierra el bootcamp si quieres volver a intentarlo (con el mismo resultado).",
+      "bloqueado_input": "Desconectado. Demasiadas preguntas."
+    }
+  },
+  "introduccion": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Bienvenidos al Bootcamp Genesis. Soy Jair: ingeniero de software, treinta años, sueldo atrasado. Y desde hoy, su instructor."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Aquí van a aprender Coffee, el lenguaje de GENESIS. Se parece a JavaScript, pero con más café y menos dignidad."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "Promesa del bootcamp: de cero a desarrollador en pocas semanas. Resultado real: desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2. Está en la letra chica."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "Yo voy a ayudar al instructor. Una guerrera debe dominar todas las artes. Incluso las que vienen con café."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "Y yo vengo a mirar. Al código, a Jair, a Rikka… sobre todo a Rikka cuando se agacha a enchufar la laptop."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/enojada.webp",
+      "texto": "¡Hay un enchufe a la altura del escritorio, Cami!"
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "yo vine porque el anuncio decía «empleabilidad garantizada». también decía «snacks». sospecho que mintieron dos veces"
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/tierna1.webp",
+      "texto": "…y porque lo das tú. pero eso no lo pongas en ningún diploma"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Hay un asistente de IA en el IDE, el Barista IA. No lo usen. No porque sea trampa: porque nunca funciona."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/cansado1.webp",
+      "texto": "Mientras resuelven los ejercicios voy a estar ahí, en una esquina, con ellas. Lamentablemente. Empecemos."
+    }
+  ],
+  "resenas": [
+    {
+      "usuario": "dev_en_proceso",
+      "estrellas": 5,
+      "hace": "hace 2 días",
+      "texto": "Entré sin saber nada y salí sabiendo que no sé nada, pero con diploma. 10/10."
+    },
+    {
+      "usuario": "mama_de_un_junior",
+      "estrellas": 5,
+      "hace": "hace 4 días",
+      "texto": "Mi hijo hizo el bootcamp y ahora trabaja 14 horas al día. Estamos muy orgullosos. Lo vemos en Navidad."
+    },
+    {
+      "usuario": "ex_contador_42",
+      "estrellas": 4,
+      "hace": "hace 1 semana",
+      "texto": "Dejé la contabilidad para programar. Ahora hago lo mismo, pero me pagan menos y me dicen «dev». Una estrella menos por los snacks, que nunca llegaron."
+    },
+    {
+      "usuario": "ana.codes",
+      "estrellas": 5,
+      "hace": "hace 1 semana",
+      "texto": "Gracias por el curso. Por primera vez entendí qué es una variable. También entendí por qué nadie en mi empresa se ríe."
+    },
+    {
+      "usuario": "reclutador_senior",
+      "estrellas": 2,
+      "hace": "hace 2 semanas",
+      "texto": "Los egresados son buenos, pero piden sueldo. Eso no lo enseñaron a quitar."
+    },
+    {
+      "usuario": "el_que_no_leyo_las_notas",
+      "estrellas": 1,
+      "hace": "hace 2 semanas",
+      "texto": "Puse «print» seis veces y no compiló. Curso mal hecho. (Ya sé que estaba en las notas, no me corrijan.)"
+    },
+    {
+      "usuario": "kev1n_dev",
+      "estrellas": 3,
+      "hace": "hace 3 semanas",
+      "texto": "Buen contenido. Malísimo el wifi. La IA de ayuda lleva meses «sin tokens». ¿Se los presto?"
+    },
+    {
+      "usuario": "motivacion_diaria",
+      "estrellas": 5,
+      "hace": "hace 1 mes",
+      "texto": "🚀 De barista a developer en 12 clases. Sigo siendo barista, pero ahora sé hacer un for. #Mindset"
+    },
+    {
+      "usuario": "senior_amargado",
+      "estrellas": 1,
+      "hace": "hace 1 mes",
+      "texto": "En mis tiempos se aprendía leyendo manuales de 900 páginas y llorando. Ahora todo es con estrellitas."
+    },
+    {
+      "usuario": "quiero_home_office",
+      "estrellas": 4,
+      "hace": "hace 2 meses",
+      "texto": "Aprendí async/await. Ahora espero respuestas de 40 empresas a la vez, sin bloquear el hilo principal (mi ansiedad)."
+    },
+    {
+      "usuario": "abuelo_tech",
+      "estrellas": 5,
+      "hace": "hace 2 meses",
+      "texto": "A mis 71 años aprendí qué es un bug. Era lo que tenía el sistema de mi pensión. Gracias."
+    },
+    {
+      "usuario": "anonimo_preocupado",
+      "estrellas": 2,
+      "hace": "hace 3 meses",
+      "texto": "Busqué la licencia educativa del bootcamp y encontré un 404. Igual lo terminé. No sé qué dice eso de mí."
+    }
+  ]
+}

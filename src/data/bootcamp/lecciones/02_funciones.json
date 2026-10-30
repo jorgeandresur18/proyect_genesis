@@ -1,0 +1,181 @@
+{
+  "id": "funciones",
+  "titulo": "Funciones",
+  "tema": "sip define una función; pour devuelve el resultado.",
+  "charla": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Clase dos: funciones. Una función es una receta: le das ingredientes, hace algo y te devuelve el resultado."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/base.webp",
+      "texto": "En Coffee se define con sip, y lo que devuelve sale con pour."
+    },
+    {
+      "quien": "Rikka",
+      "sprite": "sprites/rikka/seria.webp",
+      "texto": "Como una poción. Pones hierbas, la agitas y te devuelve algo que no deberías beber."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/molesta.webp",
+      "texto": "jair tiene una función que se llama escribirleANikki. le pasa mensajes y no le devuelve nada. está rota hace ocho años"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/triste1.webp",
+      "texto": "Eso no es una función rota. Es una función asíncrona con mucha paciencia."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burla.webp",
+      "texto": "Profe, ¿y por qué una vez le pusiste «pene» a una variable?"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/asustado1.webp",
+      "texto": "…Era una prueba. Tenía veintidós años y el linter me la aceptó. Fue lo único que alguien me aceptó ese año."
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/sabelotodo.webp",
+      "texto": "Ejercicio: una función que salude a alguien por su nombre. Saluden a Nikki. Alguien tiene que hacerlo."
+    }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/clase02",
+    "principal": "clase02.coffee",
+    "archivos": [
+      {
+        "ruta": "clase02.coffee",
+        "lineas": [
+          "// Clase 2: funciones. Completa los huecos.",
+          "[[1]] saludar(nombre) {",
+          "  [[2]] 'Hola, ' + nombre;",
+          "}",
+          "",
+          "brew mensaje = saludar([[3]]);",
+          "latte.log(mensaje); // Salida esperada: Hola, Nikki"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL PROFE",
+          "",
+          "sip nombre(ingrediente) { ... }  -> define una función.",
+          "pour valor;                       -> la función devuelve ese valor y termina.",
+          "Para usarla: nombre('algo').",
+          "Los textos van entre comillas. Sin comillas, Coffee cree que es una variable.",
+          "",
+          "Recordatorio: una función sin pour no devuelve nada. Como yo los viernes."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": {
+        "respuesta": "sip",
+        "error": "«{valor}» no define una función. Las funciones empiezan con sip."
+      },
+      "2": {
+        "respuesta": "pour",
+        "error": "«{valor}» no devuelve nada. Para devolver un valor se usa pour."
+      },
+      "3": {
+        "respuesta": "'Nikki'",
+        "error": "{valor} no es el texto 'Nikki'. Sin comillas, Coffee busca una variable que no existe (como la relación)."
+      }
+    },
+    "paleta": [
+      "sip",
+      "brew",
+      "pour",
+      "decaf",
+      "'Nikki'",
+      "Nikki",
+      "'Cami'",
+      "return"
+    ],
+    "exito": [
+      "Hola, Nikki",
+      "✔ Compiló. Nikki recibió un saludo. No va a contestar, pero compiló."
+    ],
+    "reacciones": {
+      "Cami": [
+        "Tranquilo, profe. A todos se nos pone dura la sintaxis la primera vez.",
+        "Ni las tetas me pesan tanto como este error.",
+        {
+          "texto": "Profe, haz una función que calcule el tamaño del culo de Rikka. Va a tardar en compilar.",
+          "sprite": "sprites/cami/burlona.webp",
+          "respuesta": {
+            "quien": "Rikka",
+            "sprite": "sprites/rikka/celosa.webp",
+            "texto": "Y la tuya que calcule cuánto pesan tus senos. A ver cuál se cuelga primero."
+          }
+        }
+      ],
+      "Nikki": [
+        "le pusiste return. esto no es javascript. y yo no soy tu novia. dos verdades",
+        "tu función no devuelve nada. heredó tus genes"
+      ],
+      "Rikka": [
+        "Cuando una poción no funciona, se le grita. ¿Lo intento?",
+        "El profe dijo pour. Yo también lo oí. Creo."
+      ],
+      "Jair": [
+        "Este error no es mío, es de la versión anterior de mí."
+      ]
+    },
+    "al_abrir": [
+      {
+        "quien": "Jair",
+        "texto": "Recuerden: sip abre la función, pour devuelve algo. Sin pour, la función se queda callada."
+      },
+      {
+        "quien": "Nikki",
+        "texto": "como tú cuando te pregunto qué somos"
+      }
+    ],
+    "al_resolver": [
+      {
+        "quien": "Nikki",
+        "texto": "hola, jair. ves que no era tan difícil saludarme",
+        "sprite": "sprites/nikki/tierna1.webp"
+      },
+      {
+        "quien": "Cami",
+        "texto": "¡Compiló! Profe, eso merece una nalgada de felicitación.",
+        "sprite": "sprites/cami/sonrojada1.webp"
+      }
+    ]
+  },
+  "cierre": [
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/orgulloso.webp",
+      "texto": "Excelente. Ya saben hacer funciones que devuelven algo. Más de lo que hacen muchos de mis exjefes."
+    },
+    {
+      "quien": "Cami",
+      "sprite": "sprites/cami/burlona.webp",
+      "texto": "Profe, confiesa: ¿cuántas funciones escribiste solo, de noche, con una sola mano?"
+    },
+    {
+      "quien": "Jair",
+      "sprite": "sprites/jair/verguenza1.webp",
+      "texto": "La otra mano estaba en el café. Con el café, Cami."
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/fria.webp",
+      "texto": "el café. claro. siempre es el café"
+    },
+    {
+      "quien": "Nikki",
+      "sprite": "sprites/nikki/tierna1.webp",
+      "texto": "igual a mí me gustaban tus funciones raras. hasta las que no devolvían nada… olvídalo. siguiente clase"
+    }
+  ]
+}

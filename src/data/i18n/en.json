@@ -127,6 +127,8 @@
   "mapa.ley_desconocido": "??? undiscovered",
   "mapa.ayuda": "Drag to move · wheel or pinch to zoom",
   "titulo.boringram": "Boringram",
+  "titulo.bootcamp": "Bootcamp",
+  "titulo.bootcamp_bloqueado": "Unlocks after Chapter 1",
   "titulo.extras": "Extras",
   "titulo.version": "ver. {v}",
   "extras.titulo": "Extras",
@@ -161,5 +163,6 @@
   "opciones.borrar_desc": "Saves, gallery, endings, Boringram, read text and options. Everything. As if you'd never played.",
   "opciones.borrar_escribe": "To confirm, type:",
   "opciones.borrar_frase": "i accept losing everything, just like my paycheck",
-  "opciones.borrar_nota": "Capital letters are optional. Resignation is not."
+  "opciones.borrar_nota": "Capital letters are optional. Resignation is not.",
+  "progreso.bootcamp": "Bootcamp classes"
 }

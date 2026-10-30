@@ -1,0 +1,85 @@
+{
+  "id": "objetos",
+  "titulo": "Objetos",
+  "tema": "Un objeto agrupa datos con nombre: { clave: valor }; se leen con punto (empleado.nombre).",
+  "charla": [
+    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase ocho: objetos. Una lista guarda cosas en orden; un objeto las guarda con nombre: { nombre: 'Jair', sueldo: 1200 }." },
+    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Para leer un dato se usa un punto: empleado.nombre. Para cambiarlo, se asigna: empleado.sueldo = 1100." },
+    { "quien": "Rikka", "sprite": "sprites/rikka/seria.webp", "texto": "Es la ficha de un soldado: nombre, rango, armas. Pero ¿por qué alguien bajaría su sueldo?" },
+    { "quien": "Jair", "sprite": "sprites/jair/triste1.webp", "texto": "Se llama «ajuste por reestructuración». Es el ejercicio de hoy." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "empleado.feliz = false. no es un bug. es la política de la empresa, documentada en el onboarding" },
+    { "quien": "Cami", "sprite": "sprites/cami/burlona.webp", "texto": "Mi objeto ideal: { chico: true, chica: true }. No soy indecisa, profe. Soy completa." },
+    { "quien": "Cami", "sprite": "sprites/cami/burla.webp", "texto": "Y el objeto de Rikka tendría una sola propiedad: { culo: 'enorme' }. Con eso ya está descrita." },
+    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi objeto tendría { espada: 'afilada', paciencia: 0 }. Sigue hablando y lo compruebas." }
+  ],
+  "ejercicio": {
+    "proyecto": "bootcamp/objetos",
+    "principal": "empleado.coffee",
+    "archivos": [
+      {
+        "ruta": "empleado.coffee",
+        "lineas": [
+          "// Clase 8: objetos. Completa los huecos.",
+          "brew empleado = {",
+          "  nombre: 'Jair',",
+          "  sueldo: 1000,",
+          "  feliz: [[1]],",
+          "};",
+          "empleado.sueldo = empleado.sueldo [[2]] 0.9; // ajuste por reestructuración (-10 %)",
+          "latte.log(empleado.[[3]] + ' cobra ' + empleado.sueldo);",
+          "// Salida esperada: Jair cobra 900"
+        ]
+      },
+      {
+        "ruta": "notas_del_instructor.txt",
+        "lineas": [
+          "NOTAS DEL INSTRUCTOR",
+          "",
+          "brew o = { clave: valor, otra: valor };",
+          "o.clave         -> lee el valor.",
+          "o.clave = nuevo -> lo cambia (aunque o sea brew: brew protege la variable, no lo de adentro).",
+          "true / false    -> booleanos: sí o no.",
+          "x * 0.9         -> el 90 % de x.",
+          "",
+          "Ajustes por reestructuración recibidos: 3. Ajustes hacia arriba: error 404."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "respuesta": "false", "error": "«{valor}» no es un booleano realista. ¿Feliz? En este ejercicio: false." },
+      "2": { "respuesta": "*", "error": "«{valor}» no calcula el 90 %. Para quitarle el 10 % al sueldo se multiplica: sueldo * 0.9." },
+      "3": { "respuesta": "nombre", "error": "empleado.{valor} no es el nombre. Para leer el nombre: empleado.nombre." }
+    },
+    "paleta": ["true", "false", "'false'", "*", "+", "/", "nombre", "name", "sueldo"],
+    "exito": ["Jair cobra 900", "✔ Compiló. Reestructuración aplicada con éxito. El empleado no fue consultado."],
+    "reacciones": {
+      "Nikki": [
+        "pusiste true. este bootcamp no es de ciencia ficción",
+        "brew protege la variable pero no lo que tiene adentro. como las leyes laborales: el contrato existe, el sueldo se mueve"
+      ],
+      "Cami": [
+        {
+          "texto": "Si el objeto fuera Rikka, empleado.trasero no cabría en la pantalla. Habría que hacer scroll.",
+          "sprite": "sprites/cami/burla.webp",
+          "respuesta": { "quien": "Rikka", "sprite": "sprites/rikka/celosa.webp", "texto": "Y si el objeto fueras tú, cami.boca nunca terminaría de cargar." }
+        },
+        "true, false… yo soy las dos cosas a la vez, profe. Eso en JavaScript se llama bug. En mí, encanto."
+      ],
+      "Rikka": ["Quitar el diez por ciento es multiplicar por cero punto nueve. Lo hice con mis monedas.", "Para leer el nombre: punto y nombre. No name: estamos en Coffee."],
+      "Jair": ["El objeto puede cambiar aunque sea brew. Es una trampa clásica de entrevista.", "name es de otros lenguajes. Aquí la propiedad se llama como la escribieron: nombre."]
+    },
+    "al_abrir": [
+      { "quien": "Jair", "texto": "Un booleano, un operador y una propiedad. El sueldo final tiene que dar 900." },
+      { "quien": "Rikka", "texto": "El 10 % de mil es cien. Mil menos cien, novecientos. Ya hice la cuenta antes que el compilador.", "sprite": "sprites/rikka/orgullosa.webp" }
+    ],
+    "al_resolver": [
+      { "quien": "Nikki", "texto": "900. y feliz: false. el único dato honesto del sistema", "sprite": "sprites/nikki/fria.webp" },
+      { "quien": "Jair", "texto": "Ese ajuste me lo hicieron a mí el año pasado. Lo programé yo, de hecho.", "sprite": "sprites/jair/triste1.webp" }
+    ]
+  },
+  "cierre": [
+    { "quien": "Jair", "sprite": "sprites/jair/orgulloso.webp", "texto": "Objetos: así se modela casi todo. Usuarios, productos, empleados… y despidos." },
+    { "quien": "Rikka", "sprite": "sprites/rikka/tierna.webp", "texto": "Instructor, ¿puedo hacer un objeto de mi reino? Con castillos, banderas y nadie cobrando novecientos." },
+    { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "en tu reino tampoco cobraban, rikka. había vasallos. es lo mismo con otra interfaz" }
+  ]
+}
