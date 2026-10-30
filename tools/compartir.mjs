@@ -31,6 +31,10 @@ function wrap(text, max) {
 mkdirSync(OUT, { recursive: true });
 const fotos = [
   ...data.publicaciones.filter((p) => p.tipo === 'foto'),
+  // Cada foto de un carrusel después de la primera: <id>-2, <id>-3… (se comparte la que se está viendo).
+  ...data.publicaciones.flatMap((p) =>
+    (p.carrusel ?? []).slice(1).map((c, i) => ({ id: `${p.id}-${i + 2}`, autor: p.autor, imagen: c.imagen, texto: c.texto ?? p.texto })),
+  ),
   // Historias destacadas (las que ya tienen imagen).
   ...data.destacadas.filter((h) => !h.imagen.startsWith('PLACEHOLDER:')),
 ];

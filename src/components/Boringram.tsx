@@ -721,6 +721,12 @@ function Carousel({
   );
 }
 
+/**
+ * Lo que se comparte: la publicación (<id>) o, en un carrusel, la foto que se está viendo (<id>-2, <id>-3…;
+ * cada una tiene su tarjeta en public/compartir, ver tools/compartir.mjs).
+ */
+const shareId = (id: string, slide: number) => (slide > 0 ? `${id}-${slide + 1}` : id);
+
 /** Abre la ventana de compartir de una foto (ver ShareSheet). */
 const ShareContext = createContext<(id: string) => void>(() => {});
 /** Aviso de la app arriba del celular (p. ej. «no seas acosador»). */
@@ -737,7 +743,13 @@ const useShare = () => useContext(ShareContext);
 function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void }) {
   const tx = b.data.textos;
   const story = b.destacadas.find((x) => x.id === id);
-  const post = b.publicaciones.find((p) => p.id === id) ?? (story && { autor: story.autor, texto: story.texto });
+  // Una foto de un carrusel (<id>-<n>): su publicación, con el texto de esa foto.
+  const [, base, n] = /^(.*)-(\d+)$/.exec(id) ?? [];
+  const slide = b.publicaciones.find((p) => p.id === base)?.carrusel?.[Number(n) - 1];
+  const post =
+    b.publicaciones.find((p) => p.id === id) ??
+    (slide && { autor: b.publicaciones.find((p) => p.id === base)!.autor, texto: slide.texto ?? '' }) ??
+    (story && { autor: story.autor, texto: story.texto });
   const [note, setNote] = useState('');
   // La imagen se prepara al abrir: compartir tiene que pedirse en el mismo toque, sin esperar una descarga
   // (si no, el navegador lo bloquea en silencio).
@@ -785,11 +797,14 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
     window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
     setNote(tx.instagram_nota);
   };
-  // En el celular: el menú de compartir del teléfono con la imagen (ahí se elige Instagram).
+  // En el celular: el menú de compartir del teléfono con la imagen (ahí se elige Instagram). Instagram no
+  // recibe enlaces desde la web, así que el enlace se copia en el mismo toque para pegarlo con el sticker.
   const instagram = () => {
     playSelect();
     const f = file.current;
     if (isTouch() && f && navigator.canShare?.({ files: [f] })) {
+      navigator.clipboard?.writeText(url).catch(() => {});
+      setNote(tx.instagram_nota_celular);
       navigator.share({ files: [f] }).catch((e: Error) => {
         if (e.name !== 'AbortError') instagramWeb();
       });
@@ -1472,7 +1487,20 @@ function PostHead({
 }
 
 /** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
-function PostActions({ b, post, onComment, tour }: { b: B; post: Publicacion; onComment: () => void; tour?: boolean }) {
+function PostActions({
+  b,
+  post,
+  onComment,
+  tour,
+  slide = 0,
+}: {
+  b: B;
+  post: Publicacion;
+  onComment: () => void;
+  tour?: boolean;
+  /** En un carrusel, la foto que se está viendo (se comparte esa). */
+  slide?: number;
+}) {
   const mark = (id: string) => (tour ? id : undefined);
   const onShare = useShare();
   const tx = b.data.textos;
@@ -1513,7 +1541,7 @@ function PostActions({ b, post, onComment, tour }: { b: B; post: Publicacion; on
         {post.tipo === 'foto' ? (
           <button
             className={s.likeBtn}
-            onClick={() => onShare(post.id)}
+            onClick={() => onShare(shareId(post.id, slide))}
             aria-label={tx.compartir}
             data-tour={mark('compartir')}
           >
@@ -1679,7 +1707,13 @@ function Post({
           {isNew && <NewDot className={s.inlineDot} />}
         </blockquote>
       )}
-      <PostActions b={b} post={post} tour={tour} onComment={() => (full ? composer.current?.() : onPost?.(post.id))} />
+      <PostActions
+        b={b}
+        post={post}
+        tour={tour}
+        slide={slide}
+        onComment={() => (full ? composer.current?.() : onPost?.(post.id))}
+      />
       {post.tipo === 'foto' && (
         <p className={s.caption}>
           <b>{user}</b> {caption}
