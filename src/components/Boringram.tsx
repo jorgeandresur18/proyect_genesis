@@ -3,11 +3,13 @@ import { createPortal } from 'react-dom';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
 import {
+  AHORRA_DATOS_KEY,
   AVION_KEY,
   chatKey,
   LINTERNA_KEY,
   LINTERNA_OLVIDADA_KEY,
   NO_MOLESTAR_KEY,
+  SIEMPRE_ACTIVOS_KEY,
   postKey,
   storyKey,
   TUTORIAL_KEY,
@@ -53,11 +55,13 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const aj = useStore((st) => st.boringramAjustes);
   const setAj = useStore((st) => st.setBoringramAjustes);
   const evento = useStore((st) => st.markBoringramEvento);
-  // Si se salió en modo avión, el celular vuelve con wifi y datos (y llega su notificación).
+  // Al entrar, el wifi y los datos siempre están prendidos. Si se salió en modo avión, o con el wifi o los
+  // datos apagados, la primera vez llega su notificación.
   useEffect(() => {
-    if (!useStore.getState().boringramAjustes.avion) return;
-    setAj({ avion: false, wifi: true, datos: true });
-    evento(AVION_KEY, b.ahora);
+    const prev = useStore.getState().boringramAjustes;
+    if (prev.avion) evento(AVION_KEY, b.ahora);
+    else if (!prev.wifi || !prev.datos) evento(SIEMPRE_ACTIVOS_KEY, b.ahora);
+    if (prev.avion || !prev.wifi || !prev.datos) setAj({ avion: false, wifi: true, datos: true });
     // Solo al entrar.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -75,7 +79,14 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
     if (icon === 'no_molestar' && on) evento(NO_MOLESTAR_KEY, b.ahora);
     setAj({ [icon]: on });
   };
-  const net = { online: !!(aj.wifi || aj.datos), msg: aj.avion ? b.data.textos.sin_red_avion : b.data.textos.sin_red };
+  const net = {
+    online: !!(aj.wifi || aj.datos),
+    msg: aj.avion ? b.data.textos.sin_red_avion : b.data.textos.sin_red,
+    // Solo con datos (sin wifi): la primera vez que da me gusta, comenta o comparte, llega el aviso de ahorrar datos.
+    usar: () => {
+      if (!aj.wifi && aj.datos) evento(AHORRA_DATOS_KEY, b.ahora);
+    },
+  };
   // «Cómo usar» desde fuera del celular: cada toque pide el recorrido otra vez.
   const [tourRequest, setTourRequest] = useState(0);
   // Lupa (solo en computadora): la app en vertical a toda la altura, sin el marco del celular. Se recuerda.
@@ -204,12 +215,15 @@ const BIG_KEY = 'genesis-boringram-grande';
 const SWEEP_STEP_MS = 45;
 
 /** Sin conexión (wifi y datos apagados, o modo avión): lo que necesita internet avisa y no se hace. */
-const NetContext = createContext({ online: true, msg: '' });
+const NetContext = createContext({ online: true, msg: '', usar: () => {} });
 function useOffline() {
   const net = useContext(NetContext);
   const toast = useToast();
   return () => {
-    if (net.online) return false;
+    if (net.online) {
+      net.usar();
+      return false;
+    }
     playCancel();
     toast(net.msg);
     return true;
@@ -1021,6 +1035,7 @@ function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: 
           playCancel();
           return showToast(net.msg);
         }
+        net.usar();
         playSelect();
         setSharing(id);
       }}

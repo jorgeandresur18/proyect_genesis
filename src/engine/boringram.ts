@@ -201,6 +201,10 @@ export const LINTERNA_KEY = 'bor:linterna';
 export const NO_MOLESTAR_KEY = 'bor:no_molestar';
 /** Salió de Boringram en modo avión y volvió a entrar. */
 export const AVION_KEY = 'bor:avion';
+/** Salió de Boringram con el wifi o los datos apagados y volvió a entrar (siempre vuelven prendidos). */
+export const SIEMPRE_ACTIVOS_KEY = 'bor:siempre_activos';
+/** Dio me gusta, comentó o compartió solo con datos (sin wifi). */
+export const AHORRA_DATOS_KEY = 'bor:ahorra_datos';
 /** Salió de Boringram con la linterna prendida. */
 export const LINTERNA_OLVIDADA_KEY = 'bor:linterna_olvidada';
 

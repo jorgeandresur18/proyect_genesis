@@ -304,6 +304,16 @@
       "texto": "You left it on when you left. We turned it off to save the {bateria}% you've got left. You're welcome."
     },
     {
+      "app": "System",
+      "titulo": "Wi‑Fi and data: always on",
+      "texto": "We turned them back on, and that's how it'll always be. How did you think your messages would reach you? By pigeon?"
+    },
+    {
+      "app": "System",
+      "titulo": "You're using mobile data",
+      "texto": "Every like comes out of your plan. Get on Wi‑Fi: your data is already thinner than your paycheck."
+    },
+    {
       "app": "Clock",
       "titulo": "Alarm 7:00 · Work",
       "texto": "{falta} to go. Sleep fast.",
