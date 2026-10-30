@@ -633,7 +633,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
               }}
             >
               {icon === 'bootcamp' ? (
-                <img className="title-tile-icon" src={assetUrl('marca/bootcamp_emblema.webp')} alt="" draggable={false} />
+                <img className="title-tile-icon" src={assetUrl('marca/bootcamp_icono_blanco.webp')} alt="" draggable={false} />
               ) : icon === 'boringram' ? (
                 // La cámara con las «zzz» del logo de Boringram, sin las letras.
                 <img className="title-tile-icon" src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
