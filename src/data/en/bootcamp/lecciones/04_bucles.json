@@ -2,13 +2,13 @@
   "titulo": "Loops",
   "tema": "for repeats something with each item of a list (for … of).",
   "charla": [
-    { "texto": "Lesson four: loops. A loop repeats something many times without you having to write it many times." },
-    { "texto": "Like my life: office, bus, home. Office, bus, home. Except the loop at least ends." },
+    { "texto": "Lesson four: loops. A loop repeats something many times without you having to write it many times.", "codigo": ["for (brew day of ['Monday', 'Tuesday', 'Wednesday']) {", "  latte.log('Office on ' + day);", "}"] },
+    { "texto": "Like my life: office, bus, home. Office, bus, home. Except the loop at least ends.", "codigo": ["for (brew day of ['Monday', 'Tuesday', 'Wednesday']) {", "  latte.log('Office on ' + day);", "}", "// → Office on Monday", "// → Office on Tuesday", "// → Office on Wednesday", "// The loop ends. The week doesn't."] },
     { "texto": "jair's favorite loop: open my chat, type, delete, close. for eight years now" },
     { "texto": "In my kingdom, soldiers train in loops: a thousand thrusts a day." },
     { "texto": "The prof trains in loops too, Rikka. Alone, at night, with the door closed. Have you seen his forearms…" },
     { "texto": "I work out with weights! Well, with a water bottle. But it counts." },
-    { "texto": "Exercise: go through the list of cups and print each one. With for and of." }
+    { "texto": "Exercise: go through the list of cups and print each one. With for and of.", "codigo": ["// Your turn", "// 1. Go through the list of cups with for … of.", "// 2. Show each cup with latte.log."] }
   ],
   "ejercicio": {
     "archivos": [

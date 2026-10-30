@@ -15,7 +15,7 @@ import {
   type Linea,
   type Nivel,
 } from '../engine/bootcamp';
-import { CoffeeIDE, reiniciarPreguntas } from './CoffeeIDE';
+import { CoffeeIDE, colorear, reiniciarPreguntas } from './CoffeeIDE';
 import { DiplomaView } from './BootcampDiploma';
 import { ejercicioDe, useCurso } from './bootcampDatos';
 import { AvatarGenerado } from './AvatarGenerado';
@@ -36,8 +36,8 @@ type Vista =
   | { kind: 'diploma'; nivel: string }
   | { kind: 'linkedfired'; nivel: string };
 
-/** Lo que tarda en apagarse (crt-off y el fundido). */
-const OFF_MS = 700;
+/** Lo que tarda en apagarse: crt-off, el monitor que se esconde y el fundido. */
+const OFF_MS = 1300;
 /** El arranque: el logo y la barra de carga con chistes (se salta con un clic). */
 const BOOT_MS = 3400;
 const BOOT_JOKE_MS = 650;
@@ -610,9 +610,12 @@ function Charla({
   const { tx } = useCurso();
   const linea = lineas[i];
   const ultima = i === lineas.length - 1;
+  // La pizarra: el último ejemplo de código hasta esta línea (el profe explica con código detrás).
+  let pizarra = i;
+  while (pizarra >= 0 && !lineas[pizarra].codigo) pizarra--;
   return (
     <div
-      className="bc-stage bc-talk"
+      className={`bc-stage bc-talk ${pizarra >= 0 ? 'bc-con-pizarra' : ''}`}
       onClick={() => {
         playSelect();
         if (ultima) onFinal();
@@ -620,6 +623,26 @@ function Charla({
       }}
     >
       <Fondo />
+      {pizarra >= 0 && (
+        <div className="bc-pizarra" aria-label={tx.ejemplo}>
+          <div className="bc-pizarra-bar">
+            <span className="ide-dots" aria-hidden>
+              <i />
+              <i />
+              <i />
+            </span>
+            {tx.ejemplo}
+          </div>
+          <pre key={pizarra} className="bc-pizarra-code">
+            {lineas[pizarra].codigo!.map((l, k) => (
+              <div key={k} className="ide-line" style={{ animationDelay: `${k * 60}ms` }}>
+                <span className="ide-num">{k + 1}</span>
+                <span>{colorear(l)}</span>
+              </div>
+            ))}
+          </pre>
+        </div>
+      )}
       <img key={`${i}-${linea.sprite}`} className="bc-sprite" src={assetUrl(linea.sprite)} alt="" draggable={false} />
       <div className="bc-talk-top">
         <span className="bc-chip">{titulo}</span>

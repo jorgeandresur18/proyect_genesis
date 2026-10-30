@@ -12,6 +12,8 @@ export interface Linea {
   quien: string;
   sprite: string;
   texto: string;
+  /** Un ejemplo de código para la pizarra de atrás (se queda hasta que otra línea traiga otro). */
+  codigo?: string[];
 }
 export interface Leccion {
   id: string;

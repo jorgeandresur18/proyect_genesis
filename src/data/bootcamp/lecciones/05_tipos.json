@@ -11,7 +11,12 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/base.webp",
-      "texto": "El + con números suma: 2 + 2 da 4. Con textos junta: '2' + 2 da '22'. Así se rompieron más nóminas que con cualquier crisis."
+      "texto": "El + con números suma: 2 + 2 da 4. Con textos junta: '2' + 2 da '22'. Así se rompieron más nóminas que con cualquier crisis.",
+      "codigo": [
+        "latte.log(2 + 2);       // → 4     (suma)",
+        "latte.log('2' + 2);     // → '22'  (junta)",
+        "latte.log(2 + '2');     // → '22'  (también junta)"
+      ]
     },
     {
       "quien": "Rikka",
@@ -21,7 +26,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/orgulloso.webp",
-      "texto": "Casi. Se pregunta con typeof: typeof 1200 da 'number'; typeof 'hola' da 'string'. Sin espada."
+      "texto": "Casi. Se pregunta con typeof: typeof 1200 da 'number'; typeof 'hola' da 'string'. Sin espada.",
+      "codigo": [
+        "typeof 1200        // → 'number'",
+        "typeof '1200'      // → 'string'",
+        "",
+        "1200 === '1200'    // → false: no son lo mismo"
+      ]
     },
     {
       "quien": "Nikki",
@@ -41,7 +52,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/triste1.webp",
-      "texto": "…Ejercicio: calculen el sueldo con las horas extra. Las horas extra se pagan a cero. Es un ejercicio realista."
+      "texto": "…Ejercicio: calculen el sueldo con las horas extra. Las horas extra se pagan a cero. Es un ejercicio realista.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Fíjate qué es número y qué es texto.",
+        "// 2. Un + con un texto junta en vez de sumar.",
+        "// 3. Ojo: * se hace antes que +."
+      ]
     }
   ],
   "ejercicio": {

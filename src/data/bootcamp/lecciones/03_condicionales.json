@@ -6,12 +6,30 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Clase tres: condicionales. if pregunta algo. Si es verdad, hace una cosa; si no, else hace otra."
+      "texto": "Clase tres: condicionales. if pregunta algo. Si es verdad, hace una cosa; si no, else hace otra.",
+      "codigo": [
+        "brew cafe = 'frío';",
+        "",
+        "if (cafe === 'frío') {",
+        "  latte.log('Al microondas.');",
+        "} else {",
+        "  latte.log('A tomar.');",
+        "}",
+        "// → Al microondas."
+      ]
     },
     {
       "quien": "Jair",
       "sprite": "sprites/jair/base.webp",
-      "texto": "Para comparar se usan tres iguales: ===. Uno solo, =, no compara: asigna. Es el error más común del mundo."
+      "texto": "Para comparar se usan tres iguales: ===. Uno solo, =, no compara: asigna. Es el error más común del mundo.",
+      "codigo": [
+        "brew horas = 9;",
+        "",
+        "latte.log(horas === 8);   // → false",
+        "                          //   === pregunta",
+        "",
+        "// horas = 8 no pregunta nada: asigna."
+      ]
     },
     {
       "quien": "Nikki",
@@ -41,7 +59,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/atontado.webp",
-      "texto": "…Ejercicio. Una función que decide qué hacer según el mensaje de Nikki. Por favor. Concentración."
+      "texto": "…Ejercicio. Una función que decide qué hacer según el mensaje de Nikki. Por favor. Concentración.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Pregunta con if qué dice el mensaje.",
+        "// 2. Compara con === (tres iguales).",
+        "// 3. El plan B va en el else."
+      ]
     }
   ],
   "ejercicio": {

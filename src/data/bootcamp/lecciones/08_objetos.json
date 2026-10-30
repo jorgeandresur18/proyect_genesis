@@ -3,14 +3,14 @@
   "titulo": "Objetos",
   "tema": "Un objeto agrupa datos con nombre: { clave: valor }; se leen con punto (empleado.nombre).",
   "charla": [
-    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase ocho: objetos. Una lista guarda cosas en orden; un objeto las guarda con nombre: { nombre: 'Jair', sueldo: 1200 }." },
-    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Para leer un dato se usa un punto: empleado.nombre. Para cambiarlo, se asigna: empleado.sueldo = 1100." },
+    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase ocho: objetos. Una lista guarda cosas en orden; un objeto las guarda con nombre: { nombre: 'Jair', sueldo: 1200 }.", "codigo": ["brew taza = { sabor: 'latte', precio: 3 };", "", "// una lista guarda en orden;", "// un objeto guarda con nombre"] },
+    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Para leer un dato se usa un punto: empleado.nombre. Para cambiarlo, se asigna: empleado.sueldo = 1100.", "codigo": ["brew taza = { sabor: 'latte', precio: 3 };", "", "latte.log(taza.sabor);    // → latte", "taza.precio = 4;          // inflación", "latte.log(taza.precio);   // → 4"] },
     { "quien": "Rikka", "sprite": "sprites/rikka/seria.webp", "texto": "Es la ficha de un soldado: nombre, rango, armas. Pero ¿por qué alguien bajaría su sueldo?" },
     { "quien": "Jair", "sprite": "sprites/jair/triste1.webp", "texto": "Se llama «ajuste por reestructuración». Es el ejercicio de hoy." },
     { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "empleado.feliz = false. no es un bug. es la política de la empresa, documentada en el onboarding" },
     { "quien": "Cami", "sprite": "sprites/cami/burlona.webp", "texto": "Mi objeto ideal: { chico: true, chica: true }. No soy indecisa, profe. Soy completa." },
     { "quien": "Cami", "sprite": "sprites/cami/burla.webp", "texto": "Y el objeto de Rikka tendría una sola propiedad: { culo: 'enorme' }. Con eso ya está descrita." },
-    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi objeto tendría { espada: 'afilada', paciencia: 0 }. Sigue hablando y lo compruebas." }
+    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi objeto tendría { espada: 'afilada', paciencia: 0 }. Sigue hablando y lo compruebas.", "codigo": ["// Tu turno", "// 1. ¿Feliz? Un booleano: true o false.", "// 2. Quitar el 10 % es multiplicar por 0.9.", "// 3. El nombre se lee con un punto."] }
   ],
   "ejercicio": {
     "proyecto": "bootcamp/objetos",

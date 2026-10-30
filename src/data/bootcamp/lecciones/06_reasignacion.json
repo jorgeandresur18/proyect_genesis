@@ -3,15 +3,15 @@
   "titulo": "brew y let: lo que no se reasigna",
   "tema": "brew no se vuelve a asignar; let sí. Comentar con // apaga una línea.",
   "charla": [
-    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase seis: lo que no se reasigna. brew guarda un valor para siempre. Si lo quieres cambiar después, usa let." },
-    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Si intentas reasignar un brew, Coffee te frena: TypeError. Es de los pocos errores que protegen algo." },
+    { "quien": "Jair", "sprite": "sprites/jair/sabelotodo.webp", "texto": "Clase seis: lo que no se reasigna. brew guarda un valor para siempre. Si lo quieres cambiar después, usa let.", "codigo": ["brew jefe = 'Recursos Humanos';", "let reuniones = 1;", "", "reuniones = reuniones + 1;   // ✓ let sí cambia", "latte.log(reuniones);        // → 2 (y subiendo)"] },
+    { "quien": "Jair", "sprite": "sprites/jair/base.webp", "texto": "Si intentas reasignar un brew, Coffee te frena: TypeError. Es de los pocos errores que protegen algo.", "codigo": ["brew jefe = 'Recursos Humanos';", "", "jefe = 'yo';      // ✗ TypeError: brew no se reasigna", "", "// jefe = 'yo';   // con // la línea se apaga"] },
     { "quien": "Rikka", "sprite": "sprites/rikka/seria.webp", "texto": "Como un juramento. Lo que se jura con brew no se rompe. Lo que se dice con let… se negocia." },
     { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "regla de la clase: no ocupes un espacio que ya está ocupado. no importa si lo reclama un gobierno, un ejército o el gran ingeniero en persona con su libro sagrado en la mano." },
     { "quien": "Nikki", "sprite": "sprites/nikki/molesta.webp", "texto": "y si lo intentas a la fuerza, el sistema te tira error. o eso debería. el compilador por lo menos es coherente" },
     { "quien": "Jair", "sprite": "sprites/jair/atontado.webp", "texto": "…Eso es exactamente lo que hace brew. No sé si estamos hablando de Coffee." },
     { "quien": "Nikki", "sprite": "sprites/nikki/fria.webp", "texto": "claro que estamos hablando de coffee, jair. de qué más iba a ser" },
     { "quien": "Cami", "sprite": "sprites/cami/burlona.webp", "texto": "Hablando de espacios ocupados: el escritorio de Rikka lo ocupa entero su trasero. Y eso sí que no se reasigna." },
-    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi escritorio lo ocupo yo, entera, con mis apuntes. Concéntrate en el ejercicio." }
+    { "quien": "Rikka", "sprite": "sprites/rikka/enojada.webp", "texto": "Mi escritorio lo ocupo yo, entera, con mis apuntes. Concéntrate en el ejercicio.", "codigo": ["// Tu turno", "// 1. Lo que no debe cambiar, déjalo en brew.", "// 2. Lo que cambia, con let.", "// 3. La línea que estorba, apágala con //."] }
   ],
   "ejercicio": {
     "proyecto": "bootcamp/reasignacion",

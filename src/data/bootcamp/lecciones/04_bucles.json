@@ -6,12 +6,26 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Clase cuatro: bucles. Un bucle repite algo muchas veces sin que tengas que escribirlo muchas veces."
+      "texto": "Clase cuatro: bucles. Un bucle repite algo muchas veces sin que tengas que escribirlo muchas veces.",
+      "codigo": [
+        "for (brew dia of ['lunes', 'martes', 'miércoles']) {",
+        "  latte.log('Oficina el ' + dia);",
+        "}"
+      ]
     },
     {
       "quien": "Jair",
       "sprite": "sprites/jair/cansado1.webp",
-      "texto": "Como mi vida: oficina, bus, casa. Oficina, bus, casa. Solo que el bucle por lo menos termina."
+      "texto": "Como mi vida: oficina, bus, casa. Oficina, bus, casa. Solo que el bucle por lo menos termina.",
+      "codigo": [
+        "for (brew dia of ['lunes', 'martes', 'miércoles']) {",
+        "  latte.log('Oficina el ' + dia);",
+        "}",
+        "// → Oficina el lunes",
+        "// → Oficina el martes",
+        "// → Oficina el miércoles",
+        "// El bucle termina. La semana, no."
+      ]
     },
     {
       "quien": "Nikki",
@@ -36,7 +50,12 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Ejercicio: recorran la lista de tazas y muestren cada una. Con for y of."
+      "texto": "Ejercicio: recorran la lista de tazas y muestren cada una. Con for y of.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Recorre la lista de tazas con for … of.",
+        "// 2. Muestra cada taza con latte.log."
+      ]
     }
   ],
   "ejercicio": {

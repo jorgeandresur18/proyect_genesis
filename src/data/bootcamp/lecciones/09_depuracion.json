@@ -6,7 +6,14 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Examen final del nivel Trainee. Hoy no escriben código: arreglan el de otro. Eso es el ochenta por ciento del trabajo."
+      "texto": "Examen final del nivel Trainee. Hoy no escriben código: arreglan el de otro. Eso es el ochenta por ciento del trabajo.",
+      "codigo": [
+        "// Depurar:",
+        "// 1. Lee el mensaje del error.",
+        "// 2. Busca dónde nace el valor raro.",
+        "// 3. Cambia una sola cosa.",
+        "// 4. Vuelve a compilar."
+      ]
     },
     {
       "quien": "Jair",
@@ -26,7 +33,16 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/triste1.webp",
-      "texto": "Pista: los bugs están donde aprendieron. Un valor que no es cero, un for que no recorre lo que debe y una propiedad que no existe."
+      "texto": "Pista: los bugs están donde aprendieron. Un valor que no es cero, un for que no recorre lo que debe y una propiedad que no existe.",
+      "codigo": [
+        "decaf + 7                // → NaN",
+        "",
+        "for (brew i in [7, 9])   // → 0, 1  (posiciones)",
+        "for (brew n of [7, 9])   // → 7, 9  (valores)",
+        "",
+        "[7, 9].size              // → no existe",
+        "[7, 9].length            // → 2"
+      ]
     },
     {
       "quien": "Cami",
@@ -36,7 +52,12 @@
     {
       "quien": "Rikka",
       "sprite": "sprites/rikka/enojada.webp",
-      "texto": "En la graduación me siento contra la pared. Ya lo decidí."
+      "texto": "En la graduación me siento contra la pared. Ya lo decidí.",
+      "codigo": [
+        "// Tu turno",
+        "// Abre primero el log del error.",
+        "// Tres bugs, tres arreglos."
+      ]
     }
   ],
   "ejercicio": {

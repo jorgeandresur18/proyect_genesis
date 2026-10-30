@@ -2,13 +2,13 @@
   "titulo": "Trainee exam: debugging",
   "tema": "Find and fix the three bugs in the previous intern's code.",
   "charla": [
-    { "texto": "Final exam of the Trainee level. Today you don't write code: you fix someone else's. That's eighty percent of the job." },
+    { "texto": "Final exam of the Trainee level. Today you don't write code: you fix someone else's. That's eighty percent of the job.", "codigo": ["// Debugging:", "// 1. Read the error message.", "// 2. Find where the weird value is born.", "// 3. Change one thing only.", "// 4. Compile again."] },
     { "texto": "The previous intern wrote a function that averages the performance reviews. It has three bugs. Find them." },
     { "texto": "And where is the previous intern? We could ask him." },
     { "texto": "he didn't leave. he was “let go”. now he's a declared variable nobody uses. the linter grays him out" },
-    { "texto": "Hint: the bugs are where you learned. A value that isn't zero, a for that doesn't loop over what it should and a property that doesn't exist." },
+    { "texto": "Hint: the bugs are where you learned. A value that isn't zero, a for that doesn't loop over what it should and a property that doesn't exist.", "codigo": ["decaf + 7                // → NaN", "", "for (brew i in [7, 9])   // → 0, 1  (positions)", "for (brew n of [7, 9])   // → 7, 9  (values)", "", "[7, 9].size              // → doesn't exist", "[7, 9].length            // → 2"] },
     { "texto": "If I pass, prof, I want my prize: sitting behind Rikka at graduation. For the view." },
-    { "texto": "At graduation I'm sitting against the wall. I've decided." }
+    { "texto": "At graduation I'm sitting against the wall. I've decided.", "codigo": ["// Your turn", "// Open the error log first.", "// Three bugs, three fixes."] }
   ],
   "ejercicio": {
     "archivos": [

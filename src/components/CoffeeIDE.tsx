@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { playCancel, playSelect } from '../engine/sound';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { playCancel, playGlitch, playSelect } from '../engine/sound';
+import { useStore } from '../engine/store';
 import { speakerColor } from './DialogBox';
 import { assetUrl } from '../engine/assets';
 import { headTop } from '../engine/stature';
@@ -63,8 +64,9 @@ interface Comentario {
 }
 /** Un comentario en pantalla; en un diálogo, con los dos que conversan (el primero a la derecha). */
 type Turno = { key: number; who: string; text: string; sprite: string; duo?: { key: number; a: Comentario; b: Comentario }; lado?: 'a' | 'b' };
-/** Lo que dura un comentario en pantalla. */
+/** Lo que dura un comentario en pantalla, y lo que tarda en irse. */
 const SAY_MS = 4500;
+const SAY_OUT_MS = 260;
 const GAMES = import.meta.glob<Data>('../data/minijuegos/*.json', { eager: true, import: 'default' });
 
 /** Palabras reservadas de Coffee (y lo poco de JavaScript que sobrevivió). */
@@ -90,8 +92,9 @@ const KEYWORDS = new Set([
   'false',
 ]);
 const HOLE = /\[\[(\d+)\]\]/g;
-/** Cuánto se ve el resultado antes de seguir con la historia. */
-const SOLVED_MS = 2200;
+/** Cuánto se ve el resultado antes de que la pantalla se oscurezca, y lo que tarda en oscurecerse. */
+const SOLVED_MS = 2600;
+const DIM_MS = 800;
 /** Lo que dura el cierre del programa al salir. */
 const CLOSE_MS = 450;
 
@@ -143,6 +146,13 @@ export function CoffeeIDE({
   const [solved, setSolved] = useState(false);
   const [wrong, setWrong] = useState<string | null>(null);
   const [reaction, setReaction] = useState<Turno | null>(null);
+  const [saliendo, setSaliendo] = useState(false);
+  const [dimming, setDimming] = useState(false);
+  const still = useStore((s) => s.settings.reduceEffects);
+  const ideRef = useRef<HTMLDivElement>(null);
+  const reactRef = useRef<HTMLDivElement>(null);
+  // Dónde está el comentario (o el diálogo) en pantalla: se elige al aparecer y se mantiene mientras conversan.
+  const lugar = useRef<{ grupo: number; left: number; width: number; bottom: number } | null>(null);
   // Los comentarios esperan su turno: uno a la vez, cada uno con su sprite y su globo.
   const queue = useRef<Turno[]>([]);
   const portrait = (c: Comentario) =>
@@ -157,7 +167,10 @@ export function CoffeeIDE({
       out.push({ ...uno(x), duo, lado: x.quien === c.quien ? 'a' : 'b' });
     return out;
   };
-  const show = (t?: Turno) => setReaction(t ? { ...t, key: Date.now() } : null);
+  const show = (t?: Turno) => {
+    setSaliendo(false);
+    setReaction(t ? { ...t, key: Date.now() } : null);
+  };
   const say = (list: Comentario[], now = false) => {
     const nuevos = list.flatMap(turnos);
     queue.current = now ? nuevos : [...queue.current, ...nuevos];
@@ -202,11 +215,76 @@ export function CoffeeIDE({
   }, [term]);
   useEffect(() => {
     if (!reaction) return;
+    let out: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
-      show(queue.current.shift());
+      const next = queue.current.shift();
+      // En un diálogo solo cambia el globo; si no, el comentario se va (con su animación) antes del siguiente.
+      if (next && reaction.duo && next.duo === reaction.duo) return show(next);
+      setSaliendo(true);
+      out = setTimeout(() => show(next), SAY_OUT_MS);
     }, SAY_MS);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(out);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reaction]);
+  // Cada comentario busca un lugar libre dentro del IDE (el explorador, la paleta o la terminal), sin tapar el
+  // código. Se mide antes de pintarse, así que no salta.
+  useLayoutEffect(() => {
+    const el = reactRef.current;
+    const ide = ideRef.current;
+    if (!reaction || !el || !ide) return;
+    const grupo = reaction.duo?.key ?? reaction.key;
+    const base = ide.getBoundingClientRect();
+    if (lugar.current?.grupo !== grupo) {
+      const q = (s: string) => ide.querySelector(s)?.getBoundingClientRect();
+      const files = q('.ide-files');
+      const lastFile = [...ide.querySelectorAll('.ide-files button')].at(-1)?.getBoundingClientRect();
+      const words = q('.ide-words');
+      const compileBtn = q('.ide-compile');
+      const palette = q('.ide-palette');
+      const term = q('.ide-terminal');
+      const editor = q('.ide-code');
+      // Hasta dónde llega el código escrito: a la derecha de la línea más larga, el editor está vacío.
+      const codeRight = Math.max(
+        0,
+        ...[...ide.querySelectorAll('.ide-code .ide-line > span:last-child')].map((e) => e.getBoundingClientRect().right),
+      );
+      const M = 8;
+      type Zona = { left: number; right: number; top: number; bottom: number };
+      const zonas = [
+        files && lastFile && { left: files.left + M, right: files.right - M, top: lastFile.bottom + M, bottom: files.bottom - M },
+        palette && words && compileBtn && { left: palette.left + M, right: palette.right - M, top: words.bottom + M, bottom: compileBtn.top - M },
+        editor && { left: codeRight + M * 3, right: editor.right - M * 2, top: editor.top + M, bottom: editor.bottom - M },
+        term && { left: term.left + term.width * 0.45, right: term.right - M * 2, top: term.top + M, bottom: term.bottom - M },
+      ].filter((z): z is Zona => !!z);
+      // Último recurso (pantallas chicas): el hueco vacío del editor junto con la paleta, arriba de «Compilar».
+      const respaldo = editor && palette && compileBtn ? { left: codeRight + M * 2, right: palette.right - M, top: editor.top, bottom: compileBtn.top - M } : null;
+      const fila = el.querySelector<HTMLElement>('.ide-portraits');
+      const medir = (z: Zona) => {
+        el.style.width = `${Math.min(z.right - z.left, 19 * 16)}px`;
+        return { z, w: el.offsetWidth, h: el.offsetHeight, fila: fila?.scrollWidth ?? 0 };
+      };
+      const entra = (c: ReturnType<typeof medir>) => c.fila <= c.z.right - c.z.left && c.h <= c.z.bottom - c.z.top;
+      const cabe = zonas.map(medir).filter(entra);
+      const c = cabe[Math.floor(Math.random() * cabe.length)] ?? (respaldo ? [medir(respaldo)].find(entra) : undefined);
+      if (c) {
+        const left = c.z.left + (c.z.right - c.z.left - c.w) / 2 + (Math.random() - 0.5) * Math.max(0, c.z.right - c.z.left - c.w);
+        lugar.current = { grupo, left: left - base.left, width: c.w, bottom: c.z.bottom - base.top };
+      } else {
+        const z = palette ?? base;
+        const width = Math.min(base.width - 16, Math.max(z.width - 8, 15 * 16));
+        lugar.current = { grupo, left: base.width - width - 8, width, bottom: (compileBtn?.top ?? base.bottom) - base.top - 8 };
+      }
+    }
+    const l = lugar.current!;
+    el.style.width = `${l.width}px`;
+    el.style.left = `${l.left}px`;
+    el.style.top = `${Math.max(4, l.bottom - el.offsetHeight)}px`;
+    // El pico del globo apunta a quien habla.
+    const quien = el.querySelector<HTMLElement>('.ide-portrait:not(.ide-portrait-quieto)');
+    if (quien) el.style.setProperty('--pico', `${quien.offsetLeft + quien.offsetWidth / 2}px`);
   }, [reaction]);
   // Al abrir: los comentarios de entrada (después de que la ventana termina de aparecer).
   useEffect(() => {
@@ -258,10 +336,26 @@ export function CoffeeIDE({
         progress.delete(id);
         if (data.al_resolver?.length) say([pick(data.al_resolver)], true);
         setTerm((t) => [...t.slice(0, -1), ...data.exito.map((text) => ({ kind: 'ok' as const, text }))]);
-        setTimeout(() => onSolved(fallos.current), SOLVED_MS);
+        // Se queda un rato con el resultado; después la pantalla se oscurece y sigue la historia.
+        setTimeout(() => setDimming(true), SOLVED_MS);
+        setTimeout(() => onSolved(fallos.current), SOLVED_MS + DIM_MS);
         return;
       }
-      playCancel();
+      // No compila: el IDE se sacude con el glitch.
+      playGlitch();
+      if (!still)
+        ideRef.current?.animate(
+          [
+            { transform: 'none' },
+            { transform: 'translate(-9px, 1px) rotate(-0.3deg)' },
+            { transform: 'translate(8px, -1px) rotate(0.3deg)' },
+            { transform: 'translate(-6px, 0)' },
+            { transform: 'translate(4px, 1px)' },
+            { transform: 'translate(-2px, 0)' },
+            { transform: 'none' },
+          ],
+          { duration: 420, easing: 'ease-out' },
+        );
       fallos.current++;
       const h = bad ?? empty!;
       setWrong(h);
@@ -290,61 +384,32 @@ export function CoffeeIDE({
   const renderLine = (line: string): ReactNode[] => {
     // Los .txt (notas, historial de prompts) no son código: van sin colores.
     if (!file.endsWith('.coffee')) return [line];
-    const out: ReactNode[] = [];
-    const comment = findComment(line);
-    const code = comment < 0 ? line : line.slice(0, comment);
-    const parts = code.split(/(\[\[\d+\]\]|'[^']*'|[A-Za-zÀ-ÿñÑ_]+)/);
-    parts.forEach((p, i) => {
-      if (!p) return;
-      const hole = p.match(/^\[\[(\d+)\]\]$/);
-      if (hole && main) {
-        const h = hole[1];
-        out.push(
-          <button
-            key={i}
-            type="button"
-            className={`ide-hole ${selected === h ? 'selected' : ''} ${fills[h] ? 'filled' : ''} ${wrong === h ? 'wrong' : ''}`}
-            onClick={() => {
-              playSelect();
-              setSelected(h);
-            }}
-          >
-            {fills[h] ?? '____'}
-          </button>,
-        );
-      } else if (p.startsWith("'"))
-        out.push(
-          <span key={i} className="ide-str">
-            {p}
-          </span>,
-        );
-      else if (KEYWORDS.has(p))
-        out.push(
-          <span key={i} className="ide-kw">
-            {p}
-          </span>,
-        );
-      else if (/^[A-Z]/.test(p))
-        out.push(
-          <span key={i} className="ide-type">
-            {p}
-          </span>,
-        );
-      else out.push(p);
-    });
-    if (comment >= 0)
-      out.push(
-        <span key="c" className="ide-comment">
-          {line.slice(comment)}
-        </span>,
-      );
-    return out;
+    return colorear(line, (h, i) =>
+      main ? (
+        <button
+          key={i}
+          type="button"
+          className={`ide-hole ${selected === h ? 'selected' : ''} ${fills[h] ? 'filled' : ''} ${wrong === h ? 'wrong' : ''}`}
+          onClick={() => {
+            playSelect();
+            setSelected(h);
+          }}
+        >
+          {fills[h] ?? '____'}
+        </button>
+      ) : null,
+    );
   };
 
   // La pantalla se pone negra y el programa se abre encima, como una ventana que se lanza.
   return (
-    <div className={`ide-screen ${closing ? 'closing' : ''}`}>
-      <div className={`coffee-ide ${solved ? 'solved' : ''}`} role="dialog" aria-label={`GRAVITY — ${data.proyecto}`}>
+    <div className={`ide-screen ${closing ? 'closing' : ''} ${dimming ? 'dimming' : ''}`}>
+      <div
+        ref={ideRef}
+        className={`coffee-ide ${solved ? 'solved' : ''}`}
+        role="dialog"
+        aria-label={`GRAVITY — ${data.proyecto}`}
+      >
         <div className="ide-titlebar">
           <span className="ide-dots" aria-hidden>
             <i />
@@ -465,29 +530,44 @@ export function CoffeeIDE({
             </div>
           ))}
         </div>
-        {reaction &&
-          (reaction.duo ? (
-            // Dos conversando: quien empieza a la derecha, quien contesta a la izquierda; el globo, en medio.
-            <div key={reaction.duo.key} className="ide-reaction ide-duo">
-              <Retrato sprite={reaction.lado === 'b' ? reaction.sprite : portrait(reaction.duo.b)} who={reaction.duo.b.quien} quieto={reaction.lado !== 'b'} />
-              <Globo key={reaction.key} who={reaction.who} text={reaction.text} izquierda={reaction.lado === 'b'} />
-              <Retrato sprite={reaction.lado === 'a' ? reaction.sprite : portrait(reaction.duo.a)} who={reaction.duo.a.quien} quieto={reaction.lado !== 'a'} />
+        {reaction && (
+          // El globo arriba y, abajo, quien habla; en un diálogo, los dos uno al lado del otro (quien empieza a la
+          // izquierda) y quien escucha más oscuro.
+          <div
+            key={reaction.duo?.key ?? reaction.key}
+            ref={reactRef}
+            className={`ide-reaction ${reaction.duo ? 'ide-duo' : ''} ${saliendo ? 'ide-reaction-out' : ''}`}
+          >
+            <Globo key={reaction.key} who={reaction.who} text={reaction.text} />
+            <div className="ide-portraits">
+              {reaction.duo ? (
+                <>
+                  <Retrato
+                    sprite={reaction.lado === 'a' ? reaction.sprite : portrait(reaction.duo.a)}
+                    who={reaction.duo.a.quien}
+                    quieto={reaction.lado !== 'a'}
+                  />
+                  <Retrato
+                    sprite={reaction.lado === 'b' ? reaction.sprite : portrait(reaction.duo.b)}
+                    who={reaction.duo.b.quien}
+                    quieto={reaction.lado !== 'b'}
+                  />
+                </>
+              ) : (
+                <Retrato sprite={reaction.sprite} who={reaction.who} />
+              )}
             </div>
-          ) : (
-            <div key={reaction.key} className="ide-reaction">
-              <Globo who={reaction.who} text={reaction.text} />
-              <Retrato sprite={reaction.sprite} who={reaction.who} />
-            </div>
-          ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-/** El globo de un comentario; el pico apunta a quien habla (a la derecha, o a la izquierda en un diálogo). */
-function Globo({ who, text, izquierda }: { who: string; text: string; izquierda?: boolean }) {
+/** El globo de un comentario; el pico (abajo) apunta a quien habla. */
+function Globo({ who, text }: { who: string; text: string }) {
   return (
-    <span className={`ide-bubble ${izquierda ? 'ide-bubble-left' : ''}`} style={{ ['--who' as string]: speakerColor(who) }}>
+    <span className="ide-bubble" style={{ ['--who' as string]: speakerColor(who) }}>
       <b>{who}</b>
       <span>{text}</span>
     </span>
@@ -504,6 +584,48 @@ function Retrato({ sprite, who, quieto }: { sprite: string; who: string; quieto?
       <img src={assetUrl(sprite)} alt="" draggable={false} />
     </span>
   );
+}
+
+/**
+ * Colorea una línea de Coffee: comentarios, textos, palabras reservadas y tipos. Los huecos ([[n]]) los dibuja
+ * `hueco` (si no hay, o devuelve null, quedan como texto). También la usa la pizarra de las charlas del Bootcamp.
+ */
+export function colorear(line: string, hueco?: (h: string, key: number) => ReactNode): ReactNode[] {
+  const out: ReactNode[] = [];
+  const comment = findComment(line);
+  const code = comment < 0 ? line : line.slice(0, comment);
+  code.split(/(\[\[\d+\]\]|'[^']*'|[A-Za-zÀ-ÿñÑ_]+)/).forEach((p, i) => {
+    if (!p) return;
+    const hole = p.match(/^\[\[(\d+)\]\]$/);
+    const node = hole && hueco ? hueco(hole[1], i) : null;
+    if (node) out.push(node);
+    else if (p.startsWith("'"))
+      out.push(
+        <span key={i} className="ide-str">
+          {p}
+        </span>,
+      );
+    else if (KEYWORDS.has(p))
+      out.push(
+        <span key={i} className="ide-kw">
+          {p}
+        </span>,
+      );
+    else if (/^[A-Z]/.test(p))
+      out.push(
+        <span key={i} className="ide-type">
+          {p}
+        </span>,
+      );
+    else out.push(p);
+  });
+  if (comment >= 0)
+    out.push(
+      <span key="c" className="ide-comment">
+        {line.slice(comment)}
+      </span>,
+    );
+  return out;
 }
 
 const pick = <T,>(list: T[]) => list[Math.floor(Math.random() * list.length)];

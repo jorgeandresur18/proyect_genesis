@@ -6,12 +6,22 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Clase siete: listas. Varias cosas en una sola variable, entre corchetes: ['a', 'b', 'c']."
+      "texto": "Clase siete: listas. Varias cosas en una sola variable, entre corchetes: ['a', 'b', 'c'].",
+      "codigo": [
+        "brew tazas = ['espresso', 'latte', 'decaf'];"
+      ]
     },
     {
       "quien": "Jair",
       "sprite": "sprites/jair/base.webp",
-      "texto": "La primera posición es la 0, no la 1. Todos se equivocan con eso. Yo todavía, a veces."
+      "texto": "La primera posición es la 0, no la 1. Todos se equivocan con eso. Yo todavía, a veces.",
+      "codigo": [
+        "brew tazas = ['espresso', 'latte', 'decaf'];",
+        "",
+        "latte.log(tazas[0]);   // → espresso",
+        "latte.log(tazas[1]);   // → latte",
+        "// la primera es la 0, no la 1"
+      ]
     },
     {
       "quien": "Rikka",
@@ -21,7 +31,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/orgulloso.webp",
-      "texto": "Exacto. Para mandar a alguien al final de la fila se usa push. Y length te dice cuántos hay."
+      "texto": "Exacto. Para mandar a alguien al final de la fila se usa push. Y length te dice cuántos hay.",
+      "codigo": [
+        "brew tazas = ['espresso', 'latte'];",
+        "",
+        "tazas.push('decaf');       // al final de la fila",
+        "latte.log(tazas.length);   // → 3"
+      ]
     },
     {
       "quien": "Nikki",
@@ -41,7 +57,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Ejercicio: el backlog del sprint. Agreguen una tarea, lean la primera y cuenten cuántas hay."
+      "texto": "Ejercicio: el backlog del sprint. Agreguen una tarea, lean la primera y cuenten cuántas hay.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Agrega la tarea con push.",
+        "// 2. Lee la primera: la posición 0.",
+        "// 3. Cuenta cuántas hay con length."
+      ]
     }
   ],
   "ejercicio": {

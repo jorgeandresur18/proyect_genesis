@@ -3,13 +3,13 @@
   "tema": "Numbers and text don't mix: + adds or joins; typeof tells you what it is; === compares.",
   "charla": [
     { "texto": "Lesson five: types. In Coffee, 1200 is a number and '1200' is text. They look alike. They're not the same." },
-    { "texto": "With numbers, + adds: 2 + 2 gives 4. With text it joins: '2' + 2 gives '22'. That's broken more payrolls than any recession." },
+    { "texto": "With numbers, + adds: 2 + 2 gives 4. With text it joins: '2' + 2 gives '22'. That's broken more payrolls than any recession.", "codigo": ["latte.log(2 + 2);       // → 4     (adds)", "latte.log('2' + 2);     // → '22'  (joins)", "latte.log(2 + '2');     // → '22'  (joins too)"] },
     { "texto": "So if I want to know what something is, I ask it? In my kingdom we asked with a sword." },
-    { "texto": "Almost. You ask with typeof: typeof 1200 gives 'number'; typeof 'hello' gives 'string'. No sword." },
+    { "texto": "Almost. You ask with typeof: typeof 1200 gives 'number'; typeof 'hello' gives 'string'. No sword.", "codigo": ["typeof 1200        // → 'number'", "typeof '1200'      // → 'string'", "", "1200 === '1200'    // → false: not the same thing"] },
     { "texto": "rikka, your notes are better than the instructor's. don't tell him, it'll go to his emotional salary" },
     { "texto": "I'm like the +, prof: with guys I add up, with girls I join in. The type doesn't matter to me." },
     { "texto": "and jair's salary is of type “undefined”. it exists in the contract, but nobody has ever seen it" },
-    { "texto": "…Exercise: calculate the salary with overtime. Overtime is paid at zero. It's a realistic exercise." }
+    { "texto": "…Exercise: calculate the salary with overtime. Overtime is paid at zero. It's a realistic exercise.", "codigo": ["// Your turn", "// 1. Notice what's a number and what's text.", "// 2. A + with text joins instead of adding.", "// 3. Careful: * goes before +."] }
   ],
   "ejercicio": {
     "archivos": [

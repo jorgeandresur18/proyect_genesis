@@ -2,14 +2,14 @@
   "titulo": "Lists (arrays)",
   "tema": "A list keeps several things in order: it starts at 0, push adds to the end, length counts.",
   "charla": [
-    { "texto": "Lesson seven: lists. Several things in a single variable, inside brackets: ['a', 'b', 'c']." },
-    { "texto": "The first position is 0, not 1. Everybody gets that wrong. I still do, sometimes." },
+    { "texto": "Lesson seven: lists. Several things in a single variable, inside brackets: ['a', 'b', 'c'].", "codigo": ["brew cups = ['espresso', 'latte', 'decaf'];"] },
+    { "texto": "The first position is 0, not 1. Everybody gets that wrong. I still do, sometimes.", "codigo": ["brew cups = ['espresso', 'latte', 'decaf'];", "", "latte.log(cups[0]);    // → espresso", "latte.log(cups[1]);    // → latte", "// the first one is 0, not 1"] },
     { "texto": "Like a formation of soldiers: the first in line is soldier zero. And whoever arrives late goes to the back." },
-    { "texto": "Exactly. To send someone to the back of the line you use push. And length tells you how many there are." },
+    { "texto": "Exactly. To send someone to the back of the line you use push. And length tells you how many there are.", "codigo": ["brew cups = ['espresso', 'latte'];", "", "cups.push('decaf');        // to the back of the line", "latte.log(cups.length);    // → 3"] },
     { "texto": "lists start at zero. like an intern's labor rights" },
     { "texto": "My to-do list: one, learn Coffee. Zero, stare at Rikka's ass. Zero comes first, the prof said so." },
     { "texto": "That's not a to-do list, Cami, it's a confession!" },
-    { "texto": "Exercise: the sprint backlog. Add a task, read the first one and count how many there are." }
+    { "texto": "Exercise: the sprint backlog. Add a task, read the first one and count how many there are.", "codigo": ["// Your turn", "// 1. Add the task with push.", "// 2. Read the first one: position 0.", "// 3. Count how many there are with length."] }
   ],
   "ejercicio": {
     "archivos": [

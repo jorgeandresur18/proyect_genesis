@@ -144,6 +144,13 @@ describe('bootcamp', () => {
       expect(en.ejercicio.paleta).toEqual(l.ejercicio.paleta);
       expect(en.charla.length).toBe(l.charla.length);
       expect(en.cierre.length).toBe(l.cierre.length);
+      // Los ejemplos de la pizarra están traducidos, en las mismas líneas de la charla y con el mismo largo.
+      l.charla.forEach((c, i) => {
+        expect(en.charla[i].codigo?.length, `${id}: pizarra de la línea ${i}`).toBe(c.codigo?.length);
+        if (c.codigo) expect(en.charla[i].codigo, `${id}: pizarra ${i} en inglés`).not.toEqual(c.codigo);
+      });
+      // Cada clase explica con al menos un ejemplo en la pizarra.
+      expect(l.charla.some((c) => c.codigo), id).toBe(true);
     }
     const en = cursoDe('en');
     expect(en.textos.cerrado_titulo).not.toBe(CURSO.textos.cerrado_titulo);

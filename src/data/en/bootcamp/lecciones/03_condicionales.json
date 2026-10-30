@@ -2,14 +2,14 @@
   "titulo": "Conditionals",
   "tema": "if decides; else is plan B; === compares.",
   "charla": [
-    { "texto": "Lesson three: conditionals. if asks something. If it's true, it does one thing; if not, else does another." },
-    { "texto": "To compare you use three equals signs: ===. A single one, =, doesn't compare: it assigns. It's the most common mistake in the world." },
+    { "texto": "Lesson three: conditionals. if asks something. If it's true, it does one thing; if not, else does another.", "codigo": ["brew coffee = 'cold';", "", "if (coffee === 'cold') {", "  latte.log('Into the microwave.');", "} else {", "  latte.log('Drink up.');", "}", "// → Into the microwave."] },
+    { "texto": "To compare you use three equals signs: ===. A single one, =, doesn't compare: it assigns. It's the most common mistake in the world.", "codigo": ["brew hours = 9;", "", "latte.log(hours === 8);   // → false", "                          //   === asks", "", "// hours = 8 asks nothing: it assigns."] },
     { "texto": "jair lives in the else. the if hasn't come true in eight years" },
     { "texto": "if (Rikka kisses me) { I win the dare } else { …I like it too }. Did I say that out loud?" },
     { "texto": "You said it out loud, Cami! In front of the instructor!" },
     { "texto": "Don't be like that. I spanked you at the hot springs and you didn't even complain." },
     { "texto": "Because I was in shock! A five-hundred-year-old heroine doesn't know what to do with that." },
-    { "texto": "…Exercise. A function that decides what to do based on Nikki's message. Please. Focus." }
+    { "texto": "…Exercise. A function that decides what to do based on Nikki's message. Please. Focus.", "codigo": ["// Your turn", "// 1. Ask with if what the message says.", "// 2. Compare with === (three equals signs).", "// 3. Plan B goes in the else."] }
   ],
   "ejercicio": {
     "archivos": [

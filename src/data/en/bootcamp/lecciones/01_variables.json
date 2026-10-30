@@ -2,14 +2,14 @@
   "titulo": "Variables",
   "tema": "brew stores a value under a name; latte.log shows it.",
   "charla": [
-    { "texto": "Lesson one: variables. A variable is a labeled box where you keep a value." },
+    { "texto": "Lesson one: variables. A variable is a labeled box where you keep a value.", "codigo": ["brew flavor = 'espresso';", "brew cups = 3;", "", "// flavor and cups are boxes with a name:", "// each one keeps a value inside."] },
     { "texto": "A box? We're not even two minutes into class and the double entendres have started, prof." },
-    { "texto": "…In Coffee it's written brew. Whatever you store with brew never changes. Like a tattoo. Or my feelings." },
+    { "texto": "…In Coffee it's written brew. Whatever you store with brew never changes. Like a tattoo. Or my feelings.", "codigo": ["brew flavor = 'espresso';", "latte.log(flavor);  // → espresso", "", "flavor = 'decaf';   // ✗ TypeError:", "                    //   what you store with brew does not change"] },
     { "texto": "or your search history, which has also been the same for years" },
     { "texto": "I'm over five hundred years old and I've never needed to keep anything in a box." },
     { "texto": "Because you keep everything in that ass, Rikka. Half the ancestral kingdom fits in there." },
     { "texto": "Cami! We're in class." },
-    { "texto": "Exercise: store a student's name and age, and print them with latte.log. The notes are in the explorer." }
+    { "texto": "Exercise: store a student's name and age, and print them with latte.log. The notes are in the explorer.", "codigo": ["// Your turn", "// 1. Store the student's name with brew (it's text: it goes in quotes).", "// 2. Store her age: a number, no quotes.", "// 3. Show them with latte.log."] }
   ],
   "ejercicio": {
     "archivos": [

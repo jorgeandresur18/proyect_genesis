@@ -2,15 +2,15 @@
   "titulo": "brew and let: what can't be reassigned",
   "tema": "brew can't be assigned again; let can. Commenting with // switches a line off.",
   "charla": [
-    { "texto": "Lesson six: what can't be reassigned. brew keeps a value forever. If you want to change it later, use let." },
-    { "texto": "If you try to reassign a brew, Coffee stops you: TypeError. It's one of the few errors that protects something." },
+    { "texto": "Lesson six: what can't be reassigned. brew keeps a value forever. If you want to change it later, use let.", "codigo": ["brew boss = 'Human Resources';", "let meetings = 1;", "", "meetings = meetings + 1;     // ✓ let can change", "latte.log(meetings);         // → 2 (and rising)"] },
+    { "texto": "If you try to reassign a brew, Coffee stops you: TypeError. It's one of the few errors that protects something.", "codigo": ["brew boss = 'Human Resources';", "", "boss = 'me';      // ✗ TypeError: brew can't be reassigned", "", "// boss = 'me';   // with // the line is turned off"] },
     { "texto": "Like an oath. What is sworn with brew is never broken. What is said with let… is negotiable." },
     { "texto": "class rule: don't occupy a space that's already occupied. it doesn't matter if a government claims it, or an army, or the great engineer himself with his holy book in hand." },
     { "texto": "and if you try to take it by force, the system throws an error. or it should. at least the compiler is consistent" },
     { "texto": "…That's exactly what brew does. I'm not sure we're talking about Coffee." },
     { "texto": "of course we're talking about coffee, jair. what else would it be" },
     { "texto": "Speaking of occupied spaces: Rikka's desk is completely occupied by her butt. And that definitely can't be reassigned." },
-    { "texto": "My desk is occupied by me, all of me, with my notes. Focus on the exercise." }
+    { "texto": "My desk is occupied by me, all of me, with my notes. Focus on the exercise.", "codigo": ["// Your turn", "// 1. What mustn't change stays in brew.", "// 2. What changes goes with let.", "// 3. The line in the way: turn it off with //."] }
   ],
   "ejercicio": {
     "archivos": [

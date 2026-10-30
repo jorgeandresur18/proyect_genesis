@@ -2,14 +2,14 @@
   "titulo": "Objects",
   "tema": "An object groups named data: { key: value }; you read it with a dot (empleado.nombre).",
   "charla": [
-    { "texto": "Lesson eight: objects. A list keeps things in order; an object keeps them by name: { nombre: 'Jair', sueldo: 1200 }." },
-    { "texto": "To read a piece of data you use a dot: empleado.nombre. To change it, you assign it: empleado.sueldo = 1100." },
+    { "texto": "Lesson eight: objects. A list keeps things in order; an object keeps them by name: { nombre: 'Jair', sueldo: 1200 }.", "codigo": ["brew cup = { flavor: 'latte', price: 3 };", "", "// a list keeps things in order;", "// an object keeps them by name"] },
+    { "texto": "To read a piece of data you use a dot: empleado.nombre. To change it, you assign it: empleado.sueldo = 1100.", "codigo": ["brew cup = { flavor: 'latte', price: 3 };", "", "latte.log(cup.flavor);    // → latte", "cup.price = 4;            // inflation", "latte.log(cup.price);     // → 4"] },
     { "texto": "It's a soldier's record: name, rank, weapons. But why would anyone lower his pay?" },
     { "texto": "It's called a “restructuring adjustment”. It's today's exercise." },
     { "texto": "empleado.feliz = false. it's not a bug. it's company policy, documented in the onboarding" },
     { "texto": "My ideal object: { guy: true, girl: true }. I'm not indecisive, prof. I'm complete." },
     { "texto": "And Rikka's object would have a single property: { ass: 'huge' }. That fully describes her." },
-    { "texto": "My object would have { sword: 'sharp', patience: 0 }. Keep talking and you'll find out." }
+    { "texto": "My object would have { sword: 'sharp', patience: 0 }. Keep talking and you'll find out.", "codigo": ["// Your turn", "// 1. Happy? A boolean: true or false.", "// 2. Taking off 10% is multiplying by 0.9.", "// 3. You read the name with a dot."] }
   ],
   "ejercicio": {
     "archivos": [

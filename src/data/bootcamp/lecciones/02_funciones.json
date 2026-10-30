@@ -6,12 +6,28 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Clase dos: funciones. Una función es una receta: le das ingredientes, hace algo y te devuelve el resultado."
+      "texto": "Clase dos: funciones. Una función es una receta: le das ingredientes, hace algo y te devuelve el resultado.",
+      "codigo": [
+        "sip doble(n) {",
+        "  pour n * 2;",
+        "}",
+        "",
+        "// doble recibe un ingrediente (n)",
+        "// y devuelve el resultado."
+      ]
     },
     {
       "quien": "Jair",
       "sprite": "sprites/jair/base.webp",
-      "texto": "En Coffee se define con sip, y lo que devuelve sale con pour."
+      "texto": "En Coffee se define con sip, y lo que devuelve sale con pour.",
+      "codigo": [
+        "sip doble(n) {",
+        "  pour n * 2;      // pour devuelve",
+        "}",
+        "",
+        "brew x = doble(21);",
+        "latte.log(x);      // → 42"
+      ]
     },
     {
       "quien": "Rikka",
@@ -41,7 +57,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Ejercicio: una función que salude a alguien por su nombre. Saluden a Nikki. Alguien tiene que hacerlo."
+      "texto": "Ejercicio: una función que salude a alguien por su nombre. Saluden a Nikki. Alguien tiene que hacerlo.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Define la función con sip.",
+        "// 2. Devuelve el saludo con pour.",
+        "// 3. Llámala con el nombre: es un texto, va entre comillas."
+      ]
     }
   ],
   "ejercicio": {

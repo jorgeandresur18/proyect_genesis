@@ -6,7 +6,14 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/orgulloso.webp",
-      "texto": "Clase uno: variables. Una variable es una caja con nombre donde guardas un valor."
+      "texto": "Clase uno: variables. Una variable es una caja con nombre donde guardas un valor.",
+      "codigo": [
+        "brew sabor = 'espresso';",
+        "brew tazas = 3;",
+        "",
+        "// sabor y tazas son cajas con nombre:",
+        "// adentro guardan un valor."
+      ]
     },
     {
       "quien": "Cami",
@@ -16,7 +23,14 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/verguenza1.webp",
-      "texto": "…En Coffee se escribe brew. Lo que guardas con brew ya no cambia. Como un tatuaje. O como mis sentimientos."
+      "texto": "…En Coffee se escribe brew. Lo que guardas con brew ya no cambia. Como un tatuaje. O como mis sentimientos.",
+      "codigo": [
+        "brew sabor = 'espresso';",
+        "latte.log(sabor);   // → espresso",
+        "",
+        "sabor = 'decaf';    // ✗ TypeError:",
+        "                    //   lo que se guarda con brew no cambia"
+      ]
     },
     {
       "quien": "Nikki",
@@ -41,7 +55,13 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Ejercicio: guarden el nombre de una alumna y su edad, y muéstrenlos con latte.log. Las notas están en el explorador."
+      "texto": "Ejercicio: guarden el nombre de una alumna y su edad, y muéstrenlos con latte.log. Las notas están en el explorador.",
+      "codigo": [
+        "// Tu turno",
+        "// 1. Guarda el nombre de la alumna con brew (es un texto: va entre comillas).",
+        "// 2. Guarda su edad: un número, sin comillas.",
+        "// 3. Muéstralos con latte.log."
+      ]
     }
   ],
   "ejercicio": {

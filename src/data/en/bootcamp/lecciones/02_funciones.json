@@ -2,14 +2,14 @@
   "titulo": "Functions",
   "tema": "sip defines a function; pour returns the result.",
   "charla": [
-    { "texto": "Lesson two: functions. A function is a recipe: you give it ingredients, it does something and gives you back a result." },
-    { "texto": "In Coffee you define it with sip, and what it returns comes out with pour." },
+    { "texto": "Lesson two: functions. A function is a recipe: you give it ingredients, it does something and gives you back a result.", "codigo": ["sip double(n) {", "  pour n * 2;", "}", "", "// double takes an ingredient (n)", "// and gives back the result."] },
+    { "texto": "In Coffee you define it with sip, and what it returns comes out with pour.", "codigo": ["sip double(n) {", "  pour n * 2;      // pour returns", "}", "", "brew x = double(21);", "latte.log(x);      // → 42"] },
     { "texto": "Like a potion. You add herbs, you shake it, and it gives you back something you shouldn't drink." },
     { "texto": "jair has a function called textNikki. he passes it messages and it returns nothing. it's been broken for eight years" },
     { "texto": "That's not a broken function. It's an asynchronous function with a lot of patience." },
     { "texto": "Prof, why did you once name a variable “penis”?" },
     { "texto": "…It was a test. I was twenty-two and the linter accepted it. It was the only thing anyone accepted from me that year." },
-    { "texto": "Exercise: a function that greets someone by name. Greet Nikki. Somebody has to." }
+    { "texto": "Exercise: a function that greets someone by name. Greet Nikki. Somebody has to.", "codigo": ["// Your turn", "// 1. Define the function with sip.", "// 2. Return the greeting with pour.", "// 3. Call it with the name: it's text, it goes in quotes."] }
   ],
   "ejercicio": {
     "archivos": [
