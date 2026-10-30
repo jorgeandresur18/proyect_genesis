@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: las tarjetas de «Cómo usar», que salen solas la primera vez que se abre la app.",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio o perfil:<id>) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera).",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -11,7 +11,7 @@
       "nombre": "Jair",
       "foto": "fotos/boringram/jair_graduado.webp",
       "bio": "Ingeniero de software. Opiniones propias, sueldo ajeno.",
-      "publicaciones": 11,
+      "publicaciones": 9,
       "seguidores": 83,
       "seguidos": 214,
       "desbloqueo": "cap01_115n2"
@@ -228,23 +228,7 @@
       "tipo": "foto",
       "imagen": "fotos/boringram/jair_graduado.webp",
       "texto": "Ingeniero. Ahora sí, a ganar dinero.",
-      "likes": 61,
-      "hace": "hace 1 año",
-      "comentarios": [
-        {
-          "usuario": "lady.compila",
-          "texto": "Ahora sí, a ganar dinero. Y a pagar el crédito educativo hasta los 60 🙃"
-        }
-      ],
-      "desbloqueo": "cap01_115n2"
-    },
-    {
-      "id": "jair_graduacion_selfie",
-      "autor": "jair",
-      "tipo": "foto",
-      "imagen": "fotos/boringram/jair_graduacion_selfie.webp",
-      "texto": "Graduados. Ella puso la sonrisa; yo, las ojeras de la tesis.",
-      "likes": 74,
+      "likes": 97,
       "hace": "hace 1 año",
       "comentarios": [
         {
@@ -252,31 +236,37 @@
           "texto": "Cerré los ojos de felicidad. Tú los cerraste de sueño. Te conozco, compañero de tesis 🎓"
         },
         {
-          "usuario": "jair",
-          "texto": "Dormí tres horas en cuatro años. Me lo merezco."
-        }
-      ],
-      "desbloqueo": "cap01_115n2"
-    },
-    {
-      "id": "jair_tesis_aprobada",
-      "autor": "jair",
-      "tipo": "foto",
-      "imagen": "fotos/boringram/jair_tesis_aprobada.webp",
-      "texto": "TESIS APROBADA. Dos tutores, tres versiones finales y un servidor que se cayó la noche antes de la defensa. Gracias, compañera.",
-      "likes": 58,
-      "hace": "hace 1 año",
-      "comentarios": [
+          "usuario": "nikki",
+          "texto": "felicidades ingeniero 🎓 ahora si invitas algo que no sea a medias"
+        },
         {
           "usuario": "lady.compila",
-          "texto": "El servidor no se cayó. Lo apagaste tú porque «se estaba calentando». Lo voy a contar en tu boda."
+          "texto": "Y el servidor no se cayó: lo apagaste tú porque «se estaba calentando». Lo voy a contar en tu boda."
+        },
+        {
+          "usuario": "nikki",
+          "texto": "que boda. con quien. explicate"
         },
         {
           "usuario": "jair",
           "texto": "Eso queda entre nosotros y el log."
         }
       ],
-      "desbloqueo": "cap01_115n2"
+      "desbloqueo": "cap01_115n2",
+      "carrusel": [
+        {
+          "imagen": "fotos/boringram/jair_graduado.webp",
+          "texto": "Ingeniero. Ahora sí, a ganar dinero."
+        },
+        {
+          "imagen": "fotos/boringram/jair_graduacion_selfie.webp",
+          "texto": "Con mi compañera de tesis. Ella puso la sonrisa; yo, las ojeras."
+        },
+        {
+          "imagen": "fotos/boringram/jair_tesis_aprobada.webp",
+          "texto": "Hace unas semanas: TESIS APROBADA. Dos tutores, tres versiones finales y un servidor que se cayó la noche antes de la defensa."
+        }
+      ]
     }
   ],
   "destacadas": [
@@ -444,7 +434,11 @@
     "como_usar": "Cómo usar",
     "siguiente": "Siguiente",
     "saltar": "Saltar",
-    "entendido": "Entendido"
+    "entendido": "Entendido",
+    "paso": "{n} de {total}",
+    "menu": "Menú",
+    "cerrar_app": "Cerrar Boringram",
+    "carrusel": "Foto {n} de {total}"
   },
   "notificaciones": [
     {
@@ -577,49 +571,96 @@
   ],
   "tutorial": [
     {
-      "icono": "logo",
       "titulo": "Bienvenido a Boringram",
-      "texto": "La red social donde la gente sube su vida perfecta para que tú compares la tuya. Es gratis. Se cobra en autoestima."
+      "texto": "Te voy a llevar de la mano por toda la app. Disfrútalo: es la única vez que alguien te va a llevar de la mano."
     },
     {
-      "icono": "refresh",
-      "titulo": "Actualizar",
-      "texto": "Desliza el inicio hacia abajo para buscar publicaciones nuevas. Si no aparece nada, no es un error: nadie se acordó de ti."
+      "vista": "inicio",
+      "objetivo": "inicio",
+      "gesto": "abajo",
+      "titulo": "Inicio",
+      "texto": "Aquí sale lo que publican las cuentas que sigues. Arrastra hacia abajo desde arriba para actualizar. Si no aparece nada, no es un error: nadie se acordó de ti."
     },
     {
-      "icono": "heart",
+      "vista": "inicio",
+      "objetivo": "autor",
+      "gesto": "toque",
+      "titulo": "Perfiles",
+      "texto": "Toca la foto o el nombre de alguien para ver su perfil. Stalkear es gratis. La dignidad, no."
+    },
+    {
+      "vista": "inicio",
+      "objetivo": "foto",
+      "gesto": "doble",
+      "titulo": "Doble toque",
+      "texto": "Toca dos veces una foto para darle me gusta con un corazón gigante. Si tiene puntitos abajo, es un carrusel: desliza a los lados para ver las demás."
+    },
+    {
+      "vista": "inicio",
+      "objetivo": "like",
+      "gesto": "toque",
       "titulo": "Me gusta",
-      "texto": "Toca el corazón para dar me gusta. Es lo más cerca que vas a estar de tocar a alguien este mes."
+      "texto": "El corazón da y quita el me gusta. Es lo más cerca que vas a estar de tocar a alguien este mes."
     },
     {
-      "icono": "comment",
+      "vista": "inicio",
+      "objetivo": "comentar",
+      "gesto": "toque",
       "titulo": "Comentar",
-      "texto": "Toca el globo para comentar. Máximo dos comentarios por publicación: desde el tercero ya no es interés, es expediente."
+      "texto": "El globo abre la publicación para comentar. Máximo dos comentarios por publicación: desde el tercero ya no es interés, es expediente."
     },
     {
-      "icono": "story",
-      "titulo": "Historias",
-      "texto": "Toca el centro de una historia para dar me gusta. Mantén presionado y suelta una ráfaga de corazones. Desesperado, pero con estilo."
-    },
-    {
-      "icono": "share",
+      "vista": "inicio",
+      "objetivo": "compartir",
+      "gesto": "toque",
       "titulo": "Compartir",
       "texto": "La flecha comparte de verdad en tus redes. Tus contactos van a saber a qué juegas. Ve preparando la explicación."
     },
     {
-      "icono": "shade",
+      "vista": "perfil:nikki",
+      "objetivo": "destacadas",
+      "gesto": "toque",
+      "titulo": "Historias",
+      "texto": "Los círculos del perfil son historias destacadas. Adentro, toca el centro para dar me gusta o mantén presionado para soltar una ráfaga de corazones. Desesperado, pero con estilo."
+    },
+    {
+      "vista": "perfil:nikki",
+      "objetivo": "pestanas",
+      "gesto": "toque",
+      "titulo": "Fotos, pensamientos y me gusta",
+      "texto": "Cada perfil separa las fotos de los pensamientos. Los me gusta de los demás son privados. Los tuyos, no tanto."
+    },
+    {
+      "vista": "inicio",
+      "objetivo": "nav-mensajes",
+      "gesto": "toque",
+      "titulo": "Mensajes",
+      "texto": "Tus chats. Los que dejaste en visto también. Sobre todo esos."
+    },
+    {
+      "vista": "inicio",
+      "objetivo": "nav-perfil",
+      "gesto": "toque",
+      "titulo": "Tu perfil",
+      "texto": "Tus fotos, tus pensamientos y, en «Me gusta», todo lo que te gustó. Tú no te acuerdas; Boringram sí. Boringram nunca olvida."
+    },
+    {
+      "vista": "inicio",
+      "objetivo": "barra",
+      "gesto": "abajo",
       "titulo": "Notificaciones",
-      "texto": "Desliza la barra de arriba hacia abajo para ver las notificaciones. Casi todo es spam. Como tu correo. Como tus relaciones."
+      "texto": "Arrastra la barra de arriba hacia abajo para ver las notificaciones. Casi todo es spam. Como tu correo. Como tus relaciones."
     },
     {
-      "icono": "nav",
-      "titulo": "Inicio, mensajes y perfil",
-      "texto": "Abajo cambias de sección. En tu perfil, «Me gusta» guarda todo lo que te gustó. Tú no te acuerdas; Boringram sí. Boringram nunca olvida."
+      "vista": "inicio",
+      "objetivo": "ayuda",
+      "gesto": "toque",
+      "titulo": "Volver a ver esto",
+      "texto": "Si te pierdes, desde aquí repetimos el recorrido. Para cuando te pierdas en la vida no hay botón. Lo pedimos, pero no era rentable."
     },
     {
-      "icono": "help",
-      "titulo": "¿Perdido?",
-      "texto": "Toca «?» arriba y repetimos todo esto. Para cuando te pierdas en la vida no hay botón. Lo pedimos, pero no era rentable."
+      "titulo": "Listo",
+      "texto": "Ya sabes usar Boringram. Ahora sí, a perder el tiempo como un profesional."
     }
   ]
 }

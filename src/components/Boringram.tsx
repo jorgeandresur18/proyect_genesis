@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { createPortal } from 'react-dom';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
 import {
@@ -44,6 +45,8 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
   const [closing, setClosing] = useState(false);
   const [shade, setShade] = useState(false);
+  // «Cómo usar» desde fuera del celular: cada toque pide el recorrido otra vez.
+  const [tourRequest, setTourRequest] = useState(0);
 
   // En celular, Boringram va en vertical; al cerrarlo se suelta la orientación.
   useEffect(() => {
@@ -99,7 +102,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         ) : boot === 'skeleton' ? (
           <Skeleton label={b.data.textos.cargando} />
         ) : (
-          <App b={b} />
+          <App b={b} tourRequest={tourRequest} onClose={close} />
         )}
       </div>
       {/* Celular en horizontal: se pide girarlo (solo se ve con CSS en esa situación). */}
@@ -108,9 +111,22 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         <p>{b.data.textos.girar}</p>
         <p className={s.rotateNote}>{b.data.textos.girar_nota}</p>
       </div>
-      <button className={s.closeBtn} onClick={close}>
-        {b.data.textos.cerrar}
-      </button>
+      {/* En computadora, fuera del celular; en el celular van en el menú ⋮ de la app. */}
+      <div className={s.sideBtns}>
+        <button className={s.closeBtn} onClick={close}>
+          {b.data.textos.cerrar}
+        </button>
+        <button
+          className={s.helpOut}
+          data-tour="ayuda"
+          onClick={() => {
+            playSelect();
+            setTourRequest((n) => n + 1);
+          }}
+        >
+          <span aria-hidden>?</span> {b.data.textos.como_usar}
+        </button>
+      </div>
     </div>
   );
 }
@@ -128,6 +144,7 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
   return (
     <div
       className={s.status}
+      data-tour="barra"
       onPointerDown={(e) => {
         start.current = e.clientY;
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -297,6 +314,72 @@ function Pic({ src, className = '' }: { src: string; className?: string }) {
   if (isPlaceholder(src))
     return <span className={`${s.picPlaceholder} ${className}`}>{src.replace('PLACEHOLDER:', '')}</span>;
   return <img className={className} src={assetUrl(src)} alt="" loading="lazy" draggable={false} />;
+}
+
+/** Varias fotos en una publicación: se pasan deslizando o con las flechas; abajo, un puntito por foto. */
+function Carousel({
+  b,
+  slides,
+  index,
+  onIndex,
+}: {
+  b: B;
+  slides: { imagen: string }[];
+  index: number;
+  onIndex: (i: number) => void;
+}) {
+  const tx = b.data.textos;
+  const start = useRef<{ x: number; y: number } | null>(null);
+  const go = (i: number) => {
+    if (i < 0 || i >= slides.length) return;
+    playSelect();
+    onIndex(i);
+  };
+  const arrow = (dir: 1 | -1) => (
+    <button
+      type="button"
+      className={`${s.carouselArrow} ${dir < 0 ? s.carouselPrev : s.carouselNext}`}
+      aria-label={tx.carrusel.replace('{n}', String(index + dir + 1)).replace('{total}', String(slides.length))}
+      onPointerDown={(e) => e.stopPropagation()}
+      onClick={(e) => {
+        e.stopPropagation();
+        go(index + dir);
+      }}
+    >
+      {dir < 0 ? '‹' : '›'}
+    </button>
+  );
+  return (
+    <div
+      className={s.carousel}
+      onPointerDown={(e) => (start.current = { x: e.clientX, y: e.clientY })}
+      onPointerUp={(e) => {
+        const st = start.current;
+        start.current = null;
+        if (!st) return;
+        const dx = e.clientX - st.x;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - st.y)) go(index + (dx < 0 ? 1 : -1));
+      }}
+    >
+      <div className={s.carouselTrack} style={{ transform: `translateX(-${index * 100}%)` }}>
+        {slides.map((x, i) => (
+          <div key={i} className={s.carouselSlide} aria-hidden={i !== index}>
+            <Pic src={x.imagen} />
+          </div>
+        ))}
+      </div>
+      <span className={s.carouselCount}>
+        {index + 1}/{slides.length}
+      </span>
+      {index > 0 && arrow(-1)}
+      {index < slides.length - 1 && arrow(1)}
+      <div className={s.carouselDots} aria-hidden>
+        {slides.map((_, i) => (
+          <i key={i} className={i === index ? s.carouselDotOn : ''} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 /** Abre la ventana de compartir de una foto (ver ShareSheet). */
@@ -586,7 +669,7 @@ function usePullToRefresh(ref: React.RefObject<HTMLDivElement | null>, enabled: 
   return { pull, state };
 }
 
-function App({ b }: { b: B }) {
+function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: () => void }) {
   const tx = b.data.textos;
   const [view, setView] = useState<View>({ kind: 'feed' });
   const scroller = useDragScroll();
@@ -605,10 +688,14 @@ function App({ b }: { b: B }) {
   }, [view, scroller]);
   const markOpened = useStore((st) => st.markGalleryOpened);
   const [tutorial, setTutorial] = useState(() => !useStore.getState().galleryOpened[TUTORIAL_KEY]);
+  useEffect(() => {
+    if (tourRequest > 0) setTutorial(true);
+  }, [tourRequest]);
   const closeTutorial = () => {
     playCancel();
     markOpened(TUTORIAL_KEY);
     setTutorial(false);
+    setView({ kind: 'feed' });
   };
   const go = (next: View) => {
     playSelect();
@@ -629,7 +716,7 @@ function App({ b }: { b: B }) {
   if (!b.unlocked) {
     return (
       <>
-        <AppBar />
+        <AppBar b={b} onClose={onClose} />
         <div className={s.noSignal}>
           <span className={s.noSignalIcon} aria-hidden>
             ✕
@@ -659,14 +746,8 @@ function App({ b }: { b: B }) {
     >
       <ToastContext.Provider value={showToast}>
         <KeyboardProvider>
-          <AppBar
-            help={tx.como_usar}
-            onHelp={() => {
-              playSelect();
-              setTutorial(true);
-            }}
-          />
-          <div className={s.content} ref={scroller}>
+          <AppBar b={b} onClose={onClose} onHelp={() => setTutorial(true)} />
+          <div className={s.content} ref={scroller} data-tour="inicio">
             {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
               <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
                 {refresh.state === 'done' ? (
@@ -721,6 +802,7 @@ function App({ b }: { b: B }) {
               className={tab === 'mensajes' ? s.navOn : ''}
               onClick={() => go({ kind: 'mensajes' })}
               aria-label={tx.mensajes}
+              data-tour="nav-mensajes"
             >
               <svg viewBox="0 0 24 24" aria-hidden>
                 <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
@@ -731,6 +813,7 @@ function App({ b }: { b: B }) {
               className={tab === 'perfil' ? s.navOn : ''}
               onClick={() => go({ kind: 'perfil', id: b.data.yo })}
               aria-label={tx.perfil}
+              data-tour="nav-perfil"
             >
               <Avatar perfil={b.perfiles[b.data.yo]} small />
             </button>
@@ -741,75 +824,230 @@ function App({ b }: { b: B }) {
               <span>{toast.text}</span>
             </div>
           )}
-          {tutorial && <Tutorial b={b} onClose={closeTutorial} />}
+          {tutorial && b.data.tutorial.length > 0 && <Tour b={b} onView={setView} onClose={closeTutorial} />}
         </KeyboardProvider>
       </ToastContext.Provider>
     </ShareContext.Provider>
   );
 }
 
-function AppBar({ help, onHelp }: { help?: string; onHelp?: () => void }) {
+function AppBar({ b, onClose, onHelp }: { b: B; onClose: () => void; onHelp?: () => void }) {
+  const tx = b.data.textos;
+  const [menu, setMenu] = useState(false);
+  const pick = (action: () => void) => {
+    setMenu(false);
+    action();
+  };
   return (
     <div className={s.appBar}>
       <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
-      {onHelp && (
-        <button type="button" className={s.helpBtn} onClick={onHelp} aria-label={help} title={help}>
-          ?
-        </button>
+      {/* Solo en el celular (en computadora, «Cómo usar» y «Cerrar» van fuera de la pantalla). */}
+      <button
+        type="button"
+        className={s.menuBtn}
+        aria-label={tx.menu}
+        aria-expanded={menu}
+        data-tour="ayuda"
+        onClick={() => {
+          playSelect();
+          setMenu(!menu);
+        }}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden>
+          <circle cx="12" cy="5" r="1.8" />
+          <circle cx="12" cy="12" r="1.8" />
+          <circle cx="12" cy="19" r="1.8" />
+        </svg>
+      </button>
+      {menu && (
+        <>
+          <div className={s.menuShield} onClick={() => setMenu(false)} />
+          <div className={s.menu} role="menu">
+            {onHelp && (
+              <button
+                role="menuitem"
+                onClick={() =>
+                  pick(() => {
+                    playSelect();
+                    onHelp();
+                  })
+                }
+              >
+                <span aria-hidden>?</span> {tx.como_usar}
+              </button>
+            )}
+            <button role="menuitem" onClick={() => pick(onClose)}>
+              <span aria-hidden>✕</span> {tx.cerrar_app}
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
 }
 
-/** Dibujos de las tarjetas del tutorial (los mismos iconos que usa la app). */
-function TutorialIcon({ kind }: { kind: string }) {
-  if (kind === 'logo') return <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />;
-  if (kind === 'help') return <span className={s.tutQuestion}>?</span>;
-  const paths: Record<string, ReactNode> = {
-    refresh: <path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5" />,
-    heart: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
-    comment: <path d="M4 5h16v11H8l-4 4z" />,
-    story: (
-      <>
-        <circle cx="12" cy="12" r="9" strokeDasharray="4 2.2" />
-        <path d="M12 16s-3.5-2.2-3.5-5a2 2 0 0 1 3.5-1.3A2 2 0 0 1 15.5 11c0 2.8-3.5 5-3.5 5z" />
-      </>
-    ),
-    share: <path d="M21 3 3 10.5l7 2.5 2.5 7z" />,
-    shade: <path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 20.5a2 2 0 0 0 4 0" />,
-    nav: <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />,
-  };
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden>
-      {paths[kind]}
-    </svg>
-  );
-}
+type TourView = { kind: 'feed' } | { kind: 'perfil'; id: string };
 
-/** «Cómo usar»: tarjetas con lo que se puede hacer en Boringram. */
-function Tutorial({ b, onClose }: { b: B; onClose: () => void }) {
+/**
+ * «Cómo usar»: recorrido guiado. Cada paso lleva a su pantalla, ilumina lo que explica (un elemento con
+ * `data-tour`) y muestra el gesto (tocar, doble toque o arrastrar hacia abajo) junto a un globo con el texto.
+ * Si lo que señala no existe (p. ej. un perfil todavía bloqueado), el paso se salta. Se dibuja sobre toda la
+ * pantalla para poder señalar también lo que está fuera del celular.
+ */
+function Tour({ b, onView, onClose }: { b: B; onView: (v: TourView) => void; onClose: () => void }) {
   const tx = b.data.textos;
   const steps = b.data.tutorial;
   const [i, setI] = useState(0);
+  const dir = useRef<1 | -1>(1);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const [bubbleH, setBubbleH] = useState(200);
+  const bubble = useRef<HTMLDivElement>(null);
   const step = steps[i];
   const last = i === steps.length - 1;
-  return (
-    <div className={s.tutorial} role="dialog" aria-modal="true" aria-label={tx.como_usar}>
-      <div key={i} className={s.tutCard}>
-        <div className={s.tutIcon}>
-          <TutorialIcon kind={step.icono} />
-        </div>
+  const move = (d: 1 | -1) => {
+    dir.current = d;
+    setI((x) => Math.min(steps.length - 1, Math.max(0, x + d)));
+  };
+
+  // La pantalla del paso.
+  useEffect(() => {
+    if (!step.vista) return;
+    const [kind, id] = step.vista.split(':');
+    if (kind === 'perfil') {
+      if (b.perfiles[id]) onView({ kind: 'perfil', id });
+      else move(dir.current);
+    } else onView({ kind: 'feed' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i]);
+
+  // Sigue a lo señalado cuadro a cuadro (se mueve si la pantalla se desplaza o cambia de tamaño).
+  useEffect(() => {
+    setRect(null);
+    if (!step.objetivo) return;
+    let frame = 0;
+    let tries = 0;
+    let placed = false;
+    const tick = () => {
+      const el = [...document.querySelectorAll<HTMLElement>(`[data-tour="${step.objetivo}"]`)].find(
+        (e) => e.getClientRects().length > 0,
+      );
+      if (!el) {
+        if (++tries > 40) return move(dir.current);
+        frame = requestAnimationFrame(tick);
+        return;
+      }
+      if (!placed) {
+        placed = true;
+        if (step.objetivo === 'inicio') el.scrollTop = 0;
+        else el.scrollIntoView({ block: 'center' });
+      }
+      const r = el.getBoundingClientRect();
+      setRect((old) =>
+        old && old.top === r.top && old.left === r.left && old.width === r.width && old.height === r.height ? old : r,
+      );
+      if (bubble.current) setBubbleH(bubble.current.offsetHeight);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i]);
+
+  // Teclado: flechas para avanzar y volver; Escape cierra el recorrido (no Boringram).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      else if (e.key === 'ArrowRight' || e.key === 'Enter') return last ? onClose() : move(1);
+      else if (e.key === 'ArrowLeft') return move(-1);
+      else return;
+      e.stopImmediatePropagation();
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  });
+
+  // Dónde va el globo: debajo de lo señalado, o arriba si no cabe, o adentro si es muy grande.
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const W = Math.min(300, vw - 24);
+  const PAD = 6;
+  let pos: CSSProperties = {};
+  let arrow: 'arriba' | 'abajo' | null = null;
+  let arrowX = W / 2;
+  if (rect) {
+    const cx = rect.left + rect.width / 2;
+    const left = Math.min(vw - W - 12, Math.max(12, cx - W / 2));
+    arrowX = Math.min(W - 18, Math.max(18, cx - left));
+    if (rect.bottom + PAD + 16 + bubbleH < vh) {
+      pos = { left, top: rect.bottom + PAD + 14 };
+      arrow = 'arriba';
+    } else if (rect.top - PAD - 16 - bubbleH > 0) {
+      pos = { left, top: rect.top - PAD - 14 - bubbleH };
+      arrow = 'abajo';
+    } else pos = { left, top: Math.max(12, rect.bottom - bubbleH - 24) };
+  }
+  const swipe = step.gesto === 'abajo';
+  const hand: CSSProperties | null = rect
+    ? {
+        left: rect.left + rect.width / 2,
+        // En lo muy alto (una foto), el gesto va arriba para que no lo tape el globo.
+        top: swipe
+          ? rect.top + Math.min(rect.height / 2, 28)
+          : rect.top + rect.height * (rect.height > 220 ? 0.28 : 0.5),
+      }
+    : null;
+
+  return createPortal(
+    <div className={s.tour} role="dialog" aria-modal="true" aria-label={tx.como_usar}>
+      {rect ? (
+        <div
+          className={s.tourSpot}
+          style={{
+            left: rect.left - PAD,
+            top: rect.top - PAD,
+            width: rect.width + PAD * 2,
+            height: rect.height + PAD * 2,
+          }}
+        />
+      ) : (
+        <div className={s.tourDim} />
+      )}
+      {hand && step.gesto && (
+        <span
+          key={`${i}-${step.gesto}`}
+          className={`${s.tourHand} ${swipe ? s.tourSwipe : step.gesto === 'doble' ? s.tourDouble : ''}`}
+          style={hand}
+          aria-hidden
+        />
+      )}
+      <div
+        key={i}
+        ref={bubble}
+        className={`${s.tourBubble} ${rect ? '' : s.tourCenter} ${arrow ? s[`tourArrow_${arrow}`] : ''}`}
+        style={rect ? { ...pos, width: W, ['--arrow-x' as string]: `${arrowX}px` } : { width: W }}
+      >
+        {!rect && <img className={s.tourLogo} src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />}
+        <small className={s.tourStep}>
+          {tx.paso.replace('{n}', String(i + 1)).replace('{total}', String(steps.length))}
+        </small>
         <b className={s.tutTitle}>{step.titulo}</b>
         <p className={s.tutText}>{step.texto}</p>
-        <div className={s.tutDots} aria-hidden>
-          {steps.map((_, k) => (
-            <i key={k} className={k === i ? s.tutDotOn : ''} />
-          ))}
-        </div>
         <div className={s.tutBtns}>
           {!last && (
             <button type="button" className={s.tutSkip} onClick={onClose}>
               {tx.saltar}
+            </button>
+          )}
+          {i > 0 && (
+            <button
+              type="button"
+              className={s.tourBack}
+              onClick={() => {
+                playCancel();
+                move(-1);
+              }}
+            >
+              {tx.atras}
             </button>
           )}
           <button
@@ -818,14 +1056,15 @@ function Tutorial({ b, onClose }: { b: B; onClose: () => void }) {
             onClick={() => {
               if (last) return onClose();
               playSelect();
-              setI(i + 1);
+              move(1);
             }}
           >
             {last ? tx.entendido : tx.siguiente}
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -851,10 +1090,20 @@ function Avatar({
   );
 }
 
-function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (id: string) => void }) {
+function PostHead({
+  b,
+  post,
+  onPerfil,
+  tour,
+}: {
+  b: B;
+  post: Publicacion;
+  onPerfil: (id: string) => void;
+  tour?: boolean;
+}) {
   const p = b.perfiles[post.autor];
   return (
-    <button className={s.postHead} onClick={() => onPerfil(post.autor)}>
+    <button className={s.postHead} onClick={() => onPerfil(post.autor)} data-tour={tour ? 'autor' : undefined}>
       <Avatar perfil={p} small ring={b.destacadas.some((d) => d.autor === post.autor && b.newStories.has(d.id))} />
       <b>{p?.usuario ?? post.autor}</b>
       <small>{post.hace}</small>
@@ -863,7 +1112,8 @@ function PostHead({ b, post, onPerfil }: { b: B; post: Publicacion; onPerfil: (i
 }
 
 /** Corazón (rojo si Jair le dio me gusta), comentar y enviar; luego los me gusta. */
-function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onComment: () => void }) {
+function PostActions({ b, post, onComment, tour }: { b: B; post: Publicacion; onComment: () => void; tour?: boolean }) {
+  const mark = (id: string) => (tour ? id : undefined);
   const onShare = useShare();
   const tx = b.data.textos;
   const setLike = useStore((st) => st.setBoringramLike);
@@ -875,6 +1125,7 @@ function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onCommen
       <div className={s.postActions}>
         <button
           className={s.likeBtn}
+          data-tour={mark('like')}
           aria-pressed={liked}
           aria-label={tx.me_gusta.replace('{n}', String(n))}
           onClick={() => {
@@ -887,13 +1138,23 @@ function PostActions({ b, post, onComment }: { b: B; post: Publicacion; onCommen
             <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
           </svg>
         </button>
-        <button className={s.likeBtn} onClick={onComment} aria-label={tx.agregar_comentario}>
+        <button
+          className={s.likeBtn}
+          onClick={onComment}
+          aria-label={tx.agregar_comentario}
+          data-tour={mark('comentar')}
+        >
           <svg viewBox="0 0 24 24" className={s.shareIcon}>
             <path d="M4 5h16v11H8l-4 4z" />
           </svg>
         </button>
         {post.tipo === 'foto' ? (
-          <button className={s.likeBtn} onClick={() => onShare(post.id)} aria-label={tx.compartir}>
+          <button
+            className={s.likeBtn}
+            onClick={() => onShare(post.id)}
+            aria-label={tx.compartir}
+            data-tour={mark('compartir')}
+          >
             <svg viewBox="0 0 24 24" className={s.shareIcon}>
               <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
             </svg>
@@ -996,14 +1257,19 @@ function Post({
   onPerfil,
   onPost,
   full,
+  tour,
 }: {
   b: B;
   post: Publicacion;
   onPerfil: (id: string) => void;
   onPost?: (id: string) => void;
   full?: boolean;
+  /** La publicación que señala el tutorial. */
+  tour?: boolean;
 }) {
   const tx = b.data.textos;
+  const [slide, setSlide] = useState(0);
+  const caption = post.carrusel?.[slide]?.texto ?? post.texto;
   const user = b.perfiles[post.autor]?.usuario ?? post.autor;
   const isNew = b.newPosts.has(post.id);
   const setLike = useStore((st) => st.setBoringramLike);
@@ -1018,10 +1284,14 @@ function Post({
   return (
     <article className={`${s.post} ${post.tipo !== 'foto' ? s.textPost : ''}`}>
       {post.tipo === 'repost' && <p className={s.repostTag}>⟳ {tx.reposteo.replace('{usuario}', user)}</p>}
-      <PostHead b={b} post={post} onPerfil={onPerfil} />
+      <PostHead b={b} post={post} onPerfil={onPerfil} tour={tour} />
       {post.tipo === 'foto' && (
-        <div className={s.postImage} onDoubleClick={doubleTap}>
-          <Pic src={post.imagen!} />
+        <div className={s.postImage} onDoubleClick={doubleTap} data-tour={tour ? 'foto' : undefined}>
+          {post.carrusel ? (
+            <Carousel b={b} slides={post.carrusel} index={slide} onIndex={setSlide} />
+          ) : (
+            <Pic src={post.imagen!} />
+          )}
           {burst > 0 && (
             <svg key={burst} viewBox="0 0 24 24" className={s.burst} aria-hidden>
               <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
@@ -1043,10 +1313,10 @@ function Post({
           {isNew && <NewDot className={s.inlineDot} />}
         </blockquote>
       )}
-      <PostActions b={b} post={post} onComment={() => (full ? composer.current?.() : onPost?.(post.id))} />
+      <PostActions b={b} post={post} tour={tour} onComment={() => (full ? composer.current?.() : onPost?.(post.id))} />
       {post.tipo === 'foto' && (
         <p className={s.caption}>
-          <b>{user}</b> {post.texto}
+          <b>{user}</b> {caption}
         </p>
       )}
       <Comments b={b} post={post} all={full} onMore={() => onPost?.(post.id)} />
@@ -1055,12 +1325,23 @@ function Post({
   );
 }
 
+/** Insignia de carrusel (varias fotos) en las cuadrículas, como en las redes. */
+function MultiIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className={s.multiIcon} aria-hidden>
+      <rect x="7" y="3" width="14" height="14" rx="2" />
+      <path d="M17 21H5a2 2 0 0 1-2-2V7" />
+    </svg>
+  );
+}
+
 function Feed({ b, onPerfil, onPost }: { b: B; onPerfil: (id: string) => void; onPost: (id: string) => void }) {
   if (b.publicaciones.length === 0) return <p className={s.empty}>{b.data.textos.sin_publicaciones}</p>;
+  const guide = b.publicaciones.find((p) => p.tipo === 'foto')?.id;
   return (
     <div className={s.feed}>
       {b.publicaciones.map((p) => (
-        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} />
+        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} tour={p.id === guide} />
       ))}
     </div>
   );
@@ -1127,7 +1408,7 @@ function Profile({
         </div>
       )}
       {stories.length > 0 && (
-        <div className={s.highlights}>
+        <div className={s.highlights} data-tour="destacadas">
           {stories.map((h) => (
             <button key={h.id} className={s.highlight} onClick={() => onStory(h.id)}>
               <span className={`${s.highlightRing} ${b.newStories.has(h.id) ? s.avatarStory : ''}`}>
@@ -1139,7 +1420,7 @@ function Profile({
           ))}
         </div>
       )}
-      <div className={s.profileTabs} role="tablist">
+      <div className={s.profileTabs} role="tablist" data-tour="pestanas">
         {(['fotos', 'pensamientos', 'me_gusta'] as const).map((k) => (
           <button
             key={k}
@@ -1179,6 +1460,7 @@ function Profile({
               x.tipo === 'foto' ? (
                 <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
                   <Pic src={x.imagen!} />
+                  {x.carrusel && <MultiIcon />}
                 </button>
               ) : (
                 <button key={x.id} className={`${s.gridItem} ${s.gridText}`} onClick={() => onPost(x.id)}>
@@ -1193,6 +1475,7 @@ function Profile({
           {photos.map((x) => (
             <button key={x.id} className={s.gridItem} onClick={() => onPost(x.id)}>
               <Pic src={x.imagen!} />
+              {x.carrusel && <MultiIcon />}
               {b.newPosts.has(x.id) && <NewDot className={s.itemDot} />}
             </button>
           ))}

@@ -32,6 +32,8 @@ export interface Publicacion {
   tipo: 'foto' | 'texto' | 'repost';
   imagen?: string;
   texto?: string;
+  /** Varias fotos, cada una con su texto («imagen» y «texto» son los de la primera). */
+  carrusel?: { imagen: string; texto: string }[];
   repost?: { usuario: string; texto: string };
   likes: number;
   /** Jair le dio me gusta. */
@@ -85,6 +87,16 @@ export interface Estado {
   /** Modo de ahorro de energía (batería en naranja). */
   ahorro?: boolean;
 }
+/** Un paso del recorrido: lleva a una pantalla y señala algo (sin objetivo, tarjeta en el centro). */
+export interface PasoTutorial {
+  /** «inicio» o «perfil:<id>». */
+  vista?: string;
+  /** data-tour del elemento que se señala. */
+  objetivo?: string;
+  gesto?: 'toque' | 'doble' | 'abajo';
+  titulo: string;
+  texto: string;
+}
 export interface BoringramData {
   yo: string;
   /** Dirección del juego publicado (para compartir). */
@@ -99,8 +111,8 @@ export interface BoringramData {
   ajustes_rapidos: string[];
   dia: string;
   textos: Record<string, string>;
-  /** Tarjetas de «Cómo usar» (salen solas la primera vez). */
-  tutorial: { icono: string; titulo: string; texto: string }[];
+  /** Recorrido de «Cómo usar» (sale solo la primera vez). */
+  tutorial: PasoTutorial[];
 }
 
 /** Mezcla profunda: objetos por clave y listas por posición (lo que no se traduce queda en español). */

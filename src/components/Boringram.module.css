@@ -403,23 +403,65 @@
 .kbSpace { flex: 5; font-size: 0.75rem; color: #c9c9d2; }
 .kbOn { background: #f1f1f4; color: #0d0d10; }
 
-/* Botón «Cómo usar» y tutorial. */
-.appBar { justify-content: space-between; }
-.helpBtn { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; padding: 0; border: 1.5px solid #3a3a44; border-radius: 50%; background: #16161b; color: #c9c9d2; font-size: 0.85rem; font-weight: 700; }
-.helpBtn:hover { border-color: #ff3d7f; color: #fff; }
-.tutorial { position: absolute; inset: 0; z-index: 9; display: grid; place-items: center; padding: 1.2rem; background: rgba(5, 5, 8, 0.72); backdrop-filter: blur(3px); animation: tutFade 0.25s ease both; }
-@keyframes tutFade { from { opacity: 0; } }
-.tutCard { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.4rem 1.2rem 1.1rem; border: 1px solid #2a2a31; border-radius: 1.2rem; background: linear-gradient(180deg, #1c1c23, #121216); box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.6); text-align: center; animation: tutIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-@keyframes tutIn { from { opacity: 0; transform: translateY(0.8rem) scale(0.97); } }
-.tutIcon { display: grid; place-items: center; width: 4.2rem; height: 4.2rem; border-radius: 50%; background: linear-gradient(135deg, #a64dff, #ff3d7f); box-shadow: 0 0 1.4rem rgba(255, 61, 127, 0.4); }
-.tutIcon svg { width: 2rem; height: 2rem; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.tutIcon img { width: 2.6rem; height: 2.6rem; object-fit: contain; }
-.tutQuestion { color: #fff; font-size: 2rem; font-weight: 800; line-height: 1; }
+/* «Cómo usar»: botones fuera del celular (computadora), menú ⋮ (celular) y recorrido guiado. */
+.appBar { position: relative; justify-content: space-between; }
+.sideBtns { position: absolute; top: 1rem; right: 1rem; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.sideBtns .closeBtn { position: static; }
+.helpOut { display: flex; align-items: center; gap: 0.45rem; padding: 0.4rem 1rem 0.4rem 0.45rem; border: 1px solid #3a3a44; border-radius: 999px; background: #16161b; color: #e4e4ea; font-size: 0.85rem; }
+.helpOut span { display: grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; background: linear-gradient(135deg, #a64dff, #ff3d7f); color: #fff; font-size: 0.78rem; font-weight: 800; }
+.helpOut:hover { border-color: #ff3d7f; }
+.menuBtn { display: none; place-items: center; width: 1.9rem; height: 1.9rem; padding: 0; border: none; border-radius: 50%; background: none; }
+.menuBtn svg { width: 1.2rem; height: 1.2rem; fill: #e4e4ea; }
+.menuBtn:active { background: #1f1f25; }
+.menuShield { position: fixed; inset: 0; z-index: 9; }
+.menu { position: absolute; top: calc(100% - 0.2rem); right: 0.6rem; z-index: 10; display: flex; flex-direction: column; min-width: 12rem; padding: 0.35rem; border: 1px solid #2a2a31; border-radius: 0.8rem; background: #1b1b21; box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.6); animation: menuIn 0.18s ease both; transform-origin: top right; }
+@keyframes menuIn { from { opacity: 0; transform: scale(0.92); } }
+.menu button { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0.75rem; border: none; border-radius: 0.55rem; background: none; color: #f1f1f4; font-size: 0.88rem; text-align: left; }
+.menu button:hover, .menu button:active { background: #26262e; }
+.menu button span { width: 1rem; color: #ff3d7f; font-weight: 800; text-align: center; }
+@media (max-width: 600px) {
+  .sideBtns { display: none; }
+  .menuBtn { display: grid; }
+}
 .tutTitle { color: #f1f1f4; font-size: 1.05rem; }
 .tutText { margin: 0; color: #b9b9c4; font-size: 0.84rem; line-height: 1.45; }
-.tutDots { display: flex; gap: 0.3rem; margin-top: 0.2rem; }
-.tutDots i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #34343d; transition: background 0.2s, width 0.2s; }
-.tutDots .tutDotOn { width: 1.1rem; border-radius: 999px; background: #ff3d7f; }
 .tutBtns { display: flex; justify-content: flex-end; gap: 0.6rem; width: 100%; margin-top: 0.3rem; }
 .tutSkip { padding: 0.5rem 0.9rem; border: none; background: none; color: #8d8d99; font-size: 0.82rem; }
 .tutNext { flex: 1; padding: 0.6rem 1rem; border: none; border-radius: 999px; background: linear-gradient(135deg, #ff3d7f, #d6339f); color: #fff; font-size: 0.85rem; font-weight: 700; box-shadow: 0 0 0.8rem rgba(255, 61, 127, 0.35); }
+
+/* Carrusel: varias fotos en una publicación. */
+.carousel { position: relative; width: 100%; height: 100%; overflow: hidden; touch-action: pan-y; }
+.carouselTrack { display: flex; height: 100%; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.carouselSlide { flex: 0 0 100%; height: 100%; }
+.carouselSlide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carouselCount { position: absolute; top: 0.6rem; right: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(0, 0, 0, 0.6); color: #fff; font-size: 0.7rem; }
+.carouselArrow { position: absolute; top: 50%; display: grid; place-items: center; width: 1.7rem; height: 1.7rem; padding: 0 0 0.15rem; border: none; border-radius: 50%; background: rgba(255, 255, 255, 0.85); color: #111; font-size: 1.2rem; line-height: 1; transform: translateY(-50%); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+.carouselPrev { left: 0.5rem; }
+.carouselNext { right: 0.5rem; }
+.carouselDots { position: absolute; left: 0; right: 0; bottom: 0.6rem; display: flex; justify-content: center; gap: 0.3rem; }
+.carouselDots i { width: 0.38rem; height: 0.38rem; border-radius: 50%; background: rgba(255, 255, 255, 0.45); transition: background 0.2s, transform 0.2s; }
+.carouselDots .carouselDotOn { background: #fff; transform: scale(1.2); }
+.multiIcon { position: absolute; top: 0.4rem; right: 0.4rem; width: 1.05rem; height: 1.05rem; fill: none; stroke: #fff; stroke-width: 2; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7)); }
+
+/* Recorrido guiado: la pantalla se oscurece salvo lo que se explica. */
+.tour { position: fixed; inset: 0; z-index: 200; }
+.tourDim { position: absolute; inset: 0; background: rgba(5, 5, 8, 0.72); animation: tourFade 0.25s ease both; }
+@keyframes tourFade { from { opacity: 0; } }
+.tourSpot { position: fixed; border-radius: 0.8rem; box-shadow: 0 0 0 200vmax rgba(5, 5, 8, 0.72), 0 0 0 2px #ff3d7f, 0 0 1.4rem rgba(255, 61, 127, 0.6); pointer-events: none; transition: left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); animation: tourFade 0.25s ease both; }
+.tourHand { position: fixed; width: 1.6rem; height: 1.6rem; margin: -0.8rem 0 0 -0.8rem; border: 2px solid #fff; border-radius: 50%; background: rgba(255, 255, 255, 0.35); box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.7); pointer-events: none; animation: tourTap 1.3s ease-out infinite; }
+.tourDouble { animation: tourDouble 1.5s ease-out infinite; }
+.tourSwipe { animation: tourSwipe 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+@keyframes tourTap { 0% { transform: scale(1.5); opacity: 0; } 25% { transform: scale(1); opacity: 1; } 45% { transform: scale(0.8); } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes tourDouble { 0% { transform: scale(1.4); opacity: 0; } 15% { transform: scale(1); opacity: 1; } 25% { transform: scale(0.8); } 35% { transform: scale(1); } 45% { transform: scale(0.8); } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes tourSwipe { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 75% { transform: translateY(5.5rem); opacity: 1; } 100% { transform: translateY(6rem); opacity: 0; } }
+.tourBubble { position: fixed; display: flex; flex-direction: column; gap: 0.4rem; padding: 0.95rem 1rem 0.85rem; border: 1px solid #2f2f38; border-radius: 1rem; background: linear-gradient(180deg, #1f1f27, #141419); box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.65); text-align: left; animation: tourIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; transition: top 0.3s, left 0.3s; }
+@keyframes tourIn { from { opacity: 0; transform: translateY(0.5rem) scale(0.97); } }
+.tourCenter { top: 50%; left: 50%; align-items: center; text-align: center; transform: translate(-50%, -50%); animation: tourInCenter 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes tourInCenter { from { opacity: 0; transform: translate(-50%, -46%) scale(0.97); } }
+.tourBubble::before { content: ''; position: absolute; left: calc(var(--arrow-x, 50%) - 0.45rem); width: 0.9rem; height: 0.9rem; background: #1f1f27; border: 1px solid #2f2f38; transform: rotate(45deg); display: none; }
+.tourArrow_arriba::before { display: block; top: -0.48rem; border-right: none; border-bottom: none; }
+.tourArrow_abajo::before { display: block; bottom: -0.48rem; border-left: none; border-top: none; background: #141419; }
+.tourLogo { width: 3rem; height: 3rem; object-fit: contain; filter: drop-shadow(0 0 0.8rem rgba(255, 61, 127, 0.5)); }
+.tourStep { color: #ff6f9e; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.tourBack { padding: 0.5rem 0.9rem; border: 1px solid #3a3a44; border-radius: 999px; background: none; color: #d4d4dc; font-size: 0.82rem; }
+@media (prefers-reduced-motion: reduce) { .tourHand { animation: none; } .tourSpot { transition: none; } }
