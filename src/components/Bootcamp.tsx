@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
 import { playCancel, playSelect } from '../engine/sound';
@@ -486,7 +486,33 @@ function Resenas() {
   const nombre = useStore((s) => s.bootcampNombre);
   const [texto, setTexto] = useState('');
   const [error, setError] = useState('');
+  const [gracias, setGracias] = useState(false);
   const lista = CURSO.resenas;
+  // El carrusel: páginas de reseñas que se deslizan (con el dedo, arrastrando, con las flechas o las bolitas).
+  const pista = useRef<HTMLDivElement>(null);
+  const [pagina, setPagina] = useState(0);
+  const [paginas, setPaginas] = useState(1);
+  // Lo que avanza una página: el ancho visible más el espacio entre tarjetas.
+  const paso = (el: HTMLElement) => el.clientWidth + (parseFloat(getComputedStyle(el).columnGap) || 0);
+  const medir = useCallback(() => {
+    const el = pista.current;
+    if (!el) return;
+    setPaginas(Math.max(1, Math.ceil((el.scrollWidth - 2) / paso(el))));
+    setPagina(Math.round(el.scrollLeft / paso(el)));
+  }, []);
+  useEffect(() => {
+    medir();
+    window.addEventListener('resize', medir);
+    return () => window.removeEventListener('resize', medir);
+  }, [medir, resena]);
+  const irA = (n: number) => {
+    const el = pista.current;
+    if (!el) return;
+    const destino = Math.max(0, Math.min(paginas - 1, n));
+    el.scrollTo({ left: destino * paso(el), behavior: 'smooth' });
+  };
+  // Arrastrar con el mouse (en pantallas táctiles, el deslizamiento ya es nativo).
+  const arrastre = useRef<{ x: number; left: number } | null>(null);
   const todas = [...lista.map((r) => r.estrellas), ...(mia ? [mia] : [])];
   const promedio = todas.reduce((n, x) => n + x, 0) / todas.length;
   const publicar = () => {
@@ -498,6 +524,9 @@ function Resenas() {
     playSelect();
     resenar(texto);
     setTexto('');
+    // Tu reseña sale primera y el sistema te agradece.
+    setGracias(true);
+    pista.current?.scrollTo({ left: 0, behavior: 'smooth' });
   };
   const estrellasBtn = (
     <span className="bc-rate">
@@ -559,7 +588,36 @@ function Resenas() {
           </div>
         </div>
       )}
-      <div className="bc-reviews-list">
+      {gracias && resena && (
+        <p className="bc-review-thanks" role="status">
+          {fmt(tx.gracias_resena, { n: mia })}
+        </p>
+      )}
+      <div
+        className="bc-reviews-list"
+        ref={pista}
+        onScroll={medir}
+        onPointerDown={(e) => {
+          if (e.pointerType !== 'mouse' || !pista.current) return;
+          arrastre.current = { x: e.clientX, left: pista.current.scrollLeft };
+          pista.current.classList.add('arrastrando');
+        }}
+        onPointerMove={(e) => {
+          if (arrastre.current && pista.current) pista.current.scrollLeft = arrastre.current.left - (e.clientX - arrastre.current.x);
+        }}
+        onPointerUp={() => {
+          if (!arrastre.current || !pista.current) return;
+          arrastre.current = null;
+          pista.current.classList.remove('arrastrando');
+          irA(Math.round(pista.current.scrollLeft / paso(pista.current)));
+        }}
+        onPointerLeave={() => {
+          if (!arrastre.current || !pista.current) return;
+          arrastre.current = null;
+          pista.current.classList.remove('arrastrando');
+          irA(Math.round(pista.current.scrollLeft / paso(pista.current)));
+        }}
+      >
         {resena && (
           <div className="bc-review-own">
             <Resena usuario={nombre} hace={tx.hace_momento} estrellas={mia} texto={resena.texto} mia />
@@ -570,6 +628,7 @@ function Resenas() {
                 onClick={() => {
                   playCancel();
                   resenar(null);
+                  setGracias(false);
                 }}
               >
                 {tx.resena_borrar}
@@ -581,6 +640,46 @@ function Resenas() {
           <Resena key={i} usuario={r.usuario} hace={r.hace} estrellas={r.estrellas} texto={r.texto} />
         ))}
       </div>
+      {paginas > 1 && (
+        <nav className="bc-reviews-nav">
+          <button
+            className="bc-reviews-arrow"
+            aria-label={tx.resenas_anterior}
+            disabled={pagina <= 0}
+            onClick={() => {
+              playSelect();
+              irA(pagina - 1);
+            }}
+          >
+            ‹
+          </button>
+          <span className="bc-reviews-dots">
+            {Array.from({ length: paginas }, (_, n) => (
+              <button
+                key={n}
+                className={n === pagina ? 'on' : ''}
+                aria-label={fmt(tx.resenas_pagina, { n: n + 1 })}
+                aria-current={n === pagina}
+                onClick={() => {
+                  playSelect();
+                  irA(n);
+                }}
+              />
+            ))}
+          </span>
+          <button
+            className="bc-reviews-arrow"
+            aria-label={tx.resenas_siguientes}
+            disabled={pagina >= paginas - 1}
+            onClick={() => {
+              playSelect();
+              irA(pagina + 1);
+            }}
+          >
+            ›
+          </button>
+        </nav>
+      )}
     </section>
   );
 }
