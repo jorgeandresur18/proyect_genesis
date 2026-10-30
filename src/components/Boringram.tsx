@@ -822,37 +822,40 @@ function App({ b, tourRequest, onClose }: { b: B; tourRequest: number; onClose: 
           </div>
           {sharing && <ShareSheet b={b} id={sharing} onClose={() => setSharing(null)} />}
           {view.kind === 'story' && <StoryView b={b} id={view.id} onClose={() => back(view.back)} />}
-          <nav className={s.nav}>
-            <button
-              className={tab === 'inicio' ? s.navOn : ''}
-              onClick={() => go({ kind: 'feed' })}
-              aria-label={tx.inicio}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden>
-                <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
-              </svg>
-              {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
-            </button>
-            <button
-              className={tab === 'mensajes' ? s.navOn : ''}
-              onClick={() => go({ kind: 'mensajes' })}
-              aria-label={tx.mensajes}
-              data-tour="nav-mensajes"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden>
-                <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
-              </svg>
-              {b.newChats.size > 0 && <NewDot className={s.navDot} />}
-            </button>
-            <button
-              className={tab === 'perfil' ? s.navOn : ''}
-              onClick={() => go({ kind: 'perfil', id: b.data.yo })}
-              aria-label={tx.perfil}
-              data-tour="nav-perfil"
-            >
-              <Avatar perfil={b.perfiles[b.data.yo]} small />
-            </button>
-          </nav>
+          {/* Con una historia abierta no hay barra de abajo (como en las redes): así nunca tapa su pie. */}
+          {view.kind !== 'story' && (
+            <nav className={s.nav}>
+              <button
+                className={tab === 'inicio' ? s.navOn : ''}
+                onClick={() => go({ kind: 'feed' })}
+                aria-label={tx.inicio}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden>
+                  <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />
+                </svg>
+                {b.newPosts.size > 0 && <NewDot className={s.navDot} />}
+              </button>
+              <button
+                className={tab === 'mensajes' ? s.navOn : ''}
+                onClick={() => go({ kind: 'mensajes' })}
+                aria-label={tx.mensajes}
+                data-tour="nav-mensajes"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden>
+                  <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+                </svg>
+                {b.newChats.size > 0 && <NewDot className={s.navDot} />}
+              </button>
+              <button
+                className={tab === 'perfil' ? s.navOn : ''}
+                onClick={() => go({ kind: 'perfil', id: b.data.yo })}
+                aria-label={tx.perfil}
+                data-tour="nav-perfil"
+              >
+                <Avatar perfil={b.perfiles[b.data.yo]} small />
+              </button>
+            </nav>
+          )}
           {toast && (
             <div key={toast.key} className={s.appToast} role="status">
               <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />
