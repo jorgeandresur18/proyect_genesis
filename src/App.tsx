@@ -137,7 +137,7 @@ export default function App() {
       )}
       {overlay === 'history' && <HistoryPanel onClose={close} />}
       {(overlay === 'save' || overlay === 'load') && <SaveLoadPanel mode={overlay} onClose={close} />}
-      {overlay === 'map' && <SceneMap onClose={close} onJump={close} />}
+      {overlay === 'map' && <SceneMap onClose={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'gallery' && <CgGallery onClose={close} />}
       {overlay === 'boringram' && <BoringramScreen onClose={close} />}

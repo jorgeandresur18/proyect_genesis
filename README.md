@@ -41,7 +41,7 @@ La historia completa tendrá siete capítulos, dos finales principales que ocurr
 
 - **La noche del bar y el isekai:** el mundo real (la oficina, la heladería, el bar, el departamento) y la dimensión espacial del juego, hasta conocer a Rikka en el puente.
 - **Decisiones que importan:** algunas solo cambian una conversación; otras terminan la partida antes de tiempo. Ocho bad ends, cada uno con su pantalla.
-- **Mapa de decisiones** interactivo (se arrastra y se hace zoom) para ver los caminos recorridos y volver a cualquier decisión.
+- **Mapa de decisiones** interactivo (se arrastra y se hace zoom) para ver los caminos recorridos y lo que falta descubrir.
 - **Galería** de imágenes y de personajes (cada sprite con nombre y una ficha de humor negro que se escribe sola), y de finales. Todo se desbloquea al jugar, y lo nuevo se marca con una bolita.
 - **Boringram, el celular de Jair:** publicaciones, historias destacadas, mensajes, perfiles y un panel de notificaciones de apps parodia. Se llena a medida que avanza la historia, avisa cuando hay algo nuevo y se abre desde el título o desde la partida. Se pueden dar y quitar «me gusta» y **compartir las fotos de verdad** en Facebook, WhatsApp, X o Instagram, con su miniatura.
 - **Pantallas hechas en código:** el IDE GRAVITY, el correo con su bandeja de spam, el celular con Boringram (la parodia de Instagram), los mensajes y las historias de Nikki.

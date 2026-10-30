@@ -92,7 +92,7 @@ Campos: `scene_id` único; `background` o `video_fondo` (Shining Days como refer
 
 - **Mapa de escenas:** muestra las escenas vistas por archivo; permite volver a una escena con las variables de su primera visita.
 - **Galería de finales:** finales alcanzados con fecha; los no alcanzados aparecen como `???`. Los bad ends (`"tipo": "Bad end"` en el registro) van en su propia sección.
-- **Mapa de decisiones:** árbol horizontal que muestra solo decisiones, opciones y finales (`src/engine/flow.ts`).
+- **Mapa de decisiones:** árbol horizontal que muestra solo decisiones, opciones y finales (`src/engine/flow.ts`). Es de solo mirar: no deja saltar a una decisión (para volver a un punto, el guardado).
 - **Bad ends:** pantalla «BAD END» y vuelta al título.
 
 ## 4. Estado y variables

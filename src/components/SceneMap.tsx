@@ -31,15 +31,14 @@ const pos = (n: FlowNode) => ({ x: PAD + n.col * (NODE_W + COL_GAP), y: PAD + n.
 
 /**
  * Mapa de decisiones estilo Shiny Days: árbol horizontal con las decisiones, sus opciones y a dónde llevan.
- * Las decisiones vistas se pueden revisitar con las variables de su primera visita.
+ * Solo se mira: muestra lo visto y lo que falta, pero no deja saltar (para volver a un punto, el guardado).
  * Se arrastra para moverse y se acerca o aleja con la rueda, pellizcando o con los botones.
  */
-export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () => void }) {
+export function SceneMap({ onClose }: { onClose: () => void }) {
   const snapshots = useStore((s) => s.snapshots);
   const choicesTaken = useStore((s) => s.choicesTaken);
   const endingsSeen = useStore((s) => s.endingsSeen);
   const current = useStore((s) => s.game?.sceneId);
-  const jumpTo = useStore((s) => s.jumpTo);
   const t = useT();
   const lang = useLang();
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -198,7 +197,6 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
           {flow.nodes.map((n) => {
             const p = pos(n);
             const ok = reached(n);
-            const canJump = n.kind === 'decision' && ok;
             const classes = [
               'flow-node',
               `flow-${n.kind}`,
@@ -212,14 +210,8 @@ export function SceneMap({ onClose, onJump }: { onClose: () => void; onJump: () 
                 key={n.id}
                 className={classes}
                 style={{ left: p.x, top: p.y, width: NODE_W, height: NODE_H }}
-                disabled={!canJump}
-                title={canJump ? t('mapa.volver') : undefined}
-                onClick={() => {
-                  // Si fue un arrastre, no es un clic.
-                  if (gesture.current.moved > DRAG_THRESHOLD) return;
-                  jumpTo(n.sceneId!);
-                  onJump();
-                }}
+                // Solo se mira: a una decisión no se salta (para volver a un punto, el guardado).
+                disabled
               >
                 <span>{label(n)}</span>
               </button>
