@@ -122,6 +122,8 @@
   "progreso.falta": "Te falta {n} % para el 100 %: quedan {k} cosas por descubrir.",
   "progreso.completo": "100 %. Lo encontraste todo. Ahora sí, sal a tocar pasto.",
   "progreso.detalle": "Ver qué falta",
+  "progreso.escenas": "Escenas y diálogos leídos",
+  "progreso.decisiones": "Rutas (opciones elegidas)",
   "progreso.finales": "Finales",
   "progreso.imagenes": "Imágenes de la historia",
   "progreso.sprites": "Sprites",

@@ -61,8 +61,10 @@ export interface Destacada {
 export interface Mensaje {
   de: 'ella' | 'yo';
   texto: string;
+  cuando: string;
+  /** Calculados contra el reloj: la hora y, si cambia respecto del anterior, el día («Hoy», «Ayer», «Hace 5 meses»). */
   dia?: string;
-  hora: string;
+  hora?: string;
   destacado?: boolean;
   pendiente?: boolean;
   desbloqueo: string | null;
@@ -71,7 +73,9 @@ export interface Chat {
   id: string;
   perfil?: string;
   nombre?: string;
+  /** Puede llevar {hace}: cuándo estuvo activa («activo», o si no, su último mensaje). */
   estado: string;
+  activo?: string;
   visto?: boolean;
   mensajes: Mensaje[];
 }
@@ -237,7 +241,13 @@ export function useBoringram() {
   const tx = data.textos;
   const open = (x: { desbloqueo: string | null }) => !x.desbloqueo || !!visited[x.desbloqueo];
   // El reloj: la hora más reciente entre los puntos de la historia ya jugados y lo que desbloquearon.
-  const reached = [...data.estado, ...data.publicaciones, ...data.destacadas, ...data.notificaciones].filter(
+  const reached = [
+    ...data.estado,
+    ...data.publicaciones,
+    ...data.destacadas,
+    ...data.notificaciones,
+    ...data.chats.flatMap((c) => c.mensajes),
+  ].filter(
     (x): x is typeof x & { cuando: string } => !!x.desbloqueo && !!visited[x.desbloqueo] && !!x.cuando,
   );
   const ahora = Math.max(minutos(data.estado[0].cuando), ...reached.map((x) => minutos(x.cuando)));
@@ -262,9 +272,39 @@ export function useBoringram() {
   const perfiles = Object.fromEntries(Object.entries(data.perfiles).filter(([, p]) => open(p)));
   const publicaciones = timed(data.publicaciones.filter((p) => open(p) && perfiles[p.autor]));
   const destacadas = timed(data.destacadas.filter((d) => open(d) && perfiles[d.autor]));
+  // Mensajes: la hora de cada uno y el día cuando cambia; los chats, del más reciente al más viejo.
+  const today = Math.floor(ahora / 1440);
+  const dayLabel = (t: number) => {
+    const d = today - Math.floor(t / 1440);
+    if (d === 0) return tx.dia_hoy;
+    if (d === 1) return tx.dia_ayer;
+    const h = hace(tx, d * 1440);
+    return h.charAt(0).toUpperCase() + h.slice(1);
+  };
   const chats = data.chats
-    .map((c) => ({ ...c, mensajes: c.mensajes.filter(open) }))
-    .filter((c) => c.mensajes.length > 0);
+    .map((c) => {
+      let prev = '';
+      const mensajes = c.mensajes
+        .filter((m) => open(m) && minutos(m.cuando) <= ahora)
+        .map((m) => {
+          const t = minutos(m.cuando);
+          const dia = dayLabel(t);
+          const r = ((t % 1440) + 1440) % 1440;
+          const out = { ...m, hora: `${Math.floor(r / 60)}:${String(r % 60).padStart(2, '0')}`, dia: dia !== prev ? dia : undefined };
+          prev = dia;
+          return out;
+        });
+      const suyo = [...mensajes].reverse().find((m) => m.de === 'ella');
+      const activo = c.activo && minutos(c.activo) <= ahora ? minutos(c.activo) : suyo ? minutos(suyo.cuando) : ahora;
+      return {
+        ...c,
+        estado: c.estado.replace('{hace}', hace(tx, ahora - activo)),
+        mensajes,
+        last: mensajes.length ? minutos(mensajes[mensajes.length - 1].cuando) : 0,
+      };
+    })
+    .filter((c) => c.mensajes.length > 0)
+    .sort((a, b) => b.last - a.last);
   const notificaciones = timed(
     data.notificaciones
       .filter(open)

@@ -122,6 +122,8 @@
   "progreso.falta": "You're {n}% away from 100%: {k} things left to find.",
   "progreso.completo": "100%. You found everything. Now go touch some grass.",
   "progreso.detalle": "See what's missing",
+  "progreso.escenas": "Scenes and lines read",
+  "progreso.decisiones": "Routes (choices taken)",
   "progreso.finales": "Endings",
   "progreso.imagenes": "Story images",
   "progreso.sprites": "Sprites",

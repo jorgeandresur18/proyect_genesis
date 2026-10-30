@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento. Ajustes rápidos: se guardan (boringramAjustes); con el wifi y los datos apagados (o en modo avión) no se puede dar me gusta, comentar, responder ni compartir. Notificaciones que se ganan con los ajustes: «bor:no_molestar» (prender No molestar), «bor:avion» (volver a entrar después de salir en modo avión: se vuelve con wifi y datos) y «bor:linterna_olvidada» (salir con la linterna prendida). HORA: el celular sigue la hora del mundo real (no la del juego: allá el tiempo corre 45 veces más rápido). Cada cosa tiene «cuando» («D HH:MM»: D son los días desde el sábado de la historia; el viernes es -1); los «hace» se calculan solos contra el reloj del celular, que es la hora más reciente entre los «estado» y las cosas que ya se desbloquearon con una escena. Lo que todavía no pasó a esa hora no se ve. «estado» marca la hora en escenas donde pasa el tiempo (y la batería, si cambia: si no se pone, sigue la de antes). Las notificaciones se apilan de la más nueva a la más vieja. Las de «clave» toman la hora del celular cuando el jugador las desbloquea. «hasta» (la alarma): mientras falta, {falta}; después, «texto_pasada».",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera). «ajustes_iconos»: el icono de cada ajuste rápido, por posición; «linterna» prende el easter egg de la luz (y en el celular, si se puede, la linterna de verdad). «clave» en una notificación: no se desbloquea con una escena sino con algo que hace el jugador (se guarda en galleryOpened); p. ej. «bor:linterna», la primera vez que prende la linterna. «{bateria}» en el título o el texto se cambia por la batería del momento. Ajustes rápidos: se guardan (boringramAjustes); con el wifi y los datos apagados (o en modo avión) no se puede dar me gusta, comentar, responder ni compartir. Notificaciones que se ganan con los ajustes: «bor:no_molestar» (prender No molestar), «bor:avion» (volver a entrar después de salir en modo avión: se vuelve con wifi y datos) y «bor:linterna_olvidada» (salir con la linterna prendida). HORA: el celular sigue la hora del mundo real (no la del juego: allá el tiempo corre 45 veces más rápido). Cada cosa tiene «cuando» («D HH:MM»: D son los días desde el sábado de la historia; el viernes es -1); los «hace» se calculan solos contra el reloj del celular, que es la hora más reciente entre los «estado» y las cosas que ya se desbloquearon con una escena. Lo que todavía no pasó a esa hora no se ve. «estado» marca la hora en escenas donde pasa el tiempo (y la batería, si cambia: si no se pone, sigue la de antes). Las notificaciones se apilan de la más nueva a la más vieja. Las de «clave» toman la hora del celular cuando el jugador las desbloquea. «hasta» (la alarma): mientras falta, {falta}; después, «texto_pasada». Los mensajes también tienen «cuando»: la hora y el día («Hoy», «Ayer», «Hace 5 meses») se calculan contra el reloj; los chats van del más reciente al más viejo. «estado» de un chat con {hace}: cuándo estuvo activa la persona («activo», o si no, su último mensaje).",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -294,41 +294,39 @@
     {
       "id": "nikki",
       "perfil": "nikki",
-      "estado": "Activa hace 2 min",
+      "estado": "Activa {hace}",
       "mensajes": [
         {
           "de": "ella",
           "texto": "nunca te vayas de mi vida",
-          "dia": "Hace 1 año y medio",
-          "hora": "3:12",
           "destacado": true,
-          "desbloqueo": "cap01_115n3"
+          "desbloqueo": "cap01_115n3",
+          "cuando": "-548 03:12"
         },
         {
           "de": "ella",
           "texto": "ya llegue",
-          "dia": "Hoy",
-          "hora": "1:31",
-          "desbloqueo": "cap01_g5m_006"
+          "desbloqueo": "cap01_g5m_006",
+          "cuando": "0 01:31"
         },
         {
           "de": "ella",
           "texto": "no te enojes por lo de hoy",
-          "hora": "1:31",
-          "desbloqueo": "cap01_g5m_007"
+          "desbloqueo": "cap01_g5m_007",
+          "cuando": "0 01:31"
         },
         {
           "de": "ella",
           "texto": "buenos dias adelantado",
-          "hora": "1:31",
-          "desbloqueo": "cap01_g5m_008"
+          "desbloqueo": "cap01_g5m_008",
+          "cuando": "0 01:31"
         },
         {
           "de": "yo",
           "texto": "llegaste bien?",
-          "hora": "—",
           "pendiente": true,
-          "desbloqueo": "cap01_g5m_017"
+          "desbloqueo": "cap01_g5m_017",
+          "cuando": "0 01:32"
         }
       ]
     },
@@ -341,33 +339,31 @@
         {
           "de": "ella",
           "texto": "¡Hola, Jair! Detectamos que nadie ha visto tus últimas 9 publicaciones. Con Boringram Premium, tampoco las verán, pero te dolerá menos.",
-          "dia": "Hace 3 días",
-          "hora": "10:02",
-          "desbloqueo": "cap01_115n2"
+          "desbloqueo": "cap01_115n2",
+          "cuando": "-3 10:02"
         }
       ]
     },
     {
       "id": "excompanero",
       "nombre": "ing.marcelo.exitoso",
-      "estado": "Activo hace 1 h",
+      "estado": "Activo {hace}",
       "visto": true,
       "mensajes": [
         {
           "de": "ella",
           "texto": "¡Ingeniero! Cuánto tiempo. Te escribo por una oportunidad de negocio que te puede cambiar la vida. No es una pirámide, es un triángulo de prosperidad.",
-          "dia": "Hace 2 semanas",
-          "hora": "21:47",
-          "desbloqueo": "cap01_115n2"
+          "desbloqueo": "cap01_115n2",
+          "cuando": "-14 21:47"
         },
         {
           "de": "ella",
           "texto": "¿Viste mi mensaje? Ya somos 12 en el triángulo.",
-          "dia": "Hace 1 semana",
-          "hora": "08:15",
-          "desbloqueo": "cap01_115n2"
+          "desbloqueo": "cap01_115n2",
+          "cuando": "-7 08:15"
         }
-      ]
+      ],
+      "activo": "-1 23:20"
     },
     {
       "id": "sorteo",
@@ -378,9 +374,8 @@
         {
           "de": "ella",
           "texto": "FELICIDADES 🎉 Ganaste un celular de última generación. Solo envíanos tu número de cuenta, tu clave y una foto de tu alma.",
-          "dia": "Ayer",
-          "hora": "04:33",
-          "desbloqueo": "cap01_115n2"
+          "desbloqueo": "cap01_115n2",
+          "cuando": "-1 04:33"
         }
       ]
     }
@@ -465,7 +460,9 @@
     "hace_meses": "hace {n} meses",
     "hace_ano": "hace 1 año",
     "hace_anos": "hace {n} años",
-    "alarma_proxima": "programada"
+    "alarma_proxima": "programada",
+    "dia_hoy": "Hoy",
+    "dia_ayer": "Ayer"
   },
   "notificaciones": [
     {
