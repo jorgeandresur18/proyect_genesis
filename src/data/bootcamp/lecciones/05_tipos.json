@@ -125,7 +125,8 @@
       ],
       "Rikka": [
         "El instructor dijo: la multiplicación va antes que la suma. Primero las horas por el pago, después el sueldo.",
-        "Fíjate en las comillas. Un número con comillas es un texto disfrazado."
+        "Fíjate en las comillas. Un número con comillas es un texto disfrazado.",
+        { "texto": "Un texto no es un número aunque se le parezca. Las apariencias engañan.", "sprite": "sprites/rikka/seria.webp", "respuesta": { "quien": "Cami", "texto": "Lo dice la que parece de veinte y tiene quinientos. typeof Rikka: antigüedad.", "sprite": "sprites/cami/burla.webp" } }
       ],
       "Jair": [
         "typeof no miente. La empresa sí.",

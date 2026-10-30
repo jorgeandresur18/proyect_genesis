@@ -121,7 +121,8 @@
       ],
       "Rikka": [
         "Quizá el compilador está ofendido. En mi reino le ofreceríamos un tributo.",
-        "Lee las notas. Yo las leí y no entendí nada, pero se veía serio."
+        "Lee las notas. Yo las leí y no entendí nada, pero se veía serio.",
+        { "texto": "Si guardo mi edad con brew, ¿nadie la puede cambiar? Perfecto. Quinientos para siempre.", "sprite": "sprites/rikka/orgullosa.webp", "respuesta": { "quien": "Cami", "texto": "Quinientos años y todavía no aprende a sentarse sin que todo el salón voltee.", "sprite": "sprites/cami/burlona.webp" } }
       ],
       "Jair": [
         "En mi máquina funcionaba.",

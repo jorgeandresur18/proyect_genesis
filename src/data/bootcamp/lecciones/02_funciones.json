@@ -122,7 +122,8 @@
       ],
       "Rikka": [
         "Cuando una poción no funciona, se le grita. ¿Lo intento?",
-        "El profe dijo pour. Yo también lo oí. Creo."
+        "El profe dijo pour. Yo también lo oí. Creo.",
+        { "texto": "Una función es como un juramento: entra algo, sale algo, y no se rompe.", "sprite": "sprites/rikka/seria.webp", "respuesta": { "quien": "Cami", "texto": "Como tu juramento de no sonrojarte cuando te hablo. Van tres rotos hoy.", "sprite": "sprites/cami/burla.webp" } }
       ],
       "Jair": [
         "Este error no es mío, es de la versión anterior de mí."

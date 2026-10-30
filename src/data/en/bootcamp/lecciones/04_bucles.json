@@ -61,7 +61,7 @@
         "you used in. you always keep the positions and never what matters",
         "a loop that never ends. just like our fights"
       ],
-      "Rikka": ["Cami! Stop promising spankings in class.", "A thousand thrusts, a thousand mistakes. That's how you learn."],
+      "Rikka": ["Cami! Stop promising spankings in class.", "A thousand thrusts, a thousand mistakes. That's how you learn.", { "texto": "A thousand thrusts every morning. My training loop has no break.", "respuesta": { "texto": "That explains those legs. Those don't come from an empty for." } }],
       "Jair": ["This doesn't happen in production. Well, it does. It always does."]
     },
     "al_abrir": [

@@ -57,7 +57,7 @@
         },
         "let is like me: open to changes. brew is like Rikka: determined, and with a very well-occupied seat."
       ],
-      "Rikka": ["The desk is brew. Don't touch it. Switch that line off, don't fight it.", "First let for the cups. Then, plus one."],
+      "Rikka": ["The desk is brew. Don't touch it. Switch that line off, don't fight it.", "First let for the cups. Then, plus one.", { "texto": "I commented out your line, Cami. With //. You no longer exist in this file.", "respuesta": { "texto": "You can turn off my line, princess, but I'm still in your head. That one can't be commented out." } }],
       "Jair": ["TypeError: Assignment to constant variable. The most honest error in the industry.", "Commenting out code that doesn't work: half my career."]
     },
     "al_abrir": [

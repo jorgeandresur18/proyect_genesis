@@ -46,7 +46,7 @@
     },
     "exito": ["First: fix the login", "Pending: 4", "✔ Compiled. The backlog grew. As always."],
     "reacciones": {
-      "Rikka": ["The first one is zero. I wrote it three times in my notebook.", "push sends you to the back of the line. Like the ones who show up late for guard duty."],
+      "Rikka": ["The first one is zero. I wrote it three times in my notebook.", "push sends you to the back of the line. Like the ones who show up late for guard duty.", { "texto": "I made a list of the people I like. Cami is at position… let's see…", "respuesta": { "texto": "Zero? Tell me it's zero. The first one.", "respuesta": { "texto": "It's the last one. list.length minus one." } } }],
       "Cami": [
         {
           "texto": "pop takes the last one out of the list. Prof, what do I use to get Rikka out of her chair? With that ass, a crane.",

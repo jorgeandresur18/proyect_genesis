@@ -57,7 +57,7 @@
         "you wrote return. this isn't javascript. and i'm not your girlfriend. two truths",
         "your function returns nothing. it inherited your genes"
       ],
-      "Rikka": ["When a potion doesn't work, you yell at it. Shall I try?", "The instructor said pour. I heard it too. I think."],
+      "Rikka": ["When a potion doesn't work, you yell at it. Shall I try?", "The instructor said pour. I heard it too. I think.", { "texto": "A function is like an oath: something goes in, something comes out, and it doesn't break.", "respuesta": { "texto": "Like your oath not to blush when I talk to you. Three broken today." } }],
       "Jair": ["This error isn't mine, it's from the previous version of me."]
     },
     "al_abrir": [

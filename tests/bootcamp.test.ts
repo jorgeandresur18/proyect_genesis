@@ -69,13 +69,15 @@ describe('bootcamp', () => {
       expect(new Set(e.paleta).size).toBe(e.paleta.length);
       expect(e.exito.length).toBeGreaterThan(0);
       const quienes = Object.keys(CURSO.ide.retratos);
+      // Con las respuestas encadenadas de los diálogos (Rikka, Cami, Rikka…).
+      const cadena = (c: Comentario): Comentario[] => [c, ...(c.respuesta ? cadena(c.respuesta) : [])];
       const todos: Comentario[] = [
         ...(e.al_abrir ?? []),
         ...(e.al_resolver ?? []),
         ...Object.entries(e.reacciones).flatMap(([quien, list]) =>
-          list.flatMap((r) => (typeof r === 'string' ? [] : [{ quien, ...r }, ...(r.respuesta ? [r.respuesta] : [])])),
+          list.flatMap((r) => (typeof r === 'string' ? [] : [{ quien, ...r }])),
         ),
-      ];
+      ].flatMap(cadena);
       for (const c of todos) {
         if (c.sprite) sprite(c.sprite);
         expect(quienes, `${c.quien} tiene retrato`).toContain(c.quien);

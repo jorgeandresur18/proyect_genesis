@@ -57,7 +57,8 @@
       ],
       "Rikka": [
         "Maybe the compiler is offended. In my kingdom we'd offer it a tribute.",
-        "Read the notes. I read them and understood nothing, but they looked serious."
+        "Read the notes. I read them and understood nothing, but they looked serious.",
+        { "texto": "If I store my age with brew, nobody can change it? Perfect. Five hundred forever.", "respuesta": { "texto": "Five hundred years old and she still can't sit down without the whole room turning around." } }
       ],
       "Jair": ["It worked on my machine.", "This is the framework's fault. It's always the framework's fault."]
     },

@@ -1828,6 +1828,14 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 /* Busto: el sprite a 2,4 veces el ancho del cuadro, con la coronilla a un 7 % del borde (--head, según la estatura). */
 .ide-portrait img { position: absolute; left: 50%; top: calc(7% - var(--head) * 240%); width: 240%; max-width: none; height: auto; transform: translateX(-50%); }
 @keyframes ide-portrait-in { from { transform: translateY(40%); opacity: 0; } }
+/* Dos conversando (Cami dice algo de Rikka y Rikka contesta): el globo en medio apunta a quien habla; quien escucha,
+   más oscuro. */
+.ide-duo { max-width: min(40rem, 80%); }
+.ide-duo .ide-bubble { animation: ide-in 0.2s ease both; }
+.ide-bubble-left::after { right: auto; left: -0.55rem; border-right: 0; border-top: 0; border-left: 1px solid var(--who); border-bottom: 1px solid var(--who); }
+.ide-portrait img { transition: filter 0.25s; }
+.ide-portrait-quieto { border-color: color-mix(in srgb, var(--who) 40%, transparent); }
+.ide-portrait-quieto img { filter: brightness(0.55); }
 @media (max-width: 760px), (max-height: 480px) { .ide-portrait { width: 4.2rem; } .ide-bubble { font-size: 0.72rem; margin-bottom: 1.4rem; } }
 @media (prefers-reduced-motion: reduce) { .ide-reaction, .ide-portrait { animation: none; } }
 

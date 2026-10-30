@@ -58,7 +58,11 @@ interface Comentario {
   quien: string;
   texto: string;
   sprite?: string;
+  /** Otro personaje contesta: aparecen los dos juntos y el globo apunta a quien habla. */
+  respuesta?: Comentario;
 }
+/** Un comentario en pantalla; en un diálogo, con los dos que conversan (el primero a la derecha). */
+type Turno = { key: number; who: string; text: string; sprite: string; duo?: { key: number; a: Comentario; b: Comentario }; lado?: 'a' | 'b' };
 /** Lo que dura un comentario en pantalla. */
 const SAY_MS = 4500;
 const GAMES = import.meta.glob<Data>('../data/minijuegos/*.json', { eager: true, import: 'default' });
@@ -138,16 +142,28 @@ export function CoffeeIDE({
   const [busy, setBusy] = useState(false);
   const [solved, setSolved] = useState(false);
   const [wrong, setWrong] = useState<string | null>(null);
-  const [reaction, setReaction] = useState<{ key: number; who: string; text: string; sprite: string } | null>(null);
+  const [reaction, setReaction] = useState<Turno | null>(null);
   // Los comentarios esperan su turno: uno a la vez, cada uno con su sprite y su globo.
-  const queue = useRef<Comentario[]>([]);
+  const queue = useRef<Turno[]>([]);
   const portrait = (c: Comentario) =>
     c.sprite ?? data.retratos?.[c.quien] ?? `sprites/${c.quien.toLowerCase()}/base.webp`;
+  const turnos = (c: Comentario): Turno[] => {
+    const uno = (x: Comentario) => ({ key: 0, who: x.quien, text: x.texto, sprite: portrait(x) });
+    if (!c.respuesta) return [uno(c)];
+    // La respuesta puede tener su propia respuesta (A, B, A…): siguen los mismos dos en pantalla.
+    const duo = { key: Math.random(), a: c, b: c.respuesta };
+    const out: Turno[] = [];
+    for (let x: Comentario | undefined = c; x; x = x.respuesta)
+      out.push({ ...uno(x), duo, lado: x.quien === c.quien ? 'a' : 'b' });
+    return out;
+  };
+  const show = (t?: Turno) => setReaction(t ? { ...t, key: Date.now() } : null);
   const say = (list: Comentario[], now = false) => {
-    queue.current = now ? [...list] : [...queue.current, ...list];
+    const nuevos = list.flatMap(turnos);
+    queue.current = now ? nuevos : [...queue.current, ...nuevos];
     if (now || !reaction) {
       const next = queue.current.shift();
-      if (next) setReaction({ key: Date.now(), who: next.quien, text: next.texto, sprite: portrait(next) });
+      if (next) show(next);
     }
   };
   const termRef = useRef<HTMLDivElement>(null);
@@ -187,8 +203,7 @@ export function CoffeeIDE({
   useEffect(() => {
     if (!reaction) return;
     const timer = setTimeout(() => {
-      const next = queue.current.shift();
-      setReaction(next ? { key: Date.now(), who: next.quien, text: next.texto, sprite: portrait(next) } : null);
+      show(queue.current.shift());
     }, SAY_MS);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -263,8 +278,7 @@ export function CoffeeIDE({
         const name = who[turn.current++ % who.length];
         const r = pick(data.reacciones[name]);
         // Algunas traen respuesta (p. ej. Cami habla del cuerpo de Rikka y Rikka contesta, enojada o sonrojada).
-        if (typeof r === 'string') say([{ quien: name, texto: r }], true);
-        else say([{ quien: name, texto: r.texto, sprite: r.sprite }, ...(r.respuesta ? [r.respuesta] : [])], true);
+        say([typeof r === 'string' ? { quien: name, texto: r } : { quien: name, ...r }], true);
       }
     }, 700);
   };
@@ -451,19 +465,44 @@ export function CoffeeIDE({
             </div>
           ))}
         </div>
-        {reaction && (
-          <div key={reaction.key} className="ide-reaction" style={{ ['--who' as string]: speakerColor(reaction.who) }}>
-            <span className="ide-bubble">
-              <b>{reaction.who}</b>
-              <span>{reaction.text}</span>
-            </span>
-            <span className="ide-portrait" style={{ ['--head' as string]: headTop(reaction.sprite) }}>
-              <img src={assetUrl(reaction.sprite)} alt="" draggable={false} />
-            </span>
-          </div>
-        )}
+        {reaction &&
+          (reaction.duo ? (
+            // Dos conversando: quien empieza a la derecha, quien contesta a la izquierda; el globo, en medio.
+            <div key={reaction.duo.key} className="ide-reaction ide-duo">
+              <Retrato sprite={reaction.lado === 'b' ? reaction.sprite : portrait(reaction.duo.b)} who={reaction.duo.b.quien} quieto={reaction.lado !== 'b'} />
+              <Globo key={reaction.key} who={reaction.who} text={reaction.text} izquierda={reaction.lado === 'b'} />
+              <Retrato sprite={reaction.lado === 'a' ? reaction.sprite : portrait(reaction.duo.a)} who={reaction.duo.a.quien} quieto={reaction.lado !== 'a'} />
+            </div>
+          ) : (
+            <div key={reaction.key} className="ide-reaction">
+              <Globo who={reaction.who} text={reaction.text} />
+              <Retrato sprite={reaction.sprite} who={reaction.who} />
+            </div>
+          ))}
       </div>
     </div>
+  );
+}
+
+/** El globo de un comentario; el pico apunta a quien habla (a la derecha, o a la izquierda en un diálogo). */
+function Globo({ who, text, izquierda }: { who: string; text: string; izquierda?: boolean }) {
+  return (
+    <span className={`ide-bubble ${izquierda ? 'ide-bubble-left' : ''}`} style={{ ['--who' as string]: speakerColor(who) }}>
+      <b>{who}</b>
+      <span>{text}</span>
+    </span>
+  );
+}
+
+/** El busto de quien comenta; en un diálogo, quien escucha queda más oscuro. */
+function Retrato({ sprite, who, quieto }: { sprite: string; who: string; quieto?: boolean }) {
+  return (
+    <span
+      className={`ide-portrait ${quieto ? 'ide-portrait-quieto' : ''}`}
+      style={{ ['--who' as string]: speakerColor(who), ['--head' as string]: headTop(sprite) }}
+    >
+      <img src={assetUrl(sprite)} alt="" draggable={false} />
+    </span>
   );
 }
 

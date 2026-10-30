@@ -118,7 +118,8 @@
       ],
       "Rikka": [
         "¡Cami! Deja de prometer nalgadas en clase.",
-        "Mil estocadas, mil errores. Así se aprende."
+        "Mil estocadas, mil errores. Así se aprende.",
+        { "texto": "Mil estocadas cada mañana. Mi bucle de entrenamiento no tiene break.", "sprite": "sprites/rikka/orgullosa.webp", "respuesta": { "quien": "Cami", "texto": "Con razón esas piernas. Eso no sale de un for vacío.", "sprite": "sprites/cami/sonrojada.webp" } }
       ],
       "Jair": [
         "Esto en producción no pasa. Bueno, sí pasa. Siempre pasa."

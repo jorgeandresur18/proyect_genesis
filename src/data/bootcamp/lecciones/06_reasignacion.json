@@ -63,7 +63,7 @@
         },
         "let es como yo: abierta a cambios. brew es como Rikka: decidida y con un asiento muy bien ocupado."
       ],
-      "Rikka": ["El escritorio es brew. No se toca. Apaga esa línea, no la pelees.", "Primero let para las tazas. Después, más uno."],
+      "Rikka": ["El escritorio es brew. No se toca. Apaga esa línea, no la pelees.", "Primero let para las tazas. Después, más uno.", { "texto": "Comenté tu línea, Cami. Con //. Ya no existes en este archivo.", "sprite": "sprites/rikka/enojada.webp", "respuesta": { "quien": "Cami", "texto": "Puedes apagar mi línea, princesa, pero sigo en tu cabeza. Esa no se comenta.", "sprite": "sprites/cami/burlona.webp" } }],
       "Jair": ["TypeError: Assignment to constant variable. El error más honesto de la industria.", "Comentar código que no funciona: la mitad de mi carrera."]
     },
     "al_abrir": [

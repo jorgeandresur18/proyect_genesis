@@ -130,7 +130,8 @@
       ],
       "Rikka": [
         "No estoy sonrojada. Es la luz de la pantalla.",
-        "Cami, deja de mirarme así. Mira la pantalla."
+        "Cami, deja de mirarme así. Mira la pantalla.",
+        { "texto": "if (Cami habla) { Rikka se cambia de asiento }. Ya lo compilé en mi cabeza.", "sprite": "sprites/rikka/enojada.webp", "respuesta": { "quien": "Cami", "texto": "Te faltó el else: { Rikka se queda y finge que no le gusta }. Siempre hay plan B, princesa.", "sprite": "sprites/cami/burlona.webp" } }
       ],
       "Jair": [
         "El if está bien. Es el universo el que no compila."

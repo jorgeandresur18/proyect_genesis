@@ -62,7 +62,7 @@
         "you used = instead of ===. that's how you confessed the first time. you assigned without asking",
         "if your code were a relationship it would've left you on read already"
       ],
-      "Rikka": ["I'm not blushing. It's the screen light.", "Cami, stop looking at me like that. Look at the screen."],
+      "Rikka": ["I'm not blushing. It's the screen light.", "Cami, stop looking at me like that. Look at the screen.", { "texto": "if (Cami talks) { Rikka changes seats }. I already compiled it in my head.", "respuesta": { "texto": "You forgot the else: { Rikka stays and pretends she doesn't like it }. There's always a plan B, princess." } }],
       "Jair": ["The if is fine. It's the universe that doesn't compile."]
     },
     "al_abrir": [

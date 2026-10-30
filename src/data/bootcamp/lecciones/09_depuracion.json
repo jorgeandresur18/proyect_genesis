@@ -112,7 +112,8 @@
       ],
       "Rikka": [
         "El log dice NaN. Eso viene de la suma, estoy segura.",
-        "Las pistas están en el log del error. Yo las leería antes de seguir."
+        "Las pistas están en el log del error. Yo las leería antes de seguir.",
+        { "texto": "El practicante anterior dejó un mensaje a las 3:47. Deberíamos honrar su memoria.", "sprite": "sprites/rikka/seria.webp", "respuesta": { "quien": "Cami", "texto": "Yo también mando mensajes a las 3:47. Pero a los míos sí les contestan.", "sprite": "sprites/cami/burla.webp" } }
       ],
       "Nikki": [
         "el practicante anterior dejó tres bugs y un mensaje a las 3:47. la empresa lo llama «cultura de compromiso»",

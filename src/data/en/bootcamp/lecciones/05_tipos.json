@@ -61,7 +61,8 @@
       ],
       "Rikka": [
         "The instructor said: multiplication comes before addition. First hours times pay, then the salary.",
-        "Watch the quotes. A number in quotes is text in disguise."
+        "Watch the quotes. A number in quotes is text in disguise.",
+        { "texto": "A string isn't a number even if it looks like one. Appearances deceive.", "respuesta": { "texto": "Says the one who looks twenty and is five hundred. typeof Rikka: antique." } }
       ],
       "Jair": ["typeof doesn't lie. The company does.", "If you get '12000' you joined text. I wish that were your salary."]
     },

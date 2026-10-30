@@ -107,7 +107,8 @@
     "reacciones": {
       "Rikka": [
         "La primera es la cero. Lo anoté tres veces en mi cuaderno.",
-        "push manda al final de la fila. Como a los que llegan tarde a la guardia."
+        "push manda al final de la fila. Como a los que llegan tarde a la guardia.",
+        { "texto": "Hice una lista de la gente que me cae bien. Cami está en la posición… a ver…", "sprite": "sprites/rikka/tierna.webp", "respuesta": { "quien": "Cami", "texto": "¿La cero? Dime que es la cero. La primera.", "sprite": "sprites/cami/sonrojada1.webp", "respuesta": { "quien": "Rikka", "texto": "Es la última. lista.length menos uno.", "sprite": "sprites/rikka/enojada.webp" } } }
       ],
       "Cami": [
         {
