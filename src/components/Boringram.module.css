@@ -480,3 +480,19 @@
 .storyRailItem .avatar { width: 3.5rem; height: 3.5rem; }
 .storyRailItem small { max-width: 100%; overflow: hidden; font-size: 0.68rem; white-space: nowrap; text-overflow: ellipsis; }
 .railDot { position: absolute; top: 0; right: 0.1rem; }
+
+/* Ajustes rápidos con icono y la linterna (easter egg). */
+.tiles button { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+.tileIcon { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Detrás del celular: la luz de la linterna se derrama alrededor del teléfono. */
+.torchGlow { position: absolute; inset: 0; pointer-events: none; background:
+  radial-gradient(ellipse 34rem 26rem at 50% 12%, rgba(255, 250, 232, 1) 0%, rgba(255, 245, 212, 0.75) 25%, rgba(255, 236, 190, 0.32) 52%, transparent 75%),
+  radial-gradient(ellipse 70rem 55rem at 50% 30%, rgba(255, 240, 210, 0.28), transparent 70%);
+  animation: torchOn 0.45s steps(1) both, torchBreath 3.5s ease-in-out 0.45s infinite; }
+/* La luz se escapa por los bordes del celular, como si la linterna estuviera detrás. */
+.torchOn .phone { box-shadow: 0 0 0 1px #3a3a42, 0 -1.5rem 6rem 1.5rem rgba(255, 246, 220, 0.75), 0 0 10rem 3rem rgba(255, 238, 200, 0.35); transition: box-shadow 0.3s; }
+@keyframes torchOn { 0% { opacity: 0; } 15% { opacity: 1; } 30% { opacity: 0.2; } 45% { opacity: 1; } 60% { opacity: 0.6; } 100% { opacity: 1; } }
+@keyframes torchBreath { 50% { opacity: 0.88; } }
+/* Celular sin linterna real: la pantalla se ilumina un poco, como si la luz rebotara. */
+.torchScreen { position: absolute; inset: 0; z-index: 30; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(255, 250, 235, 0.55), rgba(255, 250, 235, 0.12) 45%, transparent 75%); animation: torchOn 0.45s steps(1) both; }
+@media (prefers-reduced-motion: reduce) { .torchGlow, .torchScreen { animation: none; } }

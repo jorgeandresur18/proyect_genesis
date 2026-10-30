@@ -111,6 +111,8 @@ export interface BoringramData {
   notificaciones: Notificacion[];
   estado: Estado[];
   ajustes_rapidos: string[];
+  /** Icono de cada ajuste rápido, por posición (wifi, datos, bluetooth, linterna, no_molestar, avion). */
+  ajustes_iconos: string[];
   dia: string;
   textos: Record<string, string>;
   /** Recorrido de «Cómo usar» (sale solo la primera vez). */

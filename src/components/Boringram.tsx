@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
@@ -45,6 +45,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const [boot, setBoot] = useState<'logo' | 'skeleton' | 'app'>(reduce ? 'app' : 'logo');
   const [closing, setClosing] = useState(false);
   const [shade, setShade] = useState(false);
+  const torch = useTorch();
   // «Cómo usar» desde fuera del celular: cada toque pide el recorrido otra vez.
   const [tourRequest, setTourRequest] = useState(0);
   // Lupa (solo en computadora): la app en vertical a toda la altura, sin el marco del celular. Se recuerda.
@@ -103,7 +104,11 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   });
 
   return (
-    <div className={`${s.screen} ${closing ? s.closing : ''} ${big ? s.big : ''}`}>
+    <div
+      className={`${s.screen} ${closing ? s.closing : ''} ${big ? s.big : ''} ${torch.on && !torch.touch ? s.torchOn : ''}`}
+    >
+      {/* Easter egg: con la linterna prendida, detrás del celular se enciende una luz (en computadora). */}
+      {torch.on && !torch.touch && <div className={s.torchGlow} aria-hidden />}
       <div className={s.phone}>
         {/* Pantalla apagada: se va al terminar de subir y vuelve al bloquear el celular. */}
         <div className={s.screenOff} aria-hidden>
@@ -113,7 +118,9 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
           </svg>
         </div>
         <StatusBar b={b} onPull={() => boot === 'app' && setShade(true)} />
-        {shade && <Shade b={b} onClose={() => setShade(false)} />}
+        {shade && <Shade b={b} torch={torch.on} onTorch={torch.toggle} onClose={() => setShade(false)} />}
+        {/* Celular sin linterna real (o sin permiso): la pantalla se ilumina. */}
+        {torch.on && torch.touch && !torch.real && <div className={s.torchScreen} aria-hidden />}
         {boot === 'logo' ? (
           <div className={s.splash}>
             <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
@@ -160,6 +167,71 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
 }
 
 const BIG_KEY = 'genesis-boringram-grande';
+
+/** Iconos de los ajustes rápidos del panel de notificaciones. */
+function TileIcon({ kind }: { kind: string }) {
+  const paths: Record<string, ReactNode> = {
+    wifi: <path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0M12 19.5h.01" />,
+    datos: <path d="M8 20V8M4 12l4-4 4 4M16 4v12M12 12l4 4 4-4" />,
+    bluetooth: <path d="m7 7 10 10-5 5V2l5 5L7 17" />,
+    linterna: <path d="M8 2h8v4l-2 4v11a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V10L8 6zM12 13v2M8 6h8" />,
+    no_molestar: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M7.5 12h9" />
+      </>
+    ),
+    avion: <path d="M10.5 21v-6L3 17v-2l7.5-5V4.5a1.5 1.5 0 0 1 3 0V10L21 15v2l-7.5-2v6l-1.5-1z" />,
+  };
+  return (
+    <svg viewBox="0 0 24 24" className={s.tileIcon} aria-hidden>
+      {paths[kind]}
+    </svg>
+  );
+}
+
+/**
+ * La linterna del panel. En computadora es un easter egg: una luz detrás del celular. En el celular intenta
+ * prender la linterna de verdad (Chrome en Android, con permiso de cámara: es la única forma de llegar al flash);
+ * si no se puede, la pantalla se ilumina.
+ */
+function useTorch() {
+  const [on, setOn] = useState(false);
+  const [real, setReal] = useState(false);
+  const stream = useRef<MediaStream | null>(null);
+  const wanted = useRef(false);
+  const stop = () => {
+    stream.current?.getTracks().forEach((t) => t.stop());
+    stream.current = null;
+    setReal(false);
+  };
+  // Al cerrar Boringram, la linterna se apaga.
+  useEffect(() => () => stream.current?.getTracks().forEach((t) => t.stop()), []);
+  const toggle = async () => {
+    const next = !on;
+    wanted.current = next;
+    setOn(next);
+    if (!next) return stop();
+    if (!window.matchMedia('(pointer: coarse)').matches || !navigator.mediaDevices?.getUserMedia) return;
+    try {
+      const media = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } } });
+      const track = media.getVideoTracks()[0];
+      const caps = track.getCapabilities?.() as (MediaTrackCapabilities & { torch?: boolean }) | undefined;
+      if (!caps?.torch || !wanted.current) {
+        media.getTracks().forEach((t) => t.stop());
+        return;
+      }
+      await track.applyConstraints({ advanced: [{ torch: true } as MediaTrackConstraintSet] });
+      stream.current = media;
+      setReal(true);
+    } catch {
+      // Sin permiso o sin linterna: queda el efecto en la pantalla.
+    }
+  };
+  // En pantallas táctiles (el celular), la luz va sobre la pantalla; en computadora, detrás del celular.
+  const touch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  return { on, real, touch, toggle };
+}
 
 /**
  * Barra de estado: a la izquierda la hora y las notificaciones (Boringram si hay publicaciones o historias
@@ -254,7 +326,7 @@ function StatusBar({ b, onPull }: { b: B; onPull: () => void }) {
  * y apagan y las notificaciones (apps parodia; se desbloquean con la historia). Se cierra arrastrando hacia
  * arriba, con la manija o tocando fuera de la lista.
  */
-function Shade({ b, onClose }: { b: B; onClose: () => void }) {
+function Shade({ b, torch, onTorch, onClose }: { b: B; torch: boolean; onTorch: () => void; onClose: () => void }) {
   const tx = b.data.textos;
   const c = b.estado;
   const [tiles, setTiles] = useState<Record<string, boolean>>({ 0: true, 1: true });
@@ -285,18 +357,26 @@ function Shade({ b, onClose }: { b: B; onClose: () => void }) {
         <span className={s.shadeDay}>{b.data.dia}</span>
       </div>
       <div className={s.tiles}>
-        {b.data.ajustes_rapidos.map((name, i) => (
-          <button
-            key={name}
-            className={tiles[i] ? s.tileOn : ''}
-            onClick={() => {
-              playSelect();
-              setTiles({ ...tiles, [i]: !tiles[i] });
-            }}
-          >
-            {name}
-          </button>
-        ))}
+        {b.data.ajustes_rapidos.map((name, i) => {
+          const icon = b.data.ajustes_iconos[i];
+          const isTorch = icon === 'linterna';
+          const on = isTorch ? torch : tiles[i];
+          return (
+            <button
+              key={name}
+              className={on ? s.tileOn : ''}
+              aria-pressed={!!on}
+              onClick={() => {
+                playSelect();
+                if (isTorch) onTorch();
+                else setTiles({ ...tiles, [i]: !tiles[i] });
+              }}
+            >
+              <TileIcon kind={icon} />
+              {name}
+            </button>
+          );
+        })}
       </div>
       <div className={s.notifHead}>
         <b>{tx.notificaciones}</b>
