@@ -620,7 +620,7 @@
 ### fondos/calle_noche_taxi.webp
 
 > ♪ música: nightcity
-`108` — Afuera son casi las dos. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía.
+`108` — Afuera ya pasó la medianoche. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía.
 
 `109` **Nikki:** Pídeme un taxi. Pagas tú, que tienes dinero guardado. Yo sé.
 
@@ -780,7 +780,7 @@
 
 `bad_rechazo_001` — Jair mira el correo. Piensa en Nikki subiéndose al taxi. En que le dijo que no.
 
-`bad_rechazo_002` **Jair:** (Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)
+`bad_rechazo_002` **Jair:** (Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a la una de la mañana.)
 
 > ♪ silencio
 `bad_rechazo_003` — Elimina el correo.
@@ -805,7 +805,7 @@
 
 ### PANTALLA:pc_correo
 
-`127` — Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días».
+`127` — Lo descarga igual. Está borracho, es la una de la mañana y hace mucho que nadie le dice «buenos días».
 
 
 ### PANTALLA:gravity_ide
@@ -947,7 +947,7 @@
 
 `g1_023` — Nadie contesta. Mira alrededor: ruinas, estrellas, nadie. La voz no venía de ningún lado. Y para ser un sueño, el frío de la piedra bajo las manos se siente demasiado real.
 
-`g1_024` **Jair:** (Esto pasa por instalar cosas de correos desconocidos a las tres de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)
+`g1_024` **Jair:** (Esto pasa por instalar cosas de correos desconocidos a la una de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)
 
 `g1_025` — Jair se pone de pie. El piso se mueve un poco. O él se mueve un poco. En el espacio es difícil saber quién está borracho.
 

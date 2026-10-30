@@ -7169,7 +7169,7 @@
       ],
       "dialogue": {
         "speaker": null,
-        "text": "Afuera son casi las dos. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía."
+        "text": "Afuera ya pasó la medianoche. Nikki camina en zigzag hacia la esquina, abrazada todavía a la botella vacía."
       },
       "choices": [],
       "conditions": [],
@@ -8249,7 +8249,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a las tres de la mañana.)"
+        "text": "(Por primera vez en ocho años dije que no. No lo voy a arruinar instalando virus a la una de la mañana.)"
       },
       "choices": [],
       "conditions": [],
@@ -8371,7 +8371,7 @@
       "characters": [],
       "dialogue": {
         "speaker": null,
-        "text": "Lo descarga igual. Está borracho, son casi las tres de la mañana y hace mucho que nadie le dice «buenos días»."
+        "text": "Lo descarga igual. Está borracho, es la una de la mañana y hace mucho que nadie le dice «buenos días»."
       },
       "choices": [],
       "conditions": [],
@@ -9575,7 +9575,7 @@
       ],
       "dialogue": {
         "speaker": "Jair",
-        "text": "(Esto pasa por instalar cosas de correos desconocidos a las tres de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)"
+        "text": "(Esto pasa por instalar cosas de correos desconocidos a la una de la mañana. Se lo he dicho a cuatrocientos clientes. Nunca pensé que tendría que decírmelo a mí.)"
       },
       "choices": [],
       "conditions": [],
