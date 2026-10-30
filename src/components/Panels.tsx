@@ -10,6 +10,7 @@ import conoceMasEn from '../data/en/conoce_mas.json';
 import { enterPlayMode } from '../engine/mobile';
 import { playCancel, playSelect } from '../engine/sound';
 import { SaveThumb } from './SaveThumb';
+import { NoData } from './NoData';
 import { NewDot } from './CgGallery';
 import { useGalleryState } from '../engine/gallery';
 import { useCompletion } from '../engine/completion';
@@ -104,10 +105,8 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
             {slot ? (
               <SaveThumb sceneId={slot.sceneId} finished={slot.finished} />
             ) : (
-              <div className="save-thumb save-thumb-empty" aria-hidden>
-                <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
-                  {t('guardar.sin_datos')}
-                </span>
+              <div className="save-thumb">
+                <NoData />
               </div>
             )}
             <div className="slot-info">

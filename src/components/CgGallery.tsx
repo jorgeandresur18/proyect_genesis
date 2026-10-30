@@ -15,6 +15,7 @@ import {
 } from '../engine/gallery';
 import { Panel } from './Panels';
 import { playCancel, playSelect, startTyping, stopTyping } from '../engine/sound';
+import { NoData } from './NoData';
 
 interface Texts {
   titulos: Record<string, string>;
@@ -180,7 +181,9 @@ function Images() {
             </button>
           ) : (
             <button key={id} className="gallery-item gallery-locked" disabled>
-              <div className="gallery-thumb">?</div>
+              <div className="gallery-thumb">
+                  <NoData />
+                </div>
               <span className="gallery-title">???</span>
             </button>
           ),
@@ -253,10 +256,8 @@ function Characters() {
           </button>
         ) : (
           <div key={s.expr} className="sprite-item" aria-hidden>
-            <span className="sprite-cell save-thumb-empty">
-              <span className="save-thumb-nodata" data-text={t('guardar.sin_datos')}>
-                {t('guardar.sin_datos')}
-              </span>
+            <span className="sprite-cell">
+              <NoData />
             </span>
             <span className="sprite-name muted">???</span>
           </div>
