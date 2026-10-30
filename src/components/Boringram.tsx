@@ -55,13 +55,22 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
   const aj = useStore((st) => st.boringramAjustes);
   const setAj = useStore((st) => st.setBoringramAjustes);
   const evento = useStore((st) => st.markBoringramEvento);
-  // Al entrar, el wifi y los datos siempre están prendidos. Si se salió en modo avión, o con el wifi o los
-  // datos apagados, la primera vez llega su notificación.
+  // El wifi y los datos siempre vuelven prendidos. Al salir en modo avión, o con el wifi o los datos
+  // apagados, la primera vez llega su notificación (con aviso en el menú o en el juego).
+  const ahoraRef = useRef(b.ahora);
+  ahoraRef.current = b.ahora;
   useEffect(() => {
-    const prev = useStore.getState().boringramAjustes;
-    if (prev.avion) evento(AVION_KEY, b.ahora);
-    else if (!prev.wifi || !prev.datos) evento(SIEMPRE_ACTIVOS_KEY, b.ahora);
-    if (prev.avion || !prev.wifi || !prev.datos) setAj({ avion: false, wifi: true, datos: true });
+    const reset = () => {
+      const prev = useStore.getState().boringramAjustes;
+      if (prev.avion || !prev.wifi || !prev.datos) setAj({ avion: false, wifi: true, datos: true });
+      return prev;
+    };
+    reset();
+    return () => {
+      const prev = reset();
+      if (prev.avion) evento(AVION_KEY, ahoraRef.current);
+      else if (!prev.wifi || !prev.datos) evento(SIEMPRE_ACTIVOS_KEY, ahoraRef.current);
+    };
     // Solo al entrar.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -160,6 +169,7 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
         </div>
         <StatusBar b={b} aj={aj} torch={torch.on} onPull={() => boot === 'app' && setShade(true)} />
         {shade && <Shade b={b} aj={aj} torch={torch.on} onTile={toggleAjuste} onClose={() => setShade(false)} />}
+        {!shade && <HeadsUp b={b} onOpen={() => setShade(true)} />}
         {/* Celular sin linterna real (o sin permiso): la pantalla se ilumina. */}
         {torch.on && torch.touch && !torch.real && <div className={s.torchScreen} aria-hidden />}
         {boot === 'logo' ? (
@@ -210,6 +220,45 @@ export function BoringramScreen({ onClose }: { onClose: () => void }) {
 }
 
 const BIG_KEY = 'genesis-boringram-grande';
+
+/**
+ * Con Boringram abierto, una notificación nueva (de las que se ganan haciendo algo: me gusta solo con datos,
+ * no molestar, la linterna…) baja desde arriba del celular un momento. Tocarla abre el panel.
+ */
+function HeadsUp({ b, onOpen }: { b: B; onOpen: () => void }) {
+  const seen = useRef<Set<string> | null>(null);
+  const [n, setN] = useState<B['notificaciones'][number] | null>(null);
+  const ids = b.notificaciones.map((x) => x.id).join('|');
+  useEffect(() => {
+    const now = new Set(ids.split('|'));
+    const fresh = seen.current ? b.notificaciones.filter((x) => x.clave && !seen.current!.has(x.id)) : [];
+    seen.current = now;
+    if (!fresh.length) return;
+    setN(fresh[0]);
+    const timer = setTimeout(() => setN(null), 3800);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids]);
+  if (!n) return null;
+  return (
+    <button
+      key={n.id}
+      className={s.headsUp}
+      onClick={() => {
+        setN(null);
+        onOpen();
+      }}
+    >
+      <span className={s.notifIcon}>{n.icono}</span>
+      <span className={s.notifBody}>
+        <small>
+          {n.app} · {n.hace}
+        </small>
+        <b>{n.titulo}</b>
+      </span>
+    </button>
+  );
+}
 
 /** Cada notificación que se va con «Borrar todo» sale un poco después que la anterior. */
 const SWEEP_STEP_MS = 45;

@@ -503,3 +503,7 @@
 .notif { touch-action: pan-y; user-select: none; cursor: grab; }
 .notifDrag { animation: none; transition: transform 0.22s ease-out, opacity 0.22s ease-out; }
 .notifHeld { transition: none; cursor: grabbing; }
+/* Notificación que baja desde arriba del celular con Boringram abierto. */
+.headsUp { position: absolute; top: 2.1rem; left: 0.6rem; right: 0.6rem; z-index: 25; display: flex; gap: 0.6rem; padding: 0.6rem 0.7rem; text-align: left; color: #f1f1f4; border: 1px solid #2c2c35; border-radius: 1rem; background: rgba(27, 27, 33, 0.97); box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.55); animation: headsUp 3.8s ease both; }
+@keyframes headsUp { 0% { opacity: 0; transform: translateY(-130%); } 8%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-130%); } }
+@media (prefers-reduced-motion: reduce) { .headsUp { animation: none; } }

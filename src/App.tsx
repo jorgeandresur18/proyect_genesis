@@ -146,6 +146,8 @@ export default function App() {
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
       <AudioToggle />
+      {/* Siempre montado: lleva la cuenta aunque Boringram esté abierto (adentro avisa el propio celular). */}
+      <EventToast hidden={overlay === 'boringram'} onOpen={() => setOverlay('boringram')} />
       {hasGame && <RotateHint />}
       {toTitle && (
         <div
@@ -227,6 +229,44 @@ function BoringramToast({ onOpen }: { onOpen: () => void }) {
       <span>
         <small>Boringram · {tx.abrir}</small>
         <b>{toast.text}</b>
+      </span>
+    </button>
+  );
+}
+
+/**
+ * Aviso de las notificaciones del celular que no vienen de la historia sino de algo que hizo el jugador en
+ * Boringram (la linterna, el modo avión, el wifi apagado…): baja en el menú o en el juego al conseguirlas.
+ */
+function EventToast({ hidden, onOpen }: { hidden: boolean; onOpen: () => void }) {
+  const b = useBoringram();
+  const seen = useRef<Set<string> | null>(null);
+  const [toast, setToast] = useState<{ key: number; icono: string; app: string; titulo: string } | null>(null);
+  const events = b.notificaciones.filter((n) => n.clave);
+  const ids = events.map((n) => n.id).join('|');
+  useEffect(() => {
+    const now = new Set(ids.split('|'));
+    const fresh = seen.current === null ? [] : events.filter((n) => !seen.current!.has(n.id));
+    seen.current = now; // Lo que ya estaba al abrir el juego no avisa.
+    if (hidden || fresh.length === 0) return;
+    const n = fresh[0];
+    setToast({ key: Date.now(), icono: n.icono, app: n.app, titulo: n.titulo });
+    playNotify();
+    const timer = setTimeout(() => setToast(null), 4200);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids]);
+  if (!toast || hidden) return null;
+  return (
+    <button key={toast.key} className="bori-toast" onClick={onOpen}>
+      <span className="bori-toast-icon" aria-hidden>
+        {toast.icono}
+      </span>
+      <span>
+        <small>
+          {toast.app} · {b.data.textos.abrir}
+        </small>
+        <b>{toast.titulo}</b>
       </span>
     </button>
   );

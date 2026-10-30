@@ -1503,6 +1503,7 @@ button.sprite-item:hover .sprite-cell img { transform: scale(1.04); }
   animation: bori-toast 4.2s ease both;
 }
 .bori-toast img { width: 2rem; height: 2rem; flex: none; }
+.bori-toast .bori-toast-icon { display: grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 0.6rem; background: #2a2a31; font-size: 1.05rem; }
 .bori-toast span { display: flex; flex-direction: column; min-width: 0; }
 .bori-toast small { color: #8d8d99; font-size: 0.7rem; }
 .bori-toast b { overflow: hidden; font-size: 0.88rem; white-space: nowrap; text-overflow: ellipsis; }
