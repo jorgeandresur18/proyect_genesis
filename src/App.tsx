@@ -669,7 +669,8 @@ function Game({ open, paused, onTitle }: { open: (o: Overlay) => void; paused: b
         <ChapterEnd
           chapter={Number(game.finished.slice(CHAPTER_END.length))}
           onSave={() => open('save')}
-          onTitle={onTitle}
+          // Volver al inicio pide confirmación, igual que desde el juego.
+          onTitle={() => open('salir')}
           lastScene={
             <SceneStage scene={shown} effects={[]} speakers={[]} lines={game.history.filter((h) => !h.choice)}>
               {null}
