@@ -54,12 +54,24 @@
     {
       "titulo": "The ideas underneath",
       "parrafos": [
-        "The absurd and meaning: a life on a loop, like the rock of Sisyphus, and the question of what to do with freedom when you finally have it and can't find anything to live it for.",
-        "«I am I and my circumstance»: nobody chooses how they were made, but they do choose what to do with it.",
-        "The death of God: what happens to creatures when their creator turns out to be just a man, and whether they can create their own values.",
-        "Total power: the Great Engineer, the god of this universe, is inspired by Big Brother from 1984. A god everyone worships and almost nobody has seen.",
-        "Free will versus conditioning: is it goodness if it isn't chosen?",
-        "Simulated reality and copied identity: what is real, what is a copy, and whether a copy can become someone."
+        "The absurd, with Albert Camus: a life on a loop, like the rock in The Myth of Sisyphus, and characters who, like Meursault in The Stranger, live without quite knowing what they feel.",
+        "Meaning, with Viktor Frankl and Man's Search for Meaning: what to do with freedom when you finally have it and can't find anything to live it for.",
+        "Circumstance, with José Ortega y Gasset and his phrase «I am I and my circumstance»: nobody chooses how they were made, but they do choose what to do with it. And, from The Revolt of the Masses, the man who demands everything and asks nothing of himself.",
+        "The death of God, with Friedrich Nietzsche and Thus Spoke Zarathustra: what happens to creatures when their creator turns out to be just a man, and whether they can create their own values.",
+        "Total power, with George Orwell and 1984: the Great Engineer, the god of this universe, is inspired by Big Brother. A god everyone worships and almost nobody has seen.",
+        "Free will, with Anthony Burgess and A Clockwork Orange: is it goodness if it isn't chosen?",
+        "The search, with Hermann Hesse and Siddhartha: finding a path of your own, far from whoever shaped you.",
+        "And, underneath it all, simulated reality and copied identity: what is real, what is a copy, and whether a copy can become someone."
+      ]
+    },
+    {
+      "titulo": "The influences",
+      "parrafos": [
+        "Literature: besides the books above, The Lord of the Rings, by J. R. R. Tolkien, and the graphic novel Persepolis, by Marjane Satrapi.",
+        "Anime and manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days and Welcome to the NHK.",
+        "Comics: Scott Pilgrim, Kraven's Last Hunt, the melancholy of Spider-Man: Blue and the rawness of Daredevil: Born Again.",
+        "Film: The Matrix, I, Robot and The Truman Show.",
+        "Music: the honest, pure melancholy of The Smiths about love and loneliness; the broken relationships and imperfect feelings of The Strokes; the vulnerability of The Cranberries; the dark poetry and gothic theatricality of The Cure; and The Killers, with the idea that even if everything goes wrong, there can be a light."
       ]
     },
     {
@@ -73,17 +85,8 @@
       "titulo": "How it was born",
       "parrafos": [
         "PROYECT GENESIS was born in October 2026. It is an indie project made by a single person: Jorge Andrés Urgilés Ruiz. The story, direction, design and programming came from one single head.",
-        "It is, on purpose, a story about an artificial intelligence that creates characters, made with the help of artificial intelligences. It was built with AI tools, many of them free: ChatGPT and Gemini to shape the story bible, Claude Code to program the engine and write drafts, and Gemini to generate the art. Even the protagonist is named after Jair, his author's AI agent. But careful: the Jair in the story is not an AI. He's as human as his debts."
-      ]
-    },
-    {
-      "titulo": "The influences",
-      "parrafos": [
-        "Literature and philosophy: 1984, The Stranger, The Myth of Sisyphus, Siddhartha, Thus Spoke Zarathustra, A Clockwork Orange, The Lord of the Rings, «I am I and my circumstance», Persepolis and Man's Search for Meaning.",
-        "Anime and manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days and Welcome to the NHK.",
-        "Comics: Scott Pilgrim, Kraven's Last Hunt, the melancholy of Spider-Man: Blue and the rawness of Daredevil: Born Again.",
-        "Film: The Matrix, I, Robot and The Truman Show.",
-        "Music: the honest, pure melancholy of The Smiths about love and loneliness; the broken relationships and imperfect feelings of The Strokes; the vulnerability of The Cranberries; the dark poetry and gothic theatricality of The Cure; and The Killers, with the idea that even if everything goes wrong, there can be a light."
+        "It is, on purpose, a story about a man who uses an artificial intelligence to create characters, made with the help of artificial intelligences. It was built with AI tools, many of them free: ChatGPT and Gemini to shape the story bible, Claude Code to program the engine and write drafts, and Gemini to generate the art.",
+        "Even the protagonist is named after Jair, his author's AI agent. But careful: the Jair in the story is not an AI. He's a flesh-and-blood man, as human as his debts."
       ]
     },
     {

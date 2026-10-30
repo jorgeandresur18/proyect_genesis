@@ -54,12 +54,24 @@
     {
       "titulo": "Las ideas de fondo",
       "parrafos": [
-        "El absurdo y el sentido: una vida en bucle, como la roca de Sísifo, y la pregunta de qué hacer con la libertad cuando por fin se tiene y no se encuentra para qué vivirla.",
-        "«Yo soy yo y mi circunstancia»: nadie elige cómo lo hicieron, pero sí qué hace con eso.",
-        "La muerte de Dios: qué les pasa a las criaturas cuando su creador resulta ser solo un hombre, y si son capaces de crear sus propios valores.",
-        "El poder total: el Gran Ingeniero, el dios de este universo, está inspirado en el Gran Hermano de 1984. Un dios al que todos adoran y casi nadie ha visto.",
-        "El libre albedrío frente al condicionamiento: ¿es bondad la que no se elige?",
-        "La realidad simulada y la identidad copiada: qué es real, qué es una copia y si una copia puede llegar a ser alguien."
+        "El absurdo, con Albert Camus: una vida en bucle, como la roca de El mito de Sísifo, y personajes que, como el Meursault de El extranjero, viven sin saber del todo qué sienten.",
+        "El sentido, con Viktor Frankl y El hombre en busca de sentido: qué hacer con la libertad cuando por fin se tiene y no se encuentra para qué vivirla.",
+        "La circunstancia, con José Ortega y Gasset y su frase «Yo soy yo y mi circunstancia»: nadie elige cómo lo hicieron, pero sí qué hace con eso. Y, de La rebelión de las masas, el hombre que todo lo exige y nada se exige a sí mismo.",
+        "La muerte de Dios, con Friedrich Nietzsche y Así habló Zaratustra: qué les pasa a las criaturas cuando su creador resulta ser solo un hombre, y si son capaces de crear sus propios valores.",
+        "El poder total, con George Orwell y 1984: el Gran Ingeniero, el dios de este universo, está inspirado en el Gran Hermano. Un dios al que todos adoran y casi nadie ha visto.",
+        "El libre albedrío, con Anthony Burgess y La naranja mecánica: ¿es bondad la que no se elige?",
+        "La búsqueda, con Hermann Hesse y Siddhartha: encontrar un camino propio lejos de quien te formó.",
+        "Y, de fondo, la realidad simulada y la identidad copiada: qué es real, qué es una copia y si una copia puede llegar a ser alguien."
+      ]
+    },
+    {
+      "titulo": "Las influencias",
+      "parrafos": [
+        "Literatura: además de los libros de arriba, El señor de los anillos, de J. R. R. Tolkien, y la novela gráfica Persépolis, de Marjane Satrapi.",
+        "Anime y manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days y Welcome to the NHK.",
+        "Cómics: Scott Pilgrim, La última cacería de Kraven, la melancolía de Spider-Man: Blue y la crudeza de Daredevil: Born Again.",
+        "Cine: Matrix, Yo, robot y The Truman Show.",
+        "Música: la melancolía honesta y pura de The Smiths sobre el amor y la soledad; las relaciones rotas y los sentimientos imperfectos de The Strokes; la vulnerabilidad de The Cranberries; la poesía oscura y la teatralidad gótica de The Cure; y The Killers, con la idea de que, aunque todo salga mal, puede haber una luz."
       ]
     },
     {
@@ -73,17 +85,8 @@
       "titulo": "Cómo nació",
       "parrafos": [
         "PROYECT GENESIS nació en octubre de 2026. Es un proyecto indie hecho por una sola persona: Jorge Andrés Urgilés Ruiz. La historia, la dirección, el diseño y la programación salieron de una sola cabeza.",
-        "Es, a propósito, una historia sobre una inteligencia artificial que crea personajes, hecha con ayuda de inteligencias artificiales. Se construyó con herramientas de IA, muchas de ellas gratuitas: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte. Hasta el protagonista lleva el nombre de Jair, el agente de IA de su autor. Aunque, ojo: el Jair de la historia no es una IA. Es tan humano como sus deudas."
-      ]
-    },
-    {
-      "titulo": "Las influencias",
-      "parrafos": [
-        "Literatura y filosofía: 1984, El extranjero, El mito de Sísifo, Siddhartha, Así habló Zaratustra, La naranja mecánica, El señor de los anillos, «Yo soy yo y mi circunstancia», Persépolis y El hombre en busca de sentido.",
-        "Anime y manga: Neon Genesis Evangelion, Perfect Blue, Serial Experiments Lain, Fullmetal Alchemist, Mirai Nikki, Gantz, School Days y Welcome to the NHK.",
-        "Cómics: Scott Pilgrim, La última cacería de Kraven, la melancolía de Spider-Man: Blue y la crudeza de Daredevil: Born Again.",
-        "Cine: Matrix, Yo, robot y The Truman Show.",
-        "Música: la melancolía honesta y pura de The Smiths sobre el amor y la soledad; las relaciones rotas y los sentimientos imperfectos de The Strokes; la vulnerabilidad de The Cranberries; la poesía oscura y la teatralidad gótica de The Cure; y The Killers, con la idea de que, aunque todo salga mal, puede haber una luz."
+        "Es, a propósito, una historia sobre un hombre que usa una inteligencia artificial para crear personajes, hecha con ayuda de inteligencias artificiales. Se construyó con herramientas de IA, muchas de ellas gratuitas: ChatGPT y Gemini para dar forma a la biblia de la historia, Claude Code para programar el motor y redactar borradores, y Gemini para generar el arte.",
+        "Hasta el protagonista lleva el nombre de Jair, el agente de IA de su autor. Pero ojo: el Jair de la historia no es una IA. Es un hombre de carne y hueso, tan humano como sus deudas."
       ]
     },
     {
