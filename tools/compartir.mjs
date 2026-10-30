@@ -11,6 +11,8 @@ const H = 630;
 const OUT = 'public/compartir';
 const data = JSON.parse(readFileSync('src/data/boringram.json', 'utf8'));
 const SITIO = data.sitio;
+// La versión va en los enlaces y en la imagen: al cambiarla, las redes vuelven a leer la vista previa.
+const V = data.compartir_version ?? 1;
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -25,7 +27,8 @@ function wrap(text, max) {
     } else line = (line + ' ' + word).trim();
   }
   if (line) lines.push(line);
-  return lines.slice(0, 5);
+  // Hasta 8 líneas; si no entra, termina en «…».
+  return lines.length > 8 ? [...lines.slice(0, 7), `${lines[7]}…`] : lines;
 }
 
 mkdirSync(OUT, { recursive: true });
@@ -41,39 +44,45 @@ const fotos = [
 for (const p of fotos) {
   const user = data.perfiles[p.autor]?.usuario ?? p.autor;
   const src = `public/${p.imagen}`;
-  // Fondo: la misma foto, desenfocada y oscura. Encima, la foto entera a la izquierda.
+  // Fondo: la misma foto, desenfocada y oscura. Encima, la foto entera en el centro: cuando una red muestra la
+  // vista chica (WhatsApp recorta un cuadrado del medio), se ve la foto y no el logo. A la izquierda, Boringram,
+  // quién publica y el texto; a la derecha, el +18 y el enlace del juego.
   const bg = await sharp(src).resize(W, H, { fit: 'cover' }).blur(28).modulate({ brightness: 0.45 }).toBuffer();
   const photoH = 560;
   const photo = await sharp(src).resize({ height: photoH, width: 520, fit: 'inside' }).toBuffer();
-  const { width: pw } = await sharp(photo).metadata();
-  const logo = await sharp('public/marca/boringram.webp').resize({ width: 330 }).toBuffer();
+  const { width: pw, height: ph } = await sharp(photo).metadata();
+  const px = Math.round((W - pw) / 2);
+  const py = Math.round((H - ph) / 2);
+  const logo = await sharp('public/marca/boringram.webp').resize({ width: 262 }).toBuffer();
   // Foto de perfil de quien publica, en círculo.
-  const circle = Buffer.from('<svg width="64" height="64"><circle cx="32" cy="32" r="32"/></svg>');
+  const circle = Buffer.from('<svg width="56" height="56"><circle cx="28" cy="28" r="28"/></svg>');
   const icon = await sharp(`public/${data.perfiles[p.autor].foto}`)
-    .resize(64, 64, { fit: 'cover', position: 'top' })
+    .resize(56, 56, { fit: 'cover', position: 'top' })
     .composite([{ input: circle, blend: 'dest-in' }])
     .png()
     .toBuffer();
-  const textX = 35 + pw + 55;
-  const caption = wrap(p.texto, 30)
-    .map((l, i) => `<text x="${textX}" y="${290 + i * 40}" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#f1f1f4">${esc(l)}</text>`)
+  const leftX = 38;
+  const rightX = px + pw + 30;
+  const caption = wrap(p.texto, 17)
+    .map((l, i) => `<text x="${leftX}" y="${250 + i * 36}" font-family="Segoe UI, Arial, sans-serif" font-size="27" fill="#f1f1f4">${esc(l)}</text>`)
     .join('');
   const overlay = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ff8a3d"/><stop offset="0.55" stop-color="#ff3d7f"/><stop offset="1" stop-color="#a64dff"/></linearGradient></defs>
-  <rect x="31" y="31" width="${pw + 8}" height="${photoH + 8}" rx="18" fill="none" stroke="url(#g)" stroke-width="4"/>
-  <text x="${textX + 80}" y="222" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#fff">${esc(user)}</text>
+  <rect x="${px - 4}" y="${py - 4}" width="${pw + 8}" height="${ph + 8}" rx="18" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <text x="${leftX + 70}" y="${174}" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#fff">${esc(user)}</text>
   ${caption}
-  <text x="${textX}" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#c9c9d2">PROYECT GENESIS · Juega gratis en el navegador</text>
-  <text x="${textX}" y="596" font-family="Consolas, monospace" font-size="22" fill="#ff8ab5">proyect-genesis.vercel.app</text>
   <rect x="${W - 92}" y="28" width="64" height="34" rx="8" fill="#000" fill-opacity="0.6" stroke="#ff4f8b"/>
   <text x="${W - 60}" y="52" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#ff4f8b">+18</text>
+  <text x="${rightX}" y="512" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" fill="#fff">PROYECT GENESIS</text>
+  <text x="${rightX}" y="546" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#c9c9d2">Juega gratis en el navegador</text>
+  <text x="${rightX}" y="584" font-family="Consolas, monospace" font-size="17" fill="#ff8ab5">proyect-genesis.vercel.app</text>
 </svg>`;
   await sharp(bg)
     .composite([
-      { input: photo, left: 35, top: 35 },
-      { input: logo, left: textX, top: 70 },
-      { input: icon, left: textX, top: 178 },
+      { input: photo, left: px, top: py },
+      { input: logo, left: leftX, top: 52 },
+      { input: icon, left: leftX, top: 134 },
       { input: Buffer.from(overlay), left: 0, top: 0 },
     ])
     .jpeg({ quality: 86 })
@@ -81,8 +90,8 @@ for (const p of fotos) {
 
   const title = `${user} en Boringram · PROYECT GENESIS`;
   const desc = `«${p.texto}» Novela visual para adultos (18+). Juega gratis en el navegador.`;
-  const url = `${SITIO}compartir/${p.id}.html`;
-  const img = `${SITIO}compartir/${p.id}.jpg`;
+  const url = `${SITIO}compartir/${p.id}.html?v=${V}`;
+  const img = `${SITIO}compartir/${p.id}.jpg?v=${V}`;
   writeFileSync(
     `${OUT}/${p.id}.html`,
     `<!doctype html>

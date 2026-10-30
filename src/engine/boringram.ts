@@ -120,6 +120,8 @@ export interface BoringramData {
   yo: string;
   /** Dirección del juego publicado (para compartir). */
   sitio: string;
+  /** Se sube al cambiar el diseño de las tarjetas: así las redes no muestran la vista previa vieja. */
+  compartir_version?: number;
   sin_senal: { titulo: string; texto: string };
   perfiles: Record<string, Perfil>;
   publicaciones: Publicacion[];

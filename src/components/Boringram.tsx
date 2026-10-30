@@ -752,7 +752,7 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
   const [note, setNote] = useState('');
   if (!post) return null;
   const user = b.perfiles[post.autor]?.usuario ?? post.autor;
-  const url = `${b.data.sitio}compartir/${id}.html`;
+  const url = `${b.data.sitio}compartir/${id}.html?v=${b.data.compartir_version ?? 1}`;
   const text = `${tx.compartir_texto} · ${user}: «${post.texto}»`;
   const card = assetUrl(`compartir/${id}.jpg`);
   const open = (href: string) => {
