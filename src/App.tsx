@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { CHAPTER_END, useStore, SPEEDS } from './engine/store';
 import { BAD_END, endingName, getEnding, scenes } from './engine/story';
 import { useStoryEngine } from './engine/useStoryEngine';
@@ -14,9 +14,10 @@ import easterEgg from './data/easter_egg.json';
 import { CgGallery, NewDot } from './components/CgGallery';
 import { useGalleryState } from './engine/gallery';
 import { useBoringram } from './engine/boringram';
-import { BoringramScreen } from './components/Boringram';
-import { BootcampScreen } from './components/Bootcamp';
-import { CURSO as bootcampCurso, NIVELES, PRUEBA, useBootcamp } from './engine/bootcamp';
+// Boringram y el Bootcamp se descargan recién al abrirlos (el menú carga más rápido).
+const BoringramScreen = lazy(() => import('./components/Boringram').then((m) => ({ default: m.BoringramScreen })));
+const BootcampScreen = lazy(() => import('./components/Bootcamp').then((m) => ({ default: m.BootcampScreen })));
+import { NIVELES, PRUEBA, cursoDe, useBootcamp } from './engine/bootcamp';
 import { TitleBackground } from './components/TitleBackground';
 import { SceneMap } from './components/SceneMap';
 import { ChapterEnd } from './components/ChapterEnd';
@@ -159,9 +160,17 @@ export default function App() {
       {overlay === 'map' && <SceneMap onClose={close} />}
       {overlay === 'endings' && <EndingsGallery onClose={close} />}
       {overlay === 'gallery' && <CgGallery onClose={close} />}
-      {overlay === 'boringram' && <BoringramScreen onClose={close} />}
+      {overlay === 'boringram' && (
+        <Suspense fallback={null}>
+          <BoringramScreen onClose={close} />
+        </Suspense>
+      )}
       {overlay === 'extras' && <ExtrasPanel onClose={close} onOpen={setOverlay} />}
-      {overlay === 'bootcamp' && <BootcampScreen onClose={close} />}
+      {overlay === 'bootcamp' && (
+        <Suspense fallback={null}>
+          <BootcampScreen onClose={close} />
+        </Suspense>
+      )}
       {!hasGame && <EasterEgg phase={egg} onGone={() => setEgg('gone')} />}
       {overlay === 'options' && <OptionsPanel onClose={close} />}
       {overlay === 'about' && <AboutPanel onClose={close} />}
@@ -369,12 +378,13 @@ function BootcampAviso({ onOpen }: { onOpen: () => void }) {
   const b = useBootcamp();
   const avisados = useStore((s) => s.bootcampAvisos);
   const avisar = useStore((s) => s.avisarBootcamp);
+  const curso = cursoDe(useLang());
   const nivel = PRUEBA ? undefined : NIVELES.find((n) => b.nivelAbierto(n) && !avisados[n.id]);
   const [toast, setToast] = useState<{ key: number; n: number; nombre: string; color: string } | null>(null);
   useEffect(() => {
     if (!nivel) return;
     const timer = setTimeout(() => {
-      setToast({ key: Date.now(), n: NIVELES.indexOf(nivel) + 1, nombre: nivel.nombre, color: nivel.color });
+      setToast({ key: Date.now(), n: NIVELES.indexOf(nivel) + 1, nombre: curso.niveles[NIVELES.indexOf(nivel)].nombre, color: nivel.color });
       avisar(nivel.id);
       playNotify();
     }, 1200);
@@ -390,8 +400,8 @@ function BootcampAviso({ onOpen }: { onOpen: () => void }) {
     <button key={toast.key} className="bori-toast bc-toast" style={{ ['--lvl' as string]: toast.color }} onClick={onOpen}>
       <img src={assetUrl('marca/bootcamp_emblema.webp')} alt="" draggable={false} />
       <span>
-        <small>{bootcampCurso.textos.aviso_app}</small>
-        <b>{bootcampCurso.textos.aviso.replace('{n}', String(toast.n)).replace('{nombre}', toast.nombre)}</b>
+        <small>{curso.textos.aviso_app}</small>
+        <b>{curso.textos.aviso.replace('{n}', String(toast.n)).replace('{nombre}', toast.nombre)}</b>
       </span>
     </button>
   );

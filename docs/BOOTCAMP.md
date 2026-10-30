@@ -54,7 +54,7 @@ El **nivel N se abre al terminar el Capítulo N**. El motor busca la escena con 
 - Dentro de un nivel, cada clase se abre al terminar la anterior.
 - **Antes de terminar el Capítulo 1:** el botón del menú tiene candado, y al entrar dice «Todavía no completas el Capítulo 1».
 - **Aviso en el menú:** la primera vez que se termina un capítulo, al volver al menú aparece el aviso «¡Nivel N desbloqueado: …!», con el emblema y el color de su dificultad. Tocarlo abre el Bootcamp.
-- **Modo de prueba:** con `?bootcamp=todo` en la dirección (por ejemplo `https://proyect-genesis.vercel.app/?bootcamp=todo` o `http://localhost:5173/?bootcamp=todo`) se abren todos los niveles con clases y todas sus clases, sin tocar el progreso guardado. Arriba sale el chip «Modo prueba: todo desbloqueado».
+- **Modo de prueba:** con `?bootcamp=todo` en la dirección (por ejemplo `https://proyect-genesis.vercel.app/?bootcamp=todo` o `http://localhost:5173/?bootcamp=todo`) se abren todos los niveles con clases y todas sus clases. En ese modo no se guarda el progreso (ni estrellas ni diplomas), así que no cuenta para el 100 %. Arriba sale el chip «Modo prueba: todo desbloqueado (no se guarda el progreso)».
 
 ## Reseñas del curso
 
@@ -103,6 +103,8 @@ El jugador puede poner su propia calificación (`bootcampCalificacion`), que ent
 | Curso: niveles, diplomas, textos, IDE común, asistente e introducción | `src/data/bootcamp/curso.json` |
 | Clases | `src/data/bootcamp/lecciones/NN_<id>.json` |
 | IDE compartido con el minijuego (intentos fallidos, asistente, retratos y respuestas) | `src/components/CoffeeIDE.tsx` |
+| Las clases y su inglés (van con la pantalla) | `src/components/bootcampDatos.ts` |
+| Inglés | `src/data/en/bootcamp/` (`curso.json` y `lecciones/`) |
 | Pruebas | `tests/bootcamp.test.ts` |
 
 `tests/bootcamp.test.ts` comprueba que:
@@ -113,6 +115,17 @@ El jugador puede poner su propia calificación (`bootcampCalificacion`), que ent
 - las estrellas se guardan bien.
 
 **Para agregar una clase:** crear su JSON en `lecciones/` y poner su `id` en el nivel que corresponde de `curso.json`.
+
+## Inglés
+
+Todo el Bootcamp está en inglés si el juego está en inglés: los textos, la introducción, las clases, los comentarios, GENESIS, el diploma, LinkedFired y las reseñas.
+- **Cómo se traduce:** como en Boringram. En `src/data/en/bootcamp/` están solo los textos, y se mezclan por posición sobre el español.
+- **El código de los ejercicios:** conserva los nombres en español (`alumna`, `sueldo`, `trabajar`), porque Coffee es así. Se traducen los comentarios, los textos entre comillas y las notas; en las notas se aclara qué significa cada nombre.
+- **La prueba:** comprueba que cada clase tenga su traducción con los mismos huecos, las mismas respuestas y la misma paleta.
+
+## Carga
+
+La pantalla del Bootcamp (con sus clases) y la de Boringram se descargan recién al abrirlas. El código del juego también va separado de la historia (`historia`) y de las librerías (`librerias`), así que si solo cambia el código, el navegador no vuelve a bajar los capítulos (ver `vite.config.ts`).
 
 ## Sprites recomendados (a futuro)
 
@@ -131,7 +144,7 @@ No usar uniformes escolares: son adultas y el humor es picante.
 2. **LinkedFired en Boringram:** al publicar el diploma, que llegue una notificación de LinkedFired al celular de Jair, que también cuente para el 100 %.
 3. **Semi-senior:** pilas y colas (la fila de tickets de soporte), búsqueda y ordenamiento (ordenar a los candidatos «por mérito», según Nikki) y recursión (el «autocompletado» de GENESIS).
 4. **Senior:** Reckt (componentes, estado) y una clase de «arquitectura» que es una reunión de una hora para decidir el nombre de una variable.
-5. **Versión en inglés** de todo el Bootcamp.
+5. ~~Versión en inglés~~: hecha.
 
 ## Pendientes `[PENDIENTE]`
 

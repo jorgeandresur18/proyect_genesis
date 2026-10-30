@@ -1,0 +1,78 @@
+{
+  "titulo": "Lists (arrays)",
+  "tema": "A list keeps several things in order: it starts at 0, push adds to the end, length counts.",
+  "charla": [
+    { "texto": "Lesson seven: lists. Several things in a single variable, inside brackets: ['a', 'b', 'c']." },
+    { "texto": "The first position is 0, not 1. Everybody gets that wrong. I still do, sometimes." },
+    { "texto": "Like a formation of soldiers: the first in line is soldier zero. And whoever arrives late goes to the back." },
+    { "texto": "Exactly. To send someone to the back of the line you use push. And length tells you how many there are." },
+    { "texto": "lists start at zero. like an intern's labor rights" },
+    { "texto": "My to-do list: one, learn Coffee. Zero, stare at Rikka's ass. Zero comes first, the prof said so." },
+    { "texto": "That's not a to-do list, Cami, it's a confession!" },
+    { "texto": "Exercise: the sprint backlog. Add a task, read the first one and count how many there are." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 7: lists. Fill in the blanks.",
+          "brew backlog = ['fix the login', 'fix the login fix', 'meeting to discuss the login'];",
+          "backlog.[[1]]('do overtime (unpaid)');",
+          "latte.log('First: ' + backlog[ [[2]] ]);",
+          "latte.log('Pending: ' + backlog.[[3]]);",
+          "// Expected output:",
+          "// First: fix the login",
+          "// Pending: 4"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "brew list = ['a', 'b', 'c'];",
+          "list[0]        -> 'a'   (the first one is 0!)",
+          "list.push('d') -> adds 'd' to the end.",
+          "list.length    -> how many items there are.",
+          "",
+          "Tasks that left the backlog this year: 0. Tasks that came in: all of them."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "backlog.{valor} doesn't add to the end. To add one more task you use push." },
+      "2": { "error": "Position {valor} isn't the first one. In Coffee (and in JavaScript) you count from 0." },
+      "3": { "error": "backlog.{valor} doesn't exist. To count the items in a list: length." }
+    },
+    "exito": ["First: fix the login", "Pending: 4", "✔ Compiled. The backlog grew. As always."],
+    "reacciones": {
+      "Rikka": ["The first one is zero. I wrote it three times in my notebook.", "push sends you to the back of the line. Like the ones who show up late for guard duty."],
+      "Cami": [
+        {
+          "texto": "pop takes the last one out of the list. Prof, what do I use to get Rikka out of her chair? With that ass, a crane.",
+          "respuesta": { "texto": "Use the door, Cami. To leave." }
+        },
+        "My list of exes has guys and girls. It's a mixed list, prof. Very inclusive."
+      ],
+      "Nikki": [
+        "you put 1. relax, we were all taught we're number one. then the job market shows up",
+        "the backlog never goes down. it's the closest thing to the national debt you'll ever program"
+      ],
+      "Jair": ["Off-by-one: humanity's oldest bug. And the most common.", "size is from other languages. Here it's length."]
+    },
+    "al_abrir": [
+      { "texto": "push adds, indexes start at 0 and length counts. That's all you need." },
+      { "texto": "I can read the notes for you if you want. I've underlined them." }
+    ],
+    "al_resolver": [
+      { "texto": "Four pending tasks. Tomorrow there'll be eight. Welcome to agile development." },
+      { "texto": "The first one was zero! Now I won't forget it." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Lists: the structure you'll use the most. And the one that fills up with things nobody will ever do." },
+    { "texto": "My list hasn't changed: zero, Rikka. One, Coffee. Two, the prof, if he showers." },
+    { "texto": "I do shower. It's the fan that doesn't help." },
+    { "texto": "…i was on one of your lists once too, wasn't i? position zero. well. whatever" }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "titulo": "brew and let: what can't be reassigned",
+  "tema": "brew can't be assigned again; let can. Commenting with // switches a line off.",
+  "charla": [
+    { "texto": "Lesson six: what can't be reassigned. brew keeps a value forever. If you want to change it later, use let." },
+    { "texto": "If you try to reassign a brew, Coffee stops you: TypeError. It's one of the few errors that protects something." },
+    { "texto": "Like an oath. What is sworn with brew is never broken. What is said with let… is negotiable." },
+    { "texto": "class rule: don't occupy a space that's already occupied. it doesn't matter if a government claims it, or an army, or the great engineer himself with his holy book in hand." },
+    { "texto": "and if you try to take it by force, the system throws an error. or it should. at least the compiler is consistent" },
+    { "texto": "…That's exactly what brew does. I'm not sure we're talking about Coffee." },
+    { "texto": "of course we're talking about coffee, jair. what else would it be" },
+    { "texto": "Speaking of occupied spaces: Rikka's desk is completely occupied by her butt. And that definitely can't be reassigned." },
+    { "texto": "My desk is occupied by me, all of me, with my notes. Focus on the exercise." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 6: brew and let. Fill in the blanks.",
+          "brew escritorio = 'taken by Rikka';",
+          "[[1]] tazas = 1; // the coffee counter changes (a lot)",
+          "tazas = tazas [[2]] 1;",
+          "[[3]] escritorio = 'mine now'; // ← this can't run: switch it off",
+          "latte.log(escritorio + ' / cups: ' + tazas);",
+          "// Expected output: taken by Rikka / cups: 2"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "brew x = 1;  x = 2;  -> TypeError: x is already taken (brew can't be reassigned).",
+          "let  y = 1;  y = 2;  -> fine: let can change.",
+          "y = y + 1;           -> adds 1 to what it already had.",
+          "// at the start of a line turns it into a comment: it doesn't run.",
+          "",
+          "Use brew by default. let only for what really changes (cups of coffee, for example)."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” won't let the value change later. The cups will change: declare them with let." },
+      "2": { "error": "“{valor}” doesn't add another cup. To add: tazas + 1." },
+      "3": { "error": "TypeError: “escritorio” is already taken (it's brew); with “{valor}” in front it still tries to take it. Nothing gets reassigned by force: switch that line off with //." }
+    },
+    "exito": ["taken by Rikka / cups: 2", "✔ Compiled. The desk still belongs to whoever was already there. The compiler, saner than most."],
+    "reacciones": {
+      "Nikki": [
+        "you tried to take the desk by force. the compiler said no. if only the world had a linter",
+        "“brew!” doesn't exist. putting an exclamation mark on something doesn't give you the right to keep it"
+      ],
+      "Cami": [
+        {
+          "texto": "If you want Rikka's seat, ask her first. I did and almost got a sword to the face.",
+          "respuesta": { "texto": "Because you asked by sitting on top of me, Cami." }
+        },
+        "let is like me: open to changes. brew is like Rikka: determined, and with a very well-occupied seat."
+      ],
+      "Rikka": ["The desk is brew. Don't touch it. Switch that line off, don't fight it.", "First let for the cups. Then, plus one."],
+      "Jair": ["TypeError: Assignment to constant variable. The most honest error in the industry.", "Commenting out code that doesn't work: half my career."]
+    },
+    "al_abrir": [
+      { "texto": "Three blanks: declare the cups, add one, and switch off the line that tries to take the desk." },
+      { "texto": "i don't like line 5. it knows what it's doing and does it anyway" }
+    ],
+    "al_resolver": [
+      { "texto": "the desk still belongs to whoever was there. see, it wasn't that hard" },
+      { "texto": "My desk is still mine. Thank you, compiler." }
+    ]
+  },
+  "cierre": [
+    { "texto": "By default, brew. let only for what really changes. And whatever doesn't compile gets commented out and fixed later." },
+    { "texto": "“Later” means never, but you'll learn that in the Senior level." },
+    { "texto": "the most subversive thing in this class was the compiler. write that down" }
+  ]
+}

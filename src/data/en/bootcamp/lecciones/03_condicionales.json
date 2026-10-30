@@ -1,0 +1,83 @@
+{
+  "titulo": "Conditionals",
+  "tema": "if decides; else is plan B; === compares.",
+  "charla": [
+    { "texto": "Lesson three: conditionals. if asks something. If it's true, it does one thing; if not, else does another." },
+    { "texto": "To compare you use three equals signs: ===. A single one, =, doesn't compare: it assigns. It's the most common mistake in the world." },
+    { "texto": "jair lives in the else. the if hasn't come true in eight years" },
+    { "texto": "if (Rikka kisses me) { I win the dare } else { …I like it too }. Did I say that out loud?" },
+    { "texto": "You said it out loud, Cami! In front of the instructor!" },
+    { "texto": "Don't be like that. I spanked you at the hot springs and you didn't even complain." },
+    { "texto": "Because I was in shock! A five-hundred-year-old heroine doesn't know what to do with that." },
+    { "texto": "…Exercise. A function that decides what to do based on Nikki's message. Please. Focus." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 3: conditionals. Fill in the blanks.",
+          "sip leerMensaje(mensaje) {",
+          "  if (mensaje [[1]] 'home now') {",
+          "    pour 'She got home safe. Breathe.';",
+          "  } [[2]] {",
+          "    pour [[3]]; // no message, nothing to return",
+          "  }",
+          "}",
+          "",
+          "latte.log(leerMensaje('home now')); // Expected output: She got home safe. Breathe."
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "if (condition) { ... } else { ... }",
+          "===  compares (are they equal?).",
+          "=    assigns (stores). It does NOT compare. Don't mix them up.",
+          "decaf = nothing. An empty value (in JavaScript, null).",
+          "",
+          "Written at 1:31 a.m., waiting for a message."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” doesn't compare. To ask whether two things are equal you use ===." },
+      "2": { "error": "“{valor}” isn't plan B. After an if, what happens when it isn't true goes in else." },
+      "3": { "error": "“{valor}” isn't “nothing”. In Coffee, the empty value is decaf." }
+    },
+    "exito": ["She got home safe. Breathe.", "✔ Compiled. Finally an if that comes true in the instructor's life."],
+    "reacciones": {
+      "Cami": [
+        {
+          "texto": "A single = doesn't compare, it just assigns. Like me with Rikka: I've already assigned her.",
+          "respuesta": { "texto": "You didn't assign me anything. I'm not a variable, Cami." }
+        },
+        {
+          "texto": "If Rikka kisses as well as she compiles, we'd better head to the else.",
+          "respuesta": { "texto": "Nobody is going to any else with you!" }
+        }
+      ],
+      "Nikki": [
+        "you used = instead of ===. that's how you confessed the first time. you assigned without asking",
+        "if your code were a relationship it would've left you on read already"
+      ],
+      "Rikka": ["I'm not blushing. It's the screen light.", "Cami, stop looking at me like that. Look at the screen."],
+      "Jair": ["The if is fine. It's the universe that doesn't compile."]
+    },
+    "al_abrir": [
+      { "texto": "Watch out for = and ===. One stores, the other asks. It's the most expensive mistake in history." },
+      { "texto": "Cami is staring at me. That's not a condition: it's a threat." }
+    ],
+    "al_resolver": [
+      { "texto": "“She got home safe. Breathe.” I wish my life had an if that clear." },
+      { "texto": "Now you know how to decide. I already decided: I'm sitting next to Rikka." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Very good. Now you know how to make decisions. In code, at least." },
+    { "texto": "I made a decision: I'm picking the next truth or dare." },
+    { "texto": "Pick whatever you want, as long as the dare isn't kissing me again. I'm picking truth." },
+    { "texto": "great. even the girls in your dream have more love life than you" }
+  ]
+}

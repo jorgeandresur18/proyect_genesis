@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl } from '../engine/assets';
 import { playCancel, playSelect } from '../engine/sound';
-import { CURSO, codigoDiploma, type Nivel } from '../engine/bootcamp';
+import { PRUEBA, codigoDiploma, type Curso, type Nivel } from '../engine/bootcamp';
+import { useCurso } from './bootcampDatos';
 import conoceMas from '../data/conoce_mas.json';
 
 /**
@@ -10,7 +11,6 @@ import conoceMas from '../data/conoce_mas.json';
  * letra chica que dice que no vale nada y los enlaces del juego (el repositorio y la página del autor, que salen de
  * «Conoce más»). Se descarga como imagen o se comparte en redes; también se publica en LinkedFired (el chiste).
  */
-const tx = CURSO.textos;
 const fmt = (s: string, vars: Record<string, string | number>) =>
   Object.entries(vars).reduce((out, [k, v]) => out.replace(`{${k}}`, String(v)), s);
 /** Los enlaces que van en el diploma (marcados en src/data/conoce_mas.json). */
@@ -26,22 +26,25 @@ export function DiplomaView({
   onPublicar: () => void;
   onVolver: () => void;
 }) {
+  const { tx } = useCurso();
   const d = nivel.diploma!;
   const nombre = useStore((s) => s.bootcampNombre);
-  const emitido = useStore((s) => s.bootcampDiplomas[nivel.id]);
+  const guardado = useStore((s) => s.bootcampDiplomas[nivel.id]);
+  const [deUnUso] = useState(() => ({ codigo: codigoDiploma(nivel.id), fecha: new Date().toISOString() }));
+  const emitido = PRUEBA ? (guardado ?? deUnUso) : guardado;
   const emitir = useStore((s) => s.emitirDiploma);
   const publicado = useStore((s) => (s.bootcampHechas[`diploma:${nivel.id}`] ?? 0) >= 2);
   const [compartir, setCompartir] = useState(false);
   const [nota, setNota] = useState('');
   // La primera vez que se ve, se emite: código y fecha quedan guardados para siempre.
   useEffect(() => {
-    if (!emitido) emitir(nivel.id, codigoDiploma(nivel.id));
+    if (!emitido && !PRUEBA) emitir(nivel.id, codigoDiploma(nivel.id));
   }, [emitido, emitir, nivel.id]);
   if (!emitido) return null;
-  const fecha = new Date(emitido.fecha).toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric' });
+  const fecha = new Date(emitido.fecha).toLocaleDateString(tx.fecha_idioma, { day: 'numeric', month: 'long', year: 'numeric' });
   const texto = fmt(tx.compartir_texto, { titulo: d.titulo, codigo: emitido.codigo });
   const archivo = `diploma-bootcamp-genesis-${nivel.id}.png`;
-  const imagen = () => dibujar({ nombre, titulo: d.titulo, texto: d.texto, codigo: emitido.codigo, fecha });
+  const imagen = () => dibujar(tx, { nombre, titulo: d.titulo, texto: d.texto, codigo: emitido.codigo, fecha });
   const descargar = async () => {
     playSelect();
     const url = (await imagen()).toDataURL('image/png');
@@ -161,7 +164,7 @@ export function DiplomaView({
 }
 
 /** El diploma como imagen (1600 × 1130), para descargarlo o compartirlo. */
-async function dibujar(d: { nombre: string; titulo: string; texto: string; codigo: string; fecha: string }) {
+async function dibujar(tx: Curso['textos'], d: { nombre: string; titulo: string; texto: string; codigo: string; fecha: string }) {
   const W = 1600;
   const H = 1130;
   const c = document.createElement('canvas');
@@ -246,9 +249,9 @@ async function dibujar(d: { nombre: string; titulo: string; texto: string; codig
   g.fill();
   g.fillStyle = '#fff';
   g.font = '800 22px system-ui, sans-serif';
-  g.fillText('NO VÁLIDO', W - 170, 175);
+  g.fillText(tx.sello_1, W - 170, 175);
   g.font = '700 16px system-ui, sans-serif';
-  g.fillText('PERO BONITO', W - 170, 200);
+  g.fillText(tx.sello_2, W - 170, 200);
   return c;
 }
 

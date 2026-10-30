@@ -4,15 +4,12 @@ import { assetUrl, isPlaceholder } from '../engine/assets';
 import { playCancel, playSelect } from '../engine/sound';
 import { headTop } from '../engine/stature';
 import {
-  CURSO,
   INTRO,
   NOMBRE_MAX,
   NOMBRE_MIN,
   PRUEBA,
-  LECCIONES,
   NIVELES,
   diplomaKey,
-  ejercicioDe,
   estrellas,
   useBootcamp,
   type Linea,
@@ -20,6 +17,7 @@ import {
 } from '../engine/bootcamp';
 import { CoffeeIDE, reiniciarPreguntas } from './CoffeeIDE';
 import { DiplomaView } from './BootcampDiploma';
+import { ejercicioDe, useCurso } from './bootcampDatos';
 import { AvatarGenerado } from './AvatarGenerado';
 import { speakerColor } from './DialogBox';
 
@@ -45,11 +43,11 @@ const BOOT_MS = 3400;
 const BOOT_JOKE_MS = 650;
 /** «Cerrando sesión…» antes de apagar la pantalla. */
 const SHUTDOWN_MS = 900;
-const tx = CURSO.textos;
 const fmt = (s: string, vars: Record<string, string | number>) =>
   Object.entries(vars).reduce((out, [k, v]) => out.replace(`{${k}}`, String(v)), s);
 
 export function BootcampScreen({ onClose }: { onClose: () => void }) {
+  const { CURSO, tx } = useCurso();
   const still = useStore((s) => s.settings.reduceEffects);
   // Arranque (logo y carga) → el bootcamp → cerrando sesión → la pantalla se apaga.
   const [fase, setFase] = useState<'boot' | 'on' | 'apagando'>(still ? 'on' : 'boot');
@@ -108,6 +106,7 @@ export function BootcampScreen({ onClose }: { onClose: () => void }) {
 
 /** El arranque: el logo del bootcamp, el emblema girando y una barra que «instala» cosas con chistes. */
 function Arranque({ onListo }: { onListo: () => void }) {
+  const { CURSO, tx } = useCurso();
   const [k, setK] = useState(0);
   useEffect(() => {
     const t1 = setInterval(() => setK((x) => x + 1), BOOT_JOKE_MS);
@@ -134,6 +133,7 @@ function Arranque({ onListo }: { onListo: () => void }) {
 
 /** Al apagar: «cerrando sesión» con el emblema, antes de que la pantalla se cierre. */
 function Apagando() {
+  const { tx } = useCurso();
   return (
     <div className="bc-boot bc-shutdown">
       <img className="bc-boot-emblem" src={assetUrl('marca/bootcamp_emblema.webp')} alt="" draggable={false} />
@@ -144,6 +144,7 @@ function Apagando() {
 
 /** La primera vez: el nombre del alumno (sale manuscrito en los diplomas). También sirve para cambiarlo. */
 function Inscripcion({ onListo }: { onListo: () => void }) {
+  const { CURSO, tx } = useCurso();
   const actual = useStore((s) => s.bootcampNombre);
   const guardar = useStore((s) => s.setBootcampNombre);
   const [nombre, setNombre] = useState(actual);
@@ -192,8 +193,13 @@ function Inscripcion({ onListo }: { onListo: () => void }) {
 }
 
 function Contenido() {
+  const { CURSO, tx, LECCIONES } = useCurso();
   const b = useBootcamp();
-  const marcar = useStore((s) => s.markBootcamp);
+  const guardar = useStore((s) => s.markBootcamp);
+  // En el modo de prueba (?bootcamp=todo) no se guarda el progreso: solo que ya se vio la introducción.
+  const marcar = (id: string, valor?: number) => {
+    if (!PRUEBA || id === INTRO) guardar(id, valor);
+  };
   const nombre = useStore((s) => s.bootcampNombre);
   const [renombrar, setRenombrar] = useState(false);
   const [vista, setVista] = useState<Vista>(() => (b.introVista ? { kind: 'inicio' } : { kind: 'intro', i: 0 }));
@@ -209,7 +215,7 @@ function Contenido() {
       <div className="bc-stage">
         <CoffeeIDE
           id={`bootcamp:${l.id}`}
-          data={ejercicioDe(l)}
+          data={ejercicioDe(CURSO, l)}
           onSolved={(fallos) => setVista({ kind: 'cierre', id: l.id, i: 0, estrellas: estrellas(fallos) })}
           onExit={() => setVista({ kind: 'charla', id: l.id, i: l.charla.length - 1 })}
         />
@@ -249,7 +255,7 @@ function Contenido() {
   }
 
   if (vista.kind === 'diploma' || vista.kind === 'linkedfired') {
-    const nivel = NIVELES.find((n) => n.id === vista.nivel)!;
+    const nivel = CURSO.niveles.find((n) => n.id === vista.nivel)!;
     if (vista.kind === 'diploma')
       return (
         <DiplomaView
@@ -300,6 +306,7 @@ function Contenido() {
 
 /** Antes de terminar el Capítulo 1: inscripciones cerradas. */
 function Cerrado() {
+  const { tx } = useCurso();
   return (
     <div className="bc-closed">
       <span className="bc-closed-lock" aria-hidden>
@@ -323,11 +330,12 @@ function Inicio({
   onClase: (id: string) => void;
   onDiploma: (nivel: string) => void;
 }) {
+  const { CURSO, tx, LECCIONES } = useCurso();
   const b = useBootcamp();
   const nombre = useStore((s) => s.bootcampNombre);
   // Se abre en el último nivel disponible.
   const [sel, setSel] = useState(() => [...NIVELES].reverse().find((n) => b.nivelAbierto(n))?.id ?? NIVELES[0].id);
-  const nivel = NIVELES.find((n) => n.id === sel)!;
+  const nivel = CURSO.niveles.find((n) => n.id === sel)!;
   const abierto = b.nivelAbierto(nivel);
   const pct = b.progreso.total ? Math.round((b.progreso.hechas / b.progreso.total) * 100) : 0;
   const lvl = { '--lvl': nivel.color } as CSSProperties;
@@ -354,8 +362,8 @@ function Inicio({
         </div>
       </header>
 
-      <nav className="bc-levels" aria-label="Niveles">
-        {NIVELES.map((n, i) => {
+      <nav className="bc-levels" aria-label={tx.niveles}>
+        {CURSO.niveles.map((n, i) => {
           const open = b.nivelAbierto(n);
           const done = n.lecciones.filter((id) => b.hechas[id]).length;
           return (
@@ -368,7 +376,7 @@ function Inicio({
               }}
               style={{ animationDelay: `${i * 50}ms`, '--lvl': n.color } as CSSProperties}
             >
-              <small>Nivel {i + 1}</small>
+              <small>{fmt(tx.nivel, { n: i + 1 })}</small>
               <b>{n.nombre}</b>
               {open ? (
                 <span className="bc-bar">
@@ -470,6 +478,7 @@ function Resena({
 
 /** Reseñas del curso: de alumnos cualquiera, sobre el curso (no sobre los personajes); y la tuya, primera. */
 function Resenas() {
+  const { CURSO, tx } = useCurso();
   const mia = useStore((s) => s.bootcampCalificacion);
   const calificar = useStore((s) => s.calificarBootcamp);
   const resena = useStore((s) => s.bootcampResena);
@@ -598,6 +607,7 @@ function Charla({
   onFinal: () => void;
   onSalir: () => void;
 }) {
+  const { tx } = useCurso();
   const linea = lineas[i];
   const ultima = i === lineas.length - 1;
   return (
@@ -646,6 +656,7 @@ function Charla({
 
 /** La publicación en LinkedFired: el diploma, las vistas y los comentarios (y el remate del final). */
 function LinkedFired({ nivel, onVolver }: { nivel: Nivel; onVolver: () => void }) {
+  const { CURSO, tx } = useCurso();
   const d = nivel.diploma!;
   const retrato = (quien: string, sprite?: string) => sprite ?? CURSO.ide.retratos[quien as keyof typeof CURSO.ide.retratos];
   return (
@@ -710,6 +721,7 @@ function LinkedFired({ nivel, onVolver }: { nivel: Nivel; onVolver: () => void }
 
 /** El aula (mientras no haya arte, un fondo con el nombre del placeholder). */
 function Fondo() {
+  const { CURSO } = useCurso();
   if (isPlaceholder(CURSO.fondo)) {
     return (
       <div className="bc-bg bc-bg-placeholder" aria-hidden>

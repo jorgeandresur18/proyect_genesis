@@ -1,0 +1,82 @@
+{
+  "titulo": "Types and operators",
+  "tema": "Numbers and text don't mix: + adds or joins; typeof tells you what it is; === compares.",
+  "charla": [
+    { "texto": "Lesson five: types. In Coffee, 1200 is a number and '1200' is text. They look alike. They're not the same." },
+    { "texto": "With numbers, + adds: 2 + 2 gives 4. With text it joins: '2' + 2 gives '22'. That's broken more payrolls than any recession." },
+    { "texto": "So if I want to know what something is, I ask it? In my kingdom we asked with a sword." },
+    { "texto": "Almost. You ask with typeof: typeof 1200 gives 'number'; typeof 'hello' gives 'string'. No sword." },
+    { "texto": "rikka, your notes are better than the instructor's. don't tell him, it'll go to his emotional salary" },
+    { "texto": "I'm like the +, prof: with guys I add up, with girls I join in. The type doesn't matter to me." },
+    { "texto": "and jair's salary is of type “undefined”. it exists in the contract, but nobody has ever seen it" },
+    { "texto": "…Exercise: calculate the salary with overtime. Overtime is paid at zero. It's a realistic exercise." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 5: types and operators. Fill in the blanks.",
+          "brew sueldo = 1200;",
+          "brew horasExtra = 40;",
+          "brew pagoPorHoraExtra = [[1]]; // company policy",
+          "brew total = sueldo [[2]] horasExtra * pagoPorHoraExtra;",
+          "brew esNumero = typeof total [[3]] 'number';",
+          "latte.log('Salary: ' + total + ' / is it a number?: ' + esNumero);",
+          "// Expected output: Salary: 1200 / is it a number?: true"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "number: 1200, 0, 3.5   (no quotes)",
+          "string: '1200', 'hi'   (with quotes)",
+          "+ with two numbers adds. With text in the middle, it joins: '2' + 2 = '22'.",
+          "* goes before +, like in math: 1200 + 40 * 0 = 1200.",
+          "typeof x  -> tells you the type: 'number', 'string', 'boolean'…",
+          "===       -> compares value AND type. 0 === '0' is false.",
+          "",
+          "Overtime paid this year: 0. Type: number. Feelings: undefined."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” isn't the number zero. Overtime pays 0 (a number, no quotes); with quotes it would be text and the payroll breaks." },
+      "2": { "error": "“{valor}” doesn't add. To add the salary and the overtime you use +." },
+      "3": { "error": "“{valor}” doesn't compare. To ask whether typeof total is 'number' you use ===." }
+    },
+    "exito": ["Salary: 1200 / is it a number?: true", "✔ Compiled. The overtime was worth exactly what the contract says: nothing."],
+    "reacciones": {
+      "Cami": [
+        "With quotes, without quotes… I like both types, prof. I already said that.",
+        {
+          "texto": "And what type is Rikka's ass? Not even number is enough: it's Infinity.",
+          "respuesta": { "texto": "It's of type “none of your business”, Cami!" }
+        }
+      ],
+      "Nikki": [
+        "you put '0' in quotes. congrats: now your salary is text. like everyone's, really",
+        "if overtime paid 15 an hour this wouldn't be parody anymore, it'd be science fiction"
+      ],
+      "Rikka": [
+        "The instructor said: multiplication comes before addition. First hours times pay, then the salary.",
+        "Watch the quotes. A number in quotes is text in disguise."
+      ],
+      "Jair": ["typeof doesn't lie. The company does.", "If you get '12000' you joined text. I wish that were your salary."]
+    },
+    "al_abrir": [
+      { "texto": "Careful: overtime pays zero, as a number. And * is calculated before +." },
+      { "texto": "I'll start with the first blank. A number without quotes. Easy." }
+    ],
+    "al_resolver": [
+      { "texto": "1200 and true. the only true thing on this payroll is the boolean" },
+      { "texto": "I get it! Text gets joined, numbers get added. And the salary doesn't go up." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Good. Now you can tell a number from text. More than my company's payroll system can." },
+    { "texto": "Instructor, what if they paid your overtime in quotes? At least you'd get a nice text." },
+    { "texto": "they already do. it's called “recognition”. it comes in an email with confetti" }
+  ]
+}

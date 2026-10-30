@@ -98,7 +98,7 @@
       "El profe se toma un latte",
       "El profe se toma un decaf",
       "Tazas: 3",
-      "✔ Compiló. Nivel básico terminado. Ya saben más que el último practicante que contrataron."
+      "✔ Compiló. Ya saben más que el último practicante que contrataron."
     ],
     "reacciones": {
       "Cami": [
@@ -148,7 +148,7 @@
       },
       {
         "quien": "Jair",
-        "texto": "Nivel básico terminado. Estoy tan orgulloso que me tomaría un cuarto café.",
+        "texto": "Ya saben recorrer listas. Estoy tan orgulloso que me tomaría un cuarto café.",
         "sprite": "sprites/jair/orgulloso.webp"
       }
     ]
@@ -157,7 +157,7 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/orgulloso.webp",
-      "texto": "Nivel básico terminado. Variables, funciones, condicionales y bucles. Con eso se hace casi todo."
+      "texto": "Variables, funciones, condicionales y bucles. Con eso ya se hace casi todo."
     },
     {
       "quien": "Jair",

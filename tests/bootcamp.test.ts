@@ -2,7 +2,9 @@
 // que los niveles se desbloqueen con escenas reales y que las estrellas y el progreso se guarden bien.
 import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { CURSO, LECCIONES, NIVELES, TODAS, codigoDiploma, estrellas, finesDe } from '../src/engine/bootcamp';
+import { CURSO, NIVELES, TODAS, codigoDiploma, cursoDe, estrellas, finesDe } from '../src/engine/bootcamp';
+import { LECCIONES_EN, LECCIONES_ES as LECCIONES } from '../src/components/bootcampDatos';
+import { readdirSync } from 'node:fs';
 import conoceMas from '../src/data/conoce_mas.json';
 import { useStore } from '../src/engine/store';
 
@@ -123,5 +125,27 @@ describe('bootcamp', () => {
     expect(CURSO.ide.asistente.limite).toBeGreaterThanOrEqual(20);
     expect(CURSO.ide.asistente.limite).toBeLessThanOrEqual(30);
     expect(CURSO.ide.asistente.bloqueado.length).toBeGreaterThan(10);
+  });
+
+  it('inglés: cada clase tiene su traducción y el código conserva los mismos huecos', () => {
+    const es = readdirSync('src/data/bootcamp/lecciones').sort();
+    expect(readdirSync('src/data/en/bootcamp/lecciones').sort()).toEqual(es);
+    const huecos = (lineas: string[]) => [...lineas.join(' ').matchAll(/\[\[(\d+)\]\]/g)].map((m) => m[1]);
+    for (const [id, l] of Object.entries(LECCIONES)) {
+      const en = LECCIONES_EN[id];
+      const a = l.ejercicio.archivos!, b = en.ejercicio.archivos!;
+      expect(b.length, id).toBe(a.length);
+      a.forEach((f, i) => expect(huecos(b[i].lineas), `${id}/${f.ruta}`).toEqual(huecos(f.lineas)));
+      // La traducción no cambia las respuestas ni la paleta.
+      expect(en.ejercicio.huecos).toBeTruthy();
+      for (const [n, h] of Object.entries(l.ejercicio.huecos!)) expect(en.ejercicio.huecos![n].respuesta).toBe(h.respuesta);
+      expect(en.ejercicio.paleta).toEqual(l.ejercicio.paleta);
+      expect(en.charla.length).toBe(l.charla.length);
+      expect(en.cierre.length).toBe(l.cierre.length);
+    }
+    const en = cursoDe('en');
+    expect(en.textos.cerrado_titulo).not.toBe(CURSO.textos.cerrado_titulo);
+    expect(en.introduccion.length).toBe(CURSO.introduccion.length);
+    expect(en.ide.asistente.respuestas.join(' ')).toContain('8,112');
   });
 });

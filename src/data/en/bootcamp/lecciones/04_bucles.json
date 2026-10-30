@@ -1,0 +1,84 @@
+{
+  "titulo": "Loops",
+  "tema": "for repeats something with each item of a list (for … of).",
+  "charla": [
+    { "texto": "Lesson four: loops. A loop repeats something many times without you having to write it many times." },
+    { "texto": "Like my life: office, bus, home. Office, bus, home. Except the loop at least ends." },
+    { "texto": "jair's favorite loop: open my chat, type, delete, close. for eight years now" },
+    { "texto": "In my kingdom, soldiers train in loops: a thousand thrusts a day." },
+    { "texto": "The prof trains in loops too, Rikka. Alone, at night, with the door closed. Have you seen his forearms…" },
+    { "texto": "I work out with weights! Well, with a water bottle. But it counts." },
+    { "texto": "Exercise: go through the list of cups and print each one. With for and of." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 4: loops. Fill in the blanks.",
+          "brew tazas = ['espresso', 'latte', 'decaf'];",
+          "",
+          "[[1]] (brew taza [[2]] tazas) {",
+          "  latte.log('The instructor drinks: ' + taza);",
+          "}",
+          "",
+          "latte.log('Cups: ' + tazas.[[3]]); // Expected output: Cups: 3"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "for (brew thing of list) { ... }  -> repeats the block with each thing in the list.",
+          "CAREFUL: of gives each item; in gives the positions (0, 1, 2). You almost always want of.",
+          "list.length -> how many things the list has.",
+          "",
+          "Cups of coffee today: 3. Hours of sleep: not 3 either."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” doesn't repeat anything. A loop that goes through a list starts with for." },
+      "2": { "error": "“{valor}” gives the positions (0, 1, 2), not the cups. For each item you use of." },
+      "3": { "error": "tazas.{valor} doesn't exist. To know how many things a list has: length." }
+    },
+    "exito": [
+      "The instructor drinks: espresso",
+      "The instructor drinks: latte",
+      "The instructor drinks: decaf",
+      "Cups: 3",
+      "✔ Compiled. You already know more than the last intern they hired."
+    ],
+    "reacciones": {
+      "Cami": [
+        "An infinite loop… like the prof's glances at the summer blonde's tits. Meaning mine.",
+        {
+          "texto": "Prof, if you get it right I'll give you a spank. Ask Rikka: it doesn't hurt that much.",
+          "respuesta": { "texto": "It did hurt! My pride, but it hurt." }
+        }
+      ],
+      "Nikki": [
+        "you used in. you always keep the positions and never what matters",
+        "a loop that never ends. just like our fights"
+      ],
+      "Rikka": ["Cami! Stop promising spankings in class.", "A thousand thrusts, a thousand mistakes. That's how you learn."],
+      "Jair": ["This doesn't happen in production. Well, it does. It always does."]
+    },
+    "al_abrir": [
+      { "texto": "for goes through the list, of hands you each cup. With in you get the positions, and nobody wants to drink a position." },
+      { "texto": "I'd love to try a few positions, prof." },
+      { "texto": "Cami!" }
+    ],
+    "al_resolver": [
+      { "texto": "three coffees and zero hours of sleep. that's you in code" },
+      { "texto": "Now you can loop through lists. I'm so proud I'd have a fourth coffee." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Variables, functions, conditionals and loops. With that you can already do almost anything." },
+    { "texto": "The rest is searching the internet at three in the morning, alone, with the fan. Welcome to programming." },
+    { "texto": "…you're not that alone, dummy. you've got students. and you've got me. sometimes" },
+    { "texto": "And next lesson, Rikka should teach. I want to see her at the whiteboard… from behind." },
+    { "texto": "CAMI!" }
+  ]
+}

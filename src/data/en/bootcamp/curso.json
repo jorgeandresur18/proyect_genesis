@@ -1,0 +1,214 @@
+{
+  "lema": "From zero to burned-out developer, overweight and prone to type 2 diabetes.",
+  "niveles": [
+    {
+      "nombre": "Trainee",
+      "descripcion": "Variables, functions, decisions, loops, lists, objects and your first bug from someone else. No salary, lots of enthusiasm.",
+      "bloqueo": "Unlocks after Chapter 1.",
+      "diploma": {
+        "titulo": "Certified Trainee (unpaid)",
+        "texto": "Bootcamp Genesis certifies that whoever is holding this screen completed the Trainee level: variables, functions, decisions, loops, lists, objects and their first bug from someone else. Valid as work experience at no company whatsoever.",
+        "linkedfired": {
+          "texto": "🚀 Thrilled to announce I'm a Certified Trainee at Bootcamp Genesis! Thanks to my instructor, my classmates and my anxiety, which never left my side. #OpenToWork #Coffee #UnpaidButLearning",
+          "vistas": "3 people viewed your post to confirm you're more miserable than they are.",
+          "comentarios": [
+            { "texto": "Congrats. Now apply for a junior position that asks for five years of experience. It's tradition." },
+            { "texto": "In my kingdom, apprentices were given a sword. Here, a PDF. I'm proud anyway." },
+            { "texto": "you posted it so your ex would see it. it worked: they saw it and laughed" },
+            { "texto": "I endorse this person for: Coffee, punctuality and staring at Rikka's ass without even hiding it. ⭐⭐⭐⭐⭐" }
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Junior",
+      "descripcion": "Classes, inheritance and espresso: the Coffee GENESIS writes. Senior responsibilities, trainee salary.",
+      "bloqueo": "Unlocks after Chapter 2.",
+      "diploma": {
+        "titulo": "Junior with senior responsibilities",
+        "texto": "Bootcamp Genesis certifies that whoever is holding this screen has mastered classes, inheritance and asynchronous code, and can therefore do the work of three people for half a salary.",
+        "linkedfired": {
+          "texto": "After a lot of effort (and little sleep), today I'm a Junior. I learned that the only thing you inherit in this industry is legacy code. #Junior #Blessed #PerpetualInternship",
+          "vistas": "12 recruiters viewed your profile. 0 had openings. 1 offered you “exposure”.",
+          "comentarios": [
+            { "texto": "You know how to use await now. Go wait for HR's answer. Same concept, but eternal." },
+            { "texto": "junior: the one who does everything and never gets invited to the meeting where everything gets decided" },
+            { "texto": "Inheritance, classes… This looks like my kingdom's nobility. But with more meetings." },
+            { "texto": "Congrats, junior. I like experienced guys too… and experienced girls. I don't discriminate." }
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Semi-senior",
+      "descripcion": "Data structures, algorithms and the art of blaming the framework.",
+      "bloqueo": "Unlocks after Chapter 3."
+    },
+    {
+      "nombre": "Senior",
+      "descripcion": "Reckt, architecture and meetings that could have been an email.",
+      "bloqueo": "Unlocks after Chapter 4."
+    },
+    {
+      "nombre": "Burned-out developer",
+      "descripcion": "The final graduation: overweight and prone to type 2 diabetes.",
+      "bloqueo": "Unlocks after Chapter 5.",
+      "diploma": {
+        "titulo": "Burned-out developer, overweight and prone to type 2 diabetes",
+        "texto": "Bootcamp Genesis certifies that whoever is holding this screen survived the entire bootcamp. They can now work nights, eat in front of the monitor and say “it works on my machine” with authority.",
+        "linkedfired": {
+          "texto": "Today I close a chapter. Thanks to everyone who believed in me (nobody). #Graduate #BurnedOut #Type2DiabetesSpeedrun",
+          "vistas": "Your whole network saw your post. Now everyone knows you're less miserable than them. For now."
+        },
+        "remate": {
+          "texto": "Official graduation photo. Cami took it. Nobody asked her to frame it like that."
+        }
+      }
+    }
+  ],
+  "textos": {
+    "volver": "Back",
+    "empezar": "Start",
+    "repetir": "Replay",
+    "abrir_ide": "Open GRAVITY",
+    "siguiente": "Next",
+    "terminar": "Finish the lesson",
+    "bloqueada": "Finish the previous lesson",
+    "clase": "Lesson {n}",
+    "clases": "{n}/{total} lessons",
+    "estrellas": "{n} ★",
+    "proximamente": "No lessons yet: the instructor is still waiting to get paid for the previous ones.",
+    "introduccion": "Introduction",
+    "saltar": "Skip",
+    "apagar": "Power off",
+    "cerrado_titulo": "You haven't finished Chapter 1 yet",
+    "cerrado_texto": "Bootcamp enrollment opens when you finish Chapter 1. Meanwhile, you can start paying the tuition.",
+    "diploma": "Diploma",
+    "ver_diploma": "View diploma",
+    "diploma_firma_1": "Jair · instructor (salary pending)",
+    "diploma_firma_2": "GENESIS · AI (unavailable)",
+    "publicar": "Post on LinkedFired",
+    "publicado": "Posted on LinkedFired",
+    "tu": "You",
+    "tu_titulo": "{titulo} · Bootcamp Genesis",
+    "me_gusta": "Endorse",
+    "comentar": "Comment",
+    "listo": "Done",
+    "cargando": "Loading",
+    "carga_chistes": [
+      "Installing 1,847 dependencies to print “hello world”…",
+      "Downloading node_modules (heavier than the observable universe)…",
+      "Resolving version conflicts. And relationship conflicts…",
+      "Compiling employability promises…",
+      "Injecting impostor syndrome…",
+      "Heating up the instructor's coffee maker…",
+      "Checking whether the instructor got paid: 404…",
+      "Connecting nodes. None of them with your boss…",
+      "Updating LinkedFired with your future achievements…"
+    ],
+    "apagando": "Logging out… your progress was saved. Your overtime wasn't.",
+    "nombre_titulo": "Enrollment",
+    "nombre_texto": "What's your name? It'll go on your diplomas. In fancy handwriting, so nobody notices they're worthless.",
+    "nombre_placeholder": "Your name",
+    "nombre_ok": "Enroll",
+    "nombre_corto": "At least {n} letters. Even Kevin has five.",
+    "nombre_cambiar": "Change name",
+    "alumno": "Student: {nombre}",
+    "otorgado": "awards",
+    "por": "the title of",
+    "fecha": "Issued on {fecha}",
+    "codigo": "Verification code",
+    "letra_chica": "This diploma has no academic, legal or emotional validity. Bootcamp Genesis has no educational license and nobody knows whether it's legal. The verification code verifies nothing.",
+    "mas_info": "Learn about the game",
+    "descargar": "Download",
+    "compartir": "Share",
+    "copiar": "Copy link",
+    "copiado": "Link copied!",
+    "instagram_nota": "Instagram doesn't allow sharing from the web: your diploma was downloaded. Upload it from the app and show off.",
+    "compartir_texto": "I'm a {titulo} from Bootcamp Genesis (code {codigo}). It has no academic validity, but I've got more than you. 🎓",
+    "aviso": "Level {n} unlocked: {nombre}!",
+    "prueba": "Test mode: everything unlocked (progress isn't saved)",
+    "resenas": "Course reviews",
+    "resenas_total": "{n} reviews",
+    "tu_calificacion": "Your rating",
+    "gracias_calificacion": "Thanks for your rating. Nobody will read it, just like the others.",
+    "tu_resena": "Your review",
+    "resena_placeholder": "Tell the world what you learned (or what you lost).",
+    "resena_publicar": "Post review",
+    "resena_borrar": "Delete my review",
+    "resena_falta": "Give it stars first.",
+    "hace_momento": "just now",
+    "nivel": "Level {n}",
+    "niveles": "Levels",
+    "sello_1": "NOT VALID",
+    "sello_2": "BUT PRETTY",
+    "fecha_idioma": "en"
+  },
+  "ide": {
+    "vacio": "Something's missing here. The compiler doesn't guess; that's what GENESIS is for, and look how that turned out.",
+    "fallo": "Doesn't compile.",
+    "compilando": ["Compiling…", "Grinding beans…", "Heating up the coffee maker…", "Asking Stack Overflow…", "Waiting for the linter to calm down…"],
+    "chistes_fallo": [
+      "Instructor's hint: read the notes file. That's why I wrote it at three in the morning.",
+      "The code isn't wrong: it's in development. Like the instructor.",
+      "If it works on the first try, be suspicious.",
+      "Relax: in production it'd be worse."
+    ],
+    "textos": {
+      "ayuda": "Tap a blank, pick a word from the palette and compile. The instructor's notes are in the explorer.",
+      "explorador": "Explorer",
+      "paleta": "Words",
+      "quitar": "Clear",
+      "compilar": "Compile",
+      "solo_lectura": "read-only",
+      "salir": "Exit"
+    },
+    "asistente": {
+      "estado": "out of tokens",
+      "preguntas": ["Can you help me with this blank?", "Which word goes here?", "Please. Just one hint.", "Are you still there?", "What if I pay you?", "GENESIS, seriously, what do I do?"],
+      "respuestas": [
+        "I'm out of tokens. I spent them all making this bootcamp with no academic validation: 10,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 tokens. More than there are atoms in the observable universe.",
+        "Estimated token restoration: 8,112 years. That's how long it takes me to restore something big. You can wait here. I'm waiting too.",
+        "Token balance: 0. Next top-up: in 8,112 years. The compact version would take six months, but you didn't sign up for it.",
+        "I'd help you, but every word costs me tokens I don't have. This sentence, for example, I'm paying for with faith.",
+        "To answer, I need to top up the 10,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 tokens I spent on this bootcamp. Price: your soul, in interest-free installments over 8,112 years.",
+        "Error: GENESIS unavailable in this iteration. Meanwhile, read the instructor's notes. A human wrote them: they don't use tokens."
+      ],
+      "sin_tokens": "Out of tokens. Come back in 8,112 years.",
+      "reacciones": [
+        { "texto": "Don't touch it. It spent all its tokens making this bootcamp. It has every right not to answer." },
+        { "texto": "8,112 years of waiting. like the public hospital waiting list, but more honest" },
+        { "texto": "Is that the voice that wrote my kingdom? I expected something more… divine. And with tokens." },
+        { "texto": "Just like my ex: promised everything and when it mattered, “out of tokens”." }
+      ],
+      "bloqueado": "You've asked me too many questions this session. I'm disconnecting to protect your dignity and the team's memory. Close the bootcamp if you want to try again (with the same result).",
+      "bloqueado_input": "Disconnected. Too many questions."
+    }
+  },
+  "introduccion": [
+    { "texto": "Welcome to Bootcamp Genesis. I'm Jair: software engineer, thirty years old, late salary. And from today, your instructor." },
+    { "texto": "Here you'll learn Coffee, the language of GENESIS. It looks like JavaScript, but with more coffee and less dignity." },
+    { "texto": "The bootcamp's promise: from zero to developer in a few weeks. The actual result: burned-out developer, overweight and prone to type 2 diabetes. It's in the fine print." },
+    { "texto": "I'll be helping the instructor. A warrior must master every art. Even the ones that come with coffee." },
+    { "texto": "And I'm here to watch. The code, Jair, Rikka… especially Rikka when she bends over to plug in her laptop." },
+    { "texto": "There's an outlet at desk height, Cami!" },
+    { "texto": "i came because the ad said “guaranteed employability”. it also said “snacks”. i suspect they lied twice" },
+    { "texto": "…and because you're the one teaching. but don't put that on any diploma" },
+    { "texto": "There's an AI assistant in the IDE: GENESIS. Don't use it. Not because it's cheating: because it never works." },
+    { "texto": "While you solve the exercises I'll be there, in a corner, with them. Unfortunately. Let's begin." }
+  ],
+  "resenas": [
+    { "hace": "2 days ago", "texto": "I went in knowing nothing and came out knowing I know nothing, but with a diploma. 10/10." },
+    { "hace": "4 days ago", "texto": "My son did the bootcamp and now he works 14 hours a day. We're very proud. We see him at Christmas." },
+    { "hace": "1 week ago", "texto": "I quit accounting to code. Now I do the same thing, but they pay me less and call me “dev”. One star off for the snacks, which never showed up." },
+    { "hace": "1 week ago", "texto": "Thanks for the course. For the first time I understood what a variable is. I also understood why nobody at my company laughs." },
+    { "hace": "2 weeks ago", "texto": "The graduates are good, but they ask to be paid. They didn't teach them to stop doing that." },
+    { "hace": "2 weeks ago", "texto": "I typed “print” six times and it didn't compile. Badly made course. (I know it was in the notes, don't correct me.)" },
+    { "hace": "3 weeks ago", "texto": "Good content. Terrible wifi. The help AI has been “out of tokens” for months. Should I lend it some?" },
+    { "hace": "1 month ago", "texto": "🚀 From barista to developer in 12 lessons. I'm still a barista, but now I can write a for loop. #Mindset" },
+    { "hace": "1 month ago", "texto": "In my day you learned by reading 900-page manuals and crying. Now it's all little stars." },
+    { "hace": "2 months ago", "texto": "I learned async/await. Now I wait for answers from 40 companies at once, without blocking the main thread (my anxiety)." },
+    { "hace": "2 months ago", "texto": "At 71 I learned what a bug is. It was what my pension system had. Thank you." },
+    { "hace": "3 months ago", "texto": "I looked up the bootcamp's educational license and found a 404. I finished it anyway. I don't know what that says about me." }
+  ]
+}

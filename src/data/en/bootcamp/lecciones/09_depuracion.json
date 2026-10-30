@@ -1,0 +1,88 @@
+{
+  "titulo": "Trainee exam: debugging",
+  "tema": "Find and fix the three bugs in the previous intern's code.",
+  "charla": [
+    { "texto": "Final exam of the Trainee level. Today you don't write code: you fix someone else's. That's eighty percent of the job." },
+    { "texto": "The previous intern wrote a function that averages the performance reviews. It has three bugs. Find them." },
+    { "texto": "And where is the previous intern? We could ask him." },
+    { "texto": "he didn't leave. he was “let go”. now he's a declared variable nobody uses. the linter grays him out" },
+    { "texto": "Hint: the bugs are where you learned. A value that isn't zero, a for that doesn't loop over what it should and a property that doesn't exist." },
+    { "texto": "If I pass, prof, I want my prize: sitting behind Rikka at graduation. For the view." },
+    { "texto": "At graduation I'm sitting against the wall. I've decided." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Trainee exam: the previous intern's code. It has 3 bugs.",
+          "// Each blank is a bug: pick the fix.",
+          "sip promedio(notas) {",
+          "  let suma = [[1]]; // it used to say decaf",
+          "  for (brew n [[2]] notas) { // it used to say in",
+          "    suma = suma + n;",
+          "  }",
+          "  pour suma / notas.[[3]]; // it used to say size",
+          "}",
+          "",
+          "latte.log('Team average: ' + promedio([7, 9, 8]));",
+          "// Expected output: Team average: 8"
+        ]
+      },
+      {
+        "ruta": "error_log.txt",
+        "lineas": [
+          "> coffee run promedio.coffee",
+          "Team average: NaN",
+          "",
+          "Note from the previous intern (last commit, 3:47 a.m.):",
+          "“works on my machine. if it doesn't work on yours, change yours”",
+          "",
+          "Instructor's hints:",
+          "- decaf + 7 doesn't give 7: it gives garbage. A sum starts at 0.",
+          "- for … in gives the positions (0, 1, 2), not the scores. For the scores: of.",
+          "- size doesn't exist on Coffee lists. What counts is length."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "The sum starts at {valor}, that's why it gives NaN. Every sum starts at 0." },
+      "2": { "error": "With “{valor}” the for doesn't go through the scores. For each score in the list you use of." },
+      "3": { "error": "notas.{valor} doesn't exist and divides by nothing. The number of scores is notas.length." }
+    },
+    "exito": [
+      "Team average: 8",
+      "✔ Compiled. Bugs found: 3. Bugs created: 0. You're already better than the previous intern.",
+      "🎓 Trainee level passed."
+    ],
+    "reacciones": {
+      "Jair": ["NaN means “not a number”. In practice it means “somebody added a decaf”.", "Read the log. Errors always leave fingerprints."],
+      "Rikka": ["The log says NaN. That comes from the sum, I'm sure.", "The hints are in the error log. I'd read them before going on."],
+      "Nikki": [
+        "the previous intern left three bugs and a message at 3:47. the company calls it a “culture of commitment”",
+        "fixing someone else's code without getting paid: the most realistic exam you've ever taken"
+      ],
+      "Cami": [
+        {
+          "texto": "Three bugs. Like the three times Rikka bent over today. Yes, I counted.",
+          "respuesta": { "texto": "I dropped my pencil! Three times! That's not the same thing." }
+        },
+        "If I pass, I'm kissing whoever's closest. Prof, Rikka, Nikki… I'm not picky."
+      ]
+    },
+    "al_abrir": [
+      { "texto": "Open the error log first. That's where you'll see what happened. Then the code." },
+      { "texto": "3:47 a.m. the last commit of someone who still believed in something" }
+    ],
+    "al_resolver": [
+      { "texto": "Average: 8. Passed. You can now say you have experience maintaining legacy code." },
+      { "texto": "We fixed it! The previous intern would be proud. If he still existed." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Trainee level passed. You know variables, types, decisions, loops, lists, objects and how to fix other people's code." },
+    { "texto": "It was hard, but we did it together. Thank you, instructor." },
+    { "texto": "jair… and who fixes your bugs? …don't answer. it wasn't a question" },
+    { "texto": "And I kept my promise: I sat behind Rikka the whole exam. Excellent view. Five stars." },
+    { "texto": "now comes the diploma. it's good for the same thing as every diploma: posting it" }
+  ]
+}

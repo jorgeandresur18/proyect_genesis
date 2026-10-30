@@ -1,0 +1,79 @@
+{
+  "titulo": "Variables",
+  "tema": "brew stores a value under a name; latte.log shows it.",
+  "charla": [
+    { "texto": "Lesson one: variables. A variable is a labeled box where you keep a value." },
+    { "texto": "A box? We're not even two minutes into class and the double entendres have started, prof." },
+    { "texto": "…In Coffee it's written brew. Whatever you store with brew never changes. Like a tattoo. Or my feelings." },
+    { "texto": "or your search history, which has also been the same for years" },
+    { "texto": "I'm over five hundred years old and I've never needed to keep anything in a box." },
+    { "texto": "Because you keep everything in that ass, Rikka. Half the ancestral kingdom fits in there." },
+    { "texto": "Cami! We're in class." },
+    { "texto": "Exercise: store a student's name and age, and print them with latte.log. The notes are in the explorer." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 1: variables. Fill in the blanks.",
+          "[[1]] alumna = 'Rikka';",
+          "brew edad = [[2]]; // over five hundred, but don't let her find out",
+          "latte.[[3]](alumna + ' is ' + edad + ' years old');",
+          "// Expected output: Rikka is 500 years old"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES (written on a Friday at 3 a.m., alone, as usual)",
+          "",
+          "brew name = value;   -> stores a value under a name. It doesn't change.",
+          "Text goes in quotes: 'Nikki'.",
+          "Numbers go WITHOUT quotes: 500. With quotes, '500' is text, not a number.",
+          "latte.log(something); -> prints something in the terminal.",
+          "",
+          "Personal note: buy coffee. And a friend."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” doesn't declare anything. To store a value you use brew." },
+      "2": { "error": "“{valor}” isn't Rikka's age. Numbers go without quotes, and it's five hundred (don't let her know you said it)." },
+      "3": { "error": "latte.{valor} doesn't exist. To print something in the terminal: latte.log." }
+    },
+    "exito": ["Rikka is 500 years old", "✔ Compiled. The first variable of your life. The instructor is proud (and a little lonely)."],
+    "reacciones": {
+      "Cami": [
+        "If it doesn't compile, try more brew. Works for me at the tavern.",
+        "I've got these tits and not even a variable fits. Life is unfair, prof.",
+        {
+          "texto": "Rikka, stop squirming in your chair, that ass is blocking the whiteboard.",
+          "respuesta": { "texto": "My butt is not part of the syllabus!" }
+        }
+      ],
+      "Nikki": [
+        "another error. like us, jair, except this one at least warns you",
+        "relax, your code and your love life crash on the same line"
+      ],
+      "Rikka": [
+        "Maybe the compiler is offended. In my kingdom we'd offer it a tribute.",
+        "Read the notes. I read them and understood nothing, but they looked serious."
+      ],
+      "Jair": ["It worked on my machine.", "This is the framework's fault. It's always the framework's fault."]
+    },
+    "al_abrir": [
+      { "texto": "Tap a blank and pick a word. If you get lost, open my notes: they're on the left." },
+      { "texto": "And what if I tap something that isn't a blank, prof?" }
+    ],
+    "al_resolver": [
+      { "texto": "Five hundred years stored in a variable! I feel… declared." },
+      { "texto": "First variable. Frame it. I framed mine and nobody came to see it." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Perfect. Now you know how to store things under a name. It's the only thing I'm good at: storing." },
+    { "texto": "storing grudges, storing old messages, storing the clothes i left at your place years ago" },
+    { "texto": "I store something else: the kiss I won off Rikka at truth or dare. Under brew. It doesn't change." },
+    { "texto": "It was a dare. Diplomacy. Nothing more." }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "titulo": "Functions",
+  "tema": "sip defines a function; pour returns the result.",
+  "charla": [
+    { "texto": "Lesson two: functions. A function is a recipe: you give it ingredients, it does something and gives you back a result." },
+    { "texto": "In Coffee you define it with sip, and what it returns comes out with pour." },
+    { "texto": "Like a potion. You add herbs, you shake it, and it gives you back something you shouldn't drink." },
+    { "texto": "jair has a function called textNikki. he passes it messages and it returns nothing. it's been broken for eight years" },
+    { "texto": "That's not a broken function. It's an asynchronous function with a lot of patience." },
+    { "texto": "Prof, why did you once name a variable “penis”?" },
+    { "texto": "…It was a test. I was twenty-two and the linter accepted it. It was the only thing anyone accepted from me that year." },
+    { "texto": "Exercise: a function that greets someone by name. Greet Nikki. Somebody has to." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 2: functions. Fill in the blanks.",
+          "[[1]] saludar(nombre) {",
+          "  [[2]] 'Hi, ' + nombre;",
+          "}",
+          "",
+          "brew mensaje = saludar([[3]]);",
+          "latte.log(mensaje); // Expected output: Hi, Nikki"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "sip name(ingredient) { ... }  -> defines a function.",
+          "pour value;                   -> the function returns that value and ends.",
+          "To use it: name('something').",
+          "Text goes in quotes. Without quotes, Coffee thinks it's a variable.",
+          "",
+          "Reminder: a function without pour returns nothing. Like me on Fridays."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” doesn't define a function. Functions start with sip." },
+      "2": { "error": "“{valor}” doesn't return anything. To return a value you use pour." },
+      "3": { "error": "{valor} isn't the text 'Nikki'. Without quotes, Coffee looks for a variable that doesn't exist (like the relationship)." }
+    },
+    "exito": ["Hi, Nikki", "✔ Compiled. Nikki got a greeting. She won't answer, but it compiled."],
+    "reacciones": {
+      "Cami": [
+        "Relax, prof. Everyone's syntax gets hard the first time.",
+        "Not even my tits weigh as much as this error.",
+        {
+          "texto": "Prof, make a function that calculates the size of Rikka's ass. It'll take ages to compile.",
+          "respuesta": { "texto": "And yours can calculate how much your tits weigh. Let's see which one crashes first." }
+        }
+      ],
+      "Nikki": [
+        "you wrote return. this isn't javascript. and i'm not your girlfriend. two truths",
+        "your function returns nothing. it inherited your genes"
+      ],
+      "Rikka": ["When a potion doesn't work, you yell at it. Shall I try?", "The instructor said pour. I heard it too. I think."],
+      "Jair": ["This error isn't mine, it's from the previous version of me."]
+    },
+    "al_abrir": [
+      { "texto": "Remember: sip opens the function, pour returns something. Without pour, the function stays silent." },
+      { "texto": "like you when i ask what we are" }
+    ],
+    "al_resolver": [
+      { "texto": "hi, jair. see, greeting me wasn't that hard" },
+      { "texto": "It compiled! Prof, that deserves a congratulatory spank." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Excellent. Now you can write functions that return something. More than many of my ex-bosses ever did." },
+    { "texto": "Prof, confess: how many functions did you write alone, at night, with one hand?" },
+    { "texto": "My other hand was on the coffee. On the coffee, Cami." },
+    { "texto": "the coffee. sure. it's always the coffee" },
+    { "texto": "i liked your weird functions anyway. even the ones that returned nothing… forget it. next lesson" }
+  ]
+}

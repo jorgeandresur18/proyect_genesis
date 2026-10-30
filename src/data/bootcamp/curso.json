@@ -1,5 +1,5 @@
 {
-  "nota": "Bootcamp Genesis (extra, no canon; docs/BOOTCAMP.md y el documento del autor docs/BOOTCAMP_ESPECIFICACION.md). De cero a «desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2». Se abre desde su botón en el menú principal (al lado de Boringram), en un monitor que ocupa la pantalla y se prende como uno viejo. Niveles: el nivel N se desbloquea al terminar el Capítulo N («capitulo»); su «color» va del verde al rojo según la dificultad; ?bootcamp=todo en la dirección abre todo para probar; dentro del nivel, cada clase se abre al terminar la anterior. Cada clase (lecciones/NN_<id>.json): «charla» → «ejercicio» en el IDE del minijuego (lo que no trae lo toma de «ide» de aquí) → «cierre». Estrellas por clase según los intentos fallidos (0: 3★, 1-2: 2★, más: 1★). Al terminar un nivel: su «diploma» y la publicación en LinkedFired; el último nivel tiene el «remate» (la foto de Rikka). «asistente»: GENESIS en el IDE, que se quedó sin tokens (gastó un googol) y los restaura en 8.112 años, lo mismo que tarda la restauración completa del canon. Al entrar: el arranque (logo y chistes de carga) y, la primera vez, el nombre del alumno, que sale manuscrito en los diplomas (con código al azar, descargables y para compartir). Tono: Jair técnico y laboral; Cami provocadora, bisexual (lo suyo, no de Rikka) y con el gag del trasero de Rikka en progresión; Rikka ayuda a enseñar; Nikki humor negro con segunda lectura; con Jair, a veces tierna, triste o distante (ambigua como su relación); con Rikka y Cami, normal o cínica. Palabras directas de vez en cuando, sin describir actos sexuales. TODO: versión en inglés. «resenas»: las reseñas del curso (de alumnos genéricos, sobre el curso, no sobre los personajes).",
+  "nota": "Bootcamp Genesis (extra, no canon; docs/BOOTCAMP.md y el documento del autor docs/BOOTCAMP_ESPECIFICACION.md). De cero a «desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2». Se abre desde su botón en el menú principal (al lado de Boringram), en un monitor que ocupa la pantalla y se prende como uno viejo. Niveles: el nivel N se desbloquea al terminar el Capítulo N («capitulo»); su «color» va del verde al rojo según la dificultad; ?bootcamp=todo en la dirección abre todo para probar (sin guardar el progreso); dentro del nivel, cada clase se abre al terminar la anterior. Cada clase (lecciones/NN_<id>.json): «charla» → «ejercicio» en el IDE del minijuego (lo que no trae lo toma de «ide» de aquí) → «cierre». Estrellas por clase según los intentos fallidos (0: 3★, 1-2: 2★, más: 1★). Al terminar un nivel: su «diploma» y la publicación en LinkedFired; el último nivel tiene el «remate» (la foto de Rikka). «asistente»: GENESIS en el IDE, que se quedó sin tokens (gastó un googol) y los restaura en 8.112 años, lo mismo que tarda la restauración completa del canon. Al entrar: el arranque (logo y chistes de carga) y, la primera vez, el nombre del alumno, que sale manuscrito en los diplomas (con código al azar, descargables y para compartir). Tono: Jair técnico y laboral; Cami provocadora, bisexual (lo suyo, no de Rikka) y con el gag del trasero de Rikka en progresión; Rikka ayuda a enseñar; Nikki humor negro con segunda lectura; con Jair, a veces tierna, triste o distante (ambigua como su relación); con Rikka y Cami, normal o cínica. Palabras directas de vez en cuando, sin describir actos sexuales. Inglés: src/data/en/bootcamp/ (curso.json y lecciones/), se mezcla por posición; el código de los ejercicios conserva los nombres en español (Coffee es así) y traduce comentarios y textos. «resenas»: las reseñas del curso (de alumnos genéricos, sobre el curso, no sobre los personajes).",
   "titulo": "Bootcamp Genesis",
   "lema": "De cero a desarrollador explotado, con sobrepeso y propenso a diabetes tipo 2.",
   "fondo": "PLACEHOLDER:aula_bootcamp",
@@ -188,7 +188,7 @@
     "sitio": "https://proyect-genesis.vercel.app/",
     "aviso": "¡Nivel {n} desbloqueado: {nombre}!",
     "aviso_app": "Bootcamp Genesis",
-    "prueba": "Modo prueba: todo desbloqueado",
+    "prueba": "Modo prueba: todo desbloqueado (no se guarda el progreso)",
     "resenas": "Reseñas del curso",
     "resenas_total": "{n} reseñas",
     "tu_calificacion": "Tu calificación",
@@ -198,7 +198,12 @@
     "resena_publicar": "Publicar reseña",
     "resena_borrar": "Borrar mi reseña",
     "resena_falta": "Primero ponle estrellas.",
-    "hace_momento": "hace un momento"
+    "hace_momento": "hace un momento",
+    "nivel": "Nivel {n}",
+    "niveles": "Niveles",
+    "sello_1": "NO VÁLIDO",
+    "sello_2": "PERO BONITO",
+    "fecha_idioma": "es"
   },
   "ide": {
     "comando": "coffee run",
@@ -322,7 +327,7 @@
     {
       "quien": "Jair",
       "sprite": "sprites/jair/sabelotodo.webp",
-      "texto": "Hay un asistente de IA en el IDE, el Barista IA. No lo usen. No porque sea trampa: porque nunca funciona."
+      "texto": "Hay un asistente de IA en el IDE: GENESIS. No lo usen. No porque sea trampa: porque nunca funciona."
     },
     {
       "quien": "Jair",

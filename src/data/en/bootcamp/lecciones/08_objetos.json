@@ -1,0 +1,80 @@
+{
+  "titulo": "Objects",
+  "tema": "An object groups named data: { key: value }; you read it with a dot (empleado.nombre).",
+  "charla": [
+    { "texto": "Lesson eight: objects. A list keeps things in order; an object keeps them by name: { nombre: 'Jair', sueldo: 1200 }." },
+    { "texto": "To read a piece of data you use a dot: empleado.nombre. To change it, you assign it: empleado.sueldo = 1100." },
+    { "texto": "It's a soldier's record: name, rank, weapons. But why would anyone lower his pay?" },
+    { "texto": "It's called a “restructuring adjustment”. It's today's exercise." },
+    { "texto": "empleado.feliz = false. it's not a bug. it's company policy, documented in the onboarding" },
+    { "texto": "My ideal object: { guy: true, girl: true }. I'm not indecisive, prof. I'm complete." },
+    { "texto": "And Rikka's object would have a single property: { ass: 'huge' }. That fully describes her." },
+    { "texto": "My object would have { sword: 'sharp', patience: 0 }. Keep talking and you'll find out." }
+  ],
+  "ejercicio": {
+    "archivos": [
+      {
+        "lineas": [
+          "// Lesson 8: objects. Fill in the blanks.",
+          "brew empleado = {",
+          "  nombre: 'Jair',",
+          "  sueldo: 1000,",
+          "  feliz: [[1]],",
+          "};",
+          "empleado.sueldo = empleado.sueldo [[2]] 0.9; // restructuring adjustment (-10%)",
+          "latte.log(empleado.[[3]] + ' earns ' + empleado.sueldo);",
+          "// Expected output: Jair earns 900"
+        ]
+      },
+      {
+        "ruta": "instructor_notes.txt",
+        "lineas": [
+          "INSTRUCTOR'S NOTES",
+          "",
+          "brew o = { key: value, other: value };",
+          "o.key         -> reads the value.",
+          "o.key = new   -> changes it (even if o is brew: brew protects the variable, not what's inside).",
+          "true / false  -> booleans: yes or no.",
+          "x * 0.9       -> 90% of x.",
+          "(In this file the keys are in Spanish: nombre = name, sueldo = salary, feliz = happy.)",
+          "",
+          "Restructuring adjustments received: 3. Adjustments upward: error 404."
+        ]
+      }
+    ],
+    "huecos": {
+      "1": { "error": "“{valor}” isn't a realistic boolean. Happy? In this exercise: false." },
+      "2": { "error": "“{valor}” doesn't calculate 90%. To take 10% off the salary you multiply: sueldo * 0.9." },
+      "3": { "error": "empleado.{valor} isn't the name. To read the name: empleado.nombre." }
+    },
+    "exito": ["Jair earns 900", "✔ Compiled. Restructuring applied successfully. The employee was not consulted."],
+    "reacciones": {
+      "Nikki": [
+        "you put true. this bootcamp isn't science fiction",
+        "brew protects the variable but not what's inside it. like labor laws: the contract exists, the salary moves"
+      ],
+      "Cami": [
+        {
+          "texto": "If the object were Rikka, empleado.butt wouldn't fit on screen. You'd have to scroll.",
+          "respuesta": { "texto": "And if the object were you, cami.mouth would never finish loading." }
+        },
+        "true, false… I'm both at the same time, prof. In JavaScript that's called a bug. In me, it's charm."
+      ],
+      "Rikka": ["Taking off ten percent is multiplying by zero point nine. I did it with my coins.", "To read the name: dot and nombre. Not name: we're in Coffee."],
+      "Jair": ["The object can change even if it's brew. It's a classic interview trap.", "name is from other languages. Here the property is called what they wrote: nombre."]
+    },
+    "al_abrir": [
+      { "texto": "A boolean, an operator and a property. The final salary has to be 900." },
+      { "texto": "Ten percent of a thousand is a hundred. A thousand minus a hundred, nine hundred. I did the math before the compiler." }
+    ],
+    "al_resolver": [
+      { "texto": "900. and happy: false. the only honest data in the system" },
+      { "texto": "They did that adjustment to me last year. I programmed it myself, actually." }
+    ]
+  },
+  "cierre": [
+    { "texto": "Objects: that's how almost everything is modeled. Users, products, employees… and layoffs." },
+    { "texto": "Instructor, can I make an object of my kingdom? With castles, banners and nobody earning nine hundred." },
+    { "texto": "nobody got paid in your kingdom either, rikka. there were vassals. same thing, different interface" }
+  ]
+}

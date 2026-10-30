@@ -6,6 +6,7 @@ import { useStore } from './store';
 import { scenes } from './story';
 import type { CoffeeExercise } from '../components/CoffeeIDE';
 import curso from '../data/bootcamp/curso.json';
+import cursoEn from '../data/en/bootcamp/curso.json';
 
 export interface Linea {
   quien: string;
@@ -41,13 +42,28 @@ export interface Diploma {
   remate?: { imagen: string; texto: string };
 }
 
-export const CURSO = curso as unknown as Omit<typeof curso, 'niveles'> & { niveles: Nivel[] };
+export type Curso = Omit<typeof curso, 'niveles'> & { niveles: Nivel[] };
+/** El curso en español (la estructura: niveles, colores, capítulos; los textos, según el idioma con cursoDe). */
+export const CURSO = curso as unknown as Curso;
+
+/**
+ * Mezcla la traducción sobre el original: objetos por clave y listas por posición (lo que no se traduce queda en
+ * español: ids, sprites, respuestas de los huecos, paletas…). Igual que en Boringram.
+ */
+export function mezclar<T>(a: T, b: unknown): T {
+  if (b === undefined || b === null) return a;
+  if (Array.isArray(a) && Array.isArray(b)) return a.map((x, i) => mezclar(x, b[i])) as T;
+  if (a && typeof a === 'object' && typeof b === 'object' && !Array.isArray(a) && !Array.isArray(b)) {
+    const out: Record<string, unknown> = { ...(a as Record<string, unknown>) };
+    for (const [k, v] of Object.entries(b as Record<string, unknown>)) out[k] = mezclar(out[k], v);
+    return out as T;
+  }
+  return b as T;
+}
+const CURSO_EN = mezclar(CURSO, cursoEn);
+/** El curso con los textos del idioma. */
+export const cursoDe = (lang: string): Curso => (lang === 'en' ? CURSO_EN : CURSO);
 export const NIVELES = CURSO.niveles;
-export const LECCIONES: Record<string, Leccion> = Object.fromEntries(
-  Object.values(import.meta.glob<Leccion>('../data/bootcamp/lecciones/*.json', { eager: true, import: 'default' })).map(
-    (l) => [l.id, l],
-  ),
-);
 /** Todas las clases que existen, en orden. */
 export const TODAS = NIVELES.flatMap((n) => n.lecciones);
 export const INTRO = '_intro';
@@ -82,15 +98,6 @@ export function codigoDiploma(nivel: string, fecha = new Date(), azar: () => num
 
 /** Estrellas de una clase según los intentos fallidos al compilar. */
 export const estrellas = (fallos: number) => (fallos === 0 ? 3 : fallos <= 2 ? 2 : 1);
-
-/** El ejercicio de una clase con lo común del curso (comando, textos del IDE, asistente, retratos…). */
-export const ejercicioDe = (l: Leccion) =>
-  ({
-    ...CURSO.ide,
-    ...l.ejercicio,
-    textos: { ...CURSO.ide.textos, ...l.ejercicio.textos },
-    retratos: { ...CURSO.ide.retratos, ...l.ejercicio.retratos },
-  }) as CoffeeExercise;
 
 export function useBootcamp() {
   const visited = useStore((s) => s.snapshots);
