@@ -1594,3 +1594,12 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 .confirm-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; margin-top: 0.3rem; }
 .confirm-danger { border-color: rgba(255, 74, 90, 0.7) !important; color: #ff8a95 !important; }
 @keyframes confirm-in { from { opacity: 0; } }
+
+/* Nombre de la partida al guardar o al renombrar. */
+.slot-name-form { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.slot-name-form label { font-size: 0.85rem; color: var(--muted); }
+.slot-name-form input { width: 100%; padding: 0.45rem 0.6rem; border: 1px solid rgba(142, 240, 189, 0.45); border-radius: 0.35rem; background: rgba(0, 0, 0, 0.35); color: #f1f1f4; font: inherit; }
+.slot-name-form input:focus { outline: none; border-color: #8ef0bd; box-shadow: 0 0 0 2px rgba(142, 240, 189, 0.2); }
+.slot-warn { color: #ffd666; font-size: 0.78rem; }
+.slot-name-actions { display: flex; gap: 0.4rem; justify-content: flex-end; }
+.slot-info small.muted { font-size: 0.75rem; }

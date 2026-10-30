@@ -1,7 +1,8 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { CHAPTER_END, SAVE_SLOTS, TEXT_SPEED_INSTANT, canSaveGame, useStore } from '../engine/store';
 import { choiceText, lineText, speakerName } from '../engine/storyText';
-import { BAD_END, endingName, endings } from '../engine/story';
+import { BAD_END, endingName, endings, scenes } from '../engine/story';
 import { detectLanguage, localized, useLang, useT } from '../engine/i18n';
 import conoceMasEs from '../data/conoce_mas.json';
 import borradoEs from '../data/borrado.json';
@@ -90,16 +91,41 @@ export function HistoryPanel({ onClose }: { onClose: () => void }) {
   );
 }
 
+/** Largo máximo del nombre de una partida guardada. */
+const SAVE_NAME_MAX = 40;
+
+/**
+ * Guardar y cargar. Al guardar se pide un nombre (con uno sugerido: el capítulo) y después se puede cambiar
+ * con «Renombrar»; borrar una partida pide confirmación.
+ */
 export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClose: () => void }) {
   const saves = useStore((s) => s.saves);
   const canSave = useStore((s) => !!s.game && canSaveGame(s.game));
-  const { save, load, deleteSave } = useStore.getState();
+  const game = useStore((s) => s.game);
+  const { save, load, deleteSave, renameSave } = useStore.getState();
   const t = useT();
   const lang = useLang();
+  const [naming, setNaming] = useState<{ slot: number; kind: 'save' | 'rename'; text: string } | null>(null);
+  const [deleting, setDeleting] = useState<number | null>(null);
+  const slotName = (i: number) => saves[i]?.nombre || t('guardar.espacio', { n: i + 1 });
+  const suggested = () => t('guardar.nombre_defecto', { n: (game && scenes.get(game.sceneId)?.chapter) ?? 1 });
+  const commit = () => {
+    if (!naming) return;
+    const name = naming.text.trim().slice(0, SAVE_NAME_MAX);
+    if (naming.kind === 'save') save(naming.slot, name || suggested());
+    else renameSave(naming.slot, name);
+    playSelect();
+    setNaming(null);
+  };
+  const cancelNaming = () => {
+    playCancel();
+    setNaming(null);
+  };
   return (
     <Panel title={mode === 'save' ? t('guardar.titulo') : t('cargar.titulo')} onClose={onClose}>
       {Array.from({ length: SAVE_SLOTS }, (_, i) => {
         const slot = saves[i];
+        const editing = naming?.slot === i ? naming : null;
         return (
           <div key={i} className="slot">
             {slot ? (
@@ -109,46 +135,173 @@ export function SaveLoadPanel({ mode, onClose }: { mode: 'save' | 'load'; onClos
                 <NoData />
               </div>
             )}
-            <div className="slot-info">
-              <strong>{t('guardar.espacio', { n: i + 1 })}</strong>
-              {slot ? (
-                <>
-                  <span className="muted">{new Date(slot.date).toLocaleString(lang)}</span>
-                  <span>
-                    {slot.finished?.startsWith(CHAPTER_END)
-                      ? t('mapa.fin_capitulo', { n: slot.finished.slice(CHAPTER_END.length) })
-                      : lineText(slot.sceneId, slot.preview, lang).slice(0, 80)}
-                  </span>
-                </>
-              ) : (
-                <span className="muted">{t('guardar.vacio')}</span>
-              )}
-            </div>
-            <div className="slot-actions">
-              {mode === 'save' ? (
-                <button disabled={!canSave} onClick={() => save(i)}>
-                  {t('guardar.guardar')}
-                </button>
-              ) : (
+            {editing ? (
+              <form
+                className="slot-name-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  commit();
+                }}
+              >
+                <label htmlFor={`slot-name-${i}`}>
+                  {t(editing.kind === 'save' ? 'guardar.nombre_pide' : 'guardar.renombrar_pide')}
+                </label>
+                <input
+                  id={`slot-name-${i}`}
+                  autoFocus
+                  value={editing.text}
+                  maxLength={SAVE_NAME_MAX}
+                  placeholder={editing.kind === 'save' ? suggested() : t('guardar.espacio', { n: i + 1 })}
+                  onFocus={(e) => e.currentTarget.select()}
+                  onChange={(e) => setNaming({ ...editing, text: e.target.value })}
+                  onKeyDown={(e) => {
+                    // Que las teclas no lleguen al juego (Espacio, números de las decisiones, M…).
+                    e.stopPropagation();
+                    if (e.key === 'Escape') cancelNaming();
+                  }}
+                />
+                {editing.kind === 'save' && slot && <small className="slot-warn">{t('guardar.reemplaza')}</small>}
+                <div className="slot-name-actions">
+                  <button type="button" onClick={cancelNaming}>
+                    {t('guardar.cancelar')}
+                  </button>
+                  <button type="submit">{t(editing.kind === 'save' ? 'guardar.guardar' : 'guardar.listo')}</button>
+                </div>
+              </form>
+            ) : (
+              <div className="slot-info">
+                <strong>{slotName(i)}</strong>
+                {slot?.nombre && <small className="muted">{t('guardar.espacio', { n: i + 1 })}</small>}
+                {slot ? (
+                  <>
+                    <span className="muted">{new Date(slot.date).toLocaleString(lang)}</span>
+                    <span>
+                      {slot.finished?.startsWith(CHAPTER_END)
+                        ? t('mapa.fin_capitulo', { n: slot.finished.slice(CHAPTER_END.length) })
+                        : lineText(slot.sceneId, slot.preview, lang).slice(0, 80)}
+                    </span>
+                  </>
+                ) : (
+                  <span className="muted">{t('guardar.vacio')}</span>
+                )}
+              </div>
+            )}
+            {!editing && (
+              <div className="slot-actions">
+                {mode === 'save' ? (
+                  <button
+                    disabled={!canSave}
+                    onClick={() => {
+                      playSelect();
+                      setNaming({ slot: i, kind: 'save', text: slot?.nombre ?? suggested() });
+                    }}
+                  >
+                    {t('guardar.guardar')}
+                  </button>
+                ) : (
+                  <button
+                    disabled={!slot}
+                    onClick={() => {
+                      void enterPlayMode();
+                      load(i);
+                      onClose();
+                    }}
+                  >
+                    {t('guardar.cargar')}
+                  </button>
+                )}
+                {slot && (
+                  <button
+                    onClick={() => {
+                      playSelect();
+                      setNaming({ slot: i, kind: 'rename', text: slot.nombre ?? '' });
+                    }}
+                  >
+                    {t('guardar.renombrar')}
+                  </button>
+                )}
                 <button
                   disabled={!slot}
                   onClick={() => {
-                    void enterPlayMode();
-                    load(i);
-                    onClose();
+                    playSelect();
+                    setDeleting(i);
                   }}
                 >
-                  {t('guardar.cargar')}
+                  {t('guardar.borrar')}
                 </button>
-              )}
-              <button disabled={!slot} onClick={() => deleteSave(i)}>
-                {t('guardar.borrar')}
-              </button>
-            </div>
+              </div>
+            )}
           </div>
         );
       })}
+      {deleting !== null && saves[deleting] && (
+        <ConfirmDialog
+          title={t('guardar.borrar_titulo')}
+          text={t('guardar.borrar_texto', { nombre: slotName(deleting) })}
+          confirm={t('guardar.borrar')}
+          cancel={t('guardar.cancelar')}
+          onCancel={() => setDeleting(null)}
+          onConfirm={() => {
+            deleteSave(deleting);
+            setDeleting(null);
+          }}
+        />
+      )}
     </Panel>
+  );
+}
+
+/** Ventana de confirmación (la misma de «¿Volver al menú?»), encima de todo; Escape cancela. */
+function ConfirmDialog({
+  title,
+  text,
+  confirm,
+  cancel,
+  onCancel,
+  onConfirm,
+}: {
+  title: string;
+  text: string;
+  confirm: string;
+  cancel: string;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  const back = () => {
+    playCancel();
+    onCancel();
+  };
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      e.stopImmediatePropagation();
+      back();
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  });
+  return createPortal(
+    <div className="confirm-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirm-dialog-title">
+      <div className="confirm-box">
+        <b id="confirm-dialog-title">{title}</b>
+        <p>{text}</p>
+        <div className="confirm-actions">
+          <button onClick={back} autoFocus>
+            {cancel}
+          </button>
+          <button
+            className="confirm-danger"
+            onClick={() => {
+              playCancel();
+              onConfirm();
+            }}
+          >
+            {confirm}
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
 

@@ -43,6 +43,8 @@ export interface SaveSlot {
   preview: string;
   /** Guardado en la pantalla de fin de capítulo: al cargar se vuelve a ella. */
   finished?: string | null;
+  /** Nombre que le puso el jugador (se pide al guardar y se puede cambiar después). */
+  nombre?: string;
 }
 
 export interface Settings {
@@ -135,7 +137,9 @@ interface Store {
   choose: (index: number) => void;
   jumpTo: (sceneId: string) => void;
   quitToTitle: () => void;
-  save: (slot: number) => void;
+  save: (slot: number, nombre?: string) => void;
+  /** Cambia el nombre de una partida guardada (vacío: vuelve a «Espacio N»). */
+  renameSave: (slot: number, nombre: string) => void;
   load: (slot: number) => void;
   deleteSave: (slot: number) => void;
   setMode: (mode: Mode, speed?: Speed) => void;
@@ -343,7 +347,7 @@ export const useStore = create<Store>()(
 
         quitToTitle: () => set({ game: null, mode: 'normal', error: null }),
 
-        save: (slot) => {
+        save: (slot, nombre) => {
           const { game, saves } = get();
           if (!game || !canSaveGame(game)) return;
           const text = game.finished
@@ -357,7 +361,17 @@ export const useStore = create<Store>()(
             date: new Date().toISOString(),
             preview: text.slice(0, 80),
             finished: game.finished,
+            ...(nombre?.trim() ? { nombre: nombre.trim() } : {}),
           };
+          set({ saves: next });
+        },
+
+        renameSave: (slot, nombre) => {
+          const old = get().saves[slot];
+          if (!old) return;
+          const next = [...get().saves];
+          const { nombre: _, ...rest } = old;
+          next[slot] = nombre.trim() ? { ...rest, nombre: nombre.trim() } : rest;
           set({ saves: next });
         },
 
