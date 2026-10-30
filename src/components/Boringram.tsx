@@ -1,7 +1,15 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useStore } from '../engine/store';
 import { assetUrl, isPlaceholder } from '../engine/assets';
-import { chatKey, postKey, storyKey, useBoringram, type Perfil, type Publicacion } from '../engine/boringram';
+import {
+  chatKey,
+  postKey,
+  storyKey,
+  TUTORIAL_KEY,
+  useBoringram,
+  type Perfil,
+  type Publicacion,
+} from '../engine/boringram';
 import { playCancel, playSelect } from '../engine/sound';
 import { enterPlayMode, enterPortraitMode, isTouch, releaseOrientation } from '../engine/mobile';
 import pantallas from '../data/pantallas.json';
@@ -596,6 +604,12 @@ function App({ b }: { b: B }) {
     scroller.current?.scrollTo(0, 0);
   }, [view, scroller]);
   const markOpened = useStore((st) => st.markGalleryOpened);
+  const [tutorial, setTutorial] = useState(() => !useStore.getState().galleryOpened[TUTORIAL_KEY]);
+  const closeTutorial = () => {
+    playCancel();
+    markOpened(TUTORIAL_KEY);
+    setTutorial(false);
+  };
   const go = (next: View) => {
     playSelect();
     setView(next);
@@ -645,7 +659,13 @@ function App({ b }: { b: B }) {
     >
       <ToastContext.Provider value={showToast}>
         <KeyboardProvider>
-          <AppBar />
+          <AppBar
+            help={tx.como_usar}
+            onHelp={() => {
+              playSelect();
+              setTutorial(true);
+            }}
+          />
           <div className={s.content} ref={scroller}>
             {view.kind === 'feed' && (refresh.pull > 0 || refresh.state !== 'idle') && (
               <div className={s.pull} style={{ height: refresh.state === 'idle' ? refresh.pull : 56 }}>
@@ -721,16 +741,90 @@ function App({ b }: { b: B }) {
               <span>{toast.text}</span>
             </div>
           )}
+          {tutorial && <Tutorial b={b} onClose={closeTutorial} />}
         </KeyboardProvider>
       </ToastContext.Provider>
     </ShareContext.Provider>
   );
 }
 
-function AppBar() {
+function AppBar({ help, onHelp }: { help?: string; onHelp?: () => void }) {
   return (
     <div className={s.appBar}>
       <img src={assetUrl(pantallas.boringram.logo)} alt="Boringram" draggable={false} />
+      {onHelp && (
+        <button type="button" className={s.helpBtn} onClick={onHelp} aria-label={help} title={help}>
+          ?
+        </button>
+      )}
+    </div>
+  );
+}
+
+/** Dibujos de las tarjetas del tutorial (los mismos iconos que usa la app). */
+function TutorialIcon({ kind }: { kind: string }) {
+  if (kind === 'logo') return <img src={assetUrl('marca/boringram_icono.webp')} alt="" draggable={false} />;
+  if (kind === 'help') return <span className={s.tutQuestion}>?</span>;
+  const paths: Record<string, ReactNode> = {
+    refresh: <path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5" />,
+    heart: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
+    comment: <path d="M4 5h16v11H8l-4 4z" />,
+    story: (
+      <>
+        <circle cx="12" cy="12" r="9" strokeDasharray="4 2.2" />
+        <path d="M12 16s-3.5-2.2-3.5-5a2 2 0 0 1 3.5-1.3A2 2 0 0 1 15.5 11c0 2.8-3.5 5-3.5 5z" />
+      </>
+    ),
+    share: <path d="M21 3 3 10.5l7 2.5 2.5 7z" />,
+    shade: <path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 20.5a2 2 0 0 0 4 0" />,
+    nav: <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" />,
+  };
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden>
+      {paths[kind]}
+    </svg>
+  );
+}
+
+/** «Cómo usar»: tarjetas con lo que se puede hacer en Boringram. */
+function Tutorial({ b, onClose }: { b: B; onClose: () => void }) {
+  const tx = b.data.textos;
+  const steps = b.data.tutorial;
+  const [i, setI] = useState(0);
+  const step = steps[i];
+  const last = i === steps.length - 1;
+  return (
+    <div className={s.tutorial} role="dialog" aria-modal="true" aria-label={tx.como_usar}>
+      <div key={i} className={s.tutCard}>
+        <div className={s.tutIcon}>
+          <TutorialIcon kind={step.icono} />
+        </div>
+        <b className={s.tutTitle}>{step.titulo}</b>
+        <p className={s.tutText}>{step.texto}</p>
+        <div className={s.tutDots} aria-hidden>
+          {steps.map((_, k) => (
+            <i key={k} className={k === i ? s.tutDotOn : ''} />
+          ))}
+        </div>
+        <div className={s.tutBtns}>
+          {!last && (
+            <button type="button" className={s.tutSkip} onClick={onClose}>
+              {tx.saltar}
+            </button>
+          )}
+          <button
+            type="button"
+            className={s.tutNext}
+            onClick={() => {
+              if (last) return onClose();
+              playSelect();
+              setI(i + 1);
+            }}
+          >
+            {last ? tx.entendido : tx.siguiente}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

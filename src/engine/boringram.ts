@@ -99,6 +99,8 @@ export interface BoringramData {
   ajustes_rapidos: string[];
   dia: string;
   textos: Record<string, string>;
+  /** Tarjetas de «Cómo usar» (salen solas la primera vez). */
+  tutorial: { icono: string; titulo: string; texto: string }[];
 }
 
 /** Mezcla profunda: objetos por clave y listas por posición (lo que no se traduce queda en español). */
@@ -157,6 +159,8 @@ export const unlockScenes = (): string[] =>
 export const postKey = (id: string) => `bor:post:${id}`;
 export const storyKey = (id: string) => `bor:story:${id}`;
 export const chatKey = (id: string, n: number) => `bor:chat:${id}:${n}`;
+/** Ya se vio el tutorial (se guarda con lo abierto de la galería; «Borrar todo» lo vuelve a mostrar). */
+export const TUTORIAL_KEY = 'bor:tutorial';
 
 /** Lo desbloqueado en la partida guardada, y qué es nuevo. */
 export function useBoringram() {

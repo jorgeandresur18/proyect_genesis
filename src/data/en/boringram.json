@@ -120,7 +120,36 @@
     },
     {
       "texto": "Engineer. Now it's time to make money.",
-      "hace": "1 year ago"
+      "hace": "1 year ago",
+      "comentarios": [
+        {
+          "texto": "Now we make money. And pay off the student loan until we turn 60 🙃"
+        }
+      ]
+    },
+    {
+      "texto": "Graduated. She brought the smile; I brought the thesis eye bags.",
+      "hace": "1 year ago",
+      "comentarios": [
+        {
+          "texto": "I closed my eyes from happiness. You closed yours from exhaustion. I know you, thesis partner 🎓"
+        },
+        {
+          "texto": "I slept three hours in four years. I earned this."
+        }
+      ]
+    },
+    {
+      "texto": "THESIS APPROVED. Two advisors, three final versions and a server that crashed the night before the defense. Thanks, partner.",
+      "hace": "1 year ago",
+      "comentarios": [
+        {
+          "texto": "The server didn't crash. You turned it off because it was \"getting hot\". I'm telling everyone at your wedding."
+        },
+        {
+          "texto": "That stays between us and the log."
+        }
+      ]
     }
   ],
   "destacadas": [
@@ -240,7 +269,11 @@
     "enviado": "Sent. She'll probably leave it on read.",
     "historias_gustadas": "Stories",
     "borrar": "Delete",
-    "enviar": "Send"
+    "enviar": "Send",
+    "como_usar": "How to use",
+    "siguiente": "Next",
+    "saltar": "Skip",
+    "entendido": "Got it"
   },
   "notificaciones": [
     {
@@ -318,5 +351,43 @@
     "Do not disturb",
     "Airplane mode"
   ],
-  "dia": "Saturday"
+  "dia": "Saturday",
+  "tutorial": [
+    {
+      "titulo": "Welcome to Boringram",
+      "texto": "The social network where people post their perfect lives so you can compare them to yours. It's free. You pay in self-esteem."
+    },
+    {
+      "titulo": "Refresh",
+      "texto": "Pull the feed down to look for new posts. If nothing shows up, it's not a bug: nobody thought of you."
+    },
+    {
+      "titulo": "Likes",
+      "texto": "Tap the heart to like something. It's the closest you'll get to touching someone this month."
+    },
+    {
+      "titulo": "Comments",
+      "texto": "Tap the bubble to comment. Two comments per post, tops: after the third one it stops being interest and becomes a case file."
+    },
+    {
+      "titulo": "Stories",
+      "texto": "Tap the middle of a story to like it. Press and hold to unleash a burst of hearts. Desperate, but stylish."
+    },
+    {
+      "titulo": "Share",
+      "texto": "The arrow really shares to your socials. Your contacts will know what you play. Start preparing the explanation."
+    },
+    {
+      "titulo": "Notifications",
+      "texto": "Pull the top bar down to see your notifications. It's mostly spam. Like your inbox. Like your relationships."
+    },
+    {
+      "titulo": "Home, messages and profile",
+      "texto": "Switch sections at the bottom. On your profile, «Likes» keeps everything you ever liked. You don't remember; Boringram does. Boringram never forgets."
+    },
+    {
+      "titulo": "Lost?",
+      "texto": "Tap «?» at the top and we'll go through all this again. There's no button for getting lost in life. We asked, but it wasn't profitable."
+    }
+  ]
 }
