@@ -1813,8 +1813,6 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) { .bc-overlay, .bc-overlay.off, .bc-crt, .bc-overlay.off .bc-crt, .bc-hero, .bc-level, .bc-level-detail, .bc-card, .bc-sprite, .bc-box, .bc-diploma, .bc-lf-post, .bc-lf-comments li, .bc-earned, .bc-closed-lock { animation: none; } }
 
 /* Menú: el Bootcamp cerrado (antes de terminar el Capítulo 1). */
-.title-tile-locked { opacity: 0.55; }
-.title-tile-lock { position: absolute; top: 0.4rem; right: 0.5rem; font-size: 0.75rem; }
 
 /* IDE: el asistente de IA que nunca está disponible. */
 .ide-ai { margin-left: auto; padding: 0.2rem 0.7rem; border: 1px solid rgba(180, 140, 255, 0.45); border-radius: 999px; background: linear-gradient(135deg, rgba(180, 140, 255, 0.18), rgba(122, 168, 255, 0.12)); color: #d6c4ff; font: inherit; font-size: 0.72rem; }
@@ -1957,6 +1955,8 @@ button.danger:disabled { opacity: 0.45; cursor: not-allowed; }
 /* Aviso en el menú: nivel desbloqueado (con el color de su dificultad). */
 .bc-toast { border-color: color-mix(in srgb, var(--lvl) 70%, transparent); box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.5), 0 0 1.2rem color-mix(in srgb, var(--lvl) 35%, transparent); }
 .bc-toast b { color: var(--lvl); }
+/* En el menú, «.title > *» lo vuelve relativo y empuja los botones: el aviso flota encima. */
+.title > .bc-toast { position: absolute; z-index: 8; }
 .title-tile-icon { object-fit: contain; }
 @media (prefers-reduced-motion: reduce) { .bc-reviews, .bc-boot:not(.bc-shutdown):not(.bc-signup) .bc-boot-emblem { animation: none; } }
 

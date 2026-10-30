@@ -526,8 +526,6 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
   const pick = () => playSelect();
   const galleryNew = useGalleryState().hasNew;
   const boringramNew = useBoringram().hasNew;
-  // El Bootcamp se abre al terminar el Capítulo 1; antes, su botón sale con candado.
-  const bootcampOpen = useBootcamp().abierto;
   const load = useStore((s) => s.load);
   // Espacio de la partida guardada más reciente (-1 si no hay ninguna).
   const lastSave = useStore((s) =>
@@ -625,7 +623,7 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
           {tiles.map(([o, icon, label], i) => (
             <button
               key={o}
-              className={`title-tile ${o === 'bootcamp' && !bootcampOpen ? 'title-tile-locked' : ''}`}
+              className="title-tile"
               style={{ '--i': i } as CSSProperties}
               onClick={() => {
                 pick();
@@ -643,11 +641,6 @@ function TitleScreen({ open, intro, onEgg }: TitleProps) {
                 </svg>
               )}
               <span>{t(label)}</span>
-              {o === 'bootcamp' && !bootcampOpen && (
-                <span className="title-tile-lock" aria-label={t('titulo.bootcamp_bloqueado')}>
-                  🔒
-                </span>
-              )}
               {((o === 'extras' && galleryNew) || (o === 'boringram' && boringramNew)) && (
                 <NewDot className="new-dot-tile" />
               )}
