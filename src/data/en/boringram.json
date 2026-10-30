@@ -153,6 +153,11 @@
   ],
   "destacadas": [
     {
+      "titulo": "always",
+      "texto": "the usual one 🍻",
+      "hace": "1 year ago"
+    },
+    {
       "titulo": "nights out",
       "texto": "just one",
       "hace": "3 h ago"
@@ -386,11 +391,11 @@
     },
     {
       "titulo": "Stories",
-      "texto": "The circles on a profile are story highlights. Inside, tap the middle to like or press and hold to unleash a burst of hearts. Desperate, but stylish."
+      "texto": "The circles on a profile are story highlights; the pinned one always goes first. Inside, tap the middle to like or press and hold to unleash a burst of hearts. Desperate, but stylish."
     },
     {
       "titulo": "Photos, thoughts and likes",
-      "texto": "Every profile keeps photos apart from thoughts. Other people's likes are private. Yours, not so much."
+      "texto": "Every profile keeps photos apart from thoughts. On yours, «Likes» keeps everything you ever liked. Other people's likes are private; yours, not so much."
     },
     {
       "titulo": "Messages",

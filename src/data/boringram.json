@@ -1,5 +1,5 @@
 {
-  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio o perfil:<id>) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera).",
+  "nota": "Boringram en Extras: el celular de Jair. Cada perfil, publicación, historia destacada y mensaje se desbloquea al visitar la escena de «desbloqueo» (null = desde el principio). Las publicaciones van de la más nueva a la más vieja. «tipo»: foto, texto (pensamiento, como en X) o repost (de otra cuenta). «te_gusta»: Jair le dio me gusta. Las fotos fuente están en docs/boringram/. Nikki escribe en minúsculas y sin tildes. La versión en inglés se mezcla por posición: si se agrega o se mueve algo aquí, hay que hacer lo mismo en src/data/en/boringram.json. «notificaciones»: el panel que baja desde la barra de estado (apps parodia); también se desbloquean por escena. «estado»: hora y batería del celular según el punto de la historia (vale el último desbloqueado, en orden). Los capítulos siguientes agregan lo suyo en src/data/boringram/capNN.json (y su inglés en src/data/en/boringram/): publicaciones, historias y notificaciones se ponen primero; los mensajes de un chat que ya existe se agregan a ese chat; el estado se agrega al final. Una imagen PLACEHOLDER:<nombre> se ve como un cuadro gris hasta que exista el arte. «tutorial»: el recorrido de «Cómo usar» (sale solo la primera vez): cada paso lleva a una pantalla («vista»: inicio, perfil:<id> o post:<id>; se usan el perfil de Jair y su publicación de graduación, que no cambian con la historia) y señala algo («objetivo», un data-tour del componente) con un gesto («toque», «doble» o «abajo»); sin objetivo, tarjeta en el centro. Si lo señalado no existe todavía (p. ej. un perfil sin desbloquear), el paso se salta. «carrusel»: varias fotos en una publicación, cada una con su texto («imagen» y «texto» son los de la primera).",
   "yo": "jair",
   "sin_senal": {
     "titulo": "Sin señal",
@@ -270,6 +270,16 @@
     }
   ],
   "destacadas": [
+    {
+      "id": "jair_favorita",
+      "autor": "jair",
+      "titulo": "siempre",
+      "imagen": "fotos/boringram/historia_jair_favorita.webp",
+      "texto": "la de siempre 🍻",
+      "hace": "hace 1 año",
+      "fijada": true,
+      "desbloqueo": "cap01_115n2"
+    },
     {
       "id": "nikki_una_sola",
       "autor": "nikki",
@@ -582,53 +592,53 @@
       "texto": "Aquí sale lo que publican las cuentas que sigues. Arrastra hacia abajo desde arriba para actualizar. Si no aparece nada, no es un error: nadie se acordó de ti."
     },
     {
-      "vista": "inicio",
+      "vista": "post:jair_graduado",
       "objetivo": "autor",
       "gesto": "toque",
       "titulo": "Perfiles",
       "texto": "Toca la foto o el nombre de alguien para ver su perfil. Stalkear es gratis. La dignidad, no."
     },
     {
-      "vista": "inicio",
+      "vista": "post:jair_graduado",
       "objetivo": "foto",
       "gesto": "doble",
       "titulo": "Doble toque",
       "texto": "Toca dos veces una foto para darle me gusta con un corazón gigante. Si tiene puntitos abajo, es un carrusel: desliza a los lados para ver las demás."
     },
     {
-      "vista": "inicio",
+      "vista": "post:jair_graduado",
       "objetivo": "like",
       "gesto": "toque",
       "titulo": "Me gusta",
       "texto": "El corazón da y quita el me gusta. Es lo más cerca que vas a estar de tocar a alguien este mes."
     },
     {
-      "vista": "inicio",
+      "vista": "post:jair_graduado",
       "objetivo": "comentar",
       "gesto": "toque",
       "titulo": "Comentar",
       "texto": "El globo abre la publicación para comentar. Máximo dos comentarios por publicación: desde el tercero ya no es interés, es expediente."
     },
     {
-      "vista": "inicio",
+      "vista": "post:jair_graduado",
       "objetivo": "compartir",
       "gesto": "toque",
       "titulo": "Compartir",
       "texto": "La flecha comparte de verdad en tus redes. Tus contactos van a saber a qué juegas. Ve preparando la explicación."
     },
     {
-      "vista": "perfil:nikki",
+      "vista": "perfil:jair",
       "objetivo": "destacadas",
       "gesto": "toque",
       "titulo": "Historias",
-      "texto": "Los círculos del perfil son historias destacadas. Adentro, toca el centro para dar me gusta o mantén presionado para soltar una ráfaga de corazones. Desesperado, pero con estilo."
+      "texto": "Los círculos del perfil son historias destacadas; la fijada siempre va primero. Adentro, toca el centro para dar me gusta o mantén presionado para soltar una ráfaga de corazones. Desesperado, pero con estilo."
     },
     {
-      "vista": "perfil:nikki",
+      "vista": "perfil:jair",
       "objetivo": "pestanas",
       "gesto": "toque",
       "titulo": "Fotos, pensamientos y me gusta",
-      "texto": "Cada perfil separa las fotos de los pensamientos. Los me gusta de los demás son privados. Los tuyos, no tanto."
+      "texto": "Cada perfil separa las fotos de los pensamientos. En el tuyo, «Me gusta» guarda todo lo que te gustó. Los me gusta de los demás son privados; los tuyos, no tanto."
     },
     {
       "vista": "inicio",

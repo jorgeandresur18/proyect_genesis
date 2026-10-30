@@ -49,6 +49,8 @@ export interface Destacada {
   imagen: string;
   texto: string;
   hace: string;
+  /** Fijada: siempre la primera de su perfil. */
+  fijada?: boolean;
   desbloqueo: string | null;
 }
 export interface Mensaje {

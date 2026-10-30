@@ -886,7 +886,7 @@ function AppBar({ b, onClose, onHelp }: { b: B; onClose: () => void; onHelp?: ()
   );
 }
 
-type TourView = { kind: 'feed' } | { kind: 'perfil'; id: string };
+type TourView = { kind: 'feed' } | { kind: 'perfil'; id: string } | { kind: 'post'; id: string; back: { kind: 'feed' } };
 
 /**
  * «Cómo usar»: recorrido guiado. Cada paso lleva a su pantalla, ilumina lo que explica (un elemento con
@@ -913,8 +913,13 @@ function Tour({ b, onView, onClose }: { b: B; onView: (v: TourView) => void; onC
   useEffect(() => {
     if (!step.vista) return;
     const [kind, id] = step.vista.split(':');
+    // Lo que se explica está en lugares que no cambian con la historia (el perfil de Jair y su publicación de
+    // graduación): el inicio se llena de publicaciones nuevas y lo señalado quedaría fuera de la pantalla.
     if (kind === 'perfil') {
       if (b.perfiles[id]) onView({ kind: 'perfil', id });
+      else move(dir.current);
+    } else if (kind === 'post') {
+      if (b.publicaciones.some((p) => p.id === id)) onView({ kind: 'post', id, back: { kind: 'feed' } });
       else move(dir.current);
     } else onView({ kind: 'feed' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -926,7 +931,6 @@ function Tour({ b, onView, onClose }: { b: B; onView: (v: TourView) => void; onC
     if (!step.objetivo) return;
     let frame = 0;
     let tries = 0;
-    let placed = false;
     const tick = () => {
       const el = [...document.querySelectorAll<HTMLElement>(`[data-tour="${step.objetivo}"]`)].find(
         (e) => e.getClientRects().length > 0,
@@ -936,10 +940,11 @@ function Tour({ b, onView, onClose }: { b: B; onView: (v: TourView) => void; onC
         frame = requestAnimationFrame(tick);
         return;
       }
-      if (!placed) {
-        placed = true;
-        if (step.objetivo === 'inicio') el.scrollTop = 0;
-        else el.scrollIntoView({ block: 'center' });
+      // Si lo señalado quedó fuera de la pantalla (p. ej. la lista volvió arriba al cambiar de vista), se centra.
+      const r0 = el.getBoundingClientRect();
+      const box = el.closest<HTMLElement>(`.${s.content}`)?.getBoundingClientRect();
+      if (step.objetivo !== 'inicio' && box && (r0.top < box.top || r0.bottom > box.bottom)) {
+        el.scrollIntoView({ block: 'center' });
       }
       const r = el.getBoundingClientRect();
       setRect((old) =>
@@ -1003,10 +1008,11 @@ function Tour({ b, onView, onClose }: { b: B; onView: (v: TourView) => void; onC
         <div
           className={s.tourSpot}
           style={{
-            left: rect.left - PAD,
-            top: rect.top - PAD,
-            width: rect.width + PAD * 2,
-            height: rect.height + PAD * 2,
+            // El marco no se sale del borde de la pantalla (p. ej. la barra de estado en el celular).
+            left: Math.max(1, rect.left - PAD),
+            top: Math.max(1, rect.top - PAD),
+            width: rect.width + PAD * 2 - Math.max(0, 1 - (rect.left - PAD)),
+            height: rect.height + PAD * 2 - Math.max(0, 1 - (rect.top - PAD)),
           }}
         />
       ) : (
@@ -1337,11 +1343,10 @@ function MultiIcon() {
 
 function Feed({ b, onPerfil, onPost }: { b: B; onPerfil: (id: string) => void; onPost: (id: string) => void }) {
   if (b.publicaciones.length === 0) return <p className={s.empty}>{b.data.textos.sin_publicaciones}</p>;
-  const guide = b.publicaciones.find((p) => p.tipo === 'foto')?.id;
   return (
     <div className={s.feed}>
       {b.publicaciones.map((p) => (
-        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} tour={p.id === guide} />
+        <Post key={p.id} b={b} post={p} onPerfil={onPerfil} onPost={onPost} />
       ))}
     </div>
   );
@@ -1368,7 +1373,8 @@ function Profile({
   const p = b.perfiles[id];
   const photos = b.publicaciones.filter((x) => x.autor === id && x.tipo === 'foto');
   const thoughts = b.publicaciones.filter((x) => x.autor === id && x.tipo !== 'foto');
-  const stories = b.destacadas.filter((x) => x.autor === id);
+  // Las fijadas (p. ej. la favorita de Jair) van siempre primero.
+  const stories = b.destacadas.filter((x) => x.autor === id).sort((a, c) => Number(!!c.fijada) - Number(!!a.fijada));
   if (!p) return null;
   return (
     <div className={s.profile}>
@@ -1514,7 +1520,7 @@ function PostView({
         </button>
         <b>{b.perfiles[post.autor]?.usuario}</b>
       </div>
-      <Post b={b} post={post} onPerfil={onPerfil} full />
+      <Post b={b} post={post} onPerfil={onPerfil} full tour />
     </div>
   );
 }
