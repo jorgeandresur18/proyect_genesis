@@ -736,9 +736,8 @@ const useShare = () => useContext(ShareContext);
 
 /**
  * Compartir una foto de verdad: muestra la miniatura que se verá en las redes (public/compartir/<id>.jpg,
- * con su página <id>.html, ver tools/compartir.mjs) y abre Facebook, WhatsApp o X con el enlace, copia el
- * enlace, o comparte la imagen (Instagram no deja publicar desde la web: se guarda la imagen y se copia el
- * enlace).
+ * con su página <id>.html, ver tools/compartir.mjs) y abre Facebook, Instagram, WhatsApp o X con el enlace y un
+ * texto, o copia el enlace.
  */
 function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void }) {
   const tx = b.data.textos;
@@ -751,21 +750,6 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
     (slide && { autor: b.publicaciones.find((p) => p.id === base)!.autor, texto: slide.texto ?? '' }) ??
     (story && { autor: story.autor, texto: story.texto });
   const [note, setNote] = useState('');
-  // La imagen se prepara al abrir: compartir tiene que pedirse en el mismo toque, sin esperar una descarga
-  // (si no, el navegador lo bloquea en silencio).
-  const file = useRef<File | null>(null);
-  useEffect(() => {
-    let alive = true;
-    fetch(assetUrl(`compartir/${id}.jpg`))
-      .then((r) => r.blob())
-      .then((blob) => {
-        if (alive) file.current = new File([blob], `${id}.jpg`, { type: 'image/jpeg' });
-      })
-      .catch(() => {});
-    return () => {
-      alive = false;
-    };
-  }, [id]);
   if (!post) return null;
   const user = b.perfiles[post.autor]?.usuario ?? post.autor;
   const url = `${b.data.sitio}compartir/${id}.html`;
@@ -784,33 +768,26 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
       setNote(url);
     }
   };
-  // En computadora, Instagram no deja publicar desde la web: se guarda la imagen, se copia el enlace y se
-  // abre Instagram en otra pestaña para subirla.
-  const instagramWeb = () => {
-    const f = file.current;
-    const a = document.createElement('a');
-    a.href = f ? URL.createObjectURL(f) : card;
-    a.download = `${id}.jpg`;
-    a.click();
-    if (f) setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    navigator.clipboard?.writeText(url).catch(() => {});
-    window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
-    setNote(tx.instagram_nota);
-  };
-  // En el celular: el menú de compartir del teléfono con la imagen (ahí se elige Instagram). Instagram no
-  // recibe enlaces desde la web, así que el enlace se copia en el mismo toque para pegarlo con el sticker.
+  // Instagram y Facebook no dejan que una web les escriba el texto: se copia el texto con el enlace en el mismo
+  // toque, para pegarlo, y el enlace se ve con su miniatura (la tarjeta de public/compartir).
+  const copiar = (t: string) => navigator.clipboard?.writeText(t).catch(() => {});
+  // Instagram: en el celular, el menú de compartir del teléfono con el texto y el enlace (se elige Instagram y
+  // llega como mensaje con la miniatura); en la computadora, se copian y se abren los mensajes de Instagram.
   const instagram = () => {
     playSelect();
-    const f = file.current;
-    if (isTouch() && f && navigator.canShare?.({ files: [f] })) {
-      navigator.clipboard?.writeText(url).catch(() => {});
+    copiar(`${text} ${url}`);
+    if (isTouch() && typeof navigator.share === 'function') {
       setNote(tx.instagram_nota_celular);
-      navigator.share({ files: [f] }).catch((e: Error) => {
-        if (e.name !== 'AbortError') instagramWeb();
-      });
+      navigator.share({ title: 'PROYECT GENESIS', text, url }).catch(() => {});
       return;
     }
-    instagramWeb();
+    window.open('https://www.instagram.com/direct/inbox/', '_blank', 'noopener,noreferrer');
+    setNote(tx.instagram_nota);
+  };
+  const facebook = () => {
+    copiar(text);
+    open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`);
+    setNote(tx.facebook_nota);
   };
   const native = async () => {
     playSelect();
@@ -829,7 +806,7 @@ function ShareSheet({ b, id, onClose }: { b: B; id: string; onClose: () => void 
           </span>
         </a>
         <div className={s.shareRow}>
-          <button onClick={() => open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)}>
+          <button onClick={facebook}>
             <span className={s.shareFb}>f</span>Facebook
           </button>
           <button onClick={instagram}>
